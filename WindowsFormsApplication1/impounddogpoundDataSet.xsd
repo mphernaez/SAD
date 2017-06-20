@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="impounddogpoundDataSet" targetNamespace="http://tempuri.org/impounddogpoundDataSet.xsd" xmlns:mstns="http://tempuri.org/impounddogpoundDataSet.xsd" xmlns="http://tempuri.org/impounddogpoundDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="impounddogpoundConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="impounddogpoundConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApplication1.Properties.Settings.GlobalReference.Default.impounddogpoundConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dogoperationTableAdapter" GeneratorDataComponentClassName="dogoperationTableAdapter" Name="dogoperation" UserDataComponentName="dogoperationTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="impounddogpoundConnectionString (Settings)" DbObjectName="impounddogpound.dogoperation" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `date` FROM `dogoperation`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="date" DataSetColumn="date" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="locationTableAdapter" GeneratorDataComponentClassName="locationTableAdapter" Name="location" UserDataComponentName="locationTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="impounddogpoundConnectionString (Settings)" DbObjectName="impounddogpound.location" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `location` FROM `location`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="location" DataSetColumn="location" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="impounddogpoundDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="impounddogpoundDataSet" msprop:Generator_UserDSName="impounddogpoundDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dogoperation" msprop:Generator_TableClassName="dogoperationDataTable" msprop:Generator_TableVarName="tabledogoperation" msprop:Generator_TablePropName="dogoperation" msprop:Generator_RowDeletingName="dogoperationRowDeleting" msprop:Generator_RowChangingName="dogoperationRowChanging" msprop:Generator_RowEvHandlerName="dogoperationRowChangeEventHandler" msprop:Generator_RowDeletedName="dogoperationRowDeleted" msprop:Generator_UserTableName="dogoperation" msprop:Generator_RowChangedName="dogoperationRowChanged" msprop:Generator_RowEvArgName="dogoperationRowChangeEvent" msprop:Generator_RowClassName="dogoperationRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="location" msprop:Generator_TableClassName="locationDataTable" msprop:Generator_TableVarName="tablelocation" msprop:Generator_TablePropName="location" msprop:Generator_RowDeletingName="locationRowDeleting" msprop:Generator_RowChangingName="locationRowChanging" msprop:Generator_RowEvHandlerName="locationRowChangeEventHandler" msprop:Generator_RowDeletedName="locationRowDeleted" msprop:Generator_UserTableName="location" msprop:Generator_RowChangedName="locationRowChanged" msprop:Generator_RowEvArgName="locationRowChangeEvent" msprop:Generator_RowClassName="locationRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="location" msprop:Generator_ColumnVarNameInTable="columnlocation" msprop:Generator_ColumnPropNameInRow="location" msprop:Generator_ColumnPropNameInTable="locationColumn" msprop:Generator_UserColumnName="location">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
