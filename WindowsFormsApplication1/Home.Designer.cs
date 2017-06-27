@@ -67,7 +67,7 @@
             this.selectButton.BackColor = System.Drawing.Color.Transparent;
             this.selectButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.select;
             this.selectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.selectButton.Location = new System.Drawing.Point(615, 12);
+            this.selectButton.Location = new System.Drawing.Point(618, 11);
             this.selectButton.Name = "selectButton";
             this.selectButton.Size = new System.Drawing.Size(110, 117);
             this.selectButton.TabIndex = 6;

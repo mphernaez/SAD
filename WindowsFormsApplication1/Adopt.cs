@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             conn = new MySqlConnection("Server=localhost;Database=impounddogpound;Uid=root;Pwd=root;");
         }
-
+        //n mnbnm
         private void Adopt_Load(object sender, EventArgs e)
         {
             try
