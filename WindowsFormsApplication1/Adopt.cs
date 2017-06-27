@@ -118,5 +118,10 @@ namespace WindowsFormsApplication1
         {
             dog.refreshAdoption();
         }
+
+        private void location_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

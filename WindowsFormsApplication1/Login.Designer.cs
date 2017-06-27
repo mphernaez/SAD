@@ -44,21 +44,21 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.user;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(95, 43);
+            this.pictureBox1.Location = new System.Drawing.Point(170, 21);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(126, 113);
+            this.pictureBox1.Size = new System.Drawing.Size(167, 142);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // usernameTextBox
             // 
             this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameTextBox.ForeColor = System.Drawing.Color.Gray;
-            this.usernameTextBox.Location = new System.Drawing.Point(68, 238);
+            this.usernameTextBox.Location = new System.Drawing.Point(105, 182);
             this.usernameTextBox.Multiline = true;
             this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(178, 20);
+            this.usernameTextBox.Size = new System.Drawing.Size(298, 39);
             this.usernameTextBox.TabIndex = 1;
             this.usernameTextBox.Text = resources.GetString("usernameTextBox.Text");
             this.usernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -68,13 +68,13 @@
             // passwordTextBox
             // 
             this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTextBox.ForeColor = System.Drawing.Color.Gray;
-            this.passwordTextBox.Location = new System.Drawing.Point(68, 268);
+            this.passwordTextBox.Location = new System.Drawing.Point(105, 230);
             this.passwordTextBox.Multiline = true;
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '•';
-            this.passwordTextBox.Size = new System.Drawing.Size(178, 20);
+            this.passwordTextBox.Size = new System.Drawing.Size(298, 39);
             this.passwordTextBox.TabIndex = 2;
             this.passwordTextBox.Text = "Password";
             this.passwordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -91,7 +91,7 @@
             this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogIn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogIn.ForeColor = System.Drawing.Color.Transparent;
-            this.btnLogIn.Location = new System.Drawing.Point(85, 309);
+            this.btnLogIn.Location = new System.Drawing.Point(105, 291);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(145, 37);
             this.btnLogIn.TabIndex = 3;
@@ -109,7 +109,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Transparent;
-            this.button2.Location = new System.Drawing.Point(85, 350);
+            this.button2.Location = new System.Drawing.Point(258, 291);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(145, 37);
             this.button2.TabIndex = 4;
@@ -143,7 +143,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.blue_and_green_triangles;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(311, 476);
+            this.ClientSize = new System.Drawing.Size(516, 359);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);

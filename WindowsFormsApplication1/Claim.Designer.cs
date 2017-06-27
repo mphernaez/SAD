@@ -128,7 +128,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.exit;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(450, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(461, 10);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(28, 24);
             this.pictureBox1.TabIndex = 9;
@@ -191,7 +191,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.date);
@@ -205,7 +205,7 @@
             this.panel1.Controls.Add(this.color);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.breed);
-            this.panel1.Location = new System.Drawing.Point(12, 46);
+            this.panel1.Location = new System.Drawing.Point(10, 46);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(230, 308);
             this.panel1.TabIndex = 16;
@@ -233,7 +233,8 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.CausesValidation = false;
             this.panel2.Controls.Add(this.checkbox);
             this.panel2.Controls.Add(this.tbIDnum);
             this.panel2.Controls.Add(this.tbIDtype);
@@ -246,7 +247,7 @@
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(248, 46);
+            this.panel2.Location = new System.Drawing.Point(259, 46);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(230, 308);
             this.panel2.TabIndex = 17;
@@ -356,8 +357,9 @@
             // label19
             // 
             this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Trebuchet MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(204, 9);
+            this.label19.Location = new System.Drawing.Point(204, 8);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(77, 29);
             this.label19.TabIndex = 16;
@@ -365,10 +367,10 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(173)))), ((int)(((byte)(148)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(199, 365);
+            this.button1.Location = new System.Drawing.Point(199, 374);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 34);
             this.button1.TabIndex = 18;
@@ -380,13 +382,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightYellow;
-            this.ClientSize = new System.Drawing.Size(490, 406);
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(500, 422);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Claim";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

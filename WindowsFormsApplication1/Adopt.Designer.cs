@@ -49,7 +49,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.location = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gender = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@
             this.color = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.breed = new System.Windows.Forms.Label();
+            this.location = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -75,7 +75,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(173)))), ((int)(((byte)(148)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(201, 387);
@@ -99,7 +99,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(205)))), ((int)(((byte)(148)))));
             this.panel2.Controls.Add(this.checkbox);
             this.panel2.Controls.Add(this.tbIDnum);
             this.panel2.Controls.Add(this.tbIDtype);
@@ -112,7 +112,7 @@
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.adopter);
-            this.panel2.Location = new System.Drawing.Point(248, 61);
+            this.panel2.Location = new System.Drawing.Point(251, 61);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(230, 308);
             this.panel2.TabIndex = 19;
@@ -131,42 +131,42 @@
             // tbIDnum
             // 
             this.tbIDnum.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbIDnum.Location = new System.Drawing.Point(5, 242);
+            this.tbIDnum.Location = new System.Drawing.Point(13, 242);
             this.tbIDnum.Name = "tbIDnum";
-            this.tbIDnum.Size = new System.Drawing.Size(222, 23);
+            this.tbIDnum.Size = new System.Drawing.Size(205, 23);
             this.tbIDnum.TabIndex = 26;
             // 
             // tbIDtype
             // 
             this.tbIDtype.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbIDtype.Location = new System.Drawing.Point(5, 199);
+            this.tbIDtype.Location = new System.Drawing.Point(13, 199);
             this.tbIDtype.Name = "tbIDtype";
-            this.tbIDtype.Size = new System.Drawing.Size(222, 23);
+            this.tbIDtype.Size = new System.Drawing.Size(205, 23);
             this.tbIDtype.TabIndex = 25;
             // 
             // tbadd
             // 
             this.tbadd.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbadd.Location = new System.Drawing.Point(5, 134);
+            this.tbadd.Location = new System.Drawing.Point(13, 134);
             this.tbadd.Multiline = true;
             this.tbadd.Name = "tbadd";
-            this.tbadd.Size = new System.Drawing.Size(222, 47);
+            this.tbadd.Size = new System.Drawing.Size(205, 47);
             this.tbadd.TabIndex = 24;
             // 
             // tbnumber
             // 
             this.tbnumber.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbnumber.Location = new System.Drawing.Point(5, 93);
+            this.tbnumber.Location = new System.Drawing.Point(13, 93);
             this.tbnumber.Name = "tbnumber";
-            this.tbnumber.Size = new System.Drawing.Size(222, 23);
+            this.tbnumber.Size = new System.Drawing.Size(205, 23);
             this.tbnumber.TabIndex = 23;
             // 
             // tbname
             // 
             this.tbname.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbname.Location = new System.Drawing.Point(5, 53);
+            this.tbname.Location = new System.Drawing.Point(13, 53);
             this.tbname.Name = "tbname";
-            this.tbname.Size = new System.Drawing.Size(222, 23);
+            this.tbname.Size = new System.Drawing.Size(205, 23);
             this.tbname.TabIndex = 22;
             // 
             // label13
@@ -231,7 +231,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(205)))), ((int)(((byte)(148)))));
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.date);
@@ -276,9 +276,9 @@
             this.date.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.date.Location = new System.Drawing.Point(51, 279);
             this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(85, 18);
+            this.date.Size = new System.Drawing.Size(80, 18);
             this.date.TabIndex = 15;
-            this.date.Text = "Date Caught:";
+            this.date.Text = "Date Caught";
             // 
             // label4
             // 
@@ -289,16 +289,6 @@
             this.label4.Size = new System.Drawing.Size(108, 18);
             this.label4.TabIndex = 1;
             this.label4.Text = "Location Caught:";
-            // 
-            // location
-            // 
-            this.location.AutoSize = true;
-            this.location.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.location.Location = new System.Drawing.Point(51, 191);
-            this.location.Name = "location";
-            this.location.Size = new System.Drawing.Size(108, 18);
-            this.location.TabIndex = 14;
-            this.location.Text = "Location Caught:";
             // 
             // label5
             // 
@@ -316,9 +306,9 @@
             this.gender.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gender.Location = new System.Drawing.Point(78, 132);
             this.gender.Name = "gender";
-            this.gender.Size = new System.Drawing.Size(55, 18);
+            this.gender.Size = new System.Drawing.Size(50, 18);
             this.gender.TabIndex = 13;
-            this.gender.Text = "Gender:";
+            this.gender.Text = "Gender";
             // 
             // label7
             // 
@@ -336,9 +326,9 @@
             this.size.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.size.Location = new System.Drawing.Point(70, 102);
             this.size.Name = "size";
-            this.size.Size = new System.Drawing.Size(37, 18);
+            this.size.Size = new System.Drawing.Size(32, 18);
             this.size.TabIndex = 12;
-            this.size.Text = "Size:";
+            this.size.Text = "Size";
             // 
             // label14
             // 
@@ -356,9 +346,9 @@
             this.color.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.color.Location = new System.Drawing.Point(70, 72);
             this.color.Name = "color";
-            this.color.Size = new System.Drawing.Size(43, 18);
+            this.color.Size = new System.Drawing.Size(38, 18);
             this.color.TabIndex = 11;
-            this.color.Text = "Color:";
+            this.color.Text = "Color";
             // 
             // label15
             // 
@@ -376,15 +366,26 @@
             this.breed.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.breed.Location = new System.Drawing.Point(70, 43);
             this.breed.Name = "breed";
-            this.breed.Size = new System.Drawing.Size(46, 18);
+            this.breed.Size = new System.Drawing.Size(41, 18);
             this.breed.TabIndex = 10;
-            this.breed.Text = "Breed:";
+            this.breed.Text = "Breed";
+            // 
+            // location
+            // 
+            this.location.AutoSize = true;
+            this.location.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.location.Location = new System.Drawing.Point(51, 191);
+            this.location.Name = "location";
+            this.location.Size = new System.Drawing.Size(103, 18);
+            this.location.TabIndex = 14;
+            this.location.Text = "Location Caught";
+            this.location.Click += new System.EventHandler(this.location_Click);
             // 
             // Adopt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.HotPink;
+            this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(494, 433);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
@@ -430,7 +431,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label date;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label location;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label gender;
         private System.Windows.Forms.Label label7;
@@ -440,5 +440,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label breed;
         private System.Windows.Forms.CheckBox checkbox;
+        private System.Windows.Forms.Label location;
     }
 }
