@@ -11,9 +11,11 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication1
 {
+    //HAI
     public partial class Dog : Form
     {
         //45   
+        //55
         private Color use;
         public int dogID;
         public int adminID;
