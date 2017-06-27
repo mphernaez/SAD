@@ -13,6 +13,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Dog : Form
     {
+        //45   
         private Color use;
         public int dogID;
         public int adminID;
