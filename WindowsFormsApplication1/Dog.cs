@@ -11,6 +11,7 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication1
 {
+    //HAI
     public partial class Dog : Form
     {
         private Color use;
