@@ -1,7 +1,7 @@
 ﻿namespace WindowsFormsApplication1
 {
     partial class Claim
-    {
+    {//11
         /// <summary>
         /// Required designer variable.
         /// </summary>
