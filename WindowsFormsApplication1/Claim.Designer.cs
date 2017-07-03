@@ -370,7 +370,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(173)))), ((int)(((byte)(148)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(199, 374);
+            this.button1.Location = new System.Drawing.Point(209, 376);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 34);
             this.button1.TabIndex = 18;
@@ -385,7 +385,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(500, 422);
+            this.ClientSize = new System.Drawing.Size(494, 433);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.panel2);
@@ -437,7 +437,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbIDnum;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkbox;
+        private System.Windows.Forms.Button button1;
     }
 }

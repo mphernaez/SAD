@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
         public Claim()
         {
             InitializeComponent();
-            conn = new MySqlConnection("Server=localhost;Database=impounddogpound;Uid=root;Pwd=root;");
+            conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -125,6 +125,11 @@ namespace WindowsFormsApplication1
             dog.tbColorSearch.Text = "";
             dog.cbGenderSearch.SelectedIndex = 0;
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

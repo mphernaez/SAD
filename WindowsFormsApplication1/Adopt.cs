@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
         public Adopt()
         {
             InitializeComponent();
-            conn = new MySqlConnection("Server=localhost;Database=impounddogpound;Uid=root;Pwd=root;");
+            conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
         }
         //n mnbnm
         private void Adopt_Load(object sender, EventArgs e)

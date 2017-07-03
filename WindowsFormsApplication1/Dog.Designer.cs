@@ -309,7 +309,7 @@
             // 
             this.dgvProfiles.AllowUserToAddRows = false;
             this.dgvProfiles.AllowUserToDeleteRows = false;
-            this.dgvProfiles.BackgroundColor = System.Drawing.Color.Chocolate;
+            this.dgvProfiles.BackgroundColor = System.Drawing.Color.MistyRose;
             this.dgvProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProfiles.Location = new System.Drawing.Point(43, 97);
             this.dgvProfiles.Name = "dgvProfiles";
@@ -477,7 +477,7 @@
             // 
             this.dgvAdoption.AllowUserToAddRows = false;
             this.dgvAdoption.AllowUserToDeleteRows = false;
-            this.dgvAdoption.BackgroundColor = System.Drawing.Color.Chocolate;
+            this.dgvAdoption.BackgroundColor = System.Drawing.Color.MistyRose;
             this.dgvAdoption.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAdoption.Location = new System.Drawing.Point(43, 79);
             this.dgvAdoption.Name = "dgvAdoption";
@@ -486,6 +486,7 @@
             this.dgvAdoption.Size = new System.Drawing.Size(513, 232);
             this.dgvAdoption.TabIndex = 20;
             this.dgvAdoption.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdoption_CellClick);
+            this.dgvAdoption.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdoption_CellContentClick);
             // 
             // label12
             // 
@@ -544,7 +545,7 @@
             // 
             this.dgvArchive.AllowUserToAddRows = false;
             this.dgvArchive.AllowUserToDeleteRows = false;
-            this.dgvArchive.BackgroundColor = System.Drawing.Color.Chocolate;
+            this.dgvArchive.BackgroundColor = System.Drawing.Color.MistyRose;
             this.dgvArchive.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArchive.Location = new System.Drawing.Point(47, 86);
             this.dgvArchive.Name = "dgvArchive";
@@ -572,11 +573,11 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(208)))), ((int)(((byte)(174)))));
             this.ClientSize = new System.Drawing.Size(740, 408);
             this.Controls.Add(this.addDog);
-            this.Controls.Add(this.euthanizeDog);
-            this.Controls.Add(this.searchDog);
-            this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.euthanizeDog);
+            this.Controls.Add(this.adoptDog);
+            this.Controls.Add(this.searchDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";

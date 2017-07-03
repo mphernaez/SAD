@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             use = Color.FromArgb(253, 208, 174);
-            conn = new MySqlConnection("Server=localhost;Database=impounddogpound;Uid=root;Pwd=root;");
+            conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
         }
 
         private void AddDog_Load(object sender, EventArgs e)
@@ -429,6 +429,11 @@ namespace WindowsFormsApplication1
         private void dgvArchive_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dogID = int.Parse(dgvArchive.Rows[e.RowIndex].Cells["dogID"].Value.ToString());
+        }
+
+        private void dgvAdoption_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
