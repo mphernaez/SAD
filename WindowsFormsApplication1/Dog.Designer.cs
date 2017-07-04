@@ -31,17 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dog));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.selectButton = new System.Windows.Forms.PictureBox();
             this.addDog = new System.Windows.Forms.Panel();
             this.tbColor = new System.Windows.Forms.TextBox();
             this.cbSize = new System.Windows.Forms.ComboBox();
             this.cbOperation = new System.Windows.Forms.ComboBox();
             this.tbBreed = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.tbDesc = new System.Windows.Forms.TextBox();
             this.cbGender = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,23 +46,28 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
             this.tbColorSearch = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.tbBreedSearch = new System.Windows.Forms.TextBox();
             this.adoptDog = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
             this.dgvAdoption = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.euthanizeDog = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
             this.dgvArchive = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.selectButton = new System.Windows.Forms.PictureBox();
             this.btnDone = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.selectButton)).BeginInit();
             this.addDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).BeginInit();
             this.searchDog.SuspendLayout();
@@ -76,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).BeginInit();
             this.euthanizeDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.selectButton)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -99,79 +99,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(117, 510);
             this.panel1.TabIndex = 1;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(35, 295);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 52);
-            this.button6.TabIndex = 37;
-            this.button6.Text = "Euthanise";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click_1);
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Adopt;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(35, 204);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 63);
-            this.button5.TabIndex = 3;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click_1);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(36, 108);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 63);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources._new;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(35, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 63);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // selectButton
-            // 
-            this.selectButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.selects;
-            this.selectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.selectButton.Location = new System.Drawing.Point(13, 194);
-            this.selectButton.Name = "selectButton";
-            this.selectButton.Size = new System.Drawing.Size(104, 83);
-            this.selectButton.TabIndex = 2;
-            this.selectButton.TabStop = false;
-            this.selectButton.Visible = false;
             // 
             // addDog
             // 
@@ -241,23 +168,6 @@
             this.tbBreed.TabIndex = 4;
             this.tbBreed.Text = "Breed";
             this.tbBreed.Enter += new System.EventHandler(this.tbBreed_Enter);
-            // 
-            // button4
-            // 
-            this.button4.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(393, 249);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(109, 38);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Add";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // tbDesc
             // 
@@ -384,22 +294,6 @@
             this.label4.TabIndex = 29;
             this.label4.Text = "Breed";
             // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.LightSalmon;
-            this.button7.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.magnifying_glass;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(528, 59);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(28, 30);
-            this.button7.TabIndex = 28;
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // tbColorSearch
             // 
             this.tbColorSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -407,23 +301,6 @@
             this.tbColorSearch.Name = "tbColorSearch";
             this.tbColorSearch.Size = new System.Drawing.Size(112, 26);
             this.tbColorSearch.TabIndex = 2;
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(447, 331);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 38);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "Claim";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // tbBreedSearch
             // 
@@ -456,23 +333,6 @@
             this.label8.Size = new System.Drawing.Size(209, 18);
             this.label8.TabIndex = 24;
             this.label8.Text = "List of Dogs Available for Adoption";
-            // 
-            // button9
-            // 
-            this.button9.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(447, 320);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(109, 38);
-            this.button9.TabIndex = 23;
-            this.button9.Text = "Adopt";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // dgvAdoption
             // 
@@ -526,23 +386,6 @@
             this.label7.TabIndex = 24;
             this.label7.Text = "Dogs that need to be euthanized";
             // 
-            // button10
-            // 
-            this.button10.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(337, 334);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(109, 38);
-            this.button10.TabIndex = 23;
-            this.button10.Text = "Euthanize";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
             // dgvArchive
             // 
             this.dgvArchive.AllowUserToAddRows = false;
@@ -569,6 +412,98 @@
             this.label11.Text = "Euthanize Dog";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
+            // button4
+            // 
+            this.button4.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(393, 249);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(109, 38);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "Add";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.Transparent;
+            this.button6.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.euth;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Location = new System.Drawing.Point(36, 296);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 63);
+            this.button6.TabIndex = 37;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.Transparent;
+            this.button5.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Adopt;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(35, 204);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 63);
+            this.button5.TabIndex = 3;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(36, 108);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 63);
+            this.button2.TabIndex = 1;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources._new;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(35, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 63);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // selectButton
+            // 
+            this.selectButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.selects;
+            this.selectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.selectButton.Location = new System.Drawing.Point(13, 194);
+            this.selectButton.Name = "selectButton";
+            this.selectButton.Size = new System.Drawing.Size(104, 83);
+            this.selectButton.TabIndex = 2;
+            this.selectButton.TabStop = false;
+            this.selectButton.Visible = false;
+            // 
             // btnDone
             // 
             this.btnDone.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
@@ -584,6 +519,74 @@
             this.btnDone.TabIndex = 25;
             this.btnDone.Text = "Done to All";
             this.btnDone.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.ForeColor = System.Drawing.Color.White;
+            this.button10.Location = new System.Drawing.Point(337, 334);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(109, 38);
+            this.button10.TabIndex = 23;
+            this.button10.Text = "Euthanize";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button9
+            // 
+            this.button9.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.Location = new System.Drawing.Point(447, 320);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(109, 38);
+            this.button9.TabIndex = 23;
+            this.button9.Text = "Adopt";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.magnifying_glass;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.Color.Black;
+            this.button7.Location = new System.Drawing.Point(527, 60);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(28, 27);
+            this.button7.TabIndex = 28;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(447, 331);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 38);
+            this.button3.TabIndex = 23;
+            this.button3.Text = "Claim";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // Dog
             // 
@@ -604,7 +607,6 @@
             this.Text = "AddDog";
             this.Load += new System.EventHandler(this.AddDog_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.selectButton)).EndInit();
             this.addDog.ResumeLayout(false);
             this.addDog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).EndInit();
@@ -616,6 +618,7 @@
             this.euthanizeDog.ResumeLayout(false);
             this.euthanizeDog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.selectButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
