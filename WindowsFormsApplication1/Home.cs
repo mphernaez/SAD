@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
             button1.BackColor = use;
             selectButton.Visible = true;
             int i = 300;
-            selectButton.Location = new Point(i, 11);
+            selectButton.Location = new Point(i, 10);
             
         }
 
@@ -62,7 +62,7 @@ namespace WindowsFormsApplication1
             selectButton.Visible = true;
             button4.BackColor = use;
             int i = 615;
-            selectButton.Location = new Point(i, 11);
+            selectButton.Location = new Point(i, 10);
 
             Login log = new Login();
             log.hom = this;
