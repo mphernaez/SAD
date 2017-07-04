@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
         public Login()
         {
             InitializeComponent();
-            conn = new MySqlConnection("Server=localhost;Database=impounddogpound;Uid=root;Pwd=root");
+            conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root");
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

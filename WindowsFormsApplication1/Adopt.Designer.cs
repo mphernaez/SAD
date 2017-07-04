@@ -49,6 +49,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.location = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gender = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -57,7 +58,6 @@
             this.color = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.breed = new System.Windows.Forms.Label();
-            this.location = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -68,7 +68,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(186, 22);
+            this.label1.Location = new System.Drawing.Point(189, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 27);
             this.label1.TabIndex = 1;
@@ -83,7 +83,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 34);
             this.button1.TabIndex = 6;
-            this.button1.Text = "OKAY";
+            this.button1.Text = "SUBMIT";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -174,57 +174,57 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(60, 226);
+            this.label13.Location = new System.Drawing.Point(66, 226);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(105, 18);
+            this.label13.Size = new System.Drawing.Size(100, 18);
             this.label13.TabIndex = 21;
-            this.label13.Text = "Valid ID Number:";
+            this.label13.Text = "Valid ID Number";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(69, 182);
+            this.label12.Location = new System.Drawing.Point(75, 182);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(87, 18);
+            this.label12.Size = new System.Drawing.Size(82, 18);
             this.label12.TabIndex = 20;
-            this.label12.Text = "Valid ID Type:";
+            this.label12.Text = "Valid ID Type";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(80, 118);
+            this.label11.Location = new System.Drawing.Point(87, 118);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 18);
+            this.label11.Size = new System.Drawing.Size(54, 18);
             this.label11.TabIndex = 19;
-            this.label11.Text = "Address:";
+            this.label11.Text = "Address";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(59, 78);
+            this.label10.Location = new System.Drawing.Point(65, 78);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(107, 18);
+            this.label10.Size = new System.Drawing.Size(102, 18);
             this.label10.TabIndex = 18;
-            this.label10.Text = "Contact Number:";
+            this.label10.Text = "Contact Number";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(87, 38);
+            this.label9.Location = new System.Drawing.Point(93, 38);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 18);
+            this.label9.Size = new System.Drawing.Size(41, 18);
             this.label9.TabIndex = 17;
-            this.label9.Text = "Name:";
+            this.label9.Text = "Name";
             // 
             // adopter
             // 
             this.adopter.AutoSize = true;
             this.adopter.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adopter.Location = new System.Drawing.Point(74, 12);
+            this.adopter.Location = new System.Drawing.Point(76, 4);
             this.adopter.Name = "adopter";
             this.adopter.Size = new System.Drawing.Size(76, 22);
             this.adopter.TabIndex = 17;
@@ -255,7 +255,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(90, 12);
+            this.label6.Location = new System.Drawing.Point(89, 4);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 22);
             this.label6.TabIndex = 16;
@@ -290,6 +290,17 @@
             this.label4.Size = new System.Drawing.Size(108, 18);
             this.label4.TabIndex = 1;
             this.label4.Text = "Location Caught:";
+            // 
+            // location
+            // 
+            this.location.AutoSize = true;
+            this.location.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.location.Location = new System.Drawing.Point(51, 191);
+            this.location.Name = "location";
+            this.location.Size = new System.Drawing.Size(103, 18);
+            this.location.TabIndex = 14;
+            this.location.Text = "Location Caught";
+            this.location.Click += new System.EventHandler(this.location_Click);
             // 
             // label5
             // 
@@ -370,17 +381,6 @@
             this.breed.Size = new System.Drawing.Size(41, 18);
             this.breed.TabIndex = 10;
             this.breed.Text = "Breed";
-            // 
-            // location
-            // 
-            this.location.AutoSize = true;
-            this.location.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.location.Location = new System.Drawing.Point(51, 191);
-            this.location.Name = "location";
-            this.location.Size = new System.Drawing.Size(103, 18);
-            this.location.TabIndex = 14;
-            this.location.Text = "Location Caught";
-            this.location.Click += new System.EventHandler(this.location_Click);
             // 
             // Adopt
             // 
