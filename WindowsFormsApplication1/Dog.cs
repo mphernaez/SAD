@@ -454,10 +454,5 @@ namespace WindowsFormsApplication1
         private void button1_MouseHover(object sender, EventArgs e)
         {
         }
-
-        private void button6_MouseHover(object sender, EventArgs e)
-        {
-          
-        }
     }
 }
