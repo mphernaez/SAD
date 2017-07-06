@@ -55,6 +55,7 @@ namespace WindowsFormsApplication1
             button2.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
+            button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
             int i = 9;
             selectButton.Location = new Point(13, i);
@@ -73,6 +74,7 @@ namespace WindowsFormsApplication1
             button1.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
+            button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
             int i = 98;
             selectButton.Location = new Point(13, i);
@@ -231,6 +233,7 @@ namespace WindowsFormsApplication1
             button5.BackColor = use;
             button1.BackColor = Color.Transparent;
             button2.BackColor = Color.Transparent;
+            button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
             
             selectButton.Location = new Point(13, 194);
@@ -354,13 +357,13 @@ namespace WindowsFormsApplication1
             addDog.Visible = false;
             adoptDog.Visible = false;
             euthanizeDog.Visible = true;
-
+            button6.BackColor = use;
             button2.BackColor = Color.Transparent;
             button1.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
-            button4.BackColor = use;
+            button5.BackColor = Color.Transparent;
             selectButton.Visible = true;
-            int i = 280;
+            int i = 285;
             selectButton.Location = new Point(13, i);
 
             refreshArchive();
@@ -446,6 +449,15 @@ namespace WindowsFormsApplication1
         private void button8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+        }
+
+        private void button6_MouseHover(object sender, EventArgs e)
+        {
+          
         }
     }
 }
