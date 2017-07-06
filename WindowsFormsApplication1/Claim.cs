@@ -41,9 +41,11 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tbname.Text != "" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "")
+            if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text != "" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "")
             {
-                String name = tbname.Text;
+                String fname = tbfname.Text;
+                String mname = tbmname.Text;
+                String lname = tblname.Text;
                 String add = tbadd.Text;
                 String idnum = tbIDnum.Text;
                 String idtype = tbIDtype.Text;
@@ -57,17 +59,20 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO client(name, contactNumber, validIDtype, validIDnumber, address) VALUES('" + name + "', '" + num + "', '" + idtype + "', '" + idnum + "', '" + add + "')", conn);
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO profile(firstname, middlename, lastname, contactNumber, address) VALUES('" + fname + "', '" + mname + "','" + lname + "', '" + num + "', '" + add + "')", conn);
                     comm.ExecuteNonQuery();
 
-                    comm = new MySqlCommand("SELECT clientID FROM client WHERE validIDType = '" + idtype + "' AND validIDNumber = '" + idnum + "'", conn);
+                    comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
 
-                    int clientID = int.Parse(dt.Rows[0]["clientID"].ToString());
-                   
-                    comm = new MySqlCommand("INSERT INTO dogtransaction(clientID, dogID, date, payment, vaccine, type) VALUES(" + clientID + ", " + dogID + ", '" + date + "', " + "250" + ", " + vaccine + ", '" + "claim" + "')", conn);
+                    int personID = int.Parse(dt.Rows[0]["MAX(personID)"].ToString());
+
+                    comm = new MySqlCommand("INSERT INTO client(personID, validIDType, validIDNumber) VALUES(" + personID + ", '" + idtype + "', '" + idnum + "')", conn);
+                    comm.ExecuteNonQuery();
+
+                    comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, vaccine, type) VALUES(" + personID + ", " + dogID + ", '" + date + "', " + "250" + ", " + vaccine + ", '" + "claim" + "')", conn);
                     comm.ExecuteNonQuery();
 
                     comm = new MySqlCommand("UPDATE dogprofile SET status = 'claimed' WHERE dogID = " + dogID, conn);
@@ -95,7 +100,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT breed, color, size, gender, location, date FROM (dogoperation INNER JOIN dogprofile ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location on dogoperation.locationID = location.locationID WHERE dogID = " + dogID, conn);
+                MySqlCommand comm = new MySqlCommand("SELECT breed, color, size, gender, description, date FROM (dogoperation INNER JOIN dogprofile ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location on dogoperation.locationID = location.locationID WHERE dogID = " + dogID, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -104,7 +109,7 @@ namespace WindowsFormsApplication1
                 color.Text = dt.Rows[0]["color"].ToString();
                 size.Text = dt.Rows[0]["size"].ToString();
                 gender.Text = dt.Rows[0]["gender"].ToString();
-                location.Text = dt.Rows[0]["location"].ToString();
+                location.Text = dt.Rows[0]["description"].ToString();
                 date.Text = dt.Rows[0]["date"].ToString();
 
 
@@ -128,6 +133,41 @@ namespace WindowsFormsApplication1
         }
 
         private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbIDnum_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbIDtype_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbadd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbnumber_TextChanged(object sender, EventArgs e)
         {
 
         }

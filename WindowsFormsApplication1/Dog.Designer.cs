@@ -191,7 +191,7 @@
             this.addDog.Controls.Add(this.tbDesc);
             this.addDog.Controls.Add(this.cbGender);
             this.addDog.Controls.Add(this.label2);
-            this.addDog.Location = new System.Drawing.Point(195, 9);
+            this.addDog.Location = new System.Drawing.Point(182, 6);
             this.addDog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addDog.Name = "addDog";
             this.addDog.Size = new System.Drawing.Size(910, 588);
@@ -231,12 +231,7 @@
             this.cbOperation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOperation.FormattingEnabled = true;
             this.cbOperation.Items.AddRange(new object[] {
-            "February 27, 2016, Matina",
-            "February 27, 2017, Ma-a",
-            "February 28, 2017, Buhangin",
-            "February 28, 2017, Bangkerohan",
-            "March 1, 2017, Jacinto",
-            "February 21, 2017, Roxas"});
+            "July 6, 2017 Buhangin"});
             this.cbOperation.Location = new System.Drawing.Point(129, 120);
             this.cbOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbOperation.Name = "cbOperation";
@@ -630,11 +625,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(208)))), ((int)(((byte)(174)))));
             this.ClientSize = new System.Drawing.Size(1110, 628);
-            this.Controls.Add(this.searchDog);
-            this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.searchDog);
+            this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

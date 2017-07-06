@@ -129,11 +129,11 @@ namespace WindowsFormsApplication1
                     size = "xl";
 
                 other = tbDesc.Text;
-
+                operationID = 3;
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO dogprofile(operationID, adminID, color, gender, size, otherDesc, breed, status) VALUES(" + operationID + ", " + adminID + ", '" + color + "', '" + gender + "', '" + size + "', '" + other + "', '" + breed + "', '" + "unclaimed" +"')", conn);
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO dogprofile(operationID, color, gender, size, otherDesc, breed, status) VALUES(" + operationID + ",'" + color + "', '" + gender + "', '" + size + "', '" + other + "', '" + breed + "', '" + "unclaimed" +"')", conn);
                     comm.ExecuteNonQuery();
                     MessageBox.Show("Profile Added Successfully");
 
@@ -253,7 +253,7 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, date, location, size, otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE gender = '" + gender + "' AND breed LIKE '%" + tbBreedSearch.Text + "%' AND color LIKE '%" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
+                    MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, date, description, size, otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE gender = '" + gender + "' AND breed LIKE '%" + tbBreedSearch.Text + "%' AND color LIKE '%" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
@@ -263,11 +263,11 @@ namespace WindowsFormsApplication1
                     dgvProfiles.Columns["dogID"].Visible = false;
                     dgvProfiles.Columns["breed"].HeaderText = "Breed";
                     dgvProfiles.Columns["date"].HeaderText = "Date Caught";
-                    dgvProfiles.Columns["location"].HeaderText = "Location Caught";
+                    dgvProfiles.Columns["description"].HeaderText = "Location Caught";
                     dgvProfiles.Columns["otherDesc"].HeaderText = "Other Description";
                     dgvProfiles.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvProfiles.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dgvProfiles.Columns["location"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvProfiles.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvProfiles.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                     conn.Close();
