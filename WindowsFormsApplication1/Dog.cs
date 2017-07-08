@@ -459,5 +459,10 @@ namespace WindowsFormsApplication1
         {
             button6.BackColor = Color.FromArgb(253, 208, 174);
         }
+
+        private void addDog_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
