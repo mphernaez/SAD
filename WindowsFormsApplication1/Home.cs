@@ -48,8 +48,8 @@ namespace WindowsFormsApplication1
             button4.BackColor = Color.Transparent;
             button1.BackColor = use;
             selectButton.Visible = true;
-            int i = 300;
-            selectButton.Location = new Point(i, 10);
+            int i = 305;
+            selectButton.Location = new Point(i, 21);
             
         }
 

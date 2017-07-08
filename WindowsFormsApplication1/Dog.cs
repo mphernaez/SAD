@@ -55,9 +55,10 @@ namespace WindowsFormsApplication1
             button2.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
+            button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
             int i = 9;
-            selectButton.Location = new Point(13, i);
+            selectButton.Location = new Point(2, i);
 
         }
 
@@ -73,9 +74,10 @@ namespace WindowsFormsApplication1
             button1.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
+            button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
             int i = 98;
-            selectButton.Location = new Point(13, i);
+            selectButton.Location = new Point(2, i);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -129,11 +131,11 @@ namespace WindowsFormsApplication1
                     size = "xl";
 
                 other = tbDesc.Text;
-
+                operationID = 3;
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO dogprofile(operationID, adminID, color, gender, size, otherDesc, breed, status) VALUES(" + operationID + ", " + adminID + ", '" + color + "', '" + gender + "', '" + size + "', '" + other + "', '" + breed + "', '" + "unclaimed" +"')", conn);
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO dogprofile(operationID, color, gender, size, otherDesc, breed, status) VALUES(" + operationID + ",'" + color + "', '" + gender + "', '" + size + "', '" + other + "', '" + breed + "', '" + "unclaimed" +"')", conn);
                     comm.ExecuteNonQuery();
                     MessageBox.Show("Profile Added Successfully");
 
@@ -231,9 +233,10 @@ namespace WindowsFormsApplication1
             button5.BackColor = use;
             button1.BackColor = Color.Transparent;
             button2.BackColor = Color.Transparent;
+            button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
             
-            selectButton.Location = new Point(13, 194);
+            selectButton.Location = new Point(2, 194);
 
             refreshAdoption();
         }
@@ -253,7 +256,7 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, date, location, size, otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE gender = '" + gender + "' AND breed LIKE '%" + tbBreedSearch.Text + "%' AND color LIKE '%" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
+                    MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, date, description, size, otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE gender = '" + gender + "' AND breed LIKE '%" + tbBreedSearch.Text + "%' AND color LIKE '%" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
@@ -263,11 +266,11 @@ namespace WindowsFormsApplication1
                     dgvProfiles.Columns["dogID"].Visible = false;
                     dgvProfiles.Columns["breed"].HeaderText = "Breed";
                     dgvProfiles.Columns["date"].HeaderText = "Date Caught";
-                    dgvProfiles.Columns["location"].HeaderText = "Location Caught";
+                    dgvProfiles.Columns["description"].HeaderText = "Location Caught";
                     dgvProfiles.Columns["otherDesc"].HeaderText = "Other Description";
                     dgvProfiles.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvProfiles.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dgvProfiles.Columns["location"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvProfiles.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvProfiles.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                     conn.Close();
@@ -354,14 +357,14 @@ namespace WindowsFormsApplication1
             addDog.Visible = false;
             adoptDog.Visible = false;
             euthanizeDog.Visible = true;
-
+            button6.BackColor = use;
             button2.BackColor = Color.Transparent;
             button1.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
-            button4.BackColor = use;
+            button5.BackColor = Color.Transparent;
             selectButton.Visible = true;
-            int i = 280;
-            selectButton.Location = new Point(13, i);
+            int i = 285;
+            selectButton.Location = new Point(2, i);
 
             refreshArchive();
             
@@ -448,9 +451,13 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void addDog_Paint(object sender, PaintEventArgs e)
+        private void button1_MouseHover(object sender, EventArgs e)
         {
+        }
 
+        private void button6_MouseHover(object sender, EventArgs e)
+        {
+            button6.BackColor = Color.FromArgb(253, 208, 174);
         }
     }
 }
