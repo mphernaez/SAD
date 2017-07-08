@@ -447,5 +447,10 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void addDog_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
