@@ -109,8 +109,7 @@ namespace WindowsFormsApplication1
             String size = "";
             String other = "";
             String breed = "";
-            if (!cbOperation.Text.Equals("Operation Date and Location") && tbColor.Text != "Color" && cbGender.Text != "Gender" && cbSize.Text != "Size") {
-
+            if (!cbOperation.Text.Equals("Operation Date and Location") && tbColor.Text != "Color" && cbGender.Text != "Gender" && cbSize.Text != "Size" && tbDesc.Text != "Other Description") {
                 adminID = back.adminID;
                 operationID = cbOperation.SelectedIndex + 1;
                 color = tbColor.Text;
@@ -135,16 +134,52 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO dogprofile(operationID, color, gender, size, otherDesc, breed, status) VALUES(" + operationID + ",'" + color + "', '" + gender + "', '" + size + "', '" + other + "', '" + breed + "', '" + "unclaimed" +"')", conn);
-                    comm.ExecuteNonQuery();
-                    MessageBox.Show("Profile Added Successfully");
 
-                    cbGender.Text = "Gender";
-                    cbOperation.Text = "Operation Date and Location";
-                    cbSize.Text = "Size";
-                    tbBreed.Text = "Breed";
-                    tbColor.Text = "Color";
-                    tbDesc.Text = "Other Description";
+                    MySqlCommand com = new MySqlCommand("SELECT COUNT(*) FROM dogprofile WHERE status = 'unclaimed'", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                   
+                    int y = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
+                    Boolean stop = false;
+                    for(int x = 0; x < y && stop == false; x++)
+                    {
+                        MySqlCommand comm = new MySqlCommand("SELECT breed, color, gender, otherDesc FROM dogprofile WHERE status = 'unclaimed'", conn);
+                        MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
+                        DataTable data = new DataTable();
+                        adpt.Fill(data);
+
+                        int genders;
+
+                        if (data.Rows[x]["gender"].ToString() == "F")
+                        {
+                            genders = 1;
+                        }
+                        else
+                        {
+                            genders = 0;
+                        }
+
+                        if(data.Rows[x]["breed"].ToString() == tbBreed.Text && data.Rows[x]["color"].ToString() == tbColor.Text && genders == cbGender.SelectedIndex && data.Rows[x]["OtherDesc"].ToString() == tbDesc.Text)
+                        {
+                            stop = true;
+                            MessageBox.Show("It seems like there is an exact copy of the dog in the profiles. Please change or add more to the dog's description/s.");
+                        }
+                    }
+                    
+
+                    if (stop == false) {
+                        MySqlCommand comm = new MySqlCommand("INSERT INTO dogprofile(operationID, color, gender, size, otherDesc, breed, status) VALUES(" + operationID + ",'" + color + "', '" + gender + "', '" + size + "', '" + other + "', '" + breed + "', '" + "unclaimed" + "')", conn);
+                        comm.ExecuteNonQuery();
+                        MessageBox.Show("Profile Added Successfully");
+
+                        cbGender.Text = "Gender";
+                        cbOperation.Text = "Operation Date and Location";
+                        cbSize.Text = "Size";
+                        tbBreed.Text = "Breed";
+                        tbColor.Text = "Color";
+                        tbDesc.Text = "Other Description";
+                    }
 
                     conn.Close();
                 }
@@ -461,6 +496,11 @@ namespace WindowsFormsApplication1
         }
 
         private void addDog_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void addDog_Paint_1(object sender, PaintEventArgs e)
         {
 
         }
