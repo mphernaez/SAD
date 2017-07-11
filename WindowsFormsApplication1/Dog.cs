@@ -57,8 +57,9 @@ namespace WindowsFormsApplication1
             button5.BackColor = Color.Transparent;
             button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
-            int i = 9;
-            selectButton.Location = new Point(2, i);
+            //-24, 3
+            int i = 3;
+            selectButton.Location = new Point(-24, i);
 
         }
 
@@ -76,8 +77,8 @@ namespace WindowsFormsApplication1
             button5.BackColor = Color.Transparent;
             button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
-            int i = 98;
-            selectButton.Location = new Point(2, i);
+            int i = 70;
+            selectButton.Location = new Point(-24, i);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -271,7 +272,7 @@ namespace WindowsFormsApplication1
             button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
             
-            selectButton.Location = new Point(2, 194);
+            selectButton.Location = new Point(-24, 114);
 
             refreshAdoption();
         }
@@ -398,8 +399,8 @@ namespace WindowsFormsApplication1
             button3.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
             selectButton.Visible = true;
-            int i = 285;
-            selectButton.Location = new Point(2, i);
+            int i = 221;
+            selectButton.Location = new Point(-24, i);
 
             refreshArchive();
             
@@ -501,6 +502,11 @@ namespace WindowsFormsApplication1
         }
 
         private void addDog_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void selectButton_Click(object sender, EventArgs e)
         {
 
         }
