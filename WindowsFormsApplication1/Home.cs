@@ -77,5 +77,10 @@ namespace WindowsFormsApplication1
             namelabel.Text = dispUser;
             this.Top = 150;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

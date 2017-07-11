@@ -439,7 +439,7 @@
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(15, 229);
+            this.button6.Location = new System.Drawing.Point(15, 236);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(55, 55);
             this.button6.TabIndex = 37;
@@ -503,7 +503,7 @@
             // 
             this.selectButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.selects;
             this.selectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.selectButton.Location = new System.Drawing.Point(-30, 221);
+            this.selectButton.Location = new System.Drawing.Point(-29, 229);
             this.selectButton.Name = "selectButton";
             this.selectButton.Size = new System.Drawing.Size(141, 70);
             this.selectButton.TabIndex = 2;
