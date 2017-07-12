@@ -12,15 +12,20 @@ namespace WindowsFormsApplication1
 {
     public partial class Employee : Form
     {
+        public int adminID;
         private int y;
         private Color use;
+        public Home back { get; set; }
         public Employee()
         {
             InitializeComponent();
             y = -40;
             use = Color.FromArgb(253, 208, 174);
         }
-
+        public void trig()
+        {
+            this.Hide();
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -132,6 +137,11 @@ namespace WindowsFormsApplication1
             selectButton.Visible = true;
 
             selectButton.Location = new Point(y, 221);
+        }
+
+        private void Employee_Load(object sender, EventArgs e)
+        {
+            this.Top = 278;
         }
     }
 }

@@ -20,6 +20,7 @@ namespace WindowsFormsApplication1
         public String dispUser;
         public Login log { get; set; }
         Dog dog = new Dog();
+        Employee emp = new Employee();
         public Home()
         {
             InitializeComponent();
@@ -29,7 +30,18 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            if(dog.Visible)
+                dog.trig();
+            emp.back = this;
+            emp.adminID = this.adminID;
+            emp.Show();
+            button2.BackColor = use;
+            button3.BackColor = Color.Transparent;
+            button4.BackColor = Color.Transparent;
+            button1.BackColor = Color.Transparent;
+            selectButton.Visible = true;
+            int i = 453;//360, 5
+            selectButton.Location = new Point(i, 5);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -39,7 +51,8 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            if (emp.Visible)
+                emp.trig();
             dog.back = this;
             dog.adminID = this.adminID;
             dog.Show();
@@ -69,6 +82,7 @@ namespace WindowsFormsApplication1
             log.Show();
             this.Close();
             dog.trig();
+            emp.trig();
             
         }
 
@@ -86,6 +100,12 @@ namespace WindowsFormsApplication1
         private void selectButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dog.trig();
+            emp.trig();
         }
     }
 }
