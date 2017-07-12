@@ -48,8 +48,8 @@ namespace WindowsFormsApplication1
             button4.BackColor = Color.Transparent;
             button1.BackColor = use;
             selectButton.Visible = true;
-            int i = 305;
-            selectButton.Location = new Point(i, 21);
+            int i = 360;//360, 5
+            selectButton.Location = new Point(i, 5);
             
         }
 
@@ -79,6 +79,11 @@ namespace WindowsFormsApplication1
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void selectButton_Click(object sender, EventArgs e)
         {
 
         }

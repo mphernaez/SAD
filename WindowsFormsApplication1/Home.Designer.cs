@@ -36,8 +36,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.selectButton)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -74,12 +74,13 @@
             this.selectButton.BackColor = System.Drawing.Color.Transparent;
             this.selectButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.select;
             this.selectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.selectButton.Location = new System.Drawing.Point(616, 21);
+            this.selectButton.Location = new System.Drawing.Point(360, 5);
             this.selectButton.Name = "selectButton";
-            this.selectButton.Size = new System.Drawing.Size(102, 117);
+            this.selectButton.Size = new System.Drawing.Size(102, 125);
             this.selectButton.TabIndex = 6;
             this.selectButton.TabStop = false;
             this.selectButton.Visible = false;
+            this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
             // 
             // button1
             // 
@@ -92,7 +93,7 @@
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(366, 38);
+            this.button1.Location = new System.Drawing.Point(369, 38);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(84, 84);
@@ -112,7 +113,7 @@
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(456, 44);
+            this.button2.Location = new System.Drawing.Point(462, 44);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(71, 71);
             this.button2.TabIndex = 3;
@@ -171,16 +172,8 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(739, 121);
+            this.panel1.Size = new System.Drawing.Size(739, 130);
             this.panel1.TabIndex = 7;
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(1, 121);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(738, 401);
-            this.panel2.TabIndex = 8;
             // 
             // button5
             // 
@@ -193,12 +186,20 @@
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button5.Location = new System.Drawing.Point(282, 36);
+            this.button5.Location = new System.Drawing.Point(271, 38);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(84, 84);
             this.button5.TabIndex = 7;
             this.button5.UseVisualStyleBackColor = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Location = new System.Drawing.Point(1, 136);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(738, 386);
+            this.panel2.TabIndex = 8;
             // 
             // Home
             // 

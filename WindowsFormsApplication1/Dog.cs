@@ -20,6 +20,7 @@ namespace WindowsFormsApplication1
         public int dogID;
         public int adminID;
         public int adoptID;
+        int i = -40;
         public Home back { get; set; }
         public MySqlConnection conn;
         public Dog()
@@ -58,8 +59,7 @@ namespace WindowsFormsApplication1
             button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
             //-24, 3
-            int i = 3;
-            selectButton.Location = new Point(-24, i);
+            selectButton.Location = new Point(i, 8);
 
         }
 
@@ -77,8 +77,7 @@ namespace WindowsFormsApplication1
             button5.BackColor = Color.Transparent;
             button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
-            int i = 70;
-            selectButton.Location = new Point(-24, i);
+            selectButton.Location = new Point(i, 76);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -272,7 +271,7 @@ namespace WindowsFormsApplication1
             button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
             
-            selectButton.Location = new Point(-24, 114);
+            selectButton.Location = new Point(i, 146);
 
             refreshAdoption();
         }
@@ -399,8 +398,8 @@ namespace WindowsFormsApplication1
             button3.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
             selectButton.Visible = true;
-            int i = 221;
-            selectButton.Location = new Point(-24, i);
+
+            selectButton.Location = new Point(i, 221);
 
             refreshArchive();
             

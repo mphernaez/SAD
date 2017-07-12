@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dog));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.addDog = new System.Windows.Forms.Panel();
@@ -61,12 +60,12 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.selectButton = new System.Windows.Forms.PictureBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnDone = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.selectButton = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.addDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).BeginInit();
@@ -435,11 +434,11 @@
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.Transparent;
-            this.button6.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.euth;
+            this.button6.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.euthanize;
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(15, 236);
+            this.button6.Location = new System.Drawing.Point(14, 229);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(55, 55);
             this.button6.TabIndex = 37;
@@ -450,14 +449,14 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Adopt;
+            this.button5.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.adoptt;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
             this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(15, 152);
+            this.button5.Location = new System.Drawing.Point(14, 152);
             this.button5.Name = "button5";
             this.button5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button5.Size = new System.Drawing.Size(55, 55);
@@ -468,14 +467,14 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.searchh;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(15, 79);
+            this.button2.Location = new System.Drawing.Point(14, 84);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(55, 55);
             this.button2.TabIndex = 1;
@@ -485,31 +484,19 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources._new;
+            this.button1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.addd;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(15, 10);
+            this.button1.Location = new System.Drawing.Point(14, 15);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(55, 55);
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.MouseHover += new System.EventHandler(this.button1_MouseHover);
-            // 
-            // selectButton
-            // 
-            this.selectButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.selects;
-            this.selectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.selectButton.Location = new System.Drawing.Point(-29, 229);
-            this.selectButton.Name = "selectButton";
-            this.selectButton.Size = new System.Drawing.Size(141, 70);
-            this.selectButton.TabIndex = 2;
-            this.selectButton.TabStop = false;
-            this.selectButton.Visible = false;
-            this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
             // 
             // button9
             // 
@@ -595,6 +582,18 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // selectButton
+            // 
+            this.selectButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.selects;
+            this.selectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.selectButton.Location = new System.Drawing.Point(-29, 229);
+            this.selectButton.Name = "selectButton";
+            this.selectButton.Size = new System.Drawing.Size(141, 70);
+            this.selectButton.TabIndex = 2;
+            this.selectButton.TabStop = false;
+            this.selectButton.Visible = false;
+            this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
+            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -644,7 +643,6 @@
         private System.Windows.Forms.TextBox tbDesc;
         private System.Windows.Forms.DataGridView dgvProfiles;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox selectButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox cbSize;
         private System.Windows.Forms.ComboBox cbOperation;
@@ -671,5 +669,6 @@
         private System.Windows.Forms.DataGridView dgvArchive;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnDone;
+        private System.Windows.Forms.PictureBox selectButton;
     }
 }
