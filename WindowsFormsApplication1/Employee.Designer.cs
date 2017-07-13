@@ -46,11 +46,13 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.addEmployee = new System.Windows.Forms.Panel();
+            this.tbbday = new System.Windows.Forms.TextBox();
             this.cbstatus = new System.Windows.Forms.ComboBox();
             this.cbposition = new System.Windows.Forms.ComboBox();
             this.tbfname = new System.Windows.Forms.TextBox();
             this.tbmname = new System.Windows.Forms.TextBox();
             this.tblname = new System.Windows.Forms.TextBox();
+            this.tbcontactNumber = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.tbaddress = new System.Windows.Forms.TextBox();
             this.cbgender = new System.Windows.Forms.ComboBox();
@@ -62,8 +64,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.selectButton = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbbday = new System.Windows.Forms.TextBox();
-            this.tbcontactNumber = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.activities)).BeginInit();
             this.act.SuspendLayout();
             this.attendance.SuspendLayout();
@@ -148,7 +148,7 @@
             this.attendance.Controls.Add(this.dgvProfiles);
             this.attendance.Controls.Add(this.label3);
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attendance.Location = new System.Drawing.Point(90, 53);
+            this.attendance.Location = new System.Drawing.Point(100, 5);
             this.attendance.Name = "attendance";
             this.attendance.Size = new System.Drawing.Size(607, 382);
             this.attendance.TabIndex = 44;
@@ -240,9 +240,9 @@
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
             this.label12.Location = new System.Drawing.Point(29, 24);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(243, 39);
+            this.label12.Size = new System.Drawing.Size(224, 39);
             this.label12.TabIndex = 11;
-            this.label12.Text = "Administarator";
+            this.label12.Text = "Administrator";
             // 
             // admin
             // 
@@ -252,9 +252,9 @@
             this.admin.Controls.Add(this.dgvAdoption);
             this.admin.Controls.Add(this.label12);
             this.admin.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.admin.Location = new System.Drawing.Point(94, 6);
+            this.admin.Location = new System.Drawing.Point(107, 5);
             this.admin.Name = "admin";
-            this.admin.Size = new System.Drawing.Size(607, 382);
+            this.admin.Size = new System.Drawing.Size(607, 380);
             this.admin.TabIndex = 46;
             this.admin.Visible = false;
             // 
@@ -305,12 +305,21 @@
             this.addEmployee.Controls.Add(this.tbaddress);
             this.addEmployee.Controls.Add(this.cbgender);
             this.addEmployee.Controls.Add(this.label2);
-            this.addEmployee.Location = new System.Drawing.Point(94, 3);
+            this.addEmployee.Location = new System.Drawing.Point(103, 8);
             this.addEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addEmployee.Name = "addEmployee";
             this.addEmployee.Size = new System.Drawing.Size(607, 382);
             this.addEmployee.TabIndex = 43;
             this.addEmployee.Visible = false;
+            // 
+            // tbbday
+            // 
+            this.tbbday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbbday.Location = new System.Drawing.Point(248, 143);
+            this.tbbday.Name = "tbbday";
+            this.tbbday.Size = new System.Drawing.Size(331, 26);
+            this.tbbday.TabIndex = 17;
+            this.tbbday.Text = "Birthday (mm-dd-yyyy)";
             // 
             // cbstatus
             // 
@@ -368,6 +377,16 @@
             this.tblname.TabIndex = 11;
             this.tblname.Text = "Lastname";
             this.tblname.TextChanged += new System.EventHandler(this.lname_TextChanged);
+            // 
+            // tbcontactNumber
+            // 
+            this.tbcontactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbcontactNumber.Location = new System.Drawing.Point(77, 245);
+            this.tbcontactNumber.Name = "tbcontactNumber";
+            this.tbcontactNumber.Size = new System.Drawing.Size(164, 26);
+            this.tbcontactNumber.TabIndex = 4;
+            this.tbcontactNumber.Text = "Contact Number";
+            this.tbcontactNumber.TextChanged += new System.EventHandler(this.contactNumber_TextChanged);
             // 
             // button4
             // 
@@ -521,36 +540,17 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 41;
             // 
-            // tbbday
-            // 
-            this.tbbday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbbday.Location = new System.Drawing.Point(248, 143);
-            this.tbbday.Name = "tbbday";
-            this.tbbday.Size = new System.Drawing.Size(331, 26);
-            this.tbbday.TabIndex = 17;
-            this.tbbday.Text = "Birthday (mm-dd-yyyy)";
-            // 
-            // tbcontactNumber
-            // 
-            this.tbcontactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbcontactNumber.Location = new System.Drawing.Point(77, 245);
-            this.tbcontactNumber.Name = "tbcontactNumber";
-            this.tbcontactNumber.Size = new System.Drawing.Size(164, 26);
-            this.tbcontactNumber.TabIndex = 4;
-            this.tbcontactNumber.Text = "Contact Number";
-            this.tbcontactNumber.TextChanged += new System.EventHandler(this.contactNumber_TextChanged);
-            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(208)))), ((int)(((byte)(174)))));
             this.ClientSize = new System.Drawing.Size(738, 390);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.attendance);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.admin);
+            this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.attendance);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -38,6 +38,7 @@ namespace WindowsFormsApplication1
             emp.back = this;
             emp.adminID = this.adminID;
             emp.Show();
+            emp.TopMost = true;
             button2.BackColor = use;
             button3.BackColor = Color.Transparent;
             button4.BackColor = Color.Transparent;
@@ -59,6 +60,7 @@ namespace WindowsFormsApplication1
             dog.back = this;
             dog.adminID = this.adminID;
             dog.Show();
+            dog.TopMost = true;
             button2.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
             button4.BackColor = Color.Transparent;

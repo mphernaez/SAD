@@ -23,7 +23,9 @@ namespace WindowsFormsApplication1
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            usernameTextBox.ForeColor = Color.Gray;
+            if (usernameTextBox.Text == "")
+                usernameTextBox.ForeColor = Color.LightGray;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -94,6 +96,13 @@ namespace WindowsFormsApplication1
             {
                 btnLogIn.PerformClick();
             }
+        }
+
+        private void passwordTextBox_TextChanged(object sender, EventArgs e)
+        {
+            passwordTextBox.ForeColor = Color.Gray;
+            if (passwordTextBox.Text == "")
+                passwordTextBox.ForeColor = Color.LightGray;
         }
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
@@ -54,13 +53,13 @@
             // 
             this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.usernameTextBox.ForeColor = System.Drawing.Color.LightGray;
             this.usernameTextBox.Location = new System.Drawing.Point(105, 182);
             this.usernameTextBox.Multiline = true;
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(298, 39);
             this.usernameTextBox.TabIndex = 1;
-            this.usernameTextBox.Text = resources.GetString("usernameTextBox.Text");
+            this.usernameTextBox.Text = "username";
             this.usernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.usernameTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.usernameTextBox.Enter += new System.EventHandler(this.usernameTextBox_Enter);
@@ -69,7 +68,7 @@
             // 
             this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.passwordTextBox.ForeColor = System.Drawing.Color.LightGray;
             this.passwordTextBox.Location = new System.Drawing.Point(105, 230);
             this.passwordTextBox.Multiline = true;
             this.passwordTextBox.Name = "passwordTextBox";
@@ -78,6 +77,7 @@
             this.passwordTextBox.TabIndex = 2;
             this.passwordTextBox.Text = "Password";
             this.passwordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             this.passwordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordTextBox_KeyDown);
             this.passwordTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.passwordTextBox_KeyPress);
             // 

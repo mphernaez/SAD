@@ -510,6 +510,7 @@
             this.label12.Size = new System.Drawing.Size(211, 39);
             this.label12.TabIndex = 11;
             this.label12.Text = "Adopt A Dog";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // euthanizeDog
             // 
