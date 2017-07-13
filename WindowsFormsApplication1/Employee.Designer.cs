@@ -31,39 +31,39 @@
             this.activities = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.act = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnDone = new System.Windows.Forms.Button();
             this.attendance = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.idSearch = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.dgvProfiles = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvAdoption = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.admin = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.addEmployee = new System.Windows.Forms.Panel();
-            this.lname = new System.Windows.Forms.TextBox();
-            this.contactNumber = new System.Windows.Forms.TextBox();
-            this.address = new System.Windows.Forms.TextBox();
-            this.eGender = new System.Windows.Forms.ComboBox();
+            this.cbstatus = new System.Windows.Forms.ComboBox();
+            this.cbposition = new System.Windows.Forms.ComboBox();
+            this.tbfname = new System.Windows.Forms.TextBox();
+            this.tbmname = new System.Windows.Forms.TextBox();
+            this.tblname = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.tbaddress = new System.Windows.Forms.TextBox();
+            this.cbgender = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.mname = new System.Windows.Forms.TextBox();
-            this.fname = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.position = new System.Windows.Forms.ComboBox();
-            this.status = new System.Windows.Forms.ComboBox();
-            this.idSearch = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.selectButton = new System.Windows.Forms.PictureBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnDone = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbbday = new System.Windows.Forms.TextBox();
+            this.tbcontactNumber = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.activities)).BeginInit();
             this.act.SuspendLayout();
             this.attendance.SuspendLayout();
@@ -107,11 +107,38 @@
             this.act.Controls.Add(this.activities);
             this.act.Controls.Add(this.label11);
             this.act.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.act.Location = new System.Drawing.Point(97, 5);
+            this.act.Location = new System.Drawing.Point(87, 44);
             this.act.Name = "act";
             this.act.Size = new System.Drawing.Size(607, 383);
             this.act.TabIndex = 45;
             this.act.Visible = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(388, 267);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(165, 30);
+            this.comboBox1.TabIndex = 26;
+            this.comboBox1.Text = "Type of Activity";
+            // 
+            // btnDone
+            // 
+            this.btnDone.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.btnDone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDone.FlatAppearance.BorderSize = 0;
+            this.btnDone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDone.ForeColor = System.Drawing.Color.White;
+            this.btnDone.Location = new System.Drawing.Point(444, 303);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(109, 38);
+            this.btnDone.TabIndex = 25;
+            this.btnDone.Text = "Add";
+            this.btnDone.UseVisualStyleBackColor = true;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // attendance
             // 
@@ -121,11 +148,51 @@
             this.attendance.Controls.Add(this.dgvProfiles);
             this.attendance.Controls.Add(this.label3);
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attendance.Location = new System.Drawing.Point(90, 3);
+            this.attendance.Location = new System.Drawing.Point(90, 53);
             this.attendance.Name = "attendance";
             this.attendance.Size = new System.Drawing.Size(607, 382);
             this.attendance.TabIndex = 44;
             this.attendance.Visible = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.magnifying_glass;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.Color.Black;
+            this.button7.Location = new System.Drawing.Point(520, 59);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(28, 27);
+            this.button7.TabIndex = 28;
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // idSearch
+            // 
+            this.idSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idSearch.Location = new System.Drawing.Point(397, 60);
+            this.idSearch.Name = "idSearch";
+            this.idSearch.Size = new System.Drawing.Size(112, 26);
+            this.idSearch.TabIndex = 2;
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(440, 330);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 38);
+            this.button3.TabIndex = 23;
+            this.button3.Text = "Present";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // dgvProfiles
             // 
@@ -191,70 +258,158 @@
             this.admin.TabIndex = 46;
             this.admin.Visible = false;
             // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(205, 309);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(164, 26);
+            this.textBox2.TabIndex = 25;
+            this.textBox2.Text = "Password";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(35, 309);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(164, 26);
+            this.textBox1.TabIndex = 24;
+            this.textBox1.Text = "Username";
+            // 
+            // button9
+            // 
+            this.button9.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.Location = new System.Drawing.Point(440, 305);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(109, 38);
+            this.button9.TabIndex = 23;
+            this.button9.Text = "Set as Admin";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
             // addEmployee
             // 
-            this.addEmployee.Controls.Add(this.status);
-            this.addEmployee.Controls.Add(this.position);
-            this.addEmployee.Controls.Add(this.dateTimePicker1);
-            this.addEmployee.Controls.Add(this.fname);
-            this.addEmployee.Controls.Add(this.mname);
-            this.addEmployee.Controls.Add(this.lname);
-            this.addEmployee.Controls.Add(this.contactNumber);
+            this.addEmployee.Controls.Add(this.tbbday);
+            this.addEmployee.Controls.Add(this.cbstatus);
+            this.addEmployee.Controls.Add(this.cbposition);
+            this.addEmployee.Controls.Add(this.tbfname);
+            this.addEmployee.Controls.Add(this.tbmname);
+            this.addEmployee.Controls.Add(this.tblname);
+            this.addEmployee.Controls.Add(this.tbcontactNumber);
             this.addEmployee.Controls.Add(this.button4);
-            this.addEmployee.Controls.Add(this.address);
-            this.addEmployee.Controls.Add(this.eGender);
+            this.addEmployee.Controls.Add(this.tbaddress);
+            this.addEmployee.Controls.Add(this.cbgender);
             this.addEmployee.Controls.Add(this.label2);
-            this.addEmployee.Location = new System.Drawing.Point(94, 5);
+            this.addEmployee.Location = new System.Drawing.Point(94, 3);
             this.addEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addEmployee.Name = "addEmployee";
             this.addEmployee.Size = new System.Drawing.Size(607, 382);
             this.addEmployee.TabIndex = 43;
             this.addEmployee.Visible = false;
             // 
-            // lname
+            // cbstatus
             // 
-            this.lname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lname.Location = new System.Drawing.Point(79, 104);
-            this.lname.Name = "lname";
-            this.lname.Size = new System.Drawing.Size(163, 26);
-            this.lname.TabIndex = 11;
-            this.lname.Text = "Lastname";
-            this.lname.TextChanged += new System.EventHandler(this.lname_TextChanged);
+            this.cbstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbstatus.FormattingEnabled = true;
+            this.cbstatus.Items.AddRange(new object[] {
+            "Active",
+            "Incative"});
+            this.cbstatus.Location = new System.Drawing.Point(415, 245);
+            this.cbstatus.Name = "cbstatus";
+            this.cbstatus.Size = new System.Drawing.Size(164, 28);
+            this.cbstatus.TabIndex = 16;
+            this.cbstatus.Text = "Status";
             // 
-            // contactNumber
+            // cbposition
             // 
-            this.contactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contactNumber.Location = new System.Drawing.Point(78, 216);
-            this.contactNumber.Name = "contactNumber";
-            this.contactNumber.Size = new System.Drawing.Size(164, 26);
-            this.contactNumber.TabIndex = 4;
-            this.contactNumber.Text = "Contact Number";
-            this.contactNumber.TextChanged += new System.EventHandler(this.contactNumber_TextChanged);
+            this.cbposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbposition.FormattingEnabled = true;
+            this.cbposition.Items.AddRange(new object[] {
+            "Catcher",
+            "Admin",
+            "Janitor"});
+            this.cbposition.Location = new System.Drawing.Point(247, 245);
+            this.cbposition.Name = "cbposition";
+            this.cbposition.Size = new System.Drawing.Size(164, 28);
+            this.cbposition.TabIndex = 15;
+            this.cbposition.Text = "Position";
             // 
-            // address
+            // tbfname
             // 
-            this.address.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address.Location = new System.Drawing.Point(248, 142);
-            this.address.Multiline = true;
-            this.address.Name = "address";
-            this.address.Size = new System.Drawing.Size(332, 63);
-            this.address.TabIndex = 6;
-            this.address.Text = "Address";
-            this.address.TextChanged += new System.EventHandler(this.address_TextChanged);
+            this.tbfname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbfname.Location = new System.Drawing.Point(417, 104);
+            this.tbfname.Name = "tbfname";
+            this.tbfname.Size = new System.Drawing.Size(163, 26);
+            this.tbfname.TabIndex = 13;
+            this.tbfname.Text = "Firstname";
+            this.tbfname.TextChanged += new System.EventHandler(this.fname_TextChanged);
             // 
-            // eGender
+            // tbmname
             // 
-            this.eGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eGender.FormattingEnabled = true;
-            this.eGender.Items.AddRange(new object[] {
+            this.tbmname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbmname.Location = new System.Drawing.Point(248, 104);
+            this.tbmname.Name = "tbmname";
+            this.tbmname.Size = new System.Drawing.Size(163, 26);
+            this.tbmname.TabIndex = 12;
+            this.tbmname.Text = "Middlename";
+            this.tbmname.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // tblname
+            // 
+            this.tblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tblname.Location = new System.Drawing.Point(79, 104);
+            this.tblname.Name = "tblname";
+            this.tblname.Size = new System.Drawing.Size(163, 26);
+            this.tblname.TabIndex = 11;
+            this.tblname.Text = "Lastname";
+            this.tblname.TextChanged += new System.EventHandler(this.lname_TextChanged);
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(470, 279);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(109, 38);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "Add";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // tbaddress
+            // 
+            this.tbaddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbaddress.Location = new System.Drawing.Point(77, 176);
+            this.tbaddress.Multiline = true;
+            this.tbaddress.Name = "tbaddress";
+            this.tbaddress.Size = new System.Drawing.Size(502, 63);
+            this.tbaddress.TabIndex = 6;
+            this.tbaddress.Text = "Address";
+            this.tbaddress.TextChanged += new System.EventHandler(this.address_TextChanged);
+            // 
+            // cbgender
+            // 
+            this.cbgender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbgender.FormattingEnabled = true;
+            this.cbgender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.eGender.Location = new System.Drawing.Point(78, 142);
-            this.eGender.Name = "eGender";
-            this.eGender.Size = new System.Drawing.Size(164, 28);
-            this.eGender.TabIndex = 3;
-            this.eGender.Text = "Gender";
-            this.eGender.SelectedIndexChanged += new System.EventHandler(this.eGender_SelectedIndexChanged);
+            this.cbgender.Location = new System.Drawing.Point(78, 142);
+            this.cbgender.Name = "cbgender";
+            this.cbgender.Size = new System.Drawing.Size(164, 28);
+            this.cbgender.TabIndex = 3;
+            this.cbgender.Text = "Gender";
+            this.cbgender.SelectedIndexChanged += new System.EventHandler(this.eGender_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -273,112 +428,13 @@
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.act);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.selectButton);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(84, 510);
             this.panel1.TabIndex = 42;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(62, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 41;
-            // 
-            // mname
-            // 
-            this.mname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mname.Location = new System.Drawing.Point(248, 104);
-            this.mname.Name = "mname";
-            this.mname.Size = new System.Drawing.Size(163, 26);
-            this.mname.TabIndex = 12;
-            this.mname.Text = "Middlename";
-            this.mname.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // fname
-            // 
-            this.fname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fname.Location = new System.Drawing.Point(417, 104);
-            this.fname.Name = "fname";
-            this.fname.Size = new System.Drawing.Size(163, 26);
-            this.fname.TabIndex = 13;
-            this.fname.Text = "Firstname";
-            this.fname.TextChanged += new System.EventHandler(this.fname_TextChanged);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(78, 179);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(164, 26);
-            this.dateTimePicker1.TabIndex = 14;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // position
-            // 
-            this.position.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.position.FormattingEnabled = true;
-            this.position.Items.AddRange(new object[] {
-            "Catcher",
-            "Admin",
-            "Janitor"});
-            this.position.Location = new System.Drawing.Point(248, 214);
-            this.position.Name = "position";
-            this.position.Size = new System.Drawing.Size(164, 28);
-            this.position.TabIndex = 15;
-            this.position.Text = "Position";
-            // 
-            // status
-            // 
-            this.status.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.status.FormattingEnabled = true;
-            this.status.Items.AddRange(new object[] {
-            "Active",
-            "Incative"});
-            this.status.Location = new System.Drawing.Point(416, 214);
-            this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(164, 28);
-            this.status.TabIndex = 16;
-            this.status.Text = "Status";
-            // 
-            // idSearch
-            // 
-            this.idSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idSearch.Location = new System.Drawing.Point(397, 60);
-            this.idSearch.Name = "idSearch";
-            this.idSearch.Size = new System.Drawing.Size(112, 26);
-            this.idSearch.TabIndex = 2;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(388, 267);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(165, 30);
-            this.comboBox1.TabIndex = 26;
-            this.comboBox1.Text = "Type of Activity";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(35, 309);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(164, 26);
-            this.textBox1.TabIndex = 24;
-            this.textBox1.Text = "Username";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(205, 309);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(164, 26);
-            this.textBox2.TabIndex = 25;
-            this.textBox2.Text = "Password";
             // 
             // button6
             // 
@@ -457,86 +513,32 @@
             this.selectButton.Visible = false;
             this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
             // 
-            // button7
+            // label1
             // 
-            this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.magnifying_glass;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.ForeColor = System.Drawing.Color.Black;
-            this.button7.Location = new System.Drawing.Point(520, 59);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(28, 27);
-            this.button7.TabIndex = 28;
-            this.button7.UseVisualStyleBackColor = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(62, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 41;
             // 
-            // button3
+            // tbbday
             // 
-            this.button3.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(440, 330);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 38);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "Present";
-            this.button3.UseVisualStyleBackColor = true;
+            this.tbbday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbbday.Location = new System.Drawing.Point(248, 143);
+            this.tbbday.Name = "tbbday";
+            this.tbbday.Size = new System.Drawing.Size(331, 26);
+            this.tbbday.TabIndex = 17;
+            this.tbbday.Text = "Birthday (mm-dd-yyyy)";
             // 
-            // btnDone
+            // tbcontactNumber
             // 
-            this.btnDone.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
-            this.btnDone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDone.FlatAppearance.BorderSize = 0;
-            this.btnDone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.ForeColor = System.Drawing.Color.White;
-            this.btnDone.Location = new System.Drawing.Point(444, 303);
-            this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(109, 38);
-            this.btnDone.TabIndex = 25;
-            this.btnDone.Text = "Add";
-            this.btnDone.UseVisualStyleBackColor = true;
-            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
-            // 
-            // button4
-            // 
-            this.button4.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(471, 251);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(109, 38);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Add";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(440, 305);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(109, 38);
-            this.button9.TabIndex = 23;
-            this.button9.Text = "Set as Admin";
-            this.button9.UseVisualStyleBackColor = true;
+            this.tbcontactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbcontactNumber.Location = new System.Drawing.Point(77, 245);
+            this.tbcontactNumber.Name = "tbcontactNumber";
+            this.tbcontactNumber.Size = new System.Drawing.Size(164, 26);
+            this.tbcontactNumber.TabIndex = 4;
+            this.tbcontactNumber.Text = "Contact Number";
+            this.tbcontactNumber.TextChanged += new System.EventHandler(this.contactNumber_TextChanged);
             // 
             // Employee
             // 
@@ -544,11 +546,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(208)))), ((int)(((byte)(174)))));
             this.ClientSize = new System.Drawing.Size(738, 390);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.attendance);
-            this.Controls.Add(this.act);
             this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.attendance);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.admin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
@@ -593,22 +594,22 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel addEmployee;
-        private System.Windows.Forms.TextBox lname;
-        private System.Windows.Forms.TextBox contactNumber;
-        private System.Windows.Forms.TextBox address;
-        private System.Windows.Forms.ComboBox eGender;
+        private System.Windows.Forms.TextBox tblname;
+        private System.Windows.Forms.TextBox tbaddress;
+        private System.Windows.Forms.ComboBox cbgender;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox mname;
-        private System.Windows.Forms.TextBox fname;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox status;
-        private System.Windows.Forms.ComboBox position;
+        private System.Windows.Forms.TextBox tbmname;
+        private System.Windows.Forms.TextBox tbfname;
+        private System.Windows.Forms.ComboBox cbstatus;
+        private System.Windows.Forms.ComboBox cbposition;
         private System.Windows.Forms.Button button7;
         public System.Windows.Forms.TextBox idSearch;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbbday;
+        private System.Windows.Forms.TextBox tbcontactNumber;
     }
 }
