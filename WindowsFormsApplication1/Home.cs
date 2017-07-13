@@ -26,6 +26,9 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             use = Color.FromArgb(253, 208, 174);
             conn = new MySqlConnection("Server=localhost;Database=impounddogpound;Uid=root;Pwd=root;");
+            label2.Text = DateTime.Now.ToString("HH:mm tt");
+            label3.Text = DateTime.Now.ToString("MMMM d, yyyy");
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -106,6 +109,11 @@ namespace WindowsFormsApplication1
         {
             dog.trig();
             emp.trig();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
