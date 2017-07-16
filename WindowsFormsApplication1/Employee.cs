@@ -230,5 +230,35 @@ namespace WindowsFormsApplication1
 
             selectButton.Location = new Point(y,285);
         }
+
+        private void tblname_Click(object sender, EventArgs e)
+        {
+            tblname.Clear();
+        }
+
+        private void tbmname_Click(object sender, EventArgs e)
+        {
+            tbmname.Clear();
+        }
+
+        private void tbfname_Click(object sender, EventArgs e)
+        {
+            tbfname.Clear();
+        }
+
+        private void tbbday_Click(object sender, EventArgs e)
+        {
+            tbbday.Clear();
+        }
+
+        private void tbaddress_Click(object sender, EventArgs e)
+        {
+            tbaddress.Clear();
+        }
+
+        private void tbcontactNumber_Click(object sender, EventArgs e)
+        {
+            tbcontactNumber.Clear();
+        }
     }
 }

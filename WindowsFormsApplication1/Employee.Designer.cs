@@ -253,7 +253,7 @@
             this.admin.Controls.Add(this.dgvAdoption);
             this.admin.Controls.Add(this.label12);
             this.admin.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.admin.Location = new System.Drawing.Point(107, 5);
+            this.admin.Location = new System.Drawing.Point(97, 5);
             this.admin.Name = "admin";
             this.admin.Size = new System.Drawing.Size(607, 380);
             this.admin.TabIndex = 46;
@@ -316,15 +316,18 @@
             // tbbday
             // 
             this.tbbday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbbday.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.tbbday.Location = new System.Drawing.Point(248, 143);
             this.tbbday.Name = "tbbday";
             this.tbbday.Size = new System.Drawing.Size(331, 26);
-            this.tbbday.TabIndex = 17;
+            this.tbbday.TabIndex = 15;
             this.tbbday.Text = "Birthday (mm-dd-yyyy)";
+            this.tbbday.Click += new System.EventHandler(this.tbbday_Click);
             // 
             // cbstatus
             // 
             this.cbstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbstatus.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cbstatus.FormattingEnabled = true;
             this.cbstatus.Items.AddRange(new object[] {
             "Active",
@@ -332,12 +335,13 @@
             this.cbstatus.Location = new System.Drawing.Point(415, 245);
             this.cbstatus.Name = "cbstatus";
             this.cbstatus.Size = new System.Drawing.Size(164, 28);
-            this.cbstatus.TabIndex = 16;
+            this.cbstatus.TabIndex = 19;
             this.cbstatus.Text = "Status";
             // 
             // cbposition
             // 
             this.cbposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbposition.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cbposition.FormattingEnabled = true;
             this.cbposition.Items.AddRange(new object[] {
             "Catcher",
@@ -346,47 +350,55 @@
             this.cbposition.Location = new System.Drawing.Point(247, 245);
             this.cbposition.Name = "cbposition";
             this.cbposition.Size = new System.Drawing.Size(164, 28);
-            this.cbposition.TabIndex = 15;
+            this.cbposition.TabIndex = 18;
             this.cbposition.Text = "Position";
             // 
             // tbfname
             // 
             this.tbfname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbfname.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.tbfname.Location = new System.Drawing.Point(417, 104);
             this.tbfname.Name = "tbfname";
             this.tbfname.Size = new System.Drawing.Size(163, 26);
             this.tbfname.TabIndex = 13;
             this.tbfname.Text = "Firstname";
+            this.tbfname.Click += new System.EventHandler(this.tbfname_Click);
             this.tbfname.TextChanged += new System.EventHandler(this.fname_TextChanged);
             // 
             // tbmname
             // 
             this.tbmname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbmname.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.tbmname.Location = new System.Drawing.Point(248, 104);
             this.tbmname.Name = "tbmname";
             this.tbmname.Size = new System.Drawing.Size(163, 26);
             this.tbmname.TabIndex = 12;
             this.tbmname.Text = "Middlename";
+            this.tbmname.Click += new System.EventHandler(this.tbmname_Click);
             this.tbmname.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // tblname
             // 
             this.tblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tblname.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.tblname.Location = new System.Drawing.Point(79, 104);
             this.tblname.Name = "tblname";
             this.tblname.Size = new System.Drawing.Size(163, 26);
             this.tblname.TabIndex = 11;
             this.tblname.Text = "Lastname";
+            this.tblname.Click += new System.EventHandler(this.tblname_Click);
             this.tblname.TextChanged += new System.EventHandler(this.lname_TextChanged);
             // 
             // tbcontactNumber
             // 
             this.tbcontactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbcontactNumber.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.tbcontactNumber.Location = new System.Drawing.Point(77, 245);
             this.tbcontactNumber.Name = "tbcontactNumber";
             this.tbcontactNumber.Size = new System.Drawing.Size(164, 26);
-            this.tbcontactNumber.TabIndex = 4;
+            this.tbcontactNumber.TabIndex = 17;
             this.tbcontactNumber.Text = "Contact Number";
+            this.tbcontactNumber.Click += new System.EventHandler(this.tbcontactNumber_Click);
             this.tbcontactNumber.TextChanged += new System.EventHandler(this.contactNumber_TextChanged);
             // 
             // button4
@@ -401,7 +413,7 @@
             this.button4.Location = new System.Drawing.Point(470, 279);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(109, 38);
-            this.button4.TabIndex = 10;
+            this.button4.TabIndex = 20;
             this.button4.Text = "Add";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -409,17 +421,20 @@
             // tbaddress
             // 
             this.tbaddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbaddress.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.tbaddress.Location = new System.Drawing.Point(77, 176);
             this.tbaddress.Multiline = true;
             this.tbaddress.Name = "tbaddress";
             this.tbaddress.Size = new System.Drawing.Size(502, 63);
-            this.tbaddress.TabIndex = 6;
+            this.tbaddress.TabIndex = 16;
             this.tbaddress.Text = "Address";
+            this.tbaddress.Click += new System.EventHandler(this.tbaddress_Click);
             this.tbaddress.TextChanged += new System.EventHandler(this.address_TextChanged);
             // 
             // cbgender
             // 
             this.cbgender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbgender.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cbgender.FormattingEnabled = true;
             this.cbgender.Items.AddRange(new object[] {
             "Male",
@@ -427,7 +442,7 @@
             this.cbgender.Location = new System.Drawing.Point(78, 142);
             this.cbgender.Name = "cbgender";
             this.cbgender.Size = new System.Drawing.Size(164, 28);
-            this.cbgender.TabIndex = 3;
+            this.cbgender.TabIndex = 14;
             this.cbgender.Text = "Gender";
             this.cbgender.SelectedIndexChanged += new System.EventHandler(this.eGender_SelectedIndexChanged);
             // 
@@ -565,11 +580,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(208)))), ((int)(((byte)(174)))));
             this.ClientSize = new System.Drawing.Size(738, 390);
+            this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.act);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.admin);
-            this.Controls.Add(this.act);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
