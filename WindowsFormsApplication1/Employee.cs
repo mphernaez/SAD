@@ -85,8 +85,9 @@ namespace WindowsFormsApplication1
             button5.BackColor = Color.Transparent;
             button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
+            button8.BackColor = Color.Transparent;
 
-            selectButton.Location = new Point(y, 3);
+            selectButton.Location = new Point(y, 6);
         }
 
         private void selectButton_Click(object sender, EventArgs e)
@@ -106,6 +107,7 @@ namespace WindowsFormsApplication1
             button5.BackColor = Color.Transparent;
             button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
+            button8.BackColor = Color.Transparent;
 
             selectButton.Location = new Point(y, 76);
         }
@@ -123,6 +125,8 @@ namespace WindowsFormsApplication1
             button6.BackColor = Color.Transparent;
             selectButton.Visible = true;
 
+            button8.BackColor = Color.Transparent;
+
             selectButton.Location = new Point(y, 146);
         }
 
@@ -139,7 +143,9 @@ namespace WindowsFormsApplication1
             button6.BackColor = use;
             selectButton.Visible = true;
 
-            selectButton.Location = new Point(y, 221);
+            button8.BackColor = Color.Transparent;
+
+            selectButton.Location = new Point(y, 215);
         }
 
         private void Employee_Load(object sender, EventArgs e)
@@ -205,6 +211,24 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please Enter Required Fields");
             }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            addEmployee.Visible = false;
+            act.Visible = false;
+            attendance.Visible = false;
+            admin.Visible = false;
+
+            button1.BackColor = Color.Transparent;
+            button2.BackColor = Color.Transparent;
+            button5.BackColor = Color.Transparent;
+            button6.BackColor = Color.Transparent;
+            button8.BackColor = use;
+            button8.BackColor = Color.Transparent;
+            selectButton.Visible = true;
+
+            selectButton.Location = new Point(y,285);
         }
     }
 }

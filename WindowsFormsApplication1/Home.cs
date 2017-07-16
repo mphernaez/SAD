@@ -28,6 +28,7 @@ namespace WindowsFormsApplication1
             conn = new MySqlConnection("Server=localhost;Database=impounddogpound;Uid=root;Pwd=root;");
             label2.Text = DateTime.Now.ToString("HH:mm tt");
             label3.Text = DateTime.Now.ToString("MMMM d, yyyy");
+            button5.BackColor = use;
 
         }
 
@@ -43,6 +44,7 @@ namespace WindowsFormsApplication1
             button3.BackColor = Color.Transparent;
             button4.BackColor = Color.Transparent;
             button1.BackColor = Color.Transparent;
+            button5.BackColor = Color.Transparent;
             selectButton.Visible = true;
             int i = 453;//360, 5
             selectButton.Location = new Point(i, 5);
@@ -64,6 +66,7 @@ namespace WindowsFormsApplication1
             button2.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
             button4.BackColor = Color.Transparent;
+            button5.BackColor = Color.Transparent;
             button1.BackColor = use;
             selectButton.Visible = true;
             int i = 360;//360, 5
@@ -111,6 +114,14 @@ namespace WindowsFormsApplication1
         {
             dog.trig();
             emp.trig();
+            int i = 261;
+            selectButton.Visible = true;
+            button5.BackColor = use;
+            button2.BackColor = Color.Transparent;
+            button3.BackColor = Color.Transparent;
+            button4.BackColor = Color.Transparent;
+            button1.BackColor = Color.Transparent;
+            selectButton.Location = new Point(i, 10);
         }
 
         private void label2_Click(object sender, EventArgs e)
