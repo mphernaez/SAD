@@ -32,11 +32,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.act = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.btnDone = new System.Windows.Forms.Button();
             this.attendance = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
             this.idSearch = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.dgvProfiles = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvAdoption = new System.Windows.Forms.DataGridView();
@@ -44,7 +41,6 @@
             this.admin = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button9 = new System.Windows.Forms.Button();
             this.addEmployee = new System.Windows.Forms.Panel();
             this.tbbday = new System.Windows.Forms.TextBox();
             this.cbstatus = new System.Windows.Forms.ComboBox();
@@ -53,18 +49,22 @@
             this.tbmname = new System.Windows.Forms.TextBox();
             this.tblname = new System.Windows.Forms.TextBox();
             this.tbcontactNumber = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.tbaddress = new System.Windows.Forms.TextBox();
             this.cbgender = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btnDone = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.selectButton = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.activities)).BeginInit();
             this.act.SuspendLayout();
             this.attendance.SuspendLayout();
@@ -124,23 +124,6 @@
             this.comboBox1.TabIndex = 26;
             this.comboBox1.Text = "Type of Activity";
             // 
-            // btnDone
-            // 
-            this.btnDone.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
-            this.btnDone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDone.FlatAppearance.BorderSize = 0;
-            this.btnDone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.ForeColor = System.Drawing.Color.White;
-            this.btnDone.Location = new System.Drawing.Point(444, 303);
-            this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(109, 38);
-            this.btnDone.TabIndex = 25;
-            this.btnDone.Text = "Add";
-            this.btnDone.UseVisualStyleBackColor = true;
-            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
-            // 
             // attendance
             // 
             this.attendance.Controls.Add(this.button7);
@@ -155,22 +138,6 @@
             this.attendance.TabIndex = 44;
             this.attendance.Visible = false;
             // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.magnifying_glass;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.ForeColor = System.Drawing.Color.Black;
-            this.button7.Location = new System.Drawing.Point(520, 59);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(28, 27);
-            this.button7.TabIndex = 28;
-            this.button7.UseVisualStyleBackColor = false;
-            // 
             // idSearch
             // 
             this.idSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -178,22 +145,6 @@
             this.idSearch.Name = "idSearch";
             this.idSearch.Size = new System.Drawing.Size(112, 26);
             this.idSearch.TabIndex = 2;
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(440, 330);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 38);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "Present";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // dgvProfiles
             // 
@@ -276,22 +227,6 @@
             this.textBox1.Size = new System.Drawing.Size(164, 26);
             this.textBox1.TabIndex = 24;
             this.textBox1.Text = "Username";
-            // 
-            // button9
-            // 
-            this.button9.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(440, 305);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(109, 38);
-            this.button9.TabIndex = 23;
-            this.button9.Text = "Set as Admin";
-            this.button9.UseVisualStyleBackColor = true;
             // 
             // addEmployee
             // 
@@ -401,23 +336,6 @@
             this.tbcontactNumber.Click += new System.EventHandler(this.tbcontactNumber_Click);
             this.tbcontactNumber.TextChanged += new System.EventHandler(this.contactNumber_TextChanged);
             // 
-            // button4
-            // 
-            this.button4.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(470, 279);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(109, 38);
-            this.button4.TabIndex = 20;
-            this.button4.Text = "Add";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // tbaddress
             // 
             this.tbaddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -470,6 +388,48 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(84, 510);
             this.panel1.TabIndex = 42;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(62, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 41;
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(470, 279);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(109, 38);
+            this.button4.TabIndex = 20;
+            this.button4.Text = "Add";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // btnDone
+            // 
+            this.btnDone.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.btnDone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDone.FlatAppearance.BorderSize = 0;
+            this.btnDone.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDone.ForeColor = System.Drawing.Color.White;
+            this.btnDone.Location = new System.Drawing.Point(444, 303);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(109, 38);
+            this.btnDone.TabIndex = 25;
+            this.btnDone.Text = "Add";
+            this.btnDone.UseVisualStyleBackColor = true;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // button8
             // 
@@ -566,13 +526,53 @@
             this.selectButton.Visible = false;
             this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
             // 
-            // label1
+            // button9
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(62, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 41;
+            this.button9.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.Location = new System.Drawing.Point(440, 305);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(109, 38);
+            this.button9.TabIndex = 23;
+            this.button9.Text = "Set as Admin";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.magnifying_glass;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.Color.Black;
+            this.button7.Location = new System.Drawing.Point(520, 59);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(28, 27);
+            this.button7.TabIndex = 28;
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(440, 330);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 38);
+            this.button3.TabIndex = 23;
+            this.button3.Text = "Present";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // Employee
             // 

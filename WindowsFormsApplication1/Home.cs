@@ -21,6 +21,7 @@ namespace WindowsFormsApplication1
         public Login log { get; set; }
         Dog dog = new Dog();
         Employee emp = new Employee();
+        Inventory inv = new Inventory();
         public Home()
         {
             InitializeComponent();
@@ -36,6 +37,8 @@ namespace WindowsFormsApplication1
         {
             if(dog.Visible)
                 dog.trig();
+            if (inv.Visible)
+                inv.trig();
             emp.back = this;
             emp.adminID = this.adminID;
             emp.Show();
@@ -52,7 +55,22 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            if (dog.Visible)
+                dog.trig();
+            if (emp.Visible)
+                emp.trig();
+            inv.back = this;
+            inv.adminID = this.adminID;
+            inv.Show();
+            inv.TopMost = true;
+            button2.BackColor = Color.Transparent;
+            button3.BackColor = use;
+            button4.BackColor = Color.Transparent;
+            button1.BackColor = Color.Transparent;
+            button5.BackColor = Color.Transparent;
+            selectButton.Visible = true;
+            int i = 541;//360, 5
+            selectButton.Location = new Point(i, 5);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -91,6 +109,7 @@ namespace WindowsFormsApplication1
             this.Close();
             dog.trig();
             emp.trig();
+            inv.trig();
             
         }
 
@@ -114,6 +133,7 @@ namespace WindowsFormsApplication1
         {
             dog.trig();
             emp.trig();
+            inv.trig();
             int i = 261;
             selectButton.Visible = true;
             button5.BackColor = use;

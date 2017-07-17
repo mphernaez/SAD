@@ -225,7 +225,6 @@ namespace WindowsFormsApplication1
             button5.BackColor = Color.Transparent;
             button6.BackColor = Color.Transparent;
             button8.BackColor = use;
-            button8.BackColor = Color.Transparent;
             selectButton.Visible = true;
 
             selectButton.Location = new Point(y,285);

@@ -57,6 +57,7 @@ namespace WindowsFormsApplication1
             button3.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
             button6.BackColor = Color.Transparent;
+            button8.BackColor = Color.Transparent;
             selectButton.Visible = true;
             //-24, 3
             selectButton.Location = new Point(i, 8);
@@ -76,6 +77,7 @@ namespace WindowsFormsApplication1
             button3.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
             button6.BackColor = Color.Transparent;
+            button8.BackColor = Color.Transparent;
             selectButton.Visible = true;
             selectButton.Location = new Point(i, 76);
         }
@@ -270,6 +272,7 @@ namespace WindowsFormsApplication1
             button1.BackColor = Color.Transparent;
             button2.BackColor = Color.Transparent;
             button6.BackColor = Color.Transparent;
+            button8.BackColor = Color.Transparent;
             selectButton.Visible = true;
             
             selectButton.Location = new Point(i, 146);
@@ -399,6 +402,7 @@ namespace WindowsFormsApplication1
             button1.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
+            button8.BackColor = Color.Transparent;
             selectButton.Visible = true;
 
             selectButton.Location = new Point(i, 221);
@@ -515,6 +519,23 @@ namespace WindowsFormsApplication1
         private void label12_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            searchDog.Visible = false;
+            addDog.Visible = false;
+            adoptDog.Visible = false;
+            euthanizeDog.Visible = false;
+            button6.BackColor = Color.Transparent;
+            button2.BackColor = Color.Transparent;
+            button1.BackColor = Color.Transparent;
+            button3.BackColor = Color.Transparent;
+            button5.BackColor = Color.Transparent;
+            button8.BackColor = use;
+            selectButton.Visible = true;
+
+            selectButton.Location = new Point(i, 296);
         }
     }
 }

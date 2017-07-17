@@ -125,7 +125,6 @@
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.box;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Enabled = false;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
