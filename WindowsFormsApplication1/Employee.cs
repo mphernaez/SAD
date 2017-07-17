@@ -203,9 +203,9 @@ namespace WindowsFormsApplication1
                     conn.Close();
                 }
             }
-            else if(tbbday.Text.Substring(2) != "-" || tbbday.Text.Substring(5) != "-")
+            else if(tbbday.Text.Substring(4) != "-" || tbbday.Text.Substring(7) != "-")
             {
-                MessageBox.Show("Please use valid birthdte format");
+                MessageBox.Show("Please use valid birthdate format");
             }
             else
             {
