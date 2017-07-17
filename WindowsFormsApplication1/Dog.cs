@@ -229,6 +229,7 @@ namespace WindowsFormsApplication1
                 claim.dogID = this.dogID;
                 claim.adminID = this.adminID;
                 claim.dog = this;
+                claim.TopMost = true;
                 claim.Show();
             }
             else
@@ -362,6 +363,7 @@ namespace WindowsFormsApplication1
                 adopt.dogID = this.adoptID;
                 adopt.adminID = this.adminID;
                 adopt.dog = this;
+                adopt.TopMost = true;
                 adopt.Show();
             }
             else
