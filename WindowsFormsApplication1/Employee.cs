@@ -110,6 +110,8 @@ namespace WindowsFormsApplication1
             button8.BackColor = Color.Transparent;
 
             selectButton.Location = new Point(y, 76);
+
+            refreshAttendance();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -258,6 +260,68 @@ namespace WindowsFormsApplication1
         private void tbcontactNumber_Click(object sender, EventArgs e)
         {
             tbcontactNumber.Clear();
+        }
+
+        private void refreshAttendance()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, position, gender, contactNumber FROM ((profile INNER JOIN employee ON profile.personID = employee.employeeID) INNER JOIN attendance ON attendance.employeeID = employee.employeeID) WHERE employee.status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance)", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvAttendanceIn.DataSource = dt;
+
+                dgvAttendanceIn.Columns["personID"].Visible = false;
+                dgvAttendanceIn.Columns["lastname"].HeaderText = "Lastname";
+                dgvAttendanceIn.Columns["firstname"].HeaderText = "Firstname";
+                dgvAttendanceIn.Columns["middlename"].HeaderText = "Middlename";
+                dgvAttendanceIn.Columns["gender"].HeaderText = "Gender";
+                dgvAttendanceIn.Columns["contactNumber"].HeaderText = "Contact No.";
+                dgvAttendanceIn.Columns["position"].HeaderText = "Position";
+                dgvAttendanceIn.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAttendanceIn.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAttendanceIn.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAttendanceIn.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAttendanceIn.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAttendanceIn.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+        private int employeeID;
+        private void dgvProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            try
+            {
+                conn.Open();
+                employeeID = int.Parse(dgvAttendanceIn.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+                string att = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+
+                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type) VALUES('" + att + "', " + employeeID + ", " + "1" + ") ", conn);
+                comm.ExecuteNonQuery();
+
+                MessageBox.Show("Successfully Recorded Attendance!");
+                refreshAttendance();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
