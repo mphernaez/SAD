@@ -148,6 +148,8 @@ namespace WindowsFormsApplication1
             button8.BackColor = Color.Transparent;
 
             selectButton.Location = new Point(y, 215);
+
+            refreshAdmin();
         }
 
         private void Employee_Load(object sender, EventArgs e)
@@ -174,7 +176,6 @@ namespace WindowsFormsApplication1
             string bday = tbbday.Text;
             string position = cbposition.Text;
             string status = cbstatus.Text;
-
 
             if (tblname.Text != "Lastname" && tbmname.Text != "Middlename" && tbfname.Text != "Firstname" && tbaddress.Text != "Address" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && cbposition.Text != "Position" && cbstatus.Text != "Status" && tbbday.Text != "Birthday (mm-dd-yyyy)")
             {
@@ -213,6 +214,8 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please Enter Required Fields");
             }
+
+    
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -267,7 +270,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, position, gender, contactNumber FROM ((profile INNER JOIN employee ON profile.personID = employee.employeeID) INNER JOIN attendance ON attendance.employeeID = employee.employeeID) WHERE employee.status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance)", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance)", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -308,7 +311,7 @@ namespace WindowsFormsApplication1
 
                 MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type) VALUES('" + att + "', " + employeeID + ", " + "1" + ") ", conn);
                 comm.ExecuteNonQuery();
-
+                conn.Close();
                 MessageBox.Show("Successfully Recorded Attendance!");
                 refreshAttendance();
             }
@@ -322,6 +325,58 @@ namespace WindowsFormsApplication1
         private void button3_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void refreshAdmin()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT admin.employeeID FROM admin)", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvAdmin.DataSource = dt;
+
+                dgvAdmin.Columns["personID"].Visible = false;
+                dgvAdmin.Columns["lastname"].HeaderText = "Lastname";
+                dgvAdmin.Columns["firstname"].HeaderText = "Firstname";
+                dgvAdmin.Columns["middlename"].HeaderText = "Middlename";
+                dgvAdmin.Columns["gender"].HeaderText = "Gender";
+                dgvAdmin.Columns["birthdate"].HeaderText = "Gender";
+                dgvAdmin.Columns["contactNumber"].HeaderText = "Contact No.";
+                dgvAdmin.Columns["position"].HeaderText = "Position";
+                dgvAdmin.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAdmin.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAdmin.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAdmin.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAdmin.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAdmin.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAdmin.Columns["birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            tbUsername.Clear();
+        }
+
+        private void tbUsername_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tbPassword_Click(object sender, EventArgs e)
+        {
+            tbPassword.Clear();
         }
     }
 }

@@ -38,11 +38,11 @@
             this.idSearch = new System.Windows.Forms.TextBox();
             this.dgvAttendanceIn = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.dgvAdoption = new System.Windows.Forms.DataGridView();
+            this.dgvAdmin = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.admin = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.tbUsername = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.addEmployee = new System.Windows.Forms.Panel();
             this.tbbday = new System.Windows.Forms.TextBox();
@@ -68,7 +68,7 @@
             this.act.SuspendLayout();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAdmin)).BeginInit();
             this.admin.SuspendLayout();
             this.addEmployee.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -107,7 +107,7 @@
             this.act.Controls.Add(this.activities);
             this.act.Controls.Add(this.label11);
             this.act.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.act.Location = new System.Drawing.Point(90, 3);
+            this.act.Location = new System.Drawing.Point(119, 4);
             this.act.Name = "act";
             this.act.Size = new System.Drawing.Size(607, 383);
             this.act.TabIndex = 45;
@@ -147,7 +147,7 @@
             this.attendance.Controls.Add(this.dgvAttendanceIn);
             this.attendance.Controls.Add(this.label3);
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attendance.Location = new System.Drawing.Point(100, 5);
+            this.attendance.Location = new System.Drawing.Point(113, 7);
             this.attendance.Name = "attendance";
             this.attendance.Size = new System.Drawing.Size(607, 382);
             this.attendance.TabIndex = 44;
@@ -203,19 +203,19 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Attendance";
             // 
-            // dgvAdoption
+            // dgvAdmin
             // 
-            this.dgvAdoption.AllowUserToAddRows = false;
-            this.dgvAdoption.AllowUserToDeleteRows = false;
-            this.dgvAdoption.BackgroundColor = System.Drawing.Color.MistyRose;
-            this.dgvAdoption.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvAdoption.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAdoption.Location = new System.Drawing.Point(36, 78);
-            this.dgvAdoption.Name = "dgvAdoption";
-            this.dgvAdoption.ReadOnly = true;
-            this.dgvAdoption.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAdoption.Size = new System.Drawing.Size(513, 221);
-            this.dgvAdoption.TabIndex = 20;
+            this.dgvAdmin.AllowUserToAddRows = false;
+            this.dgvAdmin.AllowUserToDeleteRows = false;
+            this.dgvAdmin.BackgroundColor = System.Drawing.Color.MistyRose;
+            this.dgvAdmin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAdmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAdmin.Location = new System.Drawing.Point(36, 78);
+            this.dgvAdmin.Name = "dgvAdmin";
+            this.dgvAdmin.ReadOnly = true;
+            this.dgvAdmin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAdmin.Size = new System.Drawing.Size(513, 221);
+            this.dgvAdmin.TabIndex = 20;
             // 
             // label12
             // 
@@ -230,35 +230,38 @@
             // 
             // admin
             // 
-            this.admin.Controls.Add(this.textBox2);
-            this.admin.Controls.Add(this.textBox1);
+            this.admin.Controls.Add(this.tbPassword);
+            this.admin.Controls.Add(this.tbUsername);
             this.admin.Controls.Add(this.button9);
-            this.admin.Controls.Add(this.dgvAdoption);
+            this.admin.Controls.Add(this.dgvAdmin);
             this.admin.Controls.Add(this.label12);
             this.admin.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.admin.Location = new System.Drawing.Point(87, 3);
+            this.admin.Location = new System.Drawing.Point(116, 7);
             this.admin.Name = "admin";
             this.admin.Size = new System.Drawing.Size(607, 380);
             this.admin.TabIndex = 46;
             this.admin.Visible = false;
             // 
-            // textBox2
+            // tbPassword
             // 
-            this.textBox2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(205, 309);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(164, 26);
-            this.textBox2.TabIndex = 25;
-            this.textBox2.Text = "Password";
+            this.tbPassword.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPassword.Location = new System.Drawing.Point(205, 309);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(164, 26);
+            this.tbPassword.TabIndex = 25;
+            this.tbPassword.Text = "Password";
+            this.tbPassword.Click += new System.EventHandler(this.tbPassword_Click);
             // 
-            // textBox1
+            // tbUsername
             // 
-            this.textBox1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(35, 309);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(164, 26);
-            this.textBox1.TabIndex = 24;
-            this.textBox1.Text = "Username";
+            this.tbUsername.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUsername.Location = new System.Drawing.Point(35, 309);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(164, 26);
+            this.tbUsername.TabIndex = 24;
+            this.tbUsername.Text = "Username";
+            this.tbUsername.Click += new System.EventHandler(this.textBox1_Click);
+            this.tbUsername.TextChanged += new System.EventHandler(this.tbUsername_TextChanged);
             // 
             // button9
             // 
@@ -289,7 +292,7 @@
             this.addEmployee.Controls.Add(this.tbaddress);
             this.addEmployee.Controls.Add(this.cbgender);
             this.addEmployee.Controls.Add(this.label2);
-            this.addEmployee.Location = new System.Drawing.Point(96, 10);
+            this.addEmployee.Location = new System.Drawing.Point(109, 7);
             this.addEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addEmployee.Name = "addEmployee";
             this.addEmployee.Size = new System.Drawing.Size(607, 382);
@@ -563,12 +566,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(208)))), ((int)(((byte)(174)))));
             this.ClientSize = new System.Drawing.Size(738, 390);
-            this.Controls.Add(this.attendance);
             this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.attendance);
+            this.Controls.Add(this.admin);
             this.Controls.Add(this.act);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.admin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -580,7 +583,7 @@
             this.attendance.ResumeLayout(false);
             this.attendance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAdmin)).EndInit();
             this.admin.ResumeLayout(false);
             this.admin.PerformLayout();
             this.addEmployee.ResumeLayout(false);
@@ -600,7 +603,7 @@
         private System.Windows.Forms.Label label11;
         public System.Windows.Forms.Panel act;
         private System.Windows.Forms.Button btnDone;
-        private System.Windows.Forms.DataGridView dgvAdoption;
+        private System.Windows.Forms.DataGridView dgvAdmin;
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.Panel admin;
         public System.Windows.Forms.Panel attendance;
@@ -624,8 +627,8 @@
         private System.Windows.Forms.Button button7;
         public System.Windows.Forms.TextBox idSearch;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.TextBox tbbday;
         private System.Windows.Forms.TextBox tbcontactNumber;
         private System.Windows.Forms.Button button8;
