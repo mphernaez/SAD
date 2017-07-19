@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.activities = new System.Windows.Forms.DataGridView();
+            this.dgvActivities = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.act = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -64,7 +64,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.selectButton = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.activities)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
             this.act.SuspendLayout();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
@@ -75,19 +75,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.selectButton)).BeginInit();
             this.SuspendLayout();
             // 
-            // activities
+            // dgvActivities
             // 
-            this.activities.AllowUserToAddRows = false;
-            this.activities.AllowUserToDeleteRows = false;
-            this.activities.BackgroundColor = System.Drawing.Color.MistyRose;
-            this.activities.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.activities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.activities.Location = new System.Drawing.Point(40, 64);
-            this.activities.Name = "activities";
-            this.activities.ReadOnly = true;
-            this.activities.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.activities.Size = new System.Drawing.Size(513, 193);
-            this.activities.TabIndex = 20;
+            this.dgvActivities.AllowUserToAddRows = false;
+            this.dgvActivities.AllowUserToDeleteRows = false;
+            this.dgvActivities.BackgroundColor = System.Drawing.Color.MistyRose;
+            this.dgvActivities.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvActivities.Location = new System.Drawing.Point(40, 64);
+            this.dgvActivities.Name = "dgvActivities";
+            this.dgvActivities.ReadOnly = true;
+            this.dgvActivities.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvActivities.Size = new System.Drawing.Size(513, 193);
+            this.dgvActivities.TabIndex = 20;
             // 
             // label11
             // 
@@ -104,7 +104,7 @@
             // 
             this.act.Controls.Add(this.comboBox1);
             this.act.Controls.Add(this.btnDone);
-            this.act.Controls.Add(this.activities);
+            this.act.Controls.Add(this.dgvActivities);
             this.act.Controls.Add(this.label11);
             this.act.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.act.Location = new System.Drawing.Point(119, 4);
@@ -292,7 +292,7 @@
             this.addEmployee.Controls.Add(this.tbaddress);
             this.addEmployee.Controls.Add(this.cbgender);
             this.addEmployee.Controls.Add(this.label2);
-            this.addEmployee.Location = new System.Drawing.Point(109, 7);
+            this.addEmployee.Location = new System.Drawing.Point(109, 9);
             this.addEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addEmployee.Name = "addEmployee";
             this.addEmployee.Size = new System.Drawing.Size(607, 382);
@@ -566,10 +566,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(208)))), ((int)(((byte)(174)))));
             this.ClientSize = new System.Drawing.Size(738, 390);
+            this.Controls.Add(this.act);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
             this.Controls.Add(this.admin);
-            this.Controls.Add(this.act);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -577,7 +577,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.Load += new System.EventHandler(this.Employee_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.activities)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).EndInit();
             this.act.ResumeLayout(false);
             this.act.PerformLayout();
             this.attendance.ResumeLayout(false);
@@ -599,7 +599,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.PictureBox selectButton;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridView activities;
+        private System.Windows.Forms.DataGridView dgvActivities;
         private System.Windows.Forms.Label label11;
         public System.Windows.Forms.Panel act;
         private System.Windows.Forms.Button btnDone;

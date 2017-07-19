@@ -130,6 +130,8 @@ namespace WindowsFormsApplication1
             button8.BackColor = Color.Transparent;
 
             selectButton.Location = new Point(y, 146);
+
+            refreshActivity();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -270,7 +272,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance)", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance)", conn); //missing: refresh everyday (in restrictions, date should be now)
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -377,6 +379,43 @@ namespace WindowsFormsApplication1
         private void tbPassword_Click(object sender, EventArgs e)
         {
             tbPassword.Clear();
+        }
+
+        private void refreshActivity()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvActivities.DataSource = dt;
+
+                dgvActivities.Columns["personID"].Visible = false;
+                dgvActivities.Columns["lastname"].HeaderText = "Lastname";
+                dgvActivities.Columns["firstname"].HeaderText = "Firstname";
+                dgvActivities.Columns["middlename"].HeaderText = "Middlename";
+                dgvActivities.Columns["gender"].HeaderText = "Gender";
+                dgvActivities.Columns["birthdate"].HeaderText = "Gender";
+                dgvActivities.Columns["contactNumber"].HeaderText = "Contact No.";
+                dgvActivities.Columns["position"].HeaderText = "Position";
+                dgvActivities.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvActivities.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvActivities.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvActivities.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvActivities.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvActivities.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvActivities.Columns["birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
         }
     }
 }
