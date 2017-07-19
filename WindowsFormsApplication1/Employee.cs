@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         private int y;
         private Color use;
         public Home back { get; set; }
+        EditEmp emp = new EditEmp();
         public MySqlConnection conn = new MySqlConnection();
         public Employee()
         {
@@ -75,11 +76,13 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            DogCatchingOperation.Visible = false;
             addEmployee.Visible = true;
             act.Visible = false;
             attendance.Visible = false;
             admin.Visible = false;
 
+            button14.BackColor = Color.Transparent;
             button1.BackColor = use;
             button2.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
@@ -87,7 +90,7 @@ namespace WindowsFormsApplication1
             selectButton.Visible = true;
             button8.BackColor = Color.Transparent;
 
-            selectButton.Location = new Point(y, 6);
+            selectButton.Location = new Point(y, 7);
         }
 
         private void selectButton_Click(object sender, EventArgs e)
@@ -97,11 +100,12 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
             act.Visible = false;
             attendance.Visible = true;
             admin.Visible = false;
-
+            button14.BackColor = Color.Transparent;
             button1.BackColor = Color.Transparent;
             button2.BackColor = use;
             button5.BackColor = Color.Transparent;
@@ -109,18 +113,20 @@ namespace WindowsFormsApplication1
             selectButton.Visible = true;
             button8.BackColor = Color.Transparent;
 
-            selectButton.Location = new Point(y, 76);
+            selectButton.Location = new Point(y, 70);
 
             refreshAttendance();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
             act.Visible = true;
             attendance.Visible = false;;
             admin.Visible = false;
 
+            button14.BackColor = Color.Transparent;
             button1.BackColor = Color.Transparent;
             button2.BackColor = Color.Transparent;
             button5.BackColor = use;
@@ -129,18 +135,20 @@ namespace WindowsFormsApplication1
 
             button8.BackColor = Color.Transparent;
 
-            selectButton.Location = new Point(y, 146);
+            selectButton.Location = new Point(y, 134);
 
             refreshActivity();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
             act.Visible = false;
             attendance.Visible = false;
             admin.Visible = true;
 
+            button14.BackColor = Color.Transparent;
             button1.BackColor = Color.Transparent;
             button2.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
@@ -149,7 +157,7 @@ namespace WindowsFormsApplication1
 
             button8.BackColor = Color.Transparent;
 
-            selectButton.Location = new Point(y, 215);
+            selectButton.Location = new Point(y, 196);
 
             refreshAdmin();
         }
@@ -157,6 +165,10 @@ namespace WindowsFormsApplication1
         private void Employee_Load(object sender, EventArgs e)
         {
             this.Top = 278;
+            panel1.HorizontalScroll.Maximum = 0;
+            panel1.AutoScroll = false;
+            panel1.VerticalScroll.Visible = false;
+            panel1.AutoScroll = true;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -222,11 +234,13 @@ namespace WindowsFormsApplication1
 
         private void button8_Click(object sender, EventArgs e)
         {
+            DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
             act.Visible = false;
             attendance.Visible = false;
             admin.Visible = false;
 
+            button14.BackColor = Color.Transparent;
             button1.BackColor = Color.Transparent;
             button2.BackColor = Color.Transparent;
             button5.BackColor = Color.Transparent;
@@ -234,7 +248,7 @@ namespace WindowsFormsApplication1
             button8.BackColor = use;
             selectButton.Visible = true;
 
-            selectButton.Location = new Point(y,285);
+            selectButton.Location = new Point(y,327);
         }
 
         private void tblname_Click(object sender, EventArgs e)
@@ -416,6 +430,121 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            button3.BackColor = Color.MistyRose;
+            button10.BackColor = Color.FromArgb(240, 148, 80);
+            dgvAttendanceIn.Visible = true;
+            dgvAttendanceOut.Visible = false;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            button10.BackColor = Color.MistyRose;
+            button3.BackColor = Color.FromArgb(240, 148, 80);
+            dgvAttendanceIn.Visible = false;
+            dgvAttendanceOut.Visible = true;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            button11.BackColor = Color.FromArgb(253, 208, 174);
+            button12.BackColor = Color.FromArgb(240, 148, 80);
+            addPanel.Visible = true;
+            editPanel.Visible = false;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            button12.BackColor = Color.FromArgb(253, 208, 174);
+            button11.BackColor = Color.FromArgb(240, 148, 80);
+            addPanel.Visible = false;
+            editPanel.Visible = true;
+            
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            emp.Show();
+            emp.TopMost = true;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            button16.BackColor = Color.FromArgb(253, 208, 174);
+            button21.BackColor = Color.FromArgb(240, 148, 80);
+            button15.BackColor = Color.FromArgb(240, 148, 80);
+            team.Visible = true;
+            newOperation.Visible = false;
+            Operations.Visible = false;
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            button15.BackColor = Color.FromArgb(253, 208, 174);
+            button21.BackColor = Color.FromArgb(240, 148, 80);
+            button16.BackColor = Color.FromArgb(240, 148, 80);
+            team.Visible = false;
+            newOperation.Visible = true;
+            Operations.Visible = false;
+
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            button21.BackColor = Color.FromArgb(253, 208, 174);
+            button15.BackColor = Color.FromArgb(240, 148, 80);
+            button16.BackColor = Color.FromArgb(240, 148, 80);
+            team.Visible = false;
+            newOperation.Visible = false;
+            Operations.Visible = true;
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            DogCatchingOperation.Visible = true;
+            addEmployee.Visible = false;
+            act.Visible = false;
+            attendance.Visible = false; ;
+            admin.Visible = false;
+
+            button1.BackColor = Color.Transparent;
+            button2.BackColor = Color.Transparent;
+            button5.BackColor = Color.Transparent;
+            button6.BackColor = Color.Transparent;
+            button14.BackColor = use;
+            selectButton.Visible = true;
+
+            button8.BackColor = Color.Transparent;
+
+            selectButton.Location = new Point(y, 263);
+
         }
     }
 }

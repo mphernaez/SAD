@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1
 
         private void AddDog_Load(object sender, EventArgs e)
         {
-
+            
             this.Top = 278;
         }
         public void trig()
@@ -536,6 +536,10 @@ namespace WindowsFormsApplication1
             selectButton.Visible = true;
 
             selectButton.Location = new Point(i, 296);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
         }
     }
 }
