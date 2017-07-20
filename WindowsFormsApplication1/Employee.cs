@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1
         public int adminID;
         private int y;
         private Color use;
+        
         public Home back { get; set; }
         EditEmp emp = new EditEmp();
         public MySqlConnection conn = new MySqlConnection();
@@ -467,13 +468,51 @@ namespace WindowsFormsApplication1
             button11.BackColor = Color.FromArgb(240, 148, 80);
             addPanel.Visible = false;
             editPanel.Visible = true;
-            
+            refreshEdit();
         }
-
+        public int editemployeeID;
         private void button13_Click(object sender, EventArgs e)
         {
             emp.Show();
+            emp.employeeID = this.editemployeeID;
             emp.TopMost = true;
+
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT personID, address, gender, MONTH(birthdate), DAY(birthdate), YEAR(birthdate), status, position, lastname, middlename, firstname, contactNumber FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE employee.employeeID = " + editemployeeID, conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                string gender = dt.Rows[0]["gender"].ToString();
+                if(gender == "F")
+                {
+                    emp.cbgender.Text = "Female";
+                }
+                else
+                {
+                    emp.cbgender.Text = "Male";
+                }
+
+                emp.cbgender.Text = dt.Rows[0]["gender"].ToString();
+                emp.tbbday.Text = dt.Rows[0]["YEAR(birthdate)"].ToString() + "-" + dt.Rows[0]["MONTH(birthdate)"].ToString() + "-" + dt.Rows[0]["DAY(birthdate)"].ToString();
+                emp.cbstatus.Text = dt.Rows[0]["status"].ToString();
+                emp.cbposition.Text = dt.Rows[0]["position"].ToString();
+                emp.tblname.Text = dt.Rows[0]["lastname"].ToString();
+                emp.tbfname.Text = dt.Rows[0]["firstname"].ToString();
+                emp.tbmname.Text = dt.Rows[0]["middlename"].ToString();
+                emp.tbcontactNumber.Text = dt.Rows[0]["contactNumber"].ToString();
+                emp.id = int.Parse(dt.Rows[0]["personID"].ToString());
+                emp.tbaddress.Text = dt.Rows[0]["address"].ToString();
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -546,5 +585,56 @@ namespace WindowsFormsApplication1
             selectButton.Location = new Point(y, 263);
 
         }
+        
+        private void dgvEdit_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            editemployeeID = int.Parse(dgvEdit.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+        }
+
+        private void refreshEdit()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, status, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvEdit.DataSource = dt;
+
+                dgvEdit.Columns["personID"].Visible = false;
+                dgvEdit.Columns["lastname"].HeaderText = "Lastname";
+                dgvEdit.Columns["firstname"].HeaderText = "Firstname";
+                dgvEdit.Columns["middlename"].HeaderText = "Middlename";
+                dgvEdit.Columns["gender"].HeaderText = "Gender";
+                dgvEdit.Columns["birthdate"].HeaderText = "Gender";
+                dgvEdit.Columns["contactNumber"].HeaderText = "Contact No.";
+                dgvEdit.Columns["position"].HeaderText = "Position";
+                dgvEdit.Columns["status"].HeaderText = "Status";
+                dgvEdit.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEdit.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEdit.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEdit.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEdit.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEdit.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEdit.Columns["birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEdit.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        
+        }
+
+        private void dgvEdit_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
