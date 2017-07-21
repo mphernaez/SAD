@@ -17,10 +17,12 @@ namespace WindowsFormsApplication1
         public int employeeID;
         public Employee emp { get; set; }
         public MySqlConnection conn = new MySqlConnection();
-        public EditEmp()
+        Employee employ;
+        public EditEmp(Employee parent)
         {
             InitializeComponent();
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
+            employ = parent;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -74,7 +76,7 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please Enter Required Fields");
             }
-            this.emp.refreshEdit();
+            employ.refreshEdit();
         }
 
         private void EditEmp_Load(object sender, EventArgs e)

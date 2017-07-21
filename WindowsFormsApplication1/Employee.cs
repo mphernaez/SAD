@@ -18,14 +18,15 @@ namespace WindowsFormsApplication1
         private Color use;
         
         public Home back { get; set; }
-        EditEmp emp = new EditEmp();
         public MySqlConnection conn = new MySqlConnection();
+       EditEmp emp;
         public Employee()
         {
             InitializeComponent();
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
             y = -40;
             use = Color.FromArgb(253, 208, 174);
+            emp = new EditEmp(this);
         }
         public void trig()
         {
@@ -174,62 +175,7 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string lname = tblname.Text;
-            string mname = tbmname.Text;
-            string fname = tbfname.Text;
-            char gender;
-            if(cbgender.Text == "Female")
-            {
-                gender = 'F';
-            }
-            else
-            {
-                gender = 'M';
-            }
-            string address = tbaddress.Text;
-            string contact = tbcontactNumber.Text;
-            string bday = tbbday.Text;
-            string position = cbposition.Text;
-            string status = cbstatus.Text;
-
-            if (tblname.Text != "Lastname" && tbmname.Text != "Middlename" && tbfname.Text != "Firstname" && tbaddress.Text != "Address" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && cbposition.Text != "Position" && cbstatus.Text != "Status" && tbbday.Text != "Birthday (mm-dd-yyyy)")
-            {
-                try
-                {
-                    conn.Open();
-
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO profile(lastname, middlename, firstname, gender, address, birthdate, contactNumber) VALUES('" + lname +  "', '" + mname + "', '" + fname + "', '" + gender + "', '" + address + "', '" + bday + "', '" + contact + "')", conn);
-                    comm.ExecuteNonQuery();
-
-                    comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-
-                    int personID = int.Parse(dt.Rows[0]["MAX(personID)"].ToString());
-
-                    comm = new MySqlCommand("INSERT INTO employee(employeeID, position, status) VALUES('" + personID + "', '" + position + "', '" + status + "')", conn);
-                    comm.ExecuteNonQuery();
-
-                    MessageBox.Show("Profile Added Successfully");
-
-                    conn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    conn.Close();
-                }
-            }
-            else if(tbbday.Text.Substring(4) != "-" || tbbday.Text.Substring(7) != "-")
-            {
-                MessageBox.Show("Please use valid birthdate format");
-            }
-            else
-            {
-                MessageBox.Show("Please Enter Required Fields");
-            }
-
+            
     
         }
 
@@ -644,6 +590,66 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please select an employee");
             }
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            string lname = tblname.Text;
+            string mname = tbmname.Text;
+            string fname = tbfname.Text;
+            char gender;
+            if (cbgender.Text == "Female")
+            {
+                gender = 'F';
+            }
+            else
+            {
+                gender = 'M';
+            }
+            string address = tbaddress.Text;
+            string contact = tbcontactNumber.Text;
+            string bday = tbbday.Text;
+            string position = cbposition.Text;
+            string status = cbstatus.Text;
+
+            if (tblname.Text != "Lastname" && tbmname.Text != "Middlename" && tbfname.Text != "Firstname" && tbaddress.Text != "Address" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && cbposition.Text != "Position" && cbstatus.Text != "Status" && tbbday.Text != "Birthday (mm-dd-yyyy)")
+            {
+                try
+                {
+                    conn.Open();
+
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO profile(lastname, middlename, firstname, gender, address, birthdate, contactNumber) VALUES('" + lname + "', '" + mname + "', '" + fname + "', '" + gender + "', '" + address + "', '" + bday + "', '" + contact + "')", conn);
+                    comm.ExecuteNonQuery();
+
+                    comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+
+                    int personID = int.Parse(dt.Rows[0]["MAX(personID)"].ToString());
+
+                    comm = new MySqlCommand("INSERT INTO employee(employeeID, position, status) VALUES('" + personID + "', '" + position + "', '" + status + "')", conn);
+                    comm.ExecuteNonQuery();
+
+                    MessageBox.Show("Profile Added Successfully");
+
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            }
+            else if (tbbday.Text.Substring(4) != "-" || tbbday.Text.Substring(7) != "-")
+            {
+                MessageBox.Show("Please use valid birthdate format");
+            }
+            else
+            {
+                MessageBox.Show("Please Enter Required Fields");
+            }
+
         }
     }
 }
