@@ -53,7 +53,7 @@ namespace WindowsFormsApplication1
                     MySqlCommand comm = new MySqlCommand("UPDATE profile SET lastname = '" + lname + "', middlename = '" + mname + "', firstname = '" + fname + "', gender = '" + gender + "', address = '" + address + "', contactNumber = '" + contact + "', birthdate = '" + bday + "' WHERE personID = " + id, conn);
                     comm.ExecuteNonQuery();
 
-                    comm = new MySqlCommand("UPDATE employee SET position = " + position + ", status = " + status + " WHERE employeeID = " + id, conn);
+                    comm = new MySqlCommand("UPDATE employee SET position = '" + position + "', status = '" + status + "' WHERE employeeID = " + id, conn);
                     comm.ExecuteNonQuery();
                     
                     MessageBox.Show("Profile Edited Successfully");
@@ -74,6 +74,7 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please Enter Required Fields");
             }
+            this.emp.refreshEdit();
         }
 
         private void EditEmp_Load(object sender, EventArgs e)

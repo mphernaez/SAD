@@ -470,50 +470,8 @@ namespace WindowsFormsApplication1
             editPanel.Visible = true;
             refreshEdit();
         }
-        public int editemployeeID;
-        private void button13_Click(object sender, EventArgs e)
-        {
-            emp.Show();
-            emp.employeeID = this.editemployeeID;
-            emp.TopMost = true;
-
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, address, gender, MONTH(birthdate), DAY(birthdate), YEAR(birthdate), status, position, lastname, middlename, firstname, contactNumber FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE employee.employeeID = " + editemployeeID, conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-
-                string gender = dt.Rows[0]["gender"].ToString();
-                if(gender == "F")
-                {
-                    emp.cbgender.Text = "Female";
-                }
-                else
-                {
-                    emp.cbgender.Text = "Male";
-                }
-
-                emp.cbgender.Text = dt.Rows[0]["gender"].ToString();
-                emp.tbbday.Text = dt.Rows[0]["YEAR(birthdate)"].ToString() + "-" + dt.Rows[0]["MONTH(birthdate)"].ToString() + "-" + dt.Rows[0]["DAY(birthdate)"].ToString();
-                emp.cbstatus.Text = dt.Rows[0]["status"].ToString();
-                emp.cbposition.Text = dt.Rows[0]["position"].ToString();
-                emp.tblname.Text = dt.Rows[0]["lastname"].ToString();
-                emp.tbfname.Text = dt.Rows[0]["firstname"].ToString();
-                emp.tbmname.Text = dt.Rows[0]["middlename"].ToString();
-                emp.tbcontactNumber.Text = dt.Rows[0]["contactNumber"].ToString();
-                emp.id = int.Parse(dt.Rows[0]["personID"].ToString());
-                emp.tbaddress.Text = dt.Rows[0]["address"].ToString();
-                conn.Close();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
-            }
-        }
+        
+        
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -585,13 +543,13 @@ namespace WindowsFormsApplication1
             selectButton.Location = new Point(y, 263);
 
         }
-        
+        public int editemployeeID;
         private void dgvEdit_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             editemployeeID = int.Parse(dgvEdit.Rows[e.RowIndex].Cells["personID"].Value.ToString());
         }
 
-        private void refreshEdit()
+        public void refreshEdit()
         {
             try
             {
@@ -634,6 +592,58 @@ namespace WindowsFormsApplication1
         private void dgvEdit_SelectionChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+
+            
+            if (editemployeeID != 0)
+            {
+                emp.Show();
+                emp.employeeID = this.editemployeeID;
+                emp.TopMost = true;
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("SELECT personID, address, gender, MONTH(birthdate), DAY(birthdate), YEAR(birthdate), status, position, lastname, middlename, firstname, contactNumber FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE employee.employeeID = " + editemployeeID, conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+
+                    string gender = dt.Rows[0]["gender"].ToString();
+                    if (gender == "F")
+                    {
+                        emp.cbgender.Text = "Female";
+                    }
+                    else
+                    {
+                        emp.cbgender.Text = "Male";
+                    }
+
+                    emp.cbgender.Text = dt.Rows[0]["gender"].ToString();
+                    emp.tbbday.Text = dt.Rows[0]["YEAR(birthdate)"].ToString() + "-" + dt.Rows[0]["MONTH(birthdate)"].ToString() + "-" + dt.Rows[0]["DAY(birthdate)"].ToString();
+                    emp.cbstatus.Text = dt.Rows[0]["status"].ToString();
+                    emp.cbposition.Text = dt.Rows[0]["position"].ToString();
+                    emp.tblname.Text = dt.Rows[0]["lastname"].ToString();
+                    emp.tbfname.Text = dt.Rows[0]["firstname"].ToString();
+                    emp.tbmname.Text = dt.Rows[0]["middlename"].ToString();
+                    emp.tbcontactNumber.Text = dt.Rows[0]["contactNumber"].ToString();
+                    emp.id = int.Parse(dt.Rows[0]["personID"].ToString());
+                    emp.tbaddress.Text = dt.Rows[0]["address"].ToString();
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee");
+            }
         }
     }
 }
