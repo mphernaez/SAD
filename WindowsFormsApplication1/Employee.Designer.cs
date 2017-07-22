@@ -80,8 +80,6 @@
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.Operations = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.newOperation = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.button20 = new System.Windows.Forms.Button();
@@ -96,6 +94,9 @@
             this.button17 = new System.Windows.Forms.Button();
             this.employeesToAdd = new System.Windows.Forms.DataGridView();
             this.allEmployees = new System.Windows.Forms.DataGridView();
+            this.Operations = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.impounddogpoundDataSet1 = new WindowsFormsApplication1.impounddogpoundDataSet();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
             this.act.SuspendLayout();
             this.attendance.SuspendLayout();
@@ -110,11 +111,12 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectButton)).BeginInit();
             this.DogCatchingOperation.SuspendLayout();
-            this.Operations.SuspendLayout();
             this.newOperation.SuspendLayout();
             this.team.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeesToAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).BeginInit();
+            this.Operations.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvActivities
@@ -758,9 +760,9 @@
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.button16);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.team);
+            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Location = new System.Drawing.Point(102, 3);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -818,23 +820,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Dog Catching Operation";
             // 
-            // Operations
-            // 
-            this.Operations.Controls.Add(this.panel5);
-            this.Operations.Location = new System.Drawing.Point(20, 105);
-            this.Operations.Name = "Operations";
-            this.Operations.Size = new System.Drawing.Size(567, 266);
-            this.Operations.TabIndex = 41;
-            this.Operations.Visible = false;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.MistyRose;
-            this.panel5.Location = new System.Drawing.Point(17, 14);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(527, 238);
-            this.panel5.TabIndex = 1;
-            // 
             // newOperation
             // 
             this.newOperation.Controls.Add(this.label7);
@@ -870,6 +855,7 @@
             this.button20.TabIndex = 39;
             this.button20.Text = "Add Operation";
             this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // comboBox2
             // 
@@ -889,7 +875,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.MistyRose;
-            this.panel3.Location = new System.Drawing.Point(17, 44);
+            this.panel3.Location = new System.Drawing.Point(17, 42);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(219, 208);
             this.panel3.TabIndex = 1;
@@ -1003,6 +989,28 @@
             this.allEmployees.Size = new System.Drawing.Size(191, 187);
             this.allEmployees.TabIndex = 0;
             // 
+            // Operations
+            // 
+            this.Operations.Controls.Add(this.panel5);
+            this.Operations.Location = new System.Drawing.Point(20, 105);
+            this.Operations.Name = "Operations";
+            this.Operations.Size = new System.Drawing.Size(567, 266);
+            this.Operations.TabIndex = 41;
+            this.Operations.Visible = false;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.MistyRose;
+            this.panel5.Location = new System.Drawing.Point(20, 13);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(527, 238);
+            this.panel5.TabIndex = 1;
+            // 
+            // impounddogpoundDataSet1
+            // 
+            this.impounddogpoundDataSet1.DataSetName = "impounddogpoundDataSet";
+            this.impounddogpoundDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1010,13 +1018,13 @@
             this.AutoScrollMargin = new System.Drawing.Size(1, 1);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(208)))), ((int)(((byte)(174)))));
             this.ClientSize = new System.Drawing.Size(738, 391);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.act);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.attendance);
             this.Controls.Add(this.admin);
+            this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.act);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1043,13 +1051,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.selectButton)).EndInit();
             this.DogCatchingOperation.ResumeLayout(false);
             this.DogCatchingOperation.PerformLayout();
-            this.Operations.ResumeLayout(false);
             this.newOperation.ResumeLayout(false);
             this.newOperation.PerformLayout();
             this.team.ResumeLayout(false);
             this.team.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeesToAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).EndInit();
+            this.Operations.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1068,7 +1077,6 @@
         public System.Windows.Forms.Panel attendance;
         private System.Windows.Forms.DataGridView dgvAttendanceIn;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button1;
@@ -1124,5 +1132,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DateTimePicker opDateTime;
         public System.Windows.Forms.DataGridView dgvEdit;
+        private System.Windows.Forms.Button button2;
+        private impounddogpoundDataSet impounddogpoundDataSet1;
     }
 }

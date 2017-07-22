@@ -488,7 +488,28 @@ namespace WindowsFormsApplication1
 
             selectButton.Location = new Point(y, 263);
 
+           
         }
+        public void refreshOperation()
+        {
+            if (opDateTime.Text != "" || comboBox2.Text != "")
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO dogoperation(locationID, date) VALUES ('" + opDateTime.Text + "' , '" + comboBox2.Text + "')" , conn);
+                    comm.ExecuteNonQuery();
+
+                    MessageBox.Show("Operation Added Successfully");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            }
+        }
+
         public int editemployeeID;
         private void dgvEdit_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -651,6 +672,12 @@ namespace WindowsFormsApplication1
             }
 
         }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            refreshOperation();
+        }
+        
     }
 }
 
