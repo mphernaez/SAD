@@ -83,8 +83,7 @@
             this.newOperation = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.button20 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.cbLocation = new System.Windows.Forms.ComboBox();
             this.opDateTime = new System.Windows.Forms.DateTimePicker();
             this.team = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -97,6 +96,7 @@
             this.Operations = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.impounddogpoundDataSet1 = new WindowsFormsApplication1.impounddogpoundDataSet();
+            this.dgAddOperations = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
             this.act.SuspendLayout();
             this.attendance.SuspendLayout();
@@ -117,6 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).BeginInit();
             this.Operations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAddOperations)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvActivities
@@ -834,16 +835,17 @@
             // 
             // newOperation
             // 
+            this.newOperation.Controls.Add(this.dgAddOperations);
             this.newOperation.Controls.Add(this.label7);
             this.newOperation.Controls.Add(this.button20);
-            this.newOperation.Controls.Add(this.comboBox2);
-            this.newOperation.Controls.Add(this.panel3);
+            this.newOperation.Controls.Add(this.cbLocation);
             this.newOperation.Controls.Add(this.opDateTime);
             this.newOperation.Location = new System.Drawing.Point(20, 107);
             this.newOperation.Name = "newOperation";
             this.newOperation.Size = new System.Drawing.Size(567, 266);
             this.newOperation.TabIndex = 38;
             this.newOperation.Visible = false;
+            this.newOperation.Paint += new System.Windows.Forms.PaintEventHandler(this.newOperation_Paint);
             // 
             // label7
             // 
@@ -869,28 +871,198 @@
             this.button20.UseVisualStyleBackColor = false;
             this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
-            // comboBox2
+            // cbLocation
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Buhangin",
-            "Roxas",
-            "Maa",
-            "Matina"});
-            this.comboBox2.Location = new System.Drawing.Point(243, 92);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(277, 28);
-            this.comboBox2.TabIndex = 2;
-            this.comboBox2.Text = "Location";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.MistyRose;
-            this.panel3.Location = new System.Drawing.Point(17, 42);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(219, 208);
-            this.panel3.TabIndex = 1;
+            this.cbLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLocation.FormattingEnabled = true;
+            this.cbLocation.Items.AddRange(new object[] {
+            "1-A Poblacion",
+            "2-A Poblacion",
+            "3-A Poblacion",
+            "4-A Poblacion",
+            "5-A Poblacion",
+            "6-A Poblacion",
+            "7-A Poblacion",
+            "8-A Poblacion",
+            "9-A Poblacion",
+            "10-A Poblacion ",
+            "11-B Poblacion",
+            "12-B Poblacion",
+            "13-B Poblacion",
+            "14-B Poblacion",
+            "15-B Poblacion",
+            "16-B Poblacion",
+            "17-B Poblacion",
+            "18-B Poblacion",
+            "19-B Poblacion",
+            "20-B Poblacion",
+            "21-C Poblacion",
+            "22-C Poblacion",
+            "23-C Poblacion",
+            "24-C Poblacion",
+            "25-C Poblacion",
+            "26-C Poblacion",
+            "27-C Poblacion",
+            "28-C Poblacion",
+            "29-C Poblacion",
+            "30-C Poblacion",
+            "31-D Poblacion",
+            "32-D Poblacion",
+            "33-D Poblacion",
+            "34-D Poblacion",
+            "35-D Poblacion",
+            "36-D Poblacion",
+            "37-D Poblacion",
+            "38-D Poblacion",
+            "39-D Poblacion",
+            "40-D Poblacion",
+            "Acacia",
+            "Agdao Proper",
+            "Alambre",
+            "Alejandra Navarro (Lasang)",
+            "Alfonso Angliongto Sr.a",
+            "Angalan",
+            "Atan-Awe",
+            "Baganihan",
+            "Bago Aplaya",
+            "Bago Gallera",
+            "Bago Oshiro",
+            "Baguio Proper",
+            "Balengaeng",
+            "Baliok",
+            "Bangkas Heights",
+            "Bantol",
+            "Baracatan",
+            "Bato",
+            "Bayabas",
+            "Biao Escuela",
+            "Biao Guianga",
+            "Biao Joaquin",
+            "Binugao",
+            "Bucana",
+            "Buda",
+            "Buhangin Proper",
+            "Bunawan Proper",
+            "Cabantian",
+            "Cadalian",
+            "Calinan Proper",
+            "Callawa",
+            "Camansi",
+            "Carmen",
+            "Catalunan Grande",
+            "Catalunan PequeÃ~+mn~o",
+            "Catigan",
+            "Cawayan",
+            "Centro (San Juan)",
+            "Colosas",
+            "Communal",
+            "Crossing Bayabas",
+            "Dacudao",
+            "Dalag",
+            "Dalagdag",
+            "Daliao",
+            "Daliaon Plantation",
+            "Datu Salumay",
+            "Dominga",
+            "Dumoy",
+            "Eden",
+            "Fatima (Benowang)",
+            "Gatungan",
+            "Gov. Paciano Bangoy",
+            "Gov. Vicente Duterte",
+            "Gumalang",
+            "Gumitan",
+            "Ilang",
+            "Inayangan",
+            "Indangan",
+            "Kap. Tomas Monteverde, Sr.",
+            "Kilate",
+            "Lacson",
+            "Lamanan",
+            "Lampianao",
+            "Langub",
+            "Lapu-Lapu",
+            "Leon Garcia",
+            "Lizada",
+            "Los Amigos",
+            "Lubogan",
+            "Lumiad",
+            "Ma-a",
+            "Mabuhay",
+            "Magsaysay",
+            "Magtuod",
+            "Mahayag",
+            "Malabog",
+            "Malagos",
+            "Malamba",
+            "Manambulan",
+            "Mandug",
+            "Manuel Guianga",
+            "Mapula",
+            "Marapangi",
+            "Marilog Proper",
+            "Matina Aplaya",
+            "Matina Biao",
+            "Matina Crossing",
+            "Matina Pangi",
+            "Megkawayan",
+            "Mintal",
+            "Mudiang",
+            "Mulig",
+            "New Carmen",
+            "New Valencia",
+            "Pampanga",
+            "Panacan",
+            "Panalum",
+            "Pandaitan",
+            "Pangyan",
+            "Paquibato Proper",
+            "Paradise Embak",
+            "Rafael Castillo",
+            "Riverside",
+            "Salapawan",
+            "Salaysay",
+            "Saloy",
+            "San Antonio",
+            "San Isidro (Licanan)",
+            "Santo NiÃ~+mn~o",
+            "Sasa",
+            "Sibulan",
+            "Sirawan",
+            "Sirib",
+            "Suawan (Tuli)",
+            "Subasta",
+            "Sumimao",
+            "Tacunan",
+            "Tagakpan",
+            "Tagluno",
+            "Tagurano",
+            "Talandang",
+            "Talomo Proper",
+            "Talomo River",
+            "Tamayong",
+            "Tambubong",
+            "Tamugan",
+            "Tapak",
+            "Tawan-Tawan",
+            "Tibuloy",
+            "Tibungco",
+            "Tigatto",
+            "Toril Proper",
+            "Tugbok Proper",
+            "Tungkalan",
+            "Ubalde",
+            "Ula",
+            "Vicente Hizon Sr.a",
+            "Waan",
+            "Wangan",
+            "Wilfredo Aquino",
+            "Wines"});
+            this.cbLocation.Location = new System.Drawing.Point(243, 92);
+            this.cbLocation.Name = "cbLocation";
+            this.cbLocation.Size = new System.Drawing.Size(277, 28);
+            this.cbLocation.TabIndex = 2;
+            this.cbLocation.Text = "Location";
             // 
             // opDateTime
             // 
@@ -1023,6 +1195,14 @@
             this.impounddogpoundDataSet1.DataSetName = "impounddogpoundDataSet";
             this.impounddogpoundDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // dgAddOperations
+            // 
+            this.dgAddOperations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAddOperations.Location = new System.Drawing.Point(7, 46);
+            this.dgAddOperations.Name = "dgAddOperations";
+            this.dgAddOperations.Size = new System.Drawing.Size(229, 203);
+            this.dgAddOperations.TabIndex = 41;
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1032,11 +1212,11 @@
             this.ClientSize = new System.Drawing.Size(738, 391);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.addEmployee);
-            this.Controls.Add(this.act);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.attendance);
             this.Controls.Add(this.admin);
+            this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.act);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1071,6 +1251,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).EndInit();
             this.Operations.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAddOperations)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1140,11 +1321,11 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ComboBox cbLocation;
         private System.Windows.Forms.DateTimePicker opDateTime;
         public System.Windows.Forms.DataGridView dgvEdit;
         private System.Windows.Forms.Button button2;
         private impounddogpoundDataSet impounddogpoundDataSet1;
+        private System.Windows.Forms.DataGridView dgAddOperations;
     }
 }

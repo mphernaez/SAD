@@ -494,13 +494,30 @@ namespace WindowsFormsApplication1
         }
         public void refreshOperation()
         {
-            if (opDateTime.Text != "" || comboBox2.Text != "")
+            if (opDateTime.Text != "" || cbLocation.Text != "")
             {
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO dogoperation(locationID, date) VALUES ('" + opDateTime.Text + "' , '" + comboBox2.Text + "')" , conn);
+                    MySqlCommand comm = new MySqlCommand("SELECT locationID FROM location WHERE description = '" + cbLocation.Text + "')", conn);
+                    comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date) VALUES ('" + opDateTime.Text + "' , '" + cbLocation.Text + "')" , conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     comm.ExecuteNonQuery();
+
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+
+                    dgAddOperations.DataSource = dt;
+
+                    dgAddOperations.Columns["operationID"].Visible = false;
+                    dgAddOperations.Columns["teamID"].HeaderText = "Team";
+                    dgAddOperations.Columns["locationID"].HeaderText = "Location";
+                    dgAddOperations.Columns["date"].HeaderText = "Date";
+                    dgAddOperations.Columns["time"].HeaderText = "Time";
+                    dgAddOperations.Columns["teamID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgAddOperations.Columns["locationID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgAddOperations.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgAddOperations.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                     MessageBox.Show("Operation Added Successfully");
                 }
@@ -777,6 +794,11 @@ namespace WindowsFormsApplication1
         }
 
         private void cbstatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newOperation_Paint(object sender, PaintEventArgs e)
         {
 
         }
