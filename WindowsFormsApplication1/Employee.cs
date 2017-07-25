@@ -496,15 +496,47 @@ namespace WindowsFormsApplication1
         {
             if (opDateTime.Text != "" || cbLocation.Text != "")
             {
+                string date = "";
+                string datetimes = opDateTime.Value.ToString();
+                string time = "";
+                if (datetimes.Substring(1) == "/" && datetimes.Substring(3) == "/") //m-d-yyy
+                {
+                    date = datetimes.Substring(4, 8) + "-" + datetimes.Substring(0) + "-" + datetimes.Substring(2);
+                    time = datetimes.Substring(9, 19);
+                }
+                else if (datetimes.Substring(2) == "/" && datetimes.Substring(4) == "/") //mm-d-yyy
+                {
+                    date = datetimes.Substring(5, 9) + "-" + datetimes.Substring(0, 2) + "-" + datetimes.Substring(3);
+                    time = datetimes.Substring(10, 20);
+                }
+                else if (datetimes.Substring(1) == "/" && datetimes.Substring(4) == "/") //m-dd-yyy
+                {
+                    date = datetimes.Substring(5, 9) + "-" + datetimes.Substring(0) + "-" + datetimes.Substring(2, 4);
+                    time = datetimes.Substring(10, 20);
+                }
+                else if (datetimes.Substring(2) == "/" && datetimes.Substring(5) == "/") //mm-dd-yyyy
+                {
+                    date = datetimes.Substring(4, 8) + "-" + datetimes.Substring(0) + "-" + datetimes.Substring(2);
+                    time = datetimes.Substring(11, 21);
+                }
+                
+                
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("SELECT locationID FROM location WHERE description = '" + cbLocation.Text + "')", conn);
-                    comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date) VALUES ('" + opDateTime.Text + "' , '" + cbLocation.Text + "')" , conn);
+                    MySqlCommand comm = new MySqlCommand("SELECT locationID FROM location WHERE description = '" + cbLocation.Text + "'", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+
+                    int locID = int.Parse(dt.Rows[0]["locationID"].ToString());
+
+                    comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, time) VALUES ('" + opDateTime.Text + "' , '" + locID + "', '" + date + "')" , conn);
                     comm.ExecuteNonQuery();
 
-                    DataTable dt = new DataTable();
+                    
+                    adp = new MySqlDataAdapter(comm);
+                    dt = new DataTable();
                     adp.Fill(dt);
 
                     dgAddOperations.DataSource = dt;
@@ -694,6 +726,7 @@ namespace WindowsFormsApplication1
 
         private void button20_Click(object sender, EventArgs e)
         {
+           
             refreshOperation();
         }
 

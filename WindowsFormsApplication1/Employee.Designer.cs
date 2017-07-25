@@ -84,7 +84,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button20 = new System.Windows.Forms.Button();
             this.cbLocation = new System.Windows.Forms.ComboBox();
-            this.opDateTime = new System.Windows.Forms.DateTimePicker();
             this.team = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -97,6 +96,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.impounddogpoundDataSet1 = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.dgAddOperations = new System.Windows.Forms.DataGridView();
+            this.opDateTime = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
             this.act.SuspendLayout();
             this.attendance.SuspendLayout();
@@ -1064,17 +1064,6 @@
             this.cbLocation.TabIndex = 2;
             this.cbLocation.Text = "Location";
             // 
-            // opDateTime
-            // 
-            this.opDateTime.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opDateTime.Location = new System.Drawing.Point(242, 59);
-            this.opDateTime.MinDate = new System.DateTime(2017, 7, 19, 21, 32, 59, 0);
-            this.opDateTime.Name = "opDateTime";
-            this.opDateTime.Size = new System.Drawing.Size(277, 26);
-            this.opDateTime.TabIndex = 0;
-            this.opDateTime.Value = new System.DateTime(2017, 7, 19, 21, 32, 59, 0);
-            // 
             // team
             // 
             this.team.Controls.Add(this.label6);
@@ -1203,6 +1192,17 @@
             this.dgAddOperations.Size = new System.Drawing.Size(229, 203);
             this.dgAddOperations.TabIndex = 41;
             // 
+            // opDateTime
+            // 
+            this.opDateTime.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.opDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.opDateTime.Location = new System.Drawing.Point(242, 59);
+            this.opDateTime.MinDate = new System.DateTime(2017, 7, 19, 21, 32, 59, 0);
+            this.opDateTime.Name = "opDateTime";
+            this.opDateTime.Size = new System.Drawing.Size(277, 26);
+            this.opDateTime.TabIndex = 0;
+            this.opDateTime.Value = new System.DateTime(2017, 7, 19, 21, 32, 59, 0);
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1322,10 +1322,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.ComboBox cbLocation;
-        private System.Windows.Forms.DateTimePicker opDateTime;
         public System.Windows.Forms.DataGridView dgvEdit;
         private System.Windows.Forms.Button button2;
         private impounddogpoundDataSet impounddogpoundDataSet1;
         private System.Windows.Forms.DataGridView dgAddOperations;
+        private System.Windows.Forms.DateTimePicker opDateTime;
     }
 }
