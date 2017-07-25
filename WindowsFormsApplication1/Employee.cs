@@ -393,6 +393,8 @@ namespace WindowsFormsApplication1
             button3.BackColor = Color.FromArgb(240, 148, 80);
             dgvAttendanceIn.Visible = false;
             dgvAttendanceOut.Visible = true;
+
+            refreshAttendanceOut();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -677,7 +679,42 @@ namespace WindowsFormsApplication1
         {
             refreshOperation();
         }
-        
+
+
+        private void refreshAttendanceOut()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID IN (SELECT attendance.employeeID FROM attendance)", conn); //missing: refresh everyday (in restrictions, date should be now)
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvAttendanceOut.DataSource = dt;
+
+                dgvAttendanceOut.Columns["personID"].Visible = false;
+                dgvAttendanceOut.Columns["lastname"].HeaderText = "Lastname";
+                dgvAttendanceOut.Columns["firstname"].HeaderText = "Firstname";
+                dgvAttendanceOut.Columns["middlename"].HeaderText = "Middlename";
+                dgvAttendanceOut.Columns["gender"].HeaderText = "Gender";
+                dgvAttendanceOut.Columns["contactNumber"].HeaderText = "Contact No.";
+                dgvAttendanceOut.Columns["position"].HeaderText = "Position";
+                dgvAttendanceOut.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAttendanceOut.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAttendanceOut.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAttendanceOut.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAttendanceOut.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAttendanceOut.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
     }
 }
 
