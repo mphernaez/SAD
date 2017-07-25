@@ -715,6 +715,71 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
         }
+
+        private void tblname_TextChanged(object sender, EventArgs e)
+        {
+
+           
+
+        }
+        private void tbmname_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void tbfname_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void tblname_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void tbmname_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (tbmname.Text == "Middlename")
+            {
+                tbmname.Text = "";
+                tbmname.ForeColor = Color.Black;
+            }
+        }
+
+        private void tbfname_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void cbgender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbbday_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void tbaddress_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void tbcontactNumber_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void cbposition_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbstatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

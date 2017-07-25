@@ -445,17 +445,18 @@
             // tbbday
             // 
             this.tbbday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbbday.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.tbbday.ForeColor = System.Drawing.Color.Gray;
             this.tbbday.Location = new System.Drawing.Point(204, 68);
             this.tbbday.Name = "tbbday";
             this.tbbday.Size = new System.Drawing.Size(331, 26);
             this.tbbday.TabIndex = 35;
             this.tbbday.Text = "Birthday (yyyy-mm-dd)";
+            this.tbbday.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbbday_MouseClick);
             // 
             // cbstatus
             // 
             this.cbstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbstatus.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.cbstatus.ForeColor = System.Drawing.Color.Gray;
             this.cbstatus.FormattingEnabled = true;
             this.cbstatus.Items.AddRange(new object[] {
             "Active",
@@ -465,11 +466,12 @@
             this.cbstatus.Size = new System.Drawing.Size(164, 28);
             this.cbstatus.TabIndex = 39;
             this.cbstatus.Text = "Status";
+            this.cbstatus.SelectedIndexChanged += new System.EventHandler(this.cbstatus_SelectedIndexChanged);
             // 
             // cbposition
             // 
             this.cbposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbposition.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.cbposition.ForeColor = System.Drawing.Color.Gray;
             this.cbposition.FormattingEnabled = true;
             this.cbposition.Items.AddRange(new object[] {
             "Catcher",
@@ -480,46 +482,54 @@
             this.cbposition.Size = new System.Drawing.Size(164, 28);
             this.cbposition.TabIndex = 38;
             this.cbposition.Text = "Position";
+            this.cbposition.SelectedIndexChanged += new System.EventHandler(this.cbposition_SelectedIndexChanged);
             // 
             // tbfname
             // 
             this.tbfname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbfname.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.tbfname.ForeColor = System.Drawing.Color.Gray;
             this.tbfname.Location = new System.Drawing.Point(373, 29);
             this.tbfname.Name = "tbfname";
             this.tbfname.Size = new System.Drawing.Size(163, 26);
             this.tbfname.TabIndex = 33;
             this.tbfname.Text = "Firstname";
+            this.tbfname.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbfname_MouseClick);
+            this.tbfname.TextChanged += new System.EventHandler(this.tbfname_TextChanged);
             // 
             // tbmname
             // 
             this.tbmname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbmname.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.tbmname.ForeColor = System.Drawing.Color.Gray;
             this.tbmname.Location = new System.Drawing.Point(204, 29);
             this.tbmname.Name = "tbmname";
             this.tbmname.Size = new System.Drawing.Size(163, 26);
             this.tbmname.TabIndex = 32;
             this.tbmname.Text = "Middlename";
+            this.tbmname.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbmname_MouseClick);
+            this.tbmname.TextChanged += new System.EventHandler(this.tbmname_TextChanged);
             // 
             // tblname
             // 
             this.tblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tblname.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.tblname.ForeColor = System.Drawing.Color.Gray;
             this.tblname.Location = new System.Drawing.Point(35, 29);
             this.tblname.Name = "tblname";
             this.tblname.Size = new System.Drawing.Size(163, 26);
             this.tblname.TabIndex = 31;
             this.tblname.Text = "Lastname";
+            this.tblname.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tblname_MouseClick);
+            this.tblname.TextChanged += new System.EventHandler(this.tblname_TextChanged);
             // 
             // tbcontactNumber
             // 
             this.tbcontactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbcontactNumber.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.tbcontactNumber.ForeColor = System.Drawing.Color.Gray;
             this.tbcontactNumber.Location = new System.Drawing.Point(33, 170);
             this.tbcontactNumber.Name = "tbcontactNumber";
             this.tbcontactNumber.Size = new System.Drawing.Size(164, 26);
             this.tbcontactNumber.TabIndex = 37;
             this.tbcontactNumber.Text = "Contact Number";
+            this.tbcontactNumber.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbcontactNumber_MouseClick);
             // 
             // button4
             // 
@@ -541,18 +551,19 @@
             // tbaddress
             // 
             this.tbaddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbaddress.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.tbaddress.ForeColor = System.Drawing.Color.Gray;
             this.tbaddress.Location = new System.Drawing.Point(33, 101);
             this.tbaddress.Multiline = true;
             this.tbaddress.Name = "tbaddress";
             this.tbaddress.Size = new System.Drawing.Size(502, 63);
             this.tbaddress.TabIndex = 36;
             this.tbaddress.Text = "Address";
+            this.tbaddress.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbaddress_MouseClick);
             // 
             // cbgender
             // 
             this.cbgender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbgender.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.cbgender.ForeColor = System.Drawing.Color.Gray;
             this.cbgender.FormattingEnabled = true;
             this.cbgender.Items.AddRange(new object[] {
             "Male",
@@ -562,6 +573,7 @@
             this.cbgender.Size = new System.Drawing.Size(164, 28);
             this.cbgender.TabIndex = 34;
             this.cbgender.Text = "Gender";
+            this.cbgender.SelectedIndexChanged += new System.EventHandler(this.cbgender_SelectedIndexChanged);
             // 
             // editPanel
             // 
@@ -1018,13 +1030,13 @@
             this.AutoScrollMargin = new System.Drawing.Size(1, 1);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(208)))), ((int)(((byte)(174)))));
             this.ClientSize = new System.Drawing.Size(738, 391);
-            this.Controls.Add(this.DogCatchingOperation);
-            this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.admin);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.act);
+            this.Controls.Add(this.DogCatchingOperation);
+            this.Controls.Add(this.attendance);
+            this.Controls.Add(this.admin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
