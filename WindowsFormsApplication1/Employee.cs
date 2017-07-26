@@ -429,10 +429,19 @@ namespace WindowsFormsApplication1
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
         }
-
+        private int teamempid;
+        private string teamfname;
+        private string teamlname;
+        private string teammname;
         private void button17_Click(object sender, EventArgs e)
         {
 
+            this.newTeam.Rows.Add(teamfname, teammname, teamlname);
+
+            newTeam.Columns["Lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            newTeam.Columns["Firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            newTeam.Columns["Middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+           
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -448,6 +457,8 @@ namespace WindowsFormsApplication1
             team.Visible = true;
             newOperation.Visible = false;
             Operations.Visible = false;
+
+            refreshTeam();
         }
 
         private void button15_Click(object sender, EventArgs e)
@@ -492,7 +503,7 @@ namespace WindowsFormsApplication1
 
            
         }
-        public void refreshOperation()
+        public void addOperation()
         {
             if (opDateTime.Text != "" || cbLocation.Text != "")
             {
@@ -726,7 +737,7 @@ namespace WindowsFormsApplication1
 
         private void button20_Click(object sender, EventArgs e)
         {
-           
+            addOperation();
             refreshOperation();
         }
 
@@ -832,6 +843,57 @@ namespace WindowsFormsApplication1
         }
 
         private void newOperation_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void refreshOperation()
+        {
+            
+        }
+        private void refreshTeam()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT personID, firstname, lastname, middlename FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE status = 'Active' AND position = 'Catcher' ", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                allEmployees.DataSource = dt;
+                allEmployees.Columns["personID"].Visible = false;
+                allEmployees.Columns["lastname"].HeaderText = "Lastname";
+                allEmployees.Columns["firstname"].HeaderText = "Firstname";
+                allEmployees.Columns["middlename"].HeaderText = "Middlename";
+
+                allEmployees.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                allEmployees.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                allEmployees.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        
+        private void allEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            teamempid = int.Parse(allEmployees.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+            teamfname = allEmployees.Rows[e.RowIndex].Cells["firstname"].Value.ToString();
+            teamlname = allEmployees.Rows[e.RowIndex].Cells["lastname"].Value.ToString();
+            teammname = allEmployees.Rows[e.RowIndex].Cells["middlename"].Value.ToString();
+        }
+
+        private void team_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button18_Click(object sender, EventArgs e)
         {
 
         }
