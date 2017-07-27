@@ -816,7 +816,11 @@ namespace WindowsFormsApplication1
 
         private void tbfname_MouseClick(object sender, MouseEventArgs e)
         {
-
+            if (tbfname.Text == "Firstname")
+            {
+                tbfname.Text = "";
+                tbfname.ForeColor = Color.Black;
+            }
         }
 
         private void cbgender_SelectedIndexChanged(object sender, EventArgs e)
@@ -948,28 +952,25 @@ namespace WindowsFormsApplication1
         private void tblname_MouseDown(object sender, MouseEventArgs e)
         {
 
-            if (tblname.Text == "Lastname")
-            {
-                tblname.Text = "";
-                tblname.ForeColor = Color.Black;
-            }
         }
 
         private void tbmname_MouseEnter(object sender, EventArgs e)
         {
-            if (tbmname.Text == "Middlename")
-            {
-                tbmname.Text = "";
-                tbmname.ForeColor = Color.Black;
-            }
+       
         }
 
         private void tbfname_MouseEnter(object sender, EventArgs e)
         {
-            if (tbfname.Text == "Firstname")
+           
+        }
+
+        private void tblname_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            if (tblname.Text == "Lastname")
             {
-                tbfname.Text = "";
-                tbfname.ForeColor = Color.Black;
+                tblname.Text = "";
+                tblname.ForeColor = Color.Black;
             }
         }
     }

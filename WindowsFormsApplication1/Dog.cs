@@ -182,6 +182,7 @@ namespace WindowsFormsApplication1
                         tbColor.Text = "Color";
                         tbDesc.Text = "Other Description";
                     }
+                    MessageBox.Show("Succesfuly Added Dog");
 
                     conn.Close();
                 }
@@ -198,14 +199,27 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void rePopDog()
+        {
+            cbGender.Text = "Gender";
+            cbOperation.Text = "Operation Date and Location";
+            cbSize.Text = "Size";
+            tbBreed.Text = "Breed";
+            tbColor.Text = "Color";
+            tbDesc.Text = "Description";
+            cbGender.ForeColor = cbOperation.ForeColor = cbSize.ForeColor = tbBreed.ForeColor = tbColor.ForeColor = tbDesc.ForeColor = Color.Gray;
+        }
+
         private void tbBreed_Enter(object sender, EventArgs e)
         {
             tbBreed.Text = "";
+            tbBreed.ForeColor = Color.Black;
         }
 
         private void textBox3_Enter(object sender, EventArgs e)
         {
             tbColor.Text = "";
+            tbColor.ForeColor = Color.Black;
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -388,6 +402,7 @@ namespace WindowsFormsApplication1
         private void tbDesc_Enter(object sender, EventArgs e)
         {
             tbDesc.Text = "";
+            tbDesc.ForeColor = Color.Black;
         }
 
         private void button6_Click_1(object sender, EventArgs e)
@@ -540,6 +555,35 @@ namespace WindowsFormsApplication1
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+        }
+
+        private void tbColor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbOperation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbOperation.Text != "Operation Date and Location")
+            {
+                cbOperation.ForeColor = Color.Black;
+            }
+        }
+
+        private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbGender.Text != "Gender")
+            {
+                cbGender.ForeColor = Color.Black;
+            }
+        }
+
+        private void cbSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbSize.Text != "Size")
+            {
+                cbSize.ForeColor = Color.Black;
+            }
         }
     }
 }
