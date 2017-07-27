@@ -104,5 +104,21 @@ namespace WindowsFormsApplication1
             if (passwordTextBox.Text == "")
                 passwordTextBox.ForeColor = Color.LightGray;
         }
+
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            passwordTextBox.PasswordChar = '\0';
+            pictureBox4.Visible = false;
+            pictureBox5.Visible = true;
+
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            passwordTextBox.PasswordChar = '•';
+            pictureBox4.Visible = true;
+            pictureBox5.Visible = false;
+        }
     }
 }

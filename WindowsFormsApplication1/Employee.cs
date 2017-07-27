@@ -408,6 +408,7 @@ namespace WindowsFormsApplication1
             button12.BackColor = Color.FromArgb(240, 148, 80);
             addPanel.Visible = true;
             editPanel.Visible = false;
+            rePopAddEmp();
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -715,6 +716,7 @@ namespace WindowsFormsApplication1
                     comm.ExecuteNonQuery();
 
                     MessageBox.Show("Profile Added Successfully");
+                    rePopAddEmp();
 
                     conn.Close();
                 }
@@ -735,6 +737,19 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void rePopAddEmp()
+        {
+            tblname.Text = "Lastname";
+            tbmname.Text = "Middlename";
+            tbfname.Text = "Firstname";
+            cbgender.Text = "Gender";
+            tbbday.Text = "Birthday (yyyy-mm-dd)";
+            tbaddress.Text = "Address";
+            tbcontactNumber.Text = "Contact Number";
+            cbposition.Text = "Position";
+            cbstatus.Text = "Status";
+            cbstatus.ForeColor = cbposition.ForeColor = tbcontactNumber.ForeColor = tbaddress.ForeColor = tbbday.ForeColor = cbgender.ForeColor = tbfname.ForeColor = tblname.ForeColor = tbmname.ForeColor = Color.Gray;
+        }
         private void button20_Click(object sender, EventArgs e)
         {
             addOperation();
@@ -779,23 +794,30 @@ namespace WindowsFormsApplication1
 
         private void tblname_TextChanged(object sender, EventArgs e)
         {
-
+            if (tblname.Text == "Lastname")
+            {
+                tblname.Text = "";
+                tblname.ForeColor = Color.Black;
+            }
            
-
         }
         private void tbmname_TextChanged(object sender, EventArgs e)
         {
-           
+            if(tbmname.Text == "Middlename")
+            {
+                tbmname.Text = "";
+                tbmname.ForeColor = Color.Black;
+            }
+            
         }
 
         private void tbfname_TextChanged(object sender, EventArgs e)
         {
-          
-        }
-
-        private void tblname_MouseClick(object sender, MouseEventArgs e)
-        {
-
+            if (tbfname.Text == "Firstname")
+            {
+                tbfname.Text = "";
+                tbfname.ForeColor = Color.Black;
+            }
         }
 
         private void tbmname_MouseClick(object sender, MouseEventArgs e)
@@ -814,32 +836,53 @@ namespace WindowsFormsApplication1
 
         private void cbgender_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (cbgender.Text != "Gender")
+            {
+                cbgender.ForeColor = Color.Black;
+            }
         }
 
         private void tbbday_MouseClick(object sender, MouseEventArgs e)
         {
-
+            if (tbbday.Text == "Birthday (yyyy-mm-dd)")
+            {
+                tbbday.Text = "";
+                tbbday.ForeColor = Color.Black;
+            }
         }
 
         private void tbaddress_MouseClick(object sender, MouseEventArgs e)
         {
-
+            if (tbaddress.Text == "Address")
+            {
+                tbaddress.Text = "";
+                tbaddress.ForeColor = Color.Black;
+            }
         }
 
         private void tbcontactNumber_MouseClick(object sender, MouseEventArgs e)
         {
-
+            if (tbcontactNumber.Text == "Contact Number")
+            {
+                tbcontactNumber.Text = "";
+                tbcontactNumber.ForeColor = Color.Black;
+            }
         }
 
         private void cbposition_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if(cbposition.Text != "Position")
+            {
+                cbposition.ForeColor = Color.Black;
+            }
         }
 
         private void cbstatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if(cbstatus.Text != "Status")
+            {
+                cbstatus.ForeColor = Color.Black;
+            }
         }
 
         private void newOperation_Paint(object sender, PaintEventArgs e)
@@ -896,6 +939,66 @@ namespace WindowsFormsApplication1
         private void button18_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tbbday_TextChanged(object sender, EventArgs e)
+        {
+            if(tbbday.Text == "Birthday (yyyy-mm-dd)")
+            {
+                tbbday.Text = "";
+                tbbday.ForeColor = Color.Black;
+            }
+        }
+
+        private void tbaddress_TextChanged(object sender, EventArgs e)
+        {
+            if(tbaddress.Text == "Address")
+            {
+                tbaddress.Text = "";
+                tbaddress.ForeColor = Color.Black;
+            }
+        }
+
+        private void tbcontactNumber_TextChanged(object sender, EventArgs e)
+        {
+            if(tbcontactNumber.Text == "Contact Number")
+            {
+                tbcontactNumber.Text = "";
+                tbcontactNumber.ForeColor = Color.Black;
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tblname_MouseDown(object sender, MouseEventArgs e)
+        {
+
+            if (tblname.Text == "Lastname")
+            {
+                tblname.Text = "";
+                tblname.ForeColor = Color.Black;
+            }
+        }
+
+        private void tbmname_MouseEnter(object sender, EventArgs e)
+        {
+            if (tbmname.Text == "Middlename")
+            {
+                tbmname.Text = "";
+                tbmname.ForeColor = Color.Black;
+            }
+        }
+
+        private void tbfname_MouseEnter(object sender, EventArgs e)
+        {
+            if (tbfname.Text == "Firstname")
+            {
+                tbfname.Text = "";
+                tbfname.ForeColor = Color.Black;
+            }
         }
     }
 }
