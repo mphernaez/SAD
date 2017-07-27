@@ -794,30 +794,15 @@ namespace WindowsFormsApplication1
 
         private void tblname_TextChanged(object sender, EventArgs e)
         {
-            if (tblname.Text == "Lastname")
-            {
-                tblname.Text = "";
-                tblname.ForeColor = Color.Black;
-            }
+            
            
         }
         private void tbmname_TextChanged(object sender, EventArgs e)
         {
-            if(tbmname.Text == "Middlename")
-            {
-                tbmname.Text = "";
-                tbmname.ForeColor = Color.Black;
-            }
-            
         }
 
         private void tbfname_TextChanged(object sender, EventArgs e)
         {
-            if (tbfname.Text == "Firstname")
-            {
-                tbfname.Text = "";
-                tbfname.ForeColor = Color.Black;
-            }
         }
 
         private void tbmname_MouseClick(object sender, MouseEventArgs e)
@@ -943,29 +928,16 @@ namespace WindowsFormsApplication1
 
         private void tbbday_TextChanged(object sender, EventArgs e)
         {
-            if(tbbday.Text == "Birthday (yyyy-mm-dd)")
-            {
-                tbbday.Text = "";
-                tbbday.ForeColor = Color.Black;
-            }
+            
         }
 
         private void tbaddress_TextChanged(object sender, EventArgs e)
         {
-            if(tbaddress.Text == "Address")
-            {
-                tbaddress.Text = "";
-                tbaddress.ForeColor = Color.Black;
-            }
+            
         }
 
         private void tbcontactNumber_TextChanged(object sender, EventArgs e)
         {
-            if(tbcontactNumber.Text == "Contact Number")
-            {
-                tbcontactNumber.Text = "";
-                tbcontactNumber.ForeColor = Color.Black;
-            }
         }
 
         private void button9_Click(object sender, EventArgs e)
