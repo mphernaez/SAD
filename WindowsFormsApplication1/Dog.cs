@@ -21,6 +21,7 @@ namespace WindowsFormsApplication1
         public int adminID;
         public int adoptID;
         int i = -40;
+        int[] opid; //id for every combobox item
         public Home back { get; set; }
         public MySqlConnection conn;
         public Dog()
@@ -62,6 +63,7 @@ namespace WindowsFormsApplication1
             //-24, 3
             selectButton.Location = new Point(i, 8);
 
+            addOperationsItems();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -132,7 +134,7 @@ namespace WindowsFormsApplication1
                     size = "xl";
 
                 other = tbDesc.Text;
-                operationID = 3;
+                operationID = opid[cbOperation.SelectedIndex];
                 try
                 {
                     conn.Open();
@@ -173,17 +175,16 @@ namespace WindowsFormsApplication1
                     if (stop == false) {
                         MySqlCommand comm = new MySqlCommand("INSERT INTO dogprofile(operationID, color, gender, size, otherDesc, breed, status) VALUES(" + operationID + ",'" + color + "', '" + gender + "', '" + size + "', '" + other + "', '" + breed + "', '" + "unclaimed" + "')", conn);
                         comm.ExecuteNonQuery();
-                        MessageBox.Show("Profile Added Successfully");
-
+                        
                         cbGender.Text = "Gender";
                         cbOperation.Text = "Operation Date and Location";
                         cbSize.Text = "Size";
                         tbBreed.Text = "Breed";
                         tbColor.Text = "Color";
                         tbDesc.Text = "Other Description";
-                    }
-                    MessageBox.Show("Succesfuly Added Dog");
 
+                        MessageBox.Show("Profile Added Successfully");
+                    }
                     conn.Close();
                 }
                 catch (Exception ex)
@@ -583,6 +584,38 @@ namespace WindowsFormsApplication1
             if(cbSize.Text != "Size")
             {
                 cbSize.ForeColor = Color.Black;
+            }
+        }
+
+        private void addOperationsItems()
+        {
+            try
+            {
+                conn.Open();
+
+                MySqlCommand comm = new MySqlCommand("SELECT operationID, time, date, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                int j = 0;
+
+                opid = new int[dt.Rows.Count - 1]; 
+
+                for (int i = dt.Rows.Count - 1; i >= 1; i--)
+                {
+                    opid[j] = int.Parse(dt.Rows[i]["operationID"].ToString());
+                    string date = dt.Rows[i]["date"].ToString().Substring(0, 10);
+                    string time = dt.Rows[i]["time"].ToString();
+                    string loc = dt.Rows[i]["description"].ToString();
+                    cbOperation.Items.Add(time + " " + date + " " + "Brgy. " + loc);
+                    j++;
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
             }
         }
     }

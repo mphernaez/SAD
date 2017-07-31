@@ -50,7 +50,7 @@ namespace WindowsFormsApplication1
                 String idnum = tbIDnum.Text;
                 String idtype = tbIDtype.Text;
                 String num = tbnumber.Text;
-                String date = DateTime.Now.ToString("yyyy-mm-dd");
+                String date = DateTime.Now.ToString("yyyy-MM-dd");
                 int vaccine = 0;
                 if (checkbox.Checked)
                 {
@@ -100,7 +100,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT breed, color, size, gender, description, date FROM (dogoperation INNER JOIN dogprofile ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location on dogoperation.locationID = location.locationID WHERE dogID = " + dogID, conn);
+                MySqlCommand comm = new MySqlCommand("SELECT time, breed, color, size, gender, description, date FROM (dogoperation INNER JOIN dogprofile ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location on dogoperation.locationID = location.locationID WHERE dogID = " + dogID, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -109,9 +109,9 @@ namespace WindowsFormsApplication1
                 color.Text = dt.Rows[0]["color"].ToString();
                 size.Text = dt.Rows[0]["size"].ToString();
                 gender.Text = dt.Rows[0]["gender"].ToString();
-                location.Text = dt.Rows[0]["description"].ToString();
-                date.Text = dt.Rows[0]["date"].ToString();
-
+                location.Text = "Brgy. " + dt.Rows[0]["description"].ToString();
+                date.Text = dt.Rows[0]["date"].ToString().Substring(0, 10);
+                time.Text = dt.Rows[0]["time"].ToString();
 
                 conn.Close();
 
@@ -168,6 +168,11 @@ namespace WindowsFormsApplication1
         }
 
         private void tbnumber_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

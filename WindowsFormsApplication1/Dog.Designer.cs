@@ -248,13 +248,6 @@
             this.cbOperation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOperation.ForeColor = System.Drawing.Color.Gray;
             this.cbOperation.FormattingEnabled = true;
-            this.cbOperation.Items.AddRange(new object[] {
-            "February 27, 2016, Matina",
-            "February 27, 2017, Ma-a",
-            "February 28, 2017, Buhangin",
-            "February 28, 2017, Bangkerohan",
-            "March 1, 2017, Jacinto",
-            "February 21, 2017, Roxas"});
             this.cbOperation.Location = new System.Drawing.Point(87, 81);
             this.cbOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbOperation.Name = "cbOperation";

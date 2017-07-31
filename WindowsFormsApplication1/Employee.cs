@@ -434,15 +434,41 @@ namespace WindowsFormsApplication1
         private string teamfname;
         private string teamlname;
         private string teammname;
+        private int count;
+        private Boolean empty = true;
         private void button17_Click(object sender, EventArgs e)
         {
+                Boolean done = false;
+                
+                    if (teamfname == "")
+                    {
+                        MessageBox.Show("Please select an employee");
+                    }
+                    else 
+                    {
+                        if (done == false)
+                        {
+                            this.newTeam.Rows.Add(teamempid, teamfname, teammname, teamlname);
+                            foreach (DataGridViewRow row in allEmployees.SelectedRows)
+                            {
+                                allEmployees.Rows.RemoveAt(row.Index);
+                            }
+                            newTeam.Columns["Lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                            newTeam.Columns["Firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                            newTeam.Columns["Middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            this.newTeam.Rows.Add(teamfname, teammname, teamlname);
+                            count = count + 1;
+                            empty = false;
 
-            newTeam.Columns["Lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            newTeam.Columns["Firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            newTeam.Columns["Middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-           
+                            teamfname = "";
+                            teamlname = "";
+                            teammname = "";
+                            teamempid = 0;
+                        }
+                    }
+                
+            
+
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -470,6 +496,8 @@ namespace WindowsFormsApplication1
             team.Visible = false;
             newOperation.Visible = true;
             Operations.Visible = false;
+
+            refreshTeamsDisp();
 
         }
 
@@ -504,73 +532,51 @@ namespace WindowsFormsApplication1
 
            
         }
+        int teamIDs;
         public void addOperation()
         {
-            if (opDateTime.Text != "" || cbLocation.Text != "")
+            if (tbOpDate.Text != "Date (yyyy-mm-dd)" && cbLocation.Text != "Location" && tbStart.Text != "Time Start (hh:mm)" && tbEnd.Text != "Time End (hh:mm)")
             {
-                string date = "";
-                string datetimes = opDateTime.Value.ToString();
-                string time = "";
-                if (datetimes.Substring(1) == "/" && datetimes.Substring(3) == "/") //m-d-yyy
+                string date = tbOpDate.Text;
+                string time = tbStart.Text + "-" + tbEnd.Text;
+
+                if (date[4] == '-' && date[7] == '-' && time[2] == ':' && time[8] == ':')
                 {
-                    date = datetimes.Substring(4, 8) + "-" + datetimes.Substring(0) + "-" + datetimes.Substring(2);
-                    time = datetimes.Substring(9, 19);
+                    try
+                    {
+                        conn.Open();
+                        MySqlCommand comm = new MySqlCommand("SELECT locationID FROM location WHERE description = '" + cbLocation.Text + "'", conn);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                        DataTable dt = new DataTable();
+                        adp.Fill(dt);
+
+                        int locID = int.Parse(dt.Rows[0]["locationID"].ToString());
+
+                        comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, time) VALUES ('" + teamIDs + "' , '" + locID + "', '" + date + "', '" + time + "')", conn);
+                        comm.ExecuteNonQuery();
+
+                        MessageBox.Show("Operation Added Successfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                        conn.Close();
+                    }
                 }
-                else if (datetimes.Substring(2) == "/" && datetimes.Substring(4) == "/") //mm-d-yyy
+                else if (date[4] != '-' || date[7] != '-')
                 {
-                    date = datetimes.Substring(5, 9) + "-" + datetimes.Substring(0, 2) + "-" + datetimes.Substring(3);
-                    time = datetimes.Substring(10, 20);
+                    MessageBox.Show("Please Enter Correct Format for Date");
                 }
-                else if (datetimes.Substring(1) == "/" && datetimes.Substring(4) == "/") //m-dd-yyy
+                else if (time[2] != ':' || time[8] != ':')
                 {
-                    date = datetimes.Substring(5, 9) + "-" + datetimes.Substring(0) + "-" + datetimes.Substring(2, 4);
-                    time = datetimes.Substring(10, 20);
-                }
-                else if (datetimes.Substring(2) == "/" && datetimes.Substring(5) == "/") //mm-dd-yyyy
-                {
-                    date = datetimes.Substring(4, 8) + "-" + datetimes.Substring(0) + "-" + datetimes.Substring(2);
-                    time = datetimes.Substring(11, 21);
-                }
-                
-                
-                try
-                {
-                    conn.Open();
-                    MySqlCommand comm = new MySqlCommand("SELECT locationID FROM location WHERE description = '" + cbLocation.Text + "'", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-
-                    int locID = int.Parse(dt.Rows[0]["locationID"].ToString());
-
-                    comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, time) VALUES ('" + opDateTime.Text + "' , '" + locID + "', '" + date + "')" , conn);
-                    comm.ExecuteNonQuery();
-
-                    
-                    adp = new MySqlDataAdapter(comm);
-                    dt = new DataTable();
-                    adp.Fill(dt);
-
-                    dgAddOperations.DataSource = dt;
-
-                    dgAddOperations.Columns["operationID"].Visible = false;
-                    dgAddOperations.Columns["teamID"].HeaderText = "Team";
-                    dgAddOperations.Columns["locationID"].HeaderText = "Location";
-                    dgAddOperations.Columns["date"].HeaderText = "Date";
-                    dgAddOperations.Columns["time"].HeaderText = "Time";
-                    dgAddOperations.Columns["teamID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dgAddOperations.Columns["locationID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dgAddOperations.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dgAddOperations.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                    MessageBox.Show("Operation Added Successfully");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    conn.Close();
+                    MessageBox.Show("Please Enter Correct Format for Time");
                 }
             }
+            else 
+            {
+                MessageBox.Show("Please Enter Required Fields");
+            }
+           
         }
 
         public int editemployeeID;
@@ -754,6 +760,10 @@ namespace WindowsFormsApplication1
         {
             addOperation();
             refreshOperation();
+
+            tbOpDate.Text = "Date (yyyy-mm-dd)";
+            tbStart.Text = "Time Start (hh:mm)";
+            tbEnd.Text = "Time End (hh:mm)";
         }
 
 
@@ -914,10 +924,12 @@ namespace WindowsFormsApplication1
         
         private void allEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            teamempid = int.Parse(allEmployees.Rows[e.RowIndex].Cells["personID"].Value.ToString());
-            teamfname = allEmployees.Rows[e.RowIndex].Cells["firstname"].Value.ToString();
-            teamlname = allEmployees.Rows[e.RowIndex].Cells["lastname"].Value.ToString();
-            teammname = allEmployees.Rows[e.RowIndex].Cells["middlename"].Value.ToString();
+            if (int.Parse(allEmployees.Rows[e.RowIndex].Cells["personID"].Value.ToString()) != 0) {
+                teamempid = int.Parse(allEmployees.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+                teamfname = allEmployees.Rows[e.RowIndex].Cells["firstname"].Value.ToString();
+                teamlname = allEmployees.Rows[e.RowIndex].Cells["lastname"].Value.ToString();
+                teammname = allEmployees.Rows[e.RowIndex].Cells["middlename"].Value.ToString();
+            }
         }
 
         private void team_Paint(object sender, PaintEventArgs e)
@@ -927,7 +939,35 @@ namespace WindowsFormsApplication1
 
         private void button18_Click(object sender, EventArgs e)
         {
+            empty = true;
+            int teamid = 0;
+            int empID = 0;
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
 
+                    teamid = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) + 1;
+
+                    for (int i = 0; i < newTeam.Rows.Count - 1; i++)
+                    {
+                        empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
+                        MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
+                        commm.ExecuteNonQuery();
+                    }
+                MessageBox.Show("New Operation Team recorded successfully");
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show(ex.ToString());
+                }
+
+                
         }
 
         private void tbbday_TextChanged(object sender, EventArgs e)
@@ -972,6 +1012,83 @@ namespace WindowsFormsApplication1
                 tblname.Text = "";
                 tblname.ForeColor = Color.Black;
             }
+        }
+
+        private void refreshTeamsDisp()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                int len = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString());
+               
+                for (int i = 2; i < len; i++)
+                {
+                    string names = "";
+                    MySqlCommand commm = new MySqlCommand("SELECT firstname, lastname FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON employee.employeeID = operationteam.employeeID WHERE operationteam.teamID = " + i, conn);
+                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                    DataTable dta = new DataTable();
+                    adpt.Fill(dta);
+
+                    for (int j = 0; j < dta.Rows.Count; j++)
+                    {
+                        string fname = dta.Rows[j]["firstname"].ToString();
+                        string f = fname.Substring(0, 1);
+                        string lname = dta.Rows[j]["lastname"].ToString();
+                        string nameconc = lname + ", " + f + ".";
+                        if (names == "") { names = names + nameconc; }
+                        else { names = names + " / " + nameconc; }
+                    }
+                    dgvTeams.Rows.Add(i.ToString(), names);
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void dgvTeams_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            teamIDs = int.Parse(dgvTeams.Rows[e.RowIndex].Cells["teamID"].Value.ToString());
+        }
+
+        private void tbOpDate_Click(object sender, EventArgs e)
+        {
+            tbOpDate.Text = "";
+            tbOpDate.ForeColor = Color.Black;
+        }
+
+        private void tbStart_Click(object sender, EventArgs e)
+        {
+            tbStart.Text = "";
+            tbStart.ForeColor = Color.Black;
+        }
+
+        private void tbEnd_Click(object sender, EventArgs e)
+        {
+            tbEnd.Text = "";
+            tbEnd.ForeColor = Color.Black;
+        }
+
+        private void tbOpDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newOperation_VisibleChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
