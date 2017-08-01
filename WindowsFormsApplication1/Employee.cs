@@ -487,7 +487,7 @@ namespace WindowsFormsApplication1
 
             refreshTeam();
         }
-
+        Boolean doneclick = false;
         private void button15_Click(object sender, EventArgs e)
         {
             button15.BackColor = Color.FromArgb(253, 208, 174);
@@ -496,8 +496,11 @@ namespace WindowsFormsApplication1
             team.Visible = false;
             newOperation.Visible = true;
             Operations.Visible = false;
-
-            refreshTeamsDisp();
+            if (doneclick == false)
+            {
+                refreshTeamsDisp();
+            }
+            doneclick = true;
 
         }
 
@@ -917,8 +920,9 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex)
             {
-                conn.Close();
+                
                 MessageBox.Show(ex.ToString());
+                conn.Close();
             }
         }
         
@@ -1016,41 +1020,44 @@ namespace WindowsFormsApplication1
 
         private void refreshTeamsDisp()
         {
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-
-                int len = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString());
-               
-                for (int i = 2; i < len; i++)
+            
+                try
                 {
-                    string names = "";
-                    MySqlCommand commm = new MySqlCommand("SELECT firstname, lastname FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON employee.employeeID = operationteam.employeeID WHERE operationteam.teamID = " + i, conn);
-                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
-                    DataTable dta = new DataTable();
-                    adpt.Fill(dta);
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
 
-                    for (int j = 0; j < dta.Rows.Count; j++)
+                    int len = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString());
+
+                    for (int i = 2; i < len + 1; i++)
                     {
-                        string fname = dta.Rows[j]["firstname"].ToString();
-                        string f = fname.Substring(0, 1);
-                        string lname = dta.Rows[j]["lastname"].ToString();
-                        string nameconc = lname + ", " + f + ".";
-                        if (names == "") { names = names + nameconc; }
-                        else { names = names + " / " + nameconc; }
+                        string names = "";
+                        MySqlCommand commm = new MySqlCommand("SELECT firstname, lastname FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON employee.employeeID = operationteam.employeeID WHERE operationteam.teamID = " + i, conn);
+                        MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                        DataTable dta = new DataTable();
+                        adpt.Fill(dta);
+
+                        for (int j = 0; j < dta.Rows.Count; j++)
+                        {
+                            string fname = dta.Rows[j]["firstname"].ToString();
+                            string f = fname.Substring(0, 1);
+                            string lname = dta.Rows[j]["lastname"].ToString();
+                            string nameconc = lname + ", " + f + ".";
+                            if (names == "") { names = names + nameconc; }
+                            else { names = names + " / " + nameconc; }
+                        }
+                        dgvTeams.Rows.Add(i.ToString(), names);
                     }
-                    dgvTeams.Rows.Add(i.ToString(), names);
+                    conn.Close();
                 }
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show(ex.ToString());
+                }
+             
         }
 
         private void dgvTeams_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1083,7 +1090,8 @@ namespace WindowsFormsApplication1
 
         private void newOperation_VisibleChanged(object sender, EventArgs e)
         {
-            
+            doneclick = false;
+            dgvTeams.Rows.Clear();
         }
 
         private void label8_Click(object sender, EventArgs e)
