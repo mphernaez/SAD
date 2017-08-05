@@ -76,13 +76,25 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please Enter Required Fields");
             }
+            
             employ.refreshEdit();
+            
         }
 
         private void EditEmp_Load(object sender, EventArgs e)
         {
             
             
+        }
+
+        private void EditEmp_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

@@ -27,9 +27,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             use = Color.FromArgb(253, 208, 174);
             conn = new MySqlConnection("Server=localhost;Database=impounddogpound;Uid=root;Pwd=root;");
-            label2.Text = DateTime.Now.ToString("HH:mm tt");
-            label3.Text = DateTime.Now.ToString("MMMM d, yyyy");
-            button5.BackColor = use;
+            
 
         }
 
@@ -40,17 +38,16 @@ namespace WindowsFormsApplication1
             if (inv.Visible)
                 inv.trig();
             emp.back = this;
+            ep.BackColor = Color.FromArgb(251, 162, 80);
+            ip.BackColor = Color.FromArgb(2, 170, 145);
+            dp.BackColor = Color.FromArgb(2, 170, 145);
+            hp.BackColor = Color.FromArgb(2, 170, 145);
             emp.adminID = this.adminID;
             emp.Show();
             emp.TopMost = true;
-            button2.BackColor = use;
-            button3.BackColor = Color.Transparent;
-            button4.BackColor = Color.Transparent;
-            button1.BackColor = Color.Transparent;
-            button5.BackColor = Color.Transparent;
-            selectButton.Visible = true;
+
             int i = 453;//360, 5
-            selectButton.Location = new Point(i, 5);
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -62,15 +59,14 @@ namespace WindowsFormsApplication1
             inv.back = this;
             inv.adminID = this.adminID;
             inv.Show();
+            ip.BackColor = Color.FromArgb(251, 162, 80);
+            ep.BackColor = Color.FromArgb(2, 170, 145);
+            dp.BackColor = Color.FromArgb(2, 170, 145);
+            hp.BackColor = Color.FromArgb(2, 170, 145);
             inv.TopMost = true;
-            button2.BackColor = Color.Transparent;
-            button3.BackColor = use;
-            button4.BackColor = Color.Transparent;
-            button1.BackColor = Color.Transparent;
-            button5.BackColor = Color.Transparent;
-            selectButton.Visible = true;
+
             int i = 541;//360, 5
-            selectButton.Location = new Point(i, 5);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -81,14 +77,13 @@ namespace WindowsFormsApplication1
             dog.adminID = this.adminID;
             dog.Show();
             dog.TopMost = true;
-            button2.BackColor = Color.Transparent;
-            button3.BackColor = Color.Transparent;
-            button4.BackColor = Color.Transparent;
-            button5.BackColor = Color.Transparent;
-            button1.BackColor = use;
-            selectButton.Visible = true;
+            dp.BackColor = Color.FromArgb(251, 162, 80);
+            ip.BackColor = Color.FromArgb(2, 170, 145);
+            ep.BackColor = Color.FromArgb(2, 170, 145);
+            hp.BackColor = Color.FromArgb(2, 170, 145);
+
             int i = 360;//360, 5
-            selectButton.Location = new Point(i, 5);
+
             
         }
 
@@ -97,11 +92,9 @@ namespace WindowsFormsApplication1
             button1.BackColor = Color.Transparent;
             button2.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
-
-            selectButton.Visible = true;
-            button4.BackColor = use;
+            pe.BackColor = Color.FromArgb(251, 162, 80);
             int i = 615;
-            selectButton.Location = new Point(i, 10);
+
 
             Login log = new Login();
             log.hom = this;
@@ -116,6 +109,7 @@ namespace WindowsFormsApplication1
         private void Home_Load(object sender, EventArgs e)
         {
             namelabel.Text = dispUser;
+//this.TopMost = true;
             this.Top = 150;
         }
 
@@ -135,13 +129,12 @@ namespace WindowsFormsApplication1
             emp.trig();
             inv.trig();
             int i = 261;
-            selectButton.Visible = true;
-            button5.BackColor = use;
-            button2.BackColor = Color.Transparent;
-            button3.BackColor = Color.Transparent;
-            button4.BackColor = Color.Transparent;
-            button1.BackColor = Color.Transparent;
-            selectButton.Location = new Point(i, 10);
+            hp.BackColor = Color.FromArgb(251, 162, 80);
+            ip.BackColor = Color.FromArgb(2, 170, 145);
+            ep.BackColor = Color.FromArgb(2, 170, 145);
+            dp.BackColor = Color.FromArgb(2, 170, 145);
+
+
         }
 
         private void label2_Click(object sender, EventArgs e)

@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -76,6 +76,18 @@
     </Compile>
     <Compile Include="Edit.Designer.cs">
       <DependentUpon>Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Viewemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Viewemp.Designer.cs">
+      <DependentUpon>Viewemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Viewdog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Viewdog.Designer.cs">
+      <DependentUpon>Viewdog.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory.cs">
       <SubType>Form</SubType>
@@ -123,6 +135,9 @@
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Viewdog.resx">
+      <DependentUpon>Viewdog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory.resx">
       <DependentUpon>Inventory.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +159,9 @@
     </Compile>
     <EmbeddedResource Include="Report_impoundClaim.resx">
       <DependentUpon>Report_impoundClaim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewemp.resx">
+      <DependentUpon>Viewemp.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="impounddogpoundDataSet.xsc">
       <DependentUpon>impounddogpoundDataSet.xsd</DependentUpon>
@@ -316,6 +334,12 @@
     <None Include="Resources\exitt.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\cancel-music.png" />
+    <None Include="Resources\triangle-512.png" />
+    <None Include="Resources\home1.png" />
+    <None Include="Resources\paw-print-.png" />
+    <None Include="Resources\user-silhouette.png" />
+    <None Include="Resources\open-exit-door.png" />
     <None Include="Resources\hide.png" />
     <None Include="Resources\view %281%29.png" />
     <None Include="Resources\man-user.png" />
@@ -323,6 +347,7 @@
     <None Include="Resources\catch2.png" />
     <None Include="Resources\catch.png" />
     <None Include="Resources\ad.png" />
+    <None Include="Resources\archive-black-box.png" />
     <Content Include="Resources\back.png" />
     <None Include="Resources\items.png" />
     <None Include="Resources\rep.png" />

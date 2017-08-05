@@ -69,6 +69,7 @@ namespace WindowsFormsApplication1
                 if(flag == false)
                 {
                     label2.Text = "Incorrect username and/or password";
+                    label2.ForeColor = Color.White;
                 }
                 conn.Close();
             }

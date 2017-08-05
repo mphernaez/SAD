@@ -34,7 +34,7 @@ namespace WindowsFormsApplication1
         private void AddDog_Load(object sender, EventArgs e)
         {
             
-            this.Top = 278;
+            this.Top = 318;
         }
         public void trig()
         {
@@ -52,16 +52,14 @@ namespace WindowsFormsApplication1
             searchDog.Visible = false;
             adoptDog.Visible = false;
             euthanizeDog.Visible = false;
+            a.Visible = true;
+            s.Visible = false;
+            ad.Visible = false;
+            et.Visible = false;
+            r.Visible = false;
+            
 
-            button1.BackColor = use;
-            button2.BackColor = Color.Transparent;
-            button3.BackColor = Color.Transparent;
-            button5.BackColor = Color.Transparent;
-            button6.BackColor = Color.Transparent;
-            button8.BackColor = Color.Transparent;
-            selectButton.Visible = true;
-            //-24, 3
-            selectButton.Location = new Point(i, 8);
+
 
             addOperationsItems();
         }
@@ -73,15 +71,12 @@ namespace WindowsFormsApplication1
             addDog.Visible = false;
             adoptDog.Visible = false;
             euthanizeDog.Visible = false;
+            a.Visible = false;
+            s.Visible = true;
+            ad.Visible = false;
+            et.Visible = false;
+            r.Visible = false;
 
-            button2.BackColor = use;
-            button1.BackColor = Color.Transparent;
-            button3.BackColor = Color.Transparent;
-            button5.BackColor = Color.Transparent;
-            button6.BackColor = Color.Transparent;
-            button8.BackColor = Color.Transparent;
-            selectButton.Visible = true;
-            selectButton.Location = new Point(i, 76);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -267,12 +262,10 @@ namespace WindowsFormsApplication1
             searchDog.Visible = true;
             addDog.Visible = false;
 
-            button2.BackColor = use;
+
             button1.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
-            selectButton.Visible = true;
-            int i = 98;
-            selectButton.Location = new Point(13, i);
+
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -282,15 +275,12 @@ namespace WindowsFormsApplication1
             addDog.Visible = false;
             adoptDog.Visible = true;
             euthanizeDog.Visible = false;
+            a.Visible = false;
+            s.Visible = false;
+            ad.Visible = true;
+            et.Visible = false;
+            r.Visible = false;
 
-            button5.BackColor = use;
-            button1.BackColor = Color.Transparent;
-            button2.BackColor = Color.Transparent;
-            button6.BackColor = Color.Transparent;
-            button8.BackColor = Color.Transparent;
-            selectButton.Visible = true;
-            
-            selectButton.Location = new Point(i, 146);
 
             refreshAdoption();
         }
@@ -413,15 +403,11 @@ namespace WindowsFormsApplication1
             addDog.Visible = false;
             adoptDog.Visible = false;
             euthanizeDog.Visible = true;
-            button6.BackColor = use;
-            button2.BackColor = Color.Transparent;
-            button1.BackColor = Color.Transparent;
-            button3.BackColor = Color.Transparent;
-            button5.BackColor = Color.Transparent;
-            button8.BackColor = Color.Transparent;
-            selectButton.Visible = true;
-
-            selectButton.Location = new Point(i, 221);
+            a.Visible = false;
+            s.Visible = false;
+            ad.Visible = false;
+            et.Visible = true;
+            r.Visible = false;
 
             refreshArchive();
             
@@ -514,7 +500,7 @@ namespace WindowsFormsApplication1
 
         private void button6_MouseHover(object sender, EventArgs e)
         {
-            button6.BackColor = Color.FromArgb(253, 208, 174);
+         
         }
 
         private void addDog_Paint(object sender, PaintEventArgs e)
@@ -543,15 +529,12 @@ namespace WindowsFormsApplication1
             addDog.Visible = false;
             adoptDog.Visible = false;
             euthanizeDog.Visible = false;
-            button6.BackColor = Color.Transparent;
-            button2.BackColor = Color.Transparent;
-            button1.BackColor = Color.Transparent;
-            button3.BackColor = Color.Transparent;
-            button5.BackColor = Color.Transparent;
-            button8.BackColor = use;
-            selectButton.Visible = true;
+            a.Visible = false;
+            s.Visible = false;
+            ad.Visible = false;
+            et.Visible = false;
+            r.Visible = true;
 
-            selectButton.Location = new Point(i, 296);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -617,6 +600,28 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            Viewdog view = new Viewdog();
+            view.Show();
+            view.TopMost = true;
         }
     }
 }

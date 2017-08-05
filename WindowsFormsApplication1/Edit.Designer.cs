@@ -39,9 +39,11 @@
             this.tbaddress = new System.Windows.Forms.TextBox();
             this.cbgender = new System.Windows.Forms.ComboBox();
             this.Edit = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Edit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbbday
@@ -85,6 +87,7 @@
             // 
             // tbfname
             // 
+            this.tbfname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbfname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbfname.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.tbfname.Location = new System.Drawing.Point(311, 72);
@@ -95,6 +98,7 @@
             // 
             // tbmname
             // 
+            this.tbmname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbmname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbmname.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.tbmname.Location = new System.Drawing.Point(156, 72);
@@ -105,6 +109,7 @@
             // 
             // tblname
             // 
+            this.tblname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tblname.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.tblname.Location = new System.Drawing.Point(9, 72);
@@ -115,6 +120,7 @@
             // 
             // tbcontactNumber
             // 
+            this.tbcontactNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbcontactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbcontactNumber.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.tbcontactNumber.Location = new System.Drawing.Point(9, 222);
@@ -125,10 +131,9 @@
             // 
             // button4
             // 
-            this.button4.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.button;
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(162)))), ((int)(((byte)(80)))));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
@@ -137,11 +142,12 @@
             this.button4.Size = new System.Drawing.Size(109, 38);
             this.button4.TabIndex = 50;
             this.button4.Text = "Save";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // tbaddress
             // 
+            this.tbaddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbaddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbaddress.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.tbaddress.Location = new System.Drawing.Point(9, 148);
@@ -167,7 +173,8 @@
             // 
             // Edit
             // 
-            this.Edit.BackColor = System.Drawing.Color.White;
+            this.Edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
+            this.Edit.Controls.Add(this.pictureBox1);
             this.Edit.Controls.Add(this.label2);
             this.Edit.Controls.Add(this.label1);
             this.Edit.Controls.Add(this.tbbday);
@@ -180,21 +187,10 @@
             this.Edit.Controls.Add(this.button4);
             this.Edit.Controls.Add(this.tbmname);
             this.Edit.Controls.Add(this.tbcontactNumber);
-            this.Edit.Location = new System.Drawing.Point(12, 43);
+            this.Edit.Location = new System.Drawing.Point(12, 12);
             this.Edit.Name = "Edit";
             this.Edit.Size = new System.Drawing.Size(470, 321);
             this.Edit.TabIndex = 51;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(155, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 27);
-            this.label1.TabIndex = 51;
-            this.label1.Text = "Edit Employee";
             // 
             // label2
             // 
@@ -208,21 +204,46 @@
             this.label2.TabIndex = 52;
             this.label2.Text = "yyyy-mm-dd";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label1.Location = new System.Drawing.Point(169, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(150, 25);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "Edit Employee";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(441, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 23);
+            this.pictureBox1.TabIndex = 53;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // EditEmp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bg;
-            this.ClientSize = new System.Drawing.Size(494, 433);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.ClientSize = new System.Drawing.Size(494, 347);
             this.Controls.Add(this.Edit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EditEmp";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditEmp_FormClosing);
             this.Load += new System.EventHandler(this.EditEmp_Load);
             this.Edit.ResumeLayout(false);
             this.Edit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -241,5 +262,6 @@
         public System.Windows.Forms.TextBox tbaddress;
         public System.Windows.Forms.ComboBox cbgender;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
