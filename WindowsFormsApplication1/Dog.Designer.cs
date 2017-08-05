@@ -128,7 +128,7 @@
             this.addDog.Controls.Add(this.tbDesc);
             this.addDog.Controls.Add(this.cbGender);
             this.addDog.Controls.Add(this.label2);
-            this.addDog.Location = new System.Drawing.Point(27, 85);
+            this.addDog.Location = new System.Drawing.Point(27, 84);
             this.addDog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addDog.Name = "addDog";
             this.addDog.Size = new System.Drawing.Size(967, 430);
@@ -300,7 +300,7 @@
             this.searchDog.Controls.Add(this.tbBreedSearch);
             this.searchDog.Controls.Add(this.label3);
             this.searchDog.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchDog.Location = new System.Drawing.Point(26, 84);
+            this.searchDog.Location = new System.Drawing.Point(27, 84);
             this.searchDog.Name = "searchDog";
             this.searchDog.Size = new System.Drawing.Size(967, 431);
             this.searchDog.TabIndex = 11;
@@ -478,7 +478,7 @@
             this.euthanizeDog.Controls.Add(this.dgvArchive);
             this.euthanizeDog.Controls.Add(this.label11);
             this.euthanizeDog.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.euthanizeDog.Location = new System.Drawing.Point(27, 85);
+            this.euthanizeDog.Location = new System.Drawing.Point(27, 84);
             this.euthanizeDog.Name = "euthanizeDog";
             this.euthanizeDog.Size = new System.Drawing.Size(967, 431);
             this.euthanizeDog.TabIndex = 37;

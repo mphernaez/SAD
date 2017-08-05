@@ -31,7 +31,9 @@ namespace WindowsFormsApplication1
         }
         private void button1_Click(object sender, EventArgs e)
         {
-
+            a.Visible = true;
+            i.Visible = false;
+            r.Visible = false;
             newitem.Visible = true;
             inv.Visible = false;
             
@@ -40,6 +42,9 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            a.Visible = false;
+            i.Visible = false;
+            r.Visible = true;
             inv.Visible = false;
             newitem.Visible = false;
 
@@ -52,6 +57,9 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
+            a.Visible = false;
+            i.Visible = true;
+            r.Visible = false;
             inv.Visible = true;
             newitem.Visible = false;
 

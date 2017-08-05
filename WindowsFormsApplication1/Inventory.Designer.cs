@@ -55,6 +55,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.button4 = new System.Windows.Forms.Button();
+            this.i = new System.Windows.Forms.PictureBox();
+            this.a = new System.Windows.Forms.PictureBox();
+            this.r = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.inv.SuspendLayout();
             this.Sin.SuspendLayout();
@@ -65,14 +68,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.newitem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.i)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(162)))), ((int)(((byte)(80)))));
+            this.panel1.Controls.Add(this.i);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.a);
             this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.r);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1022, 84);
@@ -406,6 +415,42 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // i
+            // 
+            this.i.BackColor = System.Drawing.Color.Transparent;
+            this.i.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.i.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.i.Location = new System.Drawing.Point(831, 71);
+            this.i.Name = "i";
+            this.i.Size = new System.Drawing.Size(28, 31);
+            this.i.TabIndex = 55;
+            this.i.TabStop = false;
+            this.i.Visible = false;
+            // 
+            // a
+            // 
+            this.a.BackColor = System.Drawing.Color.Transparent;
+            this.a.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.a.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.a.Location = new System.Drawing.Point(769, 71);
+            this.a.Name = "a";
+            this.a.Size = new System.Drawing.Size(28, 31);
+            this.a.TabIndex = 54;
+            this.a.TabStop = false;
+            this.a.Visible = false;
+            // 
+            // r
+            // 
+            this.r.BackColor = System.Drawing.Color.Transparent;
+            this.r.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.r.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.r.Location = new System.Drawing.Point(891, 71);
+            this.r.Name = "r";
+            this.r.Size = new System.Drawing.Size(28, 31);
+            this.r.TabIndex = 56;
+            this.r.TabStop = false;
+            this.r.Visible = false;
+            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,6 +482,9 @@
             this.newitem.ResumeLayout(false);
             this.newitem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.i)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.a)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.r)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -470,5 +518,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.PictureBox i;
+        private System.Windows.Forms.PictureBox a;
+        private System.Windows.Forms.PictureBox r;
     }
 }

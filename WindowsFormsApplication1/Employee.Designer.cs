@@ -175,7 +175,7 @@
             this.act.Controls.Add(this.label11);
             this.act.Controls.Add(this.dgvActivities);
             this.act.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.act.Location = new System.Drawing.Point(26, 84);
+            this.act.Location = new System.Drawing.Point(27, 84);
             this.act.Name = "act";
             this.act.Size = new System.Drawing.Size(967, 431);
             this.act.TabIndex = 45;
@@ -218,7 +218,7 @@
             this.attendance.Controls.Add(this.label3);
             this.attendance.Controls.Add(this.dgvAttendanceOut);
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attendance.Location = new System.Drawing.Point(30, 84);
+            this.attendance.Location = new System.Drawing.Point(27, 84);
             this.attendance.Name = "attendance";
             this.attendance.Size = new System.Drawing.Size(967, 431);
             this.attendance.TabIndex = 44;
@@ -339,7 +339,7 @@
             this.admin.Controls.Add(this.dgvAdmin);
             this.admin.Controls.Add(this.label12);
             this.admin.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.admin.Location = new System.Drawing.Point(29, 84);
+            this.admin.Location = new System.Drawing.Point(27, 84);
             this.admin.Name = "admin";
             this.admin.Size = new System.Drawing.Size(967, 431);
             this.admin.TabIndex = 46;
@@ -680,7 +680,7 @@
             this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.team);
             this.DogCatchingOperation.Controls.Add(this.Operations);
-            this.DogCatchingOperation.Location = new System.Drawing.Point(26, 84);
+            this.DogCatchingOperation.Location = new System.Drawing.Point(27, 84);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
             this.DogCatchingOperation.Size = new System.Drawing.Size(967, 431);
