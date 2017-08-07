@@ -30,6 +30,7 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bgworkerEmployee = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -55,6 +56,14 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // bgworkerEmployee
+            // 
+            this.bgworkerEmployee.WorkerReportsProgress = true;
+            this.bgworkerEmployee.WorkerSupportsCancellation = true;
+            this.bgworkerEmployee.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerEmployee_DoWork);
+            this.bgworkerEmployee.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgworkerEmployee_ProgressChanged);
+            this.bgworkerEmployee.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerEmployee_RunWorkerCompleted);
+            // 
             // Viewemp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -77,5 +86,6 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.ComponentModel.BackgroundWorker bgworkerEmployee;
     }
 }
