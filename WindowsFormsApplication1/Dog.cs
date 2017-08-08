@@ -538,10 +538,15 @@ namespace WindowsFormsApplication1
 
             string dogExcel;
             Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkBook = new Excel.Workbook();
-            Excel.Worksheet xlWorkSheet = new Excel.Worksheet();
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            dogExcel = "C:\\Desktop\\DogReport.xlxs";
 
-          
+            xlWorkBook = xlApp.Workbooks.Open("dogExcel", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            xlApp.Visible = true;
+
+            xlWorkBook.Close();
+
 
 
         }
@@ -634,6 +639,11 @@ namespace WindowsFormsApplication1
         }
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
         }
