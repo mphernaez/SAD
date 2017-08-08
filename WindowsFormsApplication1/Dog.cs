@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Excel = Microsoft.Office.Interop.Excel
 
 namespace WindowsFormsApplication1
 {
@@ -534,6 +535,14 @@ namespace WindowsFormsApplication1
             ad.Visible = false;
             et.Visible = false;
             r.Visible = true;
+
+            string dogExcel;
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook xlWorkBook = new Excel.Workbook();
+            Excel.Worksheet xlWorkSheet = new Excel.Worksheet();
+
+          
+
 
         }
 
