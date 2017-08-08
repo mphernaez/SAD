@@ -199,7 +199,8 @@ namespace WindowsFormsApplication1
 
         private void tbbday_Click(object sender, EventArgs e)
         {
-            tbbday.Clear();
+            tbbdayday.Clear();
+            tbbdayyear.Clear();
         }
 
         private void tbaddress_Click(object sender, EventArgs e)
@@ -681,11 +682,13 @@ namespace WindowsFormsApplication1
             }
             string address = tbaddress.Text;
             string contact = tbcontactNumber.Text;
-            string bday = tbbday.Text;
+
+
+            string bday =  tbbdayyear.Text + '-' + (cbbdaymonth.SelectedIndex + 1).ToString() + '-' + tbbdayday.Text;
             string position = cbposition.Text;
             string status = cbstatus.Text;
 
-            if (tblname.Text != "Lastname" && tbmname.Text != "Middlename" && tbfname.Text != "Firstname" && tbaddress.Text != "Address" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && cbposition.Text != "Position" && cbstatus.Text != "Status" && tbbday.Text != "Birthday (mm-dd-yyyy)")
+            if (tblname.Text != "Lastname" && tbmname.Text != "Middlename" && tbfname.Text != "Firstname" && tbaddress.Text != "Address" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && cbposition.Text != "Position" && cbstatus.Text != "Status" && tbbdayday.Text != "Day" && tbbdayyear.Text != "Year" && cbbdaymonth.Text != "Month")
             {
                 try
                 {
@@ -715,10 +718,6 @@ namespace WindowsFormsApplication1
                     conn.Close();
                 }
             }
-            else if (tbbday.Text.Substring(4) != "-" || tbbday.Text.Substring(7) != "-")
-            {
-                MessageBox.Show("Please use valid birthdate format");
-            }
             else
             {
                 MessageBox.Show("Please Enter Required Fields");
@@ -732,12 +731,14 @@ namespace WindowsFormsApplication1
             tbmname.Text = "Middlename";
             tbfname.Text = "Firstname";
             cbgender.Text = "Gender";
-            tbbday.Text = "Birthday (yyyy-mm-dd)";
+            tbbdayday.Text = "Day";
+            tbbdayyear.Text = "Year";
+            cbbdaymonth.Text = "Month";
             tbaddress.Text = "Address";
             tbcontactNumber.Text = "Contact Number";
             cbposition.Text = "Position";
             cbstatus.Text = "Status";
-            cbstatus.ForeColor = cbposition.ForeColor = tbcontactNumber.ForeColor = tbaddress.ForeColor = tbbday.ForeColor = cbgender.ForeColor = tbfname.ForeColor = tblname.ForeColor = tbmname.ForeColor = Color.Gray;
+            cbstatus.ForeColor = cbposition.ForeColor = tbcontactNumber.ForeColor = tbaddress.ForeColor = tbbdayday.ForeColor = tbbdayyear.ForeColor = cbbdaymonth.ForeColor = cbgender.ForeColor = tbfname.ForeColor = tblname.ForeColor = tbmname.ForeColor = Color.Gray;
         }
         private void button20_Click(object sender, EventArgs e)
         {
@@ -826,11 +827,7 @@ namespace WindowsFormsApplication1
 
         private void tbbday_MouseClick(object sender, MouseEventArgs e)
         {
-            if (tbbday.Text == "Birthday (yyyy-mm-dd)")
-            {
-                tbbday.Text = "";
-                tbbday.ForeColor = Color.Black;
-            }
+            
         }
 
         private void tbaddress_MouseClick(object sender, MouseEventArgs e)
@@ -1094,6 +1091,11 @@ namespace WindowsFormsApplication1
             Viewemp view = new Viewemp();
             view.Show();
             view.TopMost = true;
+        }
+
+        private void cbbdaymonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
