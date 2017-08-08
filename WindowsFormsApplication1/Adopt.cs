@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
 
-                breed.Text = dt.Rows[0]["breed"].ToString();
+                breeds.Text = dt.Rows[0]["breed"].ToString();
                 color.Text = dt.Rows[0]["color"].ToString();
                 size.Text = dt.Rows[0]["size"].ToString();
                 gender.Text = dt.Rows[0]["gender"].ToString();
