@@ -28,51 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvViewEmp = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvViewEmp)).BeginInit();
+            this.bgworkerEmployee = new System.ComponentModel.BackgroundWorker();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvViewEmp
+            // dataGridView1
             // 
-            this.dgvViewEmp.AllowUserToAddRows = false;
-            this.dgvViewEmp.AllowUserToDeleteRows = false;
-            this.dgvViewEmp.AllowUserToResizeRows = false;
-            this.dgvViewEmp.BackgroundColor = System.Drawing.Color.White;
-            this.dgvViewEmp.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvViewEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewEmp.Location = new System.Drawing.Point(13, 46);
-            this.dgvViewEmp.Name = "dgvViewEmp";
-            this.dgvViewEmp.ReadOnly = true;
-            this.dgvViewEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvViewEmp.Size = new System.Drawing.Size(1105, 597);
-            this.dgvViewEmp.TabIndex = 10;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(13, 46);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(565, 307);
+            this.dataGridView1.TabIndex = 10;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(1094, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(554, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 23);
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // bgworkerEmployee
+            // 
+            this.bgworkerEmployee.WorkerReportsProgress = true;
+            this.bgworkerEmployee.WorkerSupportsCancellation = true;
+            this.bgworkerEmployee.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerEmployee_DoWork);
+            this.bgworkerEmployee.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgworkerEmployee_ProgressChanged);
+            this.bgworkerEmployee.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerEmployee_RunWorkerCompleted);
+            // 
             // Viewemp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1130, 655);
+            this.ClientSize = new System.Drawing.Size(590, 365);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.dgvViewEmp);
+            this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Viewemp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Viewemp_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvViewEmp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -81,6 +85,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dgvViewEmp;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.ComponentModel.BackgroundWorker bgworkerEmployee;
     }
 }
