@@ -151,11 +151,11 @@
             this.dgvActivities.BackgroundColor = System.Drawing.Color.White;
             this.dgvActivities.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvActivities.Location = new System.Drawing.Point(114, 91);
+            this.dgvActivities.Location = new System.Drawing.Point(15, 114);
             this.dgvActivities.Name = "dgvActivities";
             this.dgvActivities.ReadOnly = true;
             this.dgvActivities.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvActivities.Size = new System.Drawing.Size(756, 255);
+            this.dgvActivities.Size = new System.Drawing.Size(982, 319);
             this.dgvActivities.TabIndex = 20;
             // 
             // label11
@@ -180,7 +180,7 @@
             this.act.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.act.Location = new System.Drawing.Point(27, 84);
             this.act.Name = "act";
-            this.act.Size = new System.Drawing.Size(967, 431);
+            this.act.Size = new System.Drawing.Size(1016, 543);
             this.act.TabIndex = 45;
             this.act.Visible = false;
             // 
@@ -188,7 +188,7 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(556, 363);
+            this.comboBox1.Location = new System.Drawing.Point(595, 452);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(165, 28);
             this.comboBox1.TabIndex = 26;
@@ -202,9 +202,9 @@
             this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDone.ForeColor = System.Drawing.Color.White;
-            this.btnDone.Location = new System.Drawing.Point(727, 358);
+            this.btnDone.Location = new System.Drawing.Point(766, 452);
             this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(143, 38);
+            this.btnDone.Size = new System.Drawing.Size(231, 38);
             this.btnDone.TabIndex = 25;
             this.btnDone.Text = "Add";
             this.btnDone.UseVisualStyleBackColor = false;
@@ -223,7 +223,7 @@
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.attendance.Location = new System.Drawing.Point(27, 84);
             this.attendance.Name = "attendance";
-            this.attendance.Size = new System.Drawing.Size(967, 431);
+            this.attendance.Size = new System.Drawing.Size(1016, 543);
             this.attendance.TabIndex = 44;
             this.attendance.Visible = false;
             // 
@@ -232,7 +232,7 @@
             this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
             this.button10.FlatAppearance.BorderSize = 0;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.White;
             this.button10.Location = new System.Drawing.Point(318, 90);
             this.button10.Name = "button10";
@@ -247,7 +247,7 @@
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(219, 90);
             this.button3.Name = "button3";
@@ -331,11 +331,11 @@
             this.dgvAdmin.BackgroundColor = System.Drawing.Color.White;
             this.dgvAdmin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAdmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAdmin.Location = new System.Drawing.Point(111, 81);
+            this.dgvAdmin.Location = new System.Drawing.Point(15, 114);
             this.dgvAdmin.Name = "dgvAdmin";
             this.dgvAdmin.ReadOnly = true;
             this.dgvAdmin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAdmin.Size = new System.Drawing.Size(756, 255);
+            this.dgvAdmin.Size = new System.Drawing.Size(982, 319);
             this.dgvAdmin.TabIndex = 20;
             // 
             // label12
@@ -360,14 +360,14 @@
             this.admin.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.admin.Location = new System.Drawing.Point(27, 84);
             this.admin.Name = "admin";
-            this.admin.Size = new System.Drawing.Size(967, 431);
+            this.admin.Size = new System.Drawing.Size(1016, 543);
             this.admin.TabIndex = 46;
             this.admin.Visible = false;
             // 
             // tbPassword
             // 
             this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(588, 369);
+            this.tbPassword.Location = new System.Drawing.Point(208, 452);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(164, 26);
             this.tbPassword.TabIndex = 25;
@@ -377,7 +377,7 @@
             // tbUsername
             // 
             this.tbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsername.Location = new System.Drawing.Point(419, 370);
+            this.tbUsername.Location = new System.Drawing.Point(38, 452);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(164, 26);
             this.tbUsername.TabIndex = 24;
@@ -393,9 +393,9 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(758, 364);
+            this.button9.Location = new System.Drawing.Point(784, 436);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(109, 38);
+            this.button9.Size = new System.Drawing.Size(213, 38);
             this.button9.TabIndex = 23;
             this.button9.Text = "Set as Admin";
             this.button9.UseVisualStyleBackColor = false;
@@ -413,7 +413,7 @@
             this.addEmployee.Location = new System.Drawing.Point(27, 84);
             this.addEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addEmployee.Name = "addEmployee";
-            this.addEmployee.Size = new System.Drawing.Size(967, 431);
+            this.addEmployee.Size = new System.Drawing.Size(1016, 543);
             this.addEmployee.TabIndex = 43;
             this.addEmployee.Visible = false;
             // 
@@ -736,7 +736,7 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1022, 84);
+            this.panel1.Size = new System.Drawing.Size(1070, 84);
             this.panel1.TabIndex = 42;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
@@ -926,13 +926,13 @@
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.button16);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.team);
             this.DogCatchingOperation.Controls.Add(this.Operations);
+            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Location = new System.Drawing.Point(27, 84);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
-            this.DogCatchingOperation.Size = new System.Drawing.Size(967, 431);
+            this.DogCatchingOperation.Size = new System.Drawing.Size(1016, 543);
             this.DogCatchingOperation.TabIndex = 44;
             this.DogCatchingOperation.Visible = false;
             // 
@@ -942,7 +942,7 @@
             this.button21.FlatAppearance.BorderSize = 0;
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button21.ForeColor = System.Drawing.Color.White;
-            this.button21.Location = new System.Drawing.Point(418, 104);
+            this.button21.Location = new System.Drawing.Point(215, 82);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(100, 32);
             this.button21.TabIndex = 39;
@@ -956,7 +956,7 @@
             this.button15.FlatAppearance.BorderSize = 0;
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button15.ForeColor = System.Drawing.Color.White;
-            this.button15.Location = new System.Drawing.Point(318, 104);
+            this.button15.Location = new System.Drawing.Point(115, 82);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(100, 32);
             this.button15.TabIndex = 32;
@@ -970,7 +970,7 @@
             this.button16.FlatAppearance.BorderSize = 0;
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.Location = new System.Drawing.Point(219, 104);
+            this.button16.Location = new System.Drawing.Point(16, 82);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(100, 32);
             this.button16.TabIndex = 31;
@@ -999,9 +999,9 @@
             this.newOperation.Controls.Add(this.label7);
             this.newOperation.Controls.Add(this.button20);
             this.newOperation.Controls.Add(this.cbLocation);
-            this.newOperation.Location = new System.Drawing.Point(218, 135);
+            this.newOperation.Location = new System.Drawing.Point(15, 114);
             this.newOperation.Name = "newOperation";
-            this.newOperation.Size = new System.Drawing.Size(567, 266);
+            this.newOperation.Size = new System.Drawing.Size(982, 402);
             this.newOperation.TabIndex = 38;
             this.newOperation.Visible = false;
             this.newOperation.VisibleChanged += new System.EventHandler(this.newOperation_VisibleChanged);
@@ -1010,7 +1010,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(394, 90);
+            this.label9.Location = new System.Drawing.Point(706, 133);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(145, 13);
             this.label9.TabIndex = 46;
@@ -1020,7 +1020,7 @@
             // 
             this.tbEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbEnd.ForeColor = System.Drawing.Color.Gray;
-            this.tbEnd.Location = new System.Drawing.Point(396, 141);
+            this.tbEnd.Location = new System.Drawing.Point(709, 196);
             this.tbEnd.Name = "tbEnd";
             this.tbEnd.Size = new System.Drawing.Size(141, 26);
             this.tbEnd.TabIndex = 44;
@@ -1032,7 +1032,7 @@
             // 
             this.tbStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbStart.ForeColor = System.Drawing.Color.Gray;
-            this.tbStart.Location = new System.Drawing.Point(396, 107);
+            this.tbStart.Location = new System.Drawing.Point(709, 154);
             this.tbStart.Name = "tbStart";
             this.tbStart.Size = new System.Drawing.Size(141, 26);
             this.tbStart.TabIndex = 43;
@@ -1044,7 +1044,7 @@
             // 
             this.tbOpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbOpDate.ForeColor = System.Drawing.Color.Gray;
-            this.tbOpDate.Location = new System.Drawing.Point(377, 58);
+            this.tbOpDate.Location = new System.Drawing.Point(690, 89);
             this.tbOpDate.Name = "tbOpDate";
             this.tbOpDate.Size = new System.Drawing.Size(175, 26);
             this.tbOpDate.TabIndex = 42;
@@ -1064,7 +1064,7 @@
             this.dgvTeams.Location = new System.Drawing.Point(18, 46);
             this.dgvTeams.Name = "dgvTeams";
             this.dgvTeams.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTeams.Size = new System.Drawing.Size(346, 203);
+            this.dgvTeams.Size = new System.Drawing.Size(522, 336);
             this.dgvTeams.TabIndex = 41;
             this.dgvTeams.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeams_CellClick);
             // 
@@ -1097,9 +1097,9 @@
             this.button20.FlatAppearance.BorderSize = 0;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button20.ForeColor = System.Drawing.Color.White;
-            this.button20.Location = new System.Drawing.Point(452, 217);
+            this.button20.Location = new System.Drawing.Point(692, 284);
             this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(100, 32);
+            this.button20.Size = new System.Drawing.Size(199, 32);
             this.button20.TabIndex = 39;
             this.button20.Text = "Add";
             this.button20.UseVisualStyleBackColor = false;
@@ -1292,9 +1292,9 @@
             "Wangan",
             "Wilfredo Aquino",
             "Wines"});
-            this.cbLocation.Location = new System.Drawing.Point(378, 176);
+            this.cbLocation.Location = new System.Drawing.Point(669, 236);
             this.cbLocation.Name = "cbLocation";
-            this.cbLocation.Size = new System.Drawing.Size(175, 28);
+            this.cbLocation.Size = new System.Drawing.Size(229, 28);
             this.cbLocation.TabIndex = 2;
             this.cbLocation.Text = "Location";
             // 
@@ -1307,9 +1307,9 @@
             this.team.Controls.Add(this.button17);
             this.team.Controls.Add(this.newTeam);
             this.team.Controls.Add(this.allEmployees);
-            this.team.Location = new System.Drawing.Point(216, 136);
+            this.team.Location = new System.Drawing.Point(15, 114);
             this.team.Name = "team";
-            this.team.Size = new System.Drawing.Size(567, 266);
+            this.team.Size = new System.Drawing.Size(982, 402);
             this.team.TabIndex = 33;
             this.team.Visible = false;
             this.team.Paint += new System.Windows.Forms.PaintEventHandler(this.team_Paint);
@@ -1319,7 +1319,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label6.Location = new System.Drawing.Point(72, 3);
+            this.label6.Location = new System.Drawing.Point(18, 5);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 25);
             this.label6.TabIndex = 37;
@@ -1330,7 +1330,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label5.Location = new System.Drawing.Point(376, 3);
+            this.label5.Location = new System.Drawing.Point(547, 5);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(114, 25);
             this.label5.TabIndex = 34;
@@ -1342,7 +1342,7 @@
             this.button19.FlatAppearance.BorderSize = 0;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button19.ForeColor = System.Drawing.Color.White;
-            this.button19.Location = new System.Drawing.Point(261, 113);
+            this.button19.Location = new System.Drawing.Point(462, 176);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(45, 32);
             this.button19.TabIndex = 36;
@@ -1355,9 +1355,9 @@
             this.button18.FlatAppearance.BorderSize = 0;
             this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button18.ForeColor = System.Drawing.Color.White;
-            this.button18.Location = new System.Drawing.Point(455, 222);
+            this.button18.Location = new System.Drawing.Point(404, 350);
             this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(100, 32);
+            this.button18.Size = new System.Drawing.Size(158, 32);
             this.button18.TabIndex = 35;
             this.button18.Text = "Add Team";
             this.button18.UseVisualStyleBackColor = false;
@@ -1369,7 +1369,7 @@
             this.button17.FlatAppearance.BorderSize = 0;
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button17.ForeColor = System.Drawing.Color.White;
-            this.button17.Location = new System.Drawing.Point(261, 76);
+            this.button17.Location = new System.Drawing.Point(462, 132);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(45, 32);
             this.button17.TabIndex = 34;
@@ -1387,11 +1387,11 @@
             this.Firstname,
             this.Lastname,
             this.Middlename});
-            this.newTeam.Location = new System.Drawing.Point(312, 31);
+            this.newTeam.Location = new System.Drawing.Point(547, 37);
             this.newTeam.Name = "newTeam";
             this.newTeam.ReadOnly = true;
             this.newTeam.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.newTeam.Size = new System.Drawing.Size(243, 187);
+            this.newTeam.Size = new System.Drawing.Size(417, 279);
             this.newTeam.TabIndex = 1;
             this.newTeam.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -1425,29 +1425,29 @@
             this.allEmployees.BackgroundColor = System.Drawing.Color.White;
             this.allEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.allEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.allEmployees.Location = new System.Drawing.Point(12, 31);
+            this.allEmployees.Location = new System.Drawing.Point(18, 37);
             this.allEmployees.Name = "allEmployees";
             this.allEmployees.ReadOnly = true;
             this.allEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.allEmployees.Size = new System.Drawing.Size(243, 187);
+            this.allEmployees.Size = new System.Drawing.Size(417, 279);
             this.allEmployees.TabIndex = 0;
             this.allEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.allEmployees_CellClick);
             // 
             // Operations
             // 
             this.Operations.Controls.Add(this.panel5);
-            this.Operations.Location = new System.Drawing.Point(219, 133);
+            this.Operations.Location = new System.Drawing.Point(15, 114);
             this.Operations.Name = "Operations";
-            this.Operations.Size = new System.Drawing.Size(567, 266);
+            this.Operations.Size = new System.Drawing.Size(982, 402);
             this.Operations.TabIndex = 41;
             this.Operations.Visible = false;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(20, 13);
+            this.panel5.Location = new System.Drawing.Point(12, 13);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(527, 238);
+            this.panel5.Size = new System.Drawing.Size(952, 372);
             this.panel5.TabIndex = 1;
             // 
             // impounddogpoundDataSet1
@@ -1466,14 +1466,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScrollMargin = new System.Drawing.Size(1, 1);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(1020, 542);
+            this.ClientSize = new System.Drawing.Size(1070, 651);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.attendance);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.admin);
             this.Controls.Add(this.act);
+            this.Controls.Add(this.attendance);
+            this.Controls.Add(this.addEmployee);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;

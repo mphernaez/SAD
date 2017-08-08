@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.i = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.a = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.r = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.inv = new System.Windows.Forms.Panel();
@@ -55,10 +58,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.button4 = new System.Windows.Forms.Button();
-            this.i = new System.Windows.Forms.PictureBox();
-            this.a = new System.Windows.Forms.PictureBox();
-            this.r = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.i)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             this.inv.SuspendLayout();
             this.Sin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -68,9 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.newitem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.i)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -84,8 +84,20 @@
             this.panel1.Controls.Add(this.r);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1022, 84);
+            this.panel1.Size = new System.Drawing.Size(1071, 84);
             this.panel1.TabIndex = 48;
+            // 
+            // i
+            // 
+            this.i.BackColor = System.Drawing.Color.Transparent;
+            this.i.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.i.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.i.Location = new System.Drawing.Point(831, 71);
+            this.i.Name = "i";
+            this.i.Size = new System.Drawing.Size(28, 31);
+            this.i.TabIndex = 55;
+            this.i.TabStop = false;
+            this.i.Visible = false;
             // 
             // button3
             // 
@@ -121,6 +133,18 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // a
+            // 
+            this.a.BackColor = System.Drawing.Color.Transparent;
+            this.a.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.a.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.a.Location = new System.Drawing.Point(769, 71);
+            this.a.Name = "a";
+            this.a.Size = new System.Drawing.Size(28, 31);
+            this.a.TabIndex = 54;
+            this.a.TabStop = false;
+            this.a.Visible = false;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
@@ -136,6 +160,18 @@
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // r
+            // 
+            this.r.BackColor = System.Drawing.Color.Transparent;
+            this.r.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.r.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.r.Location = new System.Drawing.Point(891, 71);
+            this.r.Name = "r";
+            this.r.Size = new System.Drawing.Size(28, 31);
+            this.r.TabIndex = 56;
+            this.r.TabStop = false;
+            this.r.Visible = false;
             // 
             // label1
             // 
@@ -167,7 +203,7 @@
             this.inv.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inv.Location = new System.Drawing.Point(27, 84);
             this.inv.Name = "inv";
-            this.inv.Size = new System.Drawing.Size(967, 431);
+            this.inv.Size = new System.Drawing.Size(1016, 543);
             this.inv.TabIndex = 52;
             this.inv.Visible = false;
             // 
@@ -347,8 +383,8 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(365, 90);
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(280, 164);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(209, 26);
             this.textBox1.TabIndex = 12;
@@ -356,11 +392,11 @@
             // 
             // textBox2
             // 
-            this.textBox2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(365, 122);
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(505, 161);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(209, 126);
+            this.textBox2.Size = new System.Drawing.Size(209, 107);
             this.textBox2.TabIndex = 13;
             this.textBox2.Text = "Description";
             // 
@@ -376,7 +412,7 @@
             this.newitem.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newitem.Location = new System.Drawing.Point(27, 84);
             this.newitem.Name = "newitem";
-            this.newitem.Size = new System.Drawing.Size(967, 431);
+            this.newitem.Size = new System.Drawing.Size(1016, 543);
             this.newitem.TabIndex = 53;
             this.newitem.Visible = false;
             // 
@@ -385,18 +421,18 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label3.Location = new System.Drawing.Point(352, 258);
+            this.label3.Location = new System.Drawing.Point(277, 210);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 18);
+            this.label3.Size = new System.Drawing.Size(127, 18);
             this.label3.TabIndex = 42;
-            this.label3.Text = "Min. Quantity";
+            this.label3.Text = "Minimum Quantity";
             // 
             // numericUpDown3
             // 
             this.numericUpDown3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown3.Location = new System.Drawing.Point(452, 254);
+            this.numericUpDown3.Location = new System.Drawing.Point(280, 242);
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(122, 26);
+            this.numericUpDown3.Size = new System.Drawing.Size(209, 26);
             this.numericUpDown3.TabIndex = 25;
             // 
             // button4
@@ -407,60 +443,24 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(365, 299);
+            this.button4.Location = new System.Drawing.Point(416, 306);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(209, 38);
+            this.button4.Size = new System.Drawing.Size(219, 38);
             this.button4.TabIndex = 24;
             this.button4.Text = "Add";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // i
-            // 
-            this.i.BackColor = System.Drawing.Color.Transparent;
-            this.i.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
-            this.i.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.i.Location = new System.Drawing.Point(831, 71);
-            this.i.Name = "i";
-            this.i.Size = new System.Drawing.Size(28, 31);
-            this.i.TabIndex = 55;
-            this.i.TabStop = false;
-            this.i.Visible = false;
-            // 
-            // a
-            // 
-            this.a.BackColor = System.Drawing.Color.Transparent;
-            this.a.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
-            this.a.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.a.Location = new System.Drawing.Point(769, 71);
-            this.a.Name = "a";
-            this.a.Size = new System.Drawing.Size(28, 31);
-            this.a.TabIndex = 54;
-            this.a.TabStop = false;
-            this.a.Visible = false;
-            // 
-            // r
-            // 
-            this.r.BackColor = System.Drawing.Color.Transparent;
-            this.r.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
-            this.r.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.r.Location = new System.Drawing.Point(891, 71);
-            this.r.Name = "r";
-            this.r.Size = new System.Drawing.Size(28, 31);
-            this.r.TabIndex = 56;
-            this.r.TabStop = false;
-            this.r.Visible = false;
             // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(1020, 542);
+            this.ClientSize = new System.Drawing.Size(1070, 651);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.inv);
             this.Controls.Add(this.newitem);
+            this.Controls.Add(this.inv);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(27, 84);
             this.MaximizeBox = false;
@@ -469,6 +469,9 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Inventory_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.i)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.a)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.r)).EndInit();
             this.inv.ResumeLayout(false);
             this.inv.PerformLayout();
             this.Sin.ResumeLayout(false);
@@ -482,9 +485,6 @@
             this.newitem.ResumeLayout(false);
             this.newitem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.i)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.a)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.r)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

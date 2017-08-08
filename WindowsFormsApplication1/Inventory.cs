@@ -52,7 +52,7 @@ namespace WindowsFormsApplication1
 
         private void Inventory_Load(object sender, EventArgs e)
         {
-            this.Top = 318;
+            this.Top = 262;
         }
 
         private void button3_Click(object sender, EventArgs e)

@@ -155,7 +155,7 @@ namespace WindowsFormsApplication1
 
         private void Employee_Load(object sender, EventArgs e)
         {
-            this.Top = 318;
+            this.Top = 262;
 
         }
 

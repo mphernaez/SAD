@@ -34,7 +34,7 @@ namespace WindowsFormsApplication1
         private void AddDog_Load(object sender, EventArgs e)
         {
             
-            this.Top = 318;
+            this.Top = 262;
         }
         public void trig()
         {
@@ -622,6 +622,11 @@ namespace WindowsFormsApplication1
             Viewdog view = new Viewdog();
             view.Show();
             view.TopMost = true;
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
         }
     }
 }
