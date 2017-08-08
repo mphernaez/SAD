@@ -64,23 +64,25 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tbname.Text != "" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "")
+            if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text !="" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "")
             {
-                String name = tbname.Text;
+                String fname = tbfname.Text;
+                String mname = tbmname.Text;
+                String lname = tblname.Text;
                 String add = tbadd.Text;
                 String idnum = tbIDnum.Text;
                 String idtype = tbIDtype.Text;
                 String num = tbnumber.Text;
                 String date = DateTime.Now.ToString("yyyy-mm-dd");
                 int vaccine = 0;
-                if (checkbox.Checked)
-                {
-                    vaccine = 1;
-                }
+                //if (checkbox.Checked)
+                //{
+                //    vaccine = 1;
+                //}
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO client(name, contactNumber, validIDtype, validIDnumber, address) VALUES('" + name + "', '" + num + "', '" + idtype + "', '" + idnum + "', '" + add + "')", conn);
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO client(name, contactNumber, validIDtype, validIDnumber, address) VALUES('" + fname + "', '" + num + "', '" + idtype + "', '" + idnum + "', '" + add + "')", conn);
                     comm.ExecuteNonQuery();
 
                     comm = new MySqlCommand("SELECT clientID FROM client WHERE validIDType = '" + idtype + "' AND validIDNumber = '" + idnum + "'", conn);

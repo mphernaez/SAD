@@ -40,15 +40,17 @@
             this.inv = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
+            this.Sout = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Sin = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button6 = new System.Windows.Forms.Button();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvAdoption = new System.Windows.Forms.DataGridView();
-            this.Sout = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -56,21 +58,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.button4 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.i)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             this.inv.SuspendLayout();
+            this.Sout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.Sin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).BeginInit();
-            this.Sout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.newitem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -237,6 +237,66 @@
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
+            // Sout
+            // 
+            this.Sout.Controls.Add(this.button7);
+            this.Sout.Controls.Add(this.numericUpDown1);
+            this.Sout.Controls.Add(this.label5);
+            this.Sout.Controls.Add(this.dataGridView1);
+            this.Sout.Location = new System.Drawing.Point(156, 141);
+            this.Sout.Name = "Sout";
+            this.Sout.Size = new System.Drawing.Size(698, 378);
+            this.Sout.TabIndex = 44;
+            this.Sout.Visible = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(373, 321);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(109, 38);
+            this.button7.TabIndex = 46;
+            this.button7.Text = "OK";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Trebuchet MS", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(229, 326);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(138, 32);
+            this.numericUpDown1.TabIndex = 45;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label5.Location = new System.Drawing.Point(17, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 31);
+            this.label5.TabIndex = 41;
+            this.label5.Text = "Items";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(20, 59);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(661, 248);
+            this.dataGridView1.TabIndex = 20;
+            // 
             // Sin
             // 
             this.Sin.Controls.Add(this.checkBox1);
@@ -309,43 +369,6 @@
             this.dgvAdoption.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAdoption.Size = new System.Drawing.Size(661, 248);
             this.dgvAdoption.TabIndex = 20;
-            // 
-            // Sout
-            // 
-            this.Sout.Controls.Add(this.button7);
-            this.Sout.Controls.Add(this.numericUpDown1);
-            this.Sout.Controls.Add(this.label5);
-            this.Sout.Controls.Add(this.dataGridView1);
-            this.Sout.Location = new System.Drawing.Point(156, 141);
-            this.Sout.Name = "Sout";
-            this.Sout.Size = new System.Drawing.Size(698, 378);
-            this.Sout.TabIndex = 44;
-            this.Sout.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label5.Location = new System.Drawing.Point(17, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 31);
-            this.label5.TabIndex = 41;
-            this.label5.Text = "Items";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(661, 248);
-            this.dataGridView1.TabIndex = 20;
             // 
             // label2
             // 
@@ -428,29 +451,6 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(373, 321);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(109, 38);
-            this.button7.TabIndex = 46;
-            this.button7.Text = "OK";
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Trebuchet MS", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(229, 326);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(138, 32);
-            this.numericUpDown1.TabIndex = 45;
-            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -474,17 +474,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.r)).EndInit();
             this.inv.ResumeLayout(false);
             this.inv.PerformLayout();
+            this.Sout.ResumeLayout(false);
+            this.Sout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.Sin.ResumeLayout(false);
             this.Sin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).EndInit();
-            this.Sout.ResumeLayout(false);
-            this.Sout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.newitem.ResumeLayout(false);
             this.newitem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
