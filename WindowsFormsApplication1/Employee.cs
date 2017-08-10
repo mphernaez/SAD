@@ -70,10 +70,25 @@ namespace WindowsFormsApplication1
         {
 
         }
-
+        int actemployeeID = 0;
         private void btnDone_Click(object sender, EventArgs e)
         {
-
+            string datez = DateTime.Now.ToString("yyyy-MM-dd");
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("INSERT INTO activity(employeeID, type, date) VALUES(" + actemployeeID + ", '" + tbAct.Text + "', '" + datez + "')", conn);
+                comm.ExecuteNonQuery();
+                MessageBox.Show("Activity recorded successfully!");
+                conn.Close();
+                refreshActivity();
+                tbAct.Text = "Type of Activity";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -129,8 +144,6 @@ namespace WindowsFormsApplication1
             ad.Visible = false;
             o.Visible = false;
             r.Visible = false;
-
-
 
             refreshActivity();
         }
@@ -497,6 +510,8 @@ namespace WindowsFormsApplication1
             team.Visible = false;
             newOperation.Visible = false;
             Operations.Visible = true;
+
+            refreshOperationsView();
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -1099,6 +1114,51 @@ namespace WindowsFormsApplication1
         }
 
         private void dgvAttendanceIn_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void refreshOperationsView()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT description, date, time FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvOperationsView.DataSource = dt;
+
+                dgvOperationsView.Columns["description"].HeaderText = "Location";
+                dgvOperationsView.Columns["date"].HeaderText = "Date";
+                dgvOperationsView.Columns["time"].HeaderText = "Time";
+
+                conn.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            tbAct.Text = "";
+        }
+        
+        private void dgvActivities_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            actemployeeID = int.Parse(dgvActivities.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+        }
+
+        private void attendance_Paint(object sender, PaintEventArgs e)
         {
 
         }
