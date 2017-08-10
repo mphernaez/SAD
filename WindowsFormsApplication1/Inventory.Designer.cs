@@ -198,14 +198,15 @@
             this.inv.Controls.Add(this.button5);
             this.inv.Controls.Add(this.button16);
             this.inv.Controls.Add(this.label12);
-            this.inv.Controls.Add(this.Sout);
             this.inv.Controls.Add(this.Sin);
+            this.inv.Controls.Add(this.Sout);
             this.inv.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inv.Location = new System.Drawing.Point(27, 84);
             this.inv.Name = "inv";
             this.inv.Size = new System.Drawing.Size(1016, 543);
             this.inv.TabIndex = 52;
             this.inv.Visible = false;
+            this.inv.Paint += new System.Windows.Forms.PaintEventHandler(this.inv_Paint);
             // 
             // button5
             // 
@@ -214,7 +215,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(281, 100);
+            this.button5.Location = new System.Drawing.Point(139, 72);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(124, 42);
             this.button5.TabIndex = 33;
@@ -229,7 +230,7 @@
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.Location = new System.Drawing.Point(156, 100);
+            this.button16.Location = new System.Drawing.Point(15, 72);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(124, 42);
             this.button16.TabIndex = 32;
@@ -243,9 +244,9 @@
             this.Sout.Controls.Add(this.numericUpDown1);
             this.Sout.Controls.Add(this.label5);
             this.Sout.Controls.Add(this.dataGridView1);
-            this.Sout.Location = new System.Drawing.Point(156, 141);
+            this.Sout.Location = new System.Drawing.Point(15, 114);
             this.Sout.Name = "Sout";
-            this.Sout.Size = new System.Drawing.Size(698, 378);
+            this.Sout.Size = new System.Drawing.Size(982, 319);
             this.Sout.TabIndex = 44;
             this.Sout.Visible = false;
             // 
@@ -290,11 +291,11 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 59);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 53);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(661, 248);
+            this.dataGridView1.Size = new System.Drawing.Size(952, 250);
             this.dataGridView1.TabIndex = 20;
             // 
             // Sin
@@ -304,9 +305,9 @@
             this.Sin.Controls.Add(this.numericUpDown2);
             this.Sin.Controls.Add(this.label7);
             this.Sin.Controls.Add(this.dgvAdoption);
-            this.Sin.Location = new System.Drawing.Point(159, 141);
+            this.Sin.Location = new System.Drawing.Point(15, 114);
             this.Sin.Name = "Sin";
-            this.Sin.Size = new System.Drawing.Size(698, 378);
+            this.Sin.Size = new System.Drawing.Size(982, 319);
             this.Sin.TabIndex = 34;
             this.Sin.Visible = false;
             // 
@@ -363,11 +364,11 @@
             this.dgvAdoption.BackgroundColor = System.Drawing.Color.White;
             this.dgvAdoption.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAdoption.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAdoption.Location = new System.Drawing.Point(22, 55);
+            this.dgvAdoption.Location = new System.Drawing.Point(12, 50);
             this.dgvAdoption.Name = "dgvAdoption";
             this.dgvAdoption.ReadOnly = true;
             this.dgvAdoption.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAdoption.Size = new System.Drawing.Size(661, 248);
+            this.dgvAdoption.Size = new System.Drawing.Size(952, 250);
             this.dgvAdoption.TabIndex = 20;
             // 
             // label2

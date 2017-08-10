@@ -85,5 +85,10 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void inv_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

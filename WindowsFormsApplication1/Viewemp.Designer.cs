@@ -42,7 +42,7 @@
             this.dgvViewEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvViewEmp.Location = new System.Drawing.Point(13, 46);
             this.dgvViewEmp.Name = "dgvViewEmp";
-            this.dgvViewEmp.Size = new System.Drawing.Size(565, 307);
+            this.dgvViewEmp.Size = new System.Drawing.Size(1105, 597);
             this.dgvViewEmp.TabIndex = 10;
             this.dgvViewEmp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -50,7 +50,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(554, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(1094, 17);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 23);
             this.pictureBox1.TabIndex = 11;
@@ -69,7 +69,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 365);
+            this.ClientSize = new System.Drawing.Size(1130, 655);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvViewEmp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

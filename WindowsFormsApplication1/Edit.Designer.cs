@@ -39,9 +39,9 @@
             this.tbaddress = new System.Windows.Forms.TextBox();
             this.cbgender = new System.Windows.Forms.ComboBox();
             this.Edit = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Edit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -50,9 +50,10 @@
             // 
             this.tbbday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbbday.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.tbbday.Location = new System.Drawing.Point(155, 109);
+            this.tbbday.Location = new System.Drawing.Point(258, 191);
+            this.tbbday.Multiline = true;
             this.tbbday.Name = "tbbday";
-            this.tbbday.Size = new System.Drawing.Size(308, 26);
+            this.tbbday.Size = new System.Drawing.Size(374, 38);
             this.tbbday.TabIndex = 45;
             this.tbbday.Text = "Birthday (yyyy-mm-dd)";
             // 
@@ -64,9 +65,9 @@
             this.cbstatus.Items.AddRange(new object[] {
             "Active",
             "Incative"});
-            this.cbstatus.Location = new System.Drawing.Point(311, 222);
+            this.cbstatus.Location = new System.Drawing.Point(454, 364);
             this.cbstatus.Name = "cbstatus";
-            this.cbstatus.Size = new System.Drawing.Size(152, 28);
+            this.cbstatus.Size = new System.Drawing.Size(178, 28);
             this.cbstatus.TabIndex = 49;
             this.cbstatus.Text = "Status";
             // 
@@ -79,9 +80,9 @@
             "Catcher",
             "Admin",
             "Janitor"});
-            this.cbposition.Location = new System.Drawing.Point(156, 222);
+            this.cbposition.Location = new System.Drawing.Point(258, 364);
             this.cbposition.Name = "cbposition";
-            this.cbposition.Size = new System.Drawing.Size(149, 28);
+            this.cbposition.Size = new System.Drawing.Size(190, 28);
             this.cbposition.TabIndex = 48;
             this.cbposition.Text = "Position";
             // 
@@ -90,9 +91,10 @@
             this.tbfname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbfname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbfname.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.tbfname.Location = new System.Drawing.Point(311, 72);
+            this.tbfname.Location = new System.Drawing.Point(454, 139);
+            this.tbfname.Multiline = true;
             this.tbfname.Name = "tbfname";
-            this.tbfname.Size = new System.Drawing.Size(152, 26);
+            this.tbfname.Size = new System.Drawing.Size(178, 36);
             this.tbfname.TabIndex = 43;
             this.tbfname.Text = "Firstname";
             // 
@@ -101,9 +103,10 @@
             this.tbmname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbmname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbmname.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.tbmname.Location = new System.Drawing.Point(156, 72);
+            this.tbmname.Location = new System.Drawing.Point(258, 139);
+            this.tbmname.Multiline = true;
             this.tbmname.Name = "tbmname";
-            this.tbmname.Size = new System.Drawing.Size(149, 26);
+            this.tbmname.Size = new System.Drawing.Size(190, 36);
             this.tbmname.TabIndex = 42;
             this.tbmname.Text = "Middlename";
             // 
@@ -112,9 +115,10 @@
             this.tblname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tblname.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.tblname.Location = new System.Drawing.Point(9, 72);
+            this.tblname.Location = new System.Drawing.Point(62, 139);
+            this.tblname.Multiline = true;
             this.tblname.Name = "tblname";
-            this.tblname.Size = new System.Drawing.Size(141, 26);
+            this.tblname.Size = new System.Drawing.Size(190, 36);
             this.tblname.TabIndex = 41;
             this.tblname.Text = "Lastname";
             // 
@@ -123,9 +127,9 @@
             this.tbcontactNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbcontactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbcontactNumber.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.tbcontactNumber.Location = new System.Drawing.Point(9, 222);
+            this.tbcontactNumber.Location = new System.Drawing.Point(61, 366);
             this.tbcontactNumber.Name = "tbcontactNumber";
-            this.tbcontactNumber.Size = new System.Drawing.Size(141, 26);
+            this.tbcontactNumber.Size = new System.Drawing.Size(191, 26);
             this.tbcontactNumber.TabIndex = 47;
             this.tbcontactNumber.Text = "Contact Number";
             // 
@@ -137,9 +141,9 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(354, 268);
+            this.button4.Location = new System.Drawing.Point(444, 408);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(109, 38);
+            this.button4.Size = new System.Drawing.Size(188, 38);
             this.button4.TabIndex = 50;
             this.button4.Text = "Save";
             this.button4.UseVisualStyleBackColor = false;
@@ -150,10 +154,10 @@
             this.tbaddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbaddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbaddress.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.tbaddress.Location = new System.Drawing.Point(9, 148);
+            this.tbaddress.Location = new System.Drawing.Point(61, 235);
             this.tbaddress.Multiline = true;
             this.tbaddress.Name = "tbaddress";
-            this.tbaddress.Size = new System.Drawing.Size(454, 63);
+            this.tbaddress.Size = new System.Drawing.Size(571, 123);
             this.tbaddress.TabIndex = 46;
             this.tbaddress.Text = "Address";
             // 
@@ -165,9 +169,9 @@
             this.cbgender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.cbgender.Location = new System.Drawing.Point(9, 108);
+            this.cbgender.Location = new System.Drawing.Point(62, 191);
             this.cbgender.Name = "cbgender";
-            this.cbgender.Size = new System.Drawing.Size(140, 28);
+            this.cbgender.Size = new System.Drawing.Size(176, 28);
             this.cbgender.TabIndex = 44;
             this.cbgender.Text = "Gender";
             // 
@@ -189,8 +193,19 @@
             this.Edit.Controls.Add(this.tbcontactNumber);
             this.Edit.Location = new System.Drawing.Point(12, 12);
             this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(470, 321);
+            this.Edit.Size = new System.Drawing.Size(690, 691);
             this.Edit.TabIndex = 51;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(654, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 23);
+            this.pictureBox1.TabIndex = 53;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label2
             // 
@@ -198,7 +213,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label2.Location = new System.Drawing.Point(369, 111);
+            this.label2.Location = new System.Drawing.Point(541, 194);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 20);
             this.label2.TabIndex = 52;
@@ -208,31 +223,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label1.Location = new System.Drawing.Point(169, 28);
+            this.label1.Location = new System.Drawing.Point(214, 70);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 25);
+            this.label1.Size = new System.Drawing.Size(278, 46);
             this.label1.TabIndex = 51;
             this.label1.Text = "Edit Employee";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(441, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 23);
-            this.pictureBox1.TabIndex = 53;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // EditEmp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.ClientSize = new System.Drawing.Size(494, 347);
+            this.ClientSize = new System.Drawing.Size(714, 715);
             this.Controls.Add(this.Edit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EditEmp";
