@@ -1097,6 +1097,11 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void dgvAttendanceIn_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

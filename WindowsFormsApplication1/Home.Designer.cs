@@ -41,6 +41,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.hp = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.ip.SuspendLayout();
             this.ep.SuspendLayout();
@@ -226,6 +227,18 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.LightGray;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(783, 156);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(181, 76);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Time";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,6 +246,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1070, 710);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -247,6 +261,7 @@
             this.dp.ResumeLayout(false);
             this.hp.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -265,5 +280,6 @@
         private System.Windows.Forms.Panel ep;
         private System.Windows.Forms.Panel dp;
         private System.Windows.Forms.Panel hp;
+        private System.Windows.Forms.Label label2;
     }
 }

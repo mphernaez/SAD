@@ -683,6 +683,7 @@
             this.btnDone.TabIndex = 25;
             this.btnDone.Text = "Euthanize All";
             this.btnDone.UseVisualStyleBackColor = false;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // label7
             // 
@@ -726,6 +727,7 @@
             this.dgvArchive.Size = new System.Drawing.Size(982, 319);
             this.dgvArchive.TabIndex = 20;
             this.dgvArchive.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArchive_CellClick);
+            this.dgvArchive.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArchive_CellContentClick);
             // 
             // label11
             // 
@@ -757,10 +759,10 @@
             this.ClientSize = new System.Drawing.Size(1070, 651);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.searchDog);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.addDog);
+            this.Controls.Add(this.searchDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";

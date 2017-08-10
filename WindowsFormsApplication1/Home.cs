@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+
+
 namespace WindowsFormsApplication1
 {
     
@@ -111,6 +113,16 @@ namespace WindowsFormsApplication1
             namelabel.Text = dispUser;
 //this.TopMost = true;
             this.Top = 150;
+            Timer tmr = new Timer();
+            tmr.Interval = 1000;//ticks every 1 second
+            tmr.Tick += new EventHandler(tmr_Tick);
+            tmr.Start();
+        }
+
+        private void tmr_Tick(object sender, EventArgs e)
+        {
+            label2.Text = DateTime.Now.ToString("HH:mm:ss");
+
         }
 
         private void label1_Click(object sender, EventArgs e)

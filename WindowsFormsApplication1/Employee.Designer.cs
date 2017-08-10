@@ -114,7 +114,7 @@
             this.Middlename = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allEmployees = new System.Windows.Forms.DataGridView();
             this.Operations = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.operation = new System.Windows.Forms.Panel();
             this.impounddogpoundDataSet1 = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
@@ -218,8 +218,8 @@
             this.attendance.Controls.Add(this.button3);
             this.attendance.Controls.Add(this.button7);
             this.attendance.Controls.Add(this.idSearch);
-            this.attendance.Controls.Add(this.dgvAttendanceIn);
             this.attendance.Controls.Add(this.label3);
+            this.attendance.Controls.Add(this.dgvAttendanceIn);
             this.attendance.Controls.Add(this.dgvAttendanceOut);
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.attendance.Location = new System.Drawing.Point(27, 84);
@@ -289,14 +289,15 @@
             this.dgvAttendanceIn.BackgroundColor = System.Drawing.Color.White;
             this.dgvAttendanceIn.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAttendanceIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendanceIn.Location = new System.Drawing.Point(18, 510);
+            this.dgvAttendanceIn.Location = new System.Drawing.Point(18, 120);
             this.dgvAttendanceIn.Name = "dgvAttendanceIn";
             this.dgvAttendanceIn.ReadOnly = true;
             this.dgvAttendanceIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendanceIn.Size = new System.Drawing.Size(525, 243);
+            this.dgvAttendanceIn.Size = new System.Drawing.Size(982, 316);
             this.dgvAttendanceIn.TabIndex = 20;
             this.dgvAttendanceIn.Visible = false;
             this.dgvAttendanceIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellClick);
+            this.dgvAttendanceIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceIn_CellContentClick);
             // 
             // label3
             // 
@@ -317,11 +318,11 @@
             this.dgvAttendanceOut.BackgroundColor = System.Drawing.Color.White;
             this.dgvAttendanceOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAttendanceOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendanceOut.Location = new System.Drawing.Point(15, 114);
+            this.dgvAttendanceOut.Location = new System.Drawing.Point(15, 127);
             this.dgvAttendanceOut.Name = "dgvAttendanceOut";
             this.dgvAttendanceOut.ReadOnly = true;
             this.dgvAttendanceOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendanceOut.Size = new System.Drawing.Size(982, 319);
+            this.dgvAttendanceOut.Size = new System.Drawing.Size(982, 306);
             this.dgvAttendanceOut.TabIndex = 31;
             this.dgvAttendanceOut.Visible = false;
             // 
@@ -409,8 +410,8 @@
             this.addEmployee.Controls.Add(this.button12);
             this.addEmployee.Controls.Add(this.button11);
             this.addEmployee.Controls.Add(this.label2);
-            this.addEmployee.Controls.Add(this.editPanel);
             this.addEmployee.Controls.Add(this.addPanel);
+            this.addEmployee.Controls.Add(this.editPanel);
             this.addEmployee.Location = new System.Drawing.Point(27, 84);
             this.addEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addEmployee.Name = "addEmployee";
@@ -943,9 +944,9 @@
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.button16);
             this.DogCatchingOperation.Controls.Add(this.label4);
+            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.team);
-            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Location = new System.Drawing.Point(27, 84);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -1452,20 +1453,20 @@
             // 
             // Operations
             // 
-            this.Operations.Controls.Add(this.panel5);
+            this.Operations.Controls.Add(this.operation);
             this.Operations.Location = new System.Drawing.Point(15, 114);
             this.Operations.Name = "Operations";
             this.Operations.Size = new System.Drawing.Size(982, 402);
             this.Operations.TabIndex = 41;
             this.Operations.Visible = false;
             // 
-            // panel5
+            // operation
             // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(12, 13);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(952, 372);
-            this.panel5.TabIndex = 1;
+            this.operation.BackColor = System.Drawing.Color.White;
+            this.operation.Location = new System.Drawing.Point(12, 13);
+            this.operation.Name = "operation";
+            this.operation.Size = new System.Drawing.Size(952, 372);
+            this.operation.TabIndex = 1;
             // 
             // impounddogpoundDataSet1
             // 
@@ -1486,11 +1487,11 @@
             this.ClientSize = new System.Drawing.Size(1070, 651);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.admin);
             this.Controls.Add(this.act);
             this.Controls.Add(this.attendance);
+            this.Controls.Add(this.addEmployee);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -1594,7 +1595,7 @@
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Panel newOperation;
         private System.Windows.Forms.Panel Operations;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel operation;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.ComboBox cbLocation;

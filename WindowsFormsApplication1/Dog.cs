@@ -647,5 +647,31 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+
+                MySqlCommand comm = new MySqlCommand("UPDATE dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID SET status = 'euthanized' WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND status = 'unclaimed'", conn);
+                comm.ExecuteNonQuery();
+
+
+                conn.Close();
+                refreshArchive();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+
+        private void dgvArchive_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+
+        }
     }
 }
