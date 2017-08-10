@@ -125,6 +125,7 @@ namespace WindowsFormsApplication1
             Sout.Visible = false;
             button5.BackColor = Color.FromArgb(2, 170, 145);
             button16.BackColor = Color.FromArgb(251, 162, 80) ;
+            refreshSI();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -133,6 +134,7 @@ namespace WindowsFormsApplication1
             Sout.Visible = true;
             button16.BackColor = Color.FromArgb(2, 170, 145);
             button5.BackColor = Color.FromArgb(251, 162, 80);
+            refreshSO();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -143,6 +145,8 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm = new MySqlCommand("INSERT INTO items VALUES (itemID, '"+ tbname.Text + "', '" + tbdesc.Text + "', 0, "+ nudmin.Value.ToString() + ")" , conn);
                 comm.ExecuteNonQuery();
                 MessageBox.Show("Item Added");
+                refreshSI();
+                refreshSO();
                 conn.Close();
 
             }
@@ -163,11 +167,11 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + '" + numbi.Value.ToString() + "' WHERE itemID = '" + itemID + "'", conn);
+                MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - '" + nubo.Value.ToString() + "' WHERE itemID = '" + itemID + "'", conn);
                 comm.ExecuteNonQuery();
-                MessageBox.Show(itemID.ToString());
                 MessageBox.Show("Item Updated");
                 conn.Close();
+                refreshSO();
 
             }
             catch (Exception ex)
@@ -197,11 +201,11 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + " + nubo.Value.ToString() + " WHERE itemID = " + itemID, conn);
+                MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + " + nubi.Value.ToString() + " WHERE itemID = " + itemID, conn);
                 comm.ExecuteNonQuery();
-                MessageBox.Show(nubo.Value.ToString());
                 MessageBox.Show("Item Updated");
                 conn.Close();
+                refreshSI();
 
             }
             catch (Exception ex)
@@ -209,6 +213,11 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
+        }
+
+        private void dgvin_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            itemID = int.Parse(dgvo.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
         }
     }
 }

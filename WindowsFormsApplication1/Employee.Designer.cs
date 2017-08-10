@@ -32,6 +32,7 @@
             this.dgvActivities = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.act = new System.Windows.Forms.Panel();
+            this.tbAct = new System.Windows.Forms.TextBox();
             this.btnDone = new System.Windows.Forms.Button();
             this.attendance = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
@@ -88,19 +89,20 @@
             this.button21 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.Operations = new System.Windows.Forms.Panel();
+            this.dgvOperationsView = new System.Windows.Forms.DataGridView();
             this.newOperation = new System.Windows.Forms.Panel();
+            this.dgvTeams = new System.Windows.Forms.DataGridView();
+            this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeNames = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.tbEnd = new System.Windows.Forms.TextBox();
             this.tbStart = new System.Windows.Forms.TextBox();
             this.tbOpDate = new System.Windows.Forms.TextBox();
-            this.dgvTeams = new System.Windows.Forms.DataGridView();
-            this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmployeeNames = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.button20 = new System.Windows.Forms.Button();
             this.cbLocation = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.team = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -115,8 +117,7 @@
             this.allEmployees = new System.Windows.Forms.DataGridView();
             this.impounddogpoundDataSet1 = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dgvOperationsView = new System.Windows.Forms.DataGridView();
-            this.tbAct = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
             this.act.SuspendLayout();
             this.attendance.SuspendLayout();
@@ -137,13 +138,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.ad)).BeginInit();
             this.DogCatchingOperation.SuspendLayout();
             this.Operations.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOperationsView)).BeginInit();
             this.newOperation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeams)).BeginInit();
             this.team.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOperationsView)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvActivities
@@ -176,6 +177,7 @@
             // act
             // 
             this.act.BackColor = System.Drawing.Color.White;
+            this.act.Controls.Add(this.label13);
             this.act.Controls.Add(this.tbAct);
             this.act.Controls.Add(this.btnDone);
             this.act.Controls.Add(this.label11);
@@ -186,6 +188,17 @@
             this.act.Size = new System.Drawing.Size(1016, 543);
             this.act.TabIndex = 45;
             this.act.Visible = false;
+            // 
+            // tbAct
+            // 
+            this.tbAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbAct.Location = new System.Drawing.Point(531, 458);
+            this.tbAct.Name = "tbAct";
+            this.tbAct.Size = new System.Drawing.Size(229, 31);
+            this.tbAct.TabIndex = 26;
+            this.tbAct.Text = "Type of Activity";
+            this.tbAct.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
+            this.tbAct.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // btnDone
             // 
@@ -989,17 +1002,6 @@
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label4.Location = new System.Drawing.Point(311, 20);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(387, 39);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Dog Catching Operation";
-            // 
             // Operations
             // 
             this.Operations.Controls.Add(this.dgvOperationsView);
@@ -1008,6 +1010,18 @@
             this.Operations.Size = new System.Drawing.Size(982, 402);
             this.Operations.TabIndex = 41;
             this.Operations.Visible = false;
+            // 
+            // dgvOperationsView
+            // 
+            this.dgvOperationsView.BackgroundColor = System.Drawing.Color.White;
+            this.dgvOperationsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvOperationsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOperationsView.Location = new System.Drawing.Point(19, 17);
+            this.dgvOperationsView.Name = "dgvOperationsView";
+            this.dgvOperationsView.ReadOnly = true;
+            this.dgvOperationsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOperationsView.Size = new System.Drawing.Size(947, 369);
+            this.dgvOperationsView.TabIndex = 42;
             // 
             // newOperation
             // 
@@ -1026,6 +1040,33 @@
             this.newOperation.Visible = false;
             this.newOperation.VisibleChanged += new System.EventHandler(this.newOperation_VisibleChanged);
             this.newOperation.Paint += new System.Windows.Forms.PaintEventHandler(this.newOperation_Paint);
+            // 
+            // dgvTeams
+            // 
+            this.dgvTeams.BackgroundColor = System.Drawing.Color.White;
+            this.dgvTeams.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvTeams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTeams.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.teamID,
+            this.EmployeeNames});
+            this.dgvTeams.Location = new System.Drawing.Point(18, 42);
+            this.dgvTeams.Name = "dgvTeams";
+            this.dgvTeams.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTeams.Size = new System.Drawing.Size(522, 336);
+            this.dgvTeams.TabIndex = 41;
+            this.dgvTeams.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeams_CellClick);
+            // 
+            // teamID
+            // 
+            this.teamID.HeaderText = "teamID";
+            this.teamID.Name = "teamID";
+            this.teamID.Visible = false;
+            // 
+            // EmployeeNames
+            // 
+            this.EmployeeNames.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EmployeeNames.HeaderText = "Employee Names";
+            this.EmployeeNames.Name = "EmployeeNames";
             // 
             // label9
             // 
@@ -1072,33 +1113,6 @@
             this.tbOpDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbOpDate.Click += new System.EventHandler(this.tbOpDate_Click);
             this.tbOpDate.TextChanged += new System.EventHandler(this.tbOpDate_TextChanged);
-            // 
-            // dgvTeams
-            // 
-            this.dgvTeams.BackgroundColor = System.Drawing.Color.White;
-            this.dgvTeams.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvTeams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTeams.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.teamID,
-            this.EmployeeNames});
-            this.dgvTeams.Location = new System.Drawing.Point(18, 42);
-            this.dgvTeams.Name = "dgvTeams";
-            this.dgvTeams.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTeams.Size = new System.Drawing.Size(522, 336);
-            this.dgvTeams.TabIndex = 41;
-            this.dgvTeams.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeams_CellClick);
-            // 
-            // teamID
-            // 
-            this.teamID.HeaderText = "teamID";
-            this.teamID.Name = "teamID";
-            this.teamID.Visible = false;
-            // 
-            // EmployeeNames
-            // 
-            this.EmployeeNames.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.EmployeeNames.HeaderText = "Employee Names";
-            this.EmployeeNames.Name = "EmployeeNames";
             // 
             // label7
             // 
@@ -1318,6 +1332,17 @@
             this.cbLocation.TabIndex = 2;
             this.cbLocation.Text = "Location";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label4.Location = new System.Drawing.Point(311, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(387, 39);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Dog Catching Operation";
+            // 
             // team
             // 
             this.team.Controls.Add(this.label6);
@@ -1463,28 +1488,16 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // dgvOperationsView
+            // label13
             // 
-            this.dgvOperationsView.BackgroundColor = System.Drawing.Color.White;
-            this.dgvOperationsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvOperationsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOperationsView.Location = new System.Drawing.Point(19, 17);
-            this.dgvOperationsView.Name = "dgvOperationsView";
-            this.dgvOperationsView.ReadOnly = true;
-            this.dgvOperationsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOperationsView.Size = new System.Drawing.Size(947, 369);
-            this.dgvOperationsView.TabIndex = 42;
-            // 
-            // tbAct
-            // 
-            this.tbAct.Font = new System.Drawing.Font("Trebuchet MS", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAct.Location = new System.Drawing.Point(531, 458);
-            this.tbAct.Name = "tbAct";
-            this.tbAct.Size = new System.Drawing.Size(229, 32);
-            this.tbAct.TabIndex = 26;
-            this.tbAct.Text = "Type of Activity";
-            this.tbAct.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
-            this.tbAct.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label13.Location = new System.Drawing.Point(923, 58);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(58, 20);
+            this.label13.TabIndex = 39;
+            this.label13.Text = "view all";
             // 
             // Employee
             // 
@@ -1493,13 +1506,13 @@
             this.AutoScrollMargin = new System.Drawing.Size(1, 1);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 651);
-            this.Controls.Add(this.act);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.attendance);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.admin);
+            this.Controls.Add(this.act);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -1532,6 +1545,7 @@
             this.DogCatchingOperation.ResumeLayout(false);
             this.DogCatchingOperation.PerformLayout();
             this.Operations.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOperationsView)).EndInit();
             this.newOperation.ResumeLayout(false);
             this.newOperation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeams)).EndInit();
@@ -1540,7 +1554,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.newTeam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOperationsView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1635,5 +1648,6 @@
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.DataGridView dgvOperationsView;
         private System.Windows.Forms.TextBox tbAct;
+        private System.Windows.Forms.Label label13;
     }
 }
