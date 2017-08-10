@@ -44,20 +44,24 @@
             this.button7 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Sin = new System.Windows.Forms.Panel();
+            this.dgvo = new System.Windows.Forms.DataGridView();
+            this.dgvout = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button6 = new System.Windows.Forms.Button();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
-            this.dgvAdoption = new System.Windows.Forms.DataGridView();
+            this.dgvin = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbname = new System.Windows.Forms.TextBox();
+            this.tbdesc = new System.Windows.Forms.TextBox();
             this.newitem = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.nudmin = new System.Windows.Forms.NumericUpDown();
             this.button4 = new System.Windows.Forms.Button();
+            this.OK1 = new System.Windows.Forms.Button();
+            this.sino = new System.Windows.Forms.Button();
+            this.numbi = new System.Windows.Forms.NumericUpDown();
+            this.nubo = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.i)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
@@ -65,12 +69,14 @@
             this.inv.SuspendLayout();
             this.Sout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.Sin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvo)).BeginInit();
+            this.dgvout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvin)).BeginInit();
             this.newitem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudmin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numbi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nubo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -198,7 +204,7 @@
             this.inv.Controls.Add(this.button5);
             this.inv.Controls.Add(this.button16);
             this.inv.Controls.Add(this.label12);
-            this.inv.Controls.Add(this.Sin);
+            this.inv.Controls.Add(this.dgvout);
             this.inv.Controls.Add(this.Sout);
             this.inv.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inv.Location = new System.Drawing.Point(27, 84);
@@ -240,15 +246,18 @@
             // 
             // Sout
             // 
+            this.Sout.Controls.Add(this.sino);
             this.Sout.Controls.Add(this.button7);
             this.Sout.Controls.Add(this.numericUpDown1);
             this.Sout.Controls.Add(this.label5);
-            this.Sout.Controls.Add(this.dataGridView1);
+            this.Sout.Controls.Add(this.dgvo);
+            this.Sout.Controls.Add(this.numbi);
             this.Sout.Location = new System.Drawing.Point(15, 114);
             this.Sout.Name = "Sout";
             this.Sout.Size = new System.Drawing.Size(982, 319);
             this.Sout.TabIndex = 44;
             this.Sout.Visible = false;
+            this.Sout.Paint += new System.Windows.Forms.PaintEventHandler(this.Sout_Paint);
             // 
             // button7
             // 
@@ -284,32 +293,36 @@
             this.label5.TabIndex = 41;
             this.label5.Text = "Items";
             // 
-            // dataGridView1
+            // dgvo
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 53);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(952, 250);
-            this.dataGridView1.TabIndex = 20;
+            this.dgvo.AllowUserToAddRows = false;
+            this.dgvo.AllowUserToDeleteRows = false;
+            this.dgvo.BackgroundColor = System.Drawing.Color.White;
+            this.dgvo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvo.Location = new System.Drawing.Point(12, 53);
+            this.dgvo.Name = "dgvo";
+            this.dgvo.ReadOnly = true;
+            this.dgvo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvo.Size = new System.Drawing.Size(952, 200);
+            this.dgvo.TabIndex = 20;
+            this.dgvo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvo_CellClick);
+            this.dgvo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvo_CellContentClick);
             // 
-            // Sin
+            // dgvout
             // 
-            this.Sin.Controls.Add(this.checkBox1);
-            this.Sin.Controls.Add(this.button6);
-            this.Sin.Controls.Add(this.numericUpDown2);
-            this.Sin.Controls.Add(this.label7);
-            this.Sin.Controls.Add(this.dgvAdoption);
-            this.Sin.Location = new System.Drawing.Point(15, 114);
-            this.Sin.Name = "Sin";
-            this.Sin.Size = new System.Drawing.Size(982, 319);
-            this.Sin.TabIndex = 34;
-            this.Sin.Visible = false;
+            this.dgvout.Controls.Add(this.nubo);
+            this.dgvout.Controls.Add(this.OK1);
+            this.dgvout.Controls.Add(this.checkBox1);
+            this.dgvout.Controls.Add(this.button6);
+            this.dgvout.Controls.Add(this.numericUpDown2);
+            this.dgvout.Controls.Add(this.label7);
+            this.dgvout.Controls.Add(this.dgvin);
+            this.dgvout.Location = new System.Drawing.Point(15, 114);
+            this.dgvout.Name = "dgvout";
+            this.dgvout.Size = new System.Drawing.Size(982, 319);
+            this.dgvout.TabIndex = 34;
+            this.dgvout.Visible = false;
             // 
             // checkBox1
             // 
@@ -357,19 +370,19 @@
             this.label7.TabIndex = 41;
             this.label7.Text = "Items";
             // 
-            // dgvAdoption
+            // dgvin
             // 
-            this.dgvAdoption.AllowUserToAddRows = false;
-            this.dgvAdoption.AllowUserToDeleteRows = false;
-            this.dgvAdoption.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAdoption.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvAdoption.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAdoption.Location = new System.Drawing.Point(12, 50);
-            this.dgvAdoption.Name = "dgvAdoption";
-            this.dgvAdoption.ReadOnly = true;
-            this.dgvAdoption.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAdoption.Size = new System.Drawing.Size(952, 250);
-            this.dgvAdoption.TabIndex = 20;
+            this.dgvin.AllowUserToAddRows = false;
+            this.dgvin.AllowUserToDeleteRows = false;
+            this.dgvin.BackgroundColor = System.Drawing.Color.White;
+            this.dgvin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvin.Location = new System.Drawing.Point(12, 50);
+            this.dgvin.Name = "dgvin";
+            this.dgvin.ReadOnly = true;
+            this.dgvin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvin.Size = new System.Drawing.Size(952, 203);
+            this.dgvin.TabIndex = 20;
             // 
             // label2
             // 
@@ -382,33 +395,33 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "Add Item";
             // 
-            // textBox1
+            // tbname
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(168, 144);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(303, 38);
-            this.textBox1.TabIndex = 12;
-            this.textBox1.Text = "Name";
+            this.tbname.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbname.Location = new System.Drawing.Point(168, 144);
+            this.tbname.Name = "tbname";
+            this.tbname.Size = new System.Drawing.Size(303, 38);
+            this.tbname.TabIndex = 12;
+            this.tbname.Text = "Name";
             // 
-            // textBox2
+            // tbdesc
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(493, 144);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(344, 156);
-            this.textBox2.TabIndex = 13;
-            this.textBox2.Text = "Description";
+            this.tbdesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbdesc.Location = new System.Drawing.Point(493, 144);
+            this.tbdesc.Multiline = true;
+            this.tbdesc.Name = "tbdesc";
+            this.tbdesc.Size = new System.Drawing.Size(344, 156);
+            this.tbdesc.TabIndex = 13;
+            this.tbdesc.Text = "Description";
             // 
             // newitem
             // 
             this.newitem.BackColor = System.Drawing.Color.White;
             this.newitem.Controls.Add(this.label3);
-            this.newitem.Controls.Add(this.numericUpDown3);
+            this.newitem.Controls.Add(this.nudmin);
             this.newitem.Controls.Add(this.button4);
-            this.newitem.Controls.Add(this.textBox2);
-            this.newitem.Controls.Add(this.textBox1);
+            this.newitem.Controls.Add(this.tbdesc);
+            this.newitem.Controls.Add(this.tbname);
             this.newitem.Controls.Add(this.label2);
             this.newitem.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newitem.Location = new System.Drawing.Point(27, 84);
@@ -428,13 +441,13 @@
             this.label3.TabIndex = 42;
             this.label3.Text = "Minimum Quantity";
             // 
-            // numericUpDown3
+            // nudmin
             // 
-            this.numericUpDown3.Font = new System.Drawing.Font("Trebuchet MS", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown3.Location = new System.Drawing.Point(168, 262);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(303, 38);
-            this.numericUpDown3.TabIndex = 25;
+            this.nudmin.Font = new System.Drawing.Font("Trebuchet MS", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudmin.Location = new System.Drawing.Point(168, 262);
+            this.nudmin.Name = "nudmin";
+            this.nudmin.Size = new System.Drawing.Size(303, 38);
+            this.nudmin.TabIndex = 25;
             // 
             // button4
             // 
@@ -452,6 +465,52 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // OK1
+            // 
+            this.OK1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.OK1.FlatAppearance.BorderSize = 0;
+            this.OK1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OK1.ForeColor = System.Drawing.Color.White;
+            this.OK1.Location = new System.Drawing.Point(840, 259);
+            this.OK1.Name = "OK1";
+            this.OK1.Size = new System.Drawing.Size(124, 42);
+            this.OK1.TabIndex = 45;
+            this.OK1.Text = "OK";
+            this.OK1.UseVisualStyleBackColor = false;
+            this.OK1.Click += new System.EventHandler(this.OK1_Click);
+            // 
+            // sino
+            // 
+            this.sino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.sino.FlatAppearance.BorderSize = 0;
+            this.sino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sino.ForeColor = System.Drawing.Color.White;
+            this.sino.Location = new System.Drawing.Point(840, 259);
+            this.sino.Name = "sino";
+            this.sino.Size = new System.Drawing.Size(124, 42);
+            this.sino.TabIndex = 47;
+            this.sino.Text = "OK";
+            this.sino.UseVisualStyleBackColor = false;
+            this.sino.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // numbi
+            // 
+            this.numbi.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numbi.Location = new System.Drawing.Point(702, 267);
+            this.numbi.Name = "numbi";
+            this.numbi.Size = new System.Drawing.Size(120, 26);
+            this.numbi.TabIndex = 48;
+            // 
+            // nubo
+            // 
+            this.nubo.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nubo.Location = new System.Drawing.Point(697, 267);
+            this.nubo.Name = "nubo";
+            this.nubo.Size = new System.Drawing.Size(120, 26);
+            this.nubo.TabIndex = 49;
+            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -460,8 +519,8 @@
             this.ClientSize = new System.Drawing.Size(1070, 651);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.newitem);
             this.Controls.Add(this.inv);
+            this.Controls.Add(this.newitem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(27, 84);
             this.MaximizeBox = false;
@@ -478,14 +537,16 @@
             this.Sout.ResumeLayout(false);
             this.Sout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.Sin.ResumeLayout(false);
-            this.Sin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvo)).EndInit();
+            this.dgvout.ResumeLayout(false);
+            this.dgvout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvin)).EndInit();
             this.newitem.ResumeLayout(false);
             this.newitem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudmin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numbi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nubo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -497,10 +558,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.Panel inv;
-        private System.Windows.Forms.DataGridView dgvAdoption;
+        private System.Windows.Forms.DataGridView dgvin;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel Sin;
+        private System.Windows.Forms.Panel dgvout;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button6;
@@ -508,13 +569,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel Sout;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvo;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbname;
+        private System.Windows.Forms.TextBox tbdesc;
         public System.Windows.Forms.Panel newitem;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown nudmin;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.PictureBox i;
@@ -522,5 +583,9 @@
         private System.Windows.Forms.PictureBox r;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button sino;
+        private System.Windows.Forms.Button OK1;
+        private System.Windows.Forms.NumericUpDown numbi;
+        private System.Windows.Forms.NumericUpDown nubo;
     }
 }

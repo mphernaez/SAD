@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         private Color use;
         public MySqlConnection conn = new MySqlConnection();
         public int adminID;
+        public int itemID;
         public Home back { get; set; }
         public Inventory()
         {
@@ -53,8 +54,61 @@ namespace WindowsFormsApplication1
         private void Inventory_Load(object sender, EventArgs e)
         {
             this.Top = 262;
+            refreshSI();
+            refreshSO();
         }
 
+        private void refreshSI()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT itemID, productName, description, quantity, minQuantity FROM items", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvin.DataSource = dt;
+
+                dgvin.Columns["itemID"].Visible = false;
+                dgvin.Columns["productName"].HeaderText = "Product Name";
+                dgvin.Columns["description"].HeaderText = "Decription";
+                dgvin.Columns["quantity"].HeaderText = "Quantity";
+                dgvin.Columns["minQuantity"].HeaderText = "Minimum Quantity";
+
+                conn.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+        private void refreshSO()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT itemID, productName, description, quantity, minQuantity FROM items", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvo.DataSource = dt;
+
+                dgvo.Columns["itemID"].Visible = false;
+                dgvo.Columns["productName"].HeaderText = "Product Name";
+                dgvo.Columns["description"].HeaderText = "Decription";
+                dgvo.Columns["quantity"].HeaderText = "Quantity";
+                dgvo.Columns["minQuantity"].HeaderText = "Minimum Quantity";
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             a.Visible = false;
@@ -67,7 +121,7 @@ namespace WindowsFormsApplication1
 
         private void button16_Click(object sender, EventArgs e)
         {
-            Sin.Visible = true;
+            dgvout.Visible = true;
             Sout.Visible = false;
             button5.BackColor = Color.FromArgb(2, 170, 145);
             button16.BackColor = Color.FromArgb(251, 162, 80) ;
@@ -75,7 +129,7 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Sin.Visible = false;
+            dgvout.Visible = false;
             Sout.Visible = true;
             button16.BackColor = Color.FromArgb(2, 170, 145);
             button5.BackColor = Color.FromArgb(251, 162, 80);
@@ -83,12 +137,78 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("INSERT INTO items VALUES (itemID, '"+ tbname.Text + "', '" + tbdesc.Text + "', 0, "+ nudmin.Value.ToString() + ")" , conn);
+                comm.ExecuteNonQuery();
+                MessageBox.Show("Item Added");
+                conn.Close();
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
         }
 
         private void inv_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + '" + numbi.Value.ToString() + "' WHERE itemID = '" + itemID + "'", conn);
+                comm.ExecuteNonQuery();
+                MessageBox.Show(itemID.ToString());
+                MessageBox.Show("Item Updated");
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+
+        private void dgvo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            itemID = int.Parse(dgvo.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
+        }
+
+        private void Sout_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void OK1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + " + nubo.Value.ToString() + " WHERE itemID = " + itemID, conn);
+                comm.ExecuteNonQuery();
+                MessageBox.Show(nubo.Value.ToString());
+                MessageBox.Show("Item Updated");
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
         }
     }
 }
