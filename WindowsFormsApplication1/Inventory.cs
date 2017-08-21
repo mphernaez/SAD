@@ -164,6 +164,7 @@ namespace WindowsFormsApplication1
 
         private void button8_Click(object sender, EventArgs e)
         {
+
             try
             {
                 conn.Open();
@@ -200,10 +201,23 @@ namespace WindowsFormsApplication1
         {
             try
             {
+
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + " + nubi.Value.ToString() + " WHERE itemID = " + itemID, conn);
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Item Updated");
+                MySqlCommand com = new MySqlCommand("SELECT quantity WHERE itemID = " + itemID, conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                int qua = int.Parse(dt.Rows[0]["quantity"].ToString()) - int.Parse(nubi.Value.ToString());
+                if (qua >= 0)
+                {
+                    MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + " + nubi.Value.ToString() + " WHERE itemID = " + itemID, conn);
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Item Updated");
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid number");
+                }
                 conn.Close();
                 refreshSI();
 
