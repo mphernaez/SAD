@@ -530,25 +530,84 @@ namespace WindowsFormsApplication1
             addDog.Visible = false;
             adoptDog.Visible = false;
             euthanizeDog.Visible = false;
+            repclaimpan.Visible = true;
             a.Visible = false;
             s.Visible = false;
             ad.Visible = false;
             et.Visible = false;
             r.Visible = true;
 
-            string dogExcel;
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            dogExcel = "C:\\Desktop\\DogReport.xlxs";
+            try
+            {
+                conn.Open();
 
-            xlWorkBook = xlApp.Workbooks.Open("dogExcel", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            xlApp.Visible = true;
-
-            xlWorkBook.Close();
+                MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, date, time FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
 
 
+                claimdgv.DataSource = dt;
 
+                claimdgv.Columns["breed"].HeaderText = "Breed";
+                claimdgv.Columns["gender"].HeaderText = "Gender";
+                claimdgv.Columns["size"].HeaderText = "Size";
+                claimdgv.Columns["color"].HeaderText = "Color";
+                claimdgv.Columns["otherDesc"].HeaderText = "Other Description";
+                claimdgv.Columns["description"].HeaderText = "Location Caught";
+                claimdgv.Columns["date"].HeaderText = "Date Caught";
+                claimdgv.Columns["time"].HeaderText = "Time Caught";
+
+
+                claimdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+
+            toExcel();
+
+        }
+
+        private void toExcel()
+        {
+            Excel.Application excel = new Excel.Application();
+            Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Excel._Worksheet worksheet = null;
+            excel.Visible = true;
+
+            worksheet = workbook.Sheets["Sheet1"];
+            worksheet = workbook.ActiveSheet;
+            worksheet.Name = "From gridview";
+
+            for (int i = 1; i < claimdgv.Columns.Count + 1; i++)
+            {
+                worksheet.Cells[1, i] = claimdgv.Columns[i - 1].HeaderText;
+            }
+            // storing Each row and column value to excel sheet  
+            for (int i = 0; i < claimdgv.Rows.Count - 1; i++)
+            {
+                for (int j = 0; j < claimdgv.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = claimdgv.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+            // save the application  
+            workbook.SaveAs("c:\\output.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            // Exit from the application  
+            excel.Quit();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

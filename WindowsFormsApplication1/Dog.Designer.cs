@@ -77,6 +77,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.repclaimpan = new System.Windows.Forms.Panel();
+            this.claimdgv = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -90,6 +92,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).BeginInit();
             this.euthanizeDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).BeginInit();
+            this.repclaimpan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.claimdgv)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -584,6 +588,7 @@
             // adoptDog
             // 
             this.adoptDog.BackColor = System.Drawing.Color.White;
+            this.adoptDog.Controls.Add(this.repclaimpan);
             this.adoptDog.Controls.Add(this.label8);
             this.adoptDog.Controls.Add(this.button9);
             this.adoptDog.Controls.Add(this.label12);
@@ -751,6 +756,24 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // repclaimpan
+            // 
+            this.repclaimpan.Controls.Add(this.claimdgv);
+            this.repclaimpan.Location = new System.Drawing.Point(3, 7);
+            this.repclaimpan.Name = "repclaimpan";
+            this.repclaimpan.Size = new System.Drawing.Size(1009, 367);
+            this.repclaimpan.TabIndex = 25;
+            // 
+            // claimdgv
+            // 
+            this.claimdgv.AllowUserToAddRows = false;
+            this.claimdgv.AllowUserToDeleteRows = false;
+            this.claimdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.claimdgv.Location = new System.Drawing.Point(12, 18);
+            this.claimdgv.Name = "claimdgv";
+            this.claimdgv.Size = new System.Drawing.Size(972, 318);
+            this.claimdgv.TabIndex = 0;
+            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -786,6 +809,8 @@
             this.euthanizeDog.ResumeLayout(false);
             this.euthanizeDog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).EndInit();
+            this.repclaimpan.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.claimdgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -841,5 +866,7 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Panel repclaimpan;
+        private System.Windows.Forms.DataGridView claimdgv;
     }
 }
