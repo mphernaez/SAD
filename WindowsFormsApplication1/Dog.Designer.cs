@@ -76,7 +76,10 @@
             this.dgvArchive = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -90,6 +93,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).BeginInit();
             this.euthanizeDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -104,6 +108,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(162)))), ((int)(((byte)(80)))));
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.r);
             this.panel1.Controls.Add(this.et);
             this.panel1.Controls.Add(this.s);
@@ -444,17 +449,19 @@
             this.dgvProfiles.BackgroundColor = System.Drawing.Color.White;
             this.dgvProfiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProfiles.Location = new System.Drawing.Point(15, 114);
+            this.dgvProfiles.Location = new System.Drawing.Point(3, 24);
             this.dgvProfiles.Name = "dgvProfiles";
             this.dgvProfiles.ReadOnly = true;
             this.dgvProfiles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProfiles.Size = new System.Drawing.Size(982, 319);
+            this.dgvProfiles.Size = new System.Drawing.Size(1012, 319);
             this.dgvProfiles.TabIndex = 20;
             this.dgvProfiles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellClick);
             // 
             // searchDog
             // 
             this.searchDog.BackColor = System.Drawing.Color.White;
+            this.searchDog.Controls.Add(this.claimreportdgv);
+            this.searchDog.Controls.Add(this.dgvProfiles);
             this.searchDog.Controls.Add(this.label10);
             this.searchDog.Controls.Add(this.cbGenderSearch);
             this.searchDog.Controls.Add(this.label6);
@@ -463,7 +470,6 @@
             this.searchDog.Controls.Add(this.button7);
             this.searchDog.Controls.Add(this.tbColorSearch);
             this.searchDog.Controls.Add(this.button3);
-            this.searchDog.Controls.Add(this.dgvProfiles);
             this.searchDog.Controls.Add(this.tbBreedSearch);
             this.searchDog.Controls.Add(this.label3);
             this.searchDog.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -746,6 +752,24 @@
             this.toolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(27, 84);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1015, 387);
+            this.panel2.TabIndex = 38;
+            // 
+            // claimreportdgv
+            // 
+            this.claimreportdgv.AllowUserToAddRows = false;
+            this.claimreportdgv.AllowUserToDeleteRows = false;
+            this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.claimreportdgv.Location = new System.Drawing.Point(221, 40);
+            this.claimreportdgv.Name = "claimreportdgv";
+            this.claimreportdgv.ReadOnly = true;
+            this.claimreportdgv.Size = new System.Drawing.Size(583, 275);
+            this.claimreportdgv.TabIndex = 38;
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -759,10 +783,10 @@
             this.ClientSize = new System.Drawing.Size(1070, 651);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.adoptDog);
-            this.Controls.Add(this.addDog);
             this.Controls.Add(this.searchDog);
             this.Controls.Add(this.euthanizeDog);
+            this.Controls.Add(this.adoptDog);
+            this.Controls.Add(this.addDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
@@ -786,6 +810,7 @@
             this.euthanizeDog.ResumeLayout(false);
             this.euthanizeDog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -840,6 +865,9 @@
         private System.Windows.Forms.PictureBox ad;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView claimreportdgv;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

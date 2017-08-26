@@ -263,7 +263,7 @@ namespace WindowsFormsApplication1
         private int employeeID;
         private void dgvProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             try
             {
                 conn.Open();
@@ -276,9 +276,8 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Successfully Recorded Attendance!");
                 refreshAttendance();
             }
-            catch (Exception ex)
+            catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show(ex.ToString());
                 conn.Close();
             }
         }

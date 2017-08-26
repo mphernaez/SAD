@@ -535,22 +535,106 @@ namespace WindowsFormsApplication1
             ad.Visible = false;
             et.Visible = false;
             r.Visible = true;
+            claimreportdgv.Visible = false;
 
-            string dogExcel;
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            dogExcel = "C:\\Desktop\\DogReport.xlxs";
+            try
+            {
+                conn.Open();
 
-            xlWorkBook = xlApp.Workbooks.Open("dogExcel", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            xlApp.Visible = true;
-
-            xlWorkBook.Close();
-
+                MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, date, time FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
 
 
+                claimreportdgv.DataSource = dt;
+
+                claimreportdgv.Columns["breed"].HeaderText = "Breed";
+                claimreportdgv.Columns["gender"].HeaderText = "Gender";
+                claimreportdgv.Columns["size"].HeaderText = "Size";
+                claimreportdgv.Columns["color"].HeaderText = "Color";
+                claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
+                claimreportdgv.Columns["description"].HeaderText = "Location Caught";
+                claimreportdgv.Columns["date"].HeaderText = "Date Caught";
+                claimreportdgv.Columns["time"].HeaderText = "Time Caught";
+
+
+                claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+
+
+            toExcel();
         }
+         private void toExcel()
+        {
+            Excel.Application excel = new Excel.Application();
+            Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Excel._Worksheet worksheet = null;
 
+            try
+            {
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "ExportedFromGrid";
+
+                int cellRowIndex = 1;
+                int cellColumnIndex = 1;
+
+                for (int i = 0; i < claimreportdgv.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < claimreportdgv.Columns.Count; j++)
+                    {
+                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
+                        if (cellRowIndex == 1)
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = claimreportdgv.Columns[j].HeaderText;
+                        }
+                        else
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = claimreportdgv.Rows[i].Cells[j].Value.ToString();
+                        }
+                        cellColumnIndex++;
+                    }
+                    cellColumnIndex = 1;
+                    cellRowIndex++;
+                }
+
+                //Getting the location and file name of the excel to save from user. 
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 2;
+
+                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    workbook.SaveAs(saveDialog.FileName);
+                    MessageBox.Show("Export Successful");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                excel.Quit();
+                workbook = null;
+                excel = null;
+            } 
+        }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
         }
