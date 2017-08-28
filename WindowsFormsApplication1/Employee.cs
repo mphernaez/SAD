@@ -1236,6 +1236,13 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+            viewAct view = new viewAct();
+            view.Show();
+            view.TopMost = true;
+        }
     }
 }
 
