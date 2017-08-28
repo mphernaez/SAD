@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.r = new System.Windows.Forms.PictureBox();
             this.et = new System.Windows.Forms.PictureBox();
             this.s = new System.Windows.Forms.PictureBox();
@@ -44,7 +45,6 @@
             this.addDog = new System.Windows.Forms.Panel();
             this.button11 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.tbColor = new System.Windows.Forms.TextBox();
             this.cbSize = new System.Windows.Forms.ComboBox();
             this.cbOperation = new System.Windows.Forms.ComboBox();
             this.tbBreed = new System.Windows.Forms.TextBox();
@@ -55,6 +55,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dgvProfiles = new System.Windows.Forms.DataGridView();
             this.searchDog = new System.Windows.Forms.Panel();
+            this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.cbGenderSearch = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -76,10 +77,9 @@
             this.dgvArchive = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.tbColor = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -89,11 +89,11 @@
             this.addDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).BeginInit();
             this.searchDog.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).BeginInit();
             this.adoptDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).BeginInit();
             this.euthanizeDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -124,6 +124,13 @@
             this.panel1.Size = new System.Drawing.Size(1070, 84);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(27, 84);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1015, 387);
+            this.panel2.TabIndex = 38;
             // 
             // r
             // 
@@ -273,9 +280,9 @@
             // addDog
             // 
             this.addDog.BackColor = System.Drawing.Color.White;
+            this.addDog.Controls.Add(this.tbColor);
             this.addDog.Controls.Add(this.button11);
             this.addDog.Controls.Add(this.label9);
-            this.addDog.Controls.Add(this.tbColor);
             this.addDog.Controls.Add(this.cbSize);
             this.addDog.Controls.Add(this.cbOperation);
             this.addDog.Controls.Add(this.tbBreed);
@@ -300,7 +307,7 @@
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(389, 349);
+            this.button11.Location = new System.Drawing.Point(372, 349);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(260, 38);
             this.button11.TabIndex = 26;
@@ -312,23 +319,11 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(187)))), ((int)(((byte)(210)))));
-            this.label9.Location = new System.Drawing.Point(435, 78);
+            this.label9.Location = new System.Drawing.Point(444, 78);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(102, 17);
             this.label9.TabIndex = 25;
             this.label9.Text = "Add a new dog";
-            // 
-            // tbColor
-            // 
-            this.tbColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbColor.ForeColor = System.Drawing.Color.Gray;
-            this.tbColor.Location = new System.Drawing.Point(438, 183);
-            this.tbColor.Name = "tbColor";
-            this.tbColor.Size = new System.Drawing.Size(205, 26);
-            this.tbColor.TabIndex = 11;
-            this.tbColor.Text = "Color";
-            this.tbColor.TextChanged += new System.EventHandler(this.tbColor_TextChanged);
-            this.tbColor.Enter += new System.EventHandler(this.textBox3_Enter);
             // 
             // cbSize
             // 
@@ -340,7 +335,7 @@
             "Small (1ft)",
             "Large (2ft)",
             "Extra Large (more than 2ft)"});
-            this.cbSize.Location = new System.Drawing.Point(221, 228);
+            this.cbSize.Location = new System.Drawing.Point(204, 228);
             this.cbSize.Name = "cbSize";
             this.cbSize.Size = new System.Drawing.Size(205, 28);
             this.cbSize.TabIndex = 5;
@@ -353,7 +348,7 @@
             this.cbOperation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOperation.ForeColor = System.Drawing.Color.Gray;
             this.cbOperation.FormattingEnabled = true;
-            this.cbOperation.Location = new System.Drawing.Point(221, 147);
+            this.cbOperation.Location = new System.Drawing.Point(204, 147);
             this.cbOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbOperation.Name = "cbOperation";
             this.cbOperation.Size = new System.Drawing.Size(422, 28);
@@ -365,7 +360,7 @@
             // 
             this.tbBreed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBreed.ForeColor = System.Drawing.Color.Gray;
-            this.tbBreed.Location = new System.Drawing.Point(438, 228);
+            this.tbBreed.Location = new System.Drawing.Point(421, 228);
             this.tbBreed.Name = "tbBreed";
             this.tbBreed.Size = new System.Drawing.Size(205, 26);
             this.tbBreed.TabIndex = 4;
@@ -381,7 +376,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(389, 305);
+            this.button4.Location = new System.Drawing.Point(372, 305);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(260, 38);
             this.button4.TabIndex = 10;
@@ -393,12 +388,12 @@
             // 
             this.tbDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDesc.ForeColor = System.Drawing.Color.Gray;
-            this.tbDesc.Location = new System.Drawing.Point(650, 145);
+            this.tbDesc.Location = new System.Drawing.Point(633, 145);
             this.tbDesc.Multiline = true;
             this.tbDesc.Name = "tbDesc";
             this.tbDesc.Size = new System.Drawing.Size(205, 109);
             this.tbDesc.TabIndex = 6;
-            this.tbDesc.Text = "Other Descriptions";
+            this.tbDesc.Text = "Markings/Other Descriptions";
             this.tbDesc.Enter += new System.EventHandler(this.tbDesc_Enter);
             // 
             // cbGender
@@ -409,7 +404,7 @@
             this.cbGender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.cbGender.Location = new System.Drawing.Point(221, 183);
+            this.cbGender.Location = new System.Drawing.Point(204, 188);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(205, 28);
             this.cbGender.TabIndex = 3;
@@ -421,7 +416,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label2.Location = new System.Drawing.Point(385, 39);
+            this.label2.Location = new System.Drawing.Point(387, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(215, 39);
             this.label2.TabIndex = 0;
@@ -479,6 +474,17 @@
             this.searchDog.TabIndex = 11;
             this.searchDog.Visible = false;
             this.searchDog.Paint += new System.Windows.Forms.PaintEventHandler(this.searchDog_Paint);
+            // 
+            // claimreportdgv
+            // 
+            this.claimreportdgv.AllowUserToAddRows = false;
+            this.claimreportdgv.AllowUserToDeleteRows = false;
+            this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.claimreportdgv.Location = new System.Drawing.Point(221, 40);
+            this.claimreportdgv.Name = "claimreportdgv";
+            this.claimreportdgv.ReadOnly = true;
+            this.claimreportdgv.Size = new System.Drawing.Size(583, 275);
+            this.claimreportdgv.TabIndex = 38;
             // 
             // label10
             // 
@@ -752,28 +758,28 @@
             this.toolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(27, 84);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1015, 387);
-            this.panel2.TabIndex = 38;
-            // 
-            // claimreportdgv
-            // 
-            this.claimreportdgv.AllowUserToAddRows = false;
-            this.claimreportdgv.AllowUserToDeleteRows = false;
-            this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.claimreportdgv.Location = new System.Drawing.Point(221, 40);
-            this.claimreportdgv.Name = "claimreportdgv";
-            this.claimreportdgv.ReadOnly = true;
-            this.claimreportdgv.Size = new System.Drawing.Size(583, 275);
-            this.claimreportdgv.TabIndex = 38;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
+            // tbColor
+            // 
+            this.tbColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbColor.ForeColor = System.Drawing.Color.Gray;
+            this.tbColor.FormattingEnabled = true;
+            this.tbColor.Items.AddRange(new object[] {
+            "Black",
+            "Brown",
+            "Gray",
+            "White",
+            "Golden Yellow",
+            "Beige"});
+            this.tbColor.Location = new System.Drawing.Point(421, 187);
+            this.tbColor.Name = "tbColor";
+            this.tbColor.Size = new System.Drawing.Size(205, 28);
+            this.tbColor.TabIndex = 27;
+            this.tbColor.Text = "Base Color";
             // 
             // Dog
             // 
@@ -781,12 +787,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 651);
+            this.Controls.Add(this.addDog);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchDog);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
-            this.Controls.Add(this.addDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
@@ -804,13 +810,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).EndInit();
             this.searchDog.ResumeLayout(false);
             this.searchDog.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).EndInit();
             this.adoptDog.ResumeLayout(false);
             this.adoptDog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).EndInit();
             this.euthanizeDog.ResumeLayout(false);
             this.euthanizeDog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -848,7 +854,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.TextBox tbColor;
         private System.Windows.Forms.ComboBox cbSize;
         private System.Windows.Forms.ComboBox cbOperation;
         private System.Windows.Forms.TextBox tbBreed;
@@ -869,5 +874,6 @@
         private System.Windows.Forms.DataGridView claimreportdgv;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ComboBox tbColor;
     }
 }
