@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
         public MySqlConnection conn = new MySqlConnection();
         public int adminID;
         public int itemID;
-        public Home back { get; set; }
+        public empty back { get; set; }
         public Inventory()
         {
             InitializeComponent();

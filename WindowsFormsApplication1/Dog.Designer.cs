@@ -54,12 +54,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.tbBreedSearch = new System.Windows.Forms.TextBox();
             this.adoptDog = new System.Windows.Forms.Panel();
-            this.repclaimpan = new System.Windows.Forms.Panel();
-            this.claimdgv = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvAdoption = new System.Windows.Forms.DataGridView();
+            this.repclaimpan = new System.Windows.Forms.Panel();
+            this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.euthanizeDog = new System.Windows.Forms.Panel();
             this.btnDone = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -84,9 +84,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).BeginInit();
             this.searchDog.SuspendLayout();
             this.adoptDog.SuspendLayout();
-            this.repclaimpan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.claimdgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).BeginInit();
+            this.repclaimpan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).BeginInit();
             this.euthanizeDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
@@ -461,27 +461,6 @@
             this.adoptDog.Visible = false;
             this.adoptDog.Paint += new System.Windows.Forms.PaintEventHandler(this.adoptDog_Paint);
             // 
-            // repclaimpan
-            // 
-            this.repclaimpan.Controls.Add(this.claimdgv);
-            this.repclaimpan.Location = new System.Drawing.Point(43, 129);
-            this.repclaimpan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.repclaimpan.Name = "repclaimpan";
-            this.repclaimpan.Size = new System.Drawing.Size(1514, 565);
-            this.repclaimpan.TabIndex = 25;
-            this.repclaimpan.Visible = false;
-            // 
-            // claimdgv
-            // 
-            this.claimdgv.AllowUserToAddRows = false;
-            this.claimdgv.AllowUserToDeleteRows = false;
-            this.claimdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.claimdgv.Location = new System.Drawing.Point(18, 28);
-            this.claimdgv.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.claimdgv.Name = "claimdgv";
-            this.claimdgv.Size = new System.Drawing.Size(1458, 489);
-            this.claimdgv.TabIndex = 0;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -541,6 +520,27 @@
             this.dgvAdoption.TabIndex = 20;
             this.dgvAdoption.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdoption_CellClick);
             this.dgvAdoption.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdoption_CellContentClick);
+            // 
+            // repclaimpan
+            // 
+            this.repclaimpan.Controls.Add(this.claimreportdgv);
+            this.repclaimpan.Location = new System.Drawing.Point(43, 129);
+            this.repclaimpan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.repclaimpan.Name = "repclaimpan";
+            this.repclaimpan.Size = new System.Drawing.Size(1514, 565);
+            this.repclaimpan.TabIndex = 25;
+            this.repclaimpan.Visible = false;
+            // 
+            // claimreportdgv
+            // 
+            this.claimreportdgv.AllowUserToAddRows = false;
+            this.claimreportdgv.AllowUserToDeleteRows = false;
+            this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.claimreportdgv.Location = new System.Drawing.Point(18, 28);
+            this.claimreportdgv.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.claimreportdgv.Name = "claimreportdgv";
+            this.claimreportdgv.Size = new System.Drawing.Size(1458, 489);
+            this.claimreportdgv.TabIndex = 0;
             // 
             // euthanizeDog
             // 
@@ -828,11 +828,11 @@
             this.ClientSize = new System.Drawing.Size(1605, 1002);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.searchDog);
-            this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.repclaimpan);
             this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.addDog);
+            this.Controls.Add(this.searchDog);
+            this.Controls.Add(this.euthanizeDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -848,9 +848,9 @@
             this.searchDog.PerformLayout();
             this.adoptDog.ResumeLayout(false);
             this.adoptDog.PerformLayout();
-            this.repclaimpan.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.claimdgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).EndInit();
+            this.repclaimpan.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).EndInit();
             this.euthanizeDog.ResumeLayout(false);
             this.euthanizeDog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).EndInit();
@@ -915,6 +915,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Panel repclaimpan;
-        private System.Windows.Forms.DataGridView claimdgv;
+        private System.Windows.Forms.DataGridView claimreportdgv;
     }
 }

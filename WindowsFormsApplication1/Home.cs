@@ -14,7 +14,7 @@ using MySql.Data.MySqlClient;
 namespace WindowsFormsApplication1
 {
     
-    public partial class Home : Form
+    public partial class empty : Form
     {
         private Color use;
         public MySqlConnection conn;
@@ -24,11 +24,11 @@ namespace WindowsFormsApplication1
         Dog dog = new Dog();
         Employee emp = new Employee();
         Inventory inv = new Inventory();
-        public Home()
+        public empty()
         {
             InitializeComponent();
             use = Color.FromArgb(253, 208, 174);
-            conn = new MySqlConnection("Server=localhost;Database=impounddogpound;Uid=root;Pwd=root;");
+            conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
             
 
         }
@@ -117,6 +117,47 @@ namespace WindowsFormsApplication1
             tmr.Interval = 1000;//ticks every 1 second
             tmr.Tick += new EventHandler(tmr_Tick);
             tmr.Start();
+            refreshNotif();
+        }
+
+        private void refreshNotif()
+        {
+            try
+            {
+               conn.Open();
+
+               MySqlCommand com = new MySqlCommand("SELECT COUNT(*), itemID FROM items WHERE quantity != 0 AND quantity >= minQuantity ", conn);
+               MySqlDataAdapter adp = new MySqlDataAdapter(com);
+               DataTable dt = new DataTable();
+               adp.Fill(dt);
+               int warning = 0;
+               warning = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
+                MySqlCommand comm = new MySqlCommand("SELECT COUNT(*), itemID FROM items WHERE quantity = 0", conn);
+                MySqlDataAdapter adpp = new MySqlDataAdapter(comm);
+                DataTable dtt = new DataTable();
+                adp.Fill(dtt);
+                int empty = 0;
+                empty = int.Parse(dtt.Rows[0]["COUNT(*)"].ToString());
+
+                tbwarning.Text = (warning + " Items need your attenion");
+                tbempty.Text = (empty + " Items have ran out");
+                if(warning > 0)
+                {
+                    tbwarning.Visible = true;
+                }
+                if(empty > 0)
+                {
+                    tbempty.Visible = true;
+                }
+
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
         }
 
         private void tmr_Tick(object sender, EventArgs e)
@@ -164,5 +205,14 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            warningPanel.Visible = false;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            emptyPanel.Visible = false;
+        }
     }
 }

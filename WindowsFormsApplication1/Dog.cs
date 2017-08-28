@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
         public int adoptID;
         int i = -40;
         int[] opid; //id for every combobox item
-        public Home back { get; set; }
+        public empty back { get; set; }
         public MySqlConnection conn;
         public Dog()
         {

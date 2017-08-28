@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
     public partial class Login : Form
     {
         public MySqlConnection conn;
-        public Home hom { get; set; }
+        public empty hom { get; set; }
         public Login()
         {
             InitializeComponent();
@@ -55,7 +55,7 @@ namespace WindowsFormsApplication1
                     String pass = dt.Rows[i]["password"].ToString();
                     if (usernameTextBox.Text == user && passwordTextBox.Text == pass)
                     {
-                        Home home = new Home();
+                        empty home = new empty();
                         home.dispUser = user;
                         home.adminID = int.Parse(dt.Rows[0]["adminID"].ToString());
                         home.log = this;

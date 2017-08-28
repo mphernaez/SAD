@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
         private int y;
         private Color use;
         
-        public Home back { get; set; }
+        public empty back { get; set; }
         public MySqlConnection conn = new MySqlConnection();
        EditEmp emp;
         public Employee()
