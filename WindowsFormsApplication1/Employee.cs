@@ -537,8 +537,8 @@ namespace WindowsFormsApplication1
                             teamempid = 0;
                         }
                     }
-                
-            
+
+         
 
         }
 
@@ -1029,7 +1029,9 @@ namespace WindowsFormsApplication1
                     }
                 MessageBox.Show("New Operation Team recorded successfully");
                     conn.Close();
-                }
+                refreshTeam();
+                newTeam.Rows.Clear();
+            }
                 catch (Exception ex)
                 {
                     conn.Close();
