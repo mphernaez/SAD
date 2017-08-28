@@ -375,6 +375,7 @@
     <None Include="Resources\catch.png" />
     <None Include="Resources\ad.png" />
     <None Include="Resources\archive-black-box.png" />
+    <None Include="Resources\61444.png" />
     <Content Include="Resources\back.png" />
     <None Include="Resources\items.png" />
     <None Include="Resources\rep.png" />
