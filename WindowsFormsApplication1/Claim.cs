@@ -93,6 +93,8 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please enter required fields");
             }
+            //print preview
+            
         }
 
         private void Claim_Load(object sender, EventArgs e)
@@ -180,6 +182,16 @@ namespace WindowsFormsApplication1
         private void color_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
+        }
+        private void printPreviewDialogCR_Click(object sender, EventArgs e)
+        {
+            printPreviewDialogCR.Document = printClaim;
+            printPreviewDialogCR.ShowDialog();
         }
     }
 }

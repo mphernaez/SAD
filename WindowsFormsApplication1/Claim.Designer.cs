@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Claim));
             this.label19 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -62,8 +63,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.time = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.breeds = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.printPreviewDialogCR = new System.Windows.Forms.PrintPreviewDialog();
+            this.printClaim = new System.Drawing.Printing.PrintDocument();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -453,6 +456,16 @@
             this.panel1.TabIndex = 16;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // breeds
+            // 
+            this.breeds.AutoSize = true;
+            this.breeds.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breeds.Location = new System.Drawing.Point(183, 122);
+            this.breeds.Name = "breeds";
+            this.breeds.Size = new System.Drawing.Size(70, 26);
+            this.breeds.TabIndex = 19;
+            this.breeds.Text = "Breed";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
@@ -464,15 +477,22 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // breeds
+            // printPreviewDialogCR
             // 
-            this.breeds.AutoSize = true;
-            this.breeds.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.breeds.Location = new System.Drawing.Point(183, 122);
-            this.breeds.Name = "breeds";
-            this.breeds.Size = new System.Drawing.Size(70, 26);
-            this.breeds.TabIndex = 19;
-            this.breeds.Text = "Breed";
+            this.printPreviewDialogCR.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogCR.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogCR.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialogCR.Document = this.printClaim;
+            this.printPreviewDialogCR.Enabled = true;
+            this.printPreviewDialogCR.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogCR.Icon")));
+            this.printPreviewDialogCR.Name = "printPreviewDialogCR";
+            this.printPreviewDialogCR.Visible = false;
+            
+            this.printPreviewDialogCR.Click += new System.EventHandler(this.printPreviewDialogCR_Click);
+            // 
+            // printClaim
+            // 
+            this.printClaim.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // Claim
             // 
@@ -534,5 +554,7 @@
         private System.Windows.Forms.Label time;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label breeds;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialogCR;
+        private System.Drawing.Printing.PrintDocument printClaim;
     }
 }

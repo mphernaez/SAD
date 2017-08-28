@@ -1517,7 +1517,7 @@
             this.repEmp.AllowUserToAddRows = false;
             this.repEmp.AllowUserToDeleteRows = false;
             this.repEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.repEmp.Location = new System.Drawing.Point(194, 12);
+            this.repEmp.Location = new System.Drawing.Point(200, 17);
             this.repEmp.Name = "repEmp";
             this.repEmp.ReadOnly = true;
             this.repEmp.Size = new System.Drawing.Size(444, 159);
