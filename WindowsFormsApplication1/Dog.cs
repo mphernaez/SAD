@@ -226,7 +226,7 @@ namespace WindowsFormsApplication1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            refreshSearch();
+            
         }
 
         private void dgvProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -301,11 +301,11 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, date, description, size, otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE gender = '" + gender + "' AND breed LIKE '%" + tbBreedSearch.Text + "%' AND color LIKE '%" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
+                    MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, date, description, size, otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE breed LIKE '%" + tbBreedSearch.Text + "%' AND color LIKE '%" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
-
+                    
                     dgvProfiles.DataSource = dt;
 
                     dgvProfiles.Columns["dogID"].Visible = false;
@@ -756,6 +756,21 @@ namespace WindowsFormsApplication1
         {
            
 
+        }
+
+        private void tbBreedSearch_TextChanged(object sender, EventArgs e)
+        {
+            refreshSearch();
+        }
+
+        private void tbColorSearch_TextChanged(object sender, EventArgs e)
+        {
+            refreshSearch();
+        }
+
+        private void cbGenderSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            refreshSearch();
         }
     }
 }
