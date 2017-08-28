@@ -41,6 +41,9 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            Preview();
+
             if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text != "" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "")
             {
                 String fname = tbfname.Text;
@@ -94,7 +97,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Please enter required fields");
             }
         }
-
+        
         private void Claim_Load(object sender, EventArgs e)
         {
             try
@@ -181,13 +184,14 @@ namespace WindowsFormsApplication1
         {
 
         }
-
-        private void printPreviewDialogCR_Load(object sender, EventArgs e)
+        
+        private void Preview()
         {
             printPreviewDialogCR.Document = printDocumentCR;
             printPreviewDialogCR.ShowDialog();
+            Form frm = new Form();
+            frm.Text = "Claiming Receipt";
         }
-
         private void printDocumentCR_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawString("Claimer's Name: " + tbfname.Text + tblname.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 180));

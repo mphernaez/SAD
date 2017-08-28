@@ -552,7 +552,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(765, 454);
+            this.button3.Location = new System.Drawing.Point(765, 342);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(232, 38);
             this.button3.TabIndex = 23;

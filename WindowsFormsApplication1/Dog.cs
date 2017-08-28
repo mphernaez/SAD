@@ -576,65 +576,9 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
-
-
-            toExcel();
+            
         }
-         private void toExcel()
-        {
-            Excel.Application excel = new Excel.Application();
-            Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
-            Excel._Worksheet worksheet = null;
-
-            try
-            {
-                worksheet = workbook.ActiveSheet;
-                worksheet.Name = "ExportedFromGrid";
-
-                int cellRowIndex = 1;
-                int cellColumnIndex = 1;
-
-                for (int i = 0; i < claimreportdgv.Rows.Count - 1; i++)
-                {
-                    for (int j = 0; j < claimreportdgv.Columns.Count; j++)
-                    {
-                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
-                        if (cellRowIndex == 1)
-                        {
-                            worksheet.Cells[cellRowIndex, cellColumnIndex] = claimreportdgv.Columns[j].HeaderText;
-                        }
-                        else
-                        {
-                            worksheet.Cells[cellRowIndex, cellColumnIndex] = claimreportdgv.Rows[i].Cells[j].Value.ToString();
-                        }
-                        cellColumnIndex++;
-                    }
-                    cellColumnIndex = 1;
-                    cellRowIndex++;
-                }
-
-                //Getting the location and file name of the excel to save from user. 
-                SaveFileDialog saveDialog = new SaveFileDialog();
-                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-                saveDialog.FilterIndex = 2;
-
-                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    workbook.SaveAs(saveDialog.FileName);
-                    MessageBox.Show("Export Successful");
-                }
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                excel.Quit();
-                workbook = null;
-                excel = null;
-            } 
-        }
+        
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
         }

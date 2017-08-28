@@ -361,6 +361,7 @@
     <None Include="Resources\exitt.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\header.png" />
     <None Include="Resources\delete-button.png" />
     <None Include="Resources\cancel-music.png" />
     <None Include="Resources\triangle-512.png" />

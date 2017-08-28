@@ -481,12 +481,13 @@
             // 
             this.printPreviewDialogCR.AutoScrollMargin = new System.Drawing.Size(0, 0);
             this.printPreviewDialogCR.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogCR.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.printPreviewDialogCR.ClientSize = new System.Drawing.Size(400, 300);
             this.printPreviewDialogCR.Enabled = true;
             this.printPreviewDialogCR.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogCR.Icon")));
             this.printPreviewDialogCR.Name = "printPreviewDialogCR";
+            this.printPreviewDialogCR.ShowIcon = false;
             this.printPreviewDialogCR.Visible = false;
-            this.printPreviewDialogCR.Load += new System.EventHandler(this.printPreviewDialogCR_Load);
             // 
             // printDocumentCR
             // 
