@@ -283,7 +283,7 @@
             this.label2.BackColor = System.Drawing.Color.LightGray;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(783, 156);
+            this.label2.Location = new System.Drawing.Point(787, 139);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(181, 76);
             this.label2.TabIndex = 8;
@@ -296,7 +296,7 @@
             this.warningPanel.Controls.Add(this.tbwarning);
             this.warningPanel.Controls.Add(this.pictureBox1);
             this.warningPanel.Location = new System.Drawing.Point(5, 117);
-            this.warningPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.warningPanel.Margin = new System.Windows.Forms.Padding(2);
             this.warningPanel.Name = "warningPanel";
             this.warningPanel.Size = new System.Drawing.Size(330, 49);
             this.warningPanel.TabIndex = 9;
@@ -307,22 +307,24 @@
             // 
             this.pictureBox2.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(315, 2);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(291, 10);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(13, 16);
+            this.pictureBox2.Size = new System.Drawing.Size(22, 26);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
             // 
             // tbwarning
             // 
+            this.tbwarning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
+            this.tbwarning.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbwarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbwarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
-            this.tbwarning.Location = new System.Drawing.Point(48, 15);
-            this.tbwarning.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbwarning.Location = new System.Drawing.Point(48, 10);
+            this.tbwarning.Margin = new System.Windows.Forms.Padding(2);
             this.tbwarning.Name = "tbwarning";
-            this.tbwarning.Size = new System.Drawing.Size(239, 26);
+            this.tbwarning.Size = new System.Drawing.Size(239, 19);
             this.tbwarning.TabIndex = 1;
             this.tbwarning.Text = "0 Items need your attenion";
             // 
@@ -331,7 +333,7 @@
             this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources._179386;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(8, 8);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(36, 30);
             this.pictureBox1.TabIndex = 0;
@@ -344,7 +346,7 @@
             this.emptyPanel.Controls.Add(this.tbempty);
             this.emptyPanel.Controls.Add(this.pictureBox4);
             this.emptyPanel.Location = new System.Drawing.Point(5, 170);
-            this.emptyPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.emptyPanel.Margin = new System.Windows.Forms.Padding(2);
             this.emptyPanel.Name = "emptyPanel";
             this.emptyPanel.Size = new System.Drawing.Size(330, 49);
             this.emptyPanel.TabIndex = 10;
@@ -355,22 +357,24 @@
             // 
             this.pictureBox3.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(315, 2);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Location = new System.Drawing.Point(291, 11);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(13, 16);
+            this.pictureBox3.Size = new System.Drawing.Size(22, 26);
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // tbempty
             // 
+            this.tbempty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
+            this.tbempty.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbempty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbempty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
-            this.tbempty.Location = new System.Drawing.Point(48, 15);
-            this.tbempty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbempty.Location = new System.Drawing.Point(48, 11);
+            this.tbempty.Margin = new System.Windows.Forms.Padding(2);
             this.tbempty.Name = "tbempty";
-            this.tbempty.Size = new System.Drawing.Size(239, 26);
+            this.tbempty.Size = new System.Drawing.Size(239, 19);
             this.tbempty.TabIndex = 1;
             this.tbempty.Text = "0 Items have ran out";
             // 
@@ -379,7 +383,7 @@
             this.pictureBox4.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.delete_button;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox4.Location = new System.Drawing.Point(8, 8);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(36, 30);
             this.pictureBox4.TabIndex = 0;

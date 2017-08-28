@@ -223,8 +223,7 @@ namespace WindowsFormsApplication1
 
         private void warningPanel_MouseHover(object sender, EventArgs e)
         {
-            warningPanel.BackColor = Color.White;
-            emptyPanel.BackColor = Color.White;
+
         }
     }
 }
