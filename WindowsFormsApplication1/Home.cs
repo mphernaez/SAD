@@ -126,13 +126,14 @@ namespace WindowsFormsApplication1
             {
                conn.Open();
 
-               MySqlCommand com = new MySqlCommand("SELECT COUNT(*), itemID FROM items WHERE quantity != 0 AND quantity <= minQuantity ", conn);
+               MySqlCommand com = new MySqlCommand("SELECT COUNT(*) FROM items WHERE quantity != 0 AND quantity <= minQuantity ", conn);
                MySqlDataAdapter adp = new MySqlDataAdapter(com);
                DataTable dt = new DataTable();
                adp.Fill(dt);
                int warning;
                warning = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
-                MySqlCommand comm = new MySqlCommand("SELECT COUNT(*), itemID FROM items WHERE quantity = 0", conn);
+
+                MySqlCommand comm = new MySqlCommand("SELECT COUNT(*) FROM items WHERE quantity = 0", conn);
                 MySqlDataAdapter adpp = new MySqlDataAdapter(comm);
                 DataTable dtt = new DataTable();
                 adp.Fill(dtt);
