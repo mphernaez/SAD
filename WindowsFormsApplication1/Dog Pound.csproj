@@ -77,6 +77,12 @@
     <Compile Include="Edit.Designer.cs">
       <DependentUpon>Edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Viewact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Viewact.Designer.cs">
+      <DependentUpon>Viewact.cs</DependentUpon>
+    </Compile>
     <Compile Include="Viewemp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewact.resx">
+      <DependentUpon>Viewact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Viewdog.resx">
       <DependentUpon>Viewdog.cs</DependentUpon>
