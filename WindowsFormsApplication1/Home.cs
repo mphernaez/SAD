@@ -126,17 +126,17 @@ namespace WindowsFormsApplication1
             {
                conn.Open();
 
-               MySqlCommand com = new MySqlCommand("SELECT COUNT(*), itemID FROM items WHERE quantity != 0 AND quantity >= minQuantity ", conn);
+               MySqlCommand com = new MySqlCommand("SELECT COUNT(*), itemID FROM items WHERE quantity != 0 AND quantity <= minQuantity ", conn);
                MySqlDataAdapter adp = new MySqlDataAdapter(com);
                DataTable dt = new DataTable();
                adp.Fill(dt);
-               int warning = 0;
+               int warning;
                warning = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
                 MySqlCommand comm = new MySqlCommand("SELECT COUNT(*), itemID FROM items WHERE quantity = 0", conn);
                 MySqlDataAdapter adpp = new MySqlDataAdapter(comm);
                 DataTable dtt = new DataTable();
                 adp.Fill(dtt);
-                int empty = 0;
+                int empty;
                 empty = int.Parse(dtt.Rows[0]["COUNT(*)"].ToString());
 
                 tbwarning.Text = (warning + " Items need your attenion");
