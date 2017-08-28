@@ -1242,6 +1242,12 @@ namespace WindowsFormsApplication1
             view.Show();
             view.TopMost = true;
         }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            refreshTeam();
+            newTeam.Rows.Clear();
+        }
     }
 }
 
