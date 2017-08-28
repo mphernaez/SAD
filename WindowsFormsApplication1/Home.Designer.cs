@@ -218,7 +218,6 @@
             this.warningPanel.Name = "warningPanel";
             this.warningPanel.Size = new System.Drawing.Size(495, 75);
             this.warningPanel.TabIndex = 9;
-            this.warningPanel.Visible = false;
             // 
             // tbwarning
             // 
@@ -240,7 +239,6 @@
             this.emptyPanel.Name = "emptyPanel";
             this.emptyPanel.Size = new System.Drawing.Size(495, 75);
             this.emptyPanel.TabIndex = 10;
-            this.emptyPanel.Visible = false;
             // 
             // tbempty
             // 
@@ -282,6 +280,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(20, 25);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
             // 
             // pictureBox1
             // 

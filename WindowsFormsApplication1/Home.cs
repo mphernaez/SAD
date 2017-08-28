@@ -136,19 +136,18 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm = new MySqlCommand("SELECT COUNT(*) FROM items WHERE quantity = 0", conn);
                 MySqlDataAdapter adpp = new MySqlDataAdapter(comm);
                 DataTable dtt = new DataTable();
-                adp.Fill(dtt);
+                adpp.Fill(dtt);
                 int empty;
                 empty = int.Parse(dtt.Rows[0]["COUNT(*)"].ToString());
-
                 tbwarning.Text = (warning + " Items need your attenion");
                 tbempty.Text = (empty + " Items have ran out");
                 if(warning > 0)
                 {
-                    tbwarning.Visible = true;
+                    warningPanel.Visible = true;
                 }
                 if(empty > 0)
                 {
-                    tbempty.Visible = true;
+                    emptyPanel.Visible = true;
                 }
 
                 conn.Close();
@@ -187,6 +186,7 @@ namespace WindowsFormsApplication1
             ip.BackColor = Color.FromArgb(2, 170, 145);
             ep.BackColor = Color.FromArgb(2, 170, 145);
             dp.BackColor = Color.FromArgb(2, 170, 145);
+            refreshNotif();
 
 
         }
@@ -214,6 +214,11 @@ namespace WindowsFormsApplication1
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             emptyPanel.Visible = false;
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+            warningPanel.Visible = false;
         }
     }
 }
