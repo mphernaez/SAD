@@ -56,6 +56,8 @@ namespace WindowsFormsApplication1
             this.Top = 262;
             refreshSI();
             refreshSO();
+            dgvo.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvin.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
         }
 
         private void refreshSI()
@@ -169,13 +171,15 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand com = new MySqlCommand("SELECT quantity FROM items WHERE itemID = " + itemID, conn);
+                MySqlCommand com = new MySqlCommand("SELECT * FROM items WHERE itemID = " + itemID, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(com);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
-                int qua = int.Parse(dt.Rows[0]["quantity"].ToString()) - int.Parse(nubi.Value.ToString());
-
-                if (int.Parse(nubo.Text) > qua)
+                int qua = int.Parse(dt.Rows[0]["quantity"].ToString());
+                string prod = dt.Rows[0]["productName"].ToString();
+                int id = int.Parse(dt.Rows[0]["itemID"].ToString());
+                int min = int.Parse(dt.Rows[0]["minQuantity"].ToString());
+                if (int.Parse(nubo.Text) < qua)
                 {
                     MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - '" + nubo.Value.ToString() + "' WHERE itemID = '" + itemID + "'", conn);
                     comm.ExecuteNonQuery();
@@ -185,8 +189,16 @@ namespace WindowsFormsApplication1
                 {
                     MessageBox.Show("Invalid Value");
                 }
+                com = new MySqlCommand("SELECT quantity FROM items WHERE itemID = " + itemID, conn);
+                adp = new MySqlDataAdapter(com);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+                int quan = int.Parse(dt.Rows[0]["quantity"].ToString());
+
                 conn.Close();
                 refreshSO();
+                checkMin(id, min, quan, prod);
 
             }
             catch (Exception ex)
@@ -251,6 +263,19 @@ namespace WindowsFormsApplication1
         {
             itemID = int.Parse(dgvin.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
            
+        }
+
+        private void nubi_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkMin(int id, int min, int quan, string prod)
+        {
+            if (quan < min)
+            {
+                MessageBox.Show("Item in scarse! Request stocks immediately for: " + prod);
+            }
         }
     }
 }
