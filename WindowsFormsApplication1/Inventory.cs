@@ -145,9 +145,10 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm = new MySqlCommand("INSERT INTO items VALUES (itemID, '"+ tbname.Text + "', '" + tbdesc.Text + "', 0, "+ nudmin.Value.ToString() + ")" , conn);
                 comm.ExecuteNonQuery();
                 MessageBox.Show("Item Added");
+                conn.Close();
                 refreshSI();
                 refreshSO();
-                conn.Close();
+                
 
             }
             catch (Exception ex)
@@ -168,9 +169,22 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - '" + nubo.Value.ToString() + "' WHERE itemID = '" + itemID + "'", conn);
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Item Updated");
+                MySqlCommand com = new MySqlCommand("SELECT quantity FROM items WHERE itemID = " + itemID, conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                int qua = int.Parse(dt.Rows[0]["quantity"].ToString()) - int.Parse(nubi.Value.ToString());
+
+                if (int.Parse(nubo.Text) > qua)
+                {
+                    MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - '" + nubo.Value.ToString() + "' WHERE itemID = '" + itemID + "'", conn);
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Item Updated");
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Value");
+                }
                 conn.Close();
                 refreshSO();
 
@@ -199,39 +213,44 @@ namespace WindowsFormsApplication1
 
         private void OK1_Click(object sender, EventArgs e)
         {
-            try
+            if (itemID != 0)
             {
-
-                conn.Open();
-                MySqlCommand com = new MySqlCommand("SELECT quantity WHERE itemID = " + itemID, conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                int qua = int.Parse(dt.Rows[0]["quantity"].ToString()) - int.Parse(nubi.Value.ToString());
-                if (qua >= 0)
+                try
                 {
-                    MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + " + nubi.Value.ToString() + " WHERE itemID = " + itemID, conn);
-                    comm.ExecuteNonQuery();
-                    MessageBox.Show("Item Updated");
-                }
-                else
-                {
-                    MessageBox.Show("Please enter a valid number");
-                }
-                conn.Close();
-                refreshSI();
 
+                    conn.Open();
+                    int quan = int.Parse(nubi.Text);
+
+                    if (quan > 0)
+                    {
+                        MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + " + nubi.Value.ToString() + " WHERE itemID = " + itemID, conn);
+                        comm.ExecuteNonQuery();
+                        MessageBox.Show("Item Updated");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a valid number");
+                    }
+                    conn.Close();
+                    refreshSI();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
+                MessageBox.Show("Please select an item");
             }
         }
 
         private void dgvin_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            itemID = int.Parse(dgvo.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
+            itemID = int.Parse(dgvin.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
+           
         }
     }
 }

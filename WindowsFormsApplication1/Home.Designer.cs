@@ -42,7 +42,6 @@
             this.hp = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.euthanuzereportdgv = new System.Windows.Forms.DataGridView();
             this.catchingreportdgv = new System.Windows.Forms.DataGridView();
             this.reportdgv = new System.Windows.Forms.DataGridView();
@@ -51,7 +50,6 @@
             this.ep.SuspendLayout();
             this.dp.SuspendLayout();
             this.hp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.euthanuzereportdgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.catchingreportdgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportdgv)).BeginInit();
@@ -247,15 +245,6 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Time";
             // 
-            // claimreportdgv
-            // 
-            this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.claimreportdgv.Location = new System.Drawing.Point(0, 114);
-            this.claimreportdgv.Name = "claimreportdgv";
-            this.claimreportdgv.Size = new System.Drawing.Size(240, 150);
-            this.claimreportdgv.TabIndex = 9;
-            this.claimreportdgv.Visible = false;
-            // 
             // euthanuzereportdgv
             // 
             this.euthanuzereportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -293,7 +282,6 @@
             this.Controls.Add(this.reportdgv);
             this.Controls.Add(this.catchingreportdgv);
             this.Controls.Add(this.euthanuzereportdgv);
-            this.Controls.Add(this.claimreportdgv);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
@@ -308,7 +296,6 @@
             this.ep.ResumeLayout(false);
             this.dp.ResumeLayout(false);
             this.hp.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.euthanuzereportdgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.catchingreportdgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportdgv)).EndInit();
@@ -333,7 +320,6 @@
         private System.Windows.Forms.Panel dp;
         private System.Windows.Forms.Panel hp;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView claimreportdgv;
         private System.Windows.Forms.DataGridView euthanuzereportdgv;
         private System.Windows.Forms.DataGridView catchingreportdgv;
         private System.Windows.Forms.DataGridView reportdgv;

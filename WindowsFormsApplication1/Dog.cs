@@ -530,12 +530,12 @@ namespace WindowsFormsApplication1
             addDog.Visible = false;
             adoptDog.Visible = false;
             euthanizeDog.Visible = false;
-            repclaimpan.Visible = true;
             a.Visible = false;
             s.Visible = false;
             ad.Visible = false;
             et.Visible = false;
             r.Visible = true;
+            claimreportdgv.Visible = false;
 
             try
             {
@@ -547,26 +547,26 @@ namespace WindowsFormsApplication1
                 adp.Fill(dt);
 
 
-                claimdgv.DataSource = dt;
+                claimreportdgv.DataSource = dt;
 
-                claimdgv.Columns["breed"].HeaderText = "Breed";
-                claimdgv.Columns["gender"].HeaderText = "Gender";
-                claimdgv.Columns["size"].HeaderText = "Size";
-                claimdgv.Columns["color"].HeaderText = "Color";
-                claimdgv.Columns["otherDesc"].HeaderText = "Other Description";
-                claimdgv.Columns["description"].HeaderText = "Location Caught";
-                claimdgv.Columns["date"].HeaderText = "Date Caught";
-                claimdgv.Columns["time"].HeaderText = "Time Caught";
+                claimreportdgv.Columns["breed"].HeaderText = "Breed";
+                claimreportdgv.Columns["gender"].HeaderText = "Gender";
+                claimreportdgv.Columns["size"].HeaderText = "Size";
+                claimreportdgv.Columns["color"].HeaderText = "Color";
+                claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
+                claimreportdgv.Columns["description"].HeaderText = "Location Caught";
+                claimreportdgv.Columns["date"].HeaderText = "Date Caught";
+                claimreportdgv.Columns["time"].HeaderText = "Time Caught";
 
 
-                claimdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                claimdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                claimdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                claimdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                claimdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                claimdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                claimdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                claimdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
 
                 conn.Close();
@@ -577,39 +577,64 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
 
+
             toExcel();
-
         }
-
-        private void toExcel()
+         private void toExcel()
         {
             Excel.Application excel = new Excel.Application();
-            Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
             Excel._Worksheet worksheet = null;
-            excel.Visible = true;
 
-            worksheet = workbook.Sheets["Sheet1"];
-            worksheet = workbook.ActiveSheet;
-            worksheet.Name = "From gridview";
+            try
+            {
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "ExportedFromGrid";
 
-            for (int i = 1; i < claimdgv.Columns.Count + 1; i++)
-            {
-                worksheet.Cells[1, i] = claimdgv.Columns[i - 1].HeaderText;
-            }
-            // storing Each row and column value to excel sheet  
-            for (int i = 0; i < claimdgv.Rows.Count - 1; i++)
-            {
-                for (int j = 0; j < claimdgv.Columns.Count; j++)
+                int cellRowIndex = 1;
+                int cellColumnIndex = 1;
+
+                for (int i = 0; i < claimreportdgv.Rows.Count - 1; i++)
                 {
-                    worksheet.Cells[i + 2, j + 1] = claimdgv.Rows[i].Cells[j].Value.ToString();
+                    for (int j = 0; j < claimreportdgv.Columns.Count; j++)
+                    {
+                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
+                        if (cellRowIndex == 1)
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = claimreportdgv.Columns[j].HeaderText;
+                        }
+                        else
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = claimreportdgv.Rows[i].Cells[j].Value.ToString();
+                        }
+                        cellColumnIndex++;
+                    }
+                    cellColumnIndex = 1;
+                    cellRowIndex++;
+                }
+
+                //Getting the location and file name of the excel to save from user. 
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 2;
+
+                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    workbook.SaveAs(saveDialog.FileName);
+                    MessageBox.Show("Export Successful");
                 }
             }
-            // save the application  
-            workbook.SaveAs("c:\\output.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-            // Exit from the application  
-            excel.Quit();
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                excel.Quit();
+                workbook = null;
+                excel = null;
+            } 
         }
-
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
         }
