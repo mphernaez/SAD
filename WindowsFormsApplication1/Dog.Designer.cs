@@ -763,7 +763,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(919, 507);
+            this.ClientSize = new System.Drawing.Size(1070, 651);
             this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.panel1);

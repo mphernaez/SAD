@@ -220,5 +220,11 @@ namespace WindowsFormsApplication1
         {
             warningPanel.Visible = false;
         }
+
+        private void warningPanel_MouseHover(object sender, EventArgs e)
+        {
+            warningPanel.BackColor = Color.White;
+            emptyPanel.BackColor = Color.White;
+        }
     }
 }
