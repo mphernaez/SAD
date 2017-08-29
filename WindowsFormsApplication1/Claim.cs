@@ -113,7 +113,7 @@ namespace WindowsFormsApplication1
                 size.Text = dt.Rows[0]["size"].ToString();
                 gender.Text = dt.Rows[0]["gender"].ToString();
                 location.Text = "Brgy. " + dt.Rows[0]["description"].ToString();
-                date.Text = dt.Rows[0]["date"].ToString().Substring(0, 10);
+                date.Text = dt.Rows[0]["date"].ToString();
                 time.Text = dt.Rows[0]["time"].ToString();
 
                 conn.Close();
