@@ -301,6 +301,7 @@
             this.warningPanel.Size = new System.Drawing.Size(287, 49);
             this.warningPanel.TabIndex = 9;
             this.warningPanel.Visible = false;
+            this.warningPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.warningPanel_Paint);
             this.warningPanel.MouseHover += new System.EventHandler(this.warningPanel_MouseHover);
             // 
             // pictureBox2
