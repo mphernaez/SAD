@@ -62,6 +62,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.nudmin = new System.Windows.Forms.NumericUpDown();
             this.button4 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.i)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
@@ -77,11 +80,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvin)).BeginInit();
             this.newitem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudmin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(162)))), ((int)(((byte)(80)))));
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.i);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
@@ -144,7 +150,7 @@
             this.a.BackColor = System.Drawing.Color.Transparent;
             this.a.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
             this.a.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.a.Location = new System.Drawing.Point(769, 71);
+            this.a.Location = new System.Drawing.Point(710, 71);
             this.a.Name = "a";
             this.a.Size = new System.Drawing.Size(28, 31);
             this.a.TabIndex = 54;
@@ -160,7 +166,7 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(756, 15);
+            this.button1.Location = new System.Drawing.Point(695, 15);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(55, 55);
             this.button1.TabIndex = 0;
@@ -467,6 +473,7 @@
             // newitem
             // 
             this.newitem.BackColor = System.Drawing.Color.White;
+            this.newitem.Controls.Add(this.label10);
             this.newitem.Controls.Add(this.label3);
             this.newitem.Controls.Add(this.nudmin);
             this.newitem.Controls.Add(this.button4);
@@ -515,6 +522,44 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label10.Location = new System.Drawing.Point(876, 67);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 20);
+            this.label10.TabIndex = 54;
+            this.label10.Text = "view all";
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.addd;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Location = new System.Drawing.Point(756, 15);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(55, 55);
+            this.button8.TabIndex = 57;
+            this.button8.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(770, 71);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 31);
+            this.pictureBox1.TabIndex = 58;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -551,6 +596,7 @@
             this.newitem.ResumeLayout(false);
             this.newitem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudmin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,5 +637,8 @@
         private System.Windows.Forms.Button OK1;
         private System.Windows.Forms.NumericUpDown nubo;
         private System.Windows.Forms.NumericUpDown nubi;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button8;
     }
 }

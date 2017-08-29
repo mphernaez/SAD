@@ -431,7 +431,7 @@ namespace WindowsFormsApplication1
                 dgvActivities.Columns["firstname"].HeaderText = "Firstname";
                 dgvActivities.Columns["middlename"].HeaderText = "Middlename";
                 dgvActivities.Columns["gender"].HeaderText = "Gender";
-                dgvActivities.Columns["birthdate"].HeaderText = "Gender";
+                dgvActivities.Columns["birthdate"].HeaderText = "Birthdate";
                 dgvActivities.Columns["contactNumber"].HeaderText = "Contact No.";
                 dgvActivities.Columns["position"].HeaderText = "Position";
                 dgvActivities.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

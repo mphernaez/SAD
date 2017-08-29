@@ -149,7 +149,14 @@ namespace WindowsFormsApplication1
                 {
                     emptyPanel.Visible = true;
                 }
-
+                if (warning == 0)
+                {
+                    warningPanel.Visible = false;
+                }
+                if (empty == 0)
+                {
+                    emptyPanel.Visible = false;
+                }
                 conn.Close();
 
             }
@@ -222,6 +229,16 @@ namespace WindowsFormsApplication1
         }
 
         private void warningPanel_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void refreshWarn()
+        {
+           
+         
+        }
+        private void warningPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

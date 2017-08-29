@@ -179,7 +179,7 @@ namespace WindowsFormsApplication1
                 string prod = dt.Rows[0]["productName"].ToString();
                 int id = int.Parse(dt.Rows[0]["itemID"].ToString());
                 int min = int.Parse(dt.Rows[0]["minQuantity"].ToString());
-                if (int.Parse(nubo.Text) < qua)
+                if (int.Parse(nubo.Text) <= qua)
                 {
                     MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - '" + nubo.Value.ToString() + "' WHERE itemID = '" + itemID + "'", conn);
                     comm.ExecuteNonQuery();
