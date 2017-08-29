@@ -307,10 +307,10 @@
             // 
             this.pictureBox2.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(291, 10);
+            this.pictureBox2.Location = new System.Drawing.Point(300, 19);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(22, 26);
+            this.pictureBox2.Size = new System.Drawing.Size(13, 14);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
@@ -321,7 +321,7 @@
             this.tbwarning.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbwarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbwarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
-            this.tbwarning.Location = new System.Drawing.Point(48, 10);
+            this.tbwarning.Location = new System.Drawing.Point(48, 14);
             this.tbwarning.Margin = new System.Windows.Forms.Padding(2);
             this.tbwarning.Name = "tbwarning";
             this.tbwarning.Size = new System.Drawing.Size(239, 19);
@@ -357,10 +357,10 @@
             // 
             this.pictureBox3.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(291, 11);
+            this.pictureBox3.Location = new System.Drawing.Point(298, 15);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(22, 26);
+            this.pictureBox3.Size = new System.Drawing.Size(13, 14);
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
@@ -371,7 +371,7 @@
             this.tbempty.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbempty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbempty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
-            this.tbempty.Location = new System.Drawing.Point(48, 11);
+            this.tbempty.Location = new System.Drawing.Point(48, 13);
             this.tbempty.Margin = new System.Windows.Forms.Padding(2);
             this.tbempty.Name = "tbempty";
             this.tbempty.Size = new System.Drawing.Size(239, 19);

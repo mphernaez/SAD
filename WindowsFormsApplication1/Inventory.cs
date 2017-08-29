@@ -53,7 +53,7 @@ namespace WindowsFormsApplication1
 
         private void Inventory_Load(object sender, EventArgs e)
         {
-            this.Top = 262;
+            this.Top = 112; //262
             refreshSI();
             refreshSO();
             dgvo.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);

@@ -112,7 +112,7 @@ namespace WindowsFormsApplication1
         {
             namelabel.Text = dispUser;
 //this.TopMost = true;
-            this.Top = 150;
+            this.Top = 0; // 150
             Timer tmr = new Timer();
             tmr.Interval = 1000;//ticks every 1 second
             tmr.Tick += new EventHandler(tmr_Tick);
@@ -139,8 +139,8 @@ namespace WindowsFormsApplication1
                 adpp.Fill(dtt);
                 int empty;
                 empty = int.Parse(dtt.Rows[0]["COUNT(*)"].ToString());
-                tbwarning.Text = (warning + " Items need your attenion");
-                tbempty.Text = (empty + " Items have ran out");
+                tbwarning.Text = (warning + " Item/s need your attenion");
+                tbempty.Text = (empty + " Item/s have ran out");
                 if(warning > 0)
                 {
                     warningPanel.Visible = true;
