@@ -77,6 +77,12 @@
     <Compile Include="Edit.Designer.cs">
       <DependentUpon>Edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Viewact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Viewact.Designer.cs">
+      <DependentUpon>Viewact.cs</DependentUpon>
+    </Compile>
     <Compile Include="Viewemp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewact.resx">
+      <DependentUpon>Viewact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Viewdog.resx">
       <DependentUpon>Viewdog.cs</DependentUpon>
@@ -272,7 +281,7 @@
     <COMReference Include="Microsoft.Office.Interop.Excel">
       <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>1</VersionMajor>
-      <VersionMinor>9</VersionMinor>
+      <VersionMinor>8</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
@@ -352,6 +361,8 @@
     <None Include="Resources\exitt.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\header.png" />
+    <None Include="Resources\delete-button.png" />
     <None Include="Resources\cancel-music.png" />
     <None Include="Resources\triangle-512.png" />
     <None Include="Resources\home1.png" />
@@ -366,6 +377,8 @@
     <None Include="Resources\catch.png" />
     <None Include="Resources\ad.png" />
     <None Include="Resources\archive-black-box.png" />
+    <None Include="Resources\61444.png" />
+    <None Include="Resources\179386.png" />
     <Content Include="Resources\back.png" />
     <None Include="Resources\items.png" />
     <None Include="Resources\rep.png" />

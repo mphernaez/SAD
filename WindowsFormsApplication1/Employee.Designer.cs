@@ -32,6 +32,8 @@
             this.dgvActivities = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.act = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbAct = new System.Windows.Forms.TextBox();
             this.btnDone = new System.Windows.Forms.Button();
             this.attendance = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
@@ -41,6 +43,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dgvAttendanceIn = new System.Windows.Forms.DataGridView();
             this.dgvAttendanceOut = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.repEmp = new System.Windows.Forms.DataGridView();
             this.dgvAdmin = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.admin = new System.Windows.Forms.Panel();
@@ -89,18 +93,6 @@
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.Operations = new System.Windows.Forms.Panel();
-            this.newOperation = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbEnd = new System.Windows.Forms.TextBox();
-            this.tbStart = new System.Windows.Forms.TextBox();
-            this.tbOpDate = new System.Windows.Forms.TextBox();
-            this.dgvTeams = new System.Windows.Forms.DataGridView();
-            this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmployeeNames = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button20 = new System.Windows.Forms.Button();
-            this.cbLocation = new System.Windows.Forms.ComboBox();
             this.team = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -113,15 +105,28 @@
             this.Lastname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Middlename = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allEmployees = new System.Windows.Forms.DataGridView();
+            this.Operations = new System.Windows.Forms.Panel();
+            this.dgvOperationsView = new System.Windows.Forms.DataGridView();
+            this.newOperation = new System.Windows.Forms.Panel();
+            this.dgvTeams = new System.Windows.Forms.DataGridView();
+            this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeNames = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbEnd = new System.Windows.Forms.TextBox();
+            this.tbStart = new System.Windows.Forms.TextBox();
+            this.tbOpDate = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button20 = new System.Windows.Forms.Button();
+            this.cbLocation = new System.Windows.Forms.ComboBox();
             this.impounddogpoundDataSet1 = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dgvOperationsView = new System.Windows.Forms.DataGridView();
-            this.tbAct = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
             this.act.SuspendLayout();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repEmp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdmin)).BeginInit();
             this.admin.SuspendLayout();
             this.addEmployee.SuspendLayout();
@@ -136,14 +141,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ad)).BeginInit();
             this.DogCatchingOperation.SuspendLayout();
-            this.Operations.SuspendLayout();
-            this.newOperation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTeams)).BeginInit();
             this.team.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).BeginInit();
+            this.Operations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperationsView)).BeginInit();
+            this.newOperation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTeams)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvActivities
@@ -176,6 +181,7 @@
             // act
             // 
             this.act.BackColor = System.Drawing.Color.White;
+            this.act.Controls.Add(this.label13);
             this.act.Controls.Add(this.tbAct);
             this.act.Controls.Add(this.btnDone);
             this.act.Controls.Add(this.label11);
@@ -186,6 +192,29 @@
             this.act.Size = new System.Drawing.Size(1016, 543);
             this.act.TabIndex = 45;
             this.act.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label13.Location = new System.Drawing.Point(918, 62);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(58, 20);
+            this.label13.TabIndex = 39;
+            this.label13.Text = "view all";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // tbAct
+            // 
+            this.tbAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbAct.Location = new System.Drawing.Point(531, 458);
+            this.tbAct.Name = "tbAct";
+            this.tbAct.Size = new System.Drawing.Size(229, 31);
+            this.tbAct.TabIndex = 26;
+            this.tbAct.Text = "Type of Activity";
+            this.tbAct.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
+            this.tbAct.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // btnDone
             // 
@@ -318,6 +347,26 @@
             this.dgvAttendanceOut.Size = new System.Drawing.Size(982, 306);
             this.dgvAttendanceOut.TabIndex = 31;
             this.dgvAttendanceOut.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.repEmp);
+            this.panel2.Location = new System.Drawing.Point(24, 84);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1016, 396);
+            this.panel2.TabIndex = 32;
+            this.panel2.Visible = false;
+            // 
+            // repEmp
+            // 
+            this.repEmp.AllowUserToAddRows = false;
+            this.repEmp.AllowUserToDeleteRows = false;
+            this.repEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.repEmp.Location = new System.Drawing.Point(194, 12);
+            this.repEmp.Name = "repEmp";
+            this.repEmp.ReadOnly = true;
+            this.repEmp.Size = new System.Drawing.Size(444, 159);
+            this.repEmp.TabIndex = 0;
             // 
             // dgvAdmin
             // 
@@ -936,10 +985,10 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.button16);
-            this.DogCatchingOperation.Controls.Add(this.Operations);
-            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.label4);
             this.DogCatchingOperation.Controls.Add(this.team);
+            this.DogCatchingOperation.Controls.Add(this.Operations);
+            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Location = new System.Drawing.Point(27, 84);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -1000,6 +1049,143 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Dog Catching Operation";
             // 
+            // team
+            // 
+            this.team.Controls.Add(this.label6);
+            this.team.Controls.Add(this.label5);
+            this.team.Controls.Add(this.button19);
+            this.team.Controls.Add(this.button18);
+            this.team.Controls.Add(this.button17);
+            this.team.Controls.Add(this.newTeam);
+            this.team.Controls.Add(this.allEmployees);
+            this.team.Location = new System.Drawing.Point(15, 114);
+            this.team.Name = "team";
+            this.team.Size = new System.Drawing.Size(982, 402);
+            this.team.TabIndex = 33;
+            this.team.Visible = false;
+            this.team.Paint += new System.Windows.Forms.PaintEventHandler(this.team_Paint);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label6.Location = new System.Drawing.Point(18, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(118, 25);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "Employees";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label5.Location = new System.Drawing.Point(547, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(114, 25);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "New Team";
+            // 
+            // button19
+            // 
+            this.button19.BackColor = System.Drawing.Color.Transparent;
+            this.button19.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources._61444;
+            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button19.FlatAppearance.BorderSize = 0;
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button19.ForeColor = System.Drawing.Color.White;
+            this.button19.Location = new System.Drawing.Point(466, 170);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(33, 27);
+            this.button19.TabIndex = 36;
+            this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button18.FlatAppearance.BorderSize = 0;
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.ForeColor = System.Drawing.Color.White;
+            this.button18.Location = new System.Drawing.Point(404, 350);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(158, 32);
+            this.button18.TabIndex = 35;
+            this.button18.Text = "Add Team";
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // button17
+            // 
+            this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button17.FlatAppearance.BorderSize = 0;
+            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button17.ForeColor = System.Drawing.Color.White;
+            this.button17.Location = new System.Drawing.Point(462, 132);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(45, 32);
+            this.button17.TabIndex = 34;
+            this.button17.Text = "▶";
+            this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // newTeam
+            // 
+            this.newTeam.BackgroundColor = System.Drawing.Color.White;
+            this.newTeam.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.newTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.newTeam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.personID,
+            this.Firstname,
+            this.Lastname,
+            this.Middlename});
+            this.newTeam.Location = new System.Drawing.Point(547, 53);
+            this.newTeam.Name = "newTeam";
+            this.newTeam.ReadOnly = true;
+            this.newTeam.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.newTeam.Size = new System.Drawing.Size(417, 279);
+            this.newTeam.TabIndex = 1;
+            this.newTeam.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // personID
+            // 
+            this.personID.HeaderText = "personID";
+            this.personID.Name = "personID";
+            this.personID.ReadOnly = true;
+            this.personID.Visible = false;
+            // 
+            // Firstname
+            // 
+            this.Firstname.HeaderText = "Firstname";
+            this.Firstname.Name = "Firstname";
+            this.Firstname.ReadOnly = true;
+            // 
+            // Lastname
+            // 
+            this.Lastname.HeaderText = "Middlename";
+            this.Lastname.Name = "Lastname";
+            this.Lastname.ReadOnly = true;
+            // 
+            // Middlename
+            // 
+            this.Middlename.HeaderText = "Lastname";
+            this.Middlename.Name = "Middlename";
+            this.Middlename.ReadOnly = true;
+            // 
+            // allEmployees
+            // 
+            this.allEmployees.BackgroundColor = System.Drawing.Color.White;
+            this.allEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.allEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.allEmployees.Location = new System.Drawing.Point(18, 53);
+            this.allEmployees.Name = "allEmployees";
+            this.allEmployees.ReadOnly = true;
+            this.allEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.allEmployees.Size = new System.Drawing.Size(417, 279);
+            this.allEmployees.TabIndex = 0;
+            this.allEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.allEmployees_CellClick);
+            // 
             // Operations
             // 
             this.Operations.Controls.Add(this.dgvOperationsView);
@@ -1008,6 +1194,18 @@
             this.Operations.Size = new System.Drawing.Size(982, 402);
             this.Operations.TabIndex = 41;
             this.Operations.Visible = false;
+            // 
+            // dgvOperationsView
+            // 
+            this.dgvOperationsView.BackgroundColor = System.Drawing.Color.White;
+            this.dgvOperationsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvOperationsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOperationsView.Location = new System.Drawing.Point(19, 17);
+            this.dgvOperationsView.Name = "dgvOperationsView";
+            this.dgvOperationsView.ReadOnly = true;
+            this.dgvOperationsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOperationsView.Size = new System.Drawing.Size(947, 369);
+            this.dgvOperationsView.TabIndex = 42;
             // 
             // newOperation
             // 
@@ -1026,6 +1224,33 @@
             this.newOperation.Visible = false;
             this.newOperation.VisibleChanged += new System.EventHandler(this.newOperation_VisibleChanged);
             this.newOperation.Paint += new System.Windows.Forms.PaintEventHandler(this.newOperation_Paint);
+            // 
+            // dgvTeams
+            // 
+            this.dgvTeams.BackgroundColor = System.Drawing.Color.White;
+            this.dgvTeams.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvTeams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTeams.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.teamID,
+            this.EmployeeNames});
+            this.dgvTeams.Location = new System.Drawing.Point(18, 42);
+            this.dgvTeams.Name = "dgvTeams";
+            this.dgvTeams.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTeams.Size = new System.Drawing.Size(522, 336);
+            this.dgvTeams.TabIndex = 41;
+            this.dgvTeams.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeams_CellClick);
+            // 
+            // teamID
+            // 
+            this.teamID.HeaderText = "teamID";
+            this.teamID.Name = "teamID";
+            this.teamID.Visible = false;
+            // 
+            // EmployeeNames
+            // 
+            this.EmployeeNames.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EmployeeNames.HeaderText = "Employee Names";
+            this.EmployeeNames.Name = "EmployeeNames";
             // 
             // label9
             // 
@@ -1072,33 +1297,6 @@
             this.tbOpDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbOpDate.Click += new System.EventHandler(this.tbOpDate_Click);
             this.tbOpDate.TextChanged += new System.EventHandler(this.tbOpDate_TextChanged);
-            // 
-            // dgvTeams
-            // 
-            this.dgvTeams.BackgroundColor = System.Drawing.Color.White;
-            this.dgvTeams.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvTeams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTeams.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.teamID,
-            this.EmployeeNames});
-            this.dgvTeams.Location = new System.Drawing.Point(18, 42);
-            this.dgvTeams.Name = "dgvTeams";
-            this.dgvTeams.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTeams.Size = new System.Drawing.Size(522, 336);
-            this.dgvTeams.TabIndex = 41;
-            this.dgvTeams.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeams_CellClick);
-            // 
-            // teamID
-            // 
-            this.teamID.HeaderText = "teamID";
-            this.teamID.Name = "teamID";
-            this.teamID.Visible = false;
-            // 
-            // EmployeeNames
-            // 
-            this.EmployeeNames.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.EmployeeNames.HeaderText = "Employee Names";
-            this.EmployeeNames.Name = "EmployeeNames";
             // 
             // label7
             // 
@@ -1318,141 +1516,6 @@
             this.cbLocation.TabIndex = 2;
             this.cbLocation.Text = "Location";
             // 
-            // team
-            // 
-            this.team.Controls.Add(this.label6);
-            this.team.Controls.Add(this.label5);
-            this.team.Controls.Add(this.button19);
-            this.team.Controls.Add(this.button18);
-            this.team.Controls.Add(this.button17);
-            this.team.Controls.Add(this.newTeam);
-            this.team.Controls.Add(this.allEmployees);
-            this.team.Location = new System.Drawing.Point(15, 114);
-            this.team.Name = "team";
-            this.team.Size = new System.Drawing.Size(982, 402);
-            this.team.TabIndex = 33;
-            this.team.Visible = false;
-            this.team.Paint += new System.Windows.Forms.PaintEventHandler(this.team_Paint);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label6.Location = new System.Drawing.Point(18, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(118, 25);
-            this.label6.TabIndex = 37;
-            this.label6.Text = "Employees";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label5.Location = new System.Drawing.Point(547, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 25);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "New Team";
-            // 
-            // button19
-            // 
-            this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
-            this.button19.FlatAppearance.BorderSize = 0;
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.ForeColor = System.Drawing.Color.White;
-            this.button19.Location = new System.Drawing.Point(462, 176);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(45, 32);
-            this.button19.TabIndex = 36;
-            this.button19.Text = "◀";
-            this.button19.UseVisualStyleBackColor = false;
-            // 
-            // button18
-            // 
-            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button18.FlatAppearance.BorderSize = 0;
-            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.ForeColor = System.Drawing.Color.White;
-            this.button18.Location = new System.Drawing.Point(404, 350);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(158, 32);
-            this.button18.TabIndex = 35;
-            this.button18.Text = "Add Team";
-            this.button18.UseVisualStyleBackColor = false;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
-            // 
-            // button17
-            // 
-            this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button17.FlatAppearance.BorderSize = 0;
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.ForeColor = System.Drawing.Color.White;
-            this.button17.Location = new System.Drawing.Point(462, 132);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(45, 32);
-            this.button17.TabIndex = 34;
-            this.button17.Text = "▶";
-            this.button17.UseVisualStyleBackColor = false;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // newTeam
-            // 
-            this.newTeam.BackgroundColor = System.Drawing.Color.White;
-            this.newTeam.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.newTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.newTeam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.personID,
-            this.Firstname,
-            this.Lastname,
-            this.Middlename});
-            this.newTeam.Location = new System.Drawing.Point(547, 53);
-            this.newTeam.Name = "newTeam";
-            this.newTeam.ReadOnly = true;
-            this.newTeam.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.newTeam.Size = new System.Drawing.Size(417, 279);
-            this.newTeam.TabIndex = 1;
-            this.newTeam.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // personID
-            // 
-            this.personID.HeaderText = "personID";
-            this.personID.Name = "personID";
-            this.personID.ReadOnly = true;
-            this.personID.Visible = false;
-            // 
-            // Firstname
-            // 
-            this.Firstname.HeaderText = "Firstname";
-            this.Firstname.Name = "Firstname";
-            this.Firstname.ReadOnly = true;
-            // 
-            // Lastname
-            // 
-            this.Lastname.HeaderText = "Middlename";
-            this.Lastname.Name = "Lastname";
-            this.Lastname.ReadOnly = true;
-            // 
-            // Middlename
-            // 
-            this.Middlename.HeaderText = "Lastname";
-            this.Middlename.Name = "Middlename";
-            this.Middlename.ReadOnly = true;
-            // 
-            // allEmployees
-            // 
-            this.allEmployees.BackgroundColor = System.Drawing.Color.White;
-            this.allEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.allEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.allEmployees.Location = new System.Drawing.Point(18, 53);
-            this.allEmployees.Name = "allEmployees";
-            this.allEmployees.ReadOnly = true;
-            this.allEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.allEmployees.Size = new System.Drawing.Size(417, 279);
-            this.allEmployees.TabIndex = 0;
-            this.allEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.allEmployees_CellClick);
-            // 
             // impounddogpoundDataSet1
             // 
             this.impounddogpoundDataSet1.DataSetName = "impounddogpoundDataSet";
@@ -1460,31 +1523,9 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // dgvOperationsView
-            // 
-            this.dgvOperationsView.BackgroundColor = System.Drawing.Color.White;
-            this.dgvOperationsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvOperationsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOperationsView.Location = new System.Drawing.Point(19, 17);
-            this.dgvOperationsView.Name = "dgvOperationsView";
-            this.dgvOperationsView.ReadOnly = true;
-            this.dgvOperationsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOperationsView.Size = new System.Drawing.Size(947, 369);
-            this.dgvOperationsView.TabIndex = 42;
-            // 
-            // tbAct
-            // 
-            this.tbAct.Font = new System.Drawing.Font("Trebuchet MS", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAct.Location = new System.Drawing.Point(531, 458);
-            this.tbAct.Name = "tbAct";
-            this.tbAct.Size = new System.Drawing.Size(229, 32);
-            this.tbAct.TabIndex = 26;
-            this.tbAct.Text = "Type of Activity";
-            this.tbAct.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
-            this.tbAct.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // Employee
             // 
@@ -1493,13 +1534,14 @@
             this.AutoScrollMargin = new System.Drawing.Size(1, 1);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 651);
-            this.Controls.Add(this.act);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.attendance);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.admin);
+            this.Controls.Add(this.act);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.attendance);
+            this.Controls.Add(this.addEmployee);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -1513,6 +1555,8 @@
             this.attendance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.repEmp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdmin)).EndInit();
             this.admin.ResumeLayout(false);
             this.admin.PerformLayout();
@@ -1531,16 +1575,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.ad)).EndInit();
             this.DogCatchingOperation.ResumeLayout(false);
             this.DogCatchingOperation.PerformLayout();
-            this.Operations.ResumeLayout(false);
-            this.newOperation.ResumeLayout(false);
-            this.newOperation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTeams)).EndInit();
             this.team.ResumeLayout(false);
             this.team.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newTeam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).EndInit();
+            this.Operations.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperationsView)).EndInit();
+            this.newOperation.ResumeLayout(false);
+            this.newOperation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTeams)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1635,5 +1679,8 @@
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.DataGridView dgvOperationsView;
         private System.Windows.Forms.TextBox tbAct;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView repEmp;
     }
 }

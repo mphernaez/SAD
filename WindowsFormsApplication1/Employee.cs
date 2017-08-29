@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace WindowsFormsApplication1
 {
@@ -17,7 +18,7 @@ namespace WindowsFormsApplication1
         private int y;
         private Color use;
         
-        public Home back { get; set; }
+        public empty back { get; set; }
         public MySqlConnection conn = new MySqlConnection();
        EditEmp emp;
         public Employee()
@@ -98,6 +99,7 @@ namespace WindowsFormsApplication1
             act.Visible = false;
             attendance.Visible = false;
             admin.Visible = false;
+            panel2.Visible = false;
             ne.Visible = true;
             a.Visible = false;
             ac.Visible = false;
@@ -120,6 +122,7 @@ namespace WindowsFormsApplication1
             act.Visible = false;
             attendance.Visible = true;
             admin.Visible = false;
+            panel2.Visible = false;
             ne.Visible = false;
             a.Visible = true;
             ac.Visible = false;
@@ -138,6 +141,7 @@ namespace WindowsFormsApplication1
             act.Visible = true;
             attendance.Visible = false;;
             admin.Visible = false;
+            panel2.Visible = false;
             ne.Visible = false;
             a.Visible = false;
             ac.Visible = true;
@@ -155,6 +159,7 @@ namespace WindowsFormsApplication1
             act.Visible = false;
             attendance.Visible = false;
             admin.Visible = true;
+            panel2.Visible = false;
             ne.Visible = false;
             a.Visible = false;
             ac.Visible = false;
@@ -168,7 +173,7 @@ namespace WindowsFormsApplication1
 
         private void Employee_Load(object sender, EventArgs e)
         {
-            this.Top = 262;
+            this.Top = 112;// 262
 
         }
 
@@ -185,14 +190,83 @@ namespace WindowsFormsApplication1
             act.Visible = false;
             attendance.Visible = false;
             admin.Visible = false;
+            panel2.Visible = true;
             ne.Visible = false;
             a.Visible = false;
             ac.Visible = false;
             ad.Visible = false;
             o.Visible = false;
             r.Visible = true;
+            repEmp.Visible = true;
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand com = new MySqlCommand("SELECT lastname, middlename, firstname, gender, birthdate, contactNumber, address, position, status FROM profile INNER JOIN employee ON employee.employeeID = profile.personID", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
 
 
+                repEmp.DataSource = dt;
+
+                repEmp.Columns["lastname"].HeaderText = "Lastname";
+                repEmp.Columns["firstname"].HeaderText = "Firstname";
+                repEmp.Columns["middlename"].HeaderText = "Middlename";
+                repEmp.Columns["gender"].HeaderText = "Gender";
+                repEmp.Columns["birthdate"].HeaderText = "Birthdate";
+                repEmp.Columns["contactNumber"].HeaderText = "Contact No.";
+                repEmp.Columns["address"].HeaderText = "Address";
+                repEmp.Columns["position"].HeaderText = "Position";
+                repEmp.Columns["status"].HeaderText = "Status";
+
+                repEmp.Columns["Lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                repEmp.Columns["Firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                repEmp.Columns["Middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                repEmp.Columns["Gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                repEmp.Columns["Birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                repEmp.Columns["ContactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                repEmp.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                repEmp.Columns["Position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                repEmp.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+
+        private void toExcelEmp()
+        {
+            Excel.Application excel = new Excel.Application();
+            Excel.Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Excel._Worksheet worksheet = null;
+            excel.Visible = true;
+
+            worksheet = workbook.Sheets["Sheet1"];
+            worksheet = workbook.ActiveSheet;
+            worksheet.Name = "From gridview";
+
+            for (int i = 1; i < repEmp.Columns.Count + 1; i++)
+            {
+                worksheet.Cells[1, i] = repEmp.Columns[i - 1].HeaderText;
+            }
+            // storing Each row and column value to excel sheet  
+            for (int i = 0; i < repEmp.Rows.Count - 1; i++)
+            {
+                for (int j = 0; j < repEmp.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = repEmp.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+            // save the application  
+            workbook.SaveAs("c:\\output.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            // Exit from the application  
+            excel.Quit();
         }
 
         private void tblname_Click(object sender, EventArgs e)
@@ -263,7 +337,7 @@ namespace WindowsFormsApplication1
         private int employeeID;
         private void dgvProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             try
             {
                 conn.Open();
@@ -276,9 +350,8 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Successfully Recorded Attendance!");
                 refreshAttendance();
             }
-            catch (Exception ex)
+            catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show(ex.ToString());
                 conn.Close();
             }
         }
@@ -464,8 +537,8 @@ namespace WindowsFormsApplication1
                             teamempid = 0;
                         }
                     }
-                
-            
+
+         
 
         }
 
@@ -956,7 +1029,9 @@ namespace WindowsFormsApplication1
                     }
                 MessageBox.Show("New Operation Team recorded successfully");
                     conn.Close();
-                }
+                refreshTeam();
+                newTeam.Rows.Clear();
+            }
                 catch (Exception ex)
                 {
                     conn.Close();
@@ -1161,6 +1236,19 @@ namespace WindowsFormsApplication1
         private void attendance_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+            viewAct view = new viewAct();
+            view.Show();
+            view.TopMost = true;
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            refreshTeam();
+            newTeam.Rows.Clear();
         }
     }
 }

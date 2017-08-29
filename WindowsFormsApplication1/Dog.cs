@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
         public int adoptID;
         int i = -40;
         int[] opid; //id for every combobox item
-        public Home back { get; set; }
+        public empty back { get; set; }
         public MySqlConnection conn;
         public Dog()
         {
@@ -35,7 +35,7 @@ namespace WindowsFormsApplication1
         private void AddDog_Load(object sender, EventArgs e)
         {
             
-            this.Top = 262;
+            this.Top = 112; //262
         }
         public void trig()
         {
@@ -223,7 +223,7 @@ namespace WindowsFormsApplication1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            refreshSearch();
+            
         }
 
         private void dgvProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -298,11 +298,11 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, date, description, size, otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE gender = '" + gender + "' AND breed LIKE '%" + tbBreedSearch.Text + "%' AND color LIKE '%" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
+                    MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, date, description, size, otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE breed LIKE '%" + tbBreedSearch.Text + "%' AND color LIKE '%" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
-
+                    
                     dgvProfiles.DataSource = dt;
 
                     dgvProfiles.Columns["dogID"].Visible = false;
@@ -532,22 +532,50 @@ namespace WindowsFormsApplication1
             ad.Visible = false;
             et.Visible = false;
             r.Visible = true;
+            claimreportdgv.Visible = false;
 
-            string dogExcel;
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            dogExcel = "C:\\Desktop\\DogReport.xlxs";
+            try
+            {
+                conn.Open();
 
-            xlWorkBook = xlApp.Workbooks.Open("dogExcel", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            xlApp.Visible = true;
-
-            xlWorkBook.Close();
-
+                MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, date, time FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
 
 
+                claimreportdgv.DataSource = dt;
+
+                claimreportdgv.Columns["breed"].HeaderText = "Breed";
+                claimreportdgv.Columns["gender"].HeaderText = "Gender";
+                claimreportdgv.Columns["size"].HeaderText = "Size";
+                claimreportdgv.Columns["color"].HeaderText = "Color";
+                claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
+                claimreportdgv.Columns["description"].HeaderText = "Location Caught";
+                claimreportdgv.Columns["date"].HeaderText = "Date Caught";
+                claimreportdgv.Columns["time"].HeaderText = "Time Caught";
+
+
+                claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+            
         }
-
+        
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
         }
@@ -669,6 +697,21 @@ namespace WindowsFormsApplication1
         {
            
 
+        }
+
+        private void tbBreedSearch_TextChanged(object sender, EventArgs e)
+        {
+            refreshSearch();
+        }
+
+        private void tbColorSearch_TextChanged(object sender, EventArgs e)
+        {
+            refreshSearch();
+        }
+
+        private void cbGenderSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            refreshSearch();
         }
     }
 }

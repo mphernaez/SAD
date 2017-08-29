@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Adopt));
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -62,6 +63,8 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.breeds = new System.Windows.Forms.Label();
+            this.printPreviewDialogAdt = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocumentAdt = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -443,6 +446,21 @@
             this.breeds.TabIndex = 10;
             this.breeds.Text = "Breed";
             // 
+            // printPreviewDialogAdt
+            // 
+            this.printPreviewDialogAdt.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogAdt.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogAdt.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialogAdt.Enabled = true;
+            this.printPreviewDialogAdt.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogAdt.Icon")));
+            this.printPreviewDialogAdt.Name = "printPreviewDialogAdt";
+            this.printPreviewDialogAdt.Visible = false;
+            this.printPreviewDialogAdt.Load += new System.EventHandler(this.printPreviewDialog1_Load);
+            // 
+            // printDocumentAdt
+            // 
+            this.printDocumentAdt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentAdt_PrintPage);
+            // 
             // Adopt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -502,5 +520,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialogAdt;
+        private System.Drawing.Printing.PrintDocument printDocumentAdt;
     }
 }
