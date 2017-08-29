@@ -7,8 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Reflection;
 using MySql.Data.MySqlClient;
-using Excel = Microsoft.Office.Interop.Excel;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace WindowsFormsApplication1
 {
@@ -21,6 +25,7 @@ namespace WindowsFormsApplication1
         public int dogID;
         public int adminID;
         public int adoptID;
+        
         int i = -40;
         int[] opid; //id for every combobox item
         public empty back { get; set; }
@@ -527,13 +532,22 @@ namespace WindowsFormsApplication1
             addDog.Visible = false;
             adoptDog.Visible = false;
             euthanizeDog.Visible = false;
+            repclaimpan.Visible = true;
             a.Visible = false;
             s.Visible = false;
             ad.Visible = false;
             et.Visible = false;
             r.Visible = true;
-            claimreportdgv.Visible = false;
+            claimreportdgv.Visible = true;
 
+            toPDF();
+
+            
+        }
+
+        private void toPDF()
+        {
+            // System.IO.FileStream claim = new System.IO.FileStream(Mapmath("pdf") + "\\" + "Claiming Summary Report.pdf", FileMode.Create);
             try
             {
                 conn.Open();
