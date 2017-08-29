@@ -298,7 +298,7 @@
             this.warningPanel.Location = new System.Drawing.Point(5, 117);
             this.warningPanel.Margin = new System.Windows.Forms.Padding(2);
             this.warningPanel.Name = "warningPanel";
-            this.warningPanel.Size = new System.Drawing.Size(330, 49);
+            this.warningPanel.Size = new System.Drawing.Size(287, 49);
             this.warningPanel.TabIndex = 9;
             this.warningPanel.Visible = false;
             this.warningPanel.MouseHover += new System.EventHandler(this.warningPanel_MouseHover);
@@ -307,7 +307,7 @@
             // 
             this.pictureBox2.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(300, 19);
+            this.pictureBox2.Location = new System.Drawing.Point(257, 19);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(13, 14);
@@ -324,7 +324,7 @@
             this.tbwarning.Location = new System.Drawing.Point(48, 14);
             this.tbwarning.Margin = new System.Windows.Forms.Padding(2);
             this.tbwarning.Name = "tbwarning";
-            this.tbwarning.Size = new System.Drawing.Size(239, 19);
+            this.tbwarning.Size = new System.Drawing.Size(203, 19);
             this.tbwarning.TabIndex = 1;
             this.tbwarning.Text = "0 Items need your attenion";
             // 
@@ -348,7 +348,7 @@
             this.emptyPanel.Location = new System.Drawing.Point(5, 170);
             this.emptyPanel.Margin = new System.Windows.Forms.Padding(2);
             this.emptyPanel.Name = "emptyPanel";
-            this.emptyPanel.Size = new System.Drawing.Size(330, 49);
+            this.emptyPanel.Size = new System.Drawing.Size(287, 49);
             this.emptyPanel.TabIndex = 10;
             this.emptyPanel.Visible = false;
             this.emptyPanel.MouseHover += new System.EventHandler(this.warningPanel_MouseHover);
@@ -357,7 +357,7 @@
             // 
             this.pictureBox3.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(298, 15);
+            this.pictureBox3.Location = new System.Drawing.Point(255, 15);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(13, 14);
@@ -374,7 +374,7 @@
             this.tbempty.Location = new System.Drawing.Point(48, 13);
             this.tbempty.Margin = new System.Windows.Forms.Padding(2);
             this.tbempty.Name = "tbempty";
-            this.tbempty.Size = new System.Drawing.Size(239, 19);
+            this.tbempty.Size = new System.Drawing.Size(203, 19);
             this.tbempty.TabIndex = 1;
             this.tbempty.Text = "0 Items have ran out";
             // 
