@@ -59,9 +59,6 @@ namespace WindowsFormsApplication1
             et.Visible = false;
             r.Visible = false;
             
-
-
-
             addOperationsItems();
         }
 
@@ -624,15 +621,15 @@ namespace WindowsFormsApplication1
                 adp.Fill(dt);
                 int j = 0;
 
-                opid = new int[dt.Rows.Count - 1]; 
+                opid = new int[dt.Rows.Count - 1];       //modify global array 'opid'
 
                 for (int i = dt.Rows.Count - 1; i >= 1; i--)
                 {
-                    opid[j] = int.Parse(dt.Rows[i]["operationID"].ToString());
+                    opid[j] = int.Parse(dt.Rows[i]["operationID"].ToString());          //assign opid index to operationID (array index = combobox index [synced]) 
                     string date = dt.Rows[i]["date"].ToString().Substring(0, 10);
                     string time = dt.Rows[i]["time"].ToString();
                     string loc = dt.Rows[i]["description"].ToString();
-                    cbOperation.Items.Add(time + " " + date + " " + "Brgy. " + loc);
+                    cbOperation.Items.Add(time + " " + date + ", " + "Brgy. " + loc);    //add necessary cherbs to combobox
                     j++;
                 }
                 conn.Close();
