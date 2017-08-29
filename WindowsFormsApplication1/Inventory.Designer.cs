@@ -446,21 +446,23 @@
             // tbname
             // 
             this.tbname.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbname.Location = new System.Drawing.Point(168, 144);
+            this.tbname.Location = new System.Drawing.Point(282, 146);
             this.tbname.Name = "tbname";
-            this.tbname.Size = new System.Drawing.Size(303, 38);
+            this.tbname.Size = new System.Drawing.Size(405, 38);
             this.tbname.TabIndex = 12;
-            this.tbname.Text = "Name";
+            this.tbname.Text = "Product Name";
+            this.tbname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbdesc
             // 
             this.tbdesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbdesc.Location = new System.Drawing.Point(493, 144);
+            this.tbdesc.Location = new System.Drawing.Point(282, 198);
             this.tbdesc.Multiline = true;
             this.tbdesc.Name = "tbdesc";
-            this.tbdesc.Size = new System.Drawing.Size(344, 156);
+            this.tbdesc.Size = new System.Drawing.Size(405, 38);
             this.tbdesc.TabIndex = 13;
-            this.tbdesc.Text = "Description";
+            this.tbdesc.Text = "Product Type";
+            this.tbdesc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // newitem
             // 
@@ -483,7 +485,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label3.Location = new System.Drawing.Point(162, 225);
+            this.label3.Location = new System.Drawing.Point(369, 250);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(231, 31);
             this.label3.TabIndex = 42;
@@ -492,7 +494,7 @@
             // nudmin
             // 
             this.nudmin.Font = new System.Drawing.Font("Trebuchet MS", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudmin.Location = new System.Drawing.Point(168, 262);
+            this.nudmin.Location = new System.Drawing.Point(329, 284);
             this.nudmin.Name = "nudmin";
             this.nudmin.Size = new System.Drawing.Size(303, 38);
             this.nudmin.TabIndex = 25;
@@ -505,9 +507,9 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(389, 328);
+            this.button4.Location = new System.Drawing.Point(375, 346);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(219, 61);
+            this.button4.Size = new System.Drawing.Size(219, 49);
             this.button4.TabIndex = 24;
             this.button4.Text = "Add";
             this.button4.UseVisualStyleBackColor = false;
@@ -519,10 +521,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 651);
-            this.Controls.Add(this.inv);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.newitem);
+            this.Controls.Add(this.inv);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(27, 84);
             this.MaximizeBox = false;

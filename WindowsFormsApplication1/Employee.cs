@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Employee : Form
     {
+        public int adminempid;
         public int adminID;
         private int y;
         private Color use;
@@ -759,58 +760,64 @@ namespace WindowsFormsApplication1
             string lname = tblname.Text;
             string mname = tbmname.Text;
             string fname = tbfname.Text;
-            char gender;
-            if (cbgender.Text == "Female")
-            {
-                gender = 'F';
-            }
-            else
-            {
-                gender = 'M';
-            }
-            string address = tbaddress.Text;
-            string contact = tbcontactNumber.Text;
-
-
-            string bday =  tbbdayyear.Text + '-' + (cbbdaymonth.SelectedIndex + 1).ToString() + '-' + tbbdayday.Text;
-            string position = cbposition.Text;
-            string status = cbstatus.Text;
-
-            if (tblname.Text != "Lastname" && tbmname.Text != "Middlename" && tbfname.Text != "Firstname" && tbaddress.Text != "Address" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && cbposition.Text != "Position" && cbstatus.Text != "Status" && tbbdayday.Text != "Day" && tbbdayyear.Text != "Year" && cbbdaymonth.Text != "Month")
-            {
-                try
+           
+           if (tblname.Text != "Lastname" && tbmname.Text != "Middlename" && tbfname.Text != "Firstname" && tbaddress.Text != "Address" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && cbposition.Text != "Position" && cbstatus.Text != "Status" && tbbdayday.Text != "Day" && tbbdayyear.Text != "Year" && cbbdaymonth.Text != "Month")
+           {
+                if (checkIfEmployeeExists(lname, mname, fname) == false)
                 {
-                    conn.Open();
+                    char gender;
+                    if (cbgender.Text == "Female")
+                    {
+                        gender = 'F';
+                    }
+                    else
+                    {
+                        gender = 'M';
+                    }
+                    string address = tbaddress.Text;
+                    string contact = tbcontactNumber.Text;
 
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO profile(lastname, middlename, firstname, gender, address, birthdate, contactNumber) VALUES('" + lname + "', '" + mname + "', '" + fname + "', '" + gender + "', '" + address + "', '" + bday + "', '" + contact + "')", conn);
-                    comm.ExecuteNonQuery();
 
-                    comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
+                    string bday = tbbdayyear.Text + '-' + (cbbdaymonth.SelectedIndex + 1).ToString() + '-' + tbbdayday.Text;
+                    string position = cbposition.Text;
+                    string status = cbstatus.Text;
+                    try
+                    {
+                        conn.Open();
 
-                    int personID = int.Parse(dt.Rows[0]["MAX(personID)"].ToString());
+                        MySqlCommand comm = new MySqlCommand("INSERT INTO profile(lastname, middlename, firstname, gender, address, birthdate, contactNumber) VALUES('" + lname + "', '" + mname + "', '" + fname + "', '" + gender + "', '" + address + "', '" + bday + "', '" + contact + "')", conn);
+                        comm.ExecuteNonQuery();
 
-                    comm = new MySqlCommand("INSERT INTO employee(employeeID, position, status) VALUES('" + personID + "', '" + position + "', '" + status + "')", conn);
-                    comm.ExecuteNonQuery();
+                        comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                        DataTable dt = new DataTable();
+                        adp.Fill(dt);
 
-                    MessageBox.Show("Profile Added Successfully");
-                    rePopAddEmp();
+                        int personID = int.Parse(dt.Rows[0]["MAX(personID)"].ToString());
 
-                    conn.Close();
+                        comm = new MySqlCommand("INSERT INTO employee(employeeID, position, status) VALUES('" + personID + "', '" + position + "', '" + status + "')", conn);
+                        comm.ExecuteNonQuery();
+
+                        MessageBox.Show("Profile Added Successfully");
+                        rePopAddEmp();
+
+                        conn.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                        conn.Close();
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.ToString());
-                    conn.Close();
+                    MessageBox.Show("Error: Employee already exists");
                 }
             }
             else
             {
                 MessageBox.Show("Please Enter Required Fields");
             }
-
         }
 
         private void rePopAddEmp()
@@ -1057,7 +1064,25 @@ namespace WindowsFormsApplication1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            
+            if (tbPassword.Text.Length > 7) {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO admin(username, password, employeeID) VALUES('" + tbUsername.Text + "', '" + tbPassword.Text + "', " + adminempid + ")", conn);
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Admin successfully added");
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Password should be atleast 8 characters long");
+            }
         }
 
         private void tblname_MouseDown(object sender, MouseEventArgs e)
@@ -1249,6 +1274,38 @@ namespace WindowsFormsApplication1
         {
             refreshTeam();
             newTeam.Rows.Clear();
+        }
+
+        private void dgvAdmin_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            adminempid = int.Parse(dgvAdmin.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+        }
+
+        private Boolean checkIfEmployeeExists(string lastname, string middlename, string firstname)
+        {
+            Boolean exist = false;
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT COUNT(*) FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE lastname = '" + lastname + "' AND middlename = '" + middlename + "' AND firstname = '" + firstname + "'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                int num = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
+
+                if(num != 0)
+                {
+                    exist = true;
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+            return exist;
         }
     }
 }
