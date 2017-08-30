@@ -1203,9 +1203,7 @@ namespace WindowsFormsApplication1
 
         private void label10_Click(object sender, EventArgs e)
         {
-            Viewemp view = new Viewemp();
-            view.Show();
-            view.TopMost = true;
+           
         }
 
         private void cbbdaymonth_SelectedIndexChanged(object sender, EventArgs e)
@@ -1306,6 +1304,13 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
             return exist;
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            Viewemp view = new Viewemp();
+            view.Show();
+            view.TopMost = true;
         }
     }
 }

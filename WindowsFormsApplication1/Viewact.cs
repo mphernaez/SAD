@@ -50,10 +50,10 @@ namespace WindowsFormsApplication1
                 dgvViewAct.Columns["lastname"].HeaderText = "Lastame";
                 dgvViewAct.Columns["firstname"].HeaderText = "Firstname";
                 dgvViewAct.Columns["type"].HeaderText = "Type of Activity";
-                dgvViewAct.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvViewAct.Columns["Lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvViewAct.Columns["Firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvViewAct.Columns["Type of Activity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvViewAct.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvViewAct.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvViewAct.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvViewAct.Columns["type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 conn.Close();
             }
             catch (Exception ex)

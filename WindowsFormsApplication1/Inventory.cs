@@ -77,6 +77,11 @@ namespace WindowsFormsApplication1
                 dgvin.Columns["description"].HeaderText = "Decription";
                 dgvin.Columns["quantity"].HeaderText = "Quantity";
                 dgvin.Columns["minQuantity"].HeaderText = "Minimum Quantity";
+                dgvin.Columns["productName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvin.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvin.Columns["quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvin.Columns["minQuantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
 
                 conn.Close();
             }
@@ -103,6 +108,11 @@ namespace WindowsFormsApplication1
                 dgvo.Columns["description"].HeaderText = "Decription";
                 dgvo.Columns["quantity"].HeaderText = "Quantity";
                 dgvo.Columns["minQuantity"].HeaderText = "Minimum Quantity";
+                dgvo.Columns["productName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvo.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvo.Columns["quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvo.Columns["minQuantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
                 conn.Close();
             }
             catch (Exception ex)
@@ -276,6 +286,18 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Item in scarse! Request stocks immediately for: " + prod);
             }
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            viewInv inv = new viewInv();
+            inv.Show();
+            inv.TopMost = true;
         }
     }
 }

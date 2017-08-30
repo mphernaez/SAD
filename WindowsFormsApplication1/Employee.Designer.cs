@@ -52,7 +52,6 @@
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.addEmployee = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -120,6 +119,7 @@
             this.cbLocation = new System.Windows.Forms.ComboBox();
             this.impounddogpoundDataSet1 = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button23 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
             this.act.SuspendLayout();
             this.attendance.SuspendLayout();
@@ -449,7 +449,7 @@
             // addEmployee
             // 
             this.addEmployee.BackColor = System.Drawing.Color.White;
-            this.addEmployee.Controls.Add(this.label10);
+            this.addEmployee.Controls.Add(this.button23);
             this.addEmployee.Controls.Add(this.button12);
             this.addEmployee.Controls.Add(this.button11);
             this.addEmployee.Controls.Add(this.label2);
@@ -461,18 +461,6 @@
             this.addEmployee.Size = new System.Drawing.Size(1016, 543);
             this.addEmployee.TabIndex = 43;
             this.addEmployee.Visible = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label10.Location = new System.Drawing.Point(913, 81);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(84, 26);
-            this.label10.TabIndex = 38;
-            this.label10.Text = "view all";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // button12
             // 
@@ -1528,6 +1516,21 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // button23
+            // 
+            this.button23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button23.FlatAppearance.BorderSize = 0;
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button23.ForeColor = System.Drawing.Color.White;
+            this.button23.Location = new System.Drawing.Point(232, 84);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(111, 31);
+            this.button23.TabIndex = 39;
+            this.button23.Text = "View All";
+            this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1535,14 +1538,14 @@
             this.AutoScrollMargin = new System.Drawing.Size(1, 1);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 651);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.DogCatchingOperation);
+            this.Controls.Add(this.admin);
+            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.act);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.attendance);
-            this.Controls.Add(this.DogCatchingOperation);
-            this.Controls.Add(this.admin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -1668,7 +1671,6 @@
         private System.Windows.Forms.PictureBox a;
         private System.Windows.Forms.PictureBox ad;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbbdayyear;
         private System.Windows.Forms.TextBox tbbdayday;
         private System.Windows.Forms.ComboBox cbbdaymonth;
@@ -1683,5 +1685,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView repEmp;
+        private System.Windows.Forms.Button button23;
     }
 }

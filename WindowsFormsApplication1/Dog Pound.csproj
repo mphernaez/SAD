@@ -37,7 +37,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Desktop\itextsharp.pdfa.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -80,6 +80,12 @@
     </Compile>
     <Compile Include="Edit.Designer.cs">
       <DependentUpon>Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Viewinv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Viewinv.Designer.cs">
+      <DependentUpon>Viewinv.cs</DependentUpon>
     </Compile>
     <Compile Include="Viewact.cs">
       <SubType>Form</SubType>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewinv.resx">
+      <DependentUpon>Viewinv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Viewact.resx">
       <DependentUpon>Viewact.cs</DependentUpon>
