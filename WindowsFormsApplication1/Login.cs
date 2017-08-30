@@ -78,7 +78,8 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
-
+            usernameTextBox.Text = "";
+            passwordTextBox.Text = "";
         }
 
         private void usernameTextBox_Enter(object sender, EventArgs e)
