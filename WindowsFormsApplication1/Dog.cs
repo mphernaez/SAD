@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using MySql.Data.MySqlClient;
-using iTextSharp;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+//using iTextSharp;
+//using iTextSharp.text;
+//using iTextSharp.text.pdf;
 
 namespace WindowsFormsApplication1
 {
@@ -303,7 +303,7 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, date, description, size, otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE breed LIKE '%" + tbBreedSearch.Text + "%' AND color LIKE '%" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
+                    MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, date, description, UCASE(size), otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE breed LIKE '" + tbBreedSearch.Text + "%' AND color LIKE '" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
@@ -314,10 +314,12 @@ namespace WindowsFormsApplication1
                     dgvProfiles.Columns["breed"].HeaderText = "Breed";
                     dgvProfiles.Columns["date"].HeaderText = "Date Caught";
                     dgvProfiles.Columns["description"].HeaderText = "Location Caught";
-                    dgvProfiles.Columns["otherDesc"].HeaderText = "Other Description";
+                    dgvProfiles.Columns["otherDesc"].HeaderText = "Markings";
+                    dgvProfiles.Columns["UCASE(size)"].HeaderText = "Size";
                     dgvProfiles.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvProfiles.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvProfiles.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvProfiles.Columns["UCASE(size)"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvProfiles.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                     conn.Close();

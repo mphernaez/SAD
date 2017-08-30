@@ -277,5 +277,10 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Item in scarse! Request stocks immediately for: " + prod);
             }
         }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

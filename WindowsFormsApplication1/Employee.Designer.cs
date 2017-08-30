@@ -52,7 +52,6 @@
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.addEmployee = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -449,7 +448,6 @@
             // addEmployee
             // 
             this.addEmployee.BackColor = System.Drawing.Color.White;
-            this.addEmployee.Controls.Add(this.label10);
             this.addEmployee.Controls.Add(this.button12);
             this.addEmployee.Controls.Add(this.button11);
             this.addEmployee.Controls.Add(this.label2);
@@ -462,18 +460,6 @@
             this.addEmployee.TabIndex = 43;
             this.addEmployee.Visible = false;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label10.Location = new System.Drawing.Point(913, 81);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(84, 26);
-            this.label10.TabIndex = 38;
-            this.label10.Text = "view all";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
             // button12
             // 
             this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
@@ -481,7 +467,7 @@
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.Location = new System.Drawing.Point(121, 84);
+            this.button12.Location = new System.Drawing.Point(122, 84);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(111, 31);
             this.button12.TabIndex = 23;
@@ -1668,7 +1654,6 @@
         private System.Windows.Forms.PictureBox a;
         private System.Windows.Forms.PictureBox ad;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbbdayyear;
         private System.Windows.Forms.TextBox tbbdayday;
         private System.Windows.Forms.ComboBox cbbdaymonth;
