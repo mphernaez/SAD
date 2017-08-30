@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using MySql.Data.MySqlClient;
-//using iTextSharp;
-//using iTextSharp.text;
-//using iTextSharp.text.pdf;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace WindowsFormsApplication1
 {
