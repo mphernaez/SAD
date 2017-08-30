@@ -174,7 +174,7 @@ namespace WindowsFormsApplication1
 
         private void Employee_Load(object sender, EventArgs e)
         {
-            this.Top = 112;// 262
+            //this.Top = 112;// 262
 
         }
 
@@ -1234,6 +1234,10 @@ namespace WindowsFormsApplication1
                 dgvOperationsView.Columns["description"].HeaderText = "Location";
                 dgvOperationsView.Columns["date"].HeaderText = "Date";
                 dgvOperationsView.Columns["time"].HeaderText = "Time";
+
+                dgvOperationsView.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 conn.Close();
             }

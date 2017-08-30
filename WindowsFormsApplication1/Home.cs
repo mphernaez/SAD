@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
         Dog dog = new Dog();
         Employee emp = new Employee();
         Inventory inv = new Inventory();
+        public Point mouseLocation;
         public empty()
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace WindowsFormsApplication1
             dp.BackColor = Color.FromArgb(2, 170, 145);
             hp.BackColor = Color.FromArgb(2, 170, 145);
             emp.adminID = this.adminID;
+            emp.Location = new Point(this.Location.X, this.Location.Y + 112);
             emp.Show();
             emp.TopMost = true;
 
@@ -241,6 +243,27 @@ namespace WindowsFormsApplication1
         private void warningPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouseLocation.X, mouseLocation.Y);
+                Location = mousePos;
+                Point mousePoss = Control.MousePosition;
+                mousePoss.Offset(mouseLocation.X, mouseLocation.Y+112);
+                dog.Location = mousePoss;
+                emp.Location = mousePoss;
+                inv.Location = mousePoss;
+
+            }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseLocation = new Point(-e.X, -e.Y);
         }
     }
 }

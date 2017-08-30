@@ -214,7 +214,7 @@
             this.nubi.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nubi.Location = new System.Drawing.Point(702, 267);
             this.nubi.Name = "nubi";
-            this.nubi.Size = new System.Drawing.Size(122, 26);
+            this.nubi.Size = new System.Drawing.Size(120, 26);
             this.nubi.TabIndex = 49;
             this.nubi.ValueChanged += new System.EventHandler(this.nubi_ValueChanged);
             // 
@@ -604,7 +604,7 @@
             this.Location = new System.Drawing.Point(27, 84);
             this.MaximizeBox = false;
             this.Name = "Inventory";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Inventory_Load);
             this.panel1.ResumeLayout(false);
