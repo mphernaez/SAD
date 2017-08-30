@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT breed, color, size, gender, location, date FROM (dogoperation INNER JOIN dogprofile ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location on dogoperation.locationID = location.locationID WHERE dogID = " + dogID, conn);
+                MySqlCommand comm = new MySqlCommand("SELECT breed, color, size, gender, description, date FROM (dogoperation INNER JOIN dogprofile ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location on dogoperation.locationID = location.locationID WHERE dogID = " + dogID, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -37,7 +37,7 @@ namespace WindowsFormsApplication1
                 color.Text = dt.Rows[0]["color"].ToString();
                 size.Text = dt.Rows[0]["size"].ToString();
                 gender.Text = dt.Rows[0]["gender"].ToString();
-                location.Text = dt.Rows[0]["location"].ToString();
+                location.Text = dt.Rows[0]["description"].ToString();
                 date.Text = dt.Rows[0]["date"].ToString();
 
 
@@ -73,31 +73,39 @@ namespace WindowsFormsApplication1
                 String idnum = tbIDnum.Text;
                 String idtype = tbIDtype.Text;
                 String num = tbnumber.Text;
-                String date = DateTime.Now.ToString("yyyy-mm-dd");
+                String date = DateTime.Now.ToString("yyyy-MM-dd");
                 int vaccine = 0;
-                //if (checkbox.Checked)
-                //{
-                //    vaccine = 1;
-                //}
+                if (cbVaccine.Checked)
+                {
+                    vaccine = 1;
+                }
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO client(name, contactNumber, validIDtype, validIDnumber, address) VALUES('" + fname + "', '" + num + "', '" + idtype + "', '" + idnum + "', '" + add + "')", conn);
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO profile(firstname, middlename, lastname, contactNumber, address) VALUES('" + fname + "', '" + mname + "','" + lname + "', '" + num + "', '" + add + "')", conn);
                     comm.ExecuteNonQuery();
 
-                    comm = new MySqlCommand("SELECT clientID FROM client WHERE validIDType = '" + idtype + "' AND validIDNumber = '" + idnum + "'", conn);
+                    comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
 
-                    int clientID = int.Parse(dt.Rows[0]["clientID"].ToString());
-                    
-                    
-                    comm = new MySqlCommand("INSERT INTO dogtransaction(clientID, dogID, date, payment, vaccine, type) VALUES(" + clientID +", " + dogID + ", '" + date + "', " + "1000" + ", " + vaccine + ", '" + "adopt" + "')", conn);
+                    int personID = int.Parse(dt.Rows[0]["MAX(personID)"].ToString());
+
+                    comm = new MySqlCommand("INSERT INTO client(personID, validIDType, validIDNumber) VALUES(" + personID + ", '" + idtype + "', '" + idnum + "')", conn);
+                    comm.ExecuteNonQuery();
+
+                    comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, vaccine, type) VALUES(" + personID + ", " + dogID + ", '" + date + "', " + "0" + ", " + vaccine + ", '" + "claim" + "')", conn);
                     comm.ExecuteNonQuery();
 
                     comm = new MySqlCommand("UPDATE dogprofile SET status = 'adopted' WHERE dogID = " + dogID, conn);
                     comm.ExecuteNonQuery();
+
+                    if(vaccine == 1)
+                    {
+                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID =  1", conn);
+                        comm.ExecuteNonQuery();
+                    }
 
                     MessageBox.Show("Successfully Adopted!");
                     dog.Show();
@@ -139,7 +147,7 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Address: " + tbadd.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 200));
             e.Graphics.DrawString("Valid ID Type: " + tbIDtype.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 210));
             e.Graphics.DrawString("Valid ID Number: " + tbIDnum.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 210));
-            if (checkBox1.Checked)
+            if (cbVaccine.Checked)
             {
                 e.Graphics.DrawString("Availed Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 220));
             }
@@ -155,6 +163,11 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Gender: " + gender.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 280));
             e.Graphics.DrawString("Location: " + location.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 290));
             e.Graphics.DrawString("Date and Time Caught " + date.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
+
+        }
+
+        private void tbadd_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

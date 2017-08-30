@@ -52,7 +52,7 @@
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.addEmployee = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
+            this.button23 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,6 +72,7 @@
             this.tbaddress = new System.Windows.Forms.TextBox();
             this.cbgender = new System.Windows.Forms.ComboBox();
             this.editPanel = new System.Windows.Forms.Panel();
+            this.button24 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.dgvEdit = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -240,8 +241,8 @@
             this.attendance.Controls.Add(this.button7);
             this.attendance.Controls.Add(this.idSearch);
             this.attendance.Controls.Add(this.label3);
-            this.attendance.Controls.Add(this.dgvAttendanceIn);
             this.attendance.Controls.Add(this.dgvAttendanceOut);
+            this.attendance.Controls.Add(this.dgvAttendanceIn);
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.attendance.Location = new System.Drawing.Point(27, 84);
             this.attendance.Name = "attendance";
@@ -323,7 +324,7 @@
             this.dgvAttendanceIn.BackgroundColor = System.Drawing.Color.White;
             this.dgvAttendanceIn.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAttendanceIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendanceIn.Location = new System.Drawing.Point(18, 120);
+            this.dgvAttendanceIn.Location = new System.Drawing.Point(17, 121);
             this.dgvAttendanceIn.Name = "dgvAttendanceIn";
             this.dgvAttendanceIn.ReadOnly = true;
             this.dgvAttendanceIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -340,11 +341,11 @@
             this.dgvAttendanceOut.BackgroundColor = System.Drawing.Color.White;
             this.dgvAttendanceOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAttendanceOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendanceOut.Location = new System.Drawing.Point(15, 127);
+            this.dgvAttendanceOut.Location = new System.Drawing.Point(17, 121);
             this.dgvAttendanceOut.Name = "dgvAttendanceOut";
             this.dgvAttendanceOut.ReadOnly = true;
             this.dgvAttendanceOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendanceOut.Size = new System.Drawing.Size(982, 306);
+            this.dgvAttendanceOut.Size = new System.Drawing.Size(982, 315);
             this.dgvAttendanceOut.TabIndex = 31;
             this.dgvAttendanceOut.Visible = false;
             // 
@@ -449,7 +450,7 @@
             // addEmployee
             // 
             this.addEmployee.BackColor = System.Drawing.Color.White;
-            this.addEmployee.Controls.Add(this.label10);
+            this.addEmployee.Controls.Add(this.button23);
             this.addEmployee.Controls.Add(this.button12);
             this.addEmployee.Controls.Add(this.button11);
             this.addEmployee.Controls.Add(this.label2);
@@ -462,17 +463,20 @@
             this.addEmployee.TabIndex = 43;
             this.addEmployee.Visible = false;
             // 
-            // label10
+            // button23
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label10.Location = new System.Drawing.Point(913, 81);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(84, 26);
-            this.label10.TabIndex = 38;
-            this.label10.Text = "view all";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
+            this.button23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button23.FlatAppearance.BorderSize = 0;
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button23.ForeColor = System.Drawing.Color.White;
+            this.button23.Location = new System.Drawing.Point(232, 84);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(111, 31);
+            this.button23.TabIndex = 39;
+            this.button23.Text = "View All";
+            this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
             // button12
             // 
@@ -532,7 +536,7 @@
             this.addPanel.Controls.Add(this.button4);
             this.addPanel.Controls.Add(this.tbaddress);
             this.addPanel.Controls.Add(this.cbgender);
-            this.addPanel.Location = new System.Drawing.Point(15, 114);
+            this.addPanel.Location = new System.Drawing.Point(16, 114);
             this.addPanel.Name = "addPanel";
             this.addPanel.Size = new System.Drawing.Size(982, 319);
             this.addPanel.TabIndex = 21;
@@ -546,7 +550,7 @@
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button22.ForeColor = System.Drawing.Color.White;
-            this.button22.Location = new System.Drawing.Point(727, 257);
+            this.button22.Location = new System.Drawing.Point(727, 240);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(186, 38);
             this.button22.TabIndex = 45;
@@ -558,7 +562,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label8.Location = new System.Drawing.Point(368, 93);
+            this.label8.Location = new System.Drawing.Point(362, 95);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(82, 24);
             this.label8.TabIndex = 44;
@@ -568,9 +572,9 @@
             // 
             this.tbbdayyear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbbdayyear.ForeColor = System.Drawing.Color.Gray;
-            this.tbbdayyear.Location = new System.Drawing.Point(751, 95);
+            this.tbbdayyear.Location = new System.Drawing.Point(730, 95);
             this.tbbdayyear.Name = "tbbdayyear";
-            this.tbbdayyear.Size = new System.Drawing.Size(162, 26);
+            this.tbbdayyear.Size = new System.Drawing.Size(183, 26);
             this.tbbdayyear.TabIndex = 37;
             this.tbbdayyear.Text = "Year";
             // 
@@ -578,7 +582,7 @@
             // 
             this.tbbdayday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbbdayday.ForeColor = System.Drawing.Color.Gray;
-            this.tbbdayday.Location = new System.Drawing.Point(650, 95);
+            this.tbbdayday.Location = new System.Drawing.Point(629, 95);
             this.tbbdayday.Name = "tbbdayday";
             this.tbbdayday.Size = new System.Drawing.Size(95, 26);
             this.tbbdayday.TabIndex = 36;
@@ -602,7 +606,7 @@
             "October",
             "November",
             "December"});
-            this.cbbdaymonth.Location = new System.Drawing.Point(466, 93);
+            this.cbbdaymonth.Location = new System.Drawing.Point(445, 93);
             this.cbbdaymonth.Name = "cbbdaymonth";
             this.cbbdaymonth.Size = new System.Drawing.Size(178, 28);
             this.cbbdaymonth.TabIndex = 35;
@@ -617,7 +621,7 @@
             this.cbstatus.Items.AddRange(new object[] {
             "Active",
             "Incative"});
-            this.cbstatus.Location = new System.Drawing.Point(753, 209);
+            this.cbstatus.Location = new System.Drawing.Point(749, 171);
             this.cbstatus.Name = "cbstatus";
             this.cbstatus.Size = new System.Drawing.Size(164, 28);
             this.cbstatus.TabIndex = 41;
@@ -633,7 +637,7 @@
             "Catcher",
             "Admin",
             "Janitor"});
-            this.cbposition.Location = new System.Drawing.Point(581, 209);
+            this.cbposition.Location = new System.Drawing.Point(580, 171);
             this.cbposition.Name = "cbposition";
             this.cbposition.Size = new System.Drawing.Size(164, 28);
             this.cbposition.TabIndex = 40;
@@ -683,7 +687,7 @@
             // 
             this.tbcontactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbcontactNumber.ForeColor = System.Drawing.Color.Gray;
-            this.tbcontactNumber.Location = new System.Drawing.Point(359, 211);
+            this.tbcontactNumber.Location = new System.Drawing.Point(358, 172);
             this.tbcontactNumber.Name = "tbcontactNumber";
             this.tbcontactNumber.Size = new System.Drawing.Size(216, 26);
             this.tbcontactNumber.TabIndex = 39;
@@ -699,7 +703,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(531, 257);
+            this.button4.Location = new System.Drawing.Point(530, 241);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(186, 38);
             this.button4.TabIndex = 42;
@@ -714,7 +718,7 @@
             this.tbaddress.Location = new System.Drawing.Point(79, 135);
             this.tbaddress.Multiline = true;
             this.tbaddress.Name = "tbaddress";
-            this.tbaddress.Size = new System.Drawing.Size(838, 63);
+            this.tbaddress.Size = new System.Drawing.Size(834, 29);
             this.tbaddress.TabIndex = 38;
             this.tbaddress.Text = "Address";
             this.tbaddress.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbaddress_MouseClick);
@@ -738,6 +742,7 @@
             // editPanel
             // 
             this.editPanel.BackColor = System.Drawing.Color.White;
+            this.editPanel.Controls.Add(this.button24);
             this.editPanel.Controls.Add(this.button13);
             this.editPanel.Controls.Add(this.dgvEdit);
             this.editPanel.Location = new System.Drawing.Point(15, 114);
@@ -745,6 +750,22 @@
             this.editPanel.Size = new System.Drawing.Size(982, 319);
             this.editPanel.TabIndex = 24;
             this.editPanel.Visible = false;
+            // 
+            // button24
+            // 
+            this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
+            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button24.FlatAppearance.BorderSize = 0;
+            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button24.ForeColor = System.Drawing.Color.White;
+            this.button24.Location = new System.Drawing.Point(855, 269);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(109, 38);
+            this.button24.TabIndex = 42;
+            this.button24.Text = "Inactivate";
+            this.button24.UseVisualStyleBackColor = false;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
             // 
             // button13
             // 
@@ -754,7 +775,7 @@
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(850, 270);
+            this.button13.Location = new System.Drawing.Point(739, 269);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(109, 38);
             this.button13.TabIndex = 41;
@@ -987,9 +1008,9 @@
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.button16);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.team);
             this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
+            this.DogCatchingOperation.Controls.Add(this.team);
             this.DogCatchingOperation.Location = new System.Drawing.Point(27, 84);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -1535,18 +1556,18 @@
             this.AutoScrollMargin = new System.Drawing.Size(1, 1);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 651);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.DogCatchingOperation);
+            this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.admin);
             this.Controls.Add(this.act);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.attendance);
-            this.Controls.Add(this.DogCatchingOperation);
-            this.Controls.Add(this.admin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = " ";
             this.Load += new System.EventHandler(this.Employee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).EndInit();
@@ -1668,7 +1689,6 @@
         private System.Windows.Forms.PictureBox a;
         private System.Windows.Forms.PictureBox ad;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbbdayyear;
         private System.Windows.Forms.TextBox tbbdayday;
         private System.Windows.Forms.ComboBox cbbdaymonth;
@@ -1683,5 +1703,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView repEmp;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.Button button24;
     }
 }
