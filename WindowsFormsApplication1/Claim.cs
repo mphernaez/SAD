@@ -215,5 +215,10 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Location: " + location.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 290));
             e.Graphics.DrawString("Date and Time Caught " + date.Text + "," + time.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
         }
+
+        private void tbfname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

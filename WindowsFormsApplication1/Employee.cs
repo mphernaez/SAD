@@ -18,10 +18,10 @@ namespace WindowsFormsApplication1
         public int adminID;
         private int y;
         private Color use;
-        
+
         public empty back { get; set; }
         public MySqlConnection conn = new MySqlConnection();
-       EditEmp emp;
+        EditEmp emp;
         public Employee()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1
 
         private void cbOperation_SelectedIndexChanged(object sender, EventArgs e)
         {
-                    }
+        }
 
         private void lname_TextChanged(object sender, EventArgs e)
         {
@@ -140,7 +140,7 @@ namespace WindowsFormsApplication1
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
             act.Visible = true;
-            attendance.Visible = false;;
+            attendance.Visible = false; ;
             admin.Visible = false;
             panel2.Visible = false;
             ne.Visible = false;
@@ -180,8 +180,8 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
-    
+
+
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -359,7 +359,7 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void refreshAdmin()
@@ -406,7 +406,7 @@ namespace WindowsFormsApplication1
 
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void tbPassword_Click(object sender, EventArgs e)
@@ -491,8 +491,8 @@ namespace WindowsFormsApplication1
             editPanel.Visible = true;
             refreshEdit();
         }
-        
-        
+
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -510,36 +510,36 @@ namespace WindowsFormsApplication1
         private Boolean empty = true;
         private void button17_Click(object sender, EventArgs e)
         {
-                Boolean done = false;
-                
-                    if (teamfname == "")
+            Boolean done = false;
+
+            if (teamfname == "")
+            {
+                MessageBox.Show("Please select an employee");
+            }
+            else
+            {
+                if (done == false)
+                {
+                    this.newTeam.Rows.Add(teamempid, teamfname, teammname, teamlname);
+                    foreach (DataGridViewRow row in allEmployees.SelectedRows)
                     {
-                        MessageBox.Show("Please select an employee");
+                        allEmployees.Rows.RemoveAt(row.Index);
                     }
-                    else 
-                    {
-                        if (done == false)
-                        {
-                            this.newTeam.Rows.Add(teamempid, teamfname, teammname, teamlname);
-                            foreach (DataGridViewRow row in allEmployees.SelectedRows)
-                            {
-                                allEmployees.Rows.RemoveAt(row.Index);
-                            }
-                            newTeam.Columns["Lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                            newTeam.Columns["Firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                            newTeam.Columns["Middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    newTeam.Columns["Lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    newTeam.Columns["Firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    newTeam.Columns["Middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-                            count = count + 1;
-                            empty = false;
+                    count = count + 1;
+                    empty = false;
 
-                            teamfname = "";
-                            teamlname = "";
-                            teammname = "";
-                            teamempid = 0;
-                        }
-                    }
+                    teamfname = "";
+                    teamlname = "";
+                    teammname = "";
+                    teamempid = 0;
+                }
+            }
 
-         
+
 
         }
 
@@ -603,7 +603,7 @@ namespace WindowsFormsApplication1
             r.Visible = false;
 
 
-           
+
         }
         int teamIDs;
         public void addOperation()
@@ -645,11 +645,11 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("Please Enter Correct Format for Time");
                 }
             }
-            else 
+            else
             {
                 MessageBox.Show("Please Enter Required Fields");
             }
-           
+
         }
 
         public int editemployeeID;
@@ -663,7 +663,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, status, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, status, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -695,7 +695,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
-        
+
         }
 
         private void dgvEdit_SelectionChanged(object sender, EventArgs e)
@@ -706,7 +706,7 @@ namespace WindowsFormsApplication1
         private void button13_Click(object sender, EventArgs e)
         {
 
-            
+
             if (editemployeeID != 0)
             {
                 emp.Show();
@@ -748,6 +748,7 @@ namespace WindowsFormsApplication1
                     MessageBox.Show(ex.ToString());
                     conn.Close();
                 }
+                refreshEdit();
             }
             else
             {
@@ -760,9 +761,9 @@ namespace WindowsFormsApplication1
             string lname = tblname.Text;
             string mname = tbmname.Text;
             string fname = tbfname.Text;
-           
-           if (tblname.Text != "Lastname" && tbmname.Text != "Middlename" && tbfname.Text != "Firstname" && tbaddress.Text != "Address" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && cbposition.Text != "Position" && cbstatus.Text != "Status" && tbbdayday.Text != "Day" && tbbdayyear.Text != "Year" && cbbdaymonth.Text != "Month")
-           {
+
+            if (tblname.Text != "Lastname" && tbmname.Text != "Middlename" && tbfname.Text != "Firstname" && tbaddress.Text != "Address" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && cbposition.Text != "Position" && cbstatus.Text != "Status" && tbbdayday.Text != "Day" && tbbdayyear.Text != "Year" && cbbdaymonth.Text != "Month")
+            {
                 if (checkIfEmployeeExists(lname, mname, fname) == false)
                 {
                     char gender;
@@ -883,8 +884,8 @@ namespace WindowsFormsApplication1
 
         private void tblname_TextChanged(object sender, EventArgs e)
         {
-            
-           
+
+
         }
         private void tbmname_TextChanged(object sender, EventArgs e)
         {
@@ -922,7 +923,7 @@ namespace WindowsFormsApplication1
 
         private void tbbday_MouseClick(object sender, MouseEventArgs e)
         {
-            
+
         }
 
         private void tbaddress_MouseClick(object sender, MouseEventArgs e)
@@ -945,7 +946,7 @@ namespace WindowsFormsApplication1
 
         private void cbposition_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbposition.Text != "Position")
+            if (cbposition.Text != "Position")
             {
                 cbposition.ForeColor = Color.Black;
             }
@@ -953,7 +954,7 @@ namespace WindowsFormsApplication1
 
         private void cbstatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbstatus.Text != "Status")
+            if (cbstatus.Text != "Status")
             {
                 cbstatus.ForeColor = Color.Black;
             }
@@ -966,7 +967,7 @@ namespace WindowsFormsApplication1
 
         private void refreshOperation()
         {
-            
+
         }
         private void refreshTeam()
         {
@@ -992,15 +993,16 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex)
             {
-                
+
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
         }
-        
+
         private void allEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (int.Parse(allEmployees.Rows[e.RowIndex].Cells["personID"].Value.ToString()) != 0) {
+            if (int.Parse(allEmployees.Rows[e.RowIndex].Cells["personID"].Value.ToString()) != 0)
+            {
                 teamempid = int.Parse(allEmployees.Rows[e.RowIndex].Cells["personID"].Value.ToString());
                 teamfname = allEmployees.Rows[e.RowIndex].Cells["firstname"].Value.ToString();
                 teamlname = allEmployees.Rows[e.RowIndex].Cells["lastname"].Value.ToString();
@@ -1018,44 +1020,44 @@ namespace WindowsFormsApplication1
             empty = true;
             int teamid = 0;
             int empID = 0;
-                try
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                teamid = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) + 1;
+
+                for (int i = 0; i < newTeam.Rows.Count - 1; i++)
                 {
-                    conn.Open();
-                    MySqlCommand comm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-
-                    teamid = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) + 1;
-
-                    for (int i = 0; i < newTeam.Rows.Count - 1; i++)
-                    {
-                        empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
-                        MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
-                        commm.ExecuteNonQuery();
-                    }
+                    empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
+                    MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
+                    commm.ExecuteNonQuery();
+                }
                 MessageBox.Show("New Operation Team recorded successfully");
-                    conn.Close();
+                conn.Close();
                 refreshTeam();
                 newTeam.Rows.Clear();
             }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                    MessageBox.Show(ex.ToString());
-                }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
 
-                
+
         }
 
         private void tbbday_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void tbaddress_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void tbcontactNumber_TextChanged(object sender, EventArgs e)
@@ -1064,7 +1066,8 @@ namespace WindowsFormsApplication1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            if (tbPassword.Text.Length > 7) {
+            if (tbPassword.Text.Length > 7)
+            {
                 try
                 {
                     conn.Open();
@@ -1092,12 +1095,12 @@ namespace WindowsFormsApplication1
 
         private void tbmname_MouseEnter(object sender, EventArgs e)
         {
-       
+
         }
 
         private void tbfname_MouseEnter(object sender, EventArgs e)
         {
-           
+
         }
 
         private void tblname_MouseClick(object sender, MouseEventArgs e)
@@ -1112,44 +1115,44 @@ namespace WindowsFormsApplication1
 
         private void refreshTeamsDisp()
         {
-            
-                try
+
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                int len = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString());
+
+                for (int i = 2; i < len + 1; i++)
                 {
-                    conn.Open();
-                    MySqlCommand comm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
+                    string names = "";
+                    MySqlCommand commm = new MySqlCommand("SELECT firstname, lastname FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON employee.employeeID = operationteam.employeeID WHERE operationteam.teamID = " + i, conn);
+                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                    DataTable dta = new DataTable();
+                    adpt.Fill(dta);
 
-                    int len = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString());
-
-                    for (int i = 2; i < len + 1; i++)
+                    for (int j = 0; j < dta.Rows.Count; j++)
                     {
-                        string names = "";
-                        MySqlCommand commm = new MySqlCommand("SELECT firstname, lastname FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON employee.employeeID = operationteam.employeeID WHERE operationteam.teamID = " + i, conn);
-                        MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
-                        DataTable dta = new DataTable();
-                        adpt.Fill(dta);
-
-                        for (int j = 0; j < dta.Rows.Count; j++)
-                        {
-                            string fname = dta.Rows[j]["firstname"].ToString();
-                            string f = fname.Substring(0, 1);
-                            string lname = dta.Rows[j]["lastname"].ToString();
-                            string nameconc = lname + ", " + f + ".";
-                            if (names == "") { names = names + nameconc; }
-                            else { names = names + " / " + nameconc; }
-                        }
-                        dgvTeams.Rows.Add(i.ToString(), names);
+                        string fname = dta.Rows[j]["firstname"].ToString();
+                        string f = fname.Substring(0, 1);
+                        string lname = dta.Rows[j]["lastname"].ToString();
+                        string nameconc = lname + ", " + f + ".";
+                        if (names == "") { names = names + nameconc; }
+                        else { names = names + " / " + nameconc; }
                     }
-                    conn.Close();
+                    dgvTeams.Rows.Add(i.ToString(), names);
                 }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                    MessageBox.Show(ex.ToString());
-                }
-             
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+
         }
 
         private void dgvTeams_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1203,7 +1206,7 @@ namespace WindowsFormsApplication1
 
         private void label10_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void cbbdaymonth_SelectedIndexChanged(object sender, EventArgs e)
@@ -1234,7 +1237,7 @@ namespace WindowsFormsApplication1
 
                 conn.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 conn.Close();
@@ -1250,7 +1253,7 @@ namespace WindowsFormsApplication1
         {
             tbAct.Text = "";
         }
-        
+
         private void dgvActivities_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             actemployeeID = int.Parse(dgvActivities.Rows[e.RowIndex].Cells["personID"].Value.ToString());
@@ -1292,7 +1295,7 @@ namespace WindowsFormsApplication1
 
                 int num = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
 
-                if(num != 0)
+                if (num != 0)
                 {
                     exist = true;
                 }
@@ -1311,6 +1314,34 @@ namespace WindowsFormsApplication1
             Viewemp view = new Viewemp();
             view.Show();
             view.TopMost = true;
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            if (editemployeeID != 0)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to inactivate selected employee? This action cannot be undone.", "Confirmation", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        conn.Open();
+                        MySqlCommand comm = new MySqlCommand("UPDATE employee SET status = 'Inactive' WHERE employeeID = " + editemployeeID, conn);
+                        comm.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                refreshEdit();
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee");
+            }
         }
     }
 }

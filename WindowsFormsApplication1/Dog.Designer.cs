@@ -298,7 +298,7 @@
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(389, 349);
+            this.button11.Location = new System.Drawing.Point(359, 339);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(260, 38);
             this.button11.TabIndex = 26;
@@ -320,7 +320,7 @@
             // 
             this.tbColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbColor.ForeColor = System.Drawing.Color.Gray;
-            this.tbColor.Location = new System.Drawing.Point(438, 183);
+            this.tbColor.Location = new System.Drawing.Point(407, 187);
             this.tbColor.Name = "tbColor";
             this.tbColor.Size = new System.Drawing.Size(205, 26);
             this.tbColor.TabIndex = 11;
@@ -338,7 +338,7 @@
             "Small (1ft)",
             "Large (2ft)",
             "Extra Large (more than 2ft)"});
-            this.cbSize.Location = new System.Drawing.Point(221, 228);
+            this.cbSize.Location = new System.Drawing.Point(191, 229);
             this.cbSize.Name = "cbSize";
             this.cbSize.Size = new System.Drawing.Size(205, 28);
             this.cbSize.TabIndex = 5;
@@ -351,10 +351,10 @@
             this.cbOperation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOperation.ForeColor = System.Drawing.Color.Gray;
             this.cbOperation.FormattingEnabled = true;
-            this.cbOperation.Location = new System.Drawing.Point(221, 147);
+            this.cbOperation.Location = new System.Drawing.Point(191, 144);
             this.cbOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbOperation.Name = "cbOperation";
-            this.cbOperation.Size = new System.Drawing.Size(422, 28);
+            this.cbOperation.Size = new System.Drawing.Size(421, 28);
             this.cbOperation.TabIndex = 1;
             this.cbOperation.Text = "Operation Date and Location";
             this.cbOperation.SelectedIndexChanged += new System.EventHandler(this.cbOperation_SelectedIndexChanged);
@@ -363,7 +363,7 @@
             // 
             this.tbBreed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBreed.ForeColor = System.Drawing.Color.Gray;
-            this.tbBreed.Location = new System.Drawing.Point(438, 228);
+            this.tbBreed.Location = new System.Drawing.Point(408, 229);
             this.tbBreed.Name = "tbBreed";
             this.tbBreed.Size = new System.Drawing.Size(205, 26);
             this.tbBreed.TabIndex = 4;
@@ -379,7 +379,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(389, 305);
+            this.button4.Location = new System.Drawing.Point(359, 295);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(260, 38);
             this.button4.TabIndex = 10;
@@ -391,10 +391,10 @@
             // 
             this.tbDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDesc.ForeColor = System.Drawing.Color.Gray;
-            this.tbDesc.Location = new System.Drawing.Point(650, 145);
+            this.tbDesc.Location = new System.Drawing.Point(620, 143);
             this.tbDesc.Multiline = true;
             this.tbDesc.Name = "tbDesc";
-            this.tbDesc.Size = new System.Drawing.Size(205, 109);
+            this.tbDesc.Size = new System.Drawing.Size(205, 113);
             this.tbDesc.TabIndex = 6;
             this.tbDesc.Text = "Other Descriptions";
             this.tbDesc.Enter += new System.EventHandler(this.tbDesc_Enter);
@@ -407,7 +407,7 @@
             this.cbGender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.cbGender.Location = new System.Drawing.Point(221, 183);
+            this.cbGender.Location = new System.Drawing.Point(191, 187);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(205, 28);
             this.cbGender.TabIndex = 3;
@@ -764,12 +764,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 651);
+            this.Controls.Add(this.addDog);
+            this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.searchDog);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.adoptDog);
-            this.Controls.Add(this.euthanizeDog);
-            this.Controls.Add(this.addDog);
             this.Controls.Add(this.repclaimpan);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

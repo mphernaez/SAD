@@ -467,7 +467,7 @@ namespace WindowsFormsApplication1
                 
                 MySqlCommand comm = new MySqlCommand("UPDATE dogprofile SET status = 'euthanized' WHERE dogID = " + dogID, conn);
                 comm.ExecuteNonQuery();
-                
+                MessageBox.Show("Successfully Euthanized!");
 
                 conn.Close();
                 refreshArchive();
@@ -697,7 +697,7 @@ namespace WindowsFormsApplication1
 
                 MySqlCommand comm = new MySqlCommand("UPDATE dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID SET status = 'euthanized' WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND status = 'unclaimed'", conn);
                 comm.ExecuteNonQuery();
-
+                MessageBox.Show("Successfully Euthanized All!");
 
                 conn.Close();
                 refreshArchive();
