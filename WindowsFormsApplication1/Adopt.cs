@@ -101,6 +101,12 @@ namespace WindowsFormsApplication1
                     comm = new MySqlCommand("UPDATE dogprofile SET status = 'adopted' WHERE dogID = " + dogID, conn);
                     comm.ExecuteNonQuery();
 
+                    if(vaccine == 1)
+                    {
+                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID =  1", conn);
+                        comm.ExecuteNonQuery();
+                    }
+
                     MessageBox.Show("Successfully Adopted!");
                     dog.Show();
                     this.Close();
