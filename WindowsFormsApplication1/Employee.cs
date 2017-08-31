@@ -306,7 +306,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance)", conn); //missing: refresh everyday (in restrictions, date should be now)
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance)", conn); //missing: refresh everyday (in restrictions, date should be now)
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -314,15 +314,12 @@ namespace WindowsFormsApplication1
                 dgvAttendanceIn.DataSource = dt;
 
                 dgvAttendanceIn.Columns["personID"].Visible = false;
-                dgvAttendanceIn.Columns["lastname"].HeaderText = "Lastname";
-                dgvAttendanceIn.Columns["firstname"].HeaderText = "Firstname";
-                dgvAttendanceIn.Columns["middlename"].HeaderText = "Middlename";
+                
+                dgvAttendanceIn.Columns["name"].HeaderText = "Name";
                 dgvAttendanceIn.Columns["gender"].HeaderText = "Gender";
                 dgvAttendanceIn.Columns["contactNumber"].HeaderText = "Contact No.";
                 dgvAttendanceIn.Columns["position"].HeaderText = "Position";
-                dgvAttendanceIn.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvAttendanceIn.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvAttendanceIn.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                 dgvAttendanceIn.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvAttendanceIn.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvAttendanceIn.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvAttendanceIn.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -367,7 +364,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT admin.employeeID FROM admin)", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, birthdate, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT admin.employeeID FROM admin)", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -375,16 +372,12 @@ namespace WindowsFormsApplication1
                 dgvAdmin.DataSource = dt;
 
                 dgvAdmin.Columns["personID"].Visible = false;
-                dgvAdmin.Columns["lastname"].HeaderText = "Lastname";
-                dgvAdmin.Columns["firstname"].HeaderText = "Firstname";
-                dgvAdmin.Columns["middlename"].HeaderText = "Middlename";
+                dgvAdmin.Columns["name"].HeaderText = "Name";
                 dgvAdmin.Columns["gender"].HeaderText = "Gender";
                 dgvAdmin.Columns["birthdate"].HeaderText = "Gender";
                 dgvAdmin.Columns["contactNumber"].HeaderText = "Contact No.";
                 dgvAdmin.Columns["position"].HeaderText = "Position";
-                dgvAdmin.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvAdmin.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvAdmin.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAdmin.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvAdmin.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvAdmin.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvAdmin.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -419,7 +412,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, birthdate, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -427,16 +420,12 @@ namespace WindowsFormsApplication1
                 dgvActivities.DataSource = dt;
 
                 dgvActivities.Columns["personID"].Visible = false;
-                dgvActivities.Columns["lastname"].HeaderText = "Lastname";
-                dgvActivities.Columns["firstname"].HeaderText = "Firstname";
-                dgvActivities.Columns["middlename"].HeaderText = "Middlename";
+                dgvActivities.Columns["name"].HeaderText = "Name";
                 dgvActivities.Columns["gender"].HeaderText = "Gender";
                 dgvActivities.Columns["birthdate"].HeaderText = "Birthdate";
                 dgvActivities.Columns["contactNumber"].HeaderText = "Contact No.";
                 dgvActivities.Columns["position"].HeaderText = "Position";
-                dgvActivities.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvActivities.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvActivities.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvActivities.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvActivities.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvActivities.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvActivities.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -852,7 +841,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID IN (SELECT attendance.employeeID FROM attendance)", conn); //missing: refresh everyday (in restrictions, date should be now)
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID IN (SELECT attendance.employeeID FROM attendance)", conn); //missing: refresh everyday (in restrictions, date should be now)
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -860,15 +849,11 @@ namespace WindowsFormsApplication1
                 dgvAttendanceOut.DataSource = dt;
 
                 dgvAttendanceOut.Columns["personID"].Visible = false;
-                dgvAttendanceOut.Columns["lastname"].HeaderText = "Lastname";
-                dgvAttendanceOut.Columns["firstname"].HeaderText = "Firstname";
-                dgvAttendanceOut.Columns["middlename"].HeaderText = "Middlename";
+                dgvAttendanceOut.Columns["name"].HeaderText = "Name";
                 dgvAttendanceOut.Columns["gender"].HeaderText = "Gender";
                 dgvAttendanceOut.Columns["contactNumber"].HeaderText = "Contact No.";
                 dgvAttendanceOut.Columns["position"].HeaderText = "Position";
-                dgvAttendanceOut.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvAttendanceOut.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvAttendanceOut.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAttendanceOut.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvAttendanceOut.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvAttendanceOut.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvAttendanceOut.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
