@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand com = new MySqlCommand("SELECT lastname, middlename, firstname, gender, birthdate, contactNumber, address, position, status FROM profile INNER JOIN employee ON employee.employeeID = profile.personID", conn);
+                MySqlCommand com = new MySqlCommand("SELECT CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, birthdate, contactNumber, address, position, status FROM profile INNER JOIN employee ON employee.employeeID = profile.personID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(com);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -36,9 +36,7 @@ namespace WindowsFormsApplication1
 
                 dgvViewEmp.DataSource = dt;
                 
-                dgvViewEmp.Columns["lastname"].HeaderText = "Lastname";
-                dgvViewEmp.Columns["firstname"].HeaderText = "Firstname";
-                dgvViewEmp.Columns["middlename"].HeaderText = "Middlename";
+                dgvViewEmp.Columns["name"].HeaderText = "Name";
                 dgvViewEmp.Columns["gender"].HeaderText = "Gender";
                 dgvViewEmp.Columns["birthdate"].HeaderText = "Birthdate";
                 dgvViewEmp.Columns["contactNumber"].HeaderText = "Contact No.";
@@ -46,9 +44,7 @@ namespace WindowsFormsApplication1
                 dgvViewEmp.Columns["position"].HeaderText = "Position";
                 dgvViewEmp.Columns["status"].HeaderText = "Status";
 
-                dgvViewEmp.Columns["Lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvViewEmp.Columns["Firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvViewEmp.Columns["Middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+               dgvViewEmp.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewEmp.Columns["Gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewEmp.Columns["Birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewEmp.Columns["ContactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
