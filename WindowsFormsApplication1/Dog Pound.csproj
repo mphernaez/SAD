@@ -36,7 +36,7 @@
     <Reference Include="itextsharp">
       <HintPath>..\..\..\..\Desktop\itextsharp-all-5.5.10\itextsharp.xfaworker-dll-5.5.10\itextsharp.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -79,6 +79,12 @@
     </Compile>
     <Compile Include="Edit.Designer.cs">
       <DependentUpon>Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Viewinvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Viewinvent.Designer.cs">
+      <DependentUpon>Viewinvent.cs</DependentUpon>
     </Compile>
     <Compile Include="Viewact.cs">
       <SubType>Form</SubType>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Viewinvent.resx">
+      <DependentUpon>Viewinvent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Viewact.resx">
       <DependentUpon>Viewact.cs</DependentUpon>
@@ -251,7 +260,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\exit.png" />
+    <None Include="Resources\ad.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ACTIVEXLib">
@@ -364,6 +373,7 @@
     <None Include="Resources\exitt.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\exit.png" />
     <Content Include="Resources\header.png" />
     <None Include="Resources\delete-button.png" />
     <None Include="Resources\cancel-music.png" />
@@ -378,7 +388,6 @@
     <None Include="Resources\lock.png" />
     <None Include="Resources\catch2.png" />
     <None Include="Resources\catch.png" />
-    <None Include="Resources\ad.png" />
     <None Include="Resources\archive-black-box.png" />
     <None Include="Resources\61444.png" />
     <None Include="Resources\179386.png" />

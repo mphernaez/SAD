@@ -295,7 +295,7 @@ namespace WindowsFormsApplication1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            viewInv inv = new viewInv();
+            Viewinvent inv = new Viewinvent();
             inv.Show();
             inv.TopMost = true;
         }

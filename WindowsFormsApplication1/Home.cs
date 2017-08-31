@@ -61,6 +61,7 @@ namespace WindowsFormsApplication1
             if (emp.Visible)
                 emp.trig();
             inv.back = this;
+            inv.Location = new Point(this.Location.X, this.Location.Y + 112);
             inv.adminID = this.adminID;
             inv.Show();
             ip.BackColor = Color.FromArgb(251, 162, 80);
@@ -80,6 +81,7 @@ namespace WindowsFormsApplication1
             dog.back = this;
             dog.adminID = this.adminID;
             dog.Show();
+            dog.Location = new Point(this.Location.X, this.Location.Y + 112);
             dog.TopMost = true;
             dp.BackColor = Color.FromArgb(251, 162, 80);
             ip.BackColor = Color.FromArgb(2, 170, 145);
