@@ -618,6 +618,7 @@ namespace WindowsFormsApplication1
                         comm.ExecuteNonQuery();
 
                         MessageBox.Show("Operation Added Successfully");
+                        conn.Close();
                     }
                     catch (Exception ex)
                     {
@@ -1209,7 +1210,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT description, date, time FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT  date, time, description FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY  date, time", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);

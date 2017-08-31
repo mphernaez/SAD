@@ -65,7 +65,7 @@ namespace WindowsFormsApplication1
             ad.Visible = false;
             et.Visible = false;
             r.Visible = false;
-            
+            cbOperation.Items.Clear();
             addOperationsItems();
         }
 

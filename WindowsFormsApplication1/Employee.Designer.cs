@@ -156,12 +156,16 @@
             // 
             this.dgvActivities.AllowUserToAddRows = false;
             this.dgvActivities.AllowUserToDeleteRows = false;
+            this.dgvActivities.AllowUserToResizeColumns = false;
+            this.dgvActivities.AllowUserToResizeRows = false;
             this.dgvActivities.BackgroundColor = System.Drawing.Color.White;
             this.dgvActivities.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvActivities.GridColor = System.Drawing.Color.White;
             this.dgvActivities.Location = new System.Drawing.Point(15, 90);
             this.dgvActivities.Name = "dgvActivities";
             this.dgvActivities.ReadOnly = true;
+            this.dgvActivities.RowHeadersVisible = false;
             this.dgvActivities.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvActivities.Size = new System.Drawing.Size(982, 343);
             this.dgvActivities.TabIndex = 20;
@@ -241,8 +245,8 @@
             this.attendance.Controls.Add(this.button7);
             this.attendance.Controls.Add(this.idSearch);
             this.attendance.Controls.Add(this.label3);
-            this.attendance.Controls.Add(this.dgvAttendanceOut);
             this.attendance.Controls.Add(this.dgvAttendanceIn);
+            this.attendance.Controls.Add(this.dgvAttendanceOut);
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.attendance.Location = new System.Drawing.Point(27, 84);
             this.attendance.Name = "attendance";
@@ -321,12 +325,16 @@
             // 
             this.dgvAttendanceOut.AllowUserToAddRows = false;
             this.dgvAttendanceOut.AllowUserToDeleteRows = false;
+            this.dgvAttendanceOut.AllowUserToResizeColumns = false;
+            this.dgvAttendanceOut.AllowUserToResizeRows = false;
             this.dgvAttendanceOut.BackgroundColor = System.Drawing.Color.White;
             this.dgvAttendanceOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAttendanceOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAttendanceOut.GridColor = System.Drawing.Color.White;
             this.dgvAttendanceOut.Location = new System.Drawing.Point(17, 121);
             this.dgvAttendanceOut.Name = "dgvAttendanceOut";
             this.dgvAttendanceOut.ReadOnly = true;
+            this.dgvAttendanceOut.RowHeadersVisible = false;
             this.dgvAttendanceOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAttendanceOut.Size = new System.Drawing.Size(982, 315);
             this.dgvAttendanceOut.TabIndex = 31;
@@ -336,12 +344,16 @@
             // 
             this.dgvAttendanceIn.AllowUserToAddRows = false;
             this.dgvAttendanceIn.AllowUserToDeleteRows = false;
+            this.dgvAttendanceIn.AllowUserToResizeColumns = false;
+            this.dgvAttendanceIn.AllowUserToResizeRows = false;
             this.dgvAttendanceIn.BackgroundColor = System.Drawing.Color.White;
             this.dgvAttendanceIn.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAttendanceIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAttendanceIn.GridColor = System.Drawing.Color.White;
             this.dgvAttendanceIn.Location = new System.Drawing.Point(17, 121);
             this.dgvAttendanceIn.Name = "dgvAttendanceIn";
             this.dgvAttendanceIn.ReadOnly = true;
+            this.dgvAttendanceIn.RowHeadersVisible = false;
             this.dgvAttendanceIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAttendanceIn.Size = new System.Drawing.Size(982, 316);
             this.dgvAttendanceIn.TabIndex = 20;
@@ -373,12 +385,16 @@
             // 
             this.dgvAdmin.AllowUserToAddRows = false;
             this.dgvAdmin.AllowUserToDeleteRows = false;
+            this.dgvAdmin.AllowUserToResizeColumns = false;
+            this.dgvAdmin.AllowUserToResizeRows = false;
             this.dgvAdmin.BackgroundColor = System.Drawing.Color.White;
             this.dgvAdmin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAdmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAdmin.GridColor = System.Drawing.Color.White;
             this.dgvAdmin.Location = new System.Drawing.Point(15, 114);
             this.dgvAdmin.Name = "dgvAdmin";
             this.dgvAdmin.ReadOnly = true;
+            this.dgvAdmin.RowHeadersVisible = false;
             this.dgvAdmin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAdmin.Size = new System.Drawing.Size(982, 319);
             this.dgvAdmin.TabIndex = 20;
@@ -1012,9 +1028,9 @@
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.button16);
             this.DogCatchingOperation.Controls.Add(this.label4);
+            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.team);
             this.DogCatchingOperation.Controls.Add(this.Operations);
-            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Location = new System.Drawing.Point(27, 84);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
