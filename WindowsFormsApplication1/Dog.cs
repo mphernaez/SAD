@@ -13,6 +13,8 @@ using MySql.Data.MySqlClient;
 using iTextSharp;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Microsoft.Office.Interop.Excel;
+
 
 namespace WindowsFormsApplication1
 {
@@ -134,7 +136,7 @@ namespace WindowsFormsApplication1
 
                     MySqlCommand com = new MySqlCommand("SELECT COUNT(*) FROM dogprofile WHERE status = 'unclaimed'", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                    DataTable dt = new DataTable();
+                    System.Data.DataTable dt = new System.Data.DataTable();
                     adp.Fill(dt);
                    
                     int y = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
@@ -143,7 +145,7 @@ namespace WindowsFormsApplication1
                     {
                         MySqlCommand comm = new MySqlCommand("SELECT breed, color, gender, otherDesc FROM dogprofile WHERE status = 'unclaimed'", conn);
                         MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
-                        DataTable data = new DataTable();
+                        System.Data.DataTable data = new System.Data.DataTable();
                         adpt.Fill(data);
 
                         int genders;
@@ -300,7 +302,7 @@ namespace WindowsFormsApplication1
                     conn.Open();
                     MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, color, date, description, UCASE(size), otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE breed LIKE '" + tbBreedSearch.Text + "%' AND color LIKE '" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dt = new DataTable();
+                    System.Data.DataTable dt = new System.Data.DataTable();
                     adp.Fill(dt);
                     
                     dgvProfiles.DataSource = dt;
@@ -340,7 +342,7 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, color, gender, size FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE status = 'unclaimed' AND date > DATE_ADD(NOW(), INTERVAL -3 DAY)", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
+                System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
 
                 dgvAdoption.DataSource = dt;
@@ -422,7 +424,7 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand("SELECT dogID, color, gender, size, breed, otherDesc FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND status = 'unclaimed'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
+                System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
 
                 dgvArchive.DataSource = dt;
@@ -539,23 +541,13 @@ namespace WindowsFormsApplication1
             r.Visible = true;
             claimreportdgv.Visible = true;
 
-            toPDF();
-
-            
-        }
-
-        private void toPDF()
-        {
-            // System.IO.FileStream claim = new System.IO.FileStream(Mapmath("pdf") + "\\" + "Claiming Summary Report.pdf", FileMode.Create);
-
-            
             try
             {
                 conn.Open();
 
-                MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, date, time FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
+                MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, date, time, status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                DataTable dt = new DataTable();
+                System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
 
 
@@ -569,6 +561,7 @@ namespace WindowsFormsApplication1
                 claimreportdgv.Columns["description"].HeaderText = "Location Caught";
                 claimreportdgv.Columns["date"].HeaderText = "Date Caught";
                 claimreportdgv.Columns["time"].HeaderText = "Time Caught";
+                claimreportdgv.Columns["status"].HeaderText = "Status";
 
 
                 claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -579,6 +572,7 @@ namespace WindowsFormsApplication1
                 claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
 
                 conn.Close();
@@ -588,7 +582,67 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
-            
+
+            toPDF();
+        }
+
+        private void toPDF()
+        {
+           
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+            try
+            {
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "ExportedFromGrid";
+
+                int cellRowIndex = 1;
+                int cellColumnIndex = 1;
+
+                for (int i = 0; i < claimreportdgv.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < claimreportdgv.Columns.Count; j++)
+                    {
+                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
+                        if (cellRowIndex == 1)
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = claimreportdgv.Columns[j].HeaderText;
+                        }
+                        else
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = claimreportdgv.Rows[i].Cells[j].Value.ToString();
+                        }
+                        cellColumnIndex++;
+                    }
+                    cellColumnIndex = 1;
+                    cellRowIndex++;
+                }
+
+                //Getting the location and file name of the excel to save from user. 
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 2;
+
+                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    workbook.SaveAs(saveDialog.FileName);
+                    MessageBox.Show("Export Successful");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                excel.Quit();
+                workbook = null;
+                excel = null;
+            }
+
+
         }
         
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -632,7 +686,7 @@ namespace WindowsFormsApplication1
 
                 MySqlCommand comm = new MySqlCommand("SELECT operationID, time, date, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
+                System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
                 int j = 0;
 

@@ -62,17 +62,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.time = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.breeds = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.printPreviewDialogCR = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentCR = new System.Drawing.Printing.PrintDocument();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label19
@@ -438,6 +438,40 @@
             this.panel1.TabIndex = 16;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
+            this.panel3.CausesValidation = false;
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.breeds);
+            this.panel3.Controls.Add(this.color);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.size);
+            this.panel3.Controls.Add(this.time);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.gender);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.location);
+            this.panel3.Controls.Add(this.date);
+            this.panel3.Location = new System.Drawing.Point(24, 114);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(646, 132);
+            this.panel3.TabIndex = 31;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label6.Location = new System.Drawing.Point(262, 73);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 20);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Time Caught:";
+            // 
             // breeds
             // 
             this.breeds.AutoSize = true;
@@ -447,6 +481,16 @@
             this.breeds.Size = new System.Drawing.Size(52, 20);
             this.breeds.TabIndex = 19;
             this.breeds.Text = "Breed";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(305, 82);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(76, 31);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "DOG";
             // 
             // pictureBox1
             // 
@@ -475,50 +519,6 @@
             // 
             this.printDocumentCR.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentCR_PrintPage);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label6.Location = new System.Drawing.Point(262, 73);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 20);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Time Caught:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(305, 82);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(76, 31);
-            this.label16.TabIndex = 21;
-            this.label16.Text = "DOG";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
-            this.panel3.CausesValidation = false;
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.breeds);
-            this.panel3.Controls.Add(this.color);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.size);
-            this.panel3.Controls.Add(this.time);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.gender);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.location);
-            this.panel3.Controls.Add(this.date);
-            this.panel3.Location = new System.Drawing.Point(24, 114);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(646, 132);
-            this.panel3.TabIndex = 31;
-            // 
             // Claim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -537,9 +537,9 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

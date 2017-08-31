@@ -193,8 +193,9 @@ namespace WindowsFormsApplication1
         {
             printPreviewDialogCR.Document = printDocumentCR;
             printPreviewDialogCR.ShowDialog();
-            Form frm = new Form();
-            frm.Text = "Claiming Receipt";
+            this.TopMost = true;
+           // Form frm = new Form();
+           // frm.Text = "Claiming Receipt";
         }
         private void printDocumentCR_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
