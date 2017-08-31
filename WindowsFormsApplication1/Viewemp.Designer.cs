@@ -37,11 +37,15 @@
             // 
             // dgvViewEmp
             // 
+            this.dgvViewEmp.AllowUserToResizeColumns = false;
+            this.dgvViewEmp.AllowUserToResizeRows = false;
             this.dgvViewEmp.BackgroundColor = System.Drawing.Color.White;
             this.dgvViewEmp.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvViewEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViewEmp.GridColor = System.Drawing.Color.White;
             this.dgvViewEmp.Location = new System.Drawing.Point(13, 46);
             this.dgvViewEmp.Name = "dgvViewEmp";
+            this.dgvViewEmp.RowHeadersVisible = false;
             this.dgvViewEmp.Size = new System.Drawing.Size(1105, 597);
             this.dgvViewEmp.TabIndex = 10;
             this.dgvViewEmp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);

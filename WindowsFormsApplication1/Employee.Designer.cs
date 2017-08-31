@@ -454,8 +454,8 @@
             this.addEmployee.Controls.Add(this.button12);
             this.addEmployee.Controls.Add(this.button11);
             this.addEmployee.Controls.Add(this.label2);
-            this.addEmployee.Controls.Add(this.addPanel);
             this.addEmployee.Controls.Add(this.editPanel);
+            this.addEmployee.Controls.Add(this.addPanel);
             this.addEmployee.Location = new System.Drawing.Point(27, 84);
             this.addEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addEmployee.Name = "addEmployee";
@@ -787,13 +787,17 @@
             // 
             this.dgvEdit.AllowUserToAddRows = false;
             this.dgvEdit.AllowUserToDeleteRows = false;
+            this.dgvEdit.AllowUserToResizeColumns = false;
+            this.dgvEdit.AllowUserToResizeRows = false;
             this.dgvEdit.BackgroundColor = System.Drawing.Color.White;
             this.dgvEdit.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEdit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEdit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvEdit.GridColor = System.Drawing.Color.White;
             this.dgvEdit.Location = new System.Drawing.Point(12, 14);
             this.dgvEdit.Name = "dgvEdit";
             this.dgvEdit.ReadOnly = true;
+            this.dgvEdit.RowHeadersVisible = false;
             this.dgvEdit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEdit.Size = new System.Drawing.Size(952, 250);
             this.dgvEdit.TabIndex = 0;
@@ -1008,9 +1012,9 @@
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.button16);
             this.DogCatchingOperation.Controls.Add(this.label4);
+            this.DogCatchingOperation.Controls.Add(this.team);
             this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
-            this.DogCatchingOperation.Controls.Add(this.team);
             this.DogCatchingOperation.Location = new System.Drawing.Point(27, 84);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -1082,12 +1086,16 @@
             // 
             // dgvOperationsView
             // 
+            this.dgvOperationsView.AllowUserToResizeColumns = false;
+            this.dgvOperationsView.AllowUserToResizeRows = false;
             this.dgvOperationsView.BackgroundColor = System.Drawing.Color.White;
             this.dgvOperationsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvOperationsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOperationsView.GridColor = System.Drawing.Color.White;
             this.dgvOperationsView.Location = new System.Drawing.Point(19, 17);
             this.dgvOperationsView.Name = "dgvOperationsView";
             this.dgvOperationsView.ReadOnly = true;
+            this.dgvOperationsView.RowHeadersVisible = false;
             this.dgvOperationsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOperationsView.Size = new System.Drawing.Size(947, 369);
             this.dgvOperationsView.TabIndex = 42;
@@ -1112,14 +1120,18 @@
             // 
             // dgvTeams
             // 
+            this.dgvTeams.AllowUserToResizeColumns = false;
+            this.dgvTeams.AllowUserToResizeRows = false;
             this.dgvTeams.BackgroundColor = System.Drawing.Color.White;
             this.dgvTeams.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTeams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTeams.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.teamID,
             this.EmployeeNames});
+            this.dgvTeams.GridColor = System.Drawing.Color.White;
             this.dgvTeams.Location = new System.Drawing.Point(18, 42);
             this.dgvTeams.Name = "dgvTeams";
+            this.dgvTeams.RowHeadersVisible = false;
             this.dgvTeams.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTeams.Size = new System.Drawing.Size(522, 336);
             this.dgvTeams.TabIndex = 41;
@@ -1484,6 +1496,8 @@
             // 
             // newTeam
             // 
+            this.newTeam.AllowUserToResizeColumns = false;
+            this.newTeam.AllowUserToResizeRows = false;
             this.newTeam.BackgroundColor = System.Drawing.Color.White;
             this.newTeam.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.newTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1492,9 +1506,11 @@
             this.Firstname,
             this.Lastname,
             this.Middlename});
+            this.newTeam.GridColor = System.Drawing.Color.White;
             this.newTeam.Location = new System.Drawing.Point(547, 53);
             this.newTeam.Name = "newTeam";
             this.newTeam.ReadOnly = true;
+            this.newTeam.RowHeadersVisible = false;
             this.newTeam.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.newTeam.Size = new System.Drawing.Size(417, 279);
             this.newTeam.TabIndex = 1;
@@ -1527,12 +1543,16 @@
             // 
             // allEmployees
             // 
+            this.allEmployees.AllowUserToResizeColumns = false;
+            this.allEmployees.AllowUserToResizeRows = false;
             this.allEmployees.BackgroundColor = System.Drawing.Color.White;
             this.allEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.allEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.allEmployees.GridColor = System.Drawing.Color.White;
             this.allEmployees.Location = new System.Drawing.Point(18, 53);
             this.allEmployees.Name = "allEmployees";
             this.allEmployees.ReadOnly = true;
+            this.allEmployees.RowHeadersVisible = false;
             this.allEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.allEmployees.Size = new System.Drawing.Size(417, 279);
             this.allEmployees.TabIndex = 0;
@@ -1556,7 +1576,6 @@
             this.AutoScrollMargin = new System.Drawing.Size(1, 1);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 651);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DogCatchingOperation);
@@ -1564,6 +1583,7 @@
             this.Controls.Add(this.act);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.attendance);
+            this.Controls.Add(this.addEmployee);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;

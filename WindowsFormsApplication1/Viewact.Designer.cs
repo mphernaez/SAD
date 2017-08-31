@@ -53,11 +53,15 @@
             // 
             // dgvViewAct
             // 
+            this.dgvViewAct.AllowUserToResizeColumns = false;
+            this.dgvViewAct.AllowUserToResizeRows = false;
             this.dgvViewAct.BackgroundColor = System.Drawing.Color.White;
             this.dgvViewAct.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvViewAct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViewAct.GridColor = System.Drawing.Color.White;
             this.dgvViewAct.Location = new System.Drawing.Point(12, 44);
             this.dgvViewAct.Name = "dgvViewAct";
+            this.dgvViewAct.RowHeadersVisible = false;
             this.dgvViewAct.Size = new System.Drawing.Size(1105, 597);
             this.dgvViewAct.TabIndex = 12;
             // 
@@ -70,7 +74,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvViewAct);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "viewAct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
