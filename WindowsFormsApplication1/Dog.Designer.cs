@@ -433,7 +433,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label3.Location = new System.Drawing.Point(419, 37);
+            this.label3.Location = new System.Drawing.Point(411, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(199, 39);
             this.label3.TabIndex = 11;
@@ -447,7 +447,7 @@
             this.dgvProfiles.BackgroundColor = System.Drawing.Color.White;
             this.dgvProfiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProfiles.Location = new System.Drawing.Point(15, 114);
+            this.dgvProfiles.Location = new System.Drawing.Point(15, 123);
             this.dgvProfiles.Name = "dgvProfiles";
             this.dgvProfiles.ReadOnly = true;
             this.dgvProfiles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -481,7 +481,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label10.Location = new System.Drawing.Point(879, 88);
+            this.label10.Location = new System.Drawing.Point(616, 53);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 20);
             this.label10.TabIndex = 37;
@@ -495,7 +495,7 @@
             this.cbGenderSearch.Items.AddRange(new object[] {
             "Male\t",
             "Female"});
-            this.cbGenderSearch.Location = new System.Drawing.Point(608, 79);
+            this.cbGenderSearch.Location = new System.Drawing.Point(640, 86);
             this.cbGenderSearch.Name = "cbGenderSearch";
             this.cbGenderSearch.Size = new System.Drawing.Size(89, 30);
             this.cbGenderSearch.TabIndex = 3;
@@ -505,7 +505,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(552, 91);
+            this.label6.Location = new System.Drawing.Point(586, 100);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 16);
             this.label6.TabIndex = 36;
@@ -516,7 +516,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(386, 90);
+            this.label5.Location = new System.Drawing.Point(423, 100);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 16);
             this.label5.TabIndex = 30;
@@ -527,7 +527,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(200, 90);
+            this.label4.Location = new System.Drawing.Point(232, 99);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 16);
             this.label4.TabIndex = 29;
@@ -536,10 +536,10 @@
             // 
             // tbColorSearch
             // 
-            this.tbColorSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbColorSearch.Location = new System.Drawing.Point(426, 83);
+            this.tbColorSearch.Font = new System.Drawing.Font("Trebuchet MS", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbColorSearch.Location = new System.Drawing.Point(463, 88);
             this.tbColorSearch.Name = "tbColorSearch";
-            this.tbColorSearch.Size = new System.Drawing.Size(112, 26);
+            this.tbColorSearch.Size = new System.Drawing.Size(112, 28);
             this.tbColorSearch.TabIndex = 2;
             this.tbColorSearch.TextChanged += new System.EventHandler(this.tbColorSearch_TextChanged);
             // 
@@ -552,7 +552,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(765, 342);
+            this.button3.Location = new System.Drawing.Point(765, 470);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(232, 38);
             this.button3.TabIndex = 23;
@@ -563,7 +563,7 @@
             // tbBreedSearch
             // 
             this.tbBreedSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBreedSearch.Location = new System.Drawing.Point(245, 83);
+            this.tbBreedSearch.Location = new System.Drawing.Point(279, 89);
             this.tbBreedSearch.Name = "tbBreedSearch";
             this.tbBreedSearch.Size = new System.Drawing.Size(135, 26);
             this.tbBreedSearch.TabIndex = 1;
@@ -764,9 +764,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 651);
+            this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.euthanizeDog);
-            this.Controls.Add(this.searchDog);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.adoptDog);
