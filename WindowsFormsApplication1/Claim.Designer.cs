@@ -48,6 +48,9 @@
             this.label15 = new System.Windows.Forms.Label();
             this.tblname = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tbYear = new System.Windows.Forms.TextBox();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
             this.breed = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.color = new System.Windows.Forms.Label();
@@ -69,10 +72,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.printPreviewDialogCR = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentCR = new System.Drawing.Printing.PrintDocument();
-            this.tbDay = new System.Windows.Forms.TextBox();
-            this.cbMonth = new System.Windows.Forms.ComboBox();
-            this.tbYear = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.tbDay = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -267,10 +267,10 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.panel2.CausesValidation = false;
+            this.panel2.Controls.Add(this.tbDay);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.tbYear);
             this.panel2.Controls.Add(this.cbMonth);
-            this.panel2.Controls.Add(this.tbDay);
             this.panel2.Controls.Add(this.tblname);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.tbmname);
@@ -290,6 +290,50 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(646, 217);
             this.panel2.TabIndex = 17;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(13, 179);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 20);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "Birthdate";
+            // 
+            // tbYear
+            // 
+            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbYear.Location = new System.Drawing.Point(229, 175);
+            this.tbYear.Name = "tbYear";
+            this.tbYear.Size = new System.Drawing.Size(65, 26);
+            this.tbYear.TabIndex = 32;
+            this.tbYear.Text = "Year";
+            this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
+            // 
+            // cbMonth
+            // 
+            this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMonth.ForeColor = System.Drawing.Color.Black;
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.cbMonth.Location = new System.Drawing.Point(92, 174);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(77, 28);
+            this.cbMonth.TabIndex = 31;
+            this.cbMonth.Text = "Month";
             // 
             // breed
             // 
@@ -530,56 +574,44 @@
             // tbDay
             // 
             this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDay.Location = new System.Drawing.Point(177, 175);
+            this.tbDay.FormattingEnabled = true;
+            this.tbDay.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31"});
+            this.tbDay.Location = new System.Drawing.Point(174, 174);
             this.tbDay.Name = "tbDay";
-            this.tbDay.Size = new System.Drawing.Size(43, 26);
-            this.tbDay.TabIndex = 30;
+            this.tbDay.Size = new System.Drawing.Size(51, 28);
+            this.tbDay.TabIndex = 34;
             this.tbDay.Text = "Day";
-            this.tbDay.Enter += new System.EventHandler(this.tbDay_Enter);
-            // 
-            // cbMonth
-            // 
-            this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMonth.ForeColor = System.Drawing.Color.Black;
-            this.cbMonth.FormattingEnabled = true;
-            this.cbMonth.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.cbMonth.Location = new System.Drawing.Point(92, 174);
-            this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(77, 28);
-            this.cbMonth.TabIndex = 31;
-            this.cbMonth.Text = "Month";
-            // 
-            // tbYear
-            // 
-            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbYear.Location = new System.Drawing.Point(229, 175);
-            this.tbYear.Name = "tbYear";
-            this.tbYear.Size = new System.Drawing.Size(65, 26);
-            this.tbYear.TabIndex = 32;
-            this.tbYear.Text = "Year";
-            this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(13, 179);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(74, 20);
-            this.label17.TabIndex = 33;
-            this.label17.Text = "Birthdate";
             // 
             // Claim
             // 
@@ -647,9 +679,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox tbDay;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox tbYear;
         private System.Windows.Forms.ComboBox cbMonth;
+        private System.Windows.Forms.ComboBox tbDay;
     }
 }
