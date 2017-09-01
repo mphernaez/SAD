@@ -22,13 +22,15 @@ namespace WindowsFormsApplication1
         public empty back { get; set; }
         public MySqlConnection conn = new MySqlConnection();
         EditEmp emp;
-        public Employee()
+        empty home;
+        public Employee(empty parent)
         {
             InitializeComponent();
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
             y = -40;
             use = Color.FromArgb(253, 208, 174);
             emp = new EditEmp(this);
+            home = parent;
         }
         public void trig()
         {
@@ -104,7 +106,6 @@ namespace WindowsFormsApplication1
             ne.Visible = true;
             a.Visible = false;
             ac.Visible = false;
-            ad.Visible = false;
             o.Visible = false;
             r.Visible = false;
 
@@ -127,7 +128,6 @@ namespace WindowsFormsApplication1
             ne.Visible = false;
             a.Visible = true;
             ac.Visible = false;
-            ad.Visible = false;
             o.Visible = false;
             r.Visible = false;
 
@@ -146,7 +146,6 @@ namespace WindowsFormsApplication1
             ne.Visible = false;
             a.Visible = false;
             ac.Visible = true;
-            ad.Visible = false;
             o.Visible = false;
             r.Visible = false;
 
@@ -164,7 +163,6 @@ namespace WindowsFormsApplication1
             ne.Visible = false;
             a.Visible = false;
             ac.Visible = false;
-            ad.Visible = true;
             o.Visible = false;
             r.Visible = false;
 
@@ -173,12 +171,6 @@ namespace WindowsFormsApplication1
         private void Employee_Load(object sender, EventArgs e)
         {
             //this.Top = 112;// 262
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
 
         }
 
@@ -193,7 +185,6 @@ namespace WindowsFormsApplication1
             ne.Visible = false;
             a.Visible = false;
             ac.Visible = false;
-            ad.Visible = false;
             o.Visible = false;
             r.Visible = true;
             repEmp.Visible = true;
@@ -352,11 +343,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox1_Click(object sender, EventArgs e)
         {
             
@@ -453,10 +439,6 @@ namespace WindowsFormsApplication1
         {
 
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-        }
         private int teamempid;
         private string teamfname;
         private string teamlname;
@@ -518,7 +500,7 @@ namespace WindowsFormsApplication1
         {
             button15.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
-           newOperation.Visible = false;
+           newOperation.Visible = true;
             
             Operations.Visible = false;
             
@@ -527,7 +509,8 @@ namespace WindowsFormsApplication1
 
         private void button21_Click(object sender, EventArgs e)
         {
-            
+            button21.BackColor = Color.FromArgb(251, 162, 80);
+            button15.BackColor = Color.FromArgb(2, 170, 145);
             newOperation.Visible = false;
             
             Operations.Visible = true;
@@ -545,7 +528,6 @@ namespace WindowsFormsApplication1
             ne.Visible = false;
             a.Visible = false;
             ac.Visible = false;
-            ad.Visible = false;
             o.Visible = true;
             r.Visible = false;
 
@@ -1050,21 +1032,31 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT  date, time, description FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY  date, time", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
+               
+                    MySqlCommand comm;
+                    if (date == null)
+                    {
+                         comm = new MySqlCommand("SELECT  date, time, description FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY  date, time", conn);
+                    }
+                    else
+                    {
+                        comm = new MySqlCommand("SELECT  date, time, description FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '"+ date+ "' ORDER BY  date, time", conn);
+                        date = null;
+                    }
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                        
+                    dgvOperationsView.DataSource = dt;
 
-                dgvOperationsView.DataSource = dt;
+                    dgvOperationsView.Columns["description"].HeaderText = "Location";
+                    dgvOperationsView.Columns["date"].HeaderText = "Date";
+                    dgvOperationsView.Columns["time"].HeaderText = "Time";
 
-                dgvOperationsView.Columns["description"].HeaderText = "Location";
-                dgvOperationsView.Columns["date"].HeaderText = "Date";
-                dgvOperationsView.Columns["time"].HeaderText = "Time";
-
-                dgvOperationsView.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+                    dgvOperationsView.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvOperationsView.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvOperationsView.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+               
                 conn.Close();
             }
             catch (Exception ex)
@@ -1174,11 +1166,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void tbStartm_Enter(object sender, EventArgs e)
         {
             tbStartm.Text = "";
@@ -1242,6 +1229,79 @@ namespace WindowsFormsApplication1
             }
 
 
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            home.dog.Show();
+            this.Hide();
+        }
+
+        private void button16_Click_1(object sender, EventArgs e)
+        {
+            home.inv.Show();
+            this.Hide();
+        }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            Login log = new Login();
+            log.hom = home;
+            log.Show();
+            this.trig();
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            home.Show();
+            this.Hide();
+        }
+
+        private void button18_Click_1(object sender, EventArgs e)
+        {
+            home.Show();
+            this.Hide();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
+        {
+      
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        string date;
+        private void button7_Click_1(object sender, EventArgs e)
+        {   
+            int year = int.Parse(textBox2.Text);
+            int month = comboBox2.SelectedIndex + 1;
+            int day = int.Parse(textBox3.Text);
+            date = year + "-" + month + "-" + day;
+            refreshOperationsView();
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            refreshOperationsView();
         }
     }
 }

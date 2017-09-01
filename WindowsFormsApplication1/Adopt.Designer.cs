@@ -46,6 +46,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbYear = new System.Windows.Forms.TextBox();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
+            this.tbDay = new System.Windows.Forms.TextBox();
             this.tblname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbmname = new System.Windows.Forms.TextBox();
@@ -66,10 +70,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.printPreviewDialogAdt = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentAdt = new System.Drawing.Printing.PrintDocument();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbYear = new System.Windows.Forms.TextBox();
-            this.cbMonth = new System.Windows.Forms.ComboBox();
-            this.tbDay = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -113,10 +113,11 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label21);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(-2, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(690, 564);
+            this.panel1.Size = new System.Drawing.Size(719, 592);
             this.panel1.TabIndex = 18;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
@@ -294,6 +295,58 @@
             this.panel3.Size = new System.Drawing.Size(658, 209);
             this.panel3.TabIndex = 20;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(26, 168);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(74, 20);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Birthdate";
+            // 
+            // tbYear
+            // 
+            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbYear.Location = new System.Drawing.Point(242, 164);
+            this.tbYear.Name = "tbYear";
+            this.tbYear.Size = new System.Drawing.Size(65, 26);
+            this.tbYear.TabIndex = 36;
+            this.tbYear.Text = "Year";
+            // 
+            // cbMonth
+            // 
+            this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMonth.ForeColor = System.Drawing.Color.Gray;
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.cbMonth.Location = new System.Drawing.Point(105, 163);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(77, 28);
+            this.cbMonth.TabIndex = 35;
+            this.cbMonth.Text = "Month";
+            // 
+            // tbDay
+            // 
+            this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDay.Location = new System.Drawing.Point(190, 164);
+            this.tbDay.Name = "tbDay";
+            this.tbDay.Size = new System.Drawing.Size(43, 26);
+            this.tbDay.TabIndex = 34;
+            this.tbDay.Text = "Day";
+            // 
             // tblname
             // 
             this.tblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -448,9 +501,9 @@
             // 
             this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(649, 14);
+            this.pictureBox1.Location = new System.Drawing.Point(680, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 23);
+            this.pictureBox1.Size = new System.Drawing.Size(24, 20);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -480,58 +533,6 @@
             // printDocumentAdt
             // 
             this.printDocumentAdt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentAdt_PrintPage);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(26, 168);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(74, 20);
-            this.label9.TabIndex = 37;
-            this.label9.Text = "Birthdate";
-            // 
-            // tbYear
-            // 
-            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbYear.Location = new System.Drawing.Point(242, 164);
-            this.tbYear.Name = "tbYear";
-            this.tbYear.Size = new System.Drawing.Size(65, 26);
-            this.tbYear.TabIndex = 36;
-            this.tbYear.Text = "Year";
-            // 
-            // cbMonth
-            // 
-            this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMonth.ForeColor = System.Drawing.Color.Gray;
-            this.cbMonth.FormattingEnabled = true;
-            this.cbMonth.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.cbMonth.Location = new System.Drawing.Point(105, 163);
-            this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(77, 28);
-            this.cbMonth.TabIndex = 35;
-            this.cbMonth.Text = "Month";
-            // 
-            // tbDay
-            // 
-            this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDay.Location = new System.Drawing.Point(190, 164);
-            this.tbDay.Name = "tbDay";
-            this.tbDay.Size = new System.Drawing.Size(43, 26);
-            this.tbDay.TabIndex = 34;
-            this.tbDay.Text = "Day";
             // 
             // Adopt
             // 

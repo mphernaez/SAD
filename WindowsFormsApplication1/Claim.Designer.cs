@@ -48,6 +48,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.tblname = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tbDay = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.tbYear = new System.Windows.Forms.TextBox();
             this.cbMonth = new System.Windows.Forms.ComboBox();
@@ -72,7 +73,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.printPreviewDialogCR = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentCR = new System.Drawing.Printing.PrintDocument();
-            this.tbDay = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -83,11 +83,11 @@
             // 
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Trebuchet MS", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
             this.label19.Location = new System.Drawing.Point(281, 10);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(129, 49);
+            this.label19.Size = new System.Drawing.Size(141, 46);
             this.label19.TabIndex = 16;
             this.label19.Text = "CLAIM";
             // 
@@ -291,6 +291,48 @@
             this.panel2.Size = new System.Drawing.Size(646, 217);
             this.panel2.TabIndex = 17;
             // 
+            // tbDay
+            // 
+            this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDay.FormattingEnabled = true;
+            this.tbDay.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31"});
+            this.tbDay.Location = new System.Drawing.Point(174, 174);
+            this.tbDay.Name = "tbDay";
+            this.tbDay.Size = new System.Drawing.Size(51, 28);
+            this.tbDay.TabIndex = 34;
+            this.tbDay.Text = "Day";
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -484,9 +526,9 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.breed);
-            this.panel1.Location = new System.Drawing.Point(14, 13);
+            this.panel1.Location = new System.Drawing.Point(-1, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(688, 579);
+            this.panel1.Size = new System.Drawing.Size(715, 603);
             this.panel1.TabIndex = 16;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -548,9 +590,9 @@
             // 
             this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(661, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(679, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 23);
+            this.pictureBox1.Size = new System.Drawing.Size(24, 20);
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -570,48 +612,6 @@
             // printDocumentCR
             // 
             this.printDocumentCR.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentCR_PrintPage);
-            // 
-            // tbDay
-            // 
-            this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDay.FormattingEnabled = true;
-            this.tbDay.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31"});
-            this.tbDay.Location = new System.Drawing.Point(174, 174);
-            this.tbDay.Name = "tbDay";
-            this.tbDay.Size = new System.Drawing.Size(51, 28);
-            this.tbDay.TabIndex = 34;
-            this.tbDay.Text = "Day";
             // 
             // Claim
             // 

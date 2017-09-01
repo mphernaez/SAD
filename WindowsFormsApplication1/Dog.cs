@@ -31,12 +31,15 @@ namespace WindowsFormsApplication1
         int i = -40;
         int[] opid; //id for every combobox item
         public empty back { get; set; }
+        
         public MySqlConnection conn;
-        public Dog()
+        empty home;
+        public Dog(empty parent)
         {
             InitializeComponent();
             use = Color.FromArgb(253, 208, 174);
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
+            home = parent;
         }
 
         private void AddDog_Load(object sender, EventArgs e)
@@ -772,6 +775,38 @@ namespace WindowsFormsApplication1
         private void cbGenderSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             refreshSearch();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            home.emp.Show();
+            this.Hide();
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            Login log = new Login();
+            log.hom = home;
+            log.Show();
+            this.trig();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            home.inv.Show();
+            this.Hide();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            home.Show();
+            this.Hide();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            home.Show();
+            this.Hide();
         }
     }
 }

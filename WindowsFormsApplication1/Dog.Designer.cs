@@ -79,6 +79,23 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pe = new System.Windows.Forms.Panel();
+            this.ip = new System.Windows.Forms.Panel();
+            this.button12 = new System.Windows.Forms.Button();
+            this.ep = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
+            this.dp = new System.Windows.Forms.Panel();
+            this.button14 = new System.Windows.Forms.Button();
+            this.hp = new System.Windows.Forms.Panel();
+            this.button15 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -94,12 +111,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).BeginInit();
             this.euthanizeDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.pe.SuspendLayout();
+            this.ip.SuspendLayout();
+            this.ep.SuspendLayout();
+            this.dp.SuspendLayout();
+            this.hp.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(61, 44);
+            this.label1.Location = new System.Drawing.Point(61, 157);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
@@ -118,7 +141,7 @@
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 112);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1070, 84);
             this.panel1.TabIndex = 1;
@@ -185,6 +208,7 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(55, 55);
             this.button8.TabIndex = 38;
+            this.toolTip1.SetToolTip(this.button8, "Reports");
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
@@ -213,6 +237,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(55, 55);
             this.button6.TabIndex = 37;
+            this.toolTip1.SetToolTip(this.button6, "Euthanize");
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click_1);
             this.button6.MouseHover += new System.EventHandler(this.button6_MouseHover);
@@ -232,6 +257,7 @@
             this.button5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button5.Size = new System.Drawing.Size(55, 55);
             this.button5.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.button5, "Adopt");
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
@@ -249,6 +275,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(55, 55);
             this.button2.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.button2, "Search");
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -265,6 +292,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(55, 55);
             this.button1.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.button1, "New");
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.MouseHover += new System.EventHandler(this.button1_MouseHover);
@@ -282,7 +310,7 @@
             this.addDog.Controls.Add(this.tbDesc);
             this.addDog.Controls.Add(this.cbGender);
             this.addDog.Controls.Add(this.label2);
-            this.addDog.Location = new System.Drawing.Point(27, 84);
+            this.addDog.Location = new System.Drawing.Point(27, 196);
             this.addDog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addDog.Name = "addDog";
             this.addDog.Size = new System.Drawing.Size(1015, 536);
@@ -475,7 +503,7 @@
             this.searchDog.Controls.Add(this.tbBreedSearch);
             this.searchDog.Controls.Add(this.label3);
             this.searchDog.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchDog.Location = new System.Drawing.Point(27, 84);
+            this.searchDog.Location = new System.Drawing.Point(27, 196);
             this.searchDog.Name = "searchDog";
             this.searchDog.Size = new System.Drawing.Size(1015, 536);
             this.searchDog.TabIndex = 11;
@@ -583,7 +611,7 @@
             this.adoptDog.Controls.Add(this.label12);
             this.adoptDog.Controls.Add(this.dgvAdoption);
             this.adoptDog.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adoptDog.Location = new System.Drawing.Point(27, 84);
+            this.adoptDog.Location = new System.Drawing.Point(27, 196);
             this.adoptDog.Name = "adoptDog";
             this.adoptDog.Size = new System.Drawing.Size(1015, 536);
             this.adoptDog.TabIndex = 40;
@@ -653,7 +681,7 @@
             // repclaimpan
             // 
             this.repclaimpan.Controls.Add(this.claimreportdgv);
-            this.repclaimpan.Location = new System.Drawing.Point(29, 84);
+            this.repclaimpan.Location = new System.Drawing.Point(29, 197);
             this.repclaimpan.Name = "repclaimpan";
             this.repclaimpan.Size = new System.Drawing.Size(1009, 367);
             this.repclaimpan.TabIndex = 25;
@@ -678,7 +706,7 @@
             this.euthanizeDog.Controls.Add(this.dgvArchive);
             this.euthanizeDog.Controls.Add(this.label11);
             this.euthanizeDog.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.euthanizeDog.Location = new System.Drawing.Point(27, 84);
+            this.euthanizeDog.Location = new System.Drawing.Point(27, 196);
             this.euthanizeDog.Name = "euthanizeDog";
             this.euthanizeDog.Size = new System.Drawing.Size(1015, 536);
             this.euthanizeDog.TabIndex = 37;
@@ -772,12 +800,239 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.button7);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.pe);
+            this.panel2.Controls.Add(this.ip);
+            this.panel2.Controls.Add(this.ep);
+            this.panel2.Controls.Add(this.dp);
+            this.panel2.Controls.Add(this.hp);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1071, 112);
+            this.panel2.TabIndex = 41;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.open_exit_door;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button7.Location = new System.Drawing.Point(979, 13);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(70, 70);
+            this.button7.TabIndex = 5;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(19, 30);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(362, 39);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Impound Management";
+            // 
+            // pe
+            // 
+            this.pe.Controls.Add(this.label18);
+            this.pe.Location = new System.Drawing.Point(964, 0);
+            this.pe.Name = "pe";
+            this.pe.Size = new System.Drawing.Size(106, 168);
+            this.pe.TabIndex = 8;
+            // 
+            // ip
+            // 
+            this.ip.Controls.Add(this.button12);
+            this.ip.Controls.Add(this.label17);
+            this.ip.Location = new System.Drawing.Point(858, 0);
+            this.ip.Name = "ip";
+            this.ip.Size = new System.Drawing.Size(106, 168);
+            this.ip.TabIndex = 9;
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.Transparent;
+            this.button12.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.archive_black_box;
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button12.Location = new System.Drawing.Point(18, 13);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(70, 70);
+            this.button12.TabIndex = 4;
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // ep
+            // 
+            this.ep.Controls.Add(this.button13);
+            this.ep.Controls.Add(this.label16);
+            this.ep.Location = new System.Drawing.Point(752, 0);
+            this.ep.Name = "ep";
+            this.ep.Size = new System.Drawing.Size(106, 168);
+            this.ep.TabIndex = 9;
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.Transparent;
+            this.button13.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.user_silhouette;
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button13.Location = new System.Drawing.Point(21, 13);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(70, 70);
+            this.button13.TabIndex = 3;
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // dp
+            // 
+            this.dp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(162)))), ((int)(((byte)(80)))));
+            this.dp.Controls.Add(this.label15);
+            this.dp.Controls.Add(this.button14);
+            this.dp.Location = new System.Drawing.Point(646, 1);
+            this.dp.Name = "dp";
+            this.dp.Size = new System.Drawing.Size(106, 168);
+            this.dp.TabIndex = 10;
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.Transparent;
+            this.button14.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.paw_print_;
+            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.button14.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button14.Location = new System.Drawing.Point(18, 7);
+            this.button14.Margin = new System.Windows.Forms.Padding(0);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(76, 80);
+            this.button14.TabIndex = 2;
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // hp
+            // 
+            this.hp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.hp.Controls.Add(this.label14);
+            this.hp.Controls.Add(this.button15);
+            this.hp.Location = new System.Drawing.Point(544, 0);
+            this.hp.Name = "hp";
+            this.hp.Size = new System.Drawing.Size(106, 168);
+            this.hp.TabIndex = 11;
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.Transparent;
+            this.button15.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.home1;
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button15.FlatAppearance.BorderSize = 0;
+            this.button15.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button15.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button15.Location = new System.Drawing.Point(11, 8);
+            this.button15.Margin = new System.Windows.Forms.Padding(0);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(85, 80);
+            this.button15.TabIndex = 7;
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(35, 84);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(39, 13);
+            this.label14.TabIndex = 18;
+            this.label14.Text = "Home";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(15, 83);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(79, 26);
+            this.label15.TabIndex = 19;
+            this.label15.Text = "Impound \r\nManagement";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(18, 84);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(79, 26);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "Employee \r\nManagement";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(15, 84);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(79, 26);
+            this.label17.TabIndex = 22;
+            this.label17.Text = "Inventory \r\nManagement";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(39, 84);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(28, 13);
+            this.label18.TabIndex = 20;
+            this.label18.Text = "Exit";
+            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(1070, 651);
+            this.ClientSize = new System.Drawing.Size(1070, 763);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addDog);
@@ -788,7 +1043,7 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddDog";
             this.Load += new System.EventHandler(this.AddDog_Load);
             this.panel1.ResumeLayout(false);
@@ -810,6 +1065,18 @@
             this.euthanizeDog.ResumeLayout(false);
             this.euthanizeDog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.pe.ResumeLayout(false);
+            this.pe.PerformLayout();
+            this.ip.ResumeLayout(false);
+            this.ip.PerformLayout();
+            this.ep.ResumeLayout(false);
+            this.ep.PerformLayout();
+            this.dp.ResumeLayout(false);
+            this.dp.PerformLayout();
+            this.hp.ResumeLayout(false);
+            this.hp.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -867,5 +1134,22 @@
         private System.Windows.Forms.Panel repclaimpan;
         private System.Windows.Forms.DataGridView claimreportdgv;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel pe;
+        private System.Windows.Forms.Panel ip;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Panel ep;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Panel dp;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Panel hp;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
     }
 }
