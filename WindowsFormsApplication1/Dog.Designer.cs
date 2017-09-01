@@ -445,12 +445,17 @@
             // 
             this.dgvProfiles.AllowUserToAddRows = false;
             this.dgvProfiles.AllowUserToDeleteRows = false;
+            this.dgvProfiles.AllowUserToResizeColumns = false;
+            this.dgvProfiles.AllowUserToResizeRows = false;
             this.dgvProfiles.BackgroundColor = System.Drawing.Color.White;
             this.dgvProfiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProfiles.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProfiles.GridColor = System.Drawing.Color.White;
             this.dgvProfiles.Location = new System.Drawing.Point(15, 123);
             this.dgvProfiles.Name = "dgvProfiles";
             this.dgvProfiles.ReadOnly = true;
+            this.dgvProfiles.RowHeadersVisible = false;
             this.dgvProfiles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProfiles.Size = new System.Drawing.Size(982, 319);
             this.dgvProfiles.TabIndex = 20;
@@ -629,12 +634,16 @@
             // 
             this.dgvAdoption.AllowUserToAddRows = false;
             this.dgvAdoption.AllowUserToDeleteRows = false;
+            this.dgvAdoption.AllowUserToResizeColumns = false;
+            this.dgvAdoption.AllowUserToResizeRows = false;
             this.dgvAdoption.BackgroundColor = System.Drawing.Color.White;
             this.dgvAdoption.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAdoption.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAdoption.GridColor = System.Drawing.Color.White;
             this.dgvAdoption.Location = new System.Drawing.Point(15, 114);
             this.dgvAdoption.Name = "dgvAdoption";
             this.dgvAdoption.ReadOnly = true;
+            this.dgvAdoption.RowHeadersVisible = false;
             this.dgvAdoption.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAdoption.Size = new System.Drawing.Size(982, 319);
             this.dgvAdoption.TabIndex = 20;
@@ -725,12 +734,16 @@
             // 
             this.dgvArchive.AllowUserToAddRows = false;
             this.dgvArchive.AllowUserToDeleteRows = false;
+            this.dgvArchive.AllowUserToResizeColumns = false;
+            this.dgvArchive.AllowUserToResizeRows = false;
             this.dgvArchive.BackgroundColor = System.Drawing.Color.White;
             this.dgvArchive.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvArchive.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArchive.GridColor = System.Drawing.Color.White;
             this.dgvArchive.Location = new System.Drawing.Point(15, 114);
             this.dgvArchive.Name = "dgvArchive";
             this.dgvArchive.ReadOnly = true;
+            this.dgvArchive.RowHeadersVisible = false;
             this.dgvArchive.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArchive.Size = new System.Drawing.Size(982, 319);
             this.dgvArchive.TabIndex = 20;
@@ -765,13 +778,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 651);
-            this.Controls.Add(this.searchDog);
-            this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.addDog);
+            this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.repclaimpan);
-            this.Controls.Add(this.addDog);
+            this.Controls.Add(this.searchDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";

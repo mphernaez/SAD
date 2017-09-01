@@ -38,13 +38,16 @@
             // 
             this.dgvViewDog.AllowUserToAddRows = false;
             this.dgvViewDog.AllowUserToDeleteRows = false;
+            this.dgvViewDog.AllowUserToResizeColumns = false;
             this.dgvViewDog.AllowUserToResizeRows = false;
             this.dgvViewDog.BackgroundColor = System.Drawing.Color.White;
             this.dgvViewDog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvViewDog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViewDog.GridColor = System.Drawing.Color.White;
             this.dgvViewDog.Location = new System.Drawing.Point(13, 46);
             this.dgvViewDog.Name = "dgvViewDog";
             this.dgvViewDog.ReadOnly = true;
+            this.dgvViewDog.RowHeadersVisible = false;
             this.dgvViewDog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvViewDog.Size = new System.Drawing.Size(1105, 597);
             this.dgvViewDog.TabIndex = 0;
