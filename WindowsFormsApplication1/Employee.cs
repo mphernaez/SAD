@@ -542,8 +542,8 @@ namespace WindowsFormsApplication1
             button16.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button15.BackColor = Color.FromArgb(2, 170, 145);
-            team.Visible = true;
-            newOperation.Visible = false;
+            newOperation.Visible = true;
+            teams.Visible = false;
             Operations.Visible = false;
 
             refreshTeam();
@@ -554,8 +554,8 @@ namespace WindowsFormsApplication1
             button15.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button16.BackColor = Color.FromArgb(2, 170, 145);
-            team.Visible = false;
-            newOperation.Visible = true;
+            newOperation.Visible = false;
+            teams.Visible = true;
             Operations.Visible = false;
             if (doneclick == false)
             {
@@ -567,11 +567,9 @@ namespace WindowsFormsApplication1
 
         private void button21_Click(object sender, EventArgs e)
         {
-            button21.BackColor = Color.FromArgb(251, 162, 80);
-            button15.BackColor = Color.FromArgb(2, 170, 145);
-            button16.BackColor = Color.FromArgb(2, 170, 145);
-            team.Visible = false;
+            
             newOperation.Visible = false;
+            teams.Visible = false;
             Operations.Visible = true;
 
             refreshOperationsView();
@@ -597,14 +595,12 @@ namespace WindowsFormsApplication1
         int teamIDs;
         public void addOperation()
         {
-            if (tbOpDate.Text != "Date (yyyy-mm-dd)" && cbLocation.Text != "Location" && tbStart.Text != "Time Start (hh:mm)" && tbEnd.Text != "Time End (hh:mm)")
+            if (tbOpDate.Text != "Date (yyyy-mm-dd)" && cbLocation.Text != "Location" && tbStarth.Text != "Time Start (hh:mm)" && tbEndh.Text != "Time End (hh:mm)")
             {
                 string date = tbOpDate.Text;
-                string time = tbStart.Text + "-" + tbEnd.Text;
-
-                if (date[4] == '-' && date[7] == '-' && time[2] == ':' && time[8] == ':')
-                {
-                    try
+                
+                string time = tbStarth.Text + ":" + tbStartm.Text + cbAMPMstart.Text + "-" + tbEndh.Text + ":" + tbEndm.Text + cbAMPMend.Text;
+                try
                     {
                         conn.Open();
                         MySqlCommand comm = new MySqlCommand("SELECT locationID FROM location WHERE description = '" + cbLocation.Text + "'", conn);
@@ -618,21 +614,13 @@ namespace WindowsFormsApplication1
                         comm.ExecuteNonQuery();
 
                         MessageBox.Show("Operation Added Successfully");
+                        conn.Close();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.ToString());
                         conn.Close();
                     }
-                }
-                else if (date[4] != '-' || date[7] != '-')
-                {
-                    MessageBox.Show("Please Enter Correct Format for Date");
-                }
-                else if (time[2] != ':' || time[8] != ':')
-                {
-                    MessageBox.Show("Please Enter Correct Format for Time");
-                }
             }
             else
             {
@@ -829,10 +817,7 @@ namespace WindowsFormsApplication1
         {
             addOperation();
             refreshOperation();
-
-            tbOpDate.Text = "Date (yyyy-mm-dd)";
-            tbStart.Text = "Time Start (hh:mm)";
-            tbEnd.Text = "Time End (hh:mm)";
+            
         }
 
 
@@ -1153,14 +1138,14 @@ namespace WindowsFormsApplication1
 
         private void tbStart_Click(object sender, EventArgs e)
         {
-            tbStart.Text = "";
-            tbStart.ForeColor = Color.Black;
+            tbStarth.Text = "";
+            tbStarth.ForeColor = Color.Black;
         }
 
         private void tbEnd_Click(object sender, EventArgs e)
         {
-            tbEnd.Text = "";
-            tbEnd.ForeColor = Color.Black;
+            tbEndh.Text = "";
+            tbEndh.ForeColor = Color.Black;
         }
 
         private void tbOpDate_TextChanged(object sender, EventArgs e)
@@ -1331,6 +1316,21 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please select an employee");
             }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbStartm_Enter(object sender, EventArgs e)
+        {
+            tbStartm.Text = "";
+        }
+
+        private void tbEndm_Enter(object sender, EventArgs e)
+        {
+            tbEndm.Text = "";
         }
     }
 }

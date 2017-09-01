@@ -64,25 +64,30 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text !="" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "")
+            if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text !="" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "" && cbMonth.Text != "Month" && tbDay.Text != "Day" && tbYear.Text != "Year")
             {
-                String fname = tbfname.Text;
-                String mname = tbmname.Text;
-                String lname = tblname.Text;
-                String add = tbadd.Text;
-                String idnum = tbIDnum.Text;
-                String idtype = tbIDtype.Text;
-                String num = tbnumber.Text;
-                String date = DateTime.Now.ToString("yyyy-MM-dd");
-                int vaccine = 0;
-                if (cbVaccine.Checked)
-                {
-                    vaccine = 1;
-                }
+                    String fname = tbfname.Text;
+                    String mname = tbmname.Text;
+                    String lname = tblname.Text;
+                    String add = tbadd.Text;
+                    String idnum = tbIDnum.Text;
+                    String idtype = tbIDtype.Text;
+                    String num = tbnumber.Text;
+                    String date = DateTime.Now.ToString("yyyy-MM-dd");
+                    String month = (cbMonth.SelectedIndex + 1).ToString();
+                    String day = tbDay.Text;
+                    String year = tbDay.Text;
+                    String bday = year + '-' + month + '-' + day;
+                    int vaccine = 0;
+                    if (cbVaccine.Checked)
+                    {
+                        vaccine = 1;
+                    }
+                
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO profile(firstname, middlename, lastname, contactNumber, address) VALUES('" + fname + "', '" + mname + "','" + lname + "', '" + num + "', '" + add + "')", conn);
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO profile(firstname, middlename, lastname, contactNumber, address, birthdate) VALUES('" + fname + "', '" + mname + "','" + lname + "', '" + num + "', '" + add + "', '" + bday + "')", conn);
                     comm.ExecuteNonQuery();
 
                     comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);

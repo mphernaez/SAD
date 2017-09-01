@@ -408,6 +408,7 @@
             this.Name = "empty";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "s";
+            this.Activated += new System.EventHandler(this.empty_Activated);
             this.Load += new System.EventHandler(this.Home_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

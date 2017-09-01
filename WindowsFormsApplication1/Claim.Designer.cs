@@ -69,6 +69,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.printPreviewDialogCR = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentCR = new System.Drawing.Printing.PrintDocument();
+            this.tbDay = new System.Windows.Forms.TextBox();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
+            this.tbYear = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -116,7 +120,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(18, 22);
+            this.label9.Location = new System.Drawing.Point(13, 22);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 20);
             this.label9.TabIndex = 17;
@@ -126,7 +130,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(18, 142);
+            this.label10.Location = new System.Drawing.Point(13, 141);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(125, 20);
             this.label10.TabIndex = 18;
@@ -136,7 +140,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(306, 22);
+            this.label11.Location = new System.Drawing.Point(310, 22);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(68, 20);
             this.label11.TabIndex = 19;
@@ -147,7 +151,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(306, 101);
+            this.label12.Location = new System.Drawing.Point(310, 101);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(103, 20);
             this.label12.TabIndex = 20;
@@ -158,7 +162,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(306, 142);
+            this.label13.Location = new System.Drawing.Point(310, 142);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(125, 20);
             this.label13.TabIndex = 21;
@@ -168,7 +172,7 @@
             // tbfname
             // 
             this.tbfname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbfname.Location = new System.Drawing.Point(120, 15);
+            this.tbfname.Location = new System.Drawing.Point(115, 15);
             this.tbfname.Name = "tbfname";
             this.tbfname.Size = new System.Drawing.Size(180, 26);
             this.tbfname.TabIndex = 22;
@@ -177,7 +181,7 @@
             // tbnumber
             // 
             this.tbnumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbnumber.Location = new System.Drawing.Point(142, 136);
+            this.tbnumber.Location = new System.Drawing.Point(137, 136);
             this.tbnumber.Name = "tbnumber";
             this.tbnumber.Size = new System.Drawing.Size(158, 26);
             this.tbnumber.TabIndex = 25;
@@ -186,7 +190,7 @@
             // tbadd
             // 
             this.tbadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbadd.Location = new System.Drawing.Point(380, 13);
+            this.tbadd.Location = new System.Drawing.Point(384, 13);
             this.tbadd.Multiline = true;
             this.tbadd.Name = "tbadd";
             this.tbadd.Size = new System.Drawing.Size(246, 67);
@@ -196,7 +200,7 @@
             // tbIDtype
             // 
             this.tbIDtype.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbIDtype.Location = new System.Drawing.Point(437, 96);
+            this.tbIDtype.Location = new System.Drawing.Point(441, 96);
             this.tbIDtype.Name = "tbIDtype";
             this.tbIDtype.Size = new System.Drawing.Size(189, 26);
             this.tbIDtype.TabIndex = 27;
@@ -205,7 +209,7 @@
             // tbIDnum
             // 
             this.tbIDnum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbIDnum.Location = new System.Drawing.Point(437, 136);
+            this.tbIDnum.Location = new System.Drawing.Point(441, 136);
             this.tbIDnum.Name = "tbIDnum";
             this.tbIDnum.Size = new System.Drawing.Size(189, 26);
             this.tbIDnum.TabIndex = 28;
@@ -215,7 +219,7 @@
             // 
             this.checkbox.AutoSize = true;
             this.checkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkbox.Location = new System.Drawing.Point(258, 179);
+            this.checkbox.Location = new System.Drawing.Point(314, 178);
             this.checkbox.Name = "checkbox";
             this.checkbox.Size = new System.Drawing.Size(122, 24);
             this.checkbox.TabIndex = 29;
@@ -227,7 +231,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(18, 60);
+            this.label14.Location = new System.Drawing.Point(13, 60);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(95, 20);
             this.label14.TabIndex = 27;
@@ -236,7 +240,7 @@
             // tbmname
             // 
             this.tbmname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbmname.Location = new System.Drawing.Point(120, 54);
+            this.tbmname.Location = new System.Drawing.Point(115, 54);
             this.tbmname.Name = "tbmname";
             this.tbmname.Size = new System.Drawing.Size(180, 26);
             this.tbmname.TabIndex = 23;
@@ -245,7 +249,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(18, 99);
+            this.label15.Location = new System.Drawing.Point(13, 99);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(80, 20);
             this.label15.TabIndex = 29;
@@ -254,7 +258,7 @@
             // tblname
             // 
             this.tblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tblname.Location = new System.Drawing.Point(120, 95);
+            this.tblname.Location = new System.Drawing.Point(115, 95);
             this.tblname.Name = "tblname";
             this.tblname.Size = new System.Drawing.Size(180, 26);
             this.tblname.TabIndex = 24;
@@ -263,6 +267,10 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.panel2.CausesValidation = false;
+            this.panel2.Controls.Add(this.label17);
+            this.panel2.Controls.Add(this.tbYear);
+            this.panel2.Controls.Add(this.cbMonth);
+            this.panel2.Controls.Add(this.tbDay);
             this.panel2.Controls.Add(this.tblname);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.tbmname);
@@ -519,6 +527,60 @@
             // 
             this.printDocumentCR.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentCR_PrintPage);
             // 
+            // tbDay
+            // 
+            this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDay.Location = new System.Drawing.Point(177, 175);
+            this.tbDay.Name = "tbDay";
+            this.tbDay.Size = new System.Drawing.Size(43, 26);
+            this.tbDay.TabIndex = 30;
+            this.tbDay.Text = "Day";
+            this.tbDay.Enter += new System.EventHandler(this.tbDay_Enter);
+            // 
+            // cbMonth
+            // 
+            this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMonth.ForeColor = System.Drawing.Color.Black;
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.cbMonth.Location = new System.Drawing.Point(92, 174);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(77, 28);
+            this.cbMonth.TabIndex = 31;
+            this.cbMonth.Text = "Month";
+            // 
+            // tbYear
+            // 
+            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbYear.Location = new System.Drawing.Point(229, 175);
+            this.tbYear.Name = "tbYear";
+            this.tbYear.Size = new System.Drawing.Size(65, 26);
+            this.tbYear.TabIndex = 32;
+            this.tbYear.Text = "Year";
+            this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(13, 179);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 20);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "Birthdate";
+            // 
             // Claim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,5 +647,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox tbDay;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox tbYear;
+        private System.Windows.Forms.ComboBox cbMonth;
     }
 }

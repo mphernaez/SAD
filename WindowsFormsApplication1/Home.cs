@@ -48,9 +48,9 @@ namespace WindowsFormsApplication1
             emp.adminID = this.adminID;
             emp.Location = new Point(this.Location.X, this.Location.Y + 112);
             emp.Show();
-            emp.TopMost = true;
 
-            int i = 453;//360, 5
+
+            //int i = 453;//360, 5
 
         }
 
@@ -68,9 +68,9 @@ namespace WindowsFormsApplication1
             ep.BackColor = Color.FromArgb(2, 170, 145);
             dp.BackColor = Color.FromArgb(2, 170, 145);
             hp.BackColor = Color.FromArgb(2, 170, 145);
-            inv.TopMost = true;
 
-            int i = 541;//360, 5
+
+            //int i = 541;//360, 5
 
         }
 
@@ -82,13 +82,12 @@ namespace WindowsFormsApplication1
             dog.adminID = this.adminID;
             dog.Show();
             dog.Location = new Point(this.Location.X, this.Location.Y + 112);
-            dog.TopMost = true;
             dp.BackColor = Color.FromArgb(251, 162, 80);
             ip.BackColor = Color.FromArgb(2, 170, 145);
             ep.BackColor = Color.FromArgb(2, 170, 145);
             hp.BackColor = Color.FromArgb(2, 170, 145);
 
-            int i = 360;//360, 5
+            //int i = 360;//360, 5
 
             
         }
@@ -99,7 +98,7 @@ namespace WindowsFormsApplication1
             button2.BackColor = Color.Transparent;
             button3.BackColor = Color.Transparent;
             pe.BackColor = Color.FromArgb(251, 162, 80);
-            int i = 615;
+            //int i = 615;
 
 
             Login log = new Login();
@@ -192,7 +191,7 @@ namespace WindowsFormsApplication1
             dog.trig();
             emp.trig();
             inv.trig();
-            int i = 261;
+            //int i = 261;
             hp.BackColor = Color.FromArgb(251, 162, 80);
             ip.BackColor = Color.FromArgb(2, 170, 145);
             ep.BackColor = Color.FromArgb(2, 170, 145);
@@ -266,6 +265,11 @@ namespace WindowsFormsApplication1
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseLocation = new Point(-e.X, -e.Y);
+        }
+
+        private void empty_Activated(object sender, EventArgs e)
+        {
+            BringToFront();
         }
     }
 }

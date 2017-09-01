@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using MySql.Data.MySqlClient;
-using iTextSharp;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+//using iTextSharp;
+//using iTextSharp.text;
+//using iTextSharp.text.pdf;
 using Microsoft.Office.Interop.Excel;
 
 
@@ -241,7 +241,6 @@ namespace WindowsFormsApplication1
                 claim.dogID = this.dogID;
                 claim.adminID = this.adminID;
                 claim.dog = this;
-                claim.TopMost = true;
                 claim.Show();
             }
             else
@@ -289,14 +288,6 @@ namespace WindowsFormsApplication1
         {
             if (tbColorSearch.Text != "" || tbBreedSearch.Text != "" || cbGenderSearch.SelectedIndex != 0)
             {
-                Char gender = ' ';
-
-                if (cbGenderSearch.SelectedIndex == 1)
-                    gender = 'M';
-                else if (cbGenderSearch.SelectedIndex == 2)
-                    gender = 'F';
-
-
                 try
                 {
                     conn.Open();
@@ -684,7 +675,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand comm = new MySqlCommand("SELECT operationID, time, date, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT operationID, time, MONTH(date) as month, YEAR(date) as year, DAY(date) as day, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
@@ -694,11 +685,11 @@ namespace WindowsFormsApplication1
 
                 for (int i = dt.Rows.Count - 1; i >= 1; i--)
                 {
-                    opid[j] = int.Parse(dt.Rows[i]["operationID"].ToString());          //assign opid index to operationID (array index = combobox index [synced]) 
-                    string date = dt.Rows[i]["date"].ToString().Substring(0, 10);
+                    opid[j] = int.Parse(dt.Rows[i]["operationID"].ToString());  //assign opid index to operationID (array index = combobox index [synced]) 
+                    string date = dt.Rows[i]["month"].ToString() + '-' + dt.Rows[i]["day"].ToString() + '-' + dt.Rows[i]["year"].ToString();
                     string time = dt.Rows[i]["time"].ToString();
                     string loc = dt.Rows[i]["description"].ToString();
-                    cbOperation.Items.Add(time + " " + date + ", " + "Brgy. " + loc);    //add necessary cherbs to combobox
+                    cbOperation.Items.Add(date + "  " + time + ",  " + "Brgy. " + loc);    //add necessary cherbs to combobox
                     j++;
                 }
                 conn.Close();

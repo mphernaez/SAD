@@ -32,6 +32,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.breeds = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.color = new System.Windows.Forms.Label();
+            this.date = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.size = new System.Windows.Forms.Label();
+            this.gender = new System.Windows.Forms.Label();
+            this.location = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tblname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,27 +62,18 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.date = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.location = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.gender = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.size = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.color = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.breeds = new System.Windows.Forms.Label();
             this.printPreviewDialogAdt = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentAdt = new System.Drawing.Printing.PrintDocument();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbYear = new System.Windows.Forms.TextBox();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
+            this.tbDay = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -114,10 +118,162 @@
             this.panel1.Size = new System.Drawing.Size(690, 564);
             this.panel1.TabIndex = 18;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
+            this.panel2.CausesValidation = false;
+            this.panel2.Controls.Add(this.breeds);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.color);
+            this.panel2.Controls.Add(this.date);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.size);
+            this.panel2.Controls.Add(this.gender);
+            this.panel2.Controls.Add(this.location);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Location = new System.Drawing.Point(16, 113);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(658, 126);
+            this.panel2.TabIndex = 31;
+            // 
+            // breeds
+            // 
+            this.breeds.AutoSize = true;
+            this.breeds.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breeds.Location = new System.Drawing.Point(167, 17);
+            this.breeds.Name = "breeds";
+            this.breeds.Size = new System.Drawing.Size(52, 20);
+            this.breeds.TabIndex = 10;
+            this.breeds.Text = "Breed";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label15.Location = new System.Drawing.Point(97, 105);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(67, 20);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Gender:";
+            // 
+            // color
+            // 
+            this.color.AutoSize = true;
+            this.color.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.color.Location = new System.Drawing.Point(167, 45);
+            this.color.Name = "color";
+            this.color.Size = new System.Drawing.Size(46, 20);
+            this.color.TabIndex = 11;
+            this.color.Text = "Color";
+            // 
+            // date
+            // 
+            this.date.AutoSize = true;
+            this.date.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.Location = new System.Drawing.Point(396, 44);
+            this.date.Name = "date";
+            this.date.Size = new System.Drawing.Size(100, 20);
+            this.date.TabIndex = 15;
+            this.date.Text = "Date Caught";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(98, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Breed:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label14.Location = new System.Drawing.Point(99, 75);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(44, 20);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Size:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label4.Location = new System.Drawing.Point(260, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(130, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Location Caught:";
+            // 
+            // size
+            // 
+            this.size.AutoSize = true;
+            this.size.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.size.Location = new System.Drawing.Point(167, 75);
+            this.size.Name = "size";
+            this.size.Size = new System.Drawing.Size(40, 20);
+            this.size.TabIndex = 12;
+            this.size.Text = "Size";
+            // 
+            // gender
+            // 
+            this.gender.AutoSize = true;
+            this.gender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gender.Location = new System.Drawing.Point(170, 105);
+            this.gender.Name = "gender";
+            this.gender.Size = new System.Drawing.Size(63, 20);
+            this.gender.TabIndex = 13;
+            this.gender.Text = "Gender";
+            // 
+            // location
+            // 
+            this.location.AutoSize = true;
+            this.location.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.location.Location = new System.Drawing.Point(396, 16);
+            this.location.Name = "location";
+            this.location.Size = new System.Drawing.Size(126, 20);
+            this.location.TabIndex = 14;
+            this.location.Text = "Location Caught";
+            this.location.Click += new System.EventHandler(this.location_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label5.Location = new System.Drawing.Point(98, 45);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 20);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Color:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label7.Location = new System.Drawing.Point(261, 44);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(117, 40);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Date and Time \r\nCaught:";
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.panel3.CausesValidation = false;
+            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.tbYear);
+            this.panel3.Controls.Add(this.cbMonth);
+            this.panel3.Controls.Add(this.tbDay);
             this.panel3.Controls.Add(this.tblname);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.tbmname);
@@ -178,7 +334,7 @@
             // 
             this.cbVaccine.AutoSize = true;
             this.cbVaccine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbVaccine.Location = new System.Drawing.Point(263, 173);
+            this.cbVaccine.Location = new System.Drawing.Point(341, 167);
             this.cbVaccine.Name = "cbVaccine";
             this.cbVaccine.Size = new System.Drawing.Size(122, 24);
             this.cbVaccine.TabIndex = 29;
@@ -288,27 +444,6 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "DOG";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(98, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Breed:";
-            // 
-            // date
-            // 
-            this.date.AutoSize = true;
-            this.date.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date.Location = new System.Drawing.Point(396, 44);
-            this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(100, 20);
-            this.date.TabIndex = 15;
-            this.date.Text = "Date Caught";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
@@ -320,91 +455,6 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(260, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 20);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Location Caught:";
-            // 
-            // location
-            // 
-            this.location.AutoSize = true;
-            this.location.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.location.Location = new System.Drawing.Point(396, 16);
-            this.location.Name = "location";
-            this.location.Size = new System.Drawing.Size(126, 20);
-            this.location.TabIndex = 14;
-            this.location.Text = "Location Caught";
-            this.location.Click += new System.EventHandler(this.location_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(98, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 20);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Color:";
-            // 
-            // gender
-            // 
-            this.gender.AutoSize = true;
-            this.gender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gender.Location = new System.Drawing.Point(170, 105);
-            this.gender.Name = "gender";
-            this.gender.Size = new System.Drawing.Size(63, 20);
-            this.gender.TabIndex = 13;
-            this.gender.Text = "Gender";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label7.Location = new System.Drawing.Point(261, 44);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(117, 40);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Date and Time \r\nCaught:";
-            // 
-            // size
-            // 
-            this.size.AutoSize = true;
-            this.size.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.size.Location = new System.Drawing.Point(167, 75);
-            this.size.Name = "size";
-            this.size.Size = new System.Drawing.Size(40, 20);
-            this.size.TabIndex = 12;
-            this.size.Text = "Size";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label14.Location = new System.Drawing.Point(99, 75);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 20);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "Size:";
-            // 
-            // color
-            // 
-            this.color.AutoSize = true;
-            this.color.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.color.Location = new System.Drawing.Point(167, 45);
-            this.color.Name = "color";
-            this.color.Size = new System.Drawing.Size(46, 20);
-            this.color.TabIndex = 11;
-            this.color.Text = "Color";
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -415,27 +465,6 @@
             this.label21.Size = new System.Drawing.Size(149, 31);
             this.label21.TabIndex = 17;
             this.label21.Text = "ADOPTOR";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label15.Location = new System.Drawing.Point(97, 105);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(67, 20);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "Gender:";
-            // 
-            // breeds
-            // 
-            this.breeds.AutoSize = true;
-            this.breeds.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.breeds.Location = new System.Drawing.Point(167, 17);
-            this.breeds.Name = "breeds";
-            this.breeds.Size = new System.Drawing.Size(52, 20);
-            this.breeds.TabIndex = 10;
-            this.breeds.Text = "Breed";
             // 
             // printPreviewDialogAdt
             // 
@@ -452,26 +481,57 @@
             // 
             this.printDocumentAdt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentAdt_PrintPage);
             // 
-            // panel2
+            // label9
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
-            this.panel2.CausesValidation = false;
-            this.panel2.Controls.Add(this.breeds);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.color);
-            this.panel2.Controls.Add(this.date);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.size);
-            this.panel2.Controls.Add(this.gender);
-            this.panel2.Controls.Add(this.location);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(16, 113);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(658, 126);
-            this.panel2.TabIndex = 31;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(26, 168);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(74, 20);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Birthdate";
+            // 
+            // tbYear
+            // 
+            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbYear.Location = new System.Drawing.Point(242, 164);
+            this.tbYear.Name = "tbYear";
+            this.tbYear.Size = new System.Drawing.Size(65, 26);
+            this.tbYear.TabIndex = 36;
+            this.tbYear.Text = "Year";
+            // 
+            // cbMonth
+            // 
+            this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMonth.ForeColor = System.Drawing.Color.Gray;
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.cbMonth.Location = new System.Drawing.Point(105, 163);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(77, 28);
+            this.cbMonth.TabIndex = 35;
+            this.cbMonth.Text = "Month";
+            // 
+            // tbDay
+            // 
+            this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDay.Location = new System.Drawing.Point(190, 164);
+            this.tbDay.Name = "tbDay";
+            this.tbDay.Size = new System.Drawing.Size(43, 26);
+            this.tbDay.TabIndex = 34;
+            this.tbDay.Text = "Day";
             // 
             // Adopt
             // 
@@ -490,11 +550,11 @@
             this.Load += new System.EventHandler(this.Adopt_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -537,5 +597,9 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialogAdt;
         private System.Drawing.Printing.PrintDocument printDocumentAdt;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbYear;
+        private System.Windows.Forms.ComboBox cbMonth;
+        private System.Windows.Forms.TextBox tbDay;
     }
 }

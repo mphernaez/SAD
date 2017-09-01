@@ -44,7 +44,7 @@ namespace WindowsFormsApplication1
 
             Preview();
 
-            if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text != "" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "")
+            if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text != "" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "" && cbMonth.Text != "Month" && tbDay.Text != "Day" && tbYear.Text != "Year")
             {
                 String fname = tbfname.Text;
                 String mname = tbmname.Text;
@@ -54,6 +54,10 @@ namespace WindowsFormsApplication1
                 String idtype = tbIDtype.Text;
                 String num = tbnumber.Text;
                 String date = DateTime.Now.ToString("yyyy-MM-dd");
+                String month = (cbMonth.SelectedIndex + 1).ToString();
+                String day = tbDay.Text;
+                String year = tbDay.Text;
+                String bday = year + '-' + month + '-' + day;
                 int vaccine = 0;
                 if (checkbox.Checked)
                 {
@@ -62,7 +66,7 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO profile(firstname, middlename, lastname, contactNumber, address) VALUES('" + fname + "', '" + mname + "','" + lname + "', '" + num + "', '" + add + "')", conn);
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO profile(firstname, middlename, lastname, contactNumber, address, birthdate) VALUES('" + fname + "', '" + mname + "','" + lname + "', '" + num + "', '" + add + "' , '" + bday + "')", conn);
                     comm.ExecuteNonQuery();
 
                     comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);
@@ -96,10 +100,7 @@ namespace WindowsFormsApplication1
                     conn.Close();
                 }
             }
-            else
-            {
-                MessageBox.Show("Please enter required fields");
-            }
+            
         }
         
         private void Claim_Load(object sender, EventArgs e)
@@ -224,6 +225,16 @@ namespace WindowsFormsApplication1
         private void tbfname_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void tbDay_Enter(object sender, EventArgs e)
+        {
+            tbDay.Text = "";
+        }
+
+        private void tbYear_Enter(object sender, EventArgs e)
+        {
+            tbYear.Text = "";
         }
     }
 }
