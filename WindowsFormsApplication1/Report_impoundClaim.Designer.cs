@@ -28,34 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(82, 117);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 44);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "View Receipt";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Report_impoundClaim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 295);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(761, 370);
             this.Name = "Report_impoundClaim";
-            this.Text = "Report_impoundClaim";
+            this.Text = "Claim Receipt";
             this.Load += new System.EventHandler(this.Report_impoundClaim_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
     }
 }

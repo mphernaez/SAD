@@ -92,7 +92,7 @@
     <Compile Include="Claim.Designer.cs">
       <DependentUpon>Claim.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClaimReceipt.cs" />
+    <Compile Include="ClaimR.cs" />
     <Compile Include="Dog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +233,8 @@
       <DependentUpon>impounddogpoundDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ClaimR.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApplication1.Properties.Resources.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -411,6 +413,7 @@
     <None Include="Resources\exitt.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\header.png" />
     <None Include="Resources\exit.png" />
     <None Include="Resources\delete-button.png" />
     <None Include="Resources\cancel-music.png" />

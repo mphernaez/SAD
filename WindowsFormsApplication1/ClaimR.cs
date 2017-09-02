@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    class ClaimReceipt
+    class ClaimR
     {
-        public int Id { get; set; }
-
-        public string name { get; set; }
-        public string num { get; set; }
+        public string claim { get; set; }
+        public int num { get; set; }
         public string ad { get; set; }
-        public string type { get; set; }
-        public string IdNum { get; set; }
+        public string ValidI { get; set; }
+        public int ValidN { get; set; }
         public string vac { get; set; }
         public string dog { get; set; }
         public string color { get; set; }

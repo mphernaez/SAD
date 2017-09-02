@@ -22,6 +22,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
+            dataGridView.Visible = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -196,22 +197,11 @@ namespace WindowsFormsApplication1
             printPreviewDialogCR.Document = printDocumentCR;
             printPreviewDialogCR.ShowDialog();
             this.TopMost = true;
-           // Form frm = new Form();
-           // frm.Text = "Claiming Receipt";
         }
         private void printDocumentCR_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            Form frm = new Form();
-            frm.StartPosition = FormStartPosition.CenterScreen;
-            frm.WindowState = FormWindowState.Normal;
-            PrintPreviewControl c = new PrintPreviewControl();
-            c.Zoom = 1.0;
-            frm.BackColor = Color.Orange;
+            Bitmap bmp = Properties.Resources.home;
 
-            Bitmap bmp = Properties.Resources.header;
-
-
-            Image newImage = bmp;
 
             e.Graphics.DrawString("Claimer's Name: " + tbfname.Text + tblname.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 180));
             e.Graphics.DrawString("Contact Number: " + tbnumber.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 200));
@@ -234,7 +224,7 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Location: " + location.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 400));
             e.Graphics.DrawString("Date and Time Caught " + date.Text + "," + time.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 420));
         }
-
+                
         private void tbfname_TextChanged(object sender, EventArgs e)
         {
 
