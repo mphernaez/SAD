@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+
 namespace WindowsFormsApplication1
 {
     public partial class Claim : Form
@@ -206,7 +207,12 @@ namespace WindowsFormsApplication1
             PrintPreviewControl c = new PrintPreviewControl();
             c.Zoom = 1.0;
             frm.BackColor = Color.Orange;
-            
+
+            Bitmap bmp = Properties.Resources.header;
+
+
+            Image newImage = bmp;
+
             e.Graphics.DrawString("Claimer's Name: " + tbfname.Text + tblname.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 180));
             e.Graphics.DrawString("Contact Number: " + tbnumber.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 200));
             e.Graphics.DrawString("Address: " + tbadd.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 220));

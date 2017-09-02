@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Claim));
             this.label19 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -73,10 +74,16 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.printPreviewDialogCR = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentCR = new System.Drawing.Printing.PrintDocument();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
+            this.impounddogpoundDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label19
@@ -518,6 +525,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
+            this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.button1);
@@ -613,6 +621,29 @@
             // 
             this.printDocumentCR.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentCR_PrintPage);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.DataSource = this.impounddogpoundDataSetBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(463, 508);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(240, 76);
+            this.dataGridView1.TabIndex = 32;
+            // 
+            // impounddogpoundDataSet
+            // 
+            this.impounddogpoundDataSet.DataSetName = "impounddogpoundDataSet";
+            this.impounddogpoundDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // impounddogpoundDataSetBindingSource
+            // 
+            this.impounddogpoundDataSetBindingSource.DataSource = this.impounddogpoundDataSet;
+            this.impounddogpoundDataSetBindingSource.Position = 0;
+            // 
             // Claim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -634,6 +665,9 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -683,5 +717,8 @@
         private System.Windows.Forms.TextBox tbYear;
         private System.Windows.Forms.ComboBox cbMonth;
         private System.Windows.Forms.ComboBox tbDay;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource impounddogpoundDataSetBindingSource;
+        private impounddogpoundDataSet impounddogpoundDataSet;
     }
 }

@@ -92,6 +92,7 @@
     <Compile Include="Claim.Designer.cs">
       <DependentUpon>Claim.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClaimReceipt.cs" />
     <Compile Include="Dog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -411,7 +412,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\exit.png" />
-    <Content Include="Resources\header.png" />
     <None Include="Resources\delete-button.png" />
     <None Include="Resources\cancel-music.png" />
     <None Include="Resources\triangle-512.png" />
