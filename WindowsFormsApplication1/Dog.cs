@@ -571,6 +571,11 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
         }
+
+        private void report()
+        {
+            
+        }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
         }

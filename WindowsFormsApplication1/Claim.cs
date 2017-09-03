@@ -209,7 +209,8 @@ namespace WindowsFormsApplication1
         {
             printPreviewDialogCR.Document = printDocumentCR;
             printPreviewDialogCR.ShowDialog();
-            this.TopMost = true;
+            printPreviewDialogCR.TopLevel = true;
+
         }
         private void printDocumentCR_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
@@ -230,6 +231,7 @@ namespace WindowsFormsApplication1
             {
                 e.Graphics.DrawString("**No Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
             }
+
             Pen black = new Pen(Color.Black, 3);
             Point p1 = new Point(25, 340);
             Point p2 = new Point(800    , 340);
