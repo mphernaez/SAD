@@ -515,19 +515,20 @@ namespace WindowsFormsApplication1
 
         private void button8_Click_1(object sender, EventArgs e)
         {
+            //report();
+            
+
             searchDog.Visible = false;
             addDog.Visible = false;
             adoptDog.Visible = false;
             euthanizeDog.Visible = false;
-            repclaimpan.Visible = true;
+            repclaimpan.Visible = false;
             a.Visible = false;
             s.Visible = false;
             ad.Visible = false;
             et.Visible = false;
             r.Visible = true;
-            claimreportdgv.Visible = true;
-
-            report();
+            claimreportdgv.Visible = false;
 
             try
             {
@@ -570,62 +571,40 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
-            
+            print();
         }
         private void report()
         {
             Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
             Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+            excel.Visible = true;
 
-            try
+            worksheet = workbook.Sheets["Sheet1"];
+            worksheet = workbook.ActiveSheet;
+            worksheet.Name = "Exported from gridview";
+            for (int i = 1; i < claimreportdgv.Columns.Count + 1; i++)
             {
-                worksheet = workbook.ActiveSheet;
-                worksheet.Name = "ExportedFromGrid";
-
-                int cellRowIndex = 1;
-                int cellColumnIndex = 1;
-                    
-                for (int i = 0; i < claimreportdgv.Rows.Count - 1; i++)
+                worksheet.Cells[1, i] = claimreportdgv.Columns[i - 1].HeaderText;
+            }
+            for (int i = 0; i < claimreportdgv.Rows.Count - 1; i++)
+            {
+                for (int j = 0; j < claimreportdgv.Columns.Count; j++)
                 {
-                    for (int j = 0; j < claimreportdgv.Columns.Count; j++)
-                    {
-                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
-                        if (cellRowIndex == 1)
-                        {
-                            worksheet.Cells[cellRowIndex, cellColumnIndex] = claimreportdgv.Columns[j].HeaderText;
-                        }
-                        else
-                        {
-                            worksheet.Cells[cellRowIndex, cellColumnIndex] = claimreportdgv.Rows[i].Cells[j].Value.ToString();
-                        }
-                        cellColumnIndex++;
-                    }
-                    cellColumnIndex = 1;
-                    cellRowIndex++;
-                }
-                
-                SaveFileDialog saveDialog = new SaveFileDialog();
-                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-                saveDialog.FilterIndex = 2;
-
-                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    workbook.SaveAs(saveDialog.FileName);
-                    MessageBox.Show("Export Successful");
+                    worksheet.Cells[i + 2, j + 1] = claimreportdgv.Rows[i].Cells[j].Value.ToString();
                 }
             }
-            catch (System.Exception ex)
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+            saveDialog.FilterIndex = 2;
+
+            if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                excel.Quit();
-                workbook = null;
-                excel = null;
+                //workbook.SaveAs(saveDialog.FileName);
+                MessageBox.Show("Export Successful");
             }
         }
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
         }
@@ -799,6 +778,23 @@ namespace WindowsFormsApplication1
         private void claimreportdgv_AllowUserToAddRowsChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bit = new Bitmap(this.claimreportdgv.Width, this.claimreportdgv.Height);
+            claimreportdgv.DrawToBitmap(bit, new System.Drawing.Rectangle(0, 0, this.claimreportdgv.Width, this.claimreportdgv.Height));
+            e.Graphics.DrawString("Dog Summary Report", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(200, 100));
+            e.Graphics.DrawImage(bit, 10, 40);
+        }
+        private void print()
+        {
+            printPreviewDialog1.Document = printDocument1;
+            if (DialogResult.OK == printPreviewDialog1.ShowDialog())
+            {
+                printDocument1.DocumentName = "Dog Summary Report";
+                printDocument1.Print();
+            }
         }
     }
 }
