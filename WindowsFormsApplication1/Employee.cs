@@ -77,29 +77,14 @@ namespace WindowsFormsApplication1
         int actemployeeID = 0;
         private void btnDone_Click(object sender, EventArgs e)
         {
-            string datez = DateTime.Now.ToString("yyyy-MM-dd");
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("INSERT INTO activity(employeeID, type, date) VALUES(" + actemployeeID + ", '" + tbAct.Text + "', '" + datez + "')", conn);
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Activity recorded successfully!");
-                conn.Close();
-                refreshActivity();
-                tbAct.Text = "Type of Activity";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
-            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = true;
-            act.Visible = false;
+            
             attendance.Visible = false;
             
             panel2.Visible = false;
@@ -121,7 +106,7 @@ namespace WindowsFormsApplication1
         {
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
-            act.Visible = false;
+            
             attendance.Visible = true;
             
             panel2.Visible = false;
@@ -139,7 +124,7 @@ namespace WindowsFormsApplication1
         {
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
-            act.Visible = true;
+            
             attendance.Visible = false; ;
             
             panel2.Visible = false;
@@ -148,15 +133,14 @@ namespace WindowsFormsApplication1
             ac.Visible = true;
             o.Visible = false;
             r.Visible = false;
-
-            refreshActivity();
+            
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
-            act.Visible = false;
+            
             attendance.Visible = false;
            
             panel2.Visible = false;
@@ -178,7 +162,7 @@ namespace WindowsFormsApplication1
         {
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
-            act.Visible = false;
+            
             attendance.Visible = false;
             
             panel2.Visible = true;
@@ -358,39 +342,7 @@ namespace WindowsFormsApplication1
             
         }
 
-        private void refreshActivity()
-        {
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', middlename) AS name, gender, birthdate, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active'", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-
-                dgvActivities.DataSource = dt;
-
-                dgvActivities.Columns["personID"].Visible = false;
-                dgvActivities.Columns["name"].HeaderText = "Name";
-                dgvActivities.Columns["gender"].HeaderText = "Gender";
-                dgvActivities.Columns["birthdate"].HeaderText = "Birthdate";
-                dgvActivities.Columns["contactNumber"].HeaderText = "Contact No.";
-                dgvActivities.Columns["position"].HeaderText = "Position";
-                dgvActivities.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvActivities.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvActivities.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvActivities.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvActivities.Columns["birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
-            }
-        }
-
+        
         private void button3_Click_1(object sender, EventArgs e)
         {
             button10.BackColor = Color.FromArgb(2, 170, 145);
@@ -522,7 +474,7 @@ namespace WindowsFormsApplication1
         {
             DogCatchingOperation.Visible = true;
             addEmployee.Visible = false;
-            act.Visible = false;
+            
             attendance.Visible = false; ;
            
             ne.Visible = false;
@@ -531,11 +483,9 @@ namespace WindowsFormsApplication1
             o.Visible = true;
             r.Visible = false;
 
-
-
-        }
-        int teamIDs;
-        public void addOperation()
+}
+        
+        public void addOperation(int teamIDs)
         {
             if (tbOpDate.Text != "Date (yyyy-mm-dd)" && cbLocation.Text != "Location" && tbStarth.Text != "Time Start (hh:mm)" && tbEndh.Text != "Time End (hh:mm)")
             {
@@ -551,8 +501,8 @@ namespace WindowsFormsApplication1
                         adp.Fill(dt);
 
                         int locID = int.Parse(dt.Rows[0]["locationID"].ToString());
-
-                        comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, time) VALUES ('" + teamIDs + "' , '" + locID + "', '" + date + "', '" + time + "')", conn);
+                        
+                        comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, time, status) VALUES ('" + teamIDs + "' , '" + locID + "', '" + date + "', '" + time + "')", conn);
                         comm.ExecuteNonQuery();
 
                         MessageBox.Show("Operation Added Successfully");
@@ -582,7 +532,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, status, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, status, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' ORDER BY lastname", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -775,7 +725,7 @@ namespace WindowsFormsApplication1
         }
         private void button20_Click(object sender, EventArgs e)
         {
-            addOperation();
+            //addOperation();
         }
 
 
@@ -1079,12 +1029,12 @@ namespace WindowsFormsApplication1
 
         private void textBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            tbAct.Text = "";
+           
         }
 
         private void dgvActivities_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            actemployeeID = int.Parse(dgvActivities.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+            
         }
 
         private void attendance_Paint(object sender, PaintEventArgs e)
@@ -1216,14 +1166,34 @@ namespace WindowsFormsApplication1
                 adp.Fill(dt);
 
                 teamid = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) + 1;
-
+                int[] emps = new int[10];
                 for (int i = 0; i < newTeam.Rows.Count - 1; i++)
                 {
                     empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
+                    emps[i] = empID;
+                    //MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
+                    //commm.ExecuteNonQuery();
+                }
+                if(checkIfTeamExists(emps) == true)
+                {
+                    for(int i = 1; i <= teamid; i++)
+                    {
+                        comm = new MySqlCommand("SELECT employeeID FROM operationteam WHERE teamID = " + i.ToString(), conn);
+                        adp = new MySqlDataAdapter(comm);
+                        dt = new DataTable();
+                        adp.Fill(dt);
+
+                        for(int j = 0; j < dt.Rows.Count - 1; i++)
+                        {
+                            
+                        }
+                    }
+                }
+                else
+                {
                     MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
                     commm.ExecuteNonQuery();
                 }
-                
                 conn.Close();
                 refreshTeam();
                 newTeam.Rows.Clear();
@@ -1236,7 +1206,10 @@ namespace WindowsFormsApplication1
 
 
         }
-
+        private Boolean checkIfTeamExists(int[] emps)
+        {
+            
+        }
         private void button25_Click(object sender, EventArgs e)
         {
             home.dog.Show();
