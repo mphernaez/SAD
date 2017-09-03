@@ -834,7 +834,7 @@ namespace WindowsFormsApplication1
                 adp.Fill(dt);
 
                 allEmployees.DataSource = dt;
-                allEmployees.Columns["personID"].Visible = true;
+                allEmployees.Columns["personID"].Visible = false;
                 allEmployees.Columns["lastname"].HeaderText = "Lastname";
                 allEmployees.Columns["firstname"].HeaderText = "Firstname";
                 allEmployees.Columns["middlename"].HeaderText = "Middlename";
@@ -865,9 +865,9 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.ToString());
                 conn.Close();
+                MessageBox.Show(ex.ToString());
+                
             }
         }
 
@@ -1005,7 +1005,7 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm;
                 if (date == null)
                 {
-                    comm = new MySqlCommand("SELECT operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY date, timeStart", conn);
+                    comm = new MySqlCommand("SELECT operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY date, timeStart GROUP BY teamID", conn);
                 }
                 else
                 {
@@ -1211,23 +1211,37 @@ namespace WindowsFormsApplication1
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
-
+                Boolean flag = false;
                 teamid = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) + 1;
                 int[] emps = new int[10];
-                for (int i = 0; i < newTeam.Rows.Count - 1; i++)
+                for (int i = 0; i < newTeam.Rows.Count; i++)
                 {
-                    empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
-                    emps[i] = empID;
+                    try {
+                        empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
+                        emps[i] = empID;
+                    }
+                    catch (Exception ex)
+                    {
+                        flag = true;
+                    }
                 }
-
-                if (checkIfTeamExists(emps) != 0) //team doesnt exist
+                conn.Close();
+                if (checkIfTeamExists(emps) == 0) //team doesnt exist
                 {
+                    conn.Open();
                     MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
+                    MessageBox.Show("Team Already Exists!");
+                    commm.ExecuteNonQuery();
+                }
+                else
+                {
+                    MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + checkIfTeamExists(emps) + ", " + empID + ")", conn);
                     commm.ExecuteNonQuery();
                 }
                 conn.Close();
                 refreshTeam();
                 newTeam.Rows.Clear();
+                MessageBox.Show("New Operation Successfully Added!");
             }
             catch (Exception ex)
             {
@@ -1247,11 +1261,11 @@ namespace WindowsFormsApplication1
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 Boolean stop = false;
-                Boolean stop2 = false;
+               
                 Array.Sort(emps);
-                for (int i = 0; stop == true; i++)
+                for (int i = 0; ; i++) //counter for team
                 {
-                    for (int j = 0; stop2 == true; i++)
+                    for (int j = 0; stop == true; i++) //counter for employees inside the team
                     {
 
                     }
@@ -1387,7 +1401,7 @@ namespace WindowsFormsApplication1
         int location;
         private void button28_Click(object sender, EventArgs e)
         {
-            if(comboBox1.SelectedIndex != 0 && tbOpDate.Text != "Day" && textBox1.Text != "Year" && tbStarth.Text != "00" && tbStartm.Text != "00" && tbEndh.Text != "00" && tbEndm.Text != "00" && cbLocation.SelectedIndex != 0)
+            if(comboBox1.Text != "" && tbOpDate.Text != "Day" && textBox1.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.SelectedIndex != 0)
             {
 
                 pteam.Enabled = true;
@@ -1402,6 +1416,8 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please Enter Required Fields");
             }
+
+            refreshTeam();
         }
 
         private void editPanel_Paint(object sender, PaintEventArgs e)
