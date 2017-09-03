@@ -67,19 +67,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.time = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.claimDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.validIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.validNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vacDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dogDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.claimRBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -92,7 +79,6 @@
             this.printDocumentCR = new System.Drawing.Printing.PrintDocument();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.claimRBindingSource)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -539,7 +525,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
-            this.panel1.Controls.Add(this.dataGridView);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.button1);
@@ -553,117 +538,6 @@
             this.panel1.Size = new System.Drawing.Size(715, 603);
             this.panel1.TabIndex = 16;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AutoGenerateColumns = false;
-            this.dataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.claimDataGridViewTextBoxColumn,
-            this.numDataGridViewTextBoxColumn,
-            this.adDataGridViewTextBoxColumn,
-            this.validIDataGridViewTextBoxColumn,
-            this.validNDataGridViewTextBoxColumn,
-            this.vacDataGridViewTextBoxColumn,
-            this.dogDataGridViewTextBoxColumn,
-            this.colorDataGridViewTextBoxColumn,
-            this.sizeDataGridViewTextBoxColumn,
-            this.genDataGridViewTextBoxColumn,
-            this.locDataGridViewTextBoxColumn,
-            this.dtDataGridViewTextBoxColumn});
-            this.dataGridView.DataSource = this.claimRBindingSource;
-            this.dataGridView.Location = new System.Drawing.Point(463, 508);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
-            this.dataGridView.Size = new System.Drawing.Size(240, 76);
-            this.dataGridView.TabIndex = 32;
-            // 
-            // claimDataGridViewTextBoxColumn
-            // 
-            this.claimDataGridViewTextBoxColumn.DataPropertyName = "claim";
-            this.claimDataGridViewTextBoxColumn.HeaderText = "claim";
-            this.claimDataGridViewTextBoxColumn.Name = "claimDataGridViewTextBoxColumn";
-            this.claimDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // numDataGridViewTextBoxColumn
-            // 
-            this.numDataGridViewTextBoxColumn.DataPropertyName = "num";
-            this.numDataGridViewTextBoxColumn.HeaderText = "num";
-            this.numDataGridViewTextBoxColumn.Name = "numDataGridViewTextBoxColumn";
-            this.numDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // adDataGridViewTextBoxColumn
-            // 
-            this.adDataGridViewTextBoxColumn.DataPropertyName = "ad";
-            this.adDataGridViewTextBoxColumn.HeaderText = "ad";
-            this.adDataGridViewTextBoxColumn.Name = "adDataGridViewTextBoxColumn";
-            this.adDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // validIDataGridViewTextBoxColumn
-            // 
-            this.validIDataGridViewTextBoxColumn.DataPropertyName = "ValidI";
-            this.validIDataGridViewTextBoxColumn.HeaderText = "ValidI";
-            this.validIDataGridViewTextBoxColumn.Name = "validIDataGridViewTextBoxColumn";
-            this.validIDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // validNDataGridViewTextBoxColumn
-            // 
-            this.validNDataGridViewTextBoxColumn.DataPropertyName = "ValidN";
-            this.validNDataGridViewTextBoxColumn.HeaderText = "ValidN";
-            this.validNDataGridViewTextBoxColumn.Name = "validNDataGridViewTextBoxColumn";
-            this.validNDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // vacDataGridViewTextBoxColumn
-            // 
-            this.vacDataGridViewTextBoxColumn.DataPropertyName = "vac";
-            this.vacDataGridViewTextBoxColumn.HeaderText = "vac";
-            this.vacDataGridViewTextBoxColumn.Name = "vacDataGridViewTextBoxColumn";
-            this.vacDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dogDataGridViewTextBoxColumn
-            // 
-            this.dogDataGridViewTextBoxColumn.DataPropertyName = "dog";
-            this.dogDataGridViewTextBoxColumn.HeaderText = "dog";
-            this.dogDataGridViewTextBoxColumn.Name = "dogDataGridViewTextBoxColumn";
-            this.dogDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // colorDataGridViewTextBoxColumn
-            // 
-            this.colorDataGridViewTextBoxColumn.DataPropertyName = "color";
-            this.colorDataGridViewTextBoxColumn.HeaderText = "color";
-            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
-            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sizeDataGridViewTextBoxColumn
-            // 
-            this.sizeDataGridViewTextBoxColumn.DataPropertyName = "size";
-            this.sizeDataGridViewTextBoxColumn.HeaderText = "size";
-            this.sizeDataGridViewTextBoxColumn.Name = "sizeDataGridViewTextBoxColumn";
-            this.sizeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // genDataGridViewTextBoxColumn
-            // 
-            this.genDataGridViewTextBoxColumn.DataPropertyName = "gen";
-            this.genDataGridViewTextBoxColumn.HeaderText = "gen";
-            this.genDataGridViewTextBoxColumn.Name = "genDataGridViewTextBoxColumn";
-            this.genDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // locDataGridViewTextBoxColumn
-            // 
-            this.locDataGridViewTextBoxColumn.DataPropertyName = "loc";
-            this.locDataGridViewTextBoxColumn.HeaderText = "loc";
-            this.locDataGridViewTextBoxColumn.Name = "locDataGridViewTextBoxColumn";
-            this.locDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dtDataGridViewTextBoxColumn
-            // 
-            this.dtDataGridViewTextBoxColumn.DataPropertyName = "dt";
-            this.dtDataGridViewTextBoxColumn.HeaderText = "dt";
-            this.dtDataGridViewTextBoxColumn.Name = "dtDataGridViewTextBoxColumn";
-            this.dtDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // claimRBindingSource
             // 
@@ -778,7 +652,6 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.claimRBindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -834,21 +707,8 @@
         private System.Windows.Forms.TextBox tbYear;
         private System.Windows.Forms.ComboBox cbMonth;
         private System.Windows.Forms.ComboBox tbDay;
-        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.BindingSource impounddogpoundDataSetBindingSource;
         private impounddogpoundDataSet impounddogpoundDataSet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn claimDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn validIDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn validNDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vacDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dogDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sizeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn genDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn locDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource claimRBindingSource;
     }
 }
