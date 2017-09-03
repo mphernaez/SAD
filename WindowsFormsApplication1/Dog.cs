@@ -289,9 +289,7 @@ namespace WindowsFormsApplication1
 
         public void refreshSearch()
         {
-            if (tbColorSearch.Text != "" || tbBreedSearch.Text != "" || cbGenderSearch.SelectedIndex != 0)
-            {
-                try
+              try
                 {
                     conn.Open();
                     MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, color, date, description, UCASE(size), otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE breed LIKE '" + tbBreedSearch.Text + "%' AND color LIKE '" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
@@ -322,11 +320,7 @@ namespace WindowsFormsApplication1
                     MessageBox.Show(ex.ToString());
                     conn.Close();
                 }
-            }
-            else
-            {
-                MessageBox.Show("Please enter required fields");
-            }
+           
         }
 
         public void refreshAdoption()

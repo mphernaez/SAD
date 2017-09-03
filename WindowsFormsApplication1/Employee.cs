@@ -295,7 +295,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance)", conn); //missing: refresh everyday (in restrictions, date should be now)
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', middlename) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance) ORDER BY lastname ASC", conn); //missing: refresh everyday (in restrictions, date should be now)
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -363,7 +363,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, birthdate, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', middlename) AS name, gender, birthdate, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -784,7 +784,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID IN (SELECT attendance.employeeID FROM attendance)", conn); //missing: refresh everyday (in restrictions, date should be now)
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', middlename) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID IN (SELECT attendance.employeeID FROM attendance) ORDER BY lastname", conn); //missing: refresh everyday (in restrictions, date should be now)
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -877,7 +877,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, firstname, lastname, middlename FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE status = 'Active' AND position = 'Catcher' ", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT personID, firstname, lastname, middlename FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE status = 'Active' AND position = 'Catcher' ORDER BY lastname", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1033,29 +1033,35 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                
-                    MySqlCommand comm;
+                MySqlCommand comm;
                     if (date == null)
                     {
-                         comm = new MySqlCommand("SELECT  date, time, description FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY  date, time", conn);
+                         comm = new MySqlCommand("SELECT date, time, description FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY operationID", conn);
                     }
                     else
                     {
-                        comm = new MySqlCommand("SELECT  date, time, description FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '"+ date+ "' ORDER BY  date, time", conn);
+                        comm = new MySqlCommand("SELECT date, time, description FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + date + "' ORDER BY  operationID", conn);
                         date = null;
                     }
-                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-                        
-                    dgvOperationsView.DataSource = dt;
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
 
-                    dgvOperationsView.Columns["description"].HeaderText = "Location";
-                    dgvOperationsView.Columns["date"].HeaderText = "Date";
-                    dgvOperationsView.Columns["time"].HeaderText = "Time";
+                dgvOperationsView.DataSource = dt;
 
-                    dgvOperationsView.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dgvOperationsView.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dgvOperationsView.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+                col.UseColumnTextForButtonValue = true;
+                col.Text = "View Team";
+                col.Name = "viewTeam";
+                dgvOperationsView.Columns.Add(col);
+
+                dgvOperationsView.Columns["description"].HeaderText = "Location";
+                dgvOperationsView.Columns["date"].HeaderText = "Date";
+                dgvOperationsView.Columns["time"].HeaderText = "Time";
+
+                dgvOperationsView.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                
                 conn.Close();
             }

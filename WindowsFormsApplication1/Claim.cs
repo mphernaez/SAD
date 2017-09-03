@@ -86,12 +86,25 @@ namespace WindowsFormsApplication1
 
                     comm = new MySqlCommand("UPDATE dogprofile SET status = 'claimed' WHERE dogID = " + dogID, conn);
                     comm.ExecuteNonQuery();
+                    string messbox = "";
                     if (vaccine == 1)
                     {
-                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID =  1", conn);
+                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID = 1", conn);
                         comm.ExecuteNonQuery();
+
+                        comm = new MySqlCommand("SELECT quantity FROM items WHERE itemID = 1", conn);
+                        MySqlDataReader read = comm.ExecuteReader();
+                        while (read.Read())
+                        {
+                            int quantity = int.Parse(read[0].ToString());
+                            messbox = "Successfully Claimed and Vaccinated! Vaccine Quantity is now: " + quantity.ToString();
+                        }
                     }
-                    MessageBox.Show("Successfully CLaimed!");
+                    else
+                    {
+                        messbox = "Successfully Claimed!";
+                    }
+                    MessageBox.Show(messbox);
                     dog.Show();
                     this.Close();
                     conn.Close();
