@@ -157,6 +157,7 @@ namespace WindowsFormsApplication1
             //this.Top = 112;// 262
 
         }
+        int coll = 0;
 
         private void button8_Click(object sender, EventArgs e)
         {
@@ -841,7 +842,7 @@ namespace WindowsFormsApplication1
                 allEmployees.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 allEmployees.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 allEmployees.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+                allEmployees.ClearSelection();
                 conn.Close();
             }
             catch (Exception ex)
@@ -982,37 +983,63 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-               
+
                 MySqlCommand comm;
-                    if (date == null)
-                    {
-                         comm = new MySqlCommand("SELECT date, time, description FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY operationID", conn);
-                    }
-                    else
-                    {
-                        comm = new MySqlCommand("SELECT date, time, description FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + date + "' ORDER BY  operationID", conn);
-                        date = null;
-                    }
+                if (date == null)
+                {
+                    comm = new MySqlCommand("SELECT operationID, date, time, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY operationID", conn);
+                }
+                else
+                {
+                    comm = new MySqlCommand("SELECT operationID, date, time, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + date + "' ORDER BY  operationID", conn);
+                    date = null;
+                }
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
 
                 dgvOperationsView.DataSource = dt;
+                if (coll == 1)
+                {
+                    DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+                    col.UseColumnTextForButtonValue = true;
+                    col.Text = "View Team";
+                    col.Name = "viewTeam";
+                    col.FlatStyle = FlatStyle.Flat;
+                    dgvOperationsView.Columns.Add(col);
+                    coll = 2;
+                }
 
-                DataGridViewButtonColumn col = new DataGridViewButtonColumn();
-                col.UseColumnTextForButtonValue = true;
-                col.Text = "View Team";
-                col.Name = "viewTeam";
-                dgvOperationsView.Columns.Add(col);
-
+                dgvOperationsView.Columns["operationID"].Visible = false;
                 dgvOperationsView.Columns["description"].HeaderText = "Location";
                 dgvOperationsView.Columns["date"].HeaderText = "Date";
                 dgvOperationsView.Columns["time"].HeaderText = "Time";
+                dgvOperationsView.Columns["status"].HeaderText = "Status";
 
                 dgvOperationsView.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvOperationsView.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvOperationsView.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                int i = 0;
                
+                while (i < dgvOperationsView.RowCount)
+                {
+                    
+                    
+                    if (dgvOperationsView.Rows[i].Cells["status"].Value.ToString() == "Pending")
+                    {
+                        dgvOperationsView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 235, 140);
+                    }
+                    else if (dgvOperationsView.Rows[i].Cells["status"].Value.ToString() == "OnGoing")
+                    {
+                        dgvOperationsView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(146, 232, 191);
+                    }
+                    i++;
+                }
+
+                dgvOperationsView.ClearSelection() ;
+
                 conn.Close();
             }
             catch (Exception ex)
@@ -1290,6 +1317,49 @@ namespace WindowsFormsApplication1
         private void button27_Click(object sender, EventArgs e)
         {
             refreshOperationsView();
+        }
+
+        private void dgvAttendanceOut_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dgvOperationsView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void dgvOperationsView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvOperationsView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int operation;
+            try
+            {
+                conn.Open();
+                operation = int.Parse(dgvOperationsView.Rows[e.RowIndex].Cells["operationID"].Value.ToString());
+
+                if (dgvOperationsView.Rows[e.RowIndex].Cells["status"].Value.ToString() == "Pending")
+                {
+                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing' WHERE operationID = " + operation, conn);
+                    comm.ExecuteNonQuery();
+                }
+                else if (dgvOperationsView.Rows[e.RowIndex].Cells["status"].Value.ToString() == "OnGoing")
+                {
+                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE operationID = " + operation, conn);
+                    comm.ExecuteNonQuery();
+                }
+
+                conn.Close();
+                refreshOperationsView();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                conn.Close();
+            }
         }
     }
 }
