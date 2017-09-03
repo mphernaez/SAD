@@ -83,19 +83,19 @@
             this.button7 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.pe = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
             this.ip = new System.Windows.Forms.Panel();
             this.button12 = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
             this.ep = new System.Windows.Forms.Panel();
             this.button13 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
             this.dp = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
             this.button14 = new System.Windows.Forms.Button();
             this.hp = new System.Windows.Forms.Panel();
-            this.button15 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.button15 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -145,7 +145,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1070, 84);
             this.panel1.TabIndex = 1;
-        
             // 
             // r
             // 
@@ -696,6 +695,7 @@
             this.claimreportdgv.Name = "claimreportdgv";
             this.claimreportdgv.Size = new System.Drawing.Size(972, 318);
             this.claimreportdgv.TabIndex = 0;
+            this.claimreportdgv.AllowUserToAddRowsChanged += new System.EventHandler(this.claimreportdgv_AllowUserToAddRowsChanged);
             // 
             // euthanizeDog
             // 
@@ -855,6 +855,17 @@
             this.pe.Size = new System.Drawing.Size(106, 168);
             this.pe.TabIndex = 8;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(39, 84);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(28, 13);
+            this.label18.TabIndex = 20;
+            this.label18.Text = "Exit";
+            // 
             // ip
             // 
             this.ip.Controls.Add(this.button12);
@@ -881,6 +892,18 @@
             this.button12.TabIndex = 4;
             this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(15, 84);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(79, 26);
+            this.label17.TabIndex = 22;
+            this.label17.Text = "Inventory \r\nManagement";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // ep
             // 
@@ -909,6 +932,18 @@
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(18, 84);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(79, 26);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "Employee \r\nManagement";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // dp
             // 
             this.dp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(162)))), ((int)(((byte)(80)))));
@@ -918,6 +953,18 @@
             this.dp.Name = "dp";
             this.dp.Size = new System.Drawing.Size(106, 168);
             this.dp.TabIndex = 10;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(15, 83);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(79, 26);
+            this.label15.TabIndex = 19;
+            this.label15.Text = "Impound \r\nManagement";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // button14
             // 
@@ -949,6 +996,17 @@
             this.hp.Size = new System.Drawing.Size(106, 168);
             this.hp.TabIndex = 11;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(35, 84);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(39, 13);
+            this.label14.TabIndex = 18;
+            this.label14.Text = "Home";
+            // 
             // button15
             // 
             this.button15.BackColor = System.Drawing.Color.Transparent;
@@ -968,64 +1026,6 @@
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(35, 84);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(39, 13);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "Home";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(15, 83);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(79, 26);
-            this.label15.TabIndex = 19;
-            this.label15.Text = "Impound \r\nManagement";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(18, 84);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(79, 26);
-            this.label16.TabIndex = 21;
-            this.label16.Text = "Employee \r\nManagement";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(15, 84);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(79, 26);
-            this.label17.TabIndex = 22;
-            this.label17.Text = "Inventory \r\nManagement";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(39, 84);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(28, 13);
-            this.label18.TabIndex = 20;
-            this.label18.Text = "Exit";
-            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1035,11 +1035,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.repclaimpan);
+            this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
-            this.Controls.Add(this.repclaimpan);
-            this.Controls.Add(this.searchDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
