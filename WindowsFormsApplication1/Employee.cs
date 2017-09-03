@@ -1171,25 +1171,9 @@ namespace WindowsFormsApplication1
                 {
                     empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
                     emps[i] = empID;
-                    //MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
-                    //commm.ExecuteNonQuery();
                 }
-                if(checkIfTeamExists(emps) == true)
-                {
-                    for(int i = 1; i <= teamid; i++)
-                    {
-                        comm = new MySqlCommand("SELECT employeeID FROM operationteam WHERE teamID = " + i.ToString(), conn);
-                        adp = new MySqlDataAdapter(comm);
-                        dt = new DataTable();
-                        adp.Fill(dt);
 
-                        for(int j = 0; j < dt.Rows.Count - 1; i++)
-                        {
-                            
-                        }
-                    }
-                }
-                else
+                if (checkIfTeamExists(emps) != 0) //team doesnt exist
                 {
                     MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
                     commm.ExecuteNonQuery();
@@ -1206,9 +1190,34 @@ namespace WindowsFormsApplication1
 
 
         }
-        private Boolean checkIfTeamExists(int[] emps)
+        private int checkIfTeamExists(int[] emps) //emps = new operation team
         {
-            
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT teamID, employeeID FROM operationteam GROUP BY teamID", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                Boolean stop = false;
+                Boolean stop2 = false;
+                Array.Sort(emps);
+                for (int i = 0; stop == true; i++)
+                {
+                    for (int j = 0; stop2 == true; i++)
+                    {
+
+                    }
+                }
+
+                conn.Close();
+            }
+            catch(Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+            return 0;
         }
         private void button25_Click(object sender, EventArgs e)
         {
