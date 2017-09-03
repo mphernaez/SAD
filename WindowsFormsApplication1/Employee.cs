@@ -834,7 +834,7 @@ namespace WindowsFormsApplication1
                 adp.Fill(dt);
 
                 allEmployees.DataSource = dt;
-                allEmployees.Columns["personID"].Visible = false;
+                allEmployees.Columns["personID"].Visible = true;
                 allEmployees.Columns["lastname"].HeaderText = "Lastname";
                 allEmployees.Columns["firstname"].HeaderText = "Firstname";
                 allEmployees.Columns["middlename"].HeaderText = "Middlename";
@@ -842,6 +842,24 @@ namespace WindowsFormsApplication1
                 allEmployees.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 allEmployees.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 allEmployees.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                int i = 0;
+                int empid;
+                while (i < allEmployees.RowCount)
+                {
+                    empid = int.Parse(allEmployees.Rows[i].Cells["personID"].Value.ToString());
+                   
+                    MySqlCommand com = new MySqlCommand("select COUNT(*) from employee join (operationteam join dogoperation on dogoperation.teamID = operationteam.teamID) on employee.employeeID = operationteam.employeeID where employee.employeeID = " + empid + " and timeEnd != '"+te+"'or dogoperation.status = 'Pending' or dogoperation.status = 'OnGoing' ", conn);
+                    MySqlDataAdapter adpp = new MySqlDataAdapter(com);
+                    DataTable dtt = new DataTable();
+                    adpp.Fill(dtt);
+                    DataGridViewRow row = allEmployees.Rows[i];
+                    if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) > 0)
+                    {
+                        allEmployees.Rows.Remove(row);
+                    }
+
+                }
+                
                 allEmployees.ClearSelection();
                 conn.Close();
             }
@@ -987,11 +1005,11 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm;
                 if (date == null)
                 {
-                    comm = new MySqlCommand("SELECT operationID, date, time, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY operationID", conn);
+                    comm = new MySqlCommand("SELECT operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY date, timeStart", conn);
                 }
                 else
                 {
-                    comm = new MySqlCommand("SELECT operationID, date, time, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + date + "' ORDER BY  operationID", conn);
+                    comm = new MySqlCommand("SELECT operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + date + "' ORDER BY  date, timeStart", conn);
                     date = null;
                 }
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -1013,12 +1031,14 @@ namespace WindowsFormsApplication1
                 dgvOperationsView.Columns["operationID"].Visible = false;
                 dgvOperationsView.Columns["description"].HeaderText = "Location";
                 dgvOperationsView.Columns["date"].HeaderText = "Date";
-                dgvOperationsView.Columns["time"].HeaderText = "Time";
+                dgvOperationsView.Columns["timeStart"].HeaderText = "Time Start";
+                dgvOperationsView.Columns["timeEnd"].HeaderText = "Time End";
                 dgvOperationsView.Columns["status"].HeaderText = "Status";
 
                 dgvOperationsView.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvOperationsView.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["timeStart"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["timeEnd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvOperationsView.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 int i = 0;
@@ -1360,6 +1380,33 @@ namespace WindowsFormsApplication1
             {
                 conn.Close();
             }
+        }
+        String d;
+        String ts;
+        String te;
+        int location;
+        private void button28_Click(object sender, EventArgs e)
+        {
+            if(comboBox1.SelectedIndex != 0 && tbOpDate.Text != "Day" && textBox1.Text != "Year" && tbStarth.Text != "00" && tbStartm.Text != "00" && tbEndh.Text != "00" && tbEndm.Text != "00" && cbLocation.SelectedIndex != 0)
+            {
+
+                pteam.Enabled = true;
+                pOperation.Enabled = false;
+                d = (comboBox1.SelectedIndex + 1).ToString() + "-" + tbOpDate.Text + "-" + textBox1.Text;
+                ts = tbStarth.Text + ":" + tbStartm.Text;
+                te = tbEndh.Text + ":" + tbEndm.Text;
+                location = cbLocation.SelectedIndex;
+
+            }
+            else
+            {
+                MessageBox.Show("Please Enter Required Fields");
+            }
+        }
+
+        private void editPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
