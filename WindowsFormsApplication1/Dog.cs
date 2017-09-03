@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using MySql.Data.MySqlClient;
-//using iTextSharp;
-//using iTextSharp.text;
-//using iTextSharp.text.pdf;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Microsoft.Office.Interop.Excel;
 
 
@@ -529,6 +529,7 @@ namespace WindowsFormsApplication1
             r.Visible = true;
             claimreportdgv.Visible = true;
 
+            report();
             try
             {
                 conn.Open();
@@ -570,11 +571,31 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
+
         }
 
         private void report()
         {
-            
+            Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+            PdfWriter write = PdfWriter.GetInstance(doc, new FileStream("Dog.pdf", FileMode.Create));
+
+            PdfPTable tab = new PdfPTable(claimreportdgv.Columns.Count);
+            for (int j = 0; j < claimreportdgv.Columns.Count; j++)
+            {
+                tab.AddCell(new Phrase(claimreportdgv.Columns[j].HeaderText));
+            }
+            tab.HeaderRows = 1;
+            for (int i = 0; i < claimreportdgv.Columns.Count; i++)
+            {
+                for (int k = 0; k < claimreportdgv.Columns.Count; k++)
+                {
+                    if (claimreportdgv[k, i].Value != null)
+                    {
+                        tab.AddCell(new Phrase(claimreportdgv[k, i].Value.ToString()));
+                    }
+                }
+            }
+            doc.Add(tab);
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
