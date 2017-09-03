@@ -133,6 +133,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button26 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Next = new System.Windows.Forms.Button();
+            this.pteam = new System.Windows.Forms.Panel();
+            this.pOperation = new System.Windows.Forms.Panel();
+            this.dgvcheck = new System.Windows.Forms.DataGridView();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
@@ -162,6 +166,9 @@
             this.ep.SuspendLayout();
             this.dp.SuspendLayout();
             this.hp.SuspendLayout();
+            this.pteam.SuspendLayout();
+            this.pOperation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvcheck)).BeginInit();
             this.SuspendLayout();
             // 
             // attendance
@@ -589,6 +596,7 @@
             this.editPanel.Size = new System.Drawing.Size(982, 357);
             this.editPanel.TabIndex = 24;
             this.editPanel.Visible = false;
+            this.editPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.editPanel_Paint);
             // 
             // button24
             // 
@@ -827,7 +835,7 @@
             this.DogCatchingOperation.Controls.Add(this.label4);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.Operations);
-            this.DogCatchingOperation.Location = new System.Drawing.Point(23, 196);
+            this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
             this.DogCatchingOperation.Size = new System.Drawing.Size(1016, 543);
@@ -875,27 +883,8 @@
             // 
             // newOperation
             // 
-            this.newOperation.Controls.Add(this.label9);
-            this.newOperation.Controls.Add(this.comboBox1);
-            this.newOperation.Controls.Add(this.textBox1);
-            this.newOperation.Controls.Add(this.cbAMPMend);
-            this.newOperation.Controls.Add(this.cbAMPMstart);
-            this.newOperation.Controls.Add(this.label16);
-            this.newOperation.Controls.Add(this.label15);
-            this.newOperation.Controls.Add(this.label14);
-            this.newOperation.Controls.Add(this.label10);
-            this.newOperation.Controls.Add(this.tbEndm);
-            this.newOperation.Controls.Add(this.tbStartm);
-            this.newOperation.Controls.Add(this.tbEndh);
-            this.newOperation.Controls.Add(this.tbStarth);
-            this.newOperation.Controls.Add(this.tbOpDate);
-            this.newOperation.Controls.Add(this.button20);
-            this.newOperation.Controls.Add(this.cbLocation);
-            this.newOperation.Controls.Add(this.label6);
-            this.newOperation.Controls.Add(this.button19);
-            this.newOperation.Controls.Add(this.button17);
-            this.newOperation.Controls.Add(this.newTeam);
-            this.newOperation.Controls.Add(this.allEmployees);
+            this.newOperation.Controls.Add(this.pOperation);
+            this.newOperation.Controls.Add(this.pteam);
             this.newOperation.Location = new System.Drawing.Point(16, 114);
             this.newOperation.Name = "newOperation";
             this.newOperation.Size = new System.Drawing.Size(982, 412);
@@ -907,7 +896,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(56, 31);
+            this.label9.Location = new System.Drawing.Point(31, 19);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(118, 20);
             this.label9.TabIndex = 73;
@@ -931,7 +920,7 @@
             "October",
             "November",
             "December"});
-            this.comboBox1.Location = new System.Drawing.Point(187, 22);
+            this.comboBox1.Location = new System.Drawing.Point(162, 10);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(93, 28);
             this.comboBox1.TabIndex = 72;
@@ -941,7 +930,7 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.Gray;
-            this.textBox1.Location = new System.Drawing.Point(344, 23);
+            this.textBox1.Location = new System.Drawing.Point(319, 11);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(65, 26);
             this.textBox1.TabIndex = 71;
@@ -955,7 +944,7 @@
             this.cbAMPMend.Items.AddRange(new object[] {
             "AM",
             "PM"});
-            this.cbAMPMend.Location = new System.Drawing.Point(244, 86);
+            this.cbAMPMend.Location = new System.Drawing.Point(219, 74);
             this.cbAMPMend.Name = "cbAMPMend";
             this.cbAMPMend.Size = new System.Drawing.Size(55, 28);
             this.cbAMPMend.TabIndex = 70;
@@ -967,7 +956,7 @@
             this.cbAMPMstart.Items.AddRange(new object[] {
             "AM",
             "PM"});
-            this.cbAMPMstart.Location = new System.Drawing.Point(244, 54);
+            this.cbAMPMstart.Location = new System.Drawing.Point(219, 42);
             this.cbAMPMstart.Name = "cbAMPMstart";
             this.cbAMPMstart.Size = new System.Drawing.Size(55, 28);
             this.cbAMPMstart.TabIndex = 69;
@@ -976,7 +965,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(186, 93);
+            this.label16.Location = new System.Drawing.Point(161, 81);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(13, 20);
             this.label16.TabIndex = 68;
@@ -986,7 +975,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(186, 59);
+            this.label15.Location = new System.Drawing.Point(161, 47);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(13, 20);
             this.label15.TabIndex = 67;
@@ -996,7 +985,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(56, 91);
+            this.label14.Location = new System.Drawing.Point(31, 79);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(76, 20);
             this.label14.TabIndex = 66;
@@ -1006,7 +995,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(56, 62);
+            this.label10.Location = new System.Drawing.Point(31, 50);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 20);
             this.label10.TabIndex = 65;
@@ -1016,7 +1005,7 @@
             // 
             this.tbEndm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbEndm.ForeColor = System.Drawing.Color.Gray;
-            this.tbEndm.Location = new System.Drawing.Point(200, 87);
+            this.tbEndm.Location = new System.Drawing.Point(175, 75);
             this.tbEndm.Name = "tbEndm";
             this.tbEndm.Size = new System.Drawing.Size(34, 26);
             this.tbEndm.TabIndex = 64;
@@ -1027,7 +1016,7 @@
             // 
             this.tbStartm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbStartm.ForeColor = System.Drawing.Color.Gray;
-            this.tbStartm.Location = new System.Drawing.Point(200, 56);
+            this.tbStartm.Location = new System.Drawing.Point(175, 44);
             this.tbStartm.Name = "tbStartm";
             this.tbStartm.Size = new System.Drawing.Size(34, 26);
             this.tbStartm.TabIndex = 63;
@@ -1038,7 +1027,7 @@
             // 
             this.tbEndh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbEndh.ForeColor = System.Drawing.Color.Gray;
-            this.tbEndh.Location = new System.Drawing.Point(150, 88);
+            this.tbEndh.Location = new System.Drawing.Point(125, 76);
             this.tbEndh.Name = "tbEndh";
             this.tbEndh.Size = new System.Drawing.Size(35, 26);
             this.tbEndh.TabIndex = 62;
@@ -1049,7 +1038,7 @@
             // 
             this.tbStarth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbStarth.ForeColor = System.Drawing.Color.Gray;
-            this.tbStarth.Location = new System.Drawing.Point(150, 56);
+            this.tbStarth.Location = new System.Drawing.Point(125, 44);
             this.tbStarth.Name = "tbStarth";
             this.tbStarth.Size = new System.Drawing.Size(35, 26);
             this.tbStarth.TabIndex = 61;
@@ -1060,7 +1049,7 @@
             // 
             this.tbOpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbOpDate.ForeColor = System.Drawing.Color.Gray;
-            this.tbOpDate.Location = new System.Drawing.Point(286, 23);
+            this.tbOpDate.Location = new System.Drawing.Point(261, 11);
             this.tbOpDate.Name = "tbOpDate";
             this.tbOpDate.Size = new System.Drawing.Size(52, 26);
             this.tbOpDate.TabIndex = 60;
@@ -1073,7 +1062,7 @@
             this.button20.FlatAppearance.BorderSize = 0;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button20.ForeColor = System.Drawing.Color.White;
-            this.button20.Location = new System.Drawing.Point(391, 363);
+            this.button20.Location = new System.Drawing.Point(367, 206);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(199, 32);
             this.button20.TabIndex = 59;
@@ -1268,7 +1257,7 @@
             "Wangan",
             "Wilfredo Aquino",
             "Wines"});
-            this.cbLocation.Location = new System.Drawing.Point(60, 120);
+            this.cbLocation.Location = new System.Drawing.Point(35, 108);
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(229, 28);
             this.cbLocation.TabIndex = 58;
@@ -1279,7 +1268,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label6.Location = new System.Drawing.Point(341, 167);
+            this.label6.Location = new System.Drawing.Point(317, 10);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(278, 25);
             this.label6.TabIndex = 37;
@@ -1293,7 +1282,7 @@
             this.button19.FlatAppearance.BorderSize = 0;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button19.ForeColor = System.Drawing.Color.White;
-            this.button19.Location = new System.Drawing.Point(474, 279);
+            this.button19.Location = new System.Drawing.Point(450, 122);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(33, 27);
             this.button19.TabIndex = 36;
@@ -1306,7 +1295,7 @@
             this.button17.FlatAppearance.BorderSize = 0;
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button17.ForeColor = System.Drawing.Color.White;
-            this.button17.Location = new System.Drawing.Point(469, 241);
+            this.button17.Location = new System.Drawing.Point(445, 84);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(45, 32);
             this.button17.TabIndex = 34;
@@ -1328,7 +1317,7 @@
             this.Lastname,
             this.Middlename});
             this.newTeam.GridColor = System.Drawing.Color.White;
-            this.newTeam.Location = new System.Drawing.Point(542, 194);
+            this.newTeam.Location = new System.Drawing.Point(518, 37);
             this.newTeam.Name = "newTeam";
             this.newTeam.ReadOnly = true;
             this.newTeam.RowHeadersVisible = false;
@@ -1371,7 +1360,7 @@
             this.allEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.allEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.allEmployees.GridColor = System.Drawing.Color.White;
-            this.allEmployees.Location = new System.Drawing.Point(56, 195);
+            this.allEmployees.Location = new System.Drawing.Point(32, 38);
             this.allEmployees.Name = "allEmployees";
             this.allEmployees.ReadOnly = true;
             this.allEmployees.RowHeadersVisible = false;
@@ -1749,6 +1738,67 @@
             this.button26.UseVisualStyleBackColor = false;
             this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
+            // Next
+            // 
+            this.Next.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.Next.FlatAppearance.BorderSize = 0;
+            this.Next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Next.ForeColor = System.Drawing.Color.White;
+            this.Next.Location = new System.Drawing.Point(366, 106);
+            this.Next.Name = "Next";
+            this.Next.Size = new System.Drawing.Size(199, 32);
+            this.Next.TabIndex = 74;
+            this.Next.Text = "Next";
+            this.Next.UseVisualStyleBackColor = false;
+            this.Next.Click += new System.EventHandler(this.button28_Click);
+            // 
+            // pteam
+            // 
+            this.pteam.Controls.Add(this.dgvcheck);
+            this.pteam.Controls.Add(this.newTeam);
+            this.pteam.Controls.Add(this.allEmployees);
+            this.pteam.Controls.Add(this.button17);
+            this.pteam.Controls.Add(this.button19);
+            this.pteam.Controls.Add(this.label6);
+            this.pteam.Controls.Add(this.button20);
+            this.pteam.Enabled = false;
+            this.pteam.Location = new System.Drawing.Point(25, 167);
+            this.pteam.Name = "pteam";
+            this.pteam.Size = new System.Drawing.Size(950, 242);
+            this.pteam.TabIndex = 75;
+            // 
+            // pOperation
+            // 
+            this.pOperation.Controls.Add(this.Next);
+            this.pOperation.Controls.Add(this.label9);
+            this.pOperation.Controls.Add(this.comboBox1);
+            this.pOperation.Controls.Add(this.textBox1);
+            this.pOperation.Controls.Add(this.cbAMPMend);
+            this.pOperation.Controls.Add(this.cbAMPMstart);
+            this.pOperation.Controls.Add(this.label16);
+            this.pOperation.Controls.Add(this.label15);
+            this.pOperation.Controls.Add(this.label14);
+            this.pOperation.Controls.Add(this.label10);
+            this.pOperation.Controls.Add(this.tbEndm);
+            this.pOperation.Controls.Add(this.tbStartm);
+            this.pOperation.Controls.Add(this.tbEndh);
+            this.pOperation.Controls.Add(this.tbStarth);
+            this.pOperation.Controls.Add(this.tbOpDate);
+            this.pOperation.Controls.Add(this.cbLocation);
+            this.pOperation.Location = new System.Drawing.Point(25, 12);
+            this.pOperation.Name = "pOperation";
+            this.pOperation.Size = new System.Drawing.Size(949, 149);
+            this.pOperation.TabIndex = 76;
+            // 
+            // dgvcheck
+            // 
+            this.dgvcheck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvcheck.Location = new System.Drawing.Point(453, 42);
+            this.dgvcheck.Name = "dgvcheck";
+            this.dgvcheck.Size = new System.Drawing.Size(30, 36);
+            this.dgvcheck.TabIndex = 47;
+            this.dgvcheck.Visible = false;
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1759,10 +1809,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
             this.Controls.Add(this.DogCatchingOperation);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -1790,7 +1840,6 @@
             this.DogCatchingOperation.ResumeLayout(false);
             this.DogCatchingOperation.PerformLayout();
             this.newOperation.ResumeLayout(false);
-            this.newOperation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newTeam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).EndInit();
             this.Operations.ResumeLayout(false);
@@ -1811,6 +1860,11 @@
             this.dp.PerformLayout();
             this.hp.ResumeLayout(false);
             this.hp.PerformLayout();
+            this.pteam.ResumeLayout(false);
+            this.pteam.PerformLayout();
+            this.pOperation.ResumeLayout(false);
+            this.pOperation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvcheck)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1921,5 +1975,9 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button Next;
+        private System.Windows.Forms.Panel pteam;
+        private System.Windows.Forms.Panel pOperation;
+        private System.Windows.Forms.DataGridView dgvcheck;
     }
 }
