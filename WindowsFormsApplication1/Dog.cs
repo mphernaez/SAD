@@ -10,9 +10,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using MySql.Data.MySqlClient;
-//using iTextSharp;
-//using iTextSharp.text;
-//using iTextSharp.text.pdf;
 using Microsoft.Office.Interop.Excel;
 
 
@@ -34,6 +31,7 @@ namespace WindowsFormsApplication1
         
         public MySqlConnection conn;
         empty home;
+        
         public Dog(empty parent)
         {
             InitializeComponent();
@@ -529,6 +527,8 @@ namespace WindowsFormsApplication1
             r.Visible = true;
             claimreportdgv.Visible = true;
 
+            report();
+
             try
             {
                 conn.Open();
@@ -562,19 +562,69 @@ namespace WindowsFormsApplication1
                 claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-
                 conn.Close();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
+            
         }
-
         private void report()
         {
-            
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+            try
+            {
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "ExportedFromGrid";
+
+                int cellRowIndex = 1;
+                int cellColumnIndex = 1;
+                    
+                for (int i = 0; i < claimreportdgv.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < claimreportdgv.Columns.Count; j++)
+                    {
+                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
+                        if (cellRowIndex == 1)
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = claimreportdgv.Columns[j].HeaderText;
+                        }
+                        else
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = claimreportdgv.Rows[i].Cells[j].Value.ToString();
+                        }
+                        cellColumnIndex++;
+                    }
+                    cellColumnIndex = 1;
+                    cellRowIndex++;
+                }
+                
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 2;
+
+                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    workbook.SaveAs(saveDialog.FileName);
+                    MessageBox.Show("Export Successful");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                excel.Quit();
+                workbook = null;
+                excel = null;
+            }
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -744,6 +794,11 @@ namespace WindowsFormsApplication1
         {
             home.Show();
             this.Hide();
+        }
+
+        private void claimreportdgv_AllowUserToAddRowsChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
