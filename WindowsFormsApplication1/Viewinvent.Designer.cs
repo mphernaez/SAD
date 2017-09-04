@@ -37,6 +37,7 @@
             // 
             // dgvViewAct
             // 
+            this.dgvViewAct.AllowUserToAddRows = false;
             this.dgvViewAct.AllowUserToResizeColumns = false;
             this.dgvViewAct.AllowUserToResizeRows = false;
             this.dgvViewAct.BackgroundColor = System.Drawing.Color.White;
@@ -46,6 +47,7 @@
             this.dgvViewAct.Location = new System.Drawing.Point(13, 43);
             this.dgvViewAct.Name = "dgvViewAct";
             this.dgvViewAct.RowHeadersVisible = false;
+            this.dgvViewAct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvViewAct.Size = new System.Drawing.Size(1105, 597);
             this.dgvViewAct.TabIndex = 14;
             // 
@@ -75,6 +77,7 @@
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Viewinvent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewAct)).EndInit();
