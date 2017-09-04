@@ -1556,14 +1556,14 @@
             this.AutoScrollMargin = new System.Drawing.Size(1, 1);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 651);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.DogCatchingOperation);
-            this.Controls.Add(this.admin);
             this.Controls.Add(this.act);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.attendance);
+            this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.DogCatchingOperation);
+            this.Controls.Add(this.admin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
