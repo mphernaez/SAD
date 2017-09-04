@@ -22,13 +22,15 @@ namespace WindowsFormsApplication1
         public empty back { get; set; }
         public MySqlConnection conn = new MySqlConnection();
         EditEmp emp;
-        public Employee()
+        empty home;
+        public Employee(empty parent)
         {
             InitializeComponent();
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
             y = -40;
             use = Color.FromArgb(253, 208, 174);
             emp = new EditEmp(this);
+            home = parent;
         }
         public void trig()
         {
@@ -75,36 +77,20 @@ namespace WindowsFormsApplication1
         int actemployeeID = 0;
         private void btnDone_Click(object sender, EventArgs e)
         {
-            string datez = DateTime.Now.ToString("yyyy-MM-dd");
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("INSERT INTO activity(employeeID, type, date) VALUES(" + actemployeeID + ", '" + tbAct.Text + "', '" + datez + "')", conn);
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Activity recorded successfully!");
-                conn.Close();
-                refreshActivity();
-                tbAct.Text = "Type of Activity";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
-            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = true;
-            act.Visible = false;
+            
             attendance.Visible = false;
-            admin.Visible = false;
+            
             panel2.Visible = false;
             ne.Visible = true;
             a.Visible = false;
             ac.Visible = false;
-            ad.Visible = false;
             o.Visible = false;
             r.Visible = false;
 
@@ -120,14 +106,13 @@ namespace WindowsFormsApplication1
         {
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
-            act.Visible = false;
+            
             attendance.Visible = true;
-            admin.Visible = false;
+            
             panel2.Visible = false;
             ne.Visible = false;
             a.Visible = true;
             ac.Visible = false;
-            ad.Visible = false;
             o.Visible = false;
             r.Visible = false;
 
@@ -139,63 +124,52 @@ namespace WindowsFormsApplication1
         {
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
-            act.Visible = true;
+            
             attendance.Visible = false; ;
-            admin.Visible = false;
+            
             panel2.Visible = false;
             ne.Visible = false;
             a.Visible = false;
             ac.Visible = true;
-            ad.Visible = false;
             o.Visible = false;
             r.Visible = false;
-
-            refreshActivity();
+            
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
-            act.Visible = false;
+            
             attendance.Visible = false;
-            admin.Visible = true;
+           
             panel2.Visible = false;
             ne.Visible = false;
             a.Visible = false;
             ac.Visible = false;
-            ad.Visible = true;
             o.Visible = false;
             r.Visible = false;
 
-
-            refreshAdmin();
-        }
+}
 
         private void Employee_Load(object sender, EventArgs e)
         {
             //this.Top = 112;// 262
 
         }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-
-        }
+        int coll = 0;
 
         private void button8_Click(object sender, EventArgs e)
         {
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
-            act.Visible = false;
+            
             attendance.Visible = false;
-            admin.Visible = false;
+            
             panel2.Visible = true;
             ne.Visible = false;
             a.Visible = false;
             ac.Visible = false;
-            ad.Visible = false;
             o.Visible = false;
             r.Visible = true;
             repEmp.Visible = true;
@@ -306,7 +280,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance)", conn); //missing: refresh everyday (in restrictions, date should be now)
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', middlename) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance) ORDER BY lastname ASC", conn); //missing: refresh everyday (in restrictions, date should be now)
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -354,47 +328,9 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void refreshAdmin()
-        {
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, birthdate, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT admin.employeeID FROM admin)", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-
-                dgvAdmin.DataSource = dt;
-
-                dgvAdmin.Columns["personID"].Visible = false;
-                dgvAdmin.Columns["name"].HeaderText = "Name";
-                dgvAdmin.Columns["gender"].HeaderText = "Gender";
-                dgvAdmin.Columns["birthdate"].HeaderText = "Gender";
-                dgvAdmin.Columns["contactNumber"].HeaderText = "Contact No.";
-                dgvAdmin.Columns["position"].HeaderText = "Position";
-                dgvAdmin.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvAdmin.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvAdmin.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvAdmin.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvAdmin.Columns["birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
-            }
-        }
-
         private void textBox1_Click(object sender, EventArgs e)
         {
-            tbUsername.Clear();
+            
         }
 
         private void tbUsername_TextChanged(object sender, EventArgs e)
@@ -404,42 +340,10 @@ namespace WindowsFormsApplication1
 
         private void tbPassword_Click(object sender, EventArgs e)
         {
-            tbPassword.Clear();
+            
         }
 
-        private void refreshActivity()
-        {
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, birthdate, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active'", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-
-                dgvActivities.DataSource = dt;
-
-                dgvActivities.Columns["personID"].Visible = false;
-                dgvActivities.Columns["name"].HeaderText = "Name";
-                dgvActivities.Columns["gender"].HeaderText = "Gender";
-                dgvActivities.Columns["birthdate"].HeaderText = "Birthdate";
-                dgvActivities.Columns["contactNumber"].HeaderText = "Contact No.";
-                dgvActivities.Columns["position"].HeaderText = "Position";
-                dgvActivities.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvActivities.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvActivities.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvActivities.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvActivities.Columns["birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
-            }
-        }
-
+        
         private void button3_Click_1(object sender, EventArgs e)
         {
             button10.BackColor = Color.FromArgb(2, 170, 145);
@@ -469,6 +373,7 @@ namespace WindowsFormsApplication1
             button12.BackColor = Color.FromArgb(2, 170, 145);
             addPanel.Visible = true;
             editPanel.Visible = false;
+            pnlAdmin.Visible = false;
             rePopAddEmp();
         }
 
@@ -486,10 +391,6 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
         }
         private int teamempid;
         private string teamfname;
@@ -539,11 +440,10 @@ namespace WindowsFormsApplication1
 
         private void button16_Click(object sender, EventArgs e)
         {
-            button16.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button15.BackColor = Color.FromArgb(2, 170, 145);
-            team.Visible = true;
-            newOperation.Visible = false;
+            newOperation.Visible = true;
+            
             Operations.Visible = false;
 
             refreshTeam();
@@ -553,15 +453,10 @@ namespace WindowsFormsApplication1
         {
             button15.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
-            button16.BackColor = Color.FromArgb(2, 170, 145);
-            team.Visible = false;
-            newOperation.Visible = true;
+           newOperation.Visible = true;
+            
             Operations.Visible = false;
-            if (doneclick == false)
-            {
-                refreshTeamsDisp();
-            }
-            doneclick = true;
+            
 
         }
 
@@ -569,9 +464,8 @@ namespace WindowsFormsApplication1
         {
             button21.BackColor = Color.FromArgb(251, 162, 80);
             button15.BackColor = Color.FromArgb(2, 170, 145);
-            button16.BackColor = Color.FromArgb(2, 170, 145);
-            team.Visible = false;
             newOperation.Visible = false;
+            
             Operations.Visible = true;
 
             refreshOperationsView();
@@ -581,30 +475,26 @@ namespace WindowsFormsApplication1
         {
             DogCatchingOperation.Visible = true;
             addEmployee.Visible = false;
-            act.Visible = false;
+            
             attendance.Visible = false; ;
-            admin.Visible = false;
+           
             ne.Visible = false;
             a.Visible = false;
             ac.Visible = false;
-            ad.Visible = false;
             o.Visible = true;
             r.Visible = false;
 
-
-
-        }
-        int teamIDs;
-        public void addOperation()
+}
+        
+        public void addOperation(int teamIDs)
         {
-            if (tbOpDate.Text != "Date (yyyy-mm-dd)" && cbLocation.Text != "Location" && tbStart.Text != "Time Start (hh:mm)" && tbEnd.Text != "Time End (hh:mm)")
+            if (tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && cbOpMonth.Text != "Month" && cbLocation.Text != "Location" && tbStarth.Text != "Time Start (hh:mm)" && tbEndh.Text != "Time End (hh:mm)")
             {
-                string date = tbOpDate.Text;
-                string time = tbStart.Text + "-" + tbEnd.Text;
-
-                if (date[4] == '-' && date[7] == '-' && time[2] == ':' && time[8] == ':')
-                {
-                    try
+                string date = tbOpYear.Text + '-' + (cbOpMonth.SelectedIndex + 1).ToString() + "-"  + tbOpDay.Text;
+                string timeStart = tbStarth.Text + ":" + tbStartm.Text + cbAMPMstart.Text;
+                string timeEnd = tbEndh.Text + ":" + tbEndm.Text + cbAMPMend.Text;
+                string time = tbStarth.Text + ":" + tbStartm.Text + cbAMPMstart.Text + "-" + tbEndh.Text + ":" + tbEndm.Text + cbAMPMend.Text;
+                try
                     {
                         conn.Open();
                         MySqlCommand comm = new MySqlCommand("SELECT locationID FROM location WHERE description = '" + cbLocation.Text + "'", conn);
@@ -613,26 +503,18 @@ namespace WindowsFormsApplication1
                         adp.Fill(dt);
 
                         int locID = int.Parse(dt.Rows[0]["locationID"].ToString());
-
-                        comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, time) VALUES ('" + teamIDs + "' , '" + locID + "', '" + date + "', '" + time + "')", conn);
+                        
+                        comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, timeStart, timeEnd, status) VALUES ('" + teamIDs + "' , '" + locID + "', '" + date + "', '" + timeStart + "', '" + timeEnd + "', 'Pending')", conn);
                         comm.ExecuteNonQuery();
 
                         MessageBox.Show("Operation Added Successfully");
+                        conn.Close();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.ToString());
                         conn.Close();
                     }
-                }
-                else if (date[4] != '-' || date[7] != '-')
-                {
-                    MessageBox.Show("Please Enter Correct Format for Date");
-                }
-                else if (time[2] != ':' || time[8] != ':')
-                {
-                    MessageBox.Show("Please Enter Correct Format for Time");
-                }
             }
             else
             {
@@ -652,7 +534,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, status, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, status, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' ORDER BY lastname", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -721,7 +603,7 @@ namespace WindowsFormsApplication1
 
                     emp.cbgender.Text = dt.Rows[0]["gender"].ToString();
                     emp.tbbday.Text = dt.Rows[0]["YEAR(birthdate)"].ToString() + "-" + dt.Rows[0]["MONTH(birthdate)"].ToString() + "-" + dt.Rows[0]["DAY(birthdate)"].ToString();
-                    emp.cbstatus.Text = dt.Rows[0]["status"].ToString();
+                   
                     emp.cbposition.Text = dt.Rows[0]["position"].ToString();
                     emp.tblname.Text = dt.Rows[0]["lastname"].ToString();
                     emp.tbfname.Text = dt.Rows[0]["firstname"].ToString();
@@ -729,6 +611,21 @@ namespace WindowsFormsApplication1
                     emp.tbcontactNumber.Text = dt.Rows[0]["contactNumber"].ToString();
                     emp.id = int.Parse(dt.Rows[0]["personID"].ToString());
                     emp.tbaddress.Text = dt.Rows[0]["address"].ToString();
+                    if(dt.Rows[0]["position"].ToString() == "Admin")
+                    {
+                        comm = new MySqlCommand("SELECT username, password FROM admin WHERE employeeID = " + editemployeeID, conn);
+                        adp = new MySqlDataAdapter(comm);
+                        DataTable dta = new DataTable();
+                        adp.Fill(dta);
+
+                        emp.tbUserEdit.Text = dta.Rows[0]["username"].ToString();
+                        emp.tbPassEdit.Text = dta.Rows[0]["password"].ToString();
+                    }
+                    else
+                    {
+                        emp.pnlAdminEdit.Visible = false;
+                    }
+                    
                     conn.Close();
 
                 }
@@ -751,7 +648,7 @@ namespace WindowsFormsApplication1
             string mname = tbmname.Text;
             string fname = tbfname.Text;
 
-            if (tblname.Text != "Lastname" && tbmname.Text != "Middlename" && tbfname.Text != "Firstname" && tbaddress.Text != "Address" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && cbposition.Text != "Position" && cbstatus.Text != "Status" && tbbdayday.Text != "Day" && tbbdayyear.Text != "Year" && cbbdaymonth.Text != "Month")
+            if (tblname.Text != "Lastname" && tbmname.Text != "Middlename" && tbfname.Text != "Firstname" && tbaddress.Text != "Address" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && cbposition.Text != "Position" && tbbdayday.Text != "Day" && tbbdayyear.Text != "Year" && cbbdaymonth.Text != "Month")
             {
                 if (checkIfEmployeeExists(lname, mname, fname) == false)
                 {
@@ -770,7 +667,7 @@ namespace WindowsFormsApplication1
 
                     string bday = tbbdayyear.Text + '-' + (cbbdaymonth.SelectedIndex + 1).ToString() + '-' + tbbdayday.Text;
                     string position = cbposition.Text;
-                    string status = cbstatus.Text;
+                    
                     try
                     {
                         conn.Open();
@@ -785,7 +682,10 @@ namespace WindowsFormsApplication1
 
                         int personID = int.Parse(dt.Rows[0]["MAX(personID)"].ToString());
 
-                        comm = new MySqlCommand("INSERT INTO employee(employeeID, position, status) VALUES('" + personID + "', '" + position + "', '" + status + "')", conn);
+                        comm = new MySqlCommand("INSERT INTO employee(employeeID, position, status) VALUES('" + personID + "', '" + position + "', 'Active')", conn);
+                        comm.ExecuteNonQuery();
+
+                        comm = new MySqlCommand("INSERT INTO admin(username, password, employeeID) VALUES('" + tbUser.Text +"', '" + tbPass.Text + "', " + personID + ")", conn);
                         comm.ExecuteNonQuery();
 
                         MessageBox.Show("Profile Added Successfully");
@@ -822,17 +722,12 @@ namespace WindowsFormsApplication1
             tbaddress.Text = "Address";
             tbcontactNumber.Text = "Contact Number";
             cbposition.Text = "Position";
-            cbstatus.Text = "Status";
-            cbstatus.ForeColor = cbposition.ForeColor = tbcontactNumber.ForeColor = tbaddress.ForeColor = tbbdayday.ForeColor = tbbdayyear.ForeColor = cbbdaymonth.ForeColor = cbgender.ForeColor = tbfname.ForeColor = tblname.ForeColor = tbmname.ForeColor = Color.Gray;
+            
+           cbposition.ForeColor = tbcontactNumber.ForeColor = tbaddress.ForeColor = tbbdayday.ForeColor = tbbdayyear.ForeColor = cbbdaymonth.ForeColor = cbgender.ForeColor = tbfname.ForeColor = tblname.ForeColor = tbmname.ForeColor = Color.Gray;
         }
         private void button20_Click(object sender, EventArgs e)
         {
-            addOperation();
-            refreshOperation();
-
-            tbOpDate.Text = "Date (yyyy-mm-dd)";
-            tbStart.Text = "Time Start (hh:mm)";
-            tbEnd.Text = "Time End (hh:mm)";
+            //addOperation();
         }
 
 
@@ -841,7 +736,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID IN (SELECT attendance.employeeID FROM attendance)", conn); //missing: refresh everyday (in restrictions, date should be now)
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', middlename) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID IN (SELECT attendance.employeeID FROM attendance) ORDER BY lastname", conn); //missing: refresh everyday (in restrictions, date should be now)
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -865,19 +760,6 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
-        }
-
-        private void tblname_TextChanged(object sender, EventArgs e)
-        {
-
-
-        }
-        private void tbmname_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void tbfname_TextChanged(object sender, EventArgs e)
-        {
         }
 
         private void tbmname_MouseClick(object sender, MouseEventArgs e)
@@ -906,10 +788,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void tbbday_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
 
         private void tbaddress_MouseClick(object sender, MouseEventArgs e)
         {
@@ -935,31 +813,23 @@ namespace WindowsFormsApplication1
             {
                 cbposition.ForeColor = Color.Black;
             }
-        }
-
-        private void cbstatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbstatus.Text != "Status")
+            if(cbposition.Text == "Admin")
             {
-                cbstatus.ForeColor = Color.Black;
+                pnlAdmin.Visible = true;
+            }
+            else
+            {
+                pnlAdmin.Visible = false;
             }
         }
 
-        private void newOperation_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void refreshOperation()
-        {
-
-        }
+        
         private void refreshTeam()
         {
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, firstname, lastname, middlename FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE status = 'Active' AND position = 'Catcher' ", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT personID, firstname, lastname, middlename FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE status = 'Active' AND position = 'Catcher' ORDER BY lastname", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -973,14 +843,33 @@ namespace WindowsFormsApplication1
                 allEmployees.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 allEmployees.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 allEmployees.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                int i = 0;
+                int empid;
 
+                /*while (i < allEmployees.RowCount)
+                {
+                    empid = int.Parse(allEmployees.Rows[i].Cells["personID"].Value.ToString());
+                   
+                    MySqlCommand com = new MySqlCommand("select COUNT(*) from employee join (operationteam join dogoperation on dogoperation.teamID = operationteam.teamID) on employee.employeeID = operationteam.employeeID where employee.employeeID = " + empid + " and timeEnd != '"+ te +"'or dogoperation.status = 'Pending' or dogoperation.status = 'OnGoing' ", conn);
+                    MySqlDataAdapter adpp = new MySqlDataAdapter(com);
+                    DataTable dtt = new DataTable();
+                    adpp.Fill(dtt);
+                    DataGridViewRow row = allEmployees.Rows[i];
+                    if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) > 0)
+                    {
+                        allEmployees.Rows.Remove(row);
+                    }
+
+                }*/
+                
+                allEmployees.ClearSelection();
                 conn.Close();
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.ToString());
                 conn.Close();
+                MessageBox.Show(ex.ToString());
+                
             }
         }
 
@@ -1002,42 +891,7 @@ namespace WindowsFormsApplication1
 
         private void button18_Click(object sender, EventArgs e)
         {
-            empty = true;
-            int teamid = 0;
-            int empID = 0;
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-
-                teamid = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) + 1;
-
-                for (int i = 0; i < newTeam.Rows.Count - 1; i++)
-                {
-                    empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
-                    MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
-                    commm.ExecuteNonQuery();
-                }
-                MessageBox.Show("New Operation Team recorded successfully");
-                conn.Close();
-                refreshTeam();
-                newTeam.Rows.Clear();
-            }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show(ex.ToString());
-            }
-
-
-        }
-
-        private void tbbday_TextChanged(object sender, EventArgs e)
-        {
-
+            
         }
 
         private void tbaddress_TextChanged(object sender, EventArgs e)
@@ -1051,26 +905,7 @@ namespace WindowsFormsApplication1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            if (tbPassword.Text.Length > 7)
-            {
-                try
-                {
-                    conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO admin(username, password, employeeID) VALUES('" + tbUsername.Text + "', '" + tbPassword.Text + "', " + adminempid + ")", conn);
-                    comm.ExecuteNonQuery();
-                    MessageBox.Show("Admin successfully added");
-                    conn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    conn.Close();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Password should be atleast 8 characters long");
-            }
+            
         }
 
         private void tblname_MouseDown(object sender, MouseEventArgs e)
@@ -1098,69 +933,28 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void refreshTeamsDisp()
-        {
-
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-
-                int len = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString());
-
-                for (int i = 2; i < len + 1; i++)
-                {
-                    string names = "";
-                    MySqlCommand commm = new MySqlCommand("SELECT firstname, lastname FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON employee.employeeID = operationteam.employeeID WHERE operationteam.teamID = " + i, conn);
-                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
-                    DataTable dta = new DataTable();
-                    adpt.Fill(dta);
-
-                    for (int j = 0; j < dta.Rows.Count; j++)
-                    {
-                        string fname = dta.Rows[j]["firstname"].ToString();
-                        string f = fname.Substring(0, 1);
-                        string lname = dta.Rows[j]["lastname"].ToString();
-                        string nameconc = lname + ", " + f + ".";
-                        if (names == "") { names = names + nameconc; }
-                        else { names = names + " / " + nameconc; }
-                    }
-                    dgvTeams.Rows.Add(i.ToString(), names);
-                }
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show(ex.ToString());
-            }
-
-        }
-
+       
         private void dgvTeams_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            teamIDs = int.Parse(dgvTeams.Rows[e.RowIndex].Cells["teamID"].Value.ToString());
+            
         }
 
         private void tbOpDate_Click(object sender, EventArgs e)
         {
-            tbOpDate.Text = "";
-            tbOpDate.ForeColor = Color.Black;
+            tbOpDay.Text = "";
+            tbOpDay.ForeColor = Color.Black;
         }
 
         private void tbStart_Click(object sender, EventArgs e)
         {
-            tbStart.Text = "";
-            tbStart.ForeColor = Color.Black;
+            tbStarth.Text = "";
+            tbStarth.ForeColor = Color.Black;
         }
 
         private void tbEnd_Click(object sender, EventArgs e)
         {
-            tbEnd.Text = "";
-            tbEnd.ForeColor = Color.Black;
+            tbEndh.Text = "";
+            tbEndh.ForeColor = Color.Black;
         }
 
         private void tbOpDate_TextChanged(object sender, EventArgs e)
@@ -1171,7 +965,7 @@ namespace WindowsFormsApplication1
         private void newOperation_VisibleChanged(object sender, EventArgs e)
         {
             doneclick = false;
-            dgvTeams.Rows.Clear();
+            
         }
 
         private void label8_Click(object sender, EventArgs e)
@@ -1209,20 +1003,66 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT description, date, time FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
+                // GROUP_CONCAT(CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.')) AS team,
+                MySqlCommand comm;
+                if (date == null)
+                {
+                    comm = new MySqlCommand("SELECT operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID INNER JOIN operationteam ON dogoperation.teamID = operationteam.teamID INNER JOIN profile on profile.personID = operationteam.employeeID ORDER BY date, timeStart", conn);
+                }
+                else
+                {
+                    comm = new MySqlCommand("SELECT operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + date + "' ORDER BY  date, timeStart", conn);
+                    date = null;
+                }
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
 
                 dgvOperationsView.DataSource = dt;
+                if (coll == 1)
+                {
+                    DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+                    col.UseColumnTextForButtonValue = true;
+                    col.Text = "View Team";
+                    col.Name = "viewTeam";
+                    col.FlatStyle = FlatStyle.Flat;
+                    dgvOperationsView.Columns.Add(col);
+                    coll = 2;
+                }
 
+                dgvOperationsView.Columns["operationID"].Visible = false;
                 dgvOperationsView.Columns["description"].HeaderText = "Location";
                 dgvOperationsView.Columns["date"].HeaderText = "Date";
-                dgvOperationsView.Columns["time"].HeaderText = "Time";
+                dgvOperationsView.Columns["timeStart"].HeaderText = "Time Start";
+                dgvOperationsView.Columns["timeEnd"].HeaderText = "Time End";
+                dgvOperationsView.Columns["status"].HeaderText = "Status";
+                dgvOperationsView.Columns["team"].HeaderText = "Team Members";
 
                 dgvOperationsView.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvOperationsView.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["timeStart"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["timeEnd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["team"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                int i = 0;
+               
+                while (i < dgvOperationsView.RowCount)
+                {
+                    
+                    
+                    if (dgvOperationsView.Rows[i].Cells["status"].Value.ToString() == "Pending")
+                    {
+                        dgvOperationsView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 235, 140);
+                    }
+                    else if (dgvOperationsView.Rows[i].Cells["status"].Value.ToString() == "OnGoing")
+                    {
+                        dgvOperationsView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(146, 232, 191);
+                    }
+                    i++;
+                }
+
+                dgvOperationsView.ClearSelection() ;
 
                 conn.Close();
             }
@@ -1240,12 +1080,12 @@ namespace WindowsFormsApplication1
 
         private void textBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            tbAct.Text = "";
+           
         }
 
         private void dgvActivities_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            actemployeeID = int.Parse(dgvActivities.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+            
         }
 
         private void attendance_Paint(object sender, PaintEventArgs e)
@@ -1268,7 +1108,7 @@ namespace WindowsFormsApplication1
 
         private void dgvAdmin_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            adminempid = int.Parse(dgvAdmin.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+           
         }
 
         private Boolean checkIfEmployeeExists(string lastname, string middlename, string firstname)
@@ -1331,6 +1171,328 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please select an employee");
             }
+        }
+
+        private void tbStartm_Enter(object sender, EventArgs e)
+        {
+            tbStartm.Text = "";
+        }
+
+        private void tbEndm_Enter(object sender, EventArgs e)
+        {
+            tbEndm.Text = "";
+        }
+
+        private void tbUser_Enter(object sender, EventArgs e)
+        {
+            tbUser.Text = "";
+        }
+
+        private void tbPass_Enter(object sender, EventArgs e)
+        {
+            tbPass.Text = "";
+        }
+
+        private void tbbdayday_Enter(object sender, EventArgs e)
+        {
+            tbbdayday.Text = "";
+        }
+
+        private void tbbdayyear_Enter(object sender, EventArgs e)
+        {
+            tbbdayyear.Text = "";
+        }
+
+        private void button20_Click_1(object sender, EventArgs e)
+        {
+            empty = true;
+            int teamid = 0;
+            int empID = 0;
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                Boolean flag = false;
+                teamid = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) + 1;
+                int[] emps = new int[10];
+                for (int i = 0; i < newTeam.Rows.Count; i++)
+                {
+                    try {
+                        empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
+                        emps[i] = empID;
+                    }
+                    catch (Exception ex)
+                    {
+                        flag = true;
+                    }
+                }
+                int check = checkIfTeamExists(emps, teamid - 1);
+                int parameter;
+                if (check != 0) { parameter = check; }
+                else { parameter = teamid; }
+                conn.Close();
+                addOperation(parameter);
+                conn.Open();
+                if (check == 0) //team doesnt exist
+                {
+                    MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
+                    commm.ExecuteNonQuery();
+                }
+                else
+                {
+                    MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + check + ", " + empID + ")", conn);
+                    commm.ExecuteNonQuery();
+                }
+                conn.Close();
+                refreshTeam();
+                newTeam.Rows.Clear();
+             }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+
+
+        }
+        private int checkIfTeamExists(int[] emps, int max) //emps = new operation team
+        {
+            try
+            {
+                MySqlCommand comm = new MySqlCommand("SELECT teamID, employeeID FROM operationteam GROUP BY teamID", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                Boolean stop = false;
+                Boolean same = true;
+                Array.Sort(emps);
+                int i = 1;
+                while(i < max && stop == false)//counter for team
+                {
+                    comm = new MySqlCommand("SELECT COUNT(*) FROM operationteam WHERE teamID = " + i, conn);
+                    adp = new MySqlDataAdapter(comm);
+                    dt = new DataTable();
+                    adp.Fill(dt);
+                    int empnum = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
+
+                    comm = new MySqlCommand("SELECT employeeID FROM operationteam WHERE teamID = " + i, conn);
+                    adp = new MySqlDataAdapter(comm);
+                    dt = new DataTable();
+                    adp.Fill(dt);
+                    int[] employees = new int[10];
+                    for (int j = 0; j < empnum; j++) //counter for employees inside the team
+                    {
+                        employees[j] = int.Parse(dt.Rows[0]["employeeID"].ToString());
+                    }
+                    Array.Sort(employees);
+                    
+                    for (int y = 0; y < empnum && same == true; y++)
+                    {
+                        if(employees[y] == emps[y])
+                        {
+                            same = true;
+                        }
+                        else
+                        {
+                            same = false;
+                        }
+                    }
+                    i++;
+                }
+
+                if (same == true)
+                {
+                    stop = true;
+                    return i;
+                }
+                else
+                {
+                    return 0;
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                return 0;
+                MessageBox.Show(ex.ToString());
+            }
+            
+        }
+        private void button25_Click(object sender, EventArgs e)
+        {
+            home.dog.Show();
+            this.Hide();
+        }
+
+        private void button16_Click_1(object sender, EventArgs e)
+        {
+            home.inv.Show();
+            this.Hide();
+        }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            Login log = new Login();
+            log.hom = home;
+            log.Show();
+            this.trig();
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            home.Show();
+            this.Hide();
+        }
+
+        private void button18_Click_1(object sender, EventArgs e)
+        {
+            home.Show();
+            this.Hide();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
+        {
+      
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        string date;
+        private void button7_Click_1(object sender, EventArgs e)
+        {   
+            int year = int.Parse(textBox2.Text);
+            int month = comboBox2.SelectedIndex + 1;
+            int day = int.Parse(textBox3.Text);
+            date = year + "-" + month + "-" + day;
+            refreshOperationsView();
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            refreshOperationsView();
+        }
+
+        private void dgvAttendanceOut_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dgvOperationsView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void dgvOperationsView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvOperationsView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int operation;
+            try
+            {
+                conn.Open();
+                operation = int.Parse(dgvOperationsView.Rows[e.RowIndex].Cells["operationID"].Value.ToString());
+
+                if (dgvOperationsView.Rows[e.RowIndex].Cells["status"].Value.ToString() == "Pending")
+                {
+                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing' WHERE operationID = " + operation, conn);
+                    comm.ExecuteNonQuery();
+                }
+                else if (dgvOperationsView.Rows[e.RowIndex].Cells["status"].Value.ToString() == "OnGoing")
+                {
+                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE operationID = " + operation, conn);
+                    comm.ExecuteNonQuery();
+                }
+
+                conn.Close();
+                refreshOperationsView();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                conn.Close();
+            }
+        }
+        String d;
+        String ts;
+        String te;
+        int location;
+        private void button28_Click(object sender, EventArgs e)
+        {
+            if(cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location")
+            {
+                pteam.Enabled = true;
+                pOperation.Enabled = false;
+                d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
+                ts = tbStarth.Text + ":" + tbStartm.Text;
+                te = tbEndh.Text + ":" + tbEndm.Text;
+                location = cbLocation.SelectedIndex;
+
+                refreshTeam();
+            }
+            else
+            {
+                MessageBox.Show("Please Enter Required Fields");
+            }
+            
+        }
+
+        private void editPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tbOpDate_Enter(object sender, EventArgs e)
+        {
+            tbOpDay.Text = "";
+        }
+
+        private void tbOpYear_Enter(object sender, EventArgs e)
+        {
+            tbOpYear.Text = "";
+        }
+
+        private void tbStarth_Enter(object sender, EventArgs e)
+        {
+            tbStarth.Text = "";
+        }
+
+        private void tbEndh_Enter(object sender, EventArgs e)
+        {
+            tbEndh.Text = "";
+        }
+
+        private void tbStartm_Enter_1(object sender, EventArgs e)
+        {
+            tbStartm.Text = "";
+        }
+
+        private void tbEndm_Enter_1(object sender, EventArgs e)
+        {
+            tbEndm.Text = "";
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Claim));
             this.label19 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -48,6 +49,10 @@
             this.label15 = new System.Windows.Forms.Label();
             this.tblname = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tbDay = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tbYear = new System.Windows.Forms.TextBox();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
             this.breed = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.color = new System.Windows.Forms.Label();
@@ -62,28 +67,34 @@
             this.label1 = new System.Windows.Forms.Label();
             this.time = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.claimRBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.breeds = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.impounddogpoundDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.printPreviewDialogCR = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentCR = new System.Drawing.Printing.PrintDocument();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.claimRBindingSource)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Trebuchet MS", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
             this.label19.Location = new System.Drawing.Point(281, 10);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(129, 49);
+            this.label19.Size = new System.Drawing.Size(141, 46);
             this.label19.TabIndex = 16;
             this.label19.Text = "CLAIM";
             // 
@@ -116,7 +127,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(18, 22);
+            this.label9.Location = new System.Drawing.Point(13, 22);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 20);
             this.label9.TabIndex = 17;
@@ -126,7 +137,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(18, 142);
+            this.label10.Location = new System.Drawing.Point(13, 141);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(125, 20);
             this.label10.TabIndex = 18;
@@ -136,7 +147,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(306, 22);
+            this.label11.Location = new System.Drawing.Point(310, 22);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(68, 20);
             this.label11.TabIndex = 19;
@@ -147,7 +158,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(306, 101);
+            this.label12.Location = new System.Drawing.Point(310, 101);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(103, 20);
             this.label12.TabIndex = 20;
@@ -158,7 +169,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(306, 142);
+            this.label13.Location = new System.Drawing.Point(310, 142);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(125, 20);
             this.label13.TabIndex = 21;
@@ -168,7 +179,7 @@
             // tbfname
             // 
             this.tbfname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbfname.Location = new System.Drawing.Point(120, 15);
+            this.tbfname.Location = new System.Drawing.Point(115, 15);
             this.tbfname.Name = "tbfname";
             this.tbfname.Size = new System.Drawing.Size(180, 26);
             this.tbfname.TabIndex = 22;
@@ -177,7 +188,7 @@
             // tbnumber
             // 
             this.tbnumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbnumber.Location = new System.Drawing.Point(142, 136);
+            this.tbnumber.Location = new System.Drawing.Point(137, 136);
             this.tbnumber.Name = "tbnumber";
             this.tbnumber.Size = new System.Drawing.Size(158, 26);
             this.tbnumber.TabIndex = 25;
@@ -186,7 +197,7 @@
             // tbadd
             // 
             this.tbadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbadd.Location = new System.Drawing.Point(380, 13);
+            this.tbadd.Location = new System.Drawing.Point(384, 13);
             this.tbadd.Multiline = true;
             this.tbadd.Name = "tbadd";
             this.tbadd.Size = new System.Drawing.Size(246, 67);
@@ -196,7 +207,7 @@
             // tbIDtype
             // 
             this.tbIDtype.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbIDtype.Location = new System.Drawing.Point(437, 96);
+            this.tbIDtype.Location = new System.Drawing.Point(441, 96);
             this.tbIDtype.Name = "tbIDtype";
             this.tbIDtype.Size = new System.Drawing.Size(189, 26);
             this.tbIDtype.TabIndex = 27;
@@ -205,7 +216,7 @@
             // tbIDnum
             // 
             this.tbIDnum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbIDnum.Location = new System.Drawing.Point(437, 136);
+            this.tbIDnum.Location = new System.Drawing.Point(441, 136);
             this.tbIDnum.Name = "tbIDnum";
             this.tbIDnum.Size = new System.Drawing.Size(189, 26);
             this.tbIDnum.TabIndex = 28;
@@ -215,7 +226,7 @@
             // 
             this.checkbox.AutoSize = true;
             this.checkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkbox.Location = new System.Drawing.Point(258, 179);
+            this.checkbox.Location = new System.Drawing.Point(314, 178);
             this.checkbox.Name = "checkbox";
             this.checkbox.Size = new System.Drawing.Size(122, 24);
             this.checkbox.TabIndex = 29;
@@ -227,7 +238,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(18, 60);
+            this.label14.Location = new System.Drawing.Point(13, 60);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(95, 20);
             this.label14.TabIndex = 27;
@@ -236,7 +247,7 @@
             // tbmname
             // 
             this.tbmname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbmname.Location = new System.Drawing.Point(120, 54);
+            this.tbmname.Location = new System.Drawing.Point(115, 54);
             this.tbmname.Name = "tbmname";
             this.tbmname.Size = new System.Drawing.Size(180, 26);
             this.tbmname.TabIndex = 23;
@@ -245,7 +256,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(18, 99);
+            this.label15.Location = new System.Drawing.Point(13, 99);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(80, 20);
             this.label15.TabIndex = 29;
@@ -254,7 +265,7 @@
             // tblname
             // 
             this.tblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tblname.Location = new System.Drawing.Point(120, 95);
+            this.tblname.Location = new System.Drawing.Point(115, 95);
             this.tblname.Name = "tblname";
             this.tblname.Size = new System.Drawing.Size(180, 26);
             this.tblname.TabIndex = 24;
@@ -263,6 +274,10 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.panel2.CausesValidation = false;
+            this.panel2.Controls.Add(this.tbDay);
+            this.panel2.Controls.Add(this.label17);
+            this.panel2.Controls.Add(this.tbYear);
+            this.panel2.Controls.Add(this.cbMonth);
             this.panel2.Controls.Add(this.tblname);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.tbmname);
@@ -282,6 +297,92 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(646, 217);
             this.panel2.TabIndex = 17;
+            // 
+            // tbDay
+            // 
+            this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDay.FormattingEnabled = true;
+            this.tbDay.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31"});
+            this.tbDay.Location = new System.Drawing.Point(174, 174);
+            this.tbDay.Name = "tbDay";
+            this.tbDay.Size = new System.Drawing.Size(51, 28);
+            this.tbDay.TabIndex = 34;
+            this.tbDay.Text = "Day";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(13, 179);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 20);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "Birthdate";
+            // 
+            // tbYear
+            // 
+            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbYear.Location = new System.Drawing.Point(229, 175);
+            this.tbYear.Name = "tbYear";
+            this.tbYear.Size = new System.Drawing.Size(65, 26);
+            this.tbYear.TabIndex = 32;
+            this.tbYear.Text = "Year";
+            this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
+            // 
+            // cbMonth
+            // 
+            this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMonth.ForeColor = System.Drawing.Color.Black;
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.cbMonth.Location = new System.Drawing.Point(92, 174);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(77, 28);
+            this.cbMonth.TabIndex = 31;
+            this.cbMonth.Text = "Month";
             // 
             // breed
             // 
@@ -432,69 +533,15 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.breed);
-            this.panel1.Location = new System.Drawing.Point(14, 13);
+            this.panel1.Location = new System.Drawing.Point(-1, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(688, 579);
+            this.panel1.Size = new System.Drawing.Size(715, 603);
             this.panel1.TabIndex = 16;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // breeds
+            // claimRBindingSource
             // 
-            this.breeds.AutoSize = true;
-            this.breeds.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.breeds.Location = new System.Drawing.Point(176, 14);
-            this.breeds.Name = "breeds";
-            this.breeds.Size = new System.Drawing.Size(52, 20);
-            this.breeds.TabIndex = 19;
-            this.breeds.Text = "Breed";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(661, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 23);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // printPreviewDialogCR
-            // 
-            this.printPreviewDialogCR.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialogCR.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialogCR.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.printPreviewDialogCR.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialogCR.Enabled = true;
-            this.printPreviewDialogCR.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogCR.Icon")));
-            this.printPreviewDialogCR.Name = "printPreviewDialogCR";
-            this.printPreviewDialogCR.ShowIcon = false;
-            this.printPreviewDialogCR.Visible = false;
-            // 
-            // printDocumentCR
-            // 
-            this.printDocumentCR.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentCR_PrintPage);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label6.Location = new System.Drawing.Point(262, 73);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 20);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Time Caught:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(305, 82);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(76, 31);
-            this.label16.TabIndex = 21;
-            this.label16.Text = "DOG";
+            this.claimRBindingSource.DataSource = typeof(WindowsFormsApplication1.ClaimR);
             // 
             // panel3
             // 
@@ -519,6 +566,74 @@
             this.panel3.Size = new System.Drawing.Size(646, 132);
             this.panel3.TabIndex = 31;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label6.Location = new System.Drawing.Point(262, 73);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 20);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Time Caught:";
+            // 
+            // breeds
+            // 
+            this.breeds.AutoSize = true;
+            this.breeds.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breeds.Location = new System.Drawing.Point(176, 14);
+            this.breeds.Name = "breeds";
+            this.breeds.Size = new System.Drawing.Size(52, 20);
+            this.breeds.TabIndex = 19;
+            this.breeds.Text = "Breed";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(305, 82);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(76, 31);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "DOG";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(679, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 20);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // impounddogpoundDataSetBindingSource
+            // 
+            this.impounddogpoundDataSetBindingSource.DataSource = this.impounddogpoundDataSet;
+            this.impounddogpoundDataSetBindingSource.Position = 0;
+            // 
+            // impounddogpoundDataSet
+            // 
+            this.impounddogpoundDataSet.DataSetName = "impounddogpoundDataSet";
+            this.impounddogpoundDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // printPreviewDialogCR
+            // 
+            this.printPreviewDialogCR.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogCR.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogCR.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.printPreviewDialogCR.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialogCR.Enabled = true;
+            this.printPreviewDialogCR.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogCR.Icon")));
+            this.printPreviewDialogCR.Name = "printPreviewDialogCR";
+            this.printPreviewDialogCR.ShowIcon = false;
+            this.printPreviewDialogCR.Visible = false;
+            // 
+            // printDocumentCR
+            // 
+            this.printDocumentCR.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentCR_PrintPage);
+            // 
             // Claim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -537,9 +652,12 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.claimRBindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -585,5 +703,12 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox tbYear;
+        private System.Windows.Forms.ComboBox cbMonth;
+        private System.Windows.Forms.ComboBox tbDay;
+        private System.Windows.Forms.BindingSource impounddogpoundDataSetBindingSource;
+        private impounddogpoundDataSet impounddogpoundDataSet;
+        private System.Windows.Forms.BindingSource claimRBindingSource;
     }
 }

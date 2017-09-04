@@ -19,12 +19,14 @@ namespace WindowsFormsApplication1
         public int adminID;
         public int itemID;
         public empty back { get; set; }
-        public Inventory()
+        empty home;
+        public Inventory(empty parent)
         {
             InitializeComponent();
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
             y = -40;
             use = Color.FromArgb(253, 208, 174);
+            home = parent;
         }
         public void trig()
         {
@@ -295,9 +297,47 @@ namespace WindowsFormsApplication1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //viewInv inv = new viewInv();
-            //inv.Show();
-            //inv.TopMost = true;
+            Viewinvent inv = new Viewinvent();
+            inv.Show();
+            inv.TopMost = true;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            home.dog.Show();
+            this.Hide();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            home.emp.Show();
+            this.Hide();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            home.Show();
+            this.Hide();
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            Login log = new Login();
+            log.hom = home;
+            log.Show();
+            this.trig();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            home.Show();
+            this.Hide();
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, date, time FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
+                MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, date, time, status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(com);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -49,6 +49,7 @@ namespace WindowsFormsApplication1
                 dgvViewDog.Columns["description"].HeaderText = "Location Caught";
                 dgvViewDog.Columns["date"].HeaderText = "Date Caught";
                 dgvViewDog.Columns["time"].HeaderText = "Time Caught";
+                dgvViewDog.Columns["status"].HeaderText = "Status";
 
 
                 dgvViewDog.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -59,7 +60,8 @@ namespace WindowsFormsApplication1
                 dgvViewDog.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewDog.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewDog.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-               
+                dgvViewDog.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
 
                 conn.Close();
             }

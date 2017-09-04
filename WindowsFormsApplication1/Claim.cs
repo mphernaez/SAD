@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+
 namespace WindowsFormsApplication1
 {
     public partial class Claim : Form
@@ -21,6 +22,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -44,7 +46,7 @@ namespace WindowsFormsApplication1
 
             Preview();
 
-            if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text != "" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "")
+            if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text != "" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "" && cbMonth.Text != "Month" && tbDay.Text != "Day" && tbYear.Text != "Year")
             {
                 String fname = tbfname.Text;
                 String mname = tbmname.Text;
@@ -54,6 +56,10 @@ namespace WindowsFormsApplication1
                 String idtype = tbIDtype.Text;
                 String num = tbnumber.Text;
                 String date = DateTime.Now.ToString("yyyy-MM-dd");
+                String month = (cbMonth.SelectedIndex + 1).ToString();
+                String day = tbDay.Text;
+                String year = tbDay.Text;
+                String bday = year + '-' + month + '-' + day;
                 int vaccine = 0;
                 if (checkbox.Checked)
                 {
@@ -62,7 +68,7 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO profile(firstname, middlename, lastname, contactNumber, address) VALUES('" + fname + "', '" + mname + "','" + lname + "', '" + num + "', '" + add + "')", conn);
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO profile(firstname, middlename, lastname, contactNumber, address, birthdate) VALUES('" + fname + "', '" + mname + "','" + lname + "', '" + num + "', '" + add + "' , '" + bday + "')", conn);
                     comm.ExecuteNonQuery();
 
                     comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);
@@ -80,12 +86,25 @@ namespace WindowsFormsApplication1
 
                     comm = new MySqlCommand("UPDATE dogprofile SET status = 'claimed' WHERE dogID = " + dogID, conn);
                     comm.ExecuteNonQuery();
+                    string messbox = "";
                     if (vaccine == 1)
                     {
-                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID =  1", conn);
+                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID = 1", conn);
                         comm.ExecuteNonQuery();
+
+                        comm = new MySqlCommand("SELECT quantity FROM items WHERE itemID = 1", conn);
+                        MySqlDataReader read = comm.ExecuteReader();
+                        while (read.Read())
+                        {
+                            int quantity = int.Parse(read[0].ToString());
+                            messbox = "Successfully Claimed and Vaccinated! Vaccine Quantity is now: " + quantity.ToString();
+                        }
                     }
-                    MessageBox.Show("Successfully CLaimed!");
+                    else
+                    {
+                        messbox = "Successfully Claimed!";
+                    }
+                    MessageBox.Show(messbox);
                     dog.Show();
                     this.Close();
                     conn.Close();
@@ -96,10 +115,7 @@ namespace WindowsFormsApplication1
                     conn.Close();
                 }
             }
-            else
-            {
-                MessageBox.Show("Please enter required fields");
-            }
+            
         }
         
         private void Claim_Load(object sender, EventArgs e)
@@ -193,36 +209,57 @@ namespace WindowsFormsApplication1
         {
             printPreviewDialogCR.Document = printDocumentCR;
             printPreviewDialogCR.ShowDialog();
-            Form frm = new Form();
-            frm.Text = "Claiming Receipt";
+            printPreviewDialogCR.TopLevel = true;
+
         }
         private void printDocumentCR_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            
+            e.Graphics.DrawString("Davao City Dog Pound", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(25, 100));
+            e.Graphics.DrawString("Claimer's Details", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(25, 140));
             e.Graphics.DrawString("Claimer's Name: " + tbfname.Text + tblname.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 180));
-            e.Graphics.DrawString("Contact Number: " + tbnumber.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 190));
-            e.Graphics.DrawString("Address: " + tbadd.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 200));
-            e.Graphics.DrawString("Valid ID Type: " + tbIDtype.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 210));
-            e.Graphics.DrawString("Valid ID Number: " + tbIDnum.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 210));
+            e.Graphics.DrawString("Contact Number: " + tbnumber.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 200));
+            e.Graphics.DrawString("Birthdate: " + cbMonth.Text + " " + tbDay.Text + "," + tbYear.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 220));
+            e.Graphics.DrawString("Address: " + tbadd.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 240));
+            e.Graphics.DrawString("Valid ID Type: " + tbIDtype.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 260));
+            e.Graphics.DrawString("Valid ID Number: " + tbIDnum.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 280));
+            
             if (checkbox.Checked)
             {
-                e.Graphics.DrawString("Availed Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 220));
+                e.Graphics.DrawString("**Availed Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
             } else
             {
-                e.Graphics.DrawString("No Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 220));
+                e.Graphics.DrawString("**No Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
             }
-            // put line separator
 
-            e.Graphics.DrawString("Dog Claimed: " + breeds.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 250));
-            e.Graphics.DrawString("Color:" + color.Text + tblname.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 260));
-            e.Graphics.DrawString("Size: " + size.Text + tblname.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 270));
-            e.Graphics.DrawString("Gender: " + gender.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 280));
-            e.Graphics.DrawString("Location: " + location.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 290));
-            e.Graphics.DrawString("Date and Time Caught " + date.Text + "," + time.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
+            Pen black = new Pen(Color.Black, 3);
+            Point p1 = new Point(25, 340);
+            Point p2 = new Point(800    , 340);
+            e.Graphics.DrawLine(black, p1, p2);
+            e.Graphics.DrawString("Dog Details ", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(25, 380));
+            e.Graphics.DrawString("Breed: " + breeds.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 400));
+            e.Graphics.DrawString("Color:" + color.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 420));
+            e.Graphics.DrawString("Size: " + size.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 440));
+            e.Graphics.DrawString("Gender: " + gender.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 460));
+            e.Graphics.DrawString("Location: " + location.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 480));
+            e.Graphics.DrawString("Date and Time Caught: " + date.Text + "," + time.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 500));
+            e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 800));
+
         }
-
+                
         private void tbfname_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void tbDay_Enter(object sender, EventArgs e)
+        {
+            tbDay.Text = "";
+        }
+
+        private void tbYear_Enter(object sender, EventArgs e)
+        {
+            tbYear.Text = "";
         }
     }
 }

@@ -44,9 +44,9 @@ namespace WindowsFormsApplication1
             string contact = tbcontactNumber.Text;
             string bday = tbbday.Text;
             string position = cbposition.Text;
-            string status = cbstatus.Text;
+            
 
-            if (tblname.Text != "" && tbmname.Text != "" && tbfname.Text != "" && tbaddress.Text != "" && cbgender.Text != "" && tbcontactNumber.Text != "" && cbposition.Text != "" && cbstatus.Text != "" && tbbday.Text != "")
+            if (tblname.Text != "" && tbmname.Text != "" && tbfname.Text != "" && tbaddress.Text != "" && cbgender.Text != "" && tbcontactNumber.Text != "" && cbposition.Text != "" && tbbday.Text != "")
             {
                 try
                 {
@@ -55,9 +55,15 @@ namespace WindowsFormsApplication1
                     MySqlCommand comm = new MySqlCommand("UPDATE profile SET lastname = '" + lname + "', middlename = '" + mname + "', firstname = '" + fname + "', gender = '" + gender + "', address = '" + address + "', contactNumber = '" + contact + "', birthdate = '" + bday + "' WHERE personID = " + id, conn);
                     comm.ExecuteNonQuery();
 
-                    comm = new MySqlCommand("UPDATE employee SET position = '" + position + "', status = '" + status + "' WHERE employeeID = " + id, conn);
+                    comm = new MySqlCommand("UPDATE employee SET position = '" + position + "' WHERE employeeID = " + id, conn);
                     comm.ExecuteNonQuery();
                     
+                    if(cbposition.Text == "Admin")
+                    {
+                        comm = new MySqlCommand("UPDATE admin SET username = '" + tbUserEdit.Text + "', password = '" + tbPassEdit.Text + "' WHERE employeeID = " + employeeID, conn);
+                        comm.ExecuteNonQuery();
+                    }
+
                     MessageBox.Show("Profile Edited Successfully");
 
                     conn.Close();
@@ -83,8 +89,10 @@ namespace WindowsFormsApplication1
 
         private void EditEmp_Load(object sender, EventArgs e)
         {
-            
-            
+            if(cbposition.Text == "Admin")
+            {
+                pnlAdminEdit.Visible = true;
+            }
         }
 
         private void EditEmp_FormClosing(object sender, FormClosingEventArgs e)
@@ -95,6 +103,13 @@ namespace WindowsFormsApplication1
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void cbposition_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbposition.Text != "Admin") pnlAdminEdit.Visible = false;
+            else pnlAdminEdit.Visible = true;
+            
         }
     }
 }

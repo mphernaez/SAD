@@ -10,9 +10,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using MySql.Data.MySqlClient;
-using iTextSharp;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+using Microsoft.Office.Interop.Excel;
+
 
 namespace WindowsFormsApplication1
 {
@@ -29,12 +28,16 @@ namespace WindowsFormsApplication1
         int i = -40;
         int[] opid; //id for every combobox item
         public empty back { get; set; }
+        
         public MySqlConnection conn;
-        public Dog()
+        empty home;
+        
+        public Dog(empty parent)
         {
             InitializeComponent();
             use = Color.FromArgb(253, 208, 174);
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
+            home = parent;
         }
 
         private void AddDog_Load(object sender, EventArgs e)
@@ -63,7 +66,7 @@ namespace WindowsFormsApplication1
             ad.Visible = false;
             et.Visible = false;
             r.Visible = false;
-            
+            cbOperation.Items.Clear();
             addOperationsItems();
         }
 
@@ -80,11 +83,6 @@ namespace WindowsFormsApplication1
             et.Visible = false;
             r.Visible = false;
 
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -139,7 +137,7 @@ namespace WindowsFormsApplication1
 
                     MySqlCommand com = new MySqlCommand("SELECT COUNT(*) FROM dogprofile WHERE status = 'unclaimed'", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                    DataTable dt = new DataTable();
+                    System.Data.DataTable dt = new System.Data.DataTable();
                     adp.Fill(dt);
                    
                     int y = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
@@ -148,7 +146,7 @@ namespace WindowsFormsApplication1
                     {
                         MySqlCommand comm = new MySqlCommand("SELECT breed, color, gender, otherDesc FROM dogprofile WHERE status = 'unclaimed'", conn);
                         MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
-                        DataTable data = new DataTable();
+                        System.Data.DataTable data = new System.Data.DataTable();
                         adpt.Fill(data);
 
                         int genders;
@@ -244,7 +242,6 @@ namespace WindowsFormsApplication1
                 claim.dogID = this.dogID;
                 claim.adminID = this.adminID;
                 claim.dog = this;
-                claim.TopMost = true;
                 claim.Show();
             }
             else
@@ -290,33 +287,25 @@ namespace WindowsFormsApplication1
 
         public void refreshSearch()
         {
-            if (tbColorSearch.Text != "" || tbBreedSearch.Text != "" || cbGenderSearch.SelectedIndex != 0)
-            {
-                Char gender = ' ';
-
-                if (cbGenderSearch.SelectedIndex == 1)
-                    gender = 'M';
-                else if (cbGenderSearch.SelectedIndex == 2)
-                    gender = 'F';
-
-
-                try
+              try
                 {
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, date, description, UCASE(size), otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE breed LIKE '" + tbBreedSearch.Text + "%' AND color LIKE '" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
+                    MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, color, date, description, UCASE(size), otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE breed LIKE '" + tbBreedSearch.Text + "%' AND color LIKE '" + tbColorSearch.Text + "%' AND status = 'unclaimed'", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dt = new DataTable();
+                    System.Data.DataTable dt = new System.Data.DataTable();
                     adp.Fill(dt);
                     
                     dgvProfiles.DataSource = dt;
 
                     dgvProfiles.Columns["dogID"].Visible = false;
                     dgvProfiles.Columns["breed"].HeaderText = "Breed";
+                    dgvProfiles.Columns["color"].HeaderText = "Color";
                     dgvProfiles.Columns["date"].HeaderText = "Date Caught";
                     dgvProfiles.Columns["description"].HeaderText = "Location Caught";
                     dgvProfiles.Columns["otherDesc"].HeaderText = "Markings";
                     dgvProfiles.Columns["UCASE(size)"].HeaderText = "Size";
                     dgvProfiles.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvProfiles.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvProfiles.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvProfiles.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvProfiles.Columns["UCASE(size)"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -329,11 +318,7 @@ namespace WindowsFormsApplication1
                     MessageBox.Show(ex.ToString());
                     conn.Close();
                 }
-            }
-            else
-            {
-                MessageBox.Show("Please enter required fields");
-            }
+           
         }
 
         public void refreshAdoption()
@@ -341,9 +326,9 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, color, gender, size FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE status = 'unclaimed' AND date > DATE_ADD(NOW(), INTERVAL -3 DAY)", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, color, gender, size FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE dogprofile.status = 'unclaimed' AND date > DATE_ADD(NOW(), INTERVAL -3 DAY)", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
+                System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
 
                 dgvAdoption.DataSource = dt;
@@ -423,9 +408,9 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT dogID, color, gender, size, breed, otherDesc FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND status = 'unclaimed'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT dogID, color, gender, size, breed, otherDesc FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND dogprofile.status = 'unclaimed'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
+                System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
 
                 dgvArchive.DataSource = dt;
@@ -530,35 +515,28 @@ namespace WindowsFormsApplication1
 
         private void button8_Click_1(object sender, EventArgs e)
         {
+            //report();
+            
+
             searchDog.Visible = false;
             addDog.Visible = false;
             adoptDog.Visible = false;
             euthanizeDog.Visible = false;
-            repclaimpan.Visible = true;
+            repclaimpan.Visible = false;
             a.Visible = false;
             s.Visible = false;
             ad.Visible = false;
             et.Visible = false;
             r.Visible = true;
-            claimreportdgv.Visible = true;
+            claimreportdgv.Visible = false;
 
-            toPDF();
-
-            
-        }
-
-        private void toPDF()
-        {
-            // System.IO.FileStream claim = new System.IO.FileStream(Mapmath("pdf") + "\\" + "Claiming Summary Report.pdf", FileMode.Create);
-
-            
             try
             {
                 conn.Open();
 
-                MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, date, time FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
+                MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, date, time, status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                DataTable dt = new DataTable();
+                System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
 
 
@@ -572,6 +550,7 @@ namespace WindowsFormsApplication1
                 claimreportdgv.Columns["description"].HeaderText = "Location Caught";
                 claimreportdgv.Columns["date"].HeaderText = "Date Caught";
                 claimreportdgv.Columns["time"].HeaderText = "Time Caught";
+                claimreportdgv.Columns["status"].HeaderText = "Status";
 
 
                 claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -582,18 +561,50 @@ namespace WindowsFormsApplication1
                 claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+                claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 conn.Close();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
-            
+            print();
         }
-        
+        private void report()
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+            excel.Visible = true;
+
+            worksheet = workbook.Sheets["Sheet1"];
+            worksheet = workbook.ActiveSheet;
+            worksheet.Name = "Exported from gridview";
+            for (int i = 1; i < claimreportdgv.Columns.Count + 1; i++)
+            {
+                worksheet.Cells[1, i] = claimreportdgv.Columns[i - 1].HeaderText;
+            }
+            for (int i = 0; i < claimreportdgv.Rows.Count - 1; i++)
+            {
+                for (int j = 0; j < claimreportdgv.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = claimreportdgv.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+            saveDialog.FilterIndex = 2;
+
+            if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                //workbook.SaveAs(saveDialog.FileName);
+                MessageBox.Show("Export Successful");
+            }
+        }
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
         }
@@ -633,9 +644,9 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand comm = new MySqlCommand("SELECT operationID, time, date, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT operationID, time, MONTH(date) as month, YEAR(date) as year, DAY(date) as day, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
+                System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
                 int j = 0;
 
@@ -643,11 +654,11 @@ namespace WindowsFormsApplication1
 
                 for (int i = dt.Rows.Count - 1; i >= 1; i--)
                 {
-                    opid[j] = int.Parse(dt.Rows[i]["operationID"].ToString());          //assign opid index to operationID (array index = combobox index [synced]) 
-                    string date = dt.Rows[i]["date"].ToString().Substring(0, 10);
+                    opid[j] = int.Parse(dt.Rows[i]["operationID"].ToString());  //assign opid index to operationID (array index = combobox index [synced]) 
+                    string date = dt.Rows[i]["month"].ToString() + '-' + dt.Rows[i]["day"].ToString() + '-' + dt.Rows[i]["year"].ToString();
                     string time = dt.Rows[i]["time"].ToString();
                     string loc = dt.Rows[i]["description"].ToString();
-                    cbOperation.Items.Add(time + " " + date + ", " + "Brgy. " + loc);    //add necessary cherbs to combobox
+                    cbOperation.Items.Add(date + "  " + time + ",  " + "Brgy. " + loc);    //add necessary cherbs to combobox
                     j++;
                 }
                 conn.Close();
@@ -730,6 +741,60 @@ namespace WindowsFormsApplication1
         private void cbGenderSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             refreshSearch();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            home.emp.Show();
+            this.Hide();
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            Login log = new Login();
+            log.hom = home;
+            log.Show();
+            this.trig();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            home.inv.Show();
+            this.Hide();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            home.Show();
+            this.Hide();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            home.Show();
+            this.Hide();
+        }
+
+        private void claimreportdgv_AllowUserToAddRowsChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bit = new Bitmap(this.claimreportdgv.Width, this.claimreportdgv.Height);
+            claimreportdgv.DrawToBitmap(bit, new System.Drawing.Rectangle(0, 0, this.claimreportdgv.Width, this.claimreportdgv.Height));
+            e.Graphics.DrawString("Dog Summary Report", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(200, 100));
+            e.Graphics.DrawImage(bit, 10, 40);
+        }
+        private void print()
+        {
+            printPreviewDialog1.Document = printDocument1;
+            if (DialogResult.OK == printPreviewDialog1.ShowDialog())
+            {
+                printDocument1.DocumentName = "Dog Summary Report";
+                printDocument1.Print();
+            }
         }
     }
 }
