@@ -488,10 +488,11 @@ namespace WindowsFormsApplication1
         
         public void addOperation(int teamIDs)
         {
-            if (tbOpDate.Text != "Date (yyyy-mm-dd)" && cbLocation.Text != "Location" && tbStarth.Text != "Time Start (hh:mm)" && tbEndh.Text != "Time End (hh:mm)")
+            if (tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && cbOpMonth.Text != "Month" && cbLocation.Text != "Location" && tbStarth.Text != "Time Start (hh:mm)" && tbEndh.Text != "Time End (hh:mm)")
             {
-                string date = tbOpDate.Text;
-                
+                string date = tbOpYear.Text + '-' + (cbOpMonth.SelectedIndex + 1).ToString() + "-"  + tbOpDay.Text;
+                string timeStart = tbStarth.Text + ":" + tbStartm.Text + cbAMPMstart.Text;
+                string timeEnd = tbEndh.Text + ":" + tbEndm.Text + cbAMPMend.Text;
                 string time = tbStarth.Text + ":" + tbStartm.Text + cbAMPMstart.Text + "-" + tbEndh.Text + ":" + tbEndm.Text + cbAMPMend.Text;
                 try
                     {
@@ -503,7 +504,7 @@ namespace WindowsFormsApplication1
 
                         int locID = int.Parse(dt.Rows[0]["locationID"].ToString());
                         
-                        comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, time, status) VALUES ('" + teamIDs + "' , '" + locID + "', '" + date + "', '" + time + "')", conn);
+                        comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, timeStart, timeEnd, status) VALUES ('" + teamIDs + "' , '" + locID + "', '" + date + "', '" + timeStart + "', '" + timeEnd + "', 'Pending')", conn);
                         comm.ExecuteNonQuery();
 
                         MessageBox.Show("Operation Added Successfully");
@@ -844,11 +845,12 @@ namespace WindowsFormsApplication1
                 allEmployees.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 int i = 0;
                 int empid;
-                while (i < allEmployees.RowCount)
+
+                /*while (i < allEmployees.RowCount)
                 {
                     empid = int.Parse(allEmployees.Rows[i].Cells["personID"].Value.ToString());
                    
-                    MySqlCommand com = new MySqlCommand("select COUNT(*) from employee join (operationteam join dogoperation on dogoperation.teamID = operationteam.teamID) on employee.employeeID = operationteam.employeeID where employee.employeeID = " + empid + " and timeEnd != '"+te+"'or dogoperation.status = 'Pending' or dogoperation.status = 'OnGoing' ", conn);
+                    MySqlCommand com = new MySqlCommand("select COUNT(*) from employee join (operationteam join dogoperation on dogoperation.teamID = operationteam.teamID) on employee.employeeID = operationteam.employeeID where employee.employeeID = " + empid + " and timeEnd != '"+ te +"'or dogoperation.status = 'Pending' or dogoperation.status = 'OnGoing' ", conn);
                     MySqlDataAdapter adpp = new MySqlDataAdapter(com);
                     DataTable dtt = new DataTable();
                     adpp.Fill(dtt);
@@ -858,7 +860,7 @@ namespace WindowsFormsApplication1
                         allEmployees.Rows.Remove(row);
                     }
 
-                }
+                }*/
                 
                 allEmployees.ClearSelection();
                 conn.Close();
@@ -939,8 +941,8 @@ namespace WindowsFormsApplication1
 
         private void tbOpDate_Click(object sender, EventArgs e)
         {
-            tbOpDate.Text = "";
-            tbOpDate.ForeColor = Color.Black;
+            tbOpDay.Text = "";
+            tbOpDay.ForeColor = Color.Black;
         }
 
         private void tbStart_Click(object sender, EventArgs e)
@@ -1001,11 +1003,11 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-
+                // GROUP_CONCAT(CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.')) AS team,
                 MySqlCommand comm;
                 if (date == null)
                 {
-                    comm = new MySqlCommand("SELECT operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY date, timeStart GROUP BY teamID", conn);
+                    comm = new MySqlCommand("SELECT operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID INNER JOIN operationteam ON dogoperation.teamID = operationteam.teamID INNER JOIN profile on profile.personID = operationteam.employeeID ORDER BY date, timeStart", conn);
                 }
                 else
                 {
@@ -1034,12 +1036,14 @@ namespace WindowsFormsApplication1
                 dgvOperationsView.Columns["timeStart"].HeaderText = "Time Start";
                 dgvOperationsView.Columns["timeEnd"].HeaderText = "Time End";
                 dgvOperationsView.Columns["status"].HeaderText = "Status";
+                dgvOperationsView.Columns["team"].HeaderText = "Team Members";
 
                 dgvOperationsView.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvOperationsView.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvOperationsView.Columns["timeStart"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvOperationsView.Columns["timeEnd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvOperationsView.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["team"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 int i = 0;
                
@@ -1225,24 +1229,27 @@ namespace WindowsFormsApplication1
                         flag = true;
                     }
                 }
+                int check = checkIfTeamExists(emps, teamid - 1);
+                int parameter;
+                if (check != 0) { parameter = check; }
+                else { parameter = teamid; }
                 conn.Close();
-                if (checkIfTeamExists(emps) == 0) //team doesnt exist
+                addOperation(parameter);
+                conn.Open();
+                if (check == 0) //team doesnt exist
                 {
-                    conn.Open();
                     MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
-                    MessageBox.Show("Team Already Exists!");
                     commm.ExecuteNonQuery();
                 }
                 else
                 {
-                    MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + checkIfTeamExists(emps) + ", " + empID + ")", conn);
+                    MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + check + ", " + empID + ")", conn);
                     commm.ExecuteNonQuery();
                 }
                 conn.Close();
                 refreshTeam();
                 newTeam.Rows.Clear();
-                MessageBox.Show("New Operation Successfully Added!");
-            }
+             }
             catch (Exception ex)
             {
                 conn.Close();
@@ -1251,34 +1258,68 @@ namespace WindowsFormsApplication1
 
 
         }
-        private int checkIfTeamExists(int[] emps) //emps = new operation team
+        private int checkIfTeamExists(int[] emps, int max) //emps = new operation team
         {
             try
             {
-                conn.Open();
                 MySqlCommand comm = new MySqlCommand("SELECT teamID, employeeID FROM operationteam GROUP BY teamID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 Boolean stop = false;
-               
+                Boolean same = true;
                 Array.Sort(emps);
-                for (int i = 0; ; i++) //counter for team
+                int i = 1;
+                while(i < max && stop == false)//counter for team
                 {
-                    for (int j = 0; stop == true; i++) //counter for employees inside the team
-                    {
+                    comm = new MySqlCommand("SELECT COUNT(*) FROM operationteam WHERE teamID = " + i, conn);
+                    adp = new MySqlDataAdapter(comm);
+                    dt = new DataTable();
+                    adp.Fill(dt);
+                    int empnum = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
 
+                    comm = new MySqlCommand("SELECT employeeID FROM operationteam WHERE teamID = " + i, conn);
+                    adp = new MySqlDataAdapter(comm);
+                    dt = new DataTable();
+                    adp.Fill(dt);
+                    int[] employees = new int[10];
+                    for (int j = 0; j < empnum; j++) //counter for employees inside the team
+                    {
+                        employees[j] = int.Parse(dt.Rows[0]["employeeID"].ToString());
                     }
+                    Array.Sort(employees);
+                    
+                    for (int y = 0; y < empnum && same == true; y++)
+                    {
+                        if(employees[y] == emps[y])
+                        {
+                            same = true;
+                        }
+                        else
+                        {
+                            same = false;
+                        }
+                    }
+                    i++;
                 }
 
-                conn.Close();
+                if (same == true)
+                {
+                    stop = true;
+                    return i;
+                }
+                else
+                {
+                    return 0;
+                }
+                
             }
             catch(Exception ex)
             {
-                conn.Close();
+                return 0;
                 MessageBox.Show(ex.ToString());
             }
-            return 0;
+            
         }
         private void button25_Click(object sender, EventArgs e)
         {
@@ -1401,28 +1442,57 @@ namespace WindowsFormsApplication1
         int location;
         private void button28_Click(object sender, EventArgs e)
         {
-            if(comboBox1.Text != "" && tbOpDate.Text != "Day" && textBox1.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.SelectedIndex != 0)
+            if(cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location")
             {
-
                 pteam.Enabled = true;
                 pOperation.Enabled = false;
-                d = (comboBox1.SelectedIndex + 1).ToString() + "-" + tbOpDate.Text + "-" + textBox1.Text;
+                d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
                 ts = tbStarth.Text + ":" + tbStartm.Text;
                 te = tbEndh.Text + ":" + tbEndm.Text;
                 location = cbLocation.SelectedIndex;
 
+                refreshTeam();
             }
             else
             {
                 MessageBox.Show("Please Enter Required Fields");
             }
-
-            refreshTeam();
+            
         }
 
         private void editPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void tbOpDate_Enter(object sender, EventArgs e)
+        {
+            tbOpDay.Text = "";
+        }
+
+        private void tbOpYear_Enter(object sender, EventArgs e)
+        {
+            tbOpYear.Text = "";
+        }
+
+        private void tbStarth_Enter(object sender, EventArgs e)
+        {
+            tbStarth.Text = "";
+        }
+
+        private void tbEndh_Enter(object sender, EventArgs e)
+        {
+            tbEndh.Text = "";
+        }
+
+        private void tbStartm_Enter_1(object sender, EventArgs e)
+        {
+            tbStartm.Text = "";
+        }
+
+        private void tbEndm_Enter_1(object sender, EventArgs e)
+        {
+            tbEndm.Text = "";
         }
     }
 }
