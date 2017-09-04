@@ -117,6 +117,18 @@
     <Compile Include="Edit.Designer.cs">
       <DependentUpon>Edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EndorserIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EndorserIn.Designer.cs">
+      <DependentUpon>EndorserIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EndorserOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EndorserOut.Designer.cs">
+      <DependentUpon>EndorserOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Viewinvent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +198,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EndorserIn.resx">
+      <DependentUpon>EndorserIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EndorserOut.resx">
+      <DependentUpon>EndorserOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Viewinvent.resx">
       <DependentUpon>Viewinvent.cs</DependentUpon>

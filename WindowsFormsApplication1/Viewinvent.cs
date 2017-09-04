@@ -49,6 +49,20 @@ namespace WindowsFormsApplication1
                 dgvViewAct.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewAct.Columns["quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewAct.Columns["minQuantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                int i = 0;
+                while (i < dgvViewAct.RowCount)
+                {
+                    if (dgvViewAct.Rows[i].Cells["quantity"].Value.ToString() == "0")
+                    {
+                        
+                        dgvViewAct.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(244, 156, 156);
+                    }
+                    else if (int.Parse(dgvViewAct.Rows[i].Cells["quantity"].Value.ToString()) <= int.Parse(dgvViewAct.Rows[i].Cells["minQuantity"].Value.ToString()))
+                    {
+                        dgvViewAct.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 235, 140);
+                    }
+                    i++;
+                }
                 conn.Close();
             }
             catch (Exception ex)

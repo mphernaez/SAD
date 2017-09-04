@@ -17,8 +17,10 @@ namespace WindowsFormsApplication1
         private Color use;
         public MySqlConnection conn = new MySqlConnection();
         public int adminID;
-        public int itemID;
+        public int itemID = 0;
+        EndorserIn end { get; set; }
         public empty back { get; set; }
+        EndorserOut endO { get; set; }
         empty home;
         public Inventory(empty parent)
         {
@@ -27,6 +29,8 @@ namespace WindowsFormsApplication1
             y = -40;
             use = Color.FromArgb(253, 208, 174);
             home = parent;
+            end = new EndorserIn(this);
+            endO = new EndorserOut(this);
         }
         public void trig()
         {
@@ -62,7 +66,7 @@ namespace WindowsFormsApplication1
             dgvin.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
         }
 
-        private void refreshSI()
+        public void refreshSI()
         {
             try
             {
@@ -83,7 +87,7 @@ namespace WindowsFormsApplication1
                 dgvin.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvin.Columns["quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvin.Columns["minQuantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+                dgvin.ClearSelection();
 
                 conn.Close();
             }
@@ -93,7 +97,7 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
         }
-        private void refreshSO()
+        public void refreshSO()
         {
             try
             {
@@ -114,7 +118,7 @@ namespace WindowsFormsApplication1
                 dgvo.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvo.Columns["quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvo.Columns["minQuantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+                dgvo.ClearSelection();
                 conn.Close();
             }
             catch (Exception ex)
@@ -156,13 +160,41 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("INSERT INTO items VALUES (itemID, '"+ tbname.Text + "', '" + tbdesc.Text + "', 0, "+ nudmin.Value.ToString() + ")" , conn);
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Item Added");
+                if (tbname.Text != "Product Name" && tbdesc.Text != "Product Type" && nudmin.Value != 0)
+                {
+                    if (hasExp == true)
+                    {
+                        if ((cbMonth.Text != "Month" && cbDay.Text != "Day" && tbYear.Text != "Year"))
+                        {
+                            String date = "0" + (cbMonth.SelectedIndex + 1).ToString() + "-" + cbDay.Text + "-" + tbYear.Text;
+                            MessageBox.Show(date);
+
+                            MySqlCommand comm = new MySqlCommand("INSERT INTO items VALUES (itemID, '" + tbname.Text + "', '" + tbdesc.Text + "', 0, " + nudmin.Value.ToString() + ", '" + date + "')", conn);
+                            comm.ExecuteNonQuery();
+                            MessageBox.Show("Item Added");
+                            refreshCreate();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please Enter Required Fields");
+                        }
+                    }
+                    else if (hasExp == false)
+                    {
+                        MySqlCommand comm = new MySqlCommand("INSERT INTO items VALUES (itemID, '" + tbname.Text + "', '" + tbdesc.Text + "', 0, " + nudmin.Value.ToString() + ", '')", conn);
+                        comm.ExecuteNonQuery();
+                        MessageBox.Show("Item Added");
+                        refreshCreate();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please Enter Required Fields");
+                }
                 conn.Close();
                 refreshSI();
                 refreshSO();
-                
 
             }
             catch (Exception ex)
@@ -171,7 +203,15 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
         }
-
+        private void refreshCreate()
+        {
+            tbname.Text = "Product Name";
+            tbdesc.Text = "Product Type";
+            nudmin.Value = 0;
+            cbMonth.Text = "Month";
+            cbDay.Text = "Day";
+            tbYear.Text = "Year";
+        }
         private void inv_Paint(object sender, PaintEventArgs e)
         {
 
@@ -179,7 +219,7 @@ namespace WindowsFormsApplication1
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            /*
             try
             {
                 conn.Open();
@@ -211,13 +251,17 @@ namespace WindowsFormsApplication1
                 conn.Close();
                 refreshSO();
                 checkMin(id, min, quan, prod);
-
-            }
+                 }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
+                */
+            endO.value = (int)nubo.Value;
+            endO.id = itemID;
+            endO.Show(); 
+           
         }
 
         private void dgvo_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -236,14 +280,14 @@ namespace WindowsFormsApplication1
         }
 
         private void OK1_Click(object sender, EventArgs e)
-        {
+        {/*
             if (itemID != 0)
             {
                 try
                 {
 
                     conn.Open();
-                    int quan = int.Parse(nubi.Text);
+                    
 
                     if (quan > 0)
                     {
@@ -268,6 +312,18 @@ namespace WindowsFormsApplication1
             else
             {
                 MessageBox.Show("Please select an item");
+            }
+            */
+            int quan = int.Parse(nubi.Text);
+            if (quan > 0 && itemID != 0)
+            {
+                end.value = (int)nubi.Value;
+                end.id = itemID;
+                end.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please Enter Required Fields");
             }
         }
 
@@ -336,6 +392,37 @@ namespace WindowsFormsApplication1
         }
 
         private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbdesc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        bool hasExp = true;
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (hasExp == true)
+            {
+                cbMonth.Enabled = false;
+                cbDay.Enabled = false;
+                tbYear.Enabled = false;
+                hasExp = false;
+                button14.Text = "Has";
+            } else
+            {
+                cbMonth.Enabled = true;
+                cbDay.Enabled = true;
+                tbYear.Enabled = true;
+                hasExp = true;
+                button14.Text = "None";
+            }
+        }
+
+        private void dgvin_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

@@ -1005,7 +1005,7 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm;
                 if (date == null)
                 {
-                    comm = new MySqlCommand("SELECT operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY date, timeStart GROUP BY teamID", conn);
+                    comm = new MySqlCommand("SELECT operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY date, timeStart", conn);
                 }
                 else
                 {
@@ -1340,17 +1340,30 @@ namespace WindowsFormsApplication1
 
         string date;
         private void button7_Click_1(object sender, EventArgs e)
-        {   
-            int year = int.Parse(textBox2.Text);
-            int month = comboBox2.SelectedIndex + 1;
-            int day = int.Parse(textBox3.Text);
-            date = year + "-" + month + "-" + day;
-            refreshOperationsView();
+        {
+           
+           
+            if (textBox2.Text != "Year" && textBox3.Text != "Day" && comboBox2.SelectedIndex + 1 != 0)
+            {
+                string year = textBox2.Text;
+                string month = (comboBox2.SelectedIndex + 1).ToString();
+                string day = textBox3.Text;
+                date = year + "-" + month + "-" + day;
+                textBox2.Text = "Year";
+                textBox3.Text = "Day";
+                comboBox2.Text = "Month";
+
+                refreshOperationsView();
+            }
+            
         }
 
         private void button27_Click(object sender, EventArgs e)
         {
             refreshOperationsView();
+            textBox2.Text = "Year";
+            textBox3.Text = "Day";
+            comboBox2.Text = "Month";
         }
 
         private void dgvAttendanceOut_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -1423,6 +1436,10 @@ namespace WindowsFormsApplication1
         private void editPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void dgvAttendanceIn_DoubleClick(object sender, EventArgs e)
+        {
         }
     }
 }
