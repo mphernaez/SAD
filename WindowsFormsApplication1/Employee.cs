@@ -1007,55 +1007,60 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm;
                 if (date == null)
                 {
-                    comm = new MySqlCommand("SELECT operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID INNER JOIN operationteam ON dogoperation.teamID = operationteam.teamID INNER JOIN profile on profile.personID = operationteam.employeeID ORDER BY date, timeStart", conn);
+                    comm = new MySqlCommand("SELECT teamID, operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY date, timeStart", conn);
                 }
                 else
                 {
-                    comm = new MySqlCommand("SELECT operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + date + "' ORDER BY  date, timeStart", conn);
+                    comm = new MySqlCommand("SELECT teamID, operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + date + "' ORDER BY  date, timeStart", conn);
                     date = null;
                 }
+                
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
 
-                dgvOperationsView.DataSource = dt;
-                if (coll == 1)
+               //dgvOperationsView.DataSource = dt;
+
+                for(int x = 0; x < dt.Rows.Count; x++)
                 {
-                    DataGridViewButtonColumn col = new DataGridViewButtonColumn();
-                    col.UseColumnTextForButtonValue = true;
-                    col.Text = "View Team";
-                    col.Name = "viewTeam";
-                    col.FlatStyle = FlatStyle.Flat;
-                    dgvOperationsView.Columns.Add(col);
-                    coll = 2;
+                    int teamID = int.Parse(dt.Rows[x]["teamID"].ToString());
+                    int opID = int.Parse(dt.Rows[x]["operationID"].ToString());
+                    MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', Firstname) AS emp FROM operationteam INNER JOIN profile on profile.personID = operationteam.employeeID WHERE teamID = " + teamID.ToString(), conn);
+                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                    DataTable dta = new DataTable();
+                    adpt.Fill(dta);
+                    string team = "";
+                    for(int j = 0; j < dta.Rows.Count; j++)
+                    {
+                        string nl = Environment.NewLine;
+                        team = team + dta.Rows[j]["emp"].ToString() + nl;
+                    }
+                    string loc = dt.Rows[x]["description"].ToString();
+                    string date = dt.Rows[x]["date"].ToString();
+                    string start = dt.Rows[x]["timeStart"].ToString();
+                    string end = dt.Rows[x]["timeEnd"].ToString();
+                    string status = dt.Rows[x]["status"].ToString();
+                    dgvOperationsView.Rows.Add(teamID.ToString(), opID.ToString(), loc, date, start, end, team, status);
                 }
 
-                dgvOperationsView.Columns["operationID"].Visible = false;
-                dgvOperationsView.Columns["description"].HeaderText = "Location";
-                dgvOperationsView.Columns["date"].HeaderText = "Date";
-                dgvOperationsView.Columns["timeStart"].HeaderText = "Time Start";
-                dgvOperationsView.Columns["timeEnd"].HeaderText = "Time End";
-                dgvOperationsView.Columns["status"].HeaderText = "Status";
-                dgvOperationsView.Columns["team"].HeaderText = "Team Members";
-
-                dgvOperationsView.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["timeStart"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["timeEnd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["team"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgvOperationsView.Columns["opTeam"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dgvOperationsView.Columns["opLocation"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["opDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["opStart"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["opEnd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["opTeam"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOperationsView.Columns["opStatus"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 int i = 0;
-               
                 while (i < dgvOperationsView.RowCount)
                 {
                     
-                    
-                    if (dgvOperationsView.Rows[i].Cells["status"].Value.ToString() == "Pending")
+                    if (dgvOperationsView.Rows[i].Cells["opStatus"].Value.ToString() == "Pending")
                     {
                         dgvOperationsView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 235, 140);
                     }
-                    else if (dgvOperationsView.Rows[i].Cells["status"].Value.ToString() == "OnGoing")
+                    else if (dgvOperationsView.Rows[i].Cells["opStatus"].Value.ToString() == "OnGoing")
                     {
                         dgvOperationsView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(146, 232, 191);
                     }

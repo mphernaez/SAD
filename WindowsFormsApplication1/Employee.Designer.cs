@@ -137,6 +137,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button26 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opTeam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
@@ -833,8 +841,8 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.Operations);
+            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -1536,7 +1544,16 @@
             this.dgvOperationsView.BackgroundColor = System.Drawing.Color.White;
             this.dgvOperationsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvOperationsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOperationsView.GridColor = System.Drawing.Color.White;
+            this.dgvOperationsView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.teamID,
+            this.operationID,
+            this.opLocation,
+            this.opDate,
+            this.opStart,
+            this.opEnd,
+            this.opTeam,
+            this.opStatus});
+            this.dgvOperationsView.GridColor = System.Drawing.Color.Silver;
             this.dgvOperationsView.Location = new System.Drawing.Point(19, 60);
             this.dgvOperationsView.Name = "dgvOperationsView";
             this.dgvOperationsView.ReadOnly = true;
@@ -1805,6 +1822,56 @@
             this.button26.UseVisualStyleBackColor = false;
             this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
+            // teamID
+            // 
+            this.teamID.HeaderText = "teamID";
+            this.teamID.Name = "teamID";
+            this.teamID.ReadOnly = true;
+            this.teamID.Visible = false;
+            // 
+            // operationID
+            // 
+            this.operationID.HeaderText = "operationID";
+            this.operationID.Name = "operationID";
+            this.operationID.ReadOnly = true;
+            this.operationID.Visible = false;
+            // 
+            // opLocation
+            // 
+            this.opLocation.HeaderText = "Location";
+            this.opLocation.Name = "opLocation";
+            this.opLocation.ReadOnly = true;
+            // 
+            // opDate
+            // 
+            this.opDate.HeaderText = "Operation Date";
+            this.opDate.Name = "opDate";
+            this.opDate.ReadOnly = true;
+            // 
+            // opStart
+            // 
+            this.opStart.HeaderText = "Time Start";
+            this.opStart.Name = "opStart";
+            this.opStart.ReadOnly = true;
+            // 
+            // opEnd
+            // 
+            this.opEnd.HeaderText = "Time End";
+            this.opEnd.Name = "opEnd";
+            this.opEnd.ReadOnly = true;
+            // 
+            // opTeam
+            // 
+            this.opTeam.HeaderText = "Team Members";
+            this.opTeam.Name = "opTeam";
+            this.opTeam.ReadOnly = true;
+            // 
+            // opStatus
+            // 
+            this.opStatus.HeaderText = "Status";
+            this.opStatus.Name = "opStatus";
+            this.opStatus.ReadOnly = true;
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1985,5 +2052,13 @@
         private System.Windows.Forms.Panel pteam;
         private System.Windows.Forms.Panel pOperation;
         private System.Windows.Forms.DataGridView dgvcheck;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teamID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operationID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opStart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opEnd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opTeam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opStatus;
     }
 }
