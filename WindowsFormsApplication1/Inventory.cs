@@ -166,7 +166,7 @@ namespace WindowsFormsApplication1
                     {
                         if ((cbMonth.Text != "Month" && cbDay.Text != "Day" && tbYear.Text != "Year"))
                         {
-                            String date = "0" + (cbMonth.SelectedIndex + 1).ToString() + "-" + cbDay.Text + "-" + tbYear.Text;
+                            String date = tbYear.Text + (cbMonth.SelectedIndex + 1).ToString() + "-" + cbDay.Text + "-";
                             MessageBox.Show(date);
 
                             MySqlCommand comm = new MySqlCommand("INSERT INTO items VALUES (itemID, '" + tbname.Text + "', '" + tbdesc.Text + "', 0, " + nudmin.Value.ToString() + ", '" + date + "')", conn);

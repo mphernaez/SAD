@@ -829,7 +829,8 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, firstname, lastname, middlename FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE status = 'Active' AND position = 'Catcher' ORDER BY lastname", conn);
+                
+                MySqlCommand comm = new MySqlCommand("SELECT employee.employeeID, firstname, lastname, middlename FROM profile JOIN (employee JOIN (operationteam JOIN dogoperation ON operationteam.teamID = dogoperation.operationID) ON employee.employeeID = operationteam.employeeID) ON personID = employee.employeeID WHERE employee.status = 'Active' AND position = 'Catcher' AND dogoperation.status = 'Finished'  ORDER BY lastname", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -861,6 +862,7 @@ namespace WindowsFormsApplication1
                     }
 
                 }*/
+
                 
                 allEmployees.ClearSelection();
                 conn.Close();
@@ -1498,6 +1500,27 @@ namespace WindowsFormsApplication1
         private void tbEndm_Enter_1(object sender, EventArgs e)
         {
             tbEndm.Text = "";
+        }
+
+        private void dgvAttendanceOut_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            try
+            {
+                conn.Open();
+                employeeID = int.Parse(dgvAttendanceIn.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+                string att = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+
+                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type) VALUES('" + att + "', " + employeeID + ", " + "0" + ") ", conn);
+                comm.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Successfully Recorded Attendance!");
+                refreshAttendance();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                conn.Close();
+            }
         }
     }
 }
