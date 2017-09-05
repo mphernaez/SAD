@@ -221,6 +221,14 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
+            if (repC.Text == "Employee")
+            {
+                emplist.Visible = true;
+            }
+            else
+            {
+                oplist.Visible = true;
+            }
         }
 
         private void toExcelEmp()
@@ -1068,8 +1076,14 @@ namespace WindowsFormsApplication1
                     }
                     i++;
                 }
-
+                conn.Close();
             }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
         private void refreshOperationsView()
         {
             try
@@ -1591,6 +1605,22 @@ namespace WindowsFormsApplication1
             {
                 conn.Close();
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button28_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            emplist.Visible = false;
+            oplist.Visible = false;
         }
     }
 }
