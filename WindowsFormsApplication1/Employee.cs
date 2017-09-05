@@ -154,10 +154,18 @@ namespace WindowsFormsApplication1
 
         private void Employee_Load(object sender, EventArgs e)
         {
+            Timer tmr = new Timer();
+            tmr.Interval = 10000;//ticks every 1 second
+            tmr.Tick += new EventHandler(tmr_Tick);
+            tmr.Start();
+            refreshStatus();
             //this.Top = 112;// 262
 
         }
-        int coll = 0;
+        private void tmr_Tick(object sender, EventArgs e)
+        {
+            refreshStatus();
+        }
 
         private void button8_Click(object sender, EventArgs e)
         {
@@ -1000,11 +1008,36 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void refreshStatus()
+        {
+            try
+            {
+                conn.Open();
+                // GROUP_CONCAT(CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.')) AS team,
+                String daten = DateTime.Now.ToString("yyyy-MM-dd");
+                String timen = DateTime.Now.ToString("hh:mm");
+                MySqlCommand comm = new MySqlCommand("UPDATE dogoperation  SET status = 'OnGoing' WHERE date = '" + daten + "' AND status != 'finished' AND status != 'OnGoing' AND timeStart = '" + timen + "'", conn);
+                comm.ExecuteNonQuery(); 
+                MySqlCommand com = new MySqlCommand("UPDATE dogoperation  SET status = 'Finished' WHERE date = '" + daten + "' AND status != 'finished' AND timeEnd = '" + timen + "'", conn);
+                com.ExecuteNonQuery();
+                MySqlCommand co = new MySqlCommand("UPDATE dogoperation  SET status = 'Finished' WHERE date < '" + daten + "' OR timeEnd < '" + timen + "'AND status != 'finished'", conn);
+                co.ExecuteNonQuery();
+                conn.Close();
+                refreshOperationsView();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
         private void refreshOperationsView()
         {
             dgvOperationsView.Rows.Clear();
             try
             {
+                
+               
                 conn.Open();
                 // GROUP_CONCAT(CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.')) AS team,
                 MySqlCommand comm;
@@ -1071,6 +1104,7 @@ namespace WindowsFormsApplication1
                 }
 
                 dgvOperationsView.ClearSelection() ;
+                
 
                 conn.Close();
             }
@@ -1243,7 +1277,6 @@ namespace WindowsFormsApplication1
                 else { parameter = teamid; }
                 conn.Close();
                 addOperation(parameter);
-                conn.Open();
                 if (check == 0) //team doesnt exist
                 {
                     MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
@@ -1399,6 +1432,7 @@ namespace WindowsFormsApplication1
 
         private void button27_Click(object sender, EventArgs e)
         {
+            dgvOperationsView.Rows.Clear();
             refreshOperationsView();
         }
 

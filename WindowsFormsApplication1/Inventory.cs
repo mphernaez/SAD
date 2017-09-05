@@ -329,7 +329,14 @@ namespace WindowsFormsApplication1
 
         private void dgvin_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            itemID = int.Parse(dgvin.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
+            if (e.RowIndex < 0)
+            {
+
+            } else
+            {
+                itemID = int.Parse(dgvin.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
+            }
+            
            
         }
 

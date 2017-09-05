@@ -515,9 +515,6 @@ namespace WindowsFormsApplication1
 
         private void button8_Click_1(object sender, EventArgs e)
         {
-            //report();
-            
-
             searchDog.Visible = false;
             addDog.Visible = false;
             adoptDog.Visible = false;
@@ -575,34 +572,7 @@ namespace WindowsFormsApplication1
         }
         private void report()
         {
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
-            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-            excel.Visible = true;
-
-            worksheet = workbook.Sheets["Sheet1"];
-            worksheet = workbook.ActiveSheet;
-            worksheet.Name = "Exported from gridview";
-            for (int i = 1; i < claimreportdgv.Columns.Count + 1; i++)
-            {
-                worksheet.Cells[1, i] = claimreportdgv.Columns[i - 1].HeaderText;
-            }
-            for (int i = 0; i < claimreportdgv.Rows.Count - 1; i++)
-            {
-                for (int j = 0; j < claimreportdgv.Columns.Count; j++)
-                {
-                    worksheet.Cells[i + 2, j + 1] = claimreportdgv.Rows[i].Cells[j].Value.ToString();
-                }
-            }
-            SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-            saveDialog.FilterIndex = 2;
-
-            if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                //workbook.SaveAs(saveDialog.FileName);
-                MessageBox.Show("Export Successful");
-            }
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -644,7 +614,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand comm = new MySqlCommand("SELECT operationID, time, MONTH(date) as month, YEAR(date) as year, DAY(date) as day, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT operationID, CONCAT(timeStart, ' - ', timeEnd) AS time, MONTH(date) as month, YEAR(date) as year, DAY(date) as day, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
