@@ -65,6 +65,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.ne = new System.Windows.Forms.PictureBox();
             this.r = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.repEmp = new System.Windows.Forms.DataGridView();
             this.o = new System.Windows.Forms.PictureBox();
             this.button14 = new System.Windows.Forms.Button();
             this.ac = new System.Windows.Forms.PictureBox();
@@ -125,8 +127,6 @@
             this.opStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.impounddogpoundDataSet1 = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.repEmp = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -156,6 +156,8 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repEmp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.o)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
@@ -169,8 +171,6 @@
             this.Operations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperationsView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repEmp)).BeginInit();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pe.SuspendLayout();
             this.ip.SuspendLayout();
@@ -713,6 +713,26 @@
             this.r.TabStop = false;
             this.r.Visible = false;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.repEmp);
+            this.panel2.Location = new System.Drawing.Point(20, 84);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1023, 543);
+            this.panel2.TabIndex = 32;
+            this.panel2.Visible = false;
+            // 
+            // repEmp
+            // 
+            this.repEmp.AllowUserToAddRows = false;
+            this.repEmp.AllowUserToDeleteRows = false;
+            this.repEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.repEmp.Location = new System.Drawing.Point(17, 12);
+            this.repEmp.Name = "repEmp";
+            this.repEmp.ReadOnly = true;
+            this.repEmp.Size = new System.Drawing.Size(983, 366);
+            this.repEmp.TabIndex = 0;
+            // 
             // o
             // 
             this.o.BackColor = System.Drawing.Color.Transparent;
@@ -851,8 +871,8 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.Operations);
+            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -1636,26 +1656,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // repEmp
-            // 
-            this.repEmp.AllowUserToAddRows = false;
-            this.repEmp.AllowUserToDeleteRows = false;
-            this.repEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.repEmp.Location = new System.Drawing.Point(17, 12);
-            this.repEmp.Name = "repEmp";
-            this.repEmp.ReadOnly = true;
-            this.repEmp.Size = new System.Drawing.Size(983, 366);
-            this.repEmp.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.repEmp);
-            this.panel2.Location = new System.Drawing.Point(20, 84);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1023, 543);
-            this.panel2.TabIndex = 32;
-            this.panel2.Visible = false;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
@@ -1892,9 +1892,9 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
-            this.Controls.Add(this.DogCatchingOperation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -1916,6 +1916,8 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.r)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.repEmp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.o)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ac)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.a)).EndInit();
@@ -1933,8 +1935,6 @@
             this.Operations.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperationsView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repEmp)).EndInit();
-            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.pe.ResumeLayout(false);
