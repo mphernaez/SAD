@@ -731,7 +731,6 @@
             this.panel2.Size = new System.Drawing.Size(1023, 543);
             this.panel2.TabIndex = 32;
             this.panel2.Visible = false;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // repEmp
             // 
@@ -1903,7 +1902,6 @@
             this.repC.Name = "repC";
             this.repC.Size = new System.Drawing.Size(121, 21);
             this.repC.TabIndex = 1;
-            this.repC.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // emplist
             // 
@@ -1935,7 +1933,6 @@
             this.button28.TabIndex = 4;
             this.button28.Text = "View Report";
             this.button28.UseVisualStyleBackColor = false;
-            this.button28.Click += new System.EventHandler(this.button28_Click_1);
             // 
             // oplist
             // 

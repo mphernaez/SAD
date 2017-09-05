@@ -155,9 +155,10 @@ namespace WindowsFormsApplication1
         private void Employee_Load(object sender, EventArgs e)
         {
             Timer tmr = new Timer();
-            tmr.Interval = 1000;//ticks every 1 second
+            tmr.Interval = 10000;//ticks every 1 second
             tmr.Tick += new EventHandler(tmr_Tick);
             tmr.Start();
+            refreshStatus();
             //this.Top = 112;// 262
 
         }
@@ -165,7 +166,6 @@ namespace WindowsFormsApplication1
         {
             refreshStatus();
         }
-        int coll = 0;
 
         private void button8_Click(object sender, EventArgs e)
         {
@@ -220,14 +220,6 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show(ex.ToString());
                 conn.Close();
-            }
-            if (repC.Text == "Employee")
-            {
-                emplist.Visible = true;
-            }
-            else
-            {
-                oplist.Visible = true;
             }
         }
 
@@ -1023,60 +1015,15 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 // GROUP_CONCAT(CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.')) AS team,
                 String daten = DateTime.Now.ToString("yyyy-MM-dd");
-                MySqlCommand comm = new MySqlCommand("SELECT teamID, operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + daten + "' ORDER BY  date, timeStart", conn);
-
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-
-                //dgvOperationsView.DataSource = dt;
-
-                for (int x = 0; x < dt.Rows.Count; x++)
-                {
-                    int teamID = int.Parse(dt.Rows[x]["teamID"].ToString());
-                    int opID = int.Parse(dt.Rows[x]["operationID"].ToString());
-                    MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', Firstname) AS emp FROM operationteam INNER JOIN profile on profile.personID = operationteam.employeeID WHERE teamID = " + teamID.ToString(), conn);
-                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
-                    DataTable dta = new DataTable();
-                    adpt.Fill(dta);
-                    string team = "";
-                    for (int j = 0; j < dta.Rows.Count; j++)
-                    {
-                        string nl = Environment.NewLine;
-                        team = team + dta.Rows[j]["emp"].ToString() + nl;
-                    }
-                    string loc = dt.Rows[x]["description"].ToString();
-                    string date = dt.Rows[x]["date"].ToString();
-                    string start = dt.Rows[x]["timeStart"].ToString();
-                    string end = dt.Rows[x]["timeEnd"].ToString();
-                    string status = dt.Rows[x]["status"].ToString();
-                    dgvOperationsView.Rows.Add(teamID.ToString(), opID.ToString(), loc, date, start, end, team, status);
-                }
-
-                dgvOperationsView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                dgvOperationsView.Columns["opTeam"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-                dgvOperationsView.Columns["opLocation"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["opDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["opStart"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["opEnd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["opTeam"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvOperationsView.Columns["opStatus"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                int i = 0;
-                while (i < dgvOperationsView.RowCount)
-                {
-
-                    if (dgvOperationsView.Rows[i].Cells["opStatus"].Value.ToString() == "Pending")
-                    {
-                        dgvOperationsView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 235, 140);
-                    }
-                    else if (dgvOperationsView.Rows[i].Cells["opStatus"].Value.ToString() == "OnGoing")
-                    {
-                        dgvOperationsView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(146, 232, 191);
-                    }
-                    i++;
-                }
+                String timen = DateTime.Now.ToString("hh:mm");
+                MySqlCommand comm = new MySqlCommand("UPDATE dogoperation  SET status = 'OnGoing' WHERE date = '" + daten + "' AND status != 'finished' AND status != 'OnGoing' AND timeStart = '" + timen + "'", conn);
+                comm.ExecuteNonQuery(); 
+                MySqlCommand com = new MySqlCommand("UPDATE dogoperation  SET status = 'Finished' WHERE date = '" + daten + "' AND status != 'finished' AND timeEnd = '" + timen + "'", conn);
+                com.ExecuteNonQuery();
+                MySqlCommand co = new MySqlCommand("UPDATE dogoperation  SET status = 'Finished' WHERE date < '" + daten + "' OR timeEnd < '" + timen + "'AND status != 'finished'", conn);
+                co.ExecuteNonQuery();
                 conn.Close();
+                refreshOperationsView();
             }
             catch (Exception ex)
             {
@@ -1088,6 +1035,8 @@ namespace WindowsFormsApplication1
         {
             try
             {
+                
+               
                 conn.Open();
                 // GROUP_CONCAT(CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.')) AS team,
                 MySqlCommand comm;
@@ -1154,6 +1103,7 @@ namespace WindowsFormsApplication1
                 }
 
                 dgvOperationsView.ClearSelection() ;
+                
 
                 conn.Close();
             }
@@ -1326,7 +1276,6 @@ namespace WindowsFormsApplication1
                 else { parameter = teamid; }
                 conn.Close();
                 addOperation(parameter);
-                conn.Open();
                 if (check == 0) //team doesnt exist
                 {
                     MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
@@ -1482,6 +1431,7 @@ namespace WindowsFormsApplication1
 
         private void button27_Click(object sender, EventArgs e)
         {
+            dgvOperationsView.Rows.Clear();
             refreshOperationsView();
         }
 
@@ -1605,22 +1555,6 @@ namespace WindowsFormsApplication1
             {
                 conn.Close();
             }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button28_Click_1(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-            emplist.Visible = false;
-            oplist.Visible = false;
         }
     }
 }
