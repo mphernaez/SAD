@@ -830,7 +830,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 
-                MySqlCommand comm = new MySqlCommand("SELECT employee.employeeID, firstname, lastname, middlename FROM profile JOIN (employee JOIN (operationteam JOIN dogoperation ON operationteam.teamID = dogoperation.operationID) ON employee.employeeID = operationteam.employeeID) ON personID = employee.employeeID WHERE employee.status = 'Active' AND position = 'Catcher' AND dogoperation.status = 'Finished'  ORDER BY lastname", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT personID, firstname, lastname, middlename FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE employee.status = 'Active' AND position = 'Catcher' ORDER BY lastname", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1002,6 +1002,7 @@ namespace WindowsFormsApplication1
 
         private void refreshOperationsView()
         {
+            dgvOperationsView.Rows.Clear();
             try
             {
                 conn.Open();
@@ -1424,12 +1425,12 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 operation = int.Parse(dgvOperationsView.Rows[e.RowIndex].Cells["operationID"].Value.ToString());
 
-                if (dgvOperationsView.Rows[e.RowIndex].Cells["status"].Value.ToString() == "Pending")
+                if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "Pending")
                 {
                     MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing' WHERE operationID = " + operation, conn);
                     comm.ExecuteNonQuery();
                 }
-                else if (dgvOperationsView.Rows[e.RowIndex].Cells["status"].Value.ToString() == "OnGoing")
+                else if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "OnGoing")
                 {
                     MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE operationID = " + operation, conn);
                     comm.ExecuteNonQuery();
