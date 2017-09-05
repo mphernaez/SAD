@@ -1247,6 +1247,7 @@ namespace WindowsFormsApplication1
 
         private void button20_Click_1(object sender, EventArgs e)
         {
+            tbOpDay.Items.Clear();
             empty = true;
             int teamid = 0;
             int empID = 0;
@@ -1515,6 +1516,7 @@ namespace WindowsFormsApplication1
         private void tbOpYear_Enter(object sender, EventArgs e)
         {
             tbOpYear.Text = "";
+            //responsiveDay();
         }
 
         private void tbStarth_Enter(object sender, EventArgs e)
@@ -1555,6 +1557,56 @@ namespace WindowsFormsApplication1
             catch (ArgumentOutOfRangeException)
             {
                 conn.Close();
+            }
+        }
+
+        private void cbOpMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbOpDay.Items.Clear();
+            tbOpDay.Enabled = true;
+            responsiveDay(int.Parse(tbOpYear.Text));
+        }
+        private void responsiveDay(int year)
+        {
+            int x;
+            if (cbOpMonth.Text == "January" || cbOpMonth.Text == "March" || cbOpMonth.Text == "May" || cbOpMonth.Text == "July" || cbOpMonth.Text == "August" || cbOpMonth.Text == "October" || cbOpMonth.Text == "December")
+            {
+                loopDay(31);
+            }
+            else if (cbOpMonth.Text == "February")
+            {
+                if (year % 4 == 0)
+                {
+                    loopDay(29);
+                }
+                else
+                {
+                    loopDay(28);
+                }
+            }
+            else
+            {
+                loopDay(30);
+            }
+        }
+
+        private void loopDay(int x)
+        {
+            int i = 1;
+            while (i <= x)
+            {
+                tbOpDay.Items.Add(i.ToString());
+                i++;
+            }
+        }
+
+        private void tbOpYear_TextChanged(object sender, EventArgs e)
+        {
+            tbOpDay.Items.Clear();
+            responsiveDay(int.Parse(tbOpYear.Text));
+            if (tbOpYear.Text.Length == 4)
+            {
+                cbOpMonth.Enabled = true;
             }
         }
     }
