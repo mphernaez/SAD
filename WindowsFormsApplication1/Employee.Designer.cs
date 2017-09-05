@@ -145,6 +145,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button26 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.repC = new System.Windows.Forms.ComboBox();
+            this.emplist = new System.Windows.Forms.ComboBox();
+            this.rep = new System.Windows.Forms.Label();
+            this.button28 = new System.Windows.Forms.Button();
+            this.oplist = new System.Windows.Forms.ComboBox();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
@@ -674,7 +679,6 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(162)))), ((int)(((byte)(80)))));
             this.panel1.Controls.Add(this.ne);
             this.panel1.Controls.Add(this.r);
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.o);
             this.panel1.Controls.Add(this.button14);
             this.panel1.Controls.Add(this.ac);
@@ -715,12 +719,19 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.oplist);
+            this.panel2.Controls.Add(this.button28);
+            this.panel2.Controls.Add(this.rep);
+            this.panel2.Controls.Add(this.emplist);
+            this.panel2.Controls.Add(this.repC);
             this.panel2.Controls.Add(this.repEmp);
-            this.panel2.Location = new System.Drawing.Point(20, 84);
+            this.panel2.Location = new System.Drawing.Point(8, 196);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1023, 543);
             this.panel2.TabIndex = 32;
             this.panel2.Visible = false;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // repEmp
             // 
@@ -871,8 +882,8 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
+            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -1882,6 +1893,58 @@
             this.button26.UseVisualStyleBackColor = false;
             this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
+            // repC
+            // 
+            this.repC.FormattingEnabled = true;
+            this.repC.Items.AddRange(new object[] {
+            "Employee",
+            "Operation"});
+            this.repC.Location = new System.Drawing.Point(143, 425);
+            this.repC.Name = "repC";
+            this.repC.Size = new System.Drawing.Size(121, 21);
+            this.repC.TabIndex = 1;
+            this.repC.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // emplist
+            // 
+            this.emplist.FormattingEnabled = true;
+            this.emplist.Location = new System.Drawing.Point(143, 465);
+            this.emplist.Name = "emplist";
+            this.emplist.Size = new System.Drawing.Size(121, 21);
+            this.emplist.TabIndex = 2;
+            // 
+            // rep
+            // 
+            this.rep.AutoSize = true;
+            this.rep.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rep.Location = new System.Drawing.Point(44, 421);
+            this.rep.Name = "rep";
+            this.rep.Size = new System.Drawing.Size(76, 25);
+            this.rep.TabIndex = 3;
+            this.rep.Text = "Report";
+            // 
+            // button28
+            // 
+            this.button28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button28.ForeColor = System.Drawing.Color.Snow;
+            this.button28.Location = new System.Drawing.Point(296, 436);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(106, 33);
+            this.button28.TabIndex = 4;
+            this.button28.Text = "View Report";
+            this.button28.UseVisualStyleBackColor = false;
+            this.button28.Click += new System.EventHandler(this.button28_Click_1);
+            // 
+            // oplist
+            // 
+            this.oplist.FormattingEnabled = true;
+            this.oplist.Location = new System.Drawing.Point(143, 465);
+            this.oplist.Name = "oplist";
+            this.oplist.Size = new System.Drawing.Size(121, 21);
+            this.oplist.TabIndex = 5;
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1889,6 +1952,7 @@
             this.AutoScrollMargin = new System.Drawing.Size(1, 1);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 763);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
@@ -1917,6 +1981,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.r)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.repEmp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.o)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ac)).EndInit();
@@ -2069,5 +2134,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn opEnd;
         private System.Windows.Forms.DataGridViewTextBoxColumn opTeam;
         private System.Windows.Forms.DataGridViewTextBoxColumn opStatus;
+        private System.Windows.Forms.ComboBox repC;
+        private System.Windows.Forms.Label rep;
+        private System.Windows.Forms.ComboBox emplist;
+        private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.ComboBox oplist;
     }
 }
