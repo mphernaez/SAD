@@ -42,8 +42,17 @@ namespace WindowsFormsApplication1
 
         private void AddDog_Load(object sender, EventArgs e)
         {
-            
-           // this.Top = 112; //262
+           
+            // this.Top = 112; //262
+        }
+        private void tmr_Tick(object sender, EventArgs e)
+        {
+            refreshStatus();
+        }
+        
+        private void refreshStatus()
+        {
+
         }
         public void trig()
         {
@@ -644,7 +653,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand comm = new MySqlCommand("SELECT operationID, time, MONTH(date) as month, YEAR(date) as year, DAY(date) as day, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT operationID, CONCAT(timeStart,' - ', timeEnd) AS time, MONTH(date) as month, YEAR(date) as year, DAY(date) as day, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
@@ -795,6 +804,11 @@ namespace WindowsFormsApplication1
                 printDocument1.DocumentName = "Dog Summary Report";
                 printDocument1.Print();
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }
