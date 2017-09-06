@@ -87,6 +87,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.newOperation = new System.Windows.Forms.Panel();
             this.pOperation = new System.Windows.Forms.Panel();
+            this.tbOpDay = new System.Windows.Forms.ComboBox();
             this.Next = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.cbOpMonth = new System.Windows.Forms.ComboBox();
@@ -106,9 +107,7 @@
             this.dgvcheck = new System.Windows.Forms.DataGridView();
             this.newTeam = new System.Windows.Forms.DataGridView();
             this.personID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Firstname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lastname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Middlename = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allEmployees = new System.Windows.Forms.DataGridView();
             this.button17 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
@@ -149,7 +148,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button26 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tbOpDay = new System.Windows.Forms.ComboBox();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
@@ -1013,6 +1011,18 @@
             this.pOperation.Size = new System.Drawing.Size(949, 149);
             this.pOperation.TabIndex = 76;
             // 
+            // tbOpDay
+            // 
+            this.tbOpDay.Enabled = false;
+            this.tbOpDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbOpDay.ForeColor = System.Drawing.Color.Black;
+            this.tbOpDay.FormattingEnabled = true;
+            this.tbOpDay.Location = new System.Drawing.Point(457, 30);
+            this.tbOpDay.Name = "tbOpDay";
+            this.tbOpDay.Size = new System.Drawing.Size(52, 28);
+            this.tbOpDay.TabIndex = 75;
+            this.tbOpDay.Text = "Day";
+            // 
             // Next
             // 
             this.Next.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
@@ -1085,8 +1095,9 @@
             "PM"});
             this.cbAMPMend.Location = new System.Drawing.Point(734, 60);
             this.cbAMPMend.Name = "cbAMPMend";
-            this.cbAMPMend.Size = new System.Drawing.Size(55, 28);
+            this.cbAMPMend.Size = new System.Drawing.Size(73, 28);
             this.cbAMPMend.TabIndex = 70;
+            this.cbAMPMend.Text = "AM/PM";
             // 
             // cbAMPMstart
             // 
@@ -1097,8 +1108,9 @@
             "PM"});
             this.cbAMPMstart.Location = new System.Drawing.Point(734, 28);
             this.cbAMPMstart.Name = "cbAMPMstart";
-            this.cbAMPMstart.Size = new System.Drawing.Size(55, 28);
+            this.cbAMPMstart.Size = new System.Drawing.Size(73, 28);
             this.cbAMPMstart.TabIndex = 69;
+            this.cbAMPMstart.Text = "AM/PM";
             // 
             // label16
             // 
@@ -1415,9 +1427,7 @@
             this.newTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.newTeam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.personID,
-            this.Firstname,
-            this.Lastname,
-            this.Middlename});
+            this.name});
             this.newTeam.GridColor = System.Drawing.Color.White;
             this.newTeam.Location = new System.Drawing.Point(518, 37);
             this.newTeam.Name = "newTeam";
@@ -1435,23 +1445,11 @@
             this.personID.ReadOnly = true;
             this.personID.Visible = false;
             // 
-            // Firstname
+            // name
             // 
-            this.Firstname.HeaderText = "Firstname";
-            this.Firstname.Name = "Firstname";
-            this.Firstname.ReadOnly = true;
-            // 
-            // Lastname
-            // 
-            this.Lastname.HeaderText = "Middlename";
-            this.Lastname.Name = "Lastname";
-            this.Lastname.ReadOnly = true;
-            // 
-            // Middlename
-            // 
-            this.Middlename.HeaderText = "Lastname";
-            this.Middlename.Name = "Middlename";
-            this.Middlename.ReadOnly = true;
+            this.name.HeaderText = "";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
             // 
             // allEmployees
             // 
@@ -1933,18 +1931,6 @@
             this.button26.UseVisualStyleBackColor = false;
             this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
-            // tbOpDay
-            // 
-            this.tbOpDay.Enabled = false;
-            this.tbOpDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbOpDay.ForeColor = System.Drawing.Color.Black;
-            this.tbOpDay.FormattingEnabled = true;
-            this.tbOpDay.Location = new System.Drawing.Point(457, 30);
-            this.tbOpDay.Name = "tbOpDay";
-            this.tbOpDay.Size = new System.Drawing.Size(52, 28);
-            this.tbOpDay.TabIndex = 75;
-            this.tbOpDay.Text = "Day";
-            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2066,10 +2052,6 @@
         private System.Windows.Forms.TextBox tbbdayday;
         private System.Windows.Forms.ComboBox cbbdaymonth;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Firstname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Lastname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Middlename;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.DataGridView dgvOperationsView;
         private System.Windows.Forms.Button button23;
@@ -2139,5 +2121,7 @@
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.ComboBox oplist;
         private System.Windows.Forms.ComboBox tbOpDay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
     }
 }

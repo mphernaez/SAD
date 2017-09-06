@@ -401,16 +401,14 @@ namespace WindowsFormsApplication1
 
         }
         private int teamempid;
-        private string teamfname;
-        private string teamlname;
-        private string teammname;
+        private string teamname;
         private int count;
         private Boolean empty = true;
         private void button17_Click(object sender, EventArgs e)
         {
             Boolean done = false;
 
-            if (teamfname == "")
+            if (teamname == "")
             {
                 MessageBox.Show("Please select an employee");
             }
@@ -418,19 +416,17 @@ namespace WindowsFormsApplication1
             {
                 if (done == false)
                 {
-                    this.newTeam.Rows.Add(teamempid, teamfname, teammname, teamlname);
+                    this.newTeam.Rows.Add(teamempid, teamname);
                     foreach (DataGridViewRow row in allEmployees.SelectedRows)
                     {
                         allEmployees.Rows.RemoveAt(row.Index);
                     }
-                    newTeam.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    newTeam.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                     count = count + 1;
                     empty = false;
 
-                    teamfname = "";
-                    teamlname = "";
-                    teammname = "";
+                    teamname = "";
                     teamempid = 0;
                 }
             }
@@ -836,25 +832,26 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 
-                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, lastname, firstname, middlename FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID JOIN dogoperation ON dogoperation.teamID = operationteam.teamID WHERE CASE WHEN date = '" + d+"' THEN (timeEnd < '"+ts+"' AND timeEnd < '"+te+"') OR (timeStart > '"+ts+"' AND timeStart > '"+te+"') AND position = 'Catcher' AND employee.status = 'Active' ELSE position = 'Catcher' AND employee.status = 'Active' END", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, lastname, firstname, middlename, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID JOIN dogoperation ON dogoperation.teamID = operationteam.teamID WHERE date = '" + d +"' AND (timeEnd < '"+ts+"' AND timeEnd < '"+te+"') OR (timeStart > '"+ts+"' AND timeStart > '"+te+"') AND position = 'Catcher' AND employee.status = 'Active' ELSE position = 'Catcher' AND employee.status = 'Active' END", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
-                MySqlCommand com = new MySqlCommand("SELECT personID, lastname, firstname, middlename FROM profile JOIN employee ON profile.personID = employee.employeeID   WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active'", conn);
+                MySqlCommand com = new MySqlCommand("SELECT personID, lastname, firstname, middlename, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID   WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active'", conn);
                 MySqlDataAdapter adpp = new MySqlDataAdapter(com);
                 DataTable dtt = new DataTable();
                 adpp.Fill(dtt);
                 dt.Merge(dtt);
+
                 allEmployees.DataSource = dt;
+
                 allEmployees.Columns["personID"].Visible = false;
-                allEmployees.Columns["lastname"].HeaderText = "Lastname";
-                allEmployees.Columns["firstname"].HeaderText = "Firtname";
-                allEmployees.Columns["middlename"].HeaderText = "Middlename";
-
-
-                allEmployees.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                allEmployees.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                allEmployees.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                allEmployees.Columns["lastname"].Visible = false;
+                allEmployees.Columns["firstname"].Visible = false;
+                allEmployees.Columns["middlename"].Visible = false;
+                allEmployees.Columns["name"].HeaderText = "Currently Available Employees";
+                
+                allEmployees.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                
                 int i = 0;
                 int empid;
 
@@ -885,15 +882,14 @@ namespace WindowsFormsApplication1
                 
             }
         }
-
+    
         private void allEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (int.Parse(allEmployees.Rows[e.RowIndex].Cells["personID"].Value.ToString()) != 0)
             {
                 teamempid = int.Parse(allEmployees.Rows[e.RowIndex].Cells["personID"].Value.ToString());
-                teamfname = allEmployees.Rows[e.RowIndex].Cells["firstname"].Value.ToString();
-                teamlname = allEmployees.Rows[e.RowIndex].Cells["lastname"].Value.ToString();
-                teammname = allEmployees.Rows[e.RowIndex].Cells["middlename"].Value.ToString();
+                teamname = allEmployees.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                
             }
         }
 
@@ -1046,11 +1042,11 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm;
                 if (date == null)
                 {
-                    comm = new MySqlCommand("SELECT teamID, operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY date, timeStart", conn);
+                    comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY date, timeStart", conn);
                 }
                 else
                 {
-                    comm = new MySqlCommand("SELECT teamID, operationID, date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + date + "' ORDER BY  date, timeStart", conn);
+                    comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + date + "' ORDER BY  date, timeStart", conn);
                     date = null;
                 }
                 
@@ -1283,11 +1279,13 @@ namespace WindowsFormsApplication1
                 addOperation(parameter);
                 if (check == 0) //team doesnt exist
                 {
+                    conn.Open();
                     MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
                     commm.ExecuteNonQuery();
                 }
                 else
                 {
+                    conn.Open();
                     MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + check + ", " + empID + ")", conn);
                     commm.ExecuteNonQuery();
                 }
@@ -1300,8 +1298,28 @@ namespace WindowsFormsApplication1
                 conn.Close();
                 MessageBox.Show(ex.ToString());
             }
+            clearAddOperation();
 
+        }
 
+        private void clearAddOperation()
+        {
+            allEmployees.Refresh();
+            pOperation.Enabled = true;
+            pteam.Enabled = false;
+            tbOpYear.Text = "Year";
+            cbOpMonth.Text = "Month";
+            tbOpDay.Items.Clear();
+            tbOpDay.Text = "Day";
+            cbLocation.Text = "Location";
+            tbStarth.Text = "00";
+            tbStartm.Text = "00";
+            tbEndh.Text = "00";
+            tbEndm.Text = "00";
+            cbAMPMend.Text = "AM/PM";
+            cbAMPMstart.Text = "AM/PM";
+            cbOpMonth.Enabled = false;
+            tbOpDay.Enabled = false;
         }
         private int checkIfTeamExists(int[] emps, int max) //emps = new operation team
         {
@@ -1488,28 +1506,19 @@ namespace WindowsFormsApplication1
         int location;
         private void button28_Click(object sender, EventArgs e)
         {
-            if(cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location")
+            if(cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location" && cbAMPMend.Text != "AM/PM" && cbAMPMstart.Text != "AM/PM")
             {
                 pteam.Enabled = true;
                 pOperation.Enabled = false;
-                if (int.Parse(tbStarth.Text) < 10)
+                if (int.Parse(tbStarth.Text) < 10 && tbStarth.Text.Substring(0, 1) != "0")
                 {
                     tbStarth.Text = "0" + tbStarth.Text;
                 }
-                if (int.Parse(tbStartm.Text) < 10)
+                if (int.Parse(tbStartm.Text) < 10 && tbStartm.Text.Substring(0, 1) != "0")
                 {
                     tbStartm.Text = "0" + tbStartm.Text;
                 }
-                if (int.Parse(tbEndh.Text) < 10)
-                {
-                    tbEndh.Text = "0" + tbEndh.Text;
-                }
-                if (int.Parse(tbEndm.Text) < 10)
-                {
-                    tbEndm.Text = "0" + tbEndm.Text;
-                }
-
-                    d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
+                d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
                 ts = tbStarth.Text + ":" + tbStartm.Text;
                 te = tbEndh.Text + ":" + tbEndm.Text;
                 location = cbLocation.SelectedIndex;
