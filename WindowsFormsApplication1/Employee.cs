@@ -832,7 +832,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 
-                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, lastname, firstname, middlename, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID JOIN dogoperation ON dogoperation.teamID = operationteam.teamID WHERE CASE WHEN date = '" + d +"' THEN timeEnd < '"+ts+"' OR timeStart > '"+te+ "' AND position = 'Catcher' AND employee.status = 'Active' ELSE position = 'Catcher' AND employee.status = 'Active' END", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, lastname, firstname, middlename, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID JOIN dogoperation ON dogoperation.teamID = operationteam.teamID WHERE CASE WHEN date = '"+ d + "' THEN SUBSTRING(timeEnd, 1, 2) < '"+ts.Substring(0, 2)+"' AND SUBSTRING(timeStart, 1, 2) > '"+ te.Substring(0, 2) +"' AND position = 'Catcher' AND employee.status = 'Active'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1539,8 +1539,8 @@ namespace WindowsFormsApplication1
                     tbEndm.Text = "0" + tbEndm.Text;
                 }
                 d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
-                ts = tbStarth.Text + ":" + tbStartm.Text;
-                te = tbEndh.Text + ":" + tbEndm.Text;
+                ts = hs.ToString() + ":" + tbStartm.Text;
+                te = he.ToString() + ":" + tbEndm.Text;
                 location = cbLocation.SelectedIndex;
                 //MessageBox.Show(d + ts + te + location);
 
