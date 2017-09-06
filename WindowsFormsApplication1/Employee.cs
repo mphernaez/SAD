@@ -838,7 +838,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 
-                MySqlCommand comm = new MySqlCommand("SELECT employee.employeeID, firstname, lastname, middlename FROM profile JOIN (employee JOIN (operationteam JOIN dogoperation ON operationteam.teamID = dogoperation.operationID) ON employee.employeeID = operationteam.employeeID) ON personID = employee.employeeID WHERE employee.status = 'Active' AND position = 'Catcher' AND dogoperation.status = 'Finished'  ORDER BY lastname", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT personID, firstname, lastname, middlename FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE employee.status = 'Active' AND position = 'Catcher' ORDER BY lastname", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1033,6 +1033,7 @@ namespace WindowsFormsApplication1
         }
         private void refreshOperationsView()
         {
+            dgvOperationsView.Rows.Clear();
             try
             {
                 
@@ -1246,6 +1247,7 @@ namespace WindowsFormsApplication1
 
         private void button20_Click_1(object sender, EventArgs e)
         {
+            tbOpDay.Items.Clear();
             empty = true;
             int teamid = 0;
             int empID = 0;
@@ -1458,12 +1460,12 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 operation = int.Parse(dgvOperationsView.Rows[e.RowIndex].Cells["operationID"].Value.ToString());
 
-                if (dgvOperationsView.Rows[e.RowIndex].Cells["status"].Value.ToString() == "Pending")
+                if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "Pending")
                 {
                     MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing' WHERE operationID = " + operation, conn);
                     comm.ExecuteNonQuery();
                 }
-                else if (dgvOperationsView.Rows[e.RowIndex].Cells["status"].Value.ToString() == "OnGoing")
+                else if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "OnGoing")
                 {
                     MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE operationID = " + operation, conn);
                     comm.ExecuteNonQuery();
@@ -1514,6 +1516,7 @@ namespace WindowsFormsApplication1
         private void tbOpYear_Enter(object sender, EventArgs e)
         {
             tbOpYear.Text = "";
+            //responsiveDay();
         }
 
         private void tbStarth_Enter(object sender, EventArgs e)
@@ -1554,6 +1557,56 @@ namespace WindowsFormsApplication1
             catch (ArgumentOutOfRangeException)
             {
                 conn.Close();
+            }
+        }
+
+        private void cbOpMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbOpDay.Items.Clear();
+            tbOpDay.Enabled = true;
+            responsiveDay(int.Parse(tbOpYear.Text));
+        }
+        private void responsiveDay(int year)
+        {
+            int x;
+            if (cbOpMonth.Text == "January" || cbOpMonth.Text == "March" || cbOpMonth.Text == "May" || cbOpMonth.Text == "July" || cbOpMonth.Text == "August" || cbOpMonth.Text == "October" || cbOpMonth.Text == "December")
+            {
+                loopDay(31);
+            }
+            else if (cbOpMonth.Text == "February")
+            {
+                if (year % 4 == 0)
+                {
+                    loopDay(29);
+                }
+                else
+                {
+                    loopDay(28);
+                }
+            }
+            else
+            {
+                loopDay(30);
+            }
+        }
+
+        private void loopDay(int x)
+        {
+            int i = 1;
+            while (i <= x)
+            {
+                tbOpDay.Items.Add(i.ToString());
+                i++;
+            }
+        }
+
+        private void tbOpYear_TextChanged(object sender, EventArgs e)
+        {
+            tbOpDay.Items.Clear();
+            responsiveDay(int.Parse(tbOpYear.Text));
+            if (tbOpYear.Text.Length == 4)
+            {
+                cbOpMonth.Enabled = true;
             }
         }
     }

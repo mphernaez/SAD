@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand com = new MySqlCommand("SELECT CONCAT(CONCAT(firstname, ' ', middlename, ' ', lastname) AS name) AS name, gender, birthdate, contactNumber, address, position, status FROM profile INNER JOIN employee ON employee.employeeID = profile.personID", conn);
+                MySqlCommand com = new MySqlCommand("SELECT CONCAT(firstname, ' ', middlename, ' ', lastname) AS name, gender, birthdate, contactNumber, address, position, status FROM profile INNER JOIN employee ON employee.employeeID = profile.personID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(com);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);

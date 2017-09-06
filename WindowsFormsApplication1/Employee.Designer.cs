@@ -101,7 +101,6 @@
             this.tbStartm = new System.Windows.Forms.TextBox();
             this.tbEndh = new System.Windows.Forms.TextBox();
             this.tbStarth = new System.Windows.Forms.TextBox();
-            this.tbOpDay = new System.Windows.Forms.TextBox();
             this.cbLocation = new System.Windows.Forms.ComboBox();
             this.pteam = new System.Windows.Forms.Panel();
             this.dgvcheck = new System.Windows.Forms.DataGridView();
@@ -150,6 +149,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button26 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tbOpDay = new System.Windows.Forms.ComboBox();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
@@ -992,6 +992,7 @@
             // 
             // pOperation
             // 
+            this.pOperation.Controls.Add(this.tbOpDay);
             this.pOperation.Controls.Add(this.Next);
             this.pOperation.Controls.Add(this.label9);
             this.pOperation.Controls.Add(this.cbOpMonth);
@@ -1006,7 +1007,6 @@
             this.pOperation.Controls.Add(this.tbStartm);
             this.pOperation.Controls.Add(this.tbEndh);
             this.pOperation.Controls.Add(this.tbStarth);
-            this.pOperation.Controls.Add(this.tbOpDay);
             this.pOperation.Controls.Add(this.cbLocation);
             this.pOperation.Location = new System.Drawing.Point(25, 12);
             this.pOperation.Name = "pOperation";
@@ -1039,8 +1039,9 @@
             // 
             // cbOpMonth
             // 
+            this.cbOpMonth.Enabled = false;
             this.cbOpMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbOpMonth.ForeColor = System.Drawing.Color.Gray;
+            this.cbOpMonth.ForeColor = System.Drawing.Color.Black;
             this.cbOpMonth.FormattingEnabled = true;
             this.cbOpMonth.Items.AddRange(new object[] {
             "January",
@@ -1055,22 +1056,24 @@
             "October",
             "November",
             "December"});
-            this.cbOpMonth.Location = new System.Drawing.Point(260, 30);
+            this.cbOpMonth.Location = new System.Drawing.Point(322, 30);
             this.cbOpMonth.Name = "cbOpMonth";
-            this.cbOpMonth.Size = new System.Drawing.Size(93, 28);
+            this.cbOpMonth.Size = new System.Drawing.Size(128, 28);
             this.cbOpMonth.TabIndex = 72;
             this.cbOpMonth.Text = "Month";
+            this.cbOpMonth.SelectedIndexChanged += new System.EventHandler(this.cbOpMonth_SelectedIndexChanged);
             // 
             // tbOpYear
             // 
-            this.tbOpYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbOpYear.ForeColor = System.Drawing.Color.Gray;
-            this.tbOpYear.Location = new System.Drawing.Point(417, 31);
+            this.tbOpYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbOpYear.ForeColor = System.Drawing.Color.Black;
+            this.tbOpYear.Location = new System.Drawing.Point(252, 31);
             this.tbOpYear.Name = "tbOpYear";
-            this.tbOpYear.Size = new System.Drawing.Size(65, 26);
+            this.tbOpYear.Size = new System.Drawing.Size(65, 27);
             this.tbOpYear.TabIndex = 71;
             this.tbOpYear.Text = "Year";
             this.tbOpYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbOpYear.TextChanged += new System.EventHandler(this.tbOpYear_TextChanged);
             this.tbOpYear.Enter += new System.EventHandler(this.tbOpYear_Enter);
             // 
             // cbAMPMend
@@ -1184,18 +1187,6 @@
             this.tbStarth.Text = "00";
             this.tbStarth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbStarth.Enter += new System.EventHandler(this.tbStarth_Enter);
-            // 
-            // tbOpDay
-            // 
-            this.tbOpDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbOpDay.ForeColor = System.Drawing.Color.Gray;
-            this.tbOpDay.Location = new System.Drawing.Point(359, 31);
-            this.tbOpDay.Name = "tbOpDay";
-            this.tbOpDay.Size = new System.Drawing.Size(52, 26);
-            this.tbOpDay.TabIndex = 60;
-            this.tbOpDay.Text = "Day";
-            this.tbOpDay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbOpDay.Enter += new System.EventHandler(this.tbOpDate_Enter);
             // 
             // cbLocation
             // 
@@ -1942,6 +1933,18 @@
             this.button26.UseVisualStyleBackColor = false;
             this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
+            // tbOpDay
+            // 
+            this.tbOpDay.Enabled = false;
+            this.tbOpDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbOpDay.ForeColor = System.Drawing.Color.Black;
+            this.tbOpDay.FormattingEnabled = true;
+            this.tbOpDay.Location = new System.Drawing.Point(457, 30);
+            this.tbOpDay.Name = "tbOpDay";
+            this.tbOpDay.Size = new System.Drawing.Size(52, 28);
+            this.tbOpDay.TabIndex = 75;
+            this.tbOpDay.Text = "Day";
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2083,7 +2086,6 @@
         private System.Windows.Forms.TextBox tbStartm;
         private System.Windows.Forms.TextBox tbEndh;
         private System.Windows.Forms.TextBox tbStarth;
-        private System.Windows.Forms.TextBox tbOpDay;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.ComboBox cbLocation;
         private System.Windows.Forms.DataGridView repEmp;
@@ -2136,5 +2138,6 @@
         private System.Windows.Forms.ComboBox emplist;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.ComboBox oplist;
+        private System.Windows.Forms.ComboBox tbOpDay;
     }
 }
