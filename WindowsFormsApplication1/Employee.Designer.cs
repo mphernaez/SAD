@@ -199,7 +199,7 @@
             this.attendance.Controls.Add(this.dgvAttendanceOut);
             this.attendance.Controls.Add(this.dgvAttendanceIn);
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attendance.Location = new System.Drawing.Point(27, 196);
+            this.attendance.Location = new System.Drawing.Point(13, 196);
             this.attendance.Name = "attendance";
             this.attendance.Size = new System.Drawing.Size(1016, 543);
             this.attendance.TabIndex = 44;
@@ -280,6 +280,7 @@
             this.dgvAttendanceOut.Size = new System.Drawing.Size(982, 315);
             this.dgvAttendanceOut.TabIndex = 31;
             this.dgvAttendanceOut.Visible = false;
+            this.dgvAttendanceOut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellClick);
             this.dgvAttendanceOut.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellContentDoubleClick);
             this.dgvAttendanceOut.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_RowEnter);
             // 
@@ -2026,10 +2027,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
+            this.Controls.Add(this.addEmployee);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;

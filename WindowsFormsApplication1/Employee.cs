@@ -288,7 +288,8 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', middlename) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance) ORDER BY lastname ASC", conn); //missing: refresh everyday (in restrictions, date should be now)
+                String date = DateTime.Now.ToString("yyyy-MM-dd");
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', middlename) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance WHERE SUBSTRING(date, 1, 10) = '" + date + "') ORDER BY lastname ASC", conn); //missing: refresh everyday (in restrictions, date should be now)
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -317,7 +318,6 @@ namespace WindowsFormsApplication1
         private int employeeID;
         private void dgvProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             try
             {
                 conn.Open();
@@ -742,7 +742,8 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', middlename) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID IN (SELECT attendance.employeeID FROM attendance) ORDER BY lastname", conn); //missing: refresh everyday (in restrictions, date should be now)
+                String date = DateTime.Now.ToString("yyyy-MM-dd");
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance WHERE type = 0 AND SUBSTRING(date, 1, 11) = '" + date + "') ORDER BY lastname", conn); //missing: refresh everyday (in restrictions, date should be now)
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -763,9 +764,11 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
                 conn.Close();
+                MessageBox.Show(ex.ToString());
+                
             }
+            
         }
 
         private void tbmname_MouseClick(object sender, MouseEventArgs e)
@@ -1733,6 +1736,26 @@ namespace WindowsFormsApplication1
         private void dgvReactivate_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             raempID = int.Parse(dgvReactivate.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+        }
+
+        private void dgvAttendanceOut_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                employeeID = int.Parse(dgvAttendanceOut.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+                string att = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+
+                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type) VALUES('" + att + "', " + employeeID + ", " + "0" + ") ", conn);
+                comm.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Successfully Recorded Attendance!");
+                refreshAttendanceOut();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                conn.Close();
+            }
         }
     }
 }
