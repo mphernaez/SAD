@@ -506,7 +506,7 @@ namespace WindowsFormsApplication1
 
                         int locID = int.Parse(dt.Rows[0]["locationID"].ToString());
                         
-                        comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, timeStart, timeEnd, status) VALUES ('" + teamIDs + "' , '" + locID + "', '" + date + "', '" + timeStart + "', '" + timeEnd + "', 'Pending')", conn);
+                        comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, timeStart, timeEnd, status) VALUES ('" + teamIDs + "' , '" + locID + "', '" + date + "', '" + ts + "', '" + te + "', 'Pending')", conn);
                         comm.ExecuteNonQuery();
 
                         MessageBox.Show("Operation Added Successfully");
@@ -832,7 +832,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 
-                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, lastname, firstname, middlename, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID JOIN dogoperation ON dogoperation.teamID = operationteam.teamID WHERE date = '" + d +"' AND (timeEnd < '"+ts+"' AND timeEnd < '"+te+"') OR (timeStart > '"+ts+"' AND timeStart > '"+te+"') AND position = 'Catcher' AND employee.status = 'Active' ELSE position = 'Catcher' AND employee.status = 'Active' END", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, lastname, firstname, middlename, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID JOIN dogoperation ON dogoperation.teamID = operationteam.teamID WHERE CASE WHEN date = '" + d +"' THEN timeEnd < '"+ts+"' OR timeStart > '"+te+ "' AND position = 'Catcher' AND employee.status = 'Active' ELSE position = 'Catcher' AND employee.status = 'Active' END", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1510,18 +1510,39 @@ namespace WindowsFormsApplication1
             {
                 pteam.Enabled = true;
                 pOperation.Enabled = false;
-                if (int.Parse(tbStarth.Text) < 10 && tbStarth.Text.Substring(0, 1) != "0")
+                int hs = int.Parse(tbStarth.Text), he = int.Parse(tbEndh.Text);
+               
+                if(cbAMPMstart.Text == "PM")
                 {
-                    tbStarth.Text = "0" + tbStarth.Text;
+                    hs = hs + 12;
                 }
-                if (int.Parse(tbStartm.Text) < 10 && tbStartm.Text.Substring(0, 1) != "0")
+                if(cbAMPMend.Text == "PM")
+                {
+                    he = he + 12;
+                }
+                if (hs < 10 )
+                {
+                    tbStarth.Text = "0" + hs.ToString();
+                }
+                if (he < 10)
+                {
+                    tbEndh.Text = "0" + he.ToString();
+                }
+
+                if(int.Parse(tbStartm.Text) < 10 && tbStartm.Text.Substring(0, 1) != "0")
                 {
                     tbStartm.Text = "0" + tbStartm.Text;
+                }
+
+                if (int.Parse(tbEndm.Text) < 10 && tbEndm.Text.Substring(0, 1) != "0")
+                {
+                    tbEndm.Text = "0" + tbEndm.Text;
                 }
                 d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
                 ts = tbStarth.Text + ":" + tbStartm.Text;
                 te = tbEndh.Text + ":" + tbEndm.Text;
                 location = cbLocation.SelectedIndex;
+                //MessageBox.Show(d + ts + te + location);
 
                 refreshTeam();
             }
