@@ -171,9 +171,7 @@ namespace WindowsFormsApplication1
         {
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
-            
             attendance.Visible = false;
-            
             panel2.Visible = true;
             ne.Visible = false;
             a.Visible = false;
@@ -181,6 +179,9 @@ namespace WindowsFormsApplication1
             o.Visible = false;
             r.Visible = true;
             repEmp.Visible = true;
+
+            oplist.Visible = false;
+            emplist.Visible = false;
 
             try
             {
@@ -1756,6 +1757,45 @@ namespace WindowsFormsApplication1
             {
                 conn.Close();
             }
+        }
+
+        private void repC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (repC.Text == "Employee")
+            {
+                oplist.Visible = false;
+                emplist.Visible = true;
+
+                try
+                {
+                    conn.Open();
+                   // MySqlCommand comm = new MySqlCommand("SELECT lastname, firstname FROM profile INNER JOIN attendance ON employee.employeeID = attendance.employeeID WHERE employeeID = *something* (dgv or combobox ang option na employee name?)")
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                }
+            }
+            else if (repC.Text == "Operation")
+            {
+                emplist.Visible = false;
+                oplist.Visible = true;
+            }
+        }
+
+        private void oplist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cbLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -81,7 +81,7 @@
             this.oplist = new System.Windows.Forms.ComboBox();
             this.button28 = new System.Windows.Forms.Button();
             this.rep = new System.Windows.Forms.Label();
-            this.emplist = new System.Windows.Forms.ComboBox();
+            this.datetimel = new System.Windows.Forms.ComboBox();
             this.repC = new System.Windows.Forms.ComboBox();
             this.repEmp = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -153,6 +153,7 @@
             this.button21 = new System.Windows.Forms.Button();
             this.DogCatchingOperation = new System.Windows.Forms.Panel();
             this.button31 = new System.Windows.Forms.Button();
+            this.emplist = new System.Windows.Forms.ComboBox();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
@@ -313,9 +314,9 @@
             this.addEmployee.Controls.Add(this.button12);
             this.addEmployee.Controls.Add(this.button11);
             this.addEmployee.Controls.Add(this.label2);
+            this.addEmployee.Controls.Add(this.addPanel);
             this.addEmployee.Controls.Add(this.pnlArchive);
             this.addEmployee.Controls.Add(this.editPanel);
-            this.addEmployee.Controls.Add(this.addPanel);
             this.addEmployee.Location = new System.Drawing.Point(20, 196);
             this.addEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addEmployee.Name = "addEmployee";
@@ -914,10 +915,11 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.emplist);
             this.panel2.Controls.Add(this.oplist);
             this.panel2.Controls.Add(this.button28);
             this.panel2.Controls.Add(this.rep);
-            this.panel2.Controls.Add(this.emplist);
+            this.panel2.Controls.Add(this.datetimel);
             this.panel2.Controls.Add(this.repC);
             this.panel2.Controls.Add(this.repEmp);
             this.panel2.Location = new System.Drawing.Point(8, 196);
@@ -925,14 +927,16 @@
             this.panel2.Size = new System.Drawing.Size(1023, 543);
             this.panel2.TabIndex = 32;
             this.panel2.Visible = false;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // oplist
             // 
             this.oplist.FormattingEnabled = true;
-            this.oplist.Location = new System.Drawing.Point(143, 465);
+            this.oplist.Location = new System.Drawing.Point(143, 485);
             this.oplist.Name = "oplist";
-            this.oplist.Size = new System.Drawing.Size(121, 21);
+            this.oplist.Size = new System.Drawing.Size(199, 21);
             this.oplist.TabIndex = 5;
+            this.oplist.SelectedIndexChanged += new System.EventHandler(this.oplist_SelectedIndexChanged);
             // 
             // button28
             // 
@@ -940,7 +944,7 @@
             this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button28.ForeColor = System.Drawing.Color.Snow;
-            this.button28.Location = new System.Drawing.Point(296, 436);
+            this.button28.Location = new System.Drawing.Point(369, 442);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(106, 33);
             this.button28.TabIndex = 4;
@@ -957,13 +961,14 @@
             this.rep.TabIndex = 3;
             this.rep.Text = "Report";
             // 
-            // emplist
+            // datetimel
             // 
-            this.emplist.FormattingEnabled = true;
-            this.emplist.Location = new System.Drawing.Point(143, 465);
-            this.emplist.Name = "emplist";
-            this.emplist.Size = new System.Drawing.Size(121, 21);
-            this.emplist.TabIndex = 2;
+            this.datetimel.FormattingEnabled = true;
+            this.datetimel.Location = new System.Drawing.Point(143, 457);
+            this.datetimel.Name = "datetimel";
+            this.datetimel.Size = new System.Drawing.Size(199, 21);
+            this.datetimel.TabIndex = 2;
+            this.datetimel.Text = "Date and Time";
             // 
             // repC
             // 
@@ -973,8 +978,10 @@
             "Operation"});
             this.repC.Location = new System.Drawing.Point(143, 425);
             this.repC.Name = "repC";
-            this.repC.Size = new System.Drawing.Size(121, 21);
+            this.repC.Size = new System.Drawing.Size(199, 21);
             this.repC.TabIndex = 1;
+            this.repC.Text = "Type";
+            this.repC.SelectedIndexChanged += new System.EventHandler(this.repC_SelectedIndexChanged);
             // 
             // repEmp
             // 
@@ -1818,6 +1825,7 @@
             this.cbLocation.Size = new System.Drawing.Size(229, 28);
             this.cbLocation.TabIndex = 58;
             this.cbLocation.Text = "Location";
+            this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
             // 
             // pteam
             // 
@@ -2017,6 +2025,15 @@
             this.button31.Text = "Activities";
             this.button31.UseVisualStyleBackColor = false;
             // 
+            // emplist
+            // 
+            this.emplist.FormattingEnabled = true;
+            this.emplist.Location = new System.Drawing.Point(143, 485);
+            this.emplist.Name = "emplist";
+            this.emplist.Size = new System.Drawing.Size(199, 21);
+            this.emplist.TabIndex = 5;
+            this.emplist.SelectedIndexChanged += new System.EventHandler(this.oplist_SelectedIndexChanged);
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2027,10 +2044,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.attendance);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -2160,7 +2177,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ComboBox repC;
         private System.Windows.Forms.Label rep;
-        private System.Windows.Forms.ComboBox emplist;
+        private System.Windows.Forms.ComboBox datetimel;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.ComboBox oplist;
         private System.Windows.Forms.Panel pnlArchive;
@@ -2216,5 +2233,6 @@
         private System.Windows.Forms.Button button30;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button31;
+        private System.Windows.Forms.ComboBox emplist;
     }
 }
