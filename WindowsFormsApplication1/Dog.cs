@@ -135,7 +135,7 @@ namespace WindowsFormsApplication1
                 {
                     conn.Open();
 
-                    MySqlCommand com = new MySqlCommand("SELECT COUNT(*) FROM dogprofile WHERE status = 'unclaimed'", conn);
+                    MySqlCommand com = new MySqlCommand("SELECT COUNT(*) FROM dogprofile WHERE dogprofile.status = 'unclaimed'", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(com);
                     System.Data.DataTable dt = new System.Data.DataTable();
                     adp.Fill(dt);
@@ -144,7 +144,7 @@ namespace WindowsFormsApplication1
                     Boolean stop = false;
                     for(int x = 0; x < y && stop == false; x++)
                     {
-                        MySqlCommand comm = new MySqlCommand("SELECT breed, color, gender, otherDesc FROM dogprofile WHERE status = 'unclaimed'", conn);
+                        MySqlCommand comm = new MySqlCommand("SELECT breed, color, gender, otherDesc FROM dogprofile WHERE dogprofile.status = 'unclaimed'", conn);
                         MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
                         System.Data.DataTable data = new System.Data.DataTable();
                         adpt.Fill(data);
@@ -450,7 +450,7 @@ namespace WindowsFormsApplication1
                 {
                     conn.Open();
 
-                    MySqlCommand comm = new MySqlCommand("UPDATE dogprofile SET status = 'euthanized' WHERE dogID = " + dogID, conn);
+                    MySqlCommand comm = new MySqlCommand("UPDATE dogprofile SET dogprofile.status = 'euthanized' WHERE dogID = " + dogID, conn);
                     comm.ExecuteNonQuery();
                     
 
@@ -549,7 +549,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, SUBSTRING(date, 1, 11) AS date, CONCAT(timeStart, '-', timeEnd) AS time, status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
+                MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, SUBSTRING(date, 1, 11) AS date, CONCAT(timeStart, '-', timeEnd) AS time, dogprofile.status AS status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(com);
                 System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
