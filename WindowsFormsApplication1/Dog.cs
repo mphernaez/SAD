@@ -678,7 +678,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand comm = new MySqlCommand("UPDATE dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID SET status = 'euthanized' WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND status = 'unclaimed'", conn);
+                MySqlCommand comm = new MySqlCommand("UPDATE dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID SET dogprofile.status = 'euthanized' WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND dogprofile.status = 'unclaimed'", conn);
                 comm.ExecuteNonQuery();
                 MessageBox.Show("Successfully Euthanized All!");
 
@@ -715,7 +715,7 @@ namespace WindowsFormsApplication1
 
         private void button13_Click(object sender, EventArgs e)
         {
-            home.emp.Show();
+            home.openEmp();
             this.Hide();
         }
 
@@ -729,7 +729,7 @@ namespace WindowsFormsApplication1
 
         private void button12_Click(object sender, EventArgs e)
         {
-            home.inv.Show();
+            home.openInv();
             this.Hide();
         }
 
