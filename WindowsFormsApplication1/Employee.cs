@@ -423,9 +423,7 @@ namespace WindowsFormsApplication1
                     {
                         allEmployees.Rows.RemoveAt(row.Index);
                     }
-                    newTeam.Columns["Lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    newTeam.Columns["Firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    newTeam.Columns["Middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    newTeam.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                     count = count + 1;
                     empty = false;
@@ -838,16 +836,21 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 
-                MySqlCommand comm = new MySqlCommand("SELECT personID, firstname, lastname, middlename FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE employee.status = 'Active' AND position = 'Catcher' ORDER BY lastname", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, lastname, firstname, middlename FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID JOIN dogoperation ON dogoperation.teamID = operationteam.teamID WHERE CASE WHEN date = '" + d+"' THEN (timeEnd > '"+ts+"' AND timeEnd > '"+te+"') OR (timeStart < '"+ts+"' AND timeStart < '"+te+"') AND position = 'Catcher' AND employee.status = 'Active' ELSE position = 'Catcher' AND employee.status = 'Active' END", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
-
+                MySqlCommand com = new MySqlCommand("SELECT personID, lastname, firstname, middlename FROM profile JOIN employee ON profile.personID = employee.employeeID   WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active'", conn);
+                MySqlDataAdapter adpp = new MySqlDataAdapter(com);
+                DataTable dtt = new DataTable();
+                adpp.Fill(dtt);
+                dt.Merge(dtt);
                 allEmployees.DataSource = dt;
                 allEmployees.Columns["personID"].Visible = false;
                 allEmployees.Columns["lastname"].HeaderText = "Lastname";
-                allEmployees.Columns["firstname"].HeaderText = "Firstname";
+                allEmployees.Columns["firstname"].HeaderText = "Firtname";
                 allEmployees.Columns["middlename"].HeaderText = "Middlename";
+
 
                 allEmployees.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 allEmployees.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -1489,7 +1492,24 @@ namespace WindowsFormsApplication1
             {
                 pteam.Enabled = true;
                 pOperation.Enabled = false;
-                d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
+                if (int.Parse(tbStarth.Text) < 10)
+                {
+                    tbStarth.Text = "0" + tbStarth.Text;
+                }
+                if (int.Parse(tbStartm.Text) < 10)
+                {
+                    tbStartm.Text = "0" + tbStartm.Text;
+                }
+                if (int.Parse(tbEndh.Text) < 10)
+                {
+                    tbEndh.Text = "0" + tbEndh.Text;
+                }
+                if (int.Parse(tbEndm.Text) < 10)
+                {
+                    tbEndm.Text = "0" + tbEndm.Text;
+                }
+
+                    d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
                 ts = tbStarth.Text + ":" + tbStartm.Text;
                 te = tbEndh.Text + ":" + tbEndm.Text;
                 location = cbLocation.SelectedIndex;
@@ -1603,7 +1623,7 @@ namespace WindowsFormsApplication1
         private void tbOpYear_TextChanged(object sender, EventArgs e)
         {
             tbOpDay.Items.Clear();
-            responsiveDay(int.Parse(tbOpYear.Text));
+            //responsiveDay(int.Parse(tbOpYear.Text));
             if (tbOpYear.Text.Length == 4)
             {
                 cbOpMonth.Enabled = true;
