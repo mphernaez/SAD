@@ -67,7 +67,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.time = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.claimRBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.breeds = new System.Windows.Forms.Label();
@@ -77,13 +76,14 @@
             this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.printPreviewDialogCR = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentCR = new System.Drawing.Printing.PrintDocument();
+            this.claimRBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.claimRBindingSource)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.claimRBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label19
@@ -300,41 +300,10 @@
             // 
             // tbDay
             // 
+            this.tbDay.Enabled = false;
             this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDay.FormattingEnabled = true;
-            this.tbDay.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31"});
-            this.tbDay.Location = new System.Drawing.Point(174, 174);
+            this.tbDay.Location = new System.Drawing.Point(244, 172);
             this.tbDay.Name = "tbDay";
             this.tbDay.Size = new System.Drawing.Size(51, 28);
             this.tbDay.TabIndex = 34;
@@ -353,15 +322,17 @@
             // tbYear
             // 
             this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbYear.Location = new System.Drawing.Point(229, 175);
+            this.tbYear.Location = new System.Drawing.Point(92, 173);
             this.tbYear.Name = "tbYear";
             this.tbYear.Size = new System.Drawing.Size(65, 26);
             this.tbYear.TabIndex = 32;
             this.tbYear.Text = "Year";
+            this.tbYear.TextChanged += new System.EventHandler(this.tbYear_TextChanged);
             this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
             // 
             // cbMonth
             // 
+            this.cbMonth.Enabled = false;
             this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMonth.ForeColor = System.Drawing.Color.Black;
             this.cbMonth.FormattingEnabled = true;
@@ -378,11 +349,12 @@
             "October",
             "November",
             "December"});
-            this.cbMonth.Location = new System.Drawing.Point(92, 174);
+            this.cbMonth.Location = new System.Drawing.Point(161, 172);
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(77, 28);
             this.cbMonth.TabIndex = 31;
             this.cbMonth.Text = "Month";
+            this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
             // breed
             // 
@@ -539,10 +511,6 @@
             this.panel1.TabIndex = 16;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // claimRBindingSource
-            // 
-            this.claimRBindingSource.DataSource = typeof(WindowsFormsApplication1.ClaimR);
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
@@ -634,6 +602,10 @@
             // 
             this.printDocumentCR.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentCR_PrintPage);
             // 
+            // claimRBindingSource
+            // 
+            this.claimRBindingSource.DataSource = typeof(WindowsFormsApplication1.ClaimR);
+            // 
             // Claim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -652,12 +624,12 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.claimRBindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.claimRBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
