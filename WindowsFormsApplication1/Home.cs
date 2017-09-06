@@ -30,9 +30,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             use = Color.FromArgb(253, 208, 174);
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
-            dog = new Dog(this);
-            emp = new Employee(this);
-            inv = new Inventory(this);
+            
      }
 
         private void button2_Click(object sender, EventArgs e)
@@ -52,10 +50,7 @@ namespace WindowsFormsApplication1
             */
 
             //int i = 453;//360, 5
-            emp.back = this;
-            emp.adminID = this.adminID;
-            emp.Show();
-            this.Hide();
+            openEmp();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -75,10 +70,7 @@ namespace WindowsFormsApplication1
 
              */
             //int i = 541;//360, 5
-            inv.back = this;
-            inv.adminID = this.adminID;
-            inv.Show();
-            this.Hide();
+            openInv();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -96,13 +88,47 @@ namespace WindowsFormsApplication1
 
             //int i = 360;//360, 5
             */
+            openDog();
+
+        }
+
+        public void openDog()
+        {
+            if (odog == false)
+            {
+                dog = new Dog(this);
+                odog = true;
+            }
             dog.back = this;
             dog.adminID = this.adminID;
             dog.Show();
             this.Hide();
-
+        }
+        public void openEmp()
+        {
+            if (oemp == false)
+            {
+                emp = new Employee(this);
+                oemp = true;
+            }
+            emp.back = this;
+            emp.adminID = this.adminID;
+            emp.Show();
+            this.Hide();
         }
 
+        public void openInv()
+        {
+            if (oinv == false)
+            {
+                inv = new Inventory(this);
+                oinv = true;
+            }
+            inv.back = this;
+            inv.adminID = this.adminID;
+            inv.Show();
+            this.Hide();
+        }
         private void button4_Click(object sender, EventArgs e)
         {
             /*button1.BackColor = Color.Transparent;
@@ -121,7 +147,7 @@ namespace WindowsFormsApplication1
             inv.trig();
             
         }
-
+        bool odog, oinv, oemp = false;
         private void Home_Load(object sender, EventArgs e)
         {
             namelabel.Text = dispUser;

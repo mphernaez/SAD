@@ -1368,13 +1368,13 @@ namespace WindowsFormsApplication1
         }
         private void button25_Click(object sender, EventArgs e)
         {
-            home.dog.Show();
+            home.openDog();
             this.Hide();
         }
 
         private void button16_Click_1(object sender, EventArgs e)
         {
-            home.inv.Show();
+            home.openInv();
             this.Hide();
         }
 
