@@ -49,7 +49,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tbYear = new System.Windows.Forms.TextBox();
             this.cbMonth = new System.Windows.Forms.ComboBox();
-            this.tbDay = new System.Windows.Forms.TextBox();
             this.tblname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbmname = new System.Windows.Forms.TextBox();
@@ -70,6 +69,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.printPreviewDialogAdt = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentAdt = new System.Drawing.Printing.PrintDocument();
+            this.tbDay = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -271,10 +271,10 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.panel3.CausesValidation = false;
+            this.panel3.Controls.Add(this.tbDay);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.tbYear);
             this.panel3.Controls.Add(this.cbMonth);
-            this.panel3.Controls.Add(this.tbDay);
             this.panel3.Controls.Add(this.tblname);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.tbmname);
@@ -308,16 +308,19 @@
             // tbYear
             // 
             this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbYear.Location = new System.Drawing.Point(242, 164);
+            this.tbYear.Location = new System.Drawing.Point(103, 163);
             this.tbYear.Name = "tbYear";
             this.tbYear.Size = new System.Drawing.Size(65, 26);
             this.tbYear.TabIndex = 36;
             this.tbYear.Text = "Year";
+            this.tbYear.TextChanged += new System.EventHandler(this.tbYear_TextChanged);
+            this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
             // 
             // cbMonth
             // 
+            this.cbMonth.Enabled = false;
             this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMonth.ForeColor = System.Drawing.Color.Gray;
+            this.cbMonth.ForeColor = System.Drawing.Color.Black;
             this.cbMonth.FormattingEnabled = true;
             this.cbMonth.Items.AddRange(new object[] {
             "January",
@@ -332,20 +335,12 @@
             "October",
             "November",
             "December"});
-            this.cbMonth.Location = new System.Drawing.Point(105, 163);
+            this.cbMonth.Location = new System.Drawing.Point(174, 162);
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(77, 28);
             this.cbMonth.TabIndex = 35;
             this.cbMonth.Text = "Month";
-            // 
-            // tbDay
-            // 
-            this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDay.Location = new System.Drawing.Point(190, 164);
-            this.tbDay.Name = "tbDay";
-            this.tbDay.Size = new System.Drawing.Size(43, 26);
-            this.tbDay.TabIndex = 34;
-            this.tbDay.Text = "Day";
+            this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
             // tblname
             // 
@@ -534,6 +529,18 @@
             // 
             this.printDocumentAdt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentAdt_PrintPage);
             // 
+            // tbDay
+            // 
+            this.tbDay.Enabled = false;
+            this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDay.ForeColor = System.Drawing.Color.Black;
+            this.tbDay.FormattingEnabled = true;
+            this.tbDay.Location = new System.Drawing.Point(258, 162);
+            this.tbDay.Name = "tbDay";
+            this.tbDay.Size = new System.Drawing.Size(59, 28);
+            this.tbDay.TabIndex = 38;
+            this.tbDay.Text = "Day";
+            // 
             // Adopt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -601,6 +608,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbYear;
         private System.Windows.Forms.ComboBox cbMonth;
-        private System.Windows.Forms.TextBox tbDay;
+        private System.Windows.Forms.ComboBox tbDay;
     }
 }

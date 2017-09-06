@@ -193,7 +193,42 @@ namespace WindowsFormsApplication1
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+            
+        }
 
+        private void responsiveDay()
+        {
+            if (int.Parse(tbYear.Text) % 4 == 0 && cbMonth.Text == "February") { loopDay(29); }
+            else if (int.Parse(tbYear.Text) % 4 != 0 && cbMonth.Text == "February") { loopDay(28); }
+            else if (cbMonth.Text == "January" || cbMonth.Text == "March" || cbMonth.Text == "May" || cbMonth.Text == "July" || cbMonth.Text == "August" || cbMonth.Text == "October" || cbMonth.Text == "December") { loopDay(31); }
+            else { loopDay(30); }
+        }
+        private void loopDay(int x)
+        {
+            int i = 1;
+            while (i <= x)
+            {
+                tbDay.Items.Add(i.ToString());
+                i++;
+            }
+        }
+
+        private void tbYear_TextChanged(object sender, EventArgs e)
+        {
+            if (tbYear.Text.Length == 4) cbMonth.Enabled = true;
+        }
+
+        private void cbMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbDay.Enabled = true;
+            tbDay.Text = "Day";
+            tbDay.Items.Clear();
+            responsiveDay();
+        }
+
+        private void tbYear_Enter(object sender, EventArgs e)
+        {
+            tbYear.Text = "";
         }
     }
 }

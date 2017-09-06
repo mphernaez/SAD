@@ -123,7 +123,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT time, breed, color, size, gender, description, date FROM (dogoperation INNER JOIN dogprofile ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location on dogoperation.locationID = location.locationID WHERE dogID = " + dogID, conn);
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(timeStart, '-', timeEnd) AS time, breed, color, size, gender, description, SUBSTRING(date, 1, 11) AS date FROM (dogoperation INNER JOIN dogprofile ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location on dogoperation.locationID = location.locationID WHERE dogID = " + dogID, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -224,14 +224,9 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Valid ID Type: " + tbIDtype.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 260));
             e.Graphics.DrawString("Valid ID Number: " + tbIDnum.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 280));
             
-            if (checkbox.Checked)
-            {
-                e.Graphics.DrawString("**Availed Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
-            } else
-            {
-                e.Graphics.DrawString("**No Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
-            }
-
+            if (checkbox.Checked) e.Graphics.DrawString("**Availed Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
+            else e.Graphics.DrawString("**No Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
+            
             Pen black = new Pen(Color.Black, 3);
             Point p1 = new Point(25, 340);
             Point p2 = new Point(800    , 340);
@@ -260,6 +255,35 @@ namespace WindowsFormsApplication1
         private void tbYear_Enter(object sender, EventArgs e)
         {
             tbYear.Text = "";
+        }
+
+        private void tbYear_TextChanged(object sender, EventArgs e)
+        {
+            if(tbYear.Text.Length == 4) cbMonth.Enabled = true;
+        }
+
+        private void cbMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbDay.Enabled = true;
+            tbDay.Text = "Day";
+            tbDay.Items.Clear();
+            responsiveDay();
+        }
+        private void responsiveDay()
+        {
+            if (int.Parse(tbYear.Text) % 4 == 0 && cbMonth.Text == "February") { loopDay(29); }
+            else if (int.Parse(tbYear.Text) % 4 != 0 && cbMonth.Text == "February") { loopDay(28); }
+            else if (cbMonth.Text == "January" || cbMonth.Text == "March" || cbMonth.Text == "May" || cbMonth.Text == "July" || cbMonth.Text == "August" || cbMonth.Text == "October" || cbMonth.Text == "December") { loopDay(31); }
+            else { loopDay(30); }
+        }
+        private void loopDay(int x)
+        {
+            int i = 1;
+            while (i <= x)
+            {
+                tbDay.Items.Add(i.ToString());
+                i++;
+            }
         }
     }
 }
