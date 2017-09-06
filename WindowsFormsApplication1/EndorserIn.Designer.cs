@@ -36,7 +36,14 @@
             this.OK1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbReason = new System.Windows.Forms.TextBox();
+            this.cbDa = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbMo = new System.Windows.Forms.ComboBox();
+            this.tbYr = new System.Windows.Forms.TextBox();
+            this.amtLabel = new System.Windows.Forms.Label();
+            this.amtIn = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.amtIn)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvEnd
@@ -51,6 +58,7 @@
             this.dgvEnd.GridColor = System.Drawing.Color.White;
             this.dgvEnd.Location = new System.Drawing.Point(13, 13);
             this.dgvEnd.Name = "dgvEnd";
+            this.dgvEnd.ReadOnly = true;
             this.dgvEnd.RowHeadersVisible = false;
             this.dgvEnd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEnd.Size = new System.Drawing.Size(368, 362);
@@ -62,6 +70,7 @@
             // 
             // cbDay
             // 
+            this.cbDay.Enabled = false;
             this.cbDay.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDay.ForeColor = System.Drawing.Color.Gray;
             this.cbDay.FormattingEnabled = true;
@@ -97,7 +106,7 @@
             "29",
             "30",
             "31"});
-            this.cbDay.Location = new System.Drawing.Point(126, 413);
+            this.cbDay.Location = new System.Drawing.Point(218, 413);
             this.cbDay.Name = "cbDay";
             this.cbDay.Size = new System.Drawing.Size(52, 30);
             this.cbDay.TabIndex = 84;
@@ -105,6 +114,7 @@
             // 
             // cbMonth
             // 
+            this.cbMonth.Enabled = false;
             this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMonth.ForeColor = System.Drawing.Color.Gray;
             this.cbMonth.FormattingEnabled = true;
@@ -121,23 +131,26 @@
             "October",
             "November",
             "December"});
-            this.cbMonth.Location = new System.Drawing.Point(27, 413);
+            this.cbMonth.Location = new System.Drawing.Point(99, 413);
             this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(93, 28);
+            this.cbMonth.Size = new System.Drawing.Size(113, 28);
             this.cbMonth.TabIndex = 83;
             this.cbMonth.Text = "Month";
+            this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
             // tbYear
             // 
             this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbYear.ForeColor = System.Drawing.Color.Gray;
-            this.tbYear.Location = new System.Drawing.Point(184, 414);
+            this.tbYear.Location = new System.Drawing.Point(28, 413);
             this.tbYear.Multiline = true;
             this.tbYear.Name = "tbYear";
             this.tbYear.Size = new System.Drawing.Size(65, 30);
             this.tbYear.TabIndex = 82;
             this.tbYear.Text = "Year";
             this.tbYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbYear.TextChanged += new System.EventHandler(this.tbYear_TextChanged);
+            this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
             // 
             // label15
             // 
@@ -157,7 +170,7 @@
             this.OK1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OK1.ForeColor = System.Drawing.Color.White;
-            this.OK1.Location = new System.Drawing.Point(125, 528);
+            this.OK1.Location = new System.Drawing.Point(134, 621);
             this.OK1.Name = "OK1";
             this.OK1.Size = new System.Drawing.Size(124, 42);
             this.OK1.TabIndex = 86;
@@ -170,7 +183,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(23, 455);
+            this.label1.Location = new System.Drawing.Point(23, 446);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 93;
@@ -180,19 +193,107 @@
             // 
             this.tbReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbReason.ForeColor = System.Drawing.Color.Gray;
-            this.tbReason.Location = new System.Drawing.Point(27, 478);
+            this.tbReason.Location = new System.Drawing.Point(27, 469);
             this.tbReason.Multiline = true;
             this.tbReason.Name = "tbReason";
             this.tbReason.Size = new System.Drawing.Size(347, 30);
             this.tbReason.TabIndex = 92;
             this.tbReason.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // cbDa
+            // 
+            this.cbDa.Enabled = false;
+            this.cbDa.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDa.ForeColor = System.Drawing.Color.Gray;
+            this.cbDa.FormattingEnabled = true;
+            this.cbDa.Location = new System.Drawing.Point(218, 532);
+            this.cbDa.Name = "cbDa";
+            this.cbDa.Size = new System.Drawing.Size(52, 30);
+            this.cbDa.TabIndex = 98;
+            this.cbDa.Text = "Day";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(24, 506);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 20);
+            this.label2.TabIndex = 96;
+            this.label2.Text = "Expiration Date";
+            // 
+            // cbMo
+            // 
+            this.cbMo.Enabled = false;
+            this.cbMo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMo.ForeColor = System.Drawing.Color.Gray;
+            this.cbMo.FormattingEnabled = true;
+            this.cbMo.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.cbMo.Location = new System.Drawing.Point(99, 532);
+            this.cbMo.Name = "cbMo";
+            this.cbMo.Size = new System.Drawing.Size(113, 28);
+            this.cbMo.TabIndex = 95;
+            this.cbMo.Text = "Month";
+            this.cbMo.SelectedIndexChanged += new System.EventHandler(this.cbMo_SelectedIndexChanged);
+            // 
+            // tbYr
+            // 
+            this.tbYr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbYr.ForeColor = System.Drawing.Color.Gray;
+            this.tbYr.Location = new System.Drawing.Point(28, 531);
+            this.tbYr.Multiline = true;
+            this.tbYr.Name = "tbYr";
+            this.tbYr.Size = new System.Drawing.Size(65, 30);
+            this.tbYr.TabIndex = 94;
+            this.tbYr.Text = "Year";
+            this.tbYr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbYr.TextChanged += new System.EventHandler(this.tbYr_TextChanged);
+            this.tbYr.Enter += new System.EventHandler(this.tbYr_Enter);
+            // 
+            // amtLabel
+            // 
+            this.amtLabel.AutoSize = true;
+            this.amtLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amtLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.amtLabel.Location = new System.Drawing.Point(24, 563);
+            this.amtLabel.Name = "amtLabel";
+            this.amtLabel.Size = new System.Drawing.Size(65, 20);
+            this.amtLabel.TabIndex = 102;
+            this.amtLabel.Text = "Amount";
+            // 
+            // amtIn
+            // 
+            this.amtIn.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amtIn.Location = new System.Drawing.Point(28, 586);
+            this.amtIn.Name = "amtIn";
+            this.amtIn.Size = new System.Drawing.Size(150, 26);
+            this.amtIn.TabIndex = 101;
+            // 
             // EndorserIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(393, 582);
+            this.ClientSize = new System.Drawing.Size(393, 666);
+            this.Controls.Add(this.amtLabel);
+            this.Controls.Add(this.amtIn);
+            this.Controls.Add(this.cbDa);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cbMo);
+            this.Controls.Add(this.tbYr);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbReason);
             this.Controls.Add(this.OK1);
@@ -208,6 +309,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.amtIn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,5 +325,11 @@
         private System.Windows.Forms.Button OK1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbReason;
+        private System.Windows.Forms.ComboBox cbDa;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbMo;
+        private System.Windows.Forms.TextBox tbYr;
+        private System.Windows.Forms.NumericUpDown amtIn;
+        public System.Windows.Forms.Label amtLabel;
     }
 }

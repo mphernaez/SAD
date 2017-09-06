@@ -49,10 +49,8 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvo = new System.Windows.Forms.DataGridView();
-            this.nubo = new System.Windows.Forms.NumericUpDown();
             this.dgvout = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.nubi = new System.Windows.Forms.NumericUpDown();
             this.OK1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -63,11 +61,6 @@
             this.tbname = new System.Windows.Forms.TextBox();
             this.tbdesc = new System.Windows.Forms.TextBox();
             this.newitem = new System.Windows.Forms.Panel();
-            this.cbDay = new System.Windows.Forms.ComboBox();
-            this.button14 = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.cbMonth = new System.Windows.Forms.ComboBox();
-            this.tbYear = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.nudmin = new System.Windows.Forms.NumericUpDown();
             this.button4 = new System.Windows.Forms.Button();
@@ -89,6 +82,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.msBy = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.i)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
@@ -97,9 +91,7 @@
             this.Sout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nubo)).BeginInit();
             this.dgvout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nubi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvin)).BeginInit();
             this.newitem.SuspendLayout();
@@ -241,8 +233,8 @@
             this.inv.Controls.Add(this.button5);
             this.inv.Controls.Add(this.button16);
             this.inv.Controls.Add(this.label12);
-            this.inv.Controls.Add(this.Sout);
             this.inv.Controls.Add(this.dgvout);
+            this.inv.Controls.Add(this.Sout);
             this.inv.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inv.Location = new System.Drawing.Point(24, 196);
             this.inv.Name = "inv";
@@ -304,7 +296,6 @@
             this.Sout.Controls.Add(this.numericUpDown1);
             this.Sout.Controls.Add(this.label5);
             this.Sout.Controls.Add(this.dgvo);
-            this.Sout.Controls.Add(this.nubo);
             this.Sout.Location = new System.Drawing.Point(11, 114);
             this.Sout.Name = "Sout";
             this.Sout.Size = new System.Drawing.Size(982, 319);
@@ -392,18 +383,9 @@
             this.dgvo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvo_CellClick);
             this.dgvo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvo_CellContentClick);
             // 
-            // nubo
-            // 
-            this.nubo.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nubo.Location = new System.Drawing.Point(702, 267);
-            this.nubo.Name = "nubo";
-            this.nubo.Size = new System.Drawing.Size(120, 26);
-            this.nubo.TabIndex = 48;
-            // 
             // dgvout
             // 
             this.dgvout.Controls.Add(this.label6);
-            this.dgvout.Controls.Add(this.nubi);
             this.dgvout.Controls.Add(this.OK1);
             this.dgvout.Controls.Add(this.checkBox1);
             this.dgvout.Controls.Add(this.button6);
@@ -426,15 +408,6 @@
             this.label6.Size = new System.Drawing.Size(115, 31);
             this.label6.TabIndex = 58;
             this.label6.Text = "Stock-In";
-            // 
-            // nubi
-            // 
-            this.nubi.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nubi.Location = new System.Drawing.Point(702, 267);
-            this.nubi.Name = "nubi";
-            this.nubi.Size = new System.Drawing.Size(120, 26);
-            this.nubi.TabIndex = 49;
-            this.nubi.ValueChanged += new System.EventHandler(this.nubi_ValueChanged);
             // 
             // OK1
             // 
@@ -551,11 +524,7 @@
             // newitem
             // 
             this.newitem.BackColor = System.Drawing.Color.White;
-            this.newitem.Controls.Add(this.cbDay);
-            this.newitem.Controls.Add(this.button14);
-            this.newitem.Controls.Add(this.label15);
-            this.newitem.Controls.Add(this.cbMonth);
-            this.newitem.Controls.Add(this.tbYear);
+            this.newitem.Controls.Add(this.msBy);
             this.newitem.Controls.Add(this.label3);
             this.newitem.Controls.Add(this.nudmin);
             this.newitem.Controls.Add(this.button4);
@@ -568,110 +537,6 @@
             this.newitem.Size = new System.Drawing.Size(1016, 543);
             this.newitem.TabIndex = 53;
             this.newitem.Visible = false;
-            // 
-            // cbDay
-            // 
-            this.cbDay.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDay.ForeColor = System.Drawing.Color.Gray;
-            this.cbDay.FormattingEnabled = true;
-            this.cbDay.Items.AddRange(new object[] {
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31"});
-            this.cbDay.Location = new System.Drawing.Point(596, 273);
-            this.cbDay.Name = "cbDay";
-            this.cbDay.Size = new System.Drawing.Size(52, 30);
-            this.cbDay.TabIndex = 81;
-            this.cbDay.Text = "Day";
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.Gainsboro;
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button14.Location = new System.Drawing.Point(725, 273);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(53, 31);
-            this.button14.TabIndex = 80;
-            this.button14.Text = "None";
-            this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(494, 254);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(118, 20);
-            this.label15.TabIndex = 79;
-            this.label15.Text = "Expiration Date";
-            // 
-            // cbMonth
-            // 
-            this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMonth.ForeColor = System.Drawing.Color.Gray;
-            this.cbMonth.FormattingEnabled = true;
-            this.cbMonth.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.cbMonth.Location = new System.Drawing.Point(497, 276);
-            this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(93, 28);
-            this.cbMonth.TabIndex = 78;
-            this.cbMonth.Text = "Month";
-            // 
-            // tbYear
-            // 
-            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbYear.ForeColor = System.Drawing.Color.Gray;
-            this.tbYear.Location = new System.Drawing.Point(654, 273);
-            this.tbYear.Multiline = true;
-            this.tbYear.Name = "tbYear";
-            this.tbYear.Size = new System.Drawing.Size(65, 30);
-            this.tbYear.TabIndex = 77;
-            this.tbYear.Text = "Year";
-            this.tbYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -700,7 +565,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(437, 328);
+            this.button4.Location = new System.Drawing.Point(445, 376);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(168, 42);
             this.button4.TabIndex = 24;
@@ -935,6 +800,21 @@
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
+            // msBy
+            // 
+            this.msBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.msBy.FormattingEnabled = true;
+            this.msBy.Items.AddRange(new object[] {
+            "Sack",
+            "Item",
+            "Dozen",
+            "Pouch"});
+            this.msBy.Location = new System.Drawing.Point(315, 317);
+            this.msBy.Name = "msBy";
+            this.msBy.Size = new System.Drawing.Size(121, 28);
+            this.msBy.TabIndex = 43;
+            this.msBy.Text = "Measured by";
+            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -944,8 +824,8 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.newitem);
             this.Controls.Add(this.inv);
+            this.Controls.Add(this.newitem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(27, 84);
             this.MaximizeBox = false;
@@ -963,10 +843,8 @@
             this.Sout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nubo)).EndInit();
             this.dgvout.ResumeLayout(false);
             this.dgvout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nubi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvin)).EndInit();
             this.newitem.ResumeLayout(false);
@@ -1022,8 +900,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button OK2;
         private System.Windows.Forms.Button OK1;
-        private System.Windows.Forms.NumericUpDown nubo;
-        private System.Windows.Forms.NumericUpDown nubi;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
@@ -1045,10 +921,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ComboBox cbMonth;
-        private System.Windows.Forms.TextBox tbYear;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox cbDay;
+        private System.Windows.Forms.ComboBox msBy;
     }
 }

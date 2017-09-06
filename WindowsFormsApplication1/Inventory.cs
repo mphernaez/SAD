@@ -160,25 +160,11 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                if (tbname.Text != "Product Name" && tbdesc.Text != "Product Type" && nudmin.Value != 0)
+                if (tbname.Text != "Product Name" && tbdesc.Text != "Product Type" && msBy.Text != "Measured by")
                 {
                     if (hasExp == true)
                     {
-                        if ((cbMonth.Text != "Month" && cbDay.Text != "Day" && tbYear.Text != "Year"))
-                        {
-                            String date = tbYear.Text + (cbMonth.SelectedIndex + 1).ToString() + "-" + cbDay.Text + "-";
-                            MessageBox.Show(date);
-
-                            MySqlCommand comm = new MySqlCommand("INSERT INTO items VALUES (itemID, '" + tbname.Text + "', '" + tbdesc.Text + "', 0, " + nudmin.Value.ToString() + ", '" + date + "')", conn);
-                            comm.ExecuteNonQuery();
-                            MessageBox.Show("Item Added");
-                            refreshCreate();
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Please Enter Required Fields");
-                        }
+                        
                     }
                     else if (hasExp == false)
                     {
@@ -208,9 +194,7 @@ namespace WindowsFormsApplication1
             tbname.Text = "Product Name";
             tbdesc.Text = "Product Type";
             nudmin.Value = 0;
-            cbMonth.Text = "Month";
-            cbDay.Text = "Day";
-            tbYear.Text = "Year";
+            
         }
         private void inv_Paint(object sender, PaintEventArgs e)
         {
@@ -258,7 +242,7 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
                 */
-            endO.value = (int)nubo.Value;
+           
             endO.id = itemID;
             endO.Show(); 
            
@@ -280,50 +264,22 @@ namespace WindowsFormsApplication1
         }
 
         private void OK1_Click(object sender, EventArgs e)
-        {/*
-            if (itemID != 0)
-            {
-                try
-                {
-
-                    conn.Open();
-                    
-
-                    if (quan > 0)
-                    {
-                        MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + " + nubi.Value.ToString() + " WHERE itemID = " + itemID, conn);
-                        comm.ExecuteNonQuery();
-                        MessageBox.Show("Item Updated");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please enter a valid number");
-                    }
-                    conn.Close();
-                    refreshSI();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    conn.Close();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select an item");
-            }
-            */
-            int quan = int.Parse(nubi.Text);
-            if (quan > 0 && itemID != 0)
-            {
-                end.value = (int)nubi.Value;
+        {
                 end.id = itemID;
                 end.Show();
+            try{
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + itemID.ToString(), conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                end.amtLabel.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString();
+                conn.Close();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please Enter Required Fields");
+                MessageBox.Show(ex.ToString());
+                conn.Close();
             }
         }
 
@@ -414,18 +370,12 @@ namespace WindowsFormsApplication1
         {
             if (hasExp == true)
             {
-                cbMonth.Enabled = false;
-                cbDay.Enabled = false;
-                tbYear.Enabled = false;
                 hasExp = false;
-                button14.Text = "Has";
+                
             } else
             {
-                cbMonth.Enabled = true;
-                cbDay.Enabled = true;
-                tbYear.Enabled = true;
                 hasExp = true;
-                button14.Text = "None";
+                
             }
         }
 

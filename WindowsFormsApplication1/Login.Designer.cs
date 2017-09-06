@@ -83,6 +83,7 @@
             this.passwordTextBox.Text = "Password";
             this.passwordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
+            this.passwordTextBox.Enter += new System.EventHandler(this.passwordTextBox_Enter);
             this.passwordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordTextBox_KeyDown);
             this.passwordTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.passwordTextBox_KeyPress);
             // 

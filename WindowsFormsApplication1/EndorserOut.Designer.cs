@@ -32,7 +32,10 @@
             this.label15 = new System.Windows.Forms.Label();
             this.tbReason = new System.Windows.Forms.TextBox();
             this.dgvEnd = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.amtIn = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.amtIn)).BeginInit();
             this.SuspendLayout();
             // 
             // OK1
@@ -42,7 +45,7 @@
             this.OK1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OK1.ForeColor = System.Drawing.Color.White;
-            this.OK1.Location = new System.Drawing.Point(124, 528);
+            this.OK1.Location = new System.Drawing.Point(134, 575);
             this.OK1.Name = "OK1";
             this.OK1.Size = new System.Drawing.Size(124, 42);
             this.OK1.TabIndex = 92;
@@ -90,12 +93,33 @@
             this.dgvEnd.TabIndex = 87;
             this.dgvEnd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEnd_CellClick);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(21, 520);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 20);
+            this.label3.TabIndex = 102;
+            this.label3.Text = "Amount";
+            // 
+            // amtIn
+            // 
+            this.amtIn.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amtIn.Location = new System.Drawing.Point(25, 543);
+            this.amtIn.Name = "amtIn";
+            this.amtIn.Size = new System.Drawing.Size(150, 26);
+            this.amtIn.TabIndex = 101;
+            // 
             // EndorserOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(393, 582);
+            this.ClientSize = new System.Drawing.Size(393, 627);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.amtIn);
             this.Controls.Add(this.OK1);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.tbReason);
@@ -105,6 +129,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.EndorserOut_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.amtIn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,5 +141,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox tbReason;
         private System.Windows.Forms.DataGridView dgvEnd;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown amtIn;
     }
 }

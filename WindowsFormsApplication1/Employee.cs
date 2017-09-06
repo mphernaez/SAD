@@ -364,6 +364,7 @@ namespace WindowsFormsApplication1
         {
             button3.BackColor = Color.FromArgb(2, 170, 145);
             button10.BackColor = Color.FromArgb(251, 162, 80);
+          
             dgvAttendanceIn.Visible = false;
             dgvAttendanceOut.Visible = true;
 
@@ -379,9 +380,10 @@ namespace WindowsFormsApplication1
         {
             button11.BackColor = Color.FromArgb(251, 162, 80);
             button12.BackColor = Color.FromArgb(2, 170, 145);
+            button30.BackColor = Color.FromArgb(2, 170, 145);
             addPanel.Visible = true;
             editPanel.Visible = false;
-            pnlAdmin.Visible = false;
+            pnlArchive.Visible = false;
             rePopAddEmp();
         }
 
@@ -389,8 +391,10 @@ namespace WindowsFormsApplication1
         {
             button12.BackColor = Color.FromArgb(251, 162, 80);
             button11.BackColor = Color.FromArgb(2, 170, 145);
+            button30.BackColor = Color.FromArgb(2, 170, 145);
             addPanel.Visible = false;
             editPanel.Visible = true;
+            pnlArchive.Visible = false;
             refreshEdit();
         }
 
@@ -1188,30 +1192,7 @@ namespace WindowsFormsApplication1
 
         private void button24_Click(object sender, EventArgs e)
         {
-            if (editemployeeID != 0)
-            {
-                DialogResult result = MessageBox.Show("Are you sure you want to inactivate selected employee? This action cannot be undone.", "Confirmation", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
-                {
-                    try
-                    {
-                        conn.Open();
-                        MySqlCommand comm = new MySqlCommand("UPDATE employee SET status = 'Inactive' WHERE employeeID = " + editemployeeID, conn);
-                        comm.ExecuteNonQuery();
-                        conn.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        conn.Close();
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                refreshEdit();
-            }
-            else
-            {
-                MessageBox.Show("Please select an employee");
-            }
+            
         }
 
         private void tbStartm_Enter(object sender, EventArgs e)
@@ -1619,25 +1600,9 @@ namespace WindowsFormsApplication1
         private void responsiveDay(int year)
         {
             int x;
-            if (cbOpMonth.Text == "January" || cbOpMonth.Text == "March" || cbOpMonth.Text == "May" || cbOpMonth.Text == "July" || cbOpMonth.Text == "August" || cbOpMonth.Text == "October" || cbOpMonth.Text == "December")
-            {
-                loopDay(31);
-            }
-            else if (cbOpMonth.Text == "February")
-            {
-                if (year % 4 == 0)
-                {
-                    loopDay(29);
-                }
-                else
-                {
-                    loopDay(28);
-                }
-            }
-            else
-            {
-                loopDay(30);
-            }
+            if (cbOpMonth.Text == "January" || cbOpMonth.Text == "March" || cbOpMonth.Text == "May" || cbOpMonth.Text == "July" || cbOpMonth.Text == "August" || cbOpMonth.Text == "October" || cbOpMonth.Text == "December") loopDay(31);
+            else if (cbOpMonth.Text == "February") { if (year % 4 == 0) loopDay(29); else loopDay(28); }
+            else loopDay(30);
         }
 
         private void loopDay(int x)
@@ -1658,6 +1623,116 @@ namespace WindowsFormsApplication1
             {
                 cbOpMonth.Enabled = true;
             }
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            button11.BackColor = Color.FromArgb(2, 170, 145);
+            button12.BackColor = Color.FromArgb(2, 170, 145);
+            button30.BackColor = Color.FromArgb(251, 162, 80);
+            addPanel.Visible = false;
+            editPanel.Visible = false;
+            pnlArchive.Visible = true;
+
+            refreshArchive();
+        }
+
+        private void refreshArchive()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS name, gender, address, birthdate, contactNumber, position FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE status = 'Inactive'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvReactivate.DataSource = dt;
+
+                dgvReactivate.Columns["personID"].Visible = false;
+                dgvReactivate.Columns["name"].HeaderText = "Name";
+                dgvReactivate.Columns["gender"].HeaderText = "Gender";
+                dgvReactivate.Columns["birthdate"].HeaderText = "Birthdate";
+                dgvReactivate.Columns["contactNumber"].HeaderText = "Contact No.";
+                dgvReactivate.Columns["address"].HeaderText = "Address";
+                dgvReactivate.Columns["position"].HeaderText = "Position";
+                dgvReactivate.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvReactivate.Columns["Gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvReactivate.Columns["Birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvReactivate.Columns["ContactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvReactivate.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvReactivate.Columns["Position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+               
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void button24_Click_1(object sender, EventArgs e)
+        {
+            if (editemployeeID != 0)
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("UPDATE employee SET status = 'Inactive' WHERE employeeID = " + editemployeeID, conn);
+                    comm.ExecuteNonQuery();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show(ex.ToString());
+                }
+                MessageBox.Show("Successfully Inactivated");
+
+                refreshEdit();
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee");
+            }
+        }
+        int raempID;
+        private void button29_Click(object sender, EventArgs e)
+        {
+            if (raempID != 0)
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("UPDATE employee SET status = 'Active' WHERE employeeID = " + raempID.ToString(), conn);
+                    comm.ExecuteNonQuery();
+                    comm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS name FROM profile WHERE personID = " + raempID.ToString(), conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    string name = dt.Rows[0]["name"].ToString();
+                    MessageBox.Show(name + " Successfully Activated!");
+                    
+                    conn.Close();
+                    refreshArchive();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee");
+            }
+                
+        }
+
+        private void dgvReactivate_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            raempID = int.Parse(dgvReactivate.Rows[e.RowIndex].Cells["personID"].Value.ToString());
         }
     }
 }

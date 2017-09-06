@@ -444,21 +444,41 @@ namespace WindowsFormsApplication1
 
         private void button10_Click(object sender, EventArgs e)
         {
-            try
+            if (dogID != 0)
             {
-                conn.Open();
-                
-                MySqlCommand comm = new MySqlCommand("UPDATE dogprofile SET status = 'euthanized' WHERE dogID = " + dogID, conn);
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Successfully Euthanized!");
+                try
+                {
+                    conn.Open();
 
-                conn.Close();
-                refreshArchive();
+                    MySqlCommand comm = new MySqlCommand("UPDATE dogprofile SET status = 'euthanized' WHERE dogID = " + dogID, conn);
+                    comm.ExecuteNonQuery();
+                    
+
+                    comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID = 2", conn);
+                    comm.ExecuteNonQuery();
+
+                    String messbox = "";
+
+                    comm = new MySqlCommand("SELECT quantity FROM items WHERE itemID = 2", conn);
+                    MySqlDataReader read = comm.ExecuteReader();
+                    while (read.Read())
+                    {
+                        int quantity = int.Parse(read[0].ToString());
+                        messbox = "Successfully Euthanized. Injection for Euthanasia quantity is now: " + quantity.ToString();
+                    }
+                    MessageBox.Show(messbox.ToString());
+                    conn.Close();
+                    refreshArchive();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
+                MessageBox.Show("Please select a dog");
             }
         }
 
@@ -678,8 +698,19 @@ namespace WindowsFormsApplication1
 
                 MySqlCommand comm = new MySqlCommand("UPDATE dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID SET dogprofile.status = 'euthanized' WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND dogprofile.status = 'unclaimed'", conn);
                 comm.ExecuteNonQuery();
-                MessageBox.Show("Successfully Euthanized All!");
-
+                
+                int num = dgvArchive.Rows.Count;
+                comm = new MySqlCommand("UPDATE items SET quantity=quantity-" + num + " WHERE itemID = 2", conn);
+                comm.ExecuteNonQuery();
+                String messbox = "";
+                comm = new MySqlCommand("SELECT quantity FROM items WHERE itemID = 2", conn);
+                MySqlDataReader read = comm.ExecuteReader();
+                while (read.Read())
+                {
+                    int quantity = int.Parse(read[0].ToString());
+                    messbox = "Successfully Euthanized All. Injection for Euthanasia Quantity is now: " + quantity.ToString();
+                }
+                MessageBox.Show(messbox);
                 conn.Close();
                 refreshArchive();
             }

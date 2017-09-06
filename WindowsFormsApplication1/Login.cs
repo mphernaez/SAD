@@ -122,5 +122,10 @@ namespace WindowsFormsApplication1
             pictureBox4.Visible = true;
             pictureBox5.Visible = false;
         }
+
+        private void passwordTextBox_Enter(object sender, EventArgs e)
+        {
+            passwordTextBox.Text = "";
+        }
     }
 }
