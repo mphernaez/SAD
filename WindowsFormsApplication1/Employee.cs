@@ -290,7 +290,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 String date = DateTime.Now.ToString("yyyy-MM-dd");
-                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', middlename) AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance WHERE SUBSTRING(date, 1, 10) = '" + date + "') ORDER BY lastname ASC", conn); //missing: refresh everyday (in restrictions, date should be now)
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT DISTINCT attendance.employeeID FROM attendance WHERE SUBSTRING(date, 1, 10) = '"+ date +"' ORDER BY employeeID) ORDER BY lastname ASC", conn); //missing: refresh everyday (in restrictions, date should be now)
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -744,7 +744,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 String date = DateTime.Now.ToString("yyyy-MM-dd");
-                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID NOT IN (SELECT attendance.employeeID FROM attendance WHERE type = 0 AND SUBSTRING(date, 1, 11) = '" + date + "') ORDER BY lastname", conn); //missing: refresh everyday (in restrictions, date should be now)
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS name, gender, contactNumber, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' AND employee.employeeID IN (SELECT DISTINCT attendance.employeeID FROM attendance WHERE type = 1 AND SUBSTRING(date, 1, 11) = '" + date + "') AND employee.employeeID NOT IN (SELECT DISTINCT attendance.employeeID FROM attendance WHERE type = 0 AND SUBSTRING(date, 1, 11) = '" + date + "') ORDER BY lastname", conn); //missing: refresh everyday (in restrictions, date should be now)
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1749,8 +1749,10 @@ namespace WindowsFormsApplication1
 
                 MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type) VALUES('" + att + "', " + employeeID + ", " + "0" + ") ", conn);
                 comm.ExecuteNonQuery();
+                
+                string date = DateTime.Now.ToString("yyyy-MM-dd");
+                MessageBox.Show("Successfully Recorded Attendance Out!");
                 conn.Close();
-                MessageBox.Show("Successfully Recorded Attendance!");
                 refreshAttendanceOut();
             }
             catch (ArgumentOutOfRangeException)
