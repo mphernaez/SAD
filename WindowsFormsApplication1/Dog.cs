@@ -631,21 +631,21 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-
-                MySqlCommand comm = new MySqlCommand("SELECT operationID, CONCAT(timeStart, ' - ', timeEnd) AS time, MONTH(date) as month, YEAR(date) as year, DAY(date) as day, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID", conn);
+                
+                MySqlCommand comm = new MySqlCommand("SELECT operationID, CONCAT(timeStart, ' - ', timeEnd) AS time, MONTH(date) as month, YEAR(date) as year, DAY(date) as day, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID WHERE status = 'Finished' ORDER BY date ", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
+                
+
+                opid = new int[dt.Rows.Count];      //modify global array 'opid'
                 int j = 0;
-
-                opid = new int[dt.Rows.Count - 1];       //modify global array 'opid'
-
-                for (int i = dt.Rows.Count - 1; i >= 1; i--)
+                for (int i = dt.Rows.Count; i >= 1; i--)
                 {
-                    opid[j] = int.Parse(dt.Rows[i]["operationID"].ToString());  //assign opid index to operationID (array index = combobox index [synced]) 
-                    string date = dt.Rows[i]["month"].ToString() + '-' + dt.Rows[i]["day"].ToString() + '-' + dt.Rows[i]["year"].ToString();
-                    string time = dt.Rows[i]["time"].ToString();
-                    string loc = dt.Rows[i]["description"].ToString();
+                    opid[j] = int.Parse(dt.Rows[i-1]["operationID"].ToString());  //assign opid index to operationID (array index = combobox index [synced]) 
+                    string date = dt.Rows[i-1]["month"].ToString() + '-' + dt.Rows[i-1]["day"].ToString() + '-' + dt.Rows[i-1]["year"].ToString();
+                    string time = dt.Rows[i-1]["time"].ToString();
+                    string loc = dt.Rows[i-1]["description"].ToString();
                     cbOperation.Items.Add(date + "  " + time + ",  " + "Brgy. " + loc);    //add necessary cherbs to combobox
                     j++;
                 }

@@ -70,6 +70,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dgvAdoption = new System.Windows.Forms.DataGridView();
             this.repclaimpan = new System.Windows.Forms.Panel();
+            this.button16 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.filt = new System.Windows.Forms.ComboBox();
             this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.euthanizeDog = new System.Windows.Forms.Panel();
             this.btnDone = new System.Windows.Forms.Button();
@@ -99,9 +102,6 @@
             this.button15 = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.filt = new System.Windows.Forms.ComboBox();
-            this.button16 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -695,6 +695,52 @@
             this.repclaimpan.TabIndex = 25;
             this.repclaimpan.Visible = false;
             // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(62, 113);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(146, 23);
+            this.button16.TabIndex = 2;
+            this.button16.Text = "View Report";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.comboBox2.Location = new System.Drawing.Point(62, 76);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(146, 21);
+            this.comboBox2.TabIndex = 1;
+            // 
+            // filt
+            // 
+            this.filt.FormattingEnabled = true;
+            this.filt.Items.AddRange(new object[] {
+            "All",
+            "Claimed",
+            "Unclaimed",
+            "Euthanized",
+            "Adopted"});
+            this.filt.Location = new System.Drawing.Point(62, 39);
+            this.filt.Name = "filt";
+            this.filt.Size = new System.Drawing.Size(146, 21);
+            this.filt.TabIndex = 1;
+            this.filt.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // claimreportdgv
             // 
             this.claimreportdgv.AllowUserToAddRows = false;
@@ -1060,52 +1106,6 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // filt
-            // 
-            this.filt.FormattingEnabled = true;
-            this.filt.Items.AddRange(new object[] {
-            "All",
-            "Claimed",
-            "Unclaimed",
-            "Euthanized",
-            "Adopted"});
-            this.filt.Location = new System.Drawing.Point(62, 39);
-            this.filt.Name = "filt";
-            this.filt.Size = new System.Drawing.Size(146, 21);
-            this.filt.TabIndex = 1;
-            this.filt.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // button16
-            // 
-            this.button16.Location = new System.Drawing.Point(62, 113);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(146, 23);
-            this.button16.TabIndex = 2;
-            this.button16.Text = "View Report";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.comboBox2.Location = new System.Drawing.Point(62, 76);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(146, 21);
-            this.comboBox2.TabIndex = 1;
-            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1115,11 +1115,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.repclaimpan);
-            this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
+            this.Controls.Add(this.repclaimpan);
+            this.Controls.Add(this.searchDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
