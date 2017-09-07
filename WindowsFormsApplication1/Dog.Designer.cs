@@ -99,6 +99,9 @@
             this.button15 = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.filt = new System.Windows.Forms.ComboBox();
+            this.button16 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -682,6 +685,9 @@
             // 
             // repclaimpan
             // 
+            this.repclaimpan.Controls.Add(this.button16);
+            this.repclaimpan.Controls.Add(this.comboBox2);
+            this.repclaimpan.Controls.Add(this.filt);
             this.repclaimpan.Controls.Add(this.claimreportdgv);
             this.repclaimpan.Location = new System.Drawing.Point(29, 197);
             this.repclaimpan.Name = "repclaimpan";
@@ -695,15 +701,21 @@
             this.claimreportdgv.AllowUserToDeleteRows = false;
             this.claimreportdgv.AllowUserToResizeColumns = false;
             this.claimreportdgv.AllowUserToResizeRows = false;
+            this.claimreportdgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.claimreportdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.claimreportdgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.claimreportdgv.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.claimreportdgv.Location = new System.Drawing.Point(12, 18);
+            this.claimreportdgv.Location = new System.Drawing.Point(13, 159);
             this.claimreportdgv.Name = "claimreportdgv";
             this.claimreportdgv.ReadOnly = true;
             this.claimreportdgv.RowHeadersVisible = false;
             this.claimreportdgv.RowHeadersWidth = 30;
             this.claimreportdgv.Size = new System.Drawing.Size(983, 318);
             this.claimreportdgv.TabIndex = 0;
+            this.claimreportdgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.claimreportdgv_CellContentClick);
             // 
             // euthanizeDog
             // 
@@ -1048,6 +1060,52 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // filt
+            // 
+            this.filt.FormattingEnabled = true;
+            this.filt.Items.AddRange(new object[] {
+            "All",
+            "Claimed",
+            "Unclaimed",
+            "Euthanized",
+            "Adopted"});
+            this.filt.Location = new System.Drawing.Point(62, 39);
+            this.filt.Name = "filt";
+            this.filt.Size = new System.Drawing.Size(146, 21);
+            this.filt.TabIndex = 1;
+            this.filt.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(62, 113);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(146, 23);
+            this.button16.TabIndex = 2;
+            this.button16.Text = "View Report";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.comboBox2.Location = new System.Drawing.Point(62, 76);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(146, 21);
+            this.comboBox2.TabIndex = 1;
+            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1175,5 +1233,8 @@
         private System.Windows.Forms.Label label18;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.ComboBox filt;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
