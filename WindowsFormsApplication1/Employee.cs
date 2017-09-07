@@ -23,6 +23,7 @@ namespace WindowsFormsApplication1
         public MySqlConnection conn = new MySqlConnection();
         EditEmp emp;
         empty home;
+        public empty sel {get; set;}
         public Employee(empty parent)
         {
             InitializeComponent();
@@ -179,11 +180,11 @@ namespace WindowsFormsApplication1
             o.Visible = false;
             r.Visible = true;
             repEmp.Visible = true;
+            selectEmp.Visible = false;
 
-            oplist.Visible = false;
-            emplist.Visible = false;
+            pick.Visible = false;
 
-            try
+            /*try
             {
                 conn.Open();
 
@@ -222,6 +223,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
+            */
         }
 
         private void toExcelEmp()
@@ -1763,28 +1765,13 @@ namespace WindowsFormsApplication1
         {
             if (repC.Text == "Employee")
             {
-                oplist.Visible = false;
-                emplist.Visible = true;
-
-                try
-                {
-                    conn.Open();
-                    /*MySqlCommand comm = new MySqlCommand("SELECT lastname, firstname FROM profile INNER JOIN attendance ON employee.employeeID = attendance.employeeID WHERE employeeID = *something* (dgv or combobox ang option na employee name?)");
-                    comm.ExecuteNonQuery();
-                    comm.Parameters.AddWithValue("itemname", emplist.SelectedItem.ToString());
-                */
-                              
-    
-    }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                }
+                pick.Text = "Employee";
+                pick.Visible = true;       
             }
             else if (repC.Text == "Operation")
             {
-                emplist.Visible = false;
-                oplist.Visible = true;
+                pick.Text = "Operation";
+                pick.Visible = true;
             }
         }
 
@@ -1801,6 +1788,76 @@ namespace WindowsFormsApplication1
         private void cbLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Bemp_Click(object sender, EventArgs e)
+        {
+            if (pick.Text == "Employee")
+            {
+                selectEmp.Visible = true;
+                selectOp.Visible = false;
+                try
+                {
+                    conn.Open();
+
+                    MySqlCommand com = new MySqlCommand("SELECT lastname, middlename, firstname FROM profile INNER JOIN employee ON employee.employeeID = profile.personID", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+
+
+                    selE.DataSource = dt;
+
+                    selE.Columns["lastname"].HeaderText = "Lastname";
+                    selE.Columns["firstname"].HeaderText = "Firstname";
+                    selE.Columns["middlename"].HeaderText = "Middlename";
+
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            } else if (pick.Text == "Operation")
+            {
+                selectOp.Visible = true;
+                selectEmp.Visible = false;
+
+                try
+                {
+                    conn.Open();
+
+                    MySqlCommand com = new MySqlCommand("SELECT lastname, middlename, firstname FROM profile INNER JOIN employee ON employee.employeeID = profile.personID", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+
+
+                    selO.DataSource = dt;
+
+                    selO.Columns["lastname"].HeaderText = "Lastname";
+                    selO.Columns["firstname"].HeaderText = "Firstname";
+                    selO.Columns["middlename"].HeaderText = "Middlename";
+
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            }
+        }
+
+        private void rep_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button28_Click_1(object sender, EventArgs e)
+        {
+            selectEmp.Visible = false;
         }
     }
 }

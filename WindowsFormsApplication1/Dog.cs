@@ -537,7 +537,7 @@ namespace WindowsFormsApplication1
             addDog.Visible = false;
             adoptDog.Visible = false;
             euthanizeDog.Visible = false;
-            repclaimpan.Visible = false;
+            repclaimpan.Visible = true;
             a.Visible = false;
             s.Visible = false;
             ad.Visible = false;
@@ -586,7 +586,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
-            print();
+            
         }
         private void report()
         {
@@ -784,7 +784,7 @@ namespace WindowsFormsApplication1
             Bitmap bit = new Bitmap(this.claimreportdgv.Width, this.claimreportdgv.Height);
             claimreportdgv.DrawToBitmap(bit, new System.Drawing.Rectangle(0, 0, this.claimreportdgv.Width, this.claimreportdgv.Height));
             e.Graphics.DrawString("Dog Summary Report", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(200, 100));
-            e.Graphics.DrawImage(bit, 10, 40);
+            e.Graphics.DrawImage(bit, 15, 80);
         }
         private void print()
         {
@@ -794,6 +794,196 @@ namespace WindowsFormsApplication1
                 printDocument1.DocumentName = "Dog Summary Report";
                 printDocument1.Print();
             }
+        }
+
+        private void claimreportdgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (filt.Text == "All")
+            {
+                try
+                {
+                    conn.Open();
+
+                    MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, SUBSTRING(date, 1, 11) AS date, CONCAT(timeStart, '-', timeEnd) AS time, dogprofile.status AS status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                    System.Data.DataTable dt = new System.Data.DataTable();
+                    adp.Fill(dt);
+
+
+                    claimreportdgv.DataSource = dt;
+
+                    claimreportdgv.Columns["breed"].HeaderText = "Breed";
+                    claimreportdgv.Columns["gender"].HeaderText = "Gender";
+                    claimreportdgv.Columns["size"].HeaderText = "Size";
+                    claimreportdgv.Columns["color"].HeaderText = "Color";
+                    claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
+                    claimreportdgv.Columns["description"].HeaderText = "Location Caught";
+                    claimreportdgv.Columns["date"].HeaderText = "Date Caught";
+                    claimreportdgv.Columns["time"].HeaderText = "Time Caught";
+                    claimreportdgv.Columns["status"].HeaderText = "Status";
+
+
+                    claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            } else if (filt.Text == "Claimed")
+            {
+                try
+                {
+                    conn.Open();
+                    //where status = claimed
+                    MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, SUBSTRING(date, 1, 11) AS date, CONCAT(timeStart, '-', timeEnd) AS time, dogprofile.status AS status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID  WHERE dogprofile.status = 'claimed'", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                    System.Data.DataTable dt = new System.Data.DataTable();
+                    adp.Fill(dt);
+
+
+                    claimreportdgv.DataSource = dt;
+
+                    claimreportdgv.Columns["breed"].HeaderText = "Breed";
+                    claimreportdgv.Columns["gender"].HeaderText = "Gender";
+                    claimreportdgv.Columns["size"].HeaderText = "Size";
+                    claimreportdgv.Columns["color"].HeaderText = "Color";
+                    claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
+                    claimreportdgv.Columns["description"].HeaderText = "Location Caught";
+                    claimreportdgv.Columns["date"].HeaderText = "Date Caught";
+                    claimreportdgv.Columns["time"].HeaderText = "Time Caught";
+                    claimreportdgv.Columns["status"].HeaderText = "Status";
+
+
+                    claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            } else if (filt.Text == "Euthanized")
+            {
+                try
+                {
+                    conn.Open();
+                    //where status = euthanized
+                    MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, SUBSTRING(date, 1, 11) AS date, CONCAT(timeStart, '-', timeEnd) AS time, dogprofile.status AS status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID  WHERE dogprofile.status = 'euthanized'", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                    System.Data.DataTable dt = new System.Data.DataTable();
+                    adp.Fill(dt);
+
+
+                    claimreportdgv.DataSource = dt;
+
+                    claimreportdgv.Columns["breed"].HeaderText = "Breed";
+                    claimreportdgv.Columns["gender"].HeaderText = "Gender";
+                    claimreportdgv.Columns["size"].HeaderText = "Size";
+                    claimreportdgv.Columns["color"].HeaderText = "Color";
+                    claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
+                    claimreportdgv.Columns["description"].HeaderText = "Location Caught";
+                    claimreportdgv.Columns["date"].HeaderText = "Date Caught";
+                    claimreportdgv.Columns["time"].HeaderText = "Time Caught";
+                    claimreportdgv.Columns["status"].HeaderText = "Status";
+
+
+                    claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            } else if (filt.Text == "Adopted")
+            {
+                try
+                {
+                    conn.Open();
+                    //where status = adopted
+                    MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, SUBSTRING(date, 1, 11) AS date, CONCAT(timeStart, '-', timeEnd) AS time, dogprofile.status AS status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID  WHERE dogprofile.status = 'adopted'", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                    System.Data.DataTable dt = new System.Data.DataTable();
+                    adp.Fill(dt);
+
+
+                    claimreportdgv.DataSource = dt;
+
+                    claimreportdgv.Columns["breed"].HeaderText = "Breed";
+                    claimreportdgv.Columns["gender"].HeaderText = "Gender";
+                    claimreportdgv.Columns["size"].HeaderText = "Size";
+                    claimreportdgv.Columns["color"].HeaderText = "Color";
+                    claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
+                    claimreportdgv.Columns["description"].HeaderText = "Location Caught";
+                    claimreportdgv.Columns["date"].HeaderText = "Date Caught";
+                    claimreportdgv.Columns["time"].HeaderText = "Time Caught";
+                    claimreportdgv.Columns["status"].HeaderText = "Status";
+
+
+                    claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            } else
+            {
+                MessageBox.Show("Please select type");
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            print();
         }
     }
 }
