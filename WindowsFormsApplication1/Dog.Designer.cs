@@ -685,7 +685,7 @@
             this.repclaimpan.Controls.Add(this.claimreportdgv);
             this.repclaimpan.Location = new System.Drawing.Point(29, 197);
             this.repclaimpan.Name = "repclaimpan";
-            this.repclaimpan.Size = new System.Drawing.Size(1009, 367);
+            this.repclaimpan.Size = new System.Drawing.Size(1009, 535);
             this.repclaimpan.TabIndex = 25;
             this.repclaimpan.Visible = false;
             // 
@@ -693,10 +693,16 @@
             // 
             this.claimreportdgv.AllowUserToAddRows = false;
             this.claimreportdgv.AllowUserToDeleteRows = false;
+            this.claimreportdgv.AllowUserToResizeColumns = false;
+            this.claimreportdgv.AllowUserToResizeRows = false;
             this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.claimreportdgv.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.claimreportdgv.Location = new System.Drawing.Point(12, 18);
             this.claimreportdgv.Name = "claimreportdgv";
-            this.claimreportdgv.Size = new System.Drawing.Size(972, 318);
+            this.claimreportdgv.ReadOnly = true;
+            this.claimreportdgv.RowHeadersVisible = false;
+            this.claimreportdgv.RowHeadersWidth = 30;
+            this.claimreportdgv.Size = new System.Drawing.Size(983, 318);
             this.claimreportdgv.TabIndex = 0;
             // 
             // euthanizeDog
@@ -1051,11 +1057,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.euthanizeDog);
-            this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.repclaimpan);
             this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
+            this.Controls.Add(this.euthanizeDog);
+            this.Controls.Add(this.adoptDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";

@@ -543,7 +543,7 @@ namespace WindowsFormsApplication1
             ad.Visible = false;
             et.Visible = false;
             r.Visible = true;
-            claimreportdgv.Visible = false;
+            claimreportdgv.Visible = true;
 
             try
             {

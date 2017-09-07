@@ -1769,8 +1769,13 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-                   // MySqlCommand comm = new MySqlCommand("SELECT lastname, firstname FROM profile INNER JOIN attendance ON employee.employeeID = attendance.employeeID WHERE employeeID = *something* (dgv or combobox ang option na employee name?)")
-                }
+                    /*MySqlCommand comm = new MySqlCommand("SELECT lastname, firstname FROM profile INNER JOIN attendance ON employee.employeeID = attendance.employeeID WHERE employeeID = *something* (dgv or combobox ang option na employee name?)");
+                    comm.ExecuteNonQuery();
+                    comm.Parameters.AddWithValue("itemname", emplist.SelectedItem.ToString());
+                */
+                              
+    
+    }
                 catch (Exception ex)
                 {
                     conn.Close();
