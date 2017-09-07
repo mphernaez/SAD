@@ -44,14 +44,14 @@ namespace WindowsFormsApplication1
                 dgvViewEmp.Columns["position"].HeaderText = "Position";
                 dgvViewEmp.Columns["status"].HeaderText = "Status";
 
-               dgvViewEmp.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvViewEmp.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewEmp.Columns["Gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewEmp.Columns["Birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewEmp.Columns["ContactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewEmp.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewEmp.Columns["Position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewEmp.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                
+
                 conn.Close();
             }
             catch (Exception ex)

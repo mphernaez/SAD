@@ -840,22 +840,15 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 
-                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name from operationteam JOIN profile ON personID = operationteam.employeeID WHERE personID NOT IN ( SELECT operationteam.teamID FROM profile  JOIN employee ON profile.personID = employee.employeeID operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN date = '" + d + "'  THEN timeEnd >= '" + ts + "'  AND timeStart <= '" + te + "'  AND position = 'Catcher' AND employee.status = 'Active' ELSE position = 'Catcher'AND employee.status = 'Active' END)", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID WHERE position = 'Catcher' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + d + "')THEN (timeEnd >= '" + ts + "' AND timestart <= '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' ) END) UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
-                MySqlCommand com = new MySqlCommand("SELECT personID, lastname, firstname, middlename, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active'", conn);
-                MySqlDataAdapter adpp = new MySqlDataAdapter(com);
-                DataTable dtt = new DataTable();
-                adpp.Fill(dtt);
-                dt.Merge(dtt);
 
+                MessageBox.Show(d + " " + ts + " " + te);
                 allEmployees.DataSource = dt;
 
                 allEmployees.Columns["personID"].Visible = false;
-                allEmployees.Columns["lastname"].Visible = false;
-                allEmployees.Columns["firstname"].Visible = false;
-                allEmployees.Columns["middlename"].Visible = false;
                 allEmployees.Columns["name"].HeaderText = "Currently Available Employees";
                 
                 allEmployees.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -1025,9 +1018,9 @@ namespace WindowsFormsApplication1
                 String timen = DateTime.Now.ToString("hh:mm");
                 MySqlCommand comm = new MySqlCommand("UPDATE dogoperation  SET status = 'OnGoing' WHERE date = '" + daten + "' AND status != 'finished' AND status != 'OnGoing' AND timeStart = '" + timen + "'", conn);
                 comm.ExecuteNonQuery(); 
-                MySqlCommand com = new MySqlCommand("UPDATE dogoperation  SET status = 'Finished' WHERE date = '" + daten + "' AND status != 'finished' AND timeEnd = '" + timen + "'", conn);
+                MySqlCommand com = new MySqlCommand("UPDATE dogoperation  SET status = 'Finished' WHERE date = '" + daten + "' AND status != 'finished' AND (timeEnd = '" + timen + "' OR timeEnd < '" + timen + "')", conn);
                 com.ExecuteNonQuery();
-                MySqlCommand co = new MySqlCommand("UPDATE dogoperation  SET status = 'Finished' WHERE date < '" + daten + "' OR timeEnd < '" + timen + "'AND status != 'finished'", conn);
+                MySqlCommand co = new MySqlCommand("UPDATE dogoperation  SET status = 'Finished' WHERE date < '" + daten + "' AND status != 'finished'", conn);
                 co.ExecuteNonQuery();
                 conn.Close();
                 refreshOperationsView();
@@ -1292,8 +1285,8 @@ namespace WindowsFormsApplication1
                         commm.ExecuteNonQuery();
                     }
                 }
-                refreshTeam();
                 newTeam.Rows.Clear();
+                allEmployees.DataSource = null;
              }
             catch (Exception ex)
             {
@@ -1528,22 +1521,27 @@ namespace WindowsFormsApplication1
                 pOperation.Enabled = false;
                 int hs = int.Parse(tbStarth.Text), he = int.Parse(tbEndh.Text);
                
-                if(cbAMPMstart.Text == "PM")
+                if(cbAMPMstart.SelectedIndex == 1)
                 {
                     hs = hs + 12;
                 }
-                if(cbAMPMend.Text == "PM")
+                if(cbAMPMend.SelectedIndex == 1)
                 {
                     he = he + 12;
                 }
-                if (hs < 10 )
+                if (hs < 10)
                 {
                     tbStarth.Text = "0" + hs.ToString();
                 }
+                else
+                    tbStarth.Text = hs.ToString();
                 if (he < 10)
                 {
                     tbEndh.Text = "0" + he.ToString();
                 }
+                else
+                    tbEndh.Text = he.ToString();
+
 
                 if(int.Parse(tbStartm.Text) < 10 && tbStartm.Text.Substring(0, 1) != "0")
                 {
@@ -1556,8 +1554,8 @@ namespace WindowsFormsApplication1
                 }
                 d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
                 
-                ts = hs.ToString() + ":" + tbStartm.Text;
-                te = he.ToString() + ":" + tbEndm.Text;
+                ts = tbStarth.Text + ":" + tbStartm.Text;
+                te = tbEndh.Text + ":" + tbEndm.Text;
                 location = cbLocation.SelectedIndex;
                 //MessageBox.Show(d + ts + te + location);
 
