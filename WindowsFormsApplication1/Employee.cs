@@ -430,9 +430,9 @@ namespace WindowsFormsApplication1
 
                     count = count + 1;
                     empty = false;
-
                     teamname = "";
                     teamempid = 0;
+                    
                 }
             }
 
@@ -511,7 +511,7 @@ namespace WindowsFormsApplication1
 
                         int locID = int.Parse(dt.Rows[0]["locationID"].ToString());
                         
-                        comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, timeStart, timeEnd, status) VALUES ('" + teamIDs + "' , '" + locID + "', '" + date + "', '" + ts + "', '" + te + "', 'Pending')", conn);
+                        comm = new MySqlCommand("INSERT INTO dogoperation(teamID, locationID, date, timeStart, timeEnd, status) VALUES (" + teamIDs + " , " + locID + ", '" + date + "', '" + ts + "', '" + te + "', 'Pending')", conn);
                         comm.ExecuteNonQuery();
 
                         MessageBox.Show("Operation Added Successfully");
@@ -840,7 +840,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 
-                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, lastname, firstname, middlename, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID JOIN dogoperation ON dogoperation.teamID = operationteam.teamID WHERE CASE WHEN date = '"+ d + "' THEN SUBSTRING(timeEnd, 1, 2) < '"+ts.Substring(0, 2)+"' AND SUBSTRING(timeStart, 1, 2) > '"+ te.Substring(0, 2) +"' AND position = 'Catcher' AND employee.status = 'Active'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, lastname, firstname, middlename, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID JOIN dogoperation ON dogoperation.teamID = operationteam.teamID WHERE CASE WHEN date = '"+ d + "' THEN SUBSTRING(timeEnd, 1, 2) < '"+ts.Substring(0, 2)+"' AND SUBSTRING(timeStart, 1, 2) > '"+ te.Substring(0, 2) +"' AND position = 'Catcher' AND employee.status = 'Active' END", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1235,46 +1235,63 @@ namespace WindowsFormsApplication1
             empty = true;
             int teamid = 0;
             int empID = 0;
+            List<int> empss = new List<int>();
+            for (int i = 0; i < newTeam.Rows.Count; i++)
+            {
+                empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
+                empss.Add(empID); ;
+            }
+            int[] emps = empss.ToArray();
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT COUNT(*) FROM operationteam", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
+                int count = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
                 Boolean flag = false;
-                teamid = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) + 1;
-                int[] emps = new int[10];
-                for (int i = 0; i < newTeam.Rows.Count; i++)
+                
+                if (count > 0) //naay existing team
                 {
-                    try {
-                        empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
-                        emps[i] = empID;
-                    }
-                    catch (Exception ex)
+                    MySqlCommand commm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
+                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                    DataTable dta = new DataTable();
+                    adpt.Fill(dta);
+                    teamid = int.Parse(dta.Rows[0]["MAX(teamID)"].ToString()) + 1;
+                    conn.Close();
+                    int check = checkIfTeamExists(emps, teamid - 1); //number of team
+                    int parameter = 0;
+
+                    if (check != 0) //team exists
                     {
-                        flag = true;
+                        parameter = check;
+                        conn.Close();
+                        addOperation(parameter);
                     }
-                }
-                int check = checkIfTeamExists(emps, teamid - 1);
-                int parameter;
-                if (check != 0) { parameter = check; }
-                else { parameter = teamid; }
-                conn.Close();
-                addOperation(parameter);
-                if (check == 0) //team doesnt exist
-                {
-                    conn.Open();
-                    MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + empID + ")", conn);
-                    commm.ExecuteNonQuery();
+                    else if (check == 0) { //team doesnt exist yet
+                        conn.Open();
+                        MySqlCommand commmm;
+                        Array.Sort(emps);
+                        for (int i = 0; i < emps.Length; i++)
+                        {
+                            commmm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + emps[i] + ")", conn);
+                            commmm.ExecuteNonQuery();
+                        }
+                        conn.Close();
+                        addOperation(teamid);
+                    }
+                    conn.Close();
                 }
                 else
                 {
-                    conn.Open();
-                    MySqlCommand commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + check + ", " + empID + ")", conn);
-                    commm.ExecuteNonQuery();
+                    MySqlCommand commm;
+                    for (int i = 0; i < emps.Length; i++)
+                    {
+                        commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(1, " + emps[i] + ")", conn);
+                        commm.ExecuteNonQuery();
+                    }
                 }
-                conn.Close();
                 refreshTeam();
                 newTeam.Rows.Clear();
              }
@@ -1318,37 +1335,51 @@ namespace WindowsFormsApplication1
                 Boolean same = true;
                 Array.Sort(emps);
                 int i = 1;
-                while(i < max && stop == false)//counter for team
+                MySqlCommand commm;
+                MySqlDataAdapter adpt;
+                DataTable dta;
+                while (i <= max && stop == false)//counter for team
                 {
-                    comm = new MySqlCommand("SELECT COUNT(*) FROM operationteam WHERE teamID = " + i, conn);
-                    adp = new MySqlDataAdapter(comm);
-                    dt = new DataTable();
-                    adp.Fill(dt);
-                    int empnum = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
+                    commm = new MySqlCommand("SELECT COUNT(*), employeeID FROM operationteam WHERE teamID = " + i, conn);
+                    adpt = new MySqlDataAdapter(commm);
+                    dta = new DataTable();
+                    int empnum = int.Parse(dta.Rows[0]["COUNT(*)"].ToString());
 
-                    comm = new MySqlCommand("SELECT employeeID FROM operationteam WHERE teamID = " + i, conn);
-                    adp = new MySqlDataAdapter(comm);
-                    dt = new DataTable();
-                    adp.Fill(dt);
+                    commm = new MySqlCommand("SELECT DISTINCT employeeID FROM operationteam WHERE teamID = " + i, conn);
+                    adpt = new MySqlDataAdapter(commm);
+                    dta = new DataTable();
+                    adpt.Fill(dta);
+
                     int[] employees = new int[10];
                     for (int j = 0; j < empnum; j++) //counter for employees inside the team
                     {
-                        employees[j] = int.Parse(dt.Rows[0]["employeeID"].ToString());
+                        employees[j] = int.Parse(dta.Rows[0]["employeeID"].ToString());
                     }
                     Array.Sort(employees);
+                    Array.Sort(emps);
                     
-                    for (int y = 0; y < empnum && same == true; y++)
+                    if (employees.Length != emps.Length)
                     {
-                        if(employees[y] == emps[y])
+                        stop = true;
+                        same = false;
+                        return 0;
+                    }
+                    else
+                    {
+                        for (int y = 0; y < empnum && same == true; y++)
                         {
-                            same = true;
-                        }
-                        else
-                        {
-                            same = false;
+                            if (employees[y] == emps[y])
+                            {
+                                same = true;
+                            }
+                            else
+                            {
+                                same = false;
+                            }
                         }
                     }
                     i++;
+
                 }
 
                 if (same == true)
@@ -1360,7 +1391,7 @@ namespace WindowsFormsApplication1
                 {
                     return 0;
                 }
-                
+                  
             }
             catch(Exception ex)
             {
