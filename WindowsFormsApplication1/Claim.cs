@@ -143,8 +143,8 @@ namespace WindowsFormsApplication1
                 int datediff = 50 * int.Parse(dt.Rows[0]["datediff"].ToString());
                 int bayad = 250 + datediff;
                 labelPayment.Text = bayad.ToString();
-                if(datediff == 1) lblRemarks.Text = "*250 + (50 x " + datediff.ToString() + " day impounded)";
-                else if(datediff > 1)lblRemarks.Text = "*P 250 + (P 50 x " + datediff/50 + " days impounded)";
+                if(datediff/50 == 1) lblRemarks.Text = "*250 + (50 x " + datediff.ToString() + " day impounded)";
+                else if(datediff/50 > 1)lblRemarks.Text = "*P 250 + (P 50 x " + datediff/50 + " days impounded)";
                 conn.Close();
 
             }
