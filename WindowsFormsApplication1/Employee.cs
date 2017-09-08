@@ -515,6 +515,7 @@ namespace WindowsFormsApplication1
                         comm.ExecuteNonQuery();
 
                         MessageBox.Show("Operation Added Successfully");
+                        allEmployees.Rows.Clear();
                         conn.Close();
                     }
                     catch (Exception ex)
@@ -840,18 +841,19 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 
-                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID WHERE position = 'Catcher' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + d + "')THEN (timeEnd >= '" + ts + "' AND timestart <= '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' ) END) UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID WHERE position = 'Catcher' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + d + "')THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' ) END) UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
 
-                MessageBox.Show(d + " " + ts + " " + te);
-                allEmployees.DataSource = dt;
-
-                allEmployees.Columns["personID"].Visible = false;
-                allEmployees.Columns["name"].HeaderText = "Currently Available Employees";
+                for(int x = 0; x < dt.Rows.Count; x++)
+                {
+                    int pid = int.Parse(dt.Rows[x]["personID"].ToString());
+                    string name = dt.Rows[x]["name"].ToString();
+                    allEmployees.Rows.Add(pid.ToString(), name);
+                }
                 
-                allEmployees.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                allEmployees.Columns["empname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 
                 int i = 0;
                 int empid;
@@ -886,11 +888,10 @@ namespace WindowsFormsApplication1
     
         private void allEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (int.Parse(allEmployees.Rows[e.RowIndex].Cells["personID"].Value.ToString()) != 0)
+            if (int.Parse(allEmployees.Rows[e.RowIndex].Cells["pID"].Value.ToString()) != 0)
             {
-                teamempid = int.Parse(allEmployees.Rows[e.RowIndex].Cells["personID"].Value.ToString());
-                teamname = allEmployees.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                
+                teamempid = int.Parse(allEmployees.Rows[e.RowIndex].Cells["pID"].Value.ToString());
+                teamname = allEmployees.Rows[e.RowIndex].Cells["empname"].Value.ToString();
             }
         }
 
@@ -1144,8 +1145,7 @@ namespace WindowsFormsApplication1
 
         private void button19_Click(object sender, EventArgs e)
         {
-            refreshTeam();
-            newTeam.Rows.Clear();
+           
         }
 
         private void dgvAdmin_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1834,6 +1834,37 @@ namespace WindowsFormsApplication1
         {
 
         }
+        int backID;
+        string backname;
+        
+        private void newTeam_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (int.Parse(newTeam.Rows[e.RowIndex].Cells["personID"].Value.ToString()) != 0)
+            {
+                backID = int.Parse(newTeam.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+                backname = newTeam.Rows[e.RowIndex].Cells["name"].Value.ToString();
+            }
+        }
+        
+        private void button19_Click_1(object sender, EventArgs e)
+        {
+            if (backname == "")
+            {
+                MessageBox.Show("Please select an employee");
+            }
+            else
+            {
+                this.allEmployees.Rows.Add(backID, backname);
+                    foreach (DataGridViewRow row in newTeam.SelectedRows)
+                    {
+                        newTeam.Rows.RemoveAt(row.Index);
+                    }
+                backname = "";
+                backID = 0;
+
+                }
+            }
+        }
     }
-}
+
 
