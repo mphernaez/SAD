@@ -94,12 +94,7 @@ namespace WindowsFormsApplication1
                 pnlAdminEdit.Visible = true;
             }
         }
-
-        private void EditEmp_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
-
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -111,5 +106,6 @@ namespace WindowsFormsApplication1
             else pnlAdminEdit.Visible = true;
             
         }
+        
     }
 }

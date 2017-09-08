@@ -66,24 +66,6 @@ namespace WindowsFormsApplication1
             this.Hide();
         }
 
-        private void bgworkerEmployee_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
-
-        private void bgworkerEmployee_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-
-        }
-
-        private void bgworkerEmployee_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
     }
 }

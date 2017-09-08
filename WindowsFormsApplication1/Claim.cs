@@ -26,22 +26,12 @@ namespace WindowsFormsApplication1
             
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             dog.Show();
             this.Hide();
         }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -163,64 +153,7 @@ namespace WindowsFormsApplication1
             dog.cbGenderSearch.SelectedIndex = 0;
             
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkbox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbIDnum_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbIDtype_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbadd_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbnumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void color_Click(object sender, EventArgs e)
-        {
-
-        }
         
-        private void Preview()
-        {
-            printPreviewDialogCR.Document = printDocumentCR;
-            printPreviewDialogCR.ShowDialog();
-            printPreviewDialogCR.TopLevel = true;
-
-        }
         private void printDocumentCR_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             
@@ -250,12 +183,7 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 800));
 
         }
-                
-        private void tbfname_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+         
         private void tbDay_Enter(object sender, EventArgs e)
         {
             tbDay.Text = "";
@@ -278,6 +206,9 @@ namespace WindowsFormsApplication1
             tbDay.Items.Clear();
             responsiveDay();
         }
+
+        //FUNCTIONS
+
         private void responsiveDay()
         {
             if (int.Parse(tbYear.Text) % 4 == 0 && cbMonth.Text == "February") { loopDay(29); }
@@ -285,6 +216,7 @@ namespace WindowsFormsApplication1
             else if (cbMonth.Text == "January" || cbMonth.Text == "March" || cbMonth.Text == "May" || cbMonth.Text == "July" || cbMonth.Text == "August" || cbMonth.Text == "October" || cbMonth.Text == "December") { loopDay(31); }
             else { loopDay(30); }
         }
+
         private void loopDay(int x)
         {
             int i = 1;
@@ -294,5 +226,14 @@ namespace WindowsFormsApplication1
                 i++;
             }
         }
+
+        private void Preview()
+        {
+            printPreviewDialogCR.Document = printDocumentCR;
+            printPreviewDialogCR.ShowDialog();
+            printPreviewDialogCR.TopLevel = true;
+
+        }
+
     }
 }

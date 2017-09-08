@@ -94,7 +94,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1071, 112);
             this.panel1.TabIndex = 7;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
@@ -168,7 +167,6 @@
             this.label1.Size = new System.Drawing.Size(173, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome,";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pe
             // 
@@ -314,8 +312,6 @@
             this.warningPanel.Size = new System.Drawing.Size(287, 49);
             this.warningPanel.TabIndex = 9;
             this.warningPanel.Visible = false;
-            this.warningPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.warningPanel_Paint);
-            this.warningPanel.MouseHover += new System.EventHandler(this.warningPanel_MouseHover);
             // 
             // pictureBox2
             // 
@@ -365,7 +361,6 @@
             this.emptyPanel.Size = new System.Drawing.Size(287, 49);
             this.emptyPanel.TabIndex = 10;
             this.emptyPanel.Visible = false;
-            this.emptyPanel.MouseHover += new System.EventHandler(this.warningPanel_MouseHover);
             // 
             // pictureBox3
             // 

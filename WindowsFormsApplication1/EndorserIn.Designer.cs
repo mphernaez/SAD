@@ -64,9 +64,6 @@
             this.dgvEnd.Size = new System.Drawing.Size(368, 362);
             this.dgvEnd.TabIndex = 0;
             this.dgvEnd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEnd_CellClick);
-            this.dgvEnd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEnd_CellContentClick);
-            this.dgvEnd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEnd_CellDoubleClick);
-            this.dgvEnd.DoubleClick += new System.EventHandler(this.dgvEnd_DoubleClick);
             // 
             // cbDay
             // 

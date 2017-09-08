@@ -18,11 +18,24 @@ namespace WindowsFormsApplication1
         public int adminID;
         private int y;
         private Color use;
-
+        private int teamempid;
+        private string teamname;
+        private int count;
+        private Boolean empty = true;
+        string date;
+        String d;
+        String ts;
+        String te;
+        int location;
+        int backID;
+        string backname;
+        int raempID;
         public empty back { get; set; }
         public MySqlConnection conn = new MySqlConnection();
         EditEmp emp;
         empty home;
+        int actemployeeID = 0;
+
         public Employee(empty parent)
         {
             InitializeComponent();
@@ -32,54 +45,12 @@ namespace WindowsFormsApplication1
             emp = new EditEmp(this);
             home = parent;
         }
+
         public void trig()
         {
             this.Hide();
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbOperation_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void lname_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void eGender_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void contactNumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void address_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fname_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        int actemployeeID = 0;
-        private void btnDone_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             DogCatchingOperation.Visible = false;
@@ -96,12 +67,7 @@ namespace WindowsFormsApplication1
 
 
         }
-
-        private void selectButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
             DogCatchingOperation.Visible = false;
@@ -150,7 +116,7 @@ namespace WindowsFormsApplication1
             o.Visible = false;
             r.Visible = false;
 
-}
+        }
 
         private void Employee_Load(object sender, EventArgs e)
         {
@@ -162,6 +128,7 @@ namespace WindowsFormsApplication1
             //this.Top = 112;// 262
 
         }
+
         private void tmr_Tick(object sender, EventArgs e)
         {
             refreshStatus();
@@ -336,22 +303,6 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
         }
-
-        private void textBox1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void tbUsername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbPassword_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         
         private void button3_Click_1(object sender, EventArgs e)
         {
@@ -370,11 +321,6 @@ namespace WindowsFormsApplication1
             dgvAttendanceOut.Visible = true;
 
             refreshAttendanceOut();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -399,16 +345,11 @@ namespace WindowsFormsApplication1
             refreshEdit();
         }
 
-
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-        private int teamempid;
-        private string teamname;
-        private int count;
-        private Boolean empty = true;
+        
         private void button17_Click(object sender, EventArgs e)
         {
             Boolean done = false;
@@ -439,12 +380,7 @@ namespace WindowsFormsApplication1
 
 
         }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        
         private void button16_Click(object sender, EventArgs e)
         {
             button21.BackColor = Color.FromArgb(2, 170, 145);
@@ -576,12 +512,7 @@ namespace WindowsFormsApplication1
             }
 
         }
-
-        private void dgvEdit_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void button13_Click(object sender, EventArgs e)
         {
 
@@ -733,11 +664,11 @@ namespace WindowsFormsApplication1
             
            cbposition.ForeColor = tbcontactNumber.ForeColor = tbaddress.ForeColor = tbbdayday.ForeColor = tbbdayyear.ForeColor = cbbdaymonth.ForeColor = cbgender.ForeColor = tbfname.ForeColor = tblname.ForeColor = tbmname.ForeColor = Color.Gray;
         }
+
         private void button20_Click(object sender, EventArgs e)
         {
             //addOperation();
         }
-
 
         private void refreshAttendanceOut()
         {
@@ -799,7 +730,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-
         private void tbaddress_MouseClick(object sender, MouseEventArgs e)
         {
             if (tbaddress.Text == "Address")
@@ -820,21 +750,12 @@ namespace WindowsFormsApplication1
 
         private void cbposition_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbposition.Text != "Position")
-            {
-                cbposition.ForeColor = Color.Black;
-            }
-            if(cbposition.Text == "Admin")
-            {
-                pnlAdmin.Visible = true;
-            }
-            else
-            {
-                pnlAdmin.Visible = false;
-            }
+            if (cbposition.Text != "Position") cbposition.ForeColor = Color.Black;
+            if(cbposition.Text == "Admin") pnlAdmin.Visible = true;
+            else pnlAdmin.Visible = false;
+            
         }
 
-        
         private void refreshTeam()
         {
             try
@@ -858,23 +779,6 @@ namespace WindowsFormsApplication1
                 int i = 0;
                 int empid;
 
-                /*while (i < allEmployees.RowCount)
-                {
-                    empid = int.Parse(allEmployees.Rows[i].Cells["personID"].Value.ToString());
-                   
-                    MySqlCommand com = new MySqlCommand("select COUNT(*) from employee join (operationteam join dogoperation on dogoperation.teamID = operationteam.teamID) on employee.employeeID = operationteam.employeeID where employee.employeeID = " + empid + " and timeEnd != '"+ te +"'or dogoperation.status = 'Pending' or dogoperation.status = 'OnGoing' ", conn);
-                    MySqlDataAdapter adpp = new MySqlDataAdapter(com);
-                    DataTable dtt = new DataTable();
-                    adpp.Fill(dtt);
-                    DataGridViewRow row = allEmployees.Rows[i];
-                    if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) > 0)
-                    {
-                        allEmployees.Rows.Remove(row);
-                    }
-
-                }*/
-
-                
                 allEmployees.ClearSelection();
                 conn.Close();
             }
@@ -894,46 +798,7 @@ namespace WindowsFormsApplication1
                 teamname = allEmployees.Rows[e.RowIndex].Cells["empname"].Value.ToString();
             }
         }
-
-        private void team_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button18_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void tbaddress_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbcontactNumber_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void tblname_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void tbmname_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbfname_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void tblname_MouseClick(object sender, MouseEventArgs e)
         {
 
@@ -945,11 +810,6 @@ namespace WindowsFormsApplication1
         }
 
        
-        private void dgvTeams_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
         private void tbOpDate_Click(object sender, EventArgs e)
         {
             tbOpDay.Text = "";
@@ -968,47 +828,12 @@ namespace WindowsFormsApplication1
             tbEndh.ForeColor = Color.Black;
         }
 
-        private void tbOpDate_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void newOperation_VisibleChanged(object sender, EventArgs e)
         {
             doneclick = false;
             
         }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbbdaymonth_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvAttendanceIn_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+       
         private void refreshStatus()
         {
             try
@@ -1032,6 +857,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
             }
         }
+
         private void refreshOperationsView()
         {
             dgvOperationsView.Rows.Clear();
@@ -1115,44 +941,14 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
         }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-           
-        }
-
-        private void dgvActivities_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void attendance_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+       
         private void label13_Click(object sender, EventArgs e)
         {
             viewAct view = new viewAct();
             view.Show();
             view.TopMost = true;
         }
-
-        private void button19_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void dgvAdmin_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
-
+        
         private Boolean checkIfEmployeeExists(string lastname, string middlename, string firstname)
         {
             Boolean exist = false;
@@ -1185,11 +981,6 @@ namespace WindowsFormsApplication1
             Viewemp view = new Viewemp();
             view.Show();
             view.TopMost = true;
-        }
-
-        private void button24_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void tbStartm_Enter(object sender, EventArgs e)
@@ -1316,6 +1107,7 @@ namespace WindowsFormsApplication1
             cbOpMonth.Enabled = false;
             tbOpDay.Enabled = false;
         }
+
         private int checkIfTeamExists(int[] emps, int max) //emps = new operation team
         {
             try
@@ -1361,29 +1153,16 @@ namespace WindowsFormsApplication1
                     {
                         for (int y = 0; y < empnum && same == true; y++)
                         {
-                            if (employees[y] == emps[y])
-                            {
-                                same = true;
-                            }
-                            else
-                            {
-                                same = false;
-                            }
+                            if (employees[y] == emps[y]) same = true;
+                            else same = false;
                         }
                     }
                     i++;
 
                 }
-
-                if (same == true)
-                {
-                    stop = true;
-                    return i;
-                }
-                else
-                {
-                    return 0;
-                }
+                if (same == true) { stop = true; return i; }
+                else return 0;
+                
                   
             }
             catch(Exception ex)
@@ -1393,6 +1172,7 @@ namespace WindowsFormsApplication1
             }
             
         }
+
         private void button25_Click(object sender, EventArgs e)
         {
             home.openDog();
@@ -1424,34 +1204,7 @@ namespace WindowsFormsApplication1
             home.Show();
             this.Hide();
         }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-        
-        private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
-        {
-      
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        string date;
+       
         private void button7_Click_1(object sender, EventArgs e)
         {   
             int year = int.Parse(textBox2.Text);
@@ -1466,22 +1219,7 @@ namespace WindowsFormsApplication1
             dgvOperationsView.Rows.Clear();
             refreshOperationsView();
         }
-
-        private void dgvAttendanceOut_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void dgvOperationsView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
-
-        private void dgvOperationsView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        
         private void dgvOperationsView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int operation;
@@ -1509,10 +1247,7 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
         }
-        String d;
-        String ts;
-        String te;
-        int location;
+        
         private void button28_Click(object sender, EventArgs e)
         {
             if(cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location" && cbAMPMend.Text != "AM/PM" && cbAMPMstart.Text != "AM/PM")
@@ -1567,12 +1302,7 @@ namespace WindowsFormsApplication1
             }
             
         }
-
-        private void editPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        
         private void tbOpDate_Enter(object sender, EventArgs e)
         {
             tbOpDay.Text = "";
@@ -1731,7 +1461,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Please select an employee");
             }
         }
-        int raempID;
+        
         private void button29_Click(object sender, EventArgs e)
         {
             if (raempID != 0)
@@ -1804,10 +1534,8 @@ namespace WindowsFormsApplication1
                     /*MySqlCommand comm = new MySqlCommand("SELECT lastname, firstname FROM profile INNER JOIN attendance ON employee.employeeID = attendance.employeeID WHERE employeeID = *something* (dgv or combobox ang option na employee name?)");
                     comm.ExecuteNonQuery();
                     comm.Parameters.AddWithValue("itemname", emplist.SelectedItem.ToString());
-                */
-                              
-    
-    }
+                   */
+                }
                 catch (Exception ex)
                 {
                     conn.Close();
@@ -1819,23 +1547,6 @@ namespace WindowsFormsApplication1
                 oplist.Visible = true;
             }
         }
-
-        private void oplist_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void cbLocation_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        int backID;
-        string backname;
         
         private void newTeam_CellClick(object sender, DataGridViewCellEventArgs e)
         {

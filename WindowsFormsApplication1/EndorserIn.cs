@@ -94,22 +94,7 @@ namespace WindowsFormsApplication1
         }
 
         int eID;
-
-        private void dgvEnd_DoubleClick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvEnd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void dgvEnd_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
+        
         private void dgvEnd_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             eID = int.Parse(dgvEnd.Rows[e.RowIndex].Cells["employeeID"].Value.ToString());

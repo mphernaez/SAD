@@ -68,6 +68,10 @@
             this.time = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblRemarks = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.labelPayment = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.breeds = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -76,10 +80,6 @@
             this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.printPreviewDialogCR = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentCR = new System.Drawing.Printing.PrintDocument();
-            this.label18 = new System.Windows.Forms.Label();
-            this.labelPayment = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.lblRemarks = new System.Windows.Forms.Label();
             this.claimRBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -156,7 +156,6 @@
             this.label11.Size = new System.Drawing.Size(68, 20);
             this.label11.TabIndex = 19;
             this.label11.Text = "Address";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label12
             // 
@@ -167,7 +166,6 @@
             this.label12.Size = new System.Drawing.Size(103, 20);
             this.label12.TabIndex = 20;
             this.label12.Text = "Valid ID Type";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label13
             // 
@@ -178,7 +176,6 @@
             this.label13.Size = new System.Drawing.Size(125, 20);
             this.label13.TabIndex = 21;
             this.label13.Text = "Valid ID Number";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // tbfname
             // 
@@ -187,7 +184,6 @@
             this.tbfname.Name = "tbfname";
             this.tbfname.Size = new System.Drawing.Size(180, 26);
             this.tbfname.TabIndex = 22;
-            this.tbfname.TextChanged += new System.EventHandler(this.tbfname_TextChanged);
             // 
             // tbnumber
             // 
@@ -196,7 +192,6 @@
             this.tbnumber.Name = "tbnumber";
             this.tbnumber.Size = new System.Drawing.Size(158, 26);
             this.tbnumber.TabIndex = 25;
-            this.tbnumber.TextChanged += new System.EventHandler(this.tbnumber_TextChanged);
             // 
             // tbadd
             // 
@@ -206,7 +201,6 @@
             this.tbadd.Name = "tbadd";
             this.tbadd.Size = new System.Drawing.Size(246, 67);
             this.tbadd.TabIndex = 26;
-            this.tbadd.TextChanged += new System.EventHandler(this.tbadd_TextChanged);
             // 
             // tbIDtype
             // 
@@ -215,7 +209,6 @@
             this.tbIDtype.Name = "tbIDtype";
             this.tbIDtype.Size = new System.Drawing.Size(189, 26);
             this.tbIDtype.TabIndex = 27;
-            this.tbIDtype.TextChanged += new System.EventHandler(this.tbIDtype_TextChanged);
             // 
             // tbIDnum
             // 
@@ -224,7 +217,6 @@
             this.tbIDnum.Name = "tbIDnum";
             this.tbIDnum.Size = new System.Drawing.Size(189, 26);
             this.tbIDnum.TabIndex = 28;
-            this.tbIDnum.TextChanged += new System.EventHandler(this.tbIDnum_TextChanged);
             // 
             // checkbox
             // 
@@ -236,7 +228,6 @@
             this.checkbox.TabIndex = 29;
             this.checkbox.Text = "Avail Vaccine";
             this.checkbox.UseVisualStyleBackColor = true;
-            this.checkbox.CheckedChanged += new System.EventHandler(this.checkbox_CheckedChanged);
             // 
             // label14
             // 
@@ -389,7 +380,6 @@
             this.color.Size = new System.Drawing.Size(48, 22);
             this.color.TabIndex = 11;
             this.color.Text = "Color";
-            this.color.Click += new System.EventHandler(this.color_Click);
             // 
             // label5
             // 
@@ -486,7 +476,6 @@
             this.label1.Size = new System.Drawing.Size(56, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Breed:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // time
             // 
@@ -513,7 +502,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(715, 603);
             this.panel1.TabIndex = 16;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel3
             // 
@@ -541,6 +529,49 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(646, 149);
             this.panel3.TabIndex = 31;
+            // 
+            // lblRemarks
+            // 
+            this.lblRemarks.AutoSize = true;
+            this.lblRemarks.Font = new System.Drawing.Font("Trebuchet MS", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRemarks.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblRemarks.Location = new System.Drawing.Point(456, 117);
+            this.lblRemarks.Name = "lblRemarks";
+            this.lblRemarks.Size = new System.Drawing.Size(50, 16);
+            this.lblRemarks.TabIndex = 24;
+            this.lblRemarks.Text = "Remarks";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(457, 95);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(19, 22);
+            this.label20.TabIndex = 23;
+            this.label20.Text = "P";
+            // 
+            // labelPayment
+            // 
+            this.labelPayment.AutoSize = true;
+            this.labelPayment.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPayment.Location = new System.Drawing.Point(471, 95);
+            this.labelPayment.Name = "labelPayment";
+            this.labelPayment.Size = new System.Drawing.Size(70, 22);
+            this.labelPayment.TabIndex = 22;
+            this.labelPayment.Text = "Payment";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label18.Location = new System.Drawing.Point(322, 97);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(75, 20);
+            this.label18.TabIndex = 21;
+            this.label18.Text = "Payment:";
             // 
             // label6
             // 
@@ -609,49 +640,6 @@
             // printDocumentCR
             // 
             this.printDocumentCR.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentCR_PrintPage);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label18.Location = new System.Drawing.Point(322, 97);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(75, 20);
-            this.label18.TabIndex = 21;
-            this.label18.Text = "Payment:";
-            // 
-            // labelPayment
-            // 
-            this.labelPayment.AutoSize = true;
-            this.labelPayment.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPayment.Location = new System.Drawing.Point(471, 95);
-            this.labelPayment.Name = "labelPayment";
-            this.labelPayment.Size = new System.Drawing.Size(70, 22);
-            this.labelPayment.TabIndex = 22;
-            this.labelPayment.Text = "Payment";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(457, 95);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(19, 22);
-            this.label20.TabIndex = 23;
-            this.label20.Text = "P";
-            // 
-            // lblRemarks
-            // 
-            this.lblRemarks.AutoSize = true;
-            this.lblRemarks.Font = new System.Drawing.Font("Trebuchet MS", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRemarks.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblRemarks.Location = new System.Drawing.Point(456, 117);
-            this.lblRemarks.Name = "lblRemarks";
-            this.lblRemarks.Size = new System.Drawing.Size(50, 16);
-            this.lblRemarks.TabIndex = 24;
-            this.lblRemarks.Text = "Remarks";
             // 
             // claimRBindingSource
             // 

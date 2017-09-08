@@ -117,7 +117,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(719, 592);
             this.panel1.TabIndex = 18;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
@@ -243,7 +242,6 @@
             this.location.Size = new System.Drawing.Size(126, 20);
             this.location.TabIndex = 14;
             this.location.Text = "Location Caught";
-            this.location.Click += new System.EventHandler(this.location_Click);
             // 
             // label5
             // 
@@ -433,7 +431,6 @@
             this.tbadd.Name = "tbadd";
             this.tbadd.Size = new System.Drawing.Size(237, 64);
             this.tbadd.TabIndex = 26;
-            this.tbadd.TextChanged += new System.EventHandler(this.tbadd_TextChanged);
             // 
             // tbfname
             // 
@@ -535,7 +532,6 @@
             this.printPreviewDialogAdt.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogAdt.Icon")));
             this.printPreviewDialogAdt.Name = "printPreviewDialogAdt";
             this.printPreviewDialogAdt.Visible = false;
-            this.printPreviewDialogAdt.Load += new System.EventHandler(this.printPreviewDialog1_Load);
             // 
             // printDocumentAdt
             // 

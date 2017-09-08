@@ -134,24 +134,7 @@ namespace WindowsFormsApplication1
         {
             dog.refreshAdoption();
         }
-
-        private void location_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void printPreviewDialog1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void preview()
-        {
-            printPreviewDialogAdt.Document = printDocumentAdt;
-            printPreviewDialogAdt.ShowDialog();
-            printPreviewDialogAdt.TopLevel = true;
-        }
-
+        
         private void printDocumentAdt_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawString("Davao City Dog Pound", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(25, 100));
@@ -185,34 +168,7 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Date and Time Caught: " + date.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 500));
             e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 800));
         }
-
-        private void tbadd_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
-
-        private void responsiveDay()
-        {
-            if (int.Parse(tbYear.Text) % 4 == 0 && cbMonth.Text == "February") { loopDay(29); }
-            else if (int.Parse(tbYear.Text) % 4 != 0 && cbMonth.Text == "February") { loopDay(28); }
-            else if (cbMonth.Text == "January" || cbMonth.Text == "March" || cbMonth.Text == "May" || cbMonth.Text == "July" || cbMonth.Text == "August" || cbMonth.Text == "October" || cbMonth.Text == "December") { loopDay(31); }
-            else { loopDay(30); }
-        }
-        private void loopDay(int x)
-        {
-            int i = 1;
-            while (i <= x)
-            {
-                tbDay.Items.Add(i.ToString());
-                i++;
-            }
-        }
-
+        
         private void tbYear_TextChanged(object sender, EventArgs e)
         {
             if (tbYear.Text.Length == 4) cbMonth.Enabled = true;
@@ -229,6 +185,33 @@ namespace WindowsFormsApplication1
         private void tbYear_Enter(object sender, EventArgs e)
         {
             tbYear.Text = "";
+        }
+
+        //FUNCTIONS
+
+        private void preview()
+        {
+            printPreviewDialogAdt.Document = printDocumentAdt;
+            printPreviewDialogAdt.ShowDialog();
+            printPreviewDialogAdt.TopLevel = true;
+        }
+
+        private void responsiveDay()
+        {
+            if (int.Parse(tbYear.Text) % 4 == 0 && cbMonth.Text == "February") { loopDay(29); }
+            else if (int.Parse(tbYear.Text) % 4 != 0 && cbMonth.Text == "February") { loopDay(28); }
+            else if (cbMonth.Text == "January" || cbMonth.Text == "March" || cbMonth.Text == "May" || cbMonth.Text == "July" || cbMonth.Text == "August" || cbMonth.Text == "October" || cbMonth.Text == "December") { loopDay(31); }
+            else { loopDay(30); }
+        }
+
+        private void loopDay(int x)
+        {
+            int i = 1;
+            while (i <= x)
+            {
+                tbDay.Items.Add(i.ToString());
+                i++;
+            }
         }
     }
 }

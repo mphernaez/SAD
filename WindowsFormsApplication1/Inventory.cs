@@ -196,73 +196,18 @@ namespace WindowsFormsApplication1
             nudmin.Value = 0;
             
         }
-        private void inv_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        
         private void button8_Click(object sender, EventArgs e)
         {
-            /*
-            try
-            {
-                conn.Open();
-                MySqlCommand com = new MySqlCommand("SELECT * FROM items WHERE itemID = " + itemID, conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                int qua = int.Parse(dt.Rows[0]["quantity"].ToString());
-                string prod = dt.Rows[0]["productName"].ToString();
-                int id = int.Parse(dt.Rows[0]["itemID"].ToString());
-                int min = int.Parse(dt.Rows[0]["minQuantity"].ToString());
-                if (int.Parse(nubo.Text) <= qua)
-                {
-                    MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - '" + nubo.Value.ToString() + "' WHERE itemID = '" + itemID + "'", conn);
-                    comm.ExecuteNonQuery();
-                    MessageBox.Show("Item Updated");
-                }
-                else
-                {
-                    MessageBox.Show("Invalid Value");
-                }
-                com = new MySqlCommand("SELECT quantity FROM items WHERE itemID = " + itemID, conn);
-                adp = new MySqlDataAdapter(com);
-                dt = new DataTable();
-                adp.Fill(dt);
-
-                int quan = int.Parse(dt.Rows[0]["quantity"].ToString());
-
-                conn.Close();
-                refreshSO();
-                checkMin(id, min, quan, prod);
-                 }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
-            }
-                */
-           
             endO.id = itemID;
             endO.Show(); 
-           
         }
-
-        private void dgvo_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        
         private void dgvo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             itemID = int.Parse(dgvo.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
         }
-
-        private void Sout_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        
         private void OK1_Click(object sender, EventArgs e)
         {
                 end.id = itemID;
@@ -295,12 +240,6 @@ namespace WindowsFormsApplication1
             
            
         }
-
-        private void nubi_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void checkMin(int id, int min, int quan, string prod)
         {
             if (quan < min)
@@ -308,12 +247,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Item in scarse! Request stocks immediately for: " + prod);
             }
         }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void button9_Click(object sender, EventArgs e)
         {
             Viewinvent inv = new Viewinvent();
@@ -353,35 +287,13 @@ namespace WindowsFormsApplication1
             this.Hide();
 
         }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbdesc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         bool hasExp = true;
-
         private void button14_Click(object sender, EventArgs e)
         {
-            if (hasExp == true)
-            {
-                hasExp = false;
-                
-            } else
-            {
-                hasExp = true;
-                
-            }
+            if (hasExp == true) hasExp = false;
+            else hasExp = true;
         }
-
-        private void dgvin_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
     }
 }

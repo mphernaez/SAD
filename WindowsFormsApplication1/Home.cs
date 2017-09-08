@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
             use = Color.FromArgb(253, 208, 174);
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
             
-     }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -212,17 +212,7 @@ namespace WindowsFormsApplication1
             label2.Text = DateTime.Now.ToString("HH:mm:ss");
 
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void selectButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void button5_Click(object sender, EventArgs e)
         {
             dog.trig();
@@ -237,21 +227,7 @@ namespace WindowsFormsApplication1
 
 
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -268,21 +244,7 @@ namespace WindowsFormsApplication1
             warningPanel.Visible = false;
         }
 
-        private void warningPanel_MouseHover(object sender, EventArgs e)
-        {
-
-        }
-
-        private void refreshWarn()
-        {
-           
-         
-        }
-        private void warningPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Left)

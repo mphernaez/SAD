@@ -241,7 +241,6 @@
             this.inv.Size = new System.Drawing.Size(1016, 543);
             this.inv.TabIndex = 52;
             this.inv.Visible = false;
-            this.inv.Paint += new System.Windows.Forms.PaintEventHandler(this.inv_Paint);
             // 
             // button9
             // 
@@ -393,7 +392,6 @@
             this.dgvin.Size = new System.Drawing.Size(952, 203);
             this.dgvin.TabIndex = 20;
             this.dgvin.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvin_CellClick);
-            this.dgvin.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvin_CellContentClick);
             // 
             // Sout
             // 
@@ -408,7 +406,6 @@
             this.Sout.Size = new System.Drawing.Size(982, 319);
             this.Sout.TabIndex = 44;
             this.Sout.Visible = false;
-            this.Sout.Paint += new System.Windows.Forms.PaintEventHandler(this.Sout_Paint);
             // 
             // label4
             // 
@@ -488,7 +485,6 @@
             this.dgvo.Size = new System.Drawing.Size(952, 200);
             this.dgvo.TabIndex = 20;
             this.dgvo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvo_CellClick);
-            this.dgvo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvo_CellContentClick);
             // 
             // label2
             // 
@@ -519,7 +515,6 @@
             this.tbdesc.Size = new System.Drawing.Size(463, 66);
             this.tbdesc.TabIndex = 13;
             this.tbdesc.Text = "Product Type";
-            this.tbdesc.TextChanged += new System.EventHandler(this.tbdesc_TextChanged);
             // 
             // newitem
             // 
@@ -794,7 +789,6 @@
             this.label9.Size = new System.Drawing.Size(39, 13);
             this.label9.TabIndex = 13;
             this.label9.Text = "Home";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // button13
             // 

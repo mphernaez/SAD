@@ -219,7 +219,6 @@
             this.attendance.Size = new System.Drawing.Size(1016, 543);
             this.attendance.TabIndex = 44;
             this.attendance.Visible = false;
-            this.attendance.Paint += new System.Windows.Forms.PaintEventHandler(this.attendance_Paint);
             // 
             // button6
             // 
@@ -275,7 +274,6 @@
             this.label3.Size = new System.Drawing.Size(192, 39);
             this.label3.TabIndex = 11;
             this.label3.Text = "Attendance";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // dgvAttendanceOut
             // 
@@ -297,7 +295,6 @@
             this.dgvAttendanceOut.Visible = false;
             this.dgvAttendanceOut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellClick);
             this.dgvAttendanceOut.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellContentDoubleClick);
-            this.dgvAttendanceOut.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_RowEnter);
             // 
             // dgvAttendanceIn
             // 
@@ -318,7 +315,6 @@
             this.dgvAttendanceIn.TabIndex = 20;
             this.dgvAttendanceIn.Visible = false;
             this.dgvAttendanceIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellClick);
-            this.dgvAttendanceIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceIn_CellContentClick);
             // 
             // addEmployee
             // 
@@ -408,7 +404,6 @@
             this.label2.Size = new System.Drawing.Size(307, 39);
             this.label2.TabIndex = 0;
             this.label2.Text = "Employee Profiling";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // addPanel
             // 
@@ -536,7 +531,6 @@
             this.cbbdaymonth.Size = new System.Drawing.Size(147, 28);
             this.cbbdaymonth.TabIndex = 35;
             this.cbbdaymonth.Text = "Month";
-            this.cbbdaymonth.SelectedIndexChanged += new System.EventHandler(this.cbbdaymonth_SelectedIndexChanged);
             // 
             // cbposition
             // 
@@ -564,7 +558,6 @@
             this.tbfname.TabIndex = 31;
             this.tbfname.Text = "Firstname";
             this.tbfname.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbfname_MouseClick);
-            this.tbfname.MouseEnter += new System.EventHandler(this.tbfname_MouseEnter);
             // 
             // tbmname
             // 
@@ -576,7 +569,6 @@
             this.tbmname.TabIndex = 32;
             this.tbmname.Text = "Middlename";
             this.tbmname.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbmname_MouseClick);
-            this.tbmname.MouseEnter += new System.EventHandler(this.tbmname_MouseEnter);
             // 
             // tblname
             // 
@@ -588,7 +580,6 @@
             this.tblname.TabIndex = 33;
             this.tblname.Text = "Lastname";
             this.tblname.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tblname_MouseClick);
-            this.tblname.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tblname_MouseDown);
             // 
             // tbcontactNumber
             // 
@@ -600,7 +591,6 @@
             this.tbcontactNumber.TabIndex = 39;
             this.tbcontactNumber.Text = "Contact Number";
             this.tbcontactNumber.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbcontactNumber_MouseClick);
-            this.tbcontactNumber.TextChanged += new System.EventHandler(this.tbcontactNumber_TextChanged);
             // 
             // button4
             // 
@@ -703,7 +693,6 @@
             this.editPanel.Size = new System.Drawing.Size(982, 406);
             this.editPanel.TabIndex = 24;
             this.editPanel.Visible = false;
-            this.editPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.editPanel_Paint);
             // 
             // button24
             // 
@@ -757,7 +746,6 @@
             this.dgvEdit.TabIndex = 0;
             this.dgvEdit.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEdit_CellClick);
             this.dgvEdit.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dgvEdit.SelectionChanged += new System.EventHandler(this.dgvEdit_SelectionChanged);
             // 
             // panel1
             // 
@@ -776,7 +764,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1070, 84);
             this.panel1.TabIndex = 42;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // ne
             // 
@@ -941,7 +928,6 @@
             this.panel2.Size = new System.Drawing.Size(1023, 543);
             this.panel2.TabIndex = 32;
             this.panel2.Visible = false;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // emplist
             // 
@@ -950,7 +936,6 @@
             this.emplist.Name = "emplist";
             this.emplist.Size = new System.Drawing.Size(199, 21);
             this.emplist.TabIndex = 5;
-            this.emplist.SelectedIndexChanged += new System.EventHandler(this.oplist_SelectedIndexChanged);
             // 
             // oplist
             // 
@@ -959,7 +944,6 @@
             this.oplist.Name = "oplist";
             this.oplist.Size = new System.Drawing.Size(199, 21);
             this.oplist.TabIndex = 5;
-            this.oplist.SelectedIndexChanged += new System.EventHandler(this.oplist_SelectedIndexChanged);
             // 
             // button28
             // 
@@ -1328,7 +1312,6 @@
             this.comboBox2.Size = new System.Drawing.Size(93, 28);
             this.comboBox2.TabIndex = 75;
             this.comboBox2.Text = "Month";
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // textBox2
             // 
@@ -1340,7 +1323,6 @@
             this.textBox2.TabIndex = 74;
             this.textBox2.Text = "Year";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox3
             // 
@@ -1352,7 +1334,6 @@
             this.textBox3.TabIndex = 73;
             this.textBox3.Text = "Day";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // dgvOperationsView
             // 
@@ -1379,8 +1360,6 @@
             this.dgvOperationsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOperationsView.Size = new System.Drawing.Size(946, 326);
             this.dgvOperationsView.TabIndex = 42;
-            this.dgvOperationsView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOperationsView_CellClick);
-            this.dgvOperationsView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOperationsView_CellContentClick);
             this.dgvOperationsView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOperationsView_CellDoubleClick);
             // 
             // teamID
@@ -1442,7 +1421,6 @@
             this.newOperation.Size = new System.Drawing.Size(982, 412);
             this.newOperation.TabIndex = 33;
             this.newOperation.Visible = false;
-            this.newOperation.Paint += new System.Windows.Forms.PaintEventHandler(this.team_Paint);
             // 
             // pOperation
             // 
@@ -1848,7 +1826,6 @@
             this.cbLocation.Size = new System.Drawing.Size(229, 28);
             this.cbLocation.TabIndex = 58;
             this.cbLocation.Text = "Location";
-            this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
             // 
             // pteam
             // 
@@ -1894,7 +1871,6 @@
             this.newTeam.Size = new System.Drawing.Size(386, 160);
             this.newTeam.TabIndex = 1;
             this.newTeam.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.newTeam_CellClick);
-            this.newTeam.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // personID
             // 

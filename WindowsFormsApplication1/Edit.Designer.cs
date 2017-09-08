@@ -264,7 +264,6 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditEmp_FormClosing);
             this.Load += new System.EventHandler(this.EditEmp_Load);
             this.Edit.ResumeLayout(false);
             this.Edit.PerformLayout();

@@ -132,7 +132,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // panel1
             // 
@@ -245,7 +245,7 @@
             this.toolTip1.SetToolTip(this.button6, "Euthanize");
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click_1);
-            this.button6.MouseHover += new System.EventHandler(this.button6_MouseHover);
+ 
             // 
             // button5
             // 
@@ -300,7 +300,7 @@
             this.toolTip1.SetToolTip(this.button1, "New");
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseHover += new System.EventHandler(this.button1_MouseHover);
+
             // 
             // addDog
             // 
@@ -321,7 +321,7 @@
             this.addDog.Size = new System.Drawing.Size(1015, 536);
             this.addDog.TabIndex = 2;
             this.addDog.Visible = false;
-            this.addDog.Paint += new System.Windows.Forms.PaintEventHandler(this.addDog_Paint_1);
+ 
             // 
             // button11
             // 
@@ -359,7 +359,7 @@
             this.tbColor.Size = new System.Drawing.Size(205, 26);
             this.tbColor.TabIndex = 11;
             this.tbColor.Text = "Color";
-            this.tbColor.TextChanged += new System.EventHandler(this.tbColor_TextChanged);
+
             this.tbColor.Enter += new System.EventHandler(this.textBox3_Enter);
             // 
             // cbSize
@@ -460,7 +460,7 @@
             this.label2.Text = "Dog Profiling";
             this.toolTip1.SetToolTip(this.label2, "Add a new dog");
             this.label2.UseMnemonic = false;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+
             // 
             // label3
             // 
@@ -472,7 +472,7 @@
             this.label3.Size = new System.Drawing.Size(199, 39);
             this.label3.TabIndex = 11;
             this.label3.Text = "Search Dog";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+ 
             // 
             // dgvProfiles
             // 
@@ -513,7 +513,7 @@
             this.searchDog.Size = new System.Drawing.Size(1015, 536);
             this.searchDog.TabIndex = 11;
             this.searchDog.Visible = false;
-            this.searchDog.Paint += new System.Windows.Forms.PaintEventHandler(this.searchDog_Paint);
+
             // 
             // label10
             // 
@@ -560,7 +560,7 @@
             this.label5.Size = new System.Drawing.Size(40, 16);
             this.label5.TabIndex = 30;
             this.label5.Text = "Color";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+
             // 
             // label4
             // 
@@ -571,7 +571,6 @@
             this.label4.Size = new System.Drawing.Size(45, 16);
             this.label4.TabIndex = 29;
             this.label4.Text = "Breed";
-            this.label4.Click += new System.EventHandler(this.label4_Click_1);
             // 
             // tbColorSearch
             // 
@@ -621,7 +620,7 @@
             this.adoptDog.Size = new System.Drawing.Size(1015, 536);
             this.adoptDog.TabIndex = 40;
             this.adoptDog.Visible = false;
-            this.adoptDog.Paint += new System.Windows.Forms.PaintEventHandler(this.adoptDog_Paint);
+
             // 
             // label8
             // 
@@ -661,7 +660,7 @@
             this.label12.Size = new System.Drawing.Size(211, 39);
             this.label12.TabIndex = 11;
             this.label12.Text = "Adopt A Dog";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
+ 
             // 
             // dgvAdoption
             // 
@@ -681,7 +680,7 @@
             this.dgvAdoption.Size = new System.Drawing.Size(982, 319);
             this.dgvAdoption.TabIndex = 20;
             this.dgvAdoption.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdoption_CellClick);
-            this.dgvAdoption.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdoption_CellContentClick);
+
             // 
             // repclaimpan
             // 
@@ -761,7 +760,6 @@
             this.claimreportdgv.RowHeadersWidth = 30;
             this.claimreportdgv.Size = new System.Drawing.Size(983, 318);
             this.claimreportdgv.TabIndex = 0;
-            this.claimreportdgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.claimreportdgv_CellContentClick);
             // 
             // euthanizeDog
             // 
@@ -777,7 +775,7 @@
             this.euthanizeDog.Size = new System.Drawing.Size(1015, 536);
             this.euthanizeDog.TabIndex = 37;
             this.euthanizeDog.Visible = false;
-            this.euthanizeDog.Paint += new System.Windows.Forms.PaintEventHandler(this.euthanizeDog_Paint);
+
             // 
             // btnDone
             // 
@@ -842,7 +840,6 @@
             this.dgvArchive.Size = new System.Drawing.Size(982, 319);
             this.dgvArchive.TabIndex = 20;
             this.dgvArchive.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArchive_CellClick);
-            this.dgvArchive.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArchive_CellContentClick);
             // 
             // label11
             // 
@@ -854,17 +851,15 @@
             this.label11.Size = new System.Drawing.Size(243, 39);
             this.label11.TabIndex = 11;
             this.label11.Text = "Euthanize Dog";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+    
             // 
             // toolTip1
             // 
             this.toolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // panel2
             // 

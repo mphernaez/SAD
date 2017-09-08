@@ -48,7 +48,6 @@
             this.dgvViewEmp.RowHeadersVisible = false;
             this.dgvViewEmp.Size = new System.Drawing.Size(1105, 597);
             this.dgvViewEmp.TabIndex = 10;
-            this.dgvViewEmp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // pictureBox1
             // 
@@ -65,9 +64,6 @@
             // 
             this.bgworkerEmployee.WorkerReportsProgress = true;
             this.bgworkerEmployee.WorkerSupportsCancellation = true;
-            this.bgworkerEmployee.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerEmployee_DoWork);
-            this.bgworkerEmployee.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgworkerEmployee_ProgressChanged);
-            this.bgworkerEmployee.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerEmployee_RunWorkerCompleted);
             // 
             // Viewemp
             // 

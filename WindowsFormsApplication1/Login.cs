@@ -27,12 +27,7 @@ namespace WindowsFormsApplication1
             if (usernameTextBox.Text == "")
                 usernameTextBox.ForeColor = Color.LightGray;
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -85,11 +80,6 @@ namespace WindowsFormsApplication1
         private void usernameTextBox_Enter(object sender, EventArgs e)
         {
             usernameTextBox.Text = "";
-        }
-
-        private void passwordTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
         }
 
         private void passwordTextBox_KeyDown(object sender, KeyEventArgs e)
