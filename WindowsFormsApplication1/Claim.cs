@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Claim : Form
     {
+        int datediff, bayad;
         public int dogID;
         public int adminID;
         public MySqlConnection conn;
@@ -75,13 +76,11 @@ namespace WindowsFormsApplication1
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
-
                     int personID = int.Parse(dt.Rows[0]["MAX(personID)"].ToString());
-
                     comm = new MySqlCommand("INSERT INTO client(personID, validIDType, validIDNumber) VALUES(" + personID + ", '" + idtype + "', '" + idnum + "')", conn);
                     comm.ExecuteNonQuery();
 
-                    comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, vaccine, type) VALUES(" + personID + ", " + dogID + ", '" + date + "', " + "250" + ", " + vaccine + ", '" + "claim" + "')", conn);
+                    comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, vaccine, type) VALUES(" + personID + ", " + dogID + ", '" + date + "', " + bayad + ", " + vaccine + ", '" + "claim" + "')", conn);
                     comm.ExecuteNonQuery();
 
                     comm = new MySqlCommand("UPDATE dogprofile SET status = 'claimed' WHERE dogID = " + dogID, conn);
@@ -136,6 +135,16 @@ namespace WindowsFormsApplication1
                 date.Text = dt.Rows[0]["date"].ToString();
                 time.Text = dt.Rows[0]["time"].ToString();
 
+                comm = new MySqlCommand("SELECT DATEDIFF(NOW(), (SELECT SUBSTRING(date, 1, 11) AS day FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE dogID = " + dogID + ")) AS datediff", conn);
+                adp = new MySqlDataAdapter(comm);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+                int datediff = 50 * int.Parse(dt.Rows[0]["datediff"].ToString());
+                int bayad = 250 + datediff;
+                labelPayment.Text = bayad.ToString();
+                if(datediff == 1) lblRemarks.Text = "*250 + (50 x " + datediff.ToString() + " day impounded)";
+                else if(datediff > 1)lblRemarks.Text = "*P 250 + (P 50 x " + datediff/50 + " days impounded)";
                 conn.Close();
 
             }

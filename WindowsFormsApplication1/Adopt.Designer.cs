@@ -46,6 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.tbDay = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tbYear = new System.Windows.Forms.TextBox();
             this.cbMonth = new System.Windows.Forms.ComboBox();
@@ -69,7 +70,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.printPreviewDialogAdt = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentAdt = new System.Drawing.Printing.PrintDocument();
-            this.tbDay = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -82,7 +82,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label1.Location = new System.Drawing.Point(236, 10);
+            this.label1.Location = new System.Drawing.Point(255, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 49);
             this.label1.TabIndex = 1;
@@ -95,7 +95,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(255, 509);
+            this.button1.Location = new System.Drawing.Point(273, 509);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(166, 41);
             this.button1.TabIndex = 6;
@@ -135,7 +135,7 @@
             this.panel2.Controls.Add(this.location);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(16, 113);
+            this.panel2.Location = new System.Drawing.Point(30, 113);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(658, 126);
             this.panel2.TabIndex = 31;
@@ -144,7 +144,7 @@
             // 
             this.breeds.AutoSize = true;
             this.breeds.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.breeds.Location = new System.Drawing.Point(167, 17);
+            this.breeds.Location = new System.Drawing.Point(99, 16);
             this.breeds.Name = "breeds";
             this.breeds.Size = new System.Drawing.Size(52, 20);
             this.breeds.TabIndex = 10;
@@ -155,7 +155,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label15.Location = new System.Drawing.Point(97, 105);
+            this.label15.Location = new System.Drawing.Point(29, 104);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(67, 20);
             this.label15.TabIndex = 6;
@@ -165,7 +165,7 @@
             // 
             this.color.AutoSize = true;
             this.color.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.color.Location = new System.Drawing.Point(167, 45);
+            this.color.Location = new System.Drawing.Point(99, 44);
             this.color.Name = "color";
             this.color.Size = new System.Drawing.Size(46, 20);
             this.color.TabIndex = 11;
@@ -175,7 +175,7 @@
             // 
             this.date.AutoSize = true;
             this.date.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date.Location = new System.Drawing.Point(396, 44);
+            this.date.Location = new System.Drawing.Point(454, 40);
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(100, 20);
             this.date.TabIndex = 15;
@@ -186,7 +186,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(98, 17);
+            this.label3.Location = new System.Drawing.Point(30, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 20);
             this.label3.TabIndex = 0;
@@ -197,7 +197,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label14.Location = new System.Drawing.Point(99, 75);
+            this.label14.Location = new System.Drawing.Point(31, 74);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(44, 20);
             this.label14.TabIndex = 4;
@@ -208,7 +208,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(260, 16);
+            this.label4.Location = new System.Drawing.Point(318, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(130, 20);
             this.label4.TabIndex = 1;
@@ -218,7 +218,7 @@
             // 
             this.size.AutoSize = true;
             this.size.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.size.Location = new System.Drawing.Point(167, 75);
+            this.size.Location = new System.Drawing.Point(99, 74);
             this.size.Name = "size";
             this.size.Size = new System.Drawing.Size(40, 20);
             this.size.TabIndex = 12;
@@ -228,7 +228,7 @@
             // 
             this.gender.AutoSize = true;
             this.gender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gender.Location = new System.Drawing.Point(170, 105);
+            this.gender.Location = new System.Drawing.Point(102, 104);
             this.gender.Name = "gender";
             this.gender.Size = new System.Drawing.Size(63, 20);
             this.gender.TabIndex = 13;
@@ -238,7 +238,7 @@
             // 
             this.location.AutoSize = true;
             this.location.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.location.Location = new System.Drawing.Point(396, 16);
+            this.location.Location = new System.Drawing.Point(454, 16);
             this.location.Name = "location";
             this.location.Size = new System.Drawing.Size(126, 20);
             this.location.TabIndex = 14;
@@ -250,7 +250,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(98, 45);
+            this.label5.Location = new System.Drawing.Point(30, 44);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 20);
             this.label5.TabIndex = 2;
@@ -261,7 +261,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label7.Location = new System.Drawing.Point(261, 44);
+            this.label7.Location = new System.Drawing.Point(319, 40);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(117, 40);
             this.label7.TabIndex = 3;
@@ -290,10 +290,22 @@
             this.panel3.Controls.Add(this.label18);
             this.panel3.Controls.Add(this.label19);
             this.panel3.Controls.Add(this.label20);
-            this.panel3.Location = new System.Drawing.Point(16, 288);
+            this.panel3.Location = new System.Drawing.Point(30, 288);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(658, 209);
             this.panel3.TabIndex = 20;
+            // 
+            // tbDay
+            // 
+            this.tbDay.Enabled = false;
+            this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDay.ForeColor = System.Drawing.Color.Black;
+            this.tbDay.FormattingEnabled = true;
+            this.tbDay.Location = new System.Drawing.Point(258, 162);
+            this.tbDay.Name = "tbDay";
+            this.tbDay.Size = new System.Drawing.Size(59, 28);
+            this.tbDay.TabIndex = 38;
+            this.tbDay.Text = "Day";
             // 
             // label9
             // 
@@ -486,7 +498,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(299, 80);
+            this.label6.Location = new System.Drawing.Point(317, 80);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 31);
             this.label6.TabIndex = 16;
@@ -496,7 +508,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(680, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(667, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 20);
             this.pictureBox1.TabIndex = 8;
@@ -508,7 +520,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.DimGray;
-            this.label21.Location = new System.Drawing.Point(265, 255);
+            this.label21.Location = new System.Drawing.Point(282, 255);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(149, 31);
             this.label21.TabIndex = 17;
@@ -528,18 +540,6 @@
             // printDocumentAdt
             // 
             this.printDocumentAdt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentAdt_PrintPage);
-            // 
-            // tbDay
-            // 
-            this.tbDay.Enabled = false;
-            this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDay.ForeColor = System.Drawing.Color.Black;
-            this.tbDay.FormattingEnabled = true;
-            this.tbDay.Location = new System.Drawing.Point(258, 162);
-            this.tbDay.Name = "tbDay";
-            this.tbDay.Size = new System.Drawing.Size(59, 28);
-            this.tbDay.TabIndex = 38;
-            this.tbDay.Text = "Day";
             // 
             // Adopt
             // 

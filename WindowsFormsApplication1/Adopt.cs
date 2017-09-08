@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT breed, color, size, gender, description, date FROM (dogoperation INNER JOIN dogprofile ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location on dogoperation.locationID = location.locationID WHERE dogID = " + dogID, conn);
+                MySqlCommand comm = new MySqlCommand("SELECT breed, color, size, gender, description, CONCAT(timeStart, '-', timeEnd) AS time, SUBSTRING(date, 1, 11) AS date FROM (dogoperation INNER JOIN dogprofile ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location on dogoperation.locationID = location.locationID WHERE dogID = " + dogID, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
                 size.Text = dt.Rows[0]["size"].ToString();
                 gender.Text = dt.Rows[0]["gender"].ToString();
                 location.Text = dt.Rows[0]["description"].ToString();
-                date.Text = dt.Rows[0]["date"].ToString();
+                date.Text = dt.Rows[0]["date"].ToString() + "\n" + dt.Rows[0]["time"].ToString();
 
 
                 conn.Close();

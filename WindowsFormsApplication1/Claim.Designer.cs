@@ -76,6 +76,10 @@
             this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.printPreviewDialogCR = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentCR = new System.Drawing.Printing.PrintDocument();
+            this.label18 = new System.Windows.Forms.Label();
+            this.labelPayment = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lblRemarks = new System.Windows.Forms.Label();
             this.claimRBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -117,7 +121,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(275, 251);
+            this.label8.Location = new System.Drawing.Point(283, 251);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(135, 31);
             this.label8.TabIndex = 17;
@@ -370,7 +374,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label7.Location = new System.Drawing.Point(101, 42);
+            this.label7.Location = new System.Drawing.Point(19, 42);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 20);
             this.label7.TabIndex = 6;
@@ -380,7 +384,7 @@
             // 
             this.color.AutoSize = true;
             this.color.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.color.Location = new System.Drawing.Point(176, 70);
+            this.color.Location = new System.Drawing.Point(94, 70);
             this.color.Name = "color";
             this.color.Size = new System.Drawing.Size(48, 22);
             this.color.TabIndex = 11;
@@ -392,7 +396,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label5.Location = new System.Drawing.Point(100, 97);
+            this.label5.Location = new System.Drawing.Point(18, 97);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 20);
             this.label5.TabIndex = 4;
@@ -402,7 +406,7 @@
             // 
             this.size.AutoSize = true;
             this.size.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.size.Location = new System.Drawing.Point(176, 97);
+            this.size.Location = new System.Drawing.Point(94, 97);
             this.size.Name = "size";
             this.size.Size = new System.Drawing.Size(40, 22);
             this.size.TabIndex = 12;
@@ -413,7 +417,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label4.Location = new System.Drawing.Point(261, 46);
+            this.label4.Location = new System.Drawing.Point(321, 41);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 20);
             this.label4.TabIndex = 3;
@@ -423,7 +427,7 @@
             // 
             this.gender.AutoSize = true;
             this.gender.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gender.Location = new System.Drawing.Point(176, 42);
+            this.gender.Location = new System.Drawing.Point(94, 42);
             this.gender.Name = "gender";
             this.gender.Size = new System.Drawing.Size(62, 22);
             this.gender.TabIndex = 13;
@@ -434,7 +438,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label3.Location = new System.Drawing.Point(101, 70);
+            this.label3.Location = new System.Drawing.Point(19, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 20);
             this.label3.TabIndex = 2;
@@ -444,7 +448,7 @@
             // 
             this.location.AutoSize = true;
             this.location.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.location.Location = new System.Drawing.Point(397, 12);
+            this.location.Location = new System.Drawing.Point(457, 12);
             this.location.Name = "location";
             this.location.Size = new System.Drawing.Size(71, 22);
             this.location.TabIndex = 14;
@@ -456,7 +460,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label2.Location = new System.Drawing.Point(261, 14);
+            this.label2.Location = new System.Drawing.Point(321, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(130, 20);
             this.label2.TabIndex = 1;
@@ -466,7 +470,7 @@
             // 
             this.date.AutoSize = true;
             this.date.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date.Location = new System.Drawing.Point(397, 42);
+            this.date.Location = new System.Drawing.Point(457, 37);
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(43, 22);
             this.date.TabIndex = 15;
@@ -477,7 +481,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label1.Location = new System.Drawing.Point(102, 14);
+            this.label1.Location = new System.Drawing.Point(20, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 20);
             this.label1.TabIndex = 0;
@@ -488,7 +492,7 @@
             // 
             this.time.AutoSize = true;
             this.time.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time.Location = new System.Drawing.Point(397, 73);
+            this.time.Location = new System.Drawing.Point(454, 65);
             this.time.Name = "time";
             this.time.Size = new System.Drawing.Size(45, 22);
             this.time.TabIndex = 17;
@@ -515,6 +519,10 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.panel3.CausesValidation = false;
+            this.panel3.Controls.Add(this.lblRemarks);
+            this.panel3.Controls.Add(this.label20);
+            this.panel3.Controls.Add(this.labelPayment);
+            this.panel3.Controls.Add(this.label18);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label7);
@@ -529,9 +537,9 @@
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.location);
             this.panel3.Controls.Add(this.date);
-            this.panel3.Location = new System.Drawing.Point(24, 114);
+            this.panel3.Location = new System.Drawing.Point(23, 99);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(646, 132);
+            this.panel3.Size = new System.Drawing.Size(646, 149);
             this.panel3.TabIndex = 31;
             // 
             // label6
@@ -539,7 +547,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label6.Location = new System.Drawing.Point(262, 73);
+            this.label6.Location = new System.Drawing.Point(322, 68);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 20);
             this.label6.TabIndex = 20;
@@ -549,7 +557,7 @@
             // 
             this.breeds.AutoSize = true;
             this.breeds.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.breeds.Location = new System.Drawing.Point(176, 14);
+            this.breeds.Location = new System.Drawing.Point(94, 14);
             this.breeds.Name = "breeds";
             this.breeds.Size = new System.Drawing.Size(52, 20);
             this.breeds.TabIndex = 19;
@@ -559,7 +567,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(305, 82);
+            this.label16.Location = new System.Drawing.Point(313, 65);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(76, 31);
             this.label16.TabIndex = 21;
@@ -601,6 +609,49 @@
             // printDocumentCR
             // 
             this.printDocumentCR.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentCR_PrintPage);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label18.Location = new System.Drawing.Point(322, 97);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(75, 20);
+            this.label18.TabIndex = 21;
+            this.label18.Text = "Payment:";
+            // 
+            // labelPayment
+            // 
+            this.labelPayment.AutoSize = true;
+            this.labelPayment.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPayment.Location = new System.Drawing.Point(471, 95);
+            this.labelPayment.Name = "labelPayment";
+            this.labelPayment.Size = new System.Drawing.Size(70, 22);
+            this.labelPayment.TabIndex = 22;
+            this.labelPayment.Text = "Payment";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(457, 95);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(19, 22);
+            this.label20.TabIndex = 23;
+            this.label20.Text = "P";
+            // 
+            // lblRemarks
+            // 
+            this.lblRemarks.AutoSize = true;
+            this.lblRemarks.Font = new System.Drawing.Font("Trebuchet MS", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRemarks.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblRemarks.Location = new System.Drawing.Point(456, 117);
+            this.lblRemarks.Name = "lblRemarks";
+            this.lblRemarks.Size = new System.Drawing.Size(50, 16);
+            this.lblRemarks.TabIndex = 24;
+            this.lblRemarks.Text = "Remarks";
             // 
             // claimRBindingSource
             // 
@@ -682,5 +733,9 @@
         private System.Windows.Forms.BindingSource impounddogpoundDataSetBindingSource;
         private impounddogpoundDataSet impounddogpoundDataSet;
         private System.Windows.Forms.BindingSource claimRBindingSource;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label labelPayment;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lblRemarks;
     }
 }
