@@ -42,6 +42,7 @@
             this.tbYr = new System.Windows.Forms.TextBox();
             this.amtLabel = new System.Windows.Forms.Label();
             this.amtIn = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.amtIn)).BeginInit();
             this.SuspendLayout();
@@ -56,12 +57,12 @@
             this.dgvEnd.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEnd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEnd.GridColor = System.Drawing.Color.White;
-            this.dgvEnd.Location = new System.Drawing.Point(13, 13);
+            this.dgvEnd.Location = new System.Drawing.Point(12, 43);
             this.dgvEnd.Name = "dgvEnd";
             this.dgvEnd.ReadOnly = true;
             this.dgvEnd.RowHeadersVisible = false;
             this.dgvEnd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEnd.Size = new System.Drawing.Size(368, 362);
+            this.dgvEnd.Size = new System.Drawing.Size(368, 332);
             this.dgvEnd.TabIndex = 0;
             this.dgvEnd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEnd_CellClick);
             // 
@@ -279,12 +280,24 @@
             this.amtIn.Size = new System.Drawing.Size(150, 26);
             this.amtIn.TabIndex = 101;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(154, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 26);
+            this.label3.TabIndex = 104;
+            this.label3.Text = "Stock In";
+            // 
             // EndorserIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(393, 666);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.amtLabel);
             this.Controls.Add(this.amtIn);
             this.Controls.Add(this.cbDa);
@@ -328,5 +341,6 @@
         private System.Windows.Forms.TextBox tbYr;
         private System.Windows.Forms.NumericUpDown amtIn;
         public System.Windows.Forms.Label amtLabel;
+        private System.Windows.Forms.Label label3;
     }
 }

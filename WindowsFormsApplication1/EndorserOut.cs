@@ -35,7 +35,7 @@ namespace WindowsFormsApplication1
                     String date = DateTime.Now.ToString("yyyy-MM-dd");
                     MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - " + value + " WHERE itemID = " + id, conn);
                     comm.ExecuteNonQuery();
-                    MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction VALUES( transactionID, " + id + ", " + value + ", '" + date + "', 'In', " + eID + ", '" + tbReason.Text + "')", conn);
+                    MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, type, employeeID, reason) VALUES(" + id + ", " + value + ", '" + date + "', 'Out', " + eID + ", '" + tbReason.Text + "')", conn);
                     com.ExecuteNonQuery();
                     MessageBox.Show("Item Updated");
                     inv.refreshSI();

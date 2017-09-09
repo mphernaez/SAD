@@ -34,6 +34,7 @@
             this.dgvEnd = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.amtIn = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.amtIn)).BeginInit();
             this.SuspendLayout();
@@ -85,11 +86,11 @@
             this.dgvEnd.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEnd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEnd.GridColor = System.Drawing.Color.White;
-            this.dgvEnd.Location = new System.Drawing.Point(12, 13);
+            this.dgvEnd.Location = new System.Drawing.Point(12, 43);
             this.dgvEnd.Name = "dgvEnd";
             this.dgvEnd.RowHeadersVisible = false;
             this.dgvEnd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEnd.Size = new System.Drawing.Size(368, 424);
+            this.dgvEnd.Size = new System.Drawing.Size(368, 401);
             this.dgvEnd.TabIndex = 87;
             this.dgvEnd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEnd_CellClick);
             // 
@@ -112,12 +113,24 @@
             this.amtIn.Size = new System.Drawing.Size(150, 26);
             this.amtIn.TabIndex = 101;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(141, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 26);
+            this.label1.TabIndex = 103;
+            this.label1.Text = "Stock Out";
+            // 
             // EndorserOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(393, 627);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.amtIn);
             this.Controls.Add(this.OK1);
@@ -126,6 +139,7 @@
             this.Controls.Add(this.dgvEnd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EndorserOut";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.EndorserOut_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnd)).EndInit();
@@ -143,5 +157,6 @@
         private System.Windows.Forms.DataGridView dgvEnd;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown amtIn;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -24,7 +24,8 @@ namespace WindowsFormsApplication1
         public int dogID;
         public int adminID;
         public int adoptID;
-        
+
+        Boolean btnhold = false;
         int i = -40;
         int[] opid; //id for every combobox item
         public empty back { get; set; }
@@ -42,7 +43,6 @@ namespace WindowsFormsApplication1
 
         private void AddDog_Load(object sender, EventArgs e)
         {
-            
            // this.Top = 112; //262
         }
 
@@ -150,7 +150,7 @@ namespace WindowsFormsApplication1
                         comm.ExecuteNonQuery();
                         
                         cbGender.Text = "Gender";
-                        cbOperation.Text = "Operation Date and Location";
+                        if(btnhold == false) cbOperation.Text = "Operation Date and Location";
                         cbSize.Text = "Size";
                         tbBreed.Text = "Breed";
                         tbColor.Text = "Color";
@@ -708,7 +708,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand comm = new MySqlCommand("SELECT operationID, CONCAT(timeStart, ' - ', timeEnd) AS time, MONTH(date) as month, YEAR(date) as year, DAY(date) as day, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID WHERE status = 'Finished' ORDER BY date ", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT operationID, CONCAT(timeStart, ' - ', timeEnd) AS time, MONTH(date) as month, YEAR(date) as year, DAY(date) as day, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID WHERE status = 'Finished' AND MONTH(date) = MONTH(NOW()) ORDER BY date ", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
@@ -853,5 +853,16 @@ namespace WindowsFormsApplication1
             this.Hide();
         }
 
+        private void hold_Click(object sender, EventArgs e)
+        {
+            btnhold = true;
+            cbOperation.Enabled = false;
+        }
+
+        private void reset_Click(object sender, EventArgs e)
+        {
+            btnhold = false;
+            cbOperation.Enabled = true;
+        }
     }
 }
