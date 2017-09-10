@@ -43,6 +43,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.addDog = new System.Windows.Forms.Panel();
+            this.reset = new System.Windows.Forms.Button();
+            this.hold = new System.Windows.Forms.Button();
             this.btnClearDog = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.tbColor = new System.Windows.Forms.TextBox();
@@ -102,8 +104,6 @@
             this.button15 = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.hold = new System.Windows.Forms.Button();
-            this.reset = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -322,6 +322,40 @@
             this.addDog.Size = new System.Drawing.Size(1015, 536);
             this.addDog.TabIndex = 2;
             this.addDog.Visible = false;
+            // 
+            // reset
+            // 
+            this.reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
+            this.reset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.reset.FlatAppearance.BorderSize = 0;
+            this.reset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
+            this.reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reset.ForeColor = System.Drawing.Color.White;
+            this.reset.Location = new System.Drawing.Point(551, 144);
+            this.reset.Name = "reset";
+            this.reset.Size = new System.Drawing.Size(60, 28);
+            this.reset.TabIndex = 28;
+            this.reset.Text = "Reset";
+            this.reset.UseVisualStyleBackColor = false;
+            this.reset.Click += new System.EventHandler(this.reset_Click);
+            // 
+            // hold
+            // 
+            this.hold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.hold.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.hold.FlatAppearance.BorderSize = 0;
+            this.hold.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
+            this.hold.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hold.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hold.ForeColor = System.Drawing.Color.White;
+            this.hold.Location = new System.Drawing.Point(487, 144);
+            this.hold.Name = "hold";
+            this.hold.Size = new System.Drawing.Size(60, 28);
+            this.hold.TabIndex = 27;
+            this.hold.Text = "Hold";
+            this.hold.UseVisualStyleBackColor = false;
+            this.hold.Click += new System.EventHandler(this.hold_Click);
             // 
             // btnClearDog
             // 
@@ -1091,40 +1125,6 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // hold
-            // 
-            this.hold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.hold.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.hold.FlatAppearance.BorderSize = 0;
-            this.hold.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
-            this.hold.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hold.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hold.ForeColor = System.Drawing.Color.White;
-            this.hold.Location = new System.Drawing.Point(487, 144);
-            this.hold.Name = "hold";
-            this.hold.Size = new System.Drawing.Size(60, 28);
-            this.hold.TabIndex = 27;
-            this.hold.Text = "Hold";
-            this.hold.UseVisualStyleBackColor = false;
-            this.hold.Click += new System.EventHandler(this.hold_Click);
-            // 
-            // reset
-            // 
-            this.reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
-            this.reset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.reset.FlatAppearance.BorderSize = 0;
-            this.reset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
-            this.reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reset.ForeColor = System.Drawing.Color.White;
-            this.reset.Location = new System.Drawing.Point(551, 144);
-            this.reset.Name = "reset";
-            this.reset.Size = new System.Drawing.Size(60, 28);
-            this.reset.TabIndex = 28;
-            this.reset.Text = "Reset";
-            this.reset.UseVisualStyleBackColor = false;
-            this.reset.Click += new System.EventHandler(this.reset_Click);
-            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1134,11 +1134,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.addDog);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.repclaimpan);
             this.Controls.Add(this.searchDog);
+            this.Controls.Add(this.addDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";

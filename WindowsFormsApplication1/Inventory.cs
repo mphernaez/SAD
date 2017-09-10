@@ -162,17 +162,12 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 if (tbname.Text != "Product Name" && tbdesc.Text != "Product Type" && msBy.Text != "Measured by")
                 {
-                    if (hasExp == true)
-                    {
-                        
-                    }
-                    else if (hasExp == false)
-                    {
+
                         MySqlCommand comm = new MySqlCommand("INSERT INTO items VALUES (itemID, '" + tbname.Text + "', '" + tbdesc.Text + "', 0, " + nudmin.Value.ToString() + ", '')", conn);
                         comm.ExecuteNonQuery();
                         MessageBox.Show("Item Added");
                         refreshCreate();
-                    }
+
                 }
                 else
                 {
@@ -205,7 +200,10 @@ namespace WindowsFormsApplication1
         
         private void dgvo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            itemID = int.Parse(dgvo.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
+            if (e.RowIndex != -1)
+            {
+                itemID = int.Parse(dgvo.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
+            }
         }
         
         private void OK1_Click(object sender, EventArgs e)
@@ -230,14 +228,17 @@ namespace WindowsFormsApplication1
 
         private void dgvin_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0)
+            if (e.RowIndex != -1)
             {
+                if (e.RowIndex < 0)
+                {
 
-            } else
-            {
-                itemID = int.Parse(dgvin.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
+                }
+                else
+                {
+                    itemID = int.Parse(dgvin.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
+                }
             }
-            
            
         }
         private void checkMin(int id, int min, int quan, string prod)

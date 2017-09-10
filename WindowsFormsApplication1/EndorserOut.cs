@@ -33,12 +33,13 @@ namespace WindowsFormsApplication1
                 if (eID != 0)
                 {
                     String date = DateTime.Now.ToString("yyyy-MM-dd");
-                    MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - " + value + " WHERE itemID = " + id, conn);
+                    MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - " + amtIn.Value + " WHERE itemID = " + id, conn);
                     comm.ExecuteNonQuery();
-                    MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, type, employeeID, reason) VALUES(" + id + ", " + value + ", '" + date + "', 'Out', " + eID + ", '" + tbReason.Text + "')", conn);
+                    MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, type, employeeID, reason) VALUES(" + id + ", " + amtIn.Value + ", '" + date + "', 'Out', " + eID + ", '" + tbReason.Text + "')", conn);
                     com.ExecuteNonQuery();
-                    MessageBox.Show("Item Updated");
                     inv.refreshSI();
+                    MessageBox.Show("Item Updated");
+                    
                     this.Hide();
 
                 }
@@ -84,7 +85,10 @@ namespace WindowsFormsApplication1
 
         private void dgvEnd_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            eID = int.Parse(dgvEnd.Rows[e.RowIndex].Cells["employeeID"].Value.ToString());
+            if (e.RowIndex != -1)
+            {
+                eID = int.Parse(dgvEnd.Rows[e.RowIndex].Cells["employeeID"].Value.ToString());
+            }
         }
 
         private void EndorserOut_Load(object sender, EventArgs e)

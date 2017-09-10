@@ -188,7 +188,10 @@ namespace WindowsFormsApplication1
         private void dgvProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
             
         {
-            dogID = int.Parse(dgvProfiles.Rows[e.RowIndex].Cells["dogID"].Value.ToString());
+            if (e.RowIndex != -1)
+            {
+                dogID = int.Parse(dgvProfiles.Rows[e.RowIndex].Cells["dogID"].Value.ToString());
+            }
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -259,7 +262,10 @@ namespace WindowsFormsApplication1
 
         private void dgvAdoption_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            adoptID = int.Parse(dgvAdoption.Rows[e.RowIndex].Cells["dogID"].Value.ToString()); 
+            if (e.RowIndex != -1)
+            {
+                adoptID = int.Parse(dgvAdoption.Rows[e.RowIndex].Cells["dogID"].Value.ToString());
+            }
         }
 
         private void tbDesc_Enter(object sender, EventArgs e)
@@ -327,7 +333,10 @@ namespace WindowsFormsApplication1
 
         private void dgvArchive_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dogID = int.Parse(dgvArchive.Rows[e.RowIndex].Cells["dogID"].Value.ToString());
+            if (e.RowIndex != -1)
+            {
+                dogID = int.Parse(dgvArchive.Rows[e.RowIndex].Cells["dogID"].Value.ToString());
+            }
         }
         
         private void button8_Click_1(object sender, EventArgs e)

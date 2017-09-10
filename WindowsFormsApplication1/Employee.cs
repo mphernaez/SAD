@@ -61,7 +61,6 @@ namespace WindowsFormsApplication1
             panel2.Visible = false;
             ne.Visible = true;
             a.Visible = false;
-            ac.Visible = false;
             o.Visible = false;
             r.Visible = false;
 
@@ -78,7 +77,6 @@ namespace WindowsFormsApplication1
             panel2.Visible = false;
             ne.Visible = false;
             a.Visible = true;
-            ac.Visible = false;
             o.Visible = false;
             r.Visible = false;
 
@@ -96,7 +94,6 @@ namespace WindowsFormsApplication1
             panel2.Visible = false;
             ne.Visible = false;
             a.Visible = false;
-            ac.Visible = true;
             o.Visible = false;
             r.Visible = false;
             
@@ -112,7 +109,6 @@ namespace WindowsFormsApplication1
             panel2.Visible = false;
             ne.Visible = false;
             a.Visible = false;
-            ac.Visible = false;
             o.Visible = false;
             r.Visible = false;
 
@@ -142,7 +138,6 @@ namespace WindowsFormsApplication1
             panel2.Visible = true;
             ne.Visible = false;
             a.Visible = false;
-            ac.Visible = false;
             o.Visible = false;
             r.Visible = true;
             repEmp.Visible = true;
@@ -375,6 +370,8 @@ namespace WindowsFormsApplication1
                     teamempid = 0;
                     
                 }
+                allEmployees.ClearSelection();
+                newTeam.ClearSelection();
             }
 
 
@@ -385,8 +382,9 @@ namespace WindowsFormsApplication1
         {
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button15.BackColor = Color.FromArgb(2, 170, 145);
+            button31.BackColor = Color.FromArgb(2, 170, 145);
             newOperation.Visible = true;
-            
+            pnlActivity.Visible = false;
             Operations.Visible = false;
 
             refreshTeam();
@@ -396,7 +394,9 @@ namespace WindowsFormsApplication1
         {
             button15.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
-           newOperation.Visible = true;
+            button31.BackColor = Color.FromArgb(2, 170, 145);
+            newOperation.Visible = true;
+            pnlActivity.Visible = false;
             
             Operations.Visible = false;
             
@@ -423,7 +423,6 @@ namespace WindowsFormsApplication1
            
             ne.Visible = false;
             a.Visible = false;
-            ac.Visible = false;
             o.Visible = true;
             r.Visible = false;
 
@@ -470,7 +469,10 @@ namespace WindowsFormsApplication1
         public int editemployeeID;
         private void dgvEdit_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            editemployeeID = int.Parse(dgvEdit.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+            if (e.RowIndex != -1)
+            {
+                editemployeeID = int.Parse(dgvEdit.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+            }
         }
 
         public void refreshEdit()
@@ -761,7 +763,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                
+                allEmployees.Rows.Clear();
                 MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID WHERE position = 'Catcher' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + d + "')THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' ) END) UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
@@ -792,10 +794,13 @@ namespace WindowsFormsApplication1
     
         private void allEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (int.Parse(allEmployees.Rows[e.RowIndex].Cells["pID"].Value.ToString()) != 0)
+            if (e.RowIndex != -1)
             {
-                teamempid = int.Parse(allEmployees.Rows[e.RowIndex].Cells["pID"].Value.ToString());
-                teamname = allEmployees.Rows[e.RowIndex].Cells["empname"].Value.ToString();
+                if (int.Parse(allEmployees.Rows[e.RowIndex].Cells["pID"].Value.ToString()) != 0)
+                {
+                    teamempid = int.Parse(allEmployees.Rows[e.RowIndex].Cells["pID"].Value.ToString());
+                    teamname = allEmployees.Rows[e.RowIndex].Cells["empname"].Value.ToString();
+                }
             }
         }
        
@@ -841,12 +846,12 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 // GROUP_CONCAT(CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.')) AS team,
                 String daten = DateTime.Now.ToString("yyyy-MM-dd");
-                String timen = DateTime.Now.ToString("hh:mm");
-                MySqlCommand comm = new MySqlCommand("UPDATE dogoperation  SET status = 'OnGoing' WHERE date = '" + daten + "' AND status != 'finished' AND status != 'OnGoing' AND timeStart = '" + timen + "'", conn);
+                String timen = DateTime.Now.ToString("HH:mm");
+                MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing' WHERE date = '" + daten + "' AND status != 'finished' AND status != 'OnGoing' AND (timeStart = '" + timen + "' OR timeStart < '" + timen + "')", conn);
                 comm.ExecuteNonQuery(); 
-                MySqlCommand com = new MySqlCommand("UPDATE dogoperation  SET status = 'Finished' WHERE date = '" + daten + "' AND status != 'finished' AND (timeEnd = '" + timen + "' OR timeEnd < '" + timen + "')", conn);
+                MySqlCommand com = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE date = '" + daten + "' AND status != 'finished' AND (timeEnd = '" + timen + "' OR timeEnd < '" + timen + "')", conn);
                 com.ExecuteNonQuery();
-                MySqlCommand co = new MySqlCommand("UPDATE dogoperation  SET status = 'Finished' WHERE date < '" + daten + "' AND status != 'finished'", conn);
+                MySqlCommand co = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE date < '" + daten + "' AND status != 'finished'", conn);
                 co.ExecuteNonQuery();
                 conn.Close();
                 refreshOperationsView();
@@ -1218,6 +1223,7 @@ namespace WindowsFormsApplication1
         {
             dgvOperationsView.Rows.Clear();
             refreshOperationsView();
+            refreshStatus();
         }
         
         private void dgvOperationsView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -1247,38 +1253,38 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
         }
-        
+
         private void button28_Click(object sender, EventArgs e)
         {
-            if(cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location" && cbAMPMend.Text != "AM/PM" && cbAMPMstart.Text != "AM/PM")
+            if (cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location" && cbAMPMend.Text != "AM/PM" && cbAMPMstart.Text != "AM/PM")
             {
-                pteam.Enabled = true;
-                pOperation.Enabled = false;
+                d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
+
                 int hs = int.Parse(tbStarth.Text), he = int.Parse(tbEndh.Text);
-               
-                if(cbAMPMstart.SelectedIndex == 1)
+                string hss; string hee;
+                if (cbAMPMstart.SelectedIndex == 1)
                 {
                     hs = hs + 12;
                 }
-                if(cbAMPMend.SelectedIndex == 1)
+                if (cbAMPMend.SelectedIndex == 1)
                 {
                     he = he + 12;
                 }
                 if (hs < 10)
                 {
-                    tbStarth.Text = "0" + hs.ToString();
+                    hss = "0" + hs.ToString();
                 }
                 else
-                    tbStarth.Text = hs.ToString();
+                    hss = hs.ToString();
                 if (he < 10)
                 {
-                    tbEndh.Text = "0" + he.ToString();
+                    hee= "0" + he.ToString();
                 }
                 else
-                    tbEndh.Text = he.ToString();
+                   hee = he.ToString();
 
 
-                if(int.Parse(tbStartm.Text) < 10 && tbStartm.Text.Substring(0, 1) != "0")
+                if (int.Parse(tbStartm.Text) < 10 && tbStartm.Text.Substring(0, 1) != "0")
                 {
                     tbStartm.Text = "0" + tbStartm.Text;
                 }
@@ -1287,14 +1293,32 @@ namespace WindowsFormsApplication1
                 {
                     tbEndm.Text = "0" + tbEndm.Text;
                 }
-                d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
-                
-                ts = tbStarth.Text + ":" + tbStartm.Text;
-                te = tbEndh.Text + ":" + tbEndm.Text;
-                location = cbLocation.SelectedIndex;
-                //MessageBox.Show(d + ts + te + location);
 
-                refreshTeam();
+                ts = hss + ":" + tbStartm.Text;
+                te = hee + ":" + hee;
+                location = cbLocation.SelectedIndex;
+                String da = d + " " + ts;
+                DateTime myDate = Convert.ToDateTime(da);
+                DateTime cD = DateTime.Now;
+                int result = DateTime.Compare(myDate, cD);
+                if (result > 0)
+                {
+
+                    {
+                        pteam.Enabled = true;
+                        pOperation.Enabled = false;
+
+
+                        //MessageBox.Show(d + ts + te + location);
+
+                        refreshTeam();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Please Input Valid Date & Time");
+                }
             }
             else
             {
@@ -1495,9 +1519,11 @@ namespace WindowsFormsApplication1
         }
 
         private void dgvReactivate_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            raempID = int.Parse(dgvReactivate.Rows[e.RowIndex].Cells["personID"].Value.ToString());
-        }
+        {   if (e.RowIndex != -1)
+            {
+                raempID = int.Parse(dgvReactivate.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+            }
+       }
 
         private void dgvAttendanceOut_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1550,10 +1576,13 @@ namespace WindowsFormsApplication1
         
         private void newTeam_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (int.Parse(newTeam.Rows[e.RowIndex].Cells["personID"].Value.ToString()) != 0)
+            if (e.RowIndex != -1)
             {
-                backID = int.Parse(newTeam.Rows[e.RowIndex].Cells["personID"].Value.ToString());
-                backname = newTeam.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                if (int.Parse(newTeam.Rows[e.RowIndex].Cells["personID"].Value.ToString()) != 0)
+                {
+                    backID = int.Parse(newTeam.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+                    backname = newTeam.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                }
             }
         }
         
@@ -1574,8 +1603,27 @@ namespace WindowsFormsApplication1
                 backID = 0;
 
                 }
+            allEmployees.ClearSelection();
+            newTeam.ClearSelection();
             }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            button31.BackColor = Color.FromArgb(251, 162, 80);
+            button21.BackColor = Color.FromArgb(2, 170, 145);
+            button15.BackColor = Color.FromArgb(2, 170, 145);
+            newOperation.Visible = false;
+            pnlActivity.Visible = true;
+
+            Operations.Visible = false;
         }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            pteam.Enabled = false;
+            pOperation.Enabled = true;
+        }
+    }
     }
 
 

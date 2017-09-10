@@ -90,14 +90,16 @@ namespace WindowsFormsApplication1
                     MessageBox.Show(ex.ToString());
                     conn.Close();
                 }
-                this.Dispose();
         }
 
         int eID;
         
         private void dgvEnd_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            eID = int.Parse(dgvEnd.Rows[e.RowIndex].Cells["employeeID"].Value.ToString());
+            if (e.RowIndex != -1)
+            {
+                eID = int.Parse(dgvEnd.Rows[e.RowIndex].Cells["employeeID"].Value.ToString());
+            }
         }
 
         private void tbYr_TextChanged(object sender, EventArgs e)
