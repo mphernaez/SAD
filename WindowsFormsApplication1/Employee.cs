@@ -142,8 +142,7 @@ namespace WindowsFormsApplication1
             r.Visible = true;
             repEmp.Visible = true;
 
-            oplist.Visible = false;
-            emplist.Visible = false;
+            
 
             try
             {
@@ -1547,32 +1546,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void repC_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (repC.Text == "Employee")
-            {
-                oplist.Visible = false;
-                emplist.Visible = true;
-
-                try
-                {
-                    conn.Open();
-                    /*MySqlCommand comm = new MySqlCommand("SELECT lastname, firstname FROM profile INNER JOIN attendance ON employee.employeeID = attendance.employeeID WHERE employeeID = *something* (dgv or combobox ang option na employee name?)");
-                    comm.ExecuteNonQuery();
-                    comm.Parameters.AddWithValue("itemname", emplist.SelectedItem.ToString());
-                   */
-                }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                }
-            }
-            else if (repC.Text == "Operation")
-            {
-                emplist.Visible = false;
-                oplist.Visible = true;
-            }
-        }
+        
         
         private void newTeam_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1622,6 +1596,69 @@ namespace WindowsFormsApplication1
         {
             pteam.Enabled = false;
             pOperation.Enabled = true;
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void choice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (choice.Text == "Employees")
+            {
+                view.Text = "View Employee";
+
+                try
+                {
+                    conn.Open();
+
+                    MySqlCommand com = new MySqlCommand("SELECT lastname, middlename, firstname, gender, birthdate, contactNumber, address, position, status FROM profile INNER JOIN employee ON employee.employeeID = profile.personID", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+
+
+                    repEmp.DataSource = dt;
+
+                    repEmp.Columns["lastname"].HeaderText = "Lastname";
+                    repEmp.Columns["firstname"].HeaderText = "Firstname";
+                    repEmp.Columns["middlename"].HeaderText = "Middlename";
+                    repEmp.Columns["gender"].HeaderText = "Gender";
+                    repEmp.Columns["birthdate"].HeaderText = "Birthdate";
+                    repEmp.Columns["contactNumber"].HeaderText = "Contact No.";
+                    repEmp.Columns["address"].HeaderText = "Address";
+                    repEmp.Columns["position"].HeaderText = "Position";
+                    repEmp.Columns["status"].HeaderText = "Status";
+
+                    repEmp.Columns["Lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["ContactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                    conn.Close();
+                } catch ( Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            } else if (choice.Text == "Operations")
+            {
+                view.Text = "View Operations";
+            } else
+            {
+                MessageBox.Show("Please select type of report");
+            }
+        }
+
+        private void button28_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
     }
