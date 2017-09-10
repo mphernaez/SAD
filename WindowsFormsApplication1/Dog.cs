@@ -338,7 +338,7 @@ namespace WindowsFormsApplication1
                 dogID = int.Parse(dgvArchive.Rows[e.RowIndex].Cells["dogID"].Value.ToString());
             }
         }
-        
+
         private void button8_Click_1(object sender, EventArgs e)
         {
             searchDog.Visible = false;
@@ -352,8 +352,8 @@ namespace WindowsFormsApplication1
             et.Visible = false;
             r.Visible = true;
             claimreportdgv.Visible = true;
-
-            try
+        }
+            /*try
             {
                 conn.Open();
 
@@ -396,7 +396,8 @@ namespace WindowsFormsApplication1
             }
             
         }
-        
+        */
+
         private void cbOperation_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbOperation.Text != "Operation Date and Location")
@@ -559,7 +560,8 @@ namespace WindowsFormsApplication1
                     MessageBox.Show(ex.ToString());
                     conn.Close();
                 }
-            } else if (filt.Text == "Claimed")
+            }
+            else if (filt.Text == "Claimed")
             {
                 try
                 {
@@ -602,7 +604,52 @@ namespace WindowsFormsApplication1
                     MessageBox.Show(ex.ToString());
                     conn.Close();
                 }
-            } else if (filt.Text == "Euthanized")
+            }
+            else if (filt.Text == "Unclaimed")
+            {
+                try
+                {
+                    conn.Open();
+                    //where status = unclaimed
+                    MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, SUBSTRING(date, 1, 11) AS date, CONCAT(timeStart, '-', timeEnd) AS time, dogprofile.status AS status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID  WHERE dogprofile.status = 'unclaimed'", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                    System.Data.DataTable dt = new System.Data.DataTable();
+                    adp.Fill(dt);
+
+
+                    claimreportdgv.DataSource = dt;
+
+                    claimreportdgv.Columns["breed"].HeaderText = "Breed";
+                    claimreportdgv.Columns["gender"].HeaderText = "Gender";
+                    claimreportdgv.Columns["size"].HeaderText = "Size";
+                    claimreportdgv.Columns["color"].HeaderText = "Color";
+                    claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
+                    claimreportdgv.Columns["description"].HeaderText = "Location Caught";
+                    claimreportdgv.Columns["date"].HeaderText = "Date Caught";
+                    claimreportdgv.Columns["time"].HeaderText = "Time Caught";
+                    claimreportdgv.Columns["status"].HeaderText = "Status";
+
+
+                    claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            }
+            else if (filt.Text == "Euthanized")
             {
                 try
                 {
@@ -645,7 +692,8 @@ namespace WindowsFormsApplication1
                     MessageBox.Show(ex.ToString());
                     conn.Close();
                 }
-            } else if (filt.Text == "Adopted")
+            }
+            else if (filt.Text == "Adopted")
             {
                 try
                 {
@@ -688,7 +736,8 @@ namespace WindowsFormsApplication1
                     MessageBox.Show(ex.ToString());
                     conn.Close();
                 }
-            } else
+            }
+            else
             {
                 MessageBox.Show("Please select type");
             }

@@ -722,12 +722,16 @@
             // 
             // button16
             // 
+            this.button16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button16.ForeColor = System.Drawing.Color.White;
             this.button16.Location = new System.Drawing.Point(62, 113);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(146, 23);
+            this.button16.Size = new System.Drawing.Size(146, 40);
             this.button16.TabIndex = 2;
             this.button16.Text = "View Report";
-            this.button16.UseVisualStyleBackColor = true;
+            this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // comboBox2
@@ -1134,11 +1138,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.euthanizeDog);
-            this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.repclaimpan);
             this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
+            this.Controls.Add(this.euthanizeDog);
+            this.Controls.Add(this.adoptDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
