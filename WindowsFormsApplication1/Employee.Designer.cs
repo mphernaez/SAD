@@ -228,6 +228,7 @@
             this.button6.TabIndex = 40;
             this.button6.Text = "View All";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
             // button10
             // 
@@ -289,6 +290,7 @@
             this.dgvAttendanceIn.TabIndex = 20;
             this.dgvAttendanceIn.Visible = false;
             this.dgvAttendanceIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellClick);
+            this.dgvAttendanceIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceIn_CellContentClick);
             // 
             // dgvAttendanceOut
             // 
@@ -894,7 +896,7 @@
             // 
             this.datee.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datee.FormattingEnabled = true;
-            this.datee.Location = new System.Drawing.Point(309, 34);
+            this.datee.Location = new System.Drawing.Point(155, 66);
             this.datee.Name = "datee";
             this.datee.Size = new System.Drawing.Size(155, 26);
             this.datee.TabIndex = 5;
@@ -906,7 +908,7 @@
             this.choice.Items.AddRange(new object[] {
             "Employees",
             "Operations"});
-            this.choice.Location = new System.Drawing.Point(149, 34);
+            this.choice.Location = new System.Drawing.Point(155, 34);
             this.choice.Name = "choice";
             this.choice.Size = new System.Drawing.Size(155, 26);
             this.choice.TabIndex = 5;
@@ -918,11 +920,12 @@
             this.view.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.view.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.view.ForeColor = System.Drawing.Color.Snow;
-            this.view.Location = new System.Drawing.Point(149, 63);
+            this.view.Location = new System.Drawing.Point(316, 33);
             this.view.Name = "view";
-            this.view.Size = new System.Drawing.Size(155, 33);
+            this.view.Size = new System.Drawing.Size(131, 29);
             this.view.TabIndex = 4;
             this.view.UseVisualStyleBackColor = false;
+            this.view.Click += new System.EventHandler(this.view_Click);
             // 
             // button28
             // 
@@ -930,7 +933,7 @@
             this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button28.ForeColor = System.Drawing.Color.Snow;
-            this.button28.Location = new System.Drawing.Point(483, 47);
+            this.button28.Location = new System.Drawing.Point(155, 98);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(106, 33);
             this.button28.TabIndex = 4;
@@ -942,7 +945,7 @@
             // 
             this.rep.AutoSize = true;
             this.rep.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rep.Location = new System.Drawing.Point(52, 58);
+            this.rep.Location = new System.Drawing.Point(58, 30);
             this.rep.Name = "rep";
             this.rep.Size = new System.Drawing.Size(76, 25);
             this.rep.TabIndex = 3;
@@ -952,10 +955,13 @@
             // 
             this.repEmp.AllowUserToAddRows = false;
             this.repEmp.AllowUserToDeleteRows = false;
+            this.repEmp.BackgroundColor = System.Drawing.Color.White;
             this.repEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.repEmp.Location = new System.Drawing.Point(20, 150);
             this.repEmp.Name = "repEmp";
             this.repEmp.ReadOnly = true;
+            this.repEmp.RowHeadersVisible = false;
+            this.repEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.repEmp.Size = new System.Drawing.Size(983, 366);
             this.repEmp.TabIndex = 0;
             // 
@@ -2161,10 +2167,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
-            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;

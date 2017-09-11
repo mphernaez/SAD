@@ -141,48 +141,6 @@ namespace WindowsFormsApplication1
             o.Visible = false;
             r.Visible = true;
             repEmp.Visible = true;
-
-            
-
-            try
-            {
-                conn.Open();
-
-                MySqlCommand com = new MySqlCommand("SELECT lastname, middlename, firstname, gender, birthdate, contactNumber, address, position, status FROM profile INNER JOIN employee ON employee.employeeID = profile.personID", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-
-
-                repEmp.DataSource = dt;
-
-                repEmp.Columns["lastname"].HeaderText = "Lastname";
-                repEmp.Columns["firstname"].HeaderText = "Firstname";
-                repEmp.Columns["middlename"].HeaderText = "Middlename";
-                repEmp.Columns["gender"].HeaderText = "Gender";
-                repEmp.Columns["birthdate"].HeaderText = "Birthdate";
-                repEmp.Columns["contactNumber"].HeaderText = "Contact No.";
-                repEmp.Columns["address"].HeaderText = "Address";
-                repEmp.Columns["position"].HeaderText = "Position";
-                repEmp.Columns["status"].HeaderText = "Status";
-
-                repEmp.Columns["Lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                repEmp.Columns["Firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                repEmp.Columns["Middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                repEmp.Columns["Gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                repEmp.Columns["Birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                repEmp.Columns["ContactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                repEmp.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                repEmp.Columns["Position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                repEmp.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
-            }
         }
 
         private void toExcelEmp()
@@ -853,6 +811,7 @@ namespace WindowsFormsApplication1
                 MySqlCommand co = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE date < '" + daten + "' AND status != 'finished'", conn);
                 co.ExecuteNonQuery();
                 conn.Close();
+
                 refreshOperationsView();
             }
             catch (Exception ex)
@@ -1609,7 +1568,48 @@ namespace WindowsFormsApplication1
             if (choice.Text == "Employees")
             {
                 view.Text = "View Employee";
+            }
+            else if (choice.Text == "Operations")
+            {
+                view.Text = "View Operations";
+            }
+            else
+            {
+                MessageBox.Show("Please select type");
 
+            }
+        }
+
+        private void button28_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void specLoc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dgvAttendanceIn_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+        }
+
+        private void view_Click(object sender, EventArgs e)
+        {
+            if (choice.Text == "Employees")
+            {
                 try
                 {
                     conn.Open();
@@ -1643,33 +1643,91 @@ namespace WindowsFormsApplication1
                     repEmp.Columns["Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                     conn.Close();
-                } catch ( Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                     conn.Close();
                 }
-            } else if (choice.Text == "Operations")
+            }
+            else if (choice.Text == "Operations")
             {
-                view.Text = "View Operations";
-            } else
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm;
+                    if (date == null)
+                    {
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY date, timeStart", conn);
+                    }
+                    else
+                    {
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + date + "' ORDER BY  date, timeStart", conn);
+                        date = null;
+                    }
+
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    
+                    for (int x = 0; x < dt.Rows.Count; x++)
+                    {
+                        int teamID = int.Parse(dt.Rows[x]["teamID"].ToString());
+                        int opID = int.Parse(dt.Rows[x]["operationID"].ToString());
+                        MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', Firstname) AS emp FROM operationteam INNER JOIN profile on profile.personID = operationteam.employeeID WHERE teamID = " + teamID.ToString(), conn);
+                        MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                        DataTable dta = new DataTable();
+                        adpt.Fill(dta);
+                        string team = "";
+                        for (int j = 0; j < dta.Rows.Count; j++)
+                        {
+                            string nl = Environment.NewLine;
+                            team = team + dta.Rows[j]["emp"].ToString() + nl;
+                        }
+                        string loc = dt.Rows[x]["description"].ToString();
+                        string date = dt.Rows[x]["date"].ToString();
+                        string start = dt.Rows[x]["timeStart"].ToString();
+                        string end = dt.Rows[x]["timeEnd"].ToString();
+                        string status = dt.Rows[x]["status"].ToString();
+                        repEmp.Rows.Add(teamID.ToString(), opID.ToString(), loc, date, start, end, team, status);
+                    }
+
+                    repEmp.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                    repEmp.Columns["opTeam"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                    repEmp.Columns["opLocation"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["opDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["opStart"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["opEnd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["opTeam"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["opStatus"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                    int i = 0;
+                    while (i < repEmp.RowCount)
+                    {
+
+                        if (repEmp.Rows[i].Cells["opStatus"].Value.ToString() == "Pending")
+                        {
+                            repEmp.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 235, 140);
+                        }
+                        else if (repEmp.Rows[i].Cells["opStatus"].Value.ToString() == "OnGoing")
+                        {
+                            repEmp.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(146, 232, 191);
+                        }
+                        i++;
+                    }
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            }
+            else
             {
+                conn.Close();
                 MessageBox.Show("Please select type of report");
             }
-        }
-
-        private void button28_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void specLoc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button32_Click(object sender, EventArgs e)
-        {
-
         }
     }
     }
