@@ -984,6 +984,11 @@ namespace WindowsFormsApplication1
         {
             //MessageBox.Show(empids[cbEmps.SelectedIndex].ToString());
         }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 

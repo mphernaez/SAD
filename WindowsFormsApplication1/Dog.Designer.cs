@@ -112,6 +112,10 @@
             this.impounddogpoundDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.month2 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -722,6 +726,10 @@
             // 
             // repclaimpan
             // 
+            this.repclaimpan.Controls.Add(this.textBox4);
+            this.repclaimpan.Controls.Add(this.textBox2);
+            this.repclaimpan.Controls.Add(this.textBox3);
+            this.repclaimpan.Controls.Add(this.textBox1);
             this.repclaimpan.Controls.Add(this.label19);
             this.repclaimpan.Controls.Add(this.button16);
             this.repclaimpan.Controls.Add(this.month2);
@@ -740,7 +748,7 @@
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.Location = new System.Drawing.Point(62, 113);
+            this.button16.Location = new System.Drawing.Point(60, 108);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(146, 40);
             this.button16.TabIndex = 2;
@@ -766,8 +774,9 @@
             "December"});
             this.month1.Location = new System.Drawing.Point(62, 76);
             this.month1.Name = "month1";
-            this.month1.Size = new System.Drawing.Size(109, 21);
+            this.month1.Size = new System.Drawing.Size(83, 21);
             this.month1.TabIndex = 1;
+            this.month1.Text = "Month";
             // 
             // filt
             // 
@@ -795,6 +804,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.claimreportdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.claimreportdgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.claimreportdgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.claimreportdgv.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.claimreportdgv.Location = new System.Drawing.Point(13, 159);
@@ -1155,6 +1165,7 @@
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
+            this.printPreviewDialog1.Load += new System.EventHandler(this.printPreviewDialog1_Load);
             // 
             // panelHistory
             // 
@@ -1228,19 +1239,52 @@
             "October",
             "November",
             "December"});
-            this.month2.Location = new System.Drawing.Point(212, 75);
+            this.month2.Location = new System.Drawing.Point(276, 76);
             this.month2.Name = "month2";
-            this.month2.Size = new System.Drawing.Size(109, 21);
+            this.month2.Size = new System.Drawing.Size(89, 21);
             this.month2.TabIndex = 1;
+            this.month2.Text = "Month";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(186, 80);
+            this.label19.Location = new System.Drawing.Point(252, 80);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(10, 13);
             this.label19.TabIndex = 3;
             this.label19.Text = "-";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(191, 77);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(49, 20);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "Year";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(151, 77);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(34, 20);
+            this.textBox2.TabIndex = 4;
+            this.textBox2.Text = "Day";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(409, 77);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(49, 20);
+            this.textBox3.TabIndex = 4;
+            this.textBox3.Text = "Year";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(369, 77);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(34, 20);
+            this.textBox4.TabIndex = 4;
+            this.textBox4.Text = "Day";
             // 
             // Dog
             // 
@@ -1388,5 +1432,9 @@
         private System.Windows.Forms.BindingSource impounddogpoundDataSetBindingSource;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox month2;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
