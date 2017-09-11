@@ -70,6 +70,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.printPreviewDialogAdt = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentAdt = new System.Drawing.Printing.PrintDocument();
+            this.cbVaccEmp = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -269,6 +270,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.panel3.CausesValidation = false;
+            this.panel3.Controls.Add(this.cbVaccEmp);
             this.panel3.Controls.Add(this.tbDay);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.tbYear);
@@ -398,13 +400,14 @@
             this.cbVaccine.TabIndex = 29;
             this.cbVaccine.Text = "Avail Vaccine";
             this.cbVaccine.UseVisualStyleBackColor = true;
+            this.cbVaccine.CheckedChanged += new System.EventHandler(this.cbVaccine_CheckedChanged);
             // 
             // tbIDtype
             // 
             this.tbIDtype.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbIDtype.Location = new System.Drawing.Point(470, 92);
+            this.tbIDtype.Location = new System.Drawing.Point(466, 92);
             this.tbIDtype.Name = "tbIDtype";
-            this.tbIDtype.Size = new System.Drawing.Size(174, 26);
+            this.tbIDtype.Size = new System.Drawing.Size(178, 26);
             this.tbIDtype.TabIndex = 27;
             // 
             // tbnumber
@@ -418,9 +421,9 @@
             // tbIDnum
             // 
             this.tbIDnum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbIDnum.Location = new System.Drawing.Point(470, 128);
+            this.tbIDnum.Location = new System.Drawing.Point(466, 128);
             this.tbIDnum.Name = "tbIDnum";
-            this.tbIDnum.Size = new System.Drawing.Size(174, 26);
+            this.tbIDnum.Size = new System.Drawing.Size(178, 26);
             this.tbIDnum.TabIndex = 28;
             // 
             // tbadd
@@ -537,6 +540,18 @@
             // 
             this.printDocumentAdt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentAdt_PrintPage);
             // 
+            // cbVaccEmp
+            // 
+            this.cbVaccEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbVaccEmp.ForeColor = System.Drawing.Color.Black;
+            this.cbVaccEmp.FormattingEnabled = true;
+            this.cbVaccEmp.Location = new System.Drawing.Point(466, 162);
+            this.cbVaccEmp.Name = "cbVaccEmp";
+            this.cbVaccEmp.Size = new System.Drawing.Size(178, 28);
+            this.cbVaccEmp.TabIndex = 36;
+            this.cbVaccEmp.Text = "Vaccinated by";
+            this.cbVaccEmp.Visible = false;
+            // 
             // Adopt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -605,5 +620,6 @@
         private System.Windows.Forms.TextBox tbYear;
         private System.Windows.Forms.ComboBox cbMonth;
         private System.Windows.Forms.ComboBox tbDay;
+        private System.Windows.Forms.ComboBox cbVaccEmp;
     }
 }

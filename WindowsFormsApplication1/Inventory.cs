@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1
             r.Visible = false;
             newitem.Visible = true;
             inv.Visible = false;
-            
+
 
         }
 
@@ -51,7 +51,8 @@ namespace WindowsFormsApplication1
         {
             a.Visible = false;
             i.Visible = false;
-            r.Visible = true;
+            r.Visible = false;
+            panelTrans.Visible = true;
             inv.Visible = false;
             newitem.Visible = false;
 
@@ -149,7 +150,7 @@ namespace WindowsFormsApplication1
             dgvout.Visible = true;
             Sout.Visible = false;
             button5.BackColor = Color.FromArgb(2, 170, 145);
-            button16.BackColor = Color.FromArgb(251, 162, 80) ;
+            button16.BackColor = Color.FromArgb(251, 162, 80);
             refreshSI();
         }
 
@@ -170,10 +171,10 @@ namespace WindowsFormsApplication1
                 if (tbname.Text != "Product Name" && tbdesc.Text != "Product Type" && msBy.Text != "Measured by")
                 {
 
-                        MySqlCommand comm = new MySqlCommand("INSERT INTO items VALUES (itemID, '" + tbname.Text + "', '" + tbdesc.Text + "', 0, " + nudmin.Value.ToString() + ", '')", conn);
-                        comm.ExecuteNonQuery();
-                        MessageBox.Show("Item Added");
-                        refreshCreate();
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO items VALUES (itemID, '" + tbname.Text + "', '" + tbdesc.Text + "', 0, " + nudmin.Value.ToString() + ", '')", conn);
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Item Added");
+                    refreshCreate();
 
                 }
                 else
@@ -196,15 +197,15 @@ namespace WindowsFormsApplication1
             tbname.Text = "Product Name";
             tbdesc.Text = "Product Type";
             nudmin.Value = 0;
-            
+
         }
-        
+
         private void button8_Click(object sender, EventArgs e)
         {
             endO.id = itemID;
-            endO.Show(); 
+            endO.Show();
         }
-        
+
         private void dgvo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
@@ -212,12 +213,13 @@ namespace WindowsFormsApplication1
                 itemID = int.Parse(dgvo.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
             }
         }
-        
+
         private void OK1_Click(object sender, EventArgs e)
         {
-                end.id = itemID;
-                end.Show();
-            try{
+            end.id = itemID;
+            end.Show();
+            try
+            {
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + itemID.ToString(), conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -246,7 +248,7 @@ namespace WindowsFormsApplication1
                     itemID = int.Parse(dgvin.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
                 }
             }
-           
+
         }
         private void checkMin(int id, int min, int quan, string prod)
         {
@@ -255,7 +257,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Item in scarse! Request stocks immediately for: " + prod);
             }
         }
-        
+
         private void button9_Click(object sender, EventArgs e)
         {
             Viewinvent inv = new Viewinvent();
@@ -295,13 +297,75 @@ namespace WindowsFormsApplication1
             this.Hide();
 
         }
-        
+
         bool hasExp = true;
         private void button14_Click(object sender, EventArgs e)
         {
             if (hasExp == true) hasExp = false;
             else hasExp = true;
         }
-        
+
+        private void cbTransType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbTransType.SelectedIndex == 0)
+            {
+                refreshTransIn();
+            }
+            else if (cbTransType.SelectedIndex == 1)
+            {
+                refreshTransOut();
+            }
+        }
+
+        private void refreshTransIn()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity Added', date AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Endorsed by', reason AS 'Reason of Endorsement', expiration AS 'Product Expiration' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE type = 'In'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adp.Fill(dt);
+
+                dgvTrans.DataSource = dt;
+                dgvTrans.Columns["Product"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Quantity Added"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Endorsed by"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Reason of Endorsement"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Product Expiration"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+
+        }
+        private void refreshTransOut()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity Deducted', date AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Deducted by', reason AS 'Reason of Deduction' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE type = 'Out'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adp.Fill(dt);
+
+                dgvTrans.DataSource = dt;
+                dgvTrans.Columns["Product"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Quantity Deducted"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Deducted by"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Reason of Deduction"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
     }
 }

@@ -104,6 +104,12 @@
             this.button15 = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.panelHistory = new System.Windows.Forms.Panel();
+            this.dgvHist = new System.Windows.Forms.DataGridView();
+            this.cbTransType = new System.Windows.Forms.ComboBox();
+            this.cbEmps = new System.Windows.Forms.ComboBox();
+            this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
+            this.impounddogpoundDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -125,6 +131,10 @@
             this.ep.SuspendLayout();
             this.dp.SuspendLayout();
             this.hp.SuspendLayout();
+            this.panelHistory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -539,7 +549,7 @@
             this.searchDog.Controls.Add(this.tbBreedSearch);
             this.searchDog.Controls.Add(this.label3);
             this.searchDog.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchDog.Location = new System.Drawing.Point(27, 196);
+            this.searchDog.Location = new System.Drawing.Point(20, 196);
             this.searchDog.Name = "searchDog";
             this.searchDog.Size = new System.Drawing.Size(1015, 536);
             this.searchDog.TabIndex = 11;
@@ -552,9 +562,9 @@
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
             this.label10.Location = new System.Drawing.Point(616, 53);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 20);
+            this.label10.Size = new System.Drawing.Size(64, 20);
             this.label10.TabIndex = 37;
-            this.label10.Text = "view all";
+            this.label10.Text = "View All";
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // cbGenderSearch
@@ -655,7 +665,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(187)))), ((int)(((byte)(210)))));
-            this.label8.Location = new System.Drawing.Point(375, 78);
+            this.label8.Location = new System.Drawing.Point(388, 78);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(213, 16);
             this.label8.TabIndex = 24;
@@ -683,7 +693,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label12.Location = new System.Drawing.Point(373, 40);
+            this.label12.Location = new System.Drawing.Point(391, 40);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(211, 39);
             this.label12.TabIndex = 11;
@@ -794,6 +804,7 @@
             // euthanizeDog
             // 
             this.euthanizeDog.BackColor = System.Drawing.Color.White;
+            this.euthanizeDog.Controls.Add(this.cbEmps);
             this.euthanizeDog.Controls.Add(this.btnDone);
             this.euthanizeDog.Controls.Add(this.label7);
             this.euthanizeDog.Controls.Add(this.button10);
@@ -1129,6 +1140,74 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // panelHistory
+            // 
+            this.panelHistory.BackColor = System.Drawing.Color.White;
+            this.panelHistory.Controls.Add(this.dgvHist);
+            this.panelHistory.Controls.Add(this.cbTransType);
+            this.panelHistory.Location = new System.Drawing.Point(13, 196);
+            this.panelHistory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelHistory.Name = "panelHistory";
+            this.panelHistory.Size = new System.Drawing.Size(1015, 536);
+            this.panelHistory.TabIndex = 29;
+            this.panelHistory.Visible = false;
+            // 
+            // dgvHist
+            // 
+            this.dgvHist.AllowUserToAddRows = false;
+            this.dgvHist.AllowUserToDeleteRows = false;
+            this.dgvHist.AllowUserToResizeColumns = false;
+            this.dgvHist.AllowUserToResizeRows = false;
+            this.dgvHist.BackgroundColor = System.Drawing.Color.White;
+            this.dgvHist.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvHist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHist.GridColor = System.Drawing.Color.White;
+            this.dgvHist.Location = new System.Drawing.Point(19, 97);
+            this.dgvHist.Name = "dgvHist";
+            this.dgvHist.ReadOnly = true;
+            this.dgvHist.RowHeadersVisible = false;
+            this.dgvHist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvHist.Size = new System.Drawing.Size(982, 411);
+            this.dgvHist.TabIndex = 74;
+            // 
+            // cbTransType
+            // 
+            this.cbTransType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTransType.ForeColor = System.Drawing.Color.Black;
+            this.cbTransType.FormattingEnabled = true;
+            this.cbTransType.Items.AddRange(new object[] {
+            "Claimed",
+            "Adopted",
+            "Euthanized"});
+            this.cbTransType.Location = new System.Drawing.Point(16, 53);
+            this.cbTransType.Name = "cbTransType";
+            this.cbTransType.Size = new System.Drawing.Size(288, 28);
+            this.cbTransType.TabIndex = 73;
+            this.cbTransType.Text = "Transaction Type";
+            this.cbTransType.SelectedIndexChanged += new System.EventHandler(this.cbTransType_SelectedIndexChanged);
+            // 
+            // cbEmps
+            // 
+            this.cbEmps.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEmps.ForeColor = System.Drawing.Color.Black;
+            this.cbEmps.FormattingEnabled = true;
+            this.cbEmps.Location = new System.Drawing.Point(289, 464);
+            this.cbEmps.Name = "cbEmps";
+            this.cbEmps.Size = new System.Drawing.Size(334, 28);
+            this.cbEmps.TabIndex = 75;
+            this.cbEmps.Text = "Euthanized by";
+            this.cbEmps.SelectedIndexChanged += new System.EventHandler(this.cbEmps_SelectedIndexChanged);
+            // 
+            // impounddogpoundDataSet
+            // 
+            this.impounddogpoundDataSet.DataSetName = "impounddogpoundDataSet";
+            this.impounddogpoundDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // impounddogpoundDataSetBindingSource
+            // 
+            this.impounddogpoundDataSetBindingSource.DataSource = this.impounddogpoundDataSet;
+            this.impounddogpoundDataSetBindingSource.Position = 0;
+            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1138,11 +1217,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.euthanizeDog);
+            this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.repclaimpan);
             this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
-            this.Controls.Add(this.euthanizeDog);
-            this.Controls.Add(this.adoptDog);
+            this.Controls.Add(this.panelHistory);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
@@ -1180,6 +1260,10 @@
             this.dp.PerformLayout();
             this.hp.ResumeLayout(false);
             this.hp.PerformLayout();
+            this.panelHistory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1261,5 +1345,11 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button reset;
         private System.Windows.Forms.Button hold;
+        private System.Windows.Forms.Panel panelHistory;
+        private System.Windows.Forms.ComboBox cbTransType;
+        private System.Windows.Forms.DataGridView dgvHist;
+        private System.Windows.Forms.ComboBox cbEmps;
+        private impounddogpoundDataSet impounddogpoundDataSet;
+        private System.Windows.Forms.BindingSource impounddogpoundDataSetBindingSource;
     }
 }

@@ -407,7 +407,7 @@ namespace WindowsFormsApplication1
             button21.BackColor = Color.FromArgb(251, 162, 80);
             button15.BackColor = Color.FromArgb(2, 170, 145);
             newOperation.Visible = false;
-            
+            pnlActivity.Visible = false;
             Operations.Visible = true;
 
             refreshOperationsView();
@@ -1129,10 +1129,10 @@ namespace WindowsFormsApplication1
                 DataTable dta;
                 while (i <= max && stop == false)//counter for team
                 {
-                    commm = new MySqlCommand("SELECT COUNT(*), employeeID FROM operationteam WHERE teamID = " + i, conn);
-                    adpt = new MySqlDataAdapter(commm);
-                    dta = new DataTable();
-                    int empnum = int.Parse(dta.Rows[0]["COUNT(*)"].ToString());
+                    //commm = new MySqlCommand("SELECT COUNT(*), employeeID FROM operationteam WHERE teamID = " + i, conn);
+                    //adpt = new MySqlDataAdapter(commm);
+                    //dta = new DataTable();
+                    //int empnum = int.Parse(dta.Rows[0]["COUNT(*)"].ToString());
 
                     commm = new MySqlCommand("SELECT DISTINCT employeeID FROM operationteam WHERE teamID = " + i, conn);
                     adpt = new MySqlDataAdapter(commm);
@@ -1140,7 +1140,7 @@ namespace WindowsFormsApplication1
                     adpt.Fill(dta);
 
                     int[] employees = new int[10];
-                    for (int j = 0; j < empnum; j++) //counter for employees inside the team
+                    for (int j = 0; j < dta.Rows.Count; j++) //counter for employees inside the team
                     {
                         employees[j] = int.Parse(dta.Rows[0]["employeeID"].ToString());
                     }
@@ -1155,7 +1155,7 @@ namespace WindowsFormsApplication1
                     }
                     else
                     {
-                        for (int y = 0; y < empnum && same == true; y++)
+                        for (int y = 0; y < dta.Rows.Count && same == true; y++)
                         {
                             if (employees[y] == emps[y]) same = true;
                             else same = false;
@@ -1661,6 +1661,12 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void specLoc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
     }
 

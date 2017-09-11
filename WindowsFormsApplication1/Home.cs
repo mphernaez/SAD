@@ -151,7 +151,7 @@ namespace WindowsFormsApplication1
         private void Home_Load(object sender, EventArgs e)
         {
             namelabel.Text = dispUser;
-//this.TopMost = true;
+            //this.TopMost = true;
             //this.Top = 0; // 150
             Timer tmr = new Timer();
             tmr.Interval = 1000;//ticks every 1 second

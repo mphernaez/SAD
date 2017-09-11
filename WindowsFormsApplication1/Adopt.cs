@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1
         public MySqlConnection conn;
         public int dogID;
         public int adminID;
+        int[] empids;
         public Dog dog { get; set; } 
         public Adopt()
         {
@@ -101,19 +102,33 @@ namespace WindowsFormsApplication1
                     comm = new MySqlCommand("INSERT INTO client(personID, validIDType, validIDNumber) VALUES(" + personID + ", '" + idtype + "', '" + idnum + "')", conn);
                     comm.ExecuteNonQuery();
 
-                    comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, vaccine, type) VALUES(" + personID + ", " + dogID + ", '" + date + "', " + "0" + ", " + vaccine + ", '" + "claim" + "')", conn);
+                    comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, vaccine, type) VALUES(" + personID + ", " + dogID + ", '" + date + "', " + "0" + ", " + vaccine + ", '" + "adopt" + "')", conn);
                     comm.ExecuteNonQuery();
 
                     comm = new MySqlCommand("UPDATE dogprofile SET status = 'adopted' WHERE dogID = " + dogID, conn);
                     comm.ExecuteNonQuery();
-
-                    if(vaccine == 1)
+                    string messbox;
+                    if (vaccine == 1)
                     {
-                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID =  1", conn);
+                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID = 1", conn);
                         comm.ExecuteNonQuery();
+                        string datenow = DateTime.Now.ToString("yyyy-MM-dd");
+                        comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, employeeID, type) VALUES(1, 1, '" + datenow + "', 'Adopt', "+empids[cbVaccEmp.SelectedIndex]+", 'Out')", conn);
+                        comm.ExecuteNonQuery();
+                        comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('"+date+"', "+empids[cbVaccEmp.SelectedIndex]+", 'Vaccination')", conn);
+                        comm.ExecuteNonQuery();
+                        comm = new MySqlCommand("SELECT quantity FROM items WHERE itemID = 1", conn);
+                        MySqlDataReader read = comm.ExecuteReader();
+                        while (read.Read())
+                        {
+                            int quantity = int.Parse(read[0].ToString());
+                            messbox = "Successfully Adopted and Vaccinated! Vaccine Quantity is now: " + quantity.ToString();
+                        }
                     }
-
-                    MessageBox.Show("Successfully Adopted!");
+                    else
+                    {
+                        messbox = "Adopted Claimed!";
+                    }
                     dog.Show();
                     this.Close();
                     conn.Close();
@@ -211,6 +226,43 @@ namespace WindowsFormsApplication1
             {
                 tbDay.Items.Add(i.ToString());
                 i++;
+            }
+        }
+
+        private void refreshEmps()
+        {
+            cbVaccEmp.Items.Clear();
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS name FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE employee.status = 'Active'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adp.Fill(dt);
+                empids = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    empids[i] = int.Parse(dt.Rows[i]["personID"].ToString());
+                    cbVaccEmp.Items.Add(dt.Rows[i]["name"].ToString());
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void cbVaccine_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbVaccine.Checked)
+            {
+                cbVaccEmp.Visible = true;
+                refreshEmps();
+            }
+            else
+            {
+                cbVaccEmp.Visible = false;
             }
         }
     }

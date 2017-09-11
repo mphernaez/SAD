@@ -60,10 +60,11 @@ namespace WindowsFormsApplication1
 
         private void OK1_Click(object sender, EventArgs e)
         {
-            
+            if (amtIn.Value != 0)
+            {
                 try
                 {
-                    
+
                     conn.Open();
                     if (eID != 0)
                     {
@@ -71,7 +72,7 @@ namespace WindowsFormsApplication1
                         String date = tbYear.Text + "-" + (cbMonth.SelectedIndex + 1).ToString() + "-" + cbDay.Text + "-";
                         MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + " + int.Parse(amtIn.Text) + " WHERE itemID = " + id, conn);
                         comm.ExecuteNonQuery();
-                        MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction VALUES( transactionID, " + id + ", " + int.Parse(amtIn.Text) + ", '" + date + "', 'In', " + eID + ", '"+tbReason.Text+"', '" + expiration + "')", conn);
+                        MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction VALUES( transactionID, " + id + ", " + int.Parse(amtIn.Text) + ", '" + date + "', 'In', " + eID + ", '" + tbReason.Text + "', '" + expiration + "')", conn);
                         com.ExecuteNonQuery();
                         this.Hide();
                         MessageBox.Show("Item Updated");
@@ -86,9 +87,14 @@ namespace WindowsFormsApplication1
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Please enter required fields");
                     conn.Close();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Invalid Amount");
+            }
         }
 
         int eID;

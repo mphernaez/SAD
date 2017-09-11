@@ -18,12 +18,13 @@ namespace WindowsFormsApplication1
         public int dogID;
         public int adminID;
         public MySqlConnection conn;
+        int[] empids;
         public Dog dog { get; set; }
         public Claim()
         {
             InitializeComponent();
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
-            
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -31,7 +32,7 @@ namespace WindowsFormsApplication1
             dog.Show();
             this.Hide();
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -80,7 +81,11 @@ namespace WindowsFormsApplication1
                     {
                         comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID = 1", conn);
                         comm.ExecuteNonQuery();
-
+                        string datenow = DateTime.Now.ToString("yyyy-MM-dd");
+                        comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, employeeID, type) VALUES(1, 1, '" + datenow + "', 'Claim',"+empids[cbVaccEmp.SelectedIndex]+", 'Out')", conn);
+                        comm.ExecuteNonQuery();
+                        comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('" + date + "', " + empids[cbVaccEmp.SelectedIndex] + ", 'Vaccination')", conn);
+                        comm.ExecuteNonQuery();
                         comm = new MySqlCommand("SELECT quantity FROM items WHERE itemID = 1", conn);
                         MySqlDataReader read = comm.ExecuteReader();
                         while (read.Read())
@@ -104,9 +109,9 @@ namespace WindowsFormsApplication1
                     conn.Close();
                 }
             }
-            
+
         }
-        
+
         private void Claim_Load(object sender, EventArgs e)
         {
             try
@@ -133,8 +138,11 @@ namespace WindowsFormsApplication1
                 int datediff = 50 * int.Parse(dt.Rows[0]["datediff"].ToString());
                 int bayad = 250 + datediff;
                 labelPayment.Text = bayad.ToString();
-                if(datediff/50 == 1) lblRemarks.Text = "*250 + (50 x " + datediff.ToString() + " day impounded)";
-                else if(datediff/50 > 1)lblRemarks.Text = "*P 250 + (P 50 x " + datediff/50 + " days impounded)";
+                if (datediff / 50 == 1) lblRemarks.Text = "*250 + (50 x " + datediff.ToString() + " day impounded)";
+                else if (datediff / 50 > 1) lblRemarks.Text = "*P 250 + (P 50 x " + datediff / 50 + " days impounded)";
+
+
+
                 conn.Close();
 
             }
@@ -151,12 +159,12 @@ namespace WindowsFormsApplication1
             dog.tbBreedSearch.Text = "";
             dog.tbColorSearch.Text = "";
             dog.cbGenderSearch.SelectedIndex = 0;
-            
+
         }
-        
+
         private void printDocumentCR_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            
+
             e.Graphics.DrawString("Davao City Dog Pound", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(25, 100));
             e.Graphics.DrawString("Claimer's Details", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(25, 140));
             e.Graphics.DrawString("Claimer's Name: " + tbfname.Text + tblname.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 180));
@@ -165,13 +173,13 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Address: " + tbadd.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 240));
             e.Graphics.DrawString("Valid ID Type: " + tbIDtype.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 260));
             e.Graphics.DrawString("Valid ID Number: " + tbIDnum.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 280));
-            
+
             if (checkbox.Checked) e.Graphics.DrawString("**Availed Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
             else e.Graphics.DrawString("**No Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
-            
+
             Pen black = new Pen(Color.Black, 3);
             Point p1 = new Point(25, 340);
-            Point p2 = new Point(800    , 340);
+            Point p2 = new Point(800, 340);
             e.Graphics.DrawLine(black, p1, p2);
             e.Graphics.DrawString("Dog Details ", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(25, 380));
             e.Graphics.DrawString("Breed: " + breeds.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 400));
@@ -183,7 +191,7 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 800));
 
         }
-         
+
         private void tbDay_Enter(object sender, EventArgs e)
         {
             tbDay.Text = "";
@@ -196,7 +204,7 @@ namespace WindowsFormsApplication1
 
         private void tbYear_TextChanged(object sender, EventArgs e)
         {
-            if(tbYear.Text.Length == 4) cbMonth.Enabled = true;
+            if (tbYear.Text.Length == 4) cbMonth.Enabled = true;
         }
 
         private void cbMonth_SelectedIndexChanged(object sender, EventArgs e)
@@ -227,6 +235,24 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkbox.Checked)
+            {
+                cbVaccEmp.Visible = true;
+                refreshEmps();
+            }
+            else
+            {
+                cbVaccEmp.Visible = false;
+            }
+        }
+
         private void Preview()
         {
             printPreviewDialogCR.Document = printDocumentCR;
@@ -235,5 +261,28 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void refreshEmps()
+        {
+            cbVaccEmp.Items.Clear();
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS name FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE employee.status = 'Active'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adp.Fill(dt);
+                empids = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    empids[i] = int.Parse(dt.Rows[i]["personID"].ToString());
+                    cbVaccEmp.Items.Add(dt.Rows[i]["name"].ToString());
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

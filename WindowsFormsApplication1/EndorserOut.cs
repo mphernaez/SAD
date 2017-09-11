@@ -21,38 +21,47 @@ namespace WindowsFormsApplication1
         public EndorserOut(Inventory parent)
         {
             InitializeComponent();
+            inv = parent;
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
         }
 
         private void OK1_Click(object sender, EventArgs e)
         {
-            try
+            if (amtOut.Value != 0)
             {
+                try
+                {
 
-                conn.Open();
-                if (eID != 0)
-                {
-                    String date = DateTime.Now.ToString("yyyy-MM-dd");
-                    MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - " + int.Parse(amtOut.Text) + " WHERE itemID = " + id, conn);
-                    comm.ExecuteNonQuery();
-                    MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, type, employeeID, reason) VALUES(" + id + ", " + int.Parse(amtOut.Text) + ", '" + date + "', 'Out', " + eID + ", '" + tbReason.Text + "')", conn);
-                    com.ExecuteNonQuery();
-                    MessageBox.Show("Item Updated");
-                    this.Hide();
-                    inv.refreshSO();
-                }
-                else
-                {
+                    conn.Open();
+                    if (eID != 0)
+                    {
+                        String date = DateTime.Now.ToString("yyyy-MM-dd");
+                        MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - " + int.Parse(amtOut.Text) + " WHERE itemID = " + id, conn);
+                        comm.ExecuteNonQuery();
+                        MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, type, employeeID, reason) VALUES(" + id + ", " + int.Parse(amtOut.Text) + ", '" + date + "', 'Out', " + eID + ", '" + tbReason.Text + "')", conn);
+                        com.ExecuteNonQuery();
+                        MessageBox.Show("Item Updated");
+                        this.Hide();
+                        inv.refreshSO();
+                    }
+                    else
+                    {
+                        conn.Close();
+                        MessageBox.Show("Please Enter an Employee");
+                    }
                     conn.Close();
-                    MessageBox.Show("Please Enter an Employee");
                 }
-                conn.Close();
-            } catch(Exception ex)
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            }
+            else
             {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
+                MessageBox.Show("Invalid Amount");
             }
-            }
+        }
         public void refreshEnd()
         {
             try

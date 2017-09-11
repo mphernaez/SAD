@@ -80,6 +80,7 @@
             this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.printPreviewDialogCR = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentCR = new System.Drawing.Printing.PrintDocument();
+            this.cbVaccEmp = new System.Windows.Forms.ComboBox();
             this.claimRBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -228,6 +229,7 @@
             this.checkbox.TabIndex = 29;
             this.checkbox.Text = "Avail Vaccine";
             this.checkbox.UseVisualStyleBackColor = true;
+            this.checkbox.CheckedChanged += new System.EventHandler(this.checkbox_CheckedChanged);
             // 
             // label14
             // 
@@ -269,6 +271,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.panel2.CausesValidation = false;
+            this.panel2.Controls.Add(this.cbVaccEmp);
             this.panel2.Controls.Add(this.tbDay);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.tbYear);
@@ -502,6 +505,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(715, 603);
             this.panel1.TabIndex = 16;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel3
             // 
@@ -641,6 +645,18 @@
             // 
             this.printDocumentCR.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentCR_PrintPage);
             // 
+            // cbVaccEmp
+            // 
+            this.cbVaccEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbVaccEmp.ForeColor = System.Drawing.Color.Black;
+            this.cbVaccEmp.FormattingEnabled = true;
+            this.cbVaccEmp.Location = new System.Drawing.Point(441, 173);
+            this.cbVaccEmp.Name = "cbVaccEmp";
+            this.cbVaccEmp.Size = new System.Drawing.Size(189, 28);
+            this.cbVaccEmp.TabIndex = 35;
+            this.cbVaccEmp.Text = "Vaccinated by";
+            this.cbVaccEmp.Visible = false;
+            // 
             // claimRBindingSource
             // 
             this.claimRBindingSource.DataSource = typeof(WindowsFormsApplication1.ClaimR);
@@ -725,5 +741,6 @@
         private System.Windows.Forms.Label labelPayment;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label lblRemarks;
+        private System.Windows.Forms.ComboBox cbVaccEmp;
     }
 }
