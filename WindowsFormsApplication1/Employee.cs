@@ -1667,6 +1667,10 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void button32_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 

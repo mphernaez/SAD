@@ -73,10 +73,11 @@
             this.dgvAdoption = new System.Windows.Forms.DataGridView();
             this.repclaimpan = new System.Windows.Forms.Panel();
             this.button16 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.month1 = new System.Windows.Forms.ComboBox();
             this.filt = new System.Windows.Forms.ComboBox();
             this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.euthanizeDog = new System.Windows.Forms.Panel();
+            this.cbEmps = new System.Windows.Forms.ComboBox();
             this.btnDone = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
@@ -107,9 +108,10 @@
             this.panelHistory = new System.Windows.Forms.Panel();
             this.dgvHist = new System.Windows.Forms.DataGridView();
             this.cbTransType = new System.Windows.Forms.ComboBox();
-            this.cbEmps = new System.Windows.Forms.ComboBox();
             this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.impounddogpoundDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.month2 = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -720,8 +722,10 @@
             // 
             // repclaimpan
             // 
+            this.repclaimpan.Controls.Add(this.label19);
             this.repclaimpan.Controls.Add(this.button16);
-            this.repclaimpan.Controls.Add(this.comboBox2);
+            this.repclaimpan.Controls.Add(this.month2);
+            this.repclaimpan.Controls.Add(this.month1);
             this.repclaimpan.Controls.Add(this.filt);
             this.repclaimpan.Controls.Add(this.claimreportdgv);
             this.repclaimpan.Location = new System.Drawing.Point(29, 197);
@@ -744,10 +748,10 @@
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // comboBox2
+            // month1
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.month1.FormattingEnabled = true;
+            this.month1.Items.AddRange(new object[] {
             "January",
             "February",
             "March",
@@ -760,10 +764,10 @@
             "October",
             "November",
             "December"});
-            this.comboBox2.Location = new System.Drawing.Point(62, 76);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(146, 21);
-            this.comboBox2.TabIndex = 1;
+            this.month1.Location = new System.Drawing.Point(62, 76);
+            this.month1.Name = "month1";
+            this.month1.Size = new System.Drawing.Size(109, 21);
+            this.month1.TabIndex = 1;
             // 
             // filt
             // 
@@ -816,6 +820,18 @@
             this.euthanizeDog.Size = new System.Drawing.Size(1015, 536);
             this.euthanizeDog.TabIndex = 37;
             this.euthanizeDog.Visible = false;
+            // 
+            // cbEmps
+            // 
+            this.cbEmps.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEmps.ForeColor = System.Drawing.Color.Black;
+            this.cbEmps.FormattingEnabled = true;
+            this.cbEmps.Location = new System.Drawing.Point(289, 464);
+            this.cbEmps.Name = "cbEmps";
+            this.cbEmps.Size = new System.Drawing.Size(334, 28);
+            this.cbEmps.TabIndex = 75;
+            this.cbEmps.Text = "Euthanized by";
+            this.cbEmps.SelectedIndexChanged += new System.EventHandler(this.cbEmps_SelectedIndexChanged);
             // 
             // btnDone
             // 
@@ -1186,18 +1202,6 @@
             this.cbTransType.Text = "Transaction Type";
             this.cbTransType.SelectedIndexChanged += new System.EventHandler(this.cbTransType_SelectedIndexChanged);
             // 
-            // cbEmps
-            // 
-            this.cbEmps.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEmps.ForeColor = System.Drawing.Color.Black;
-            this.cbEmps.FormattingEnabled = true;
-            this.cbEmps.Location = new System.Drawing.Point(289, 464);
-            this.cbEmps.Name = "cbEmps";
-            this.cbEmps.Size = new System.Drawing.Size(334, 28);
-            this.cbEmps.TabIndex = 75;
-            this.cbEmps.Text = "Euthanized by";
-            this.cbEmps.SelectedIndexChanged += new System.EventHandler(this.cbEmps_SelectedIndexChanged);
-            // 
             // impounddogpoundDataSet
             // 
             this.impounddogpoundDataSet.DataSetName = "impounddogpoundDataSet";
@@ -1208,6 +1212,36 @@
             this.impounddogpoundDataSetBindingSource.DataSource = this.impounddogpoundDataSet;
             this.impounddogpoundDataSetBindingSource.Position = 0;
             // 
+            // month2
+            // 
+            this.month2.FormattingEnabled = true;
+            this.month2.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.month2.Location = new System.Drawing.Point(212, 75);
+            this.month2.Name = "month2";
+            this.month2.Size = new System.Drawing.Size(109, 21);
+            this.month2.TabIndex = 1;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(186, 80);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(10, 13);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "-";
+            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1217,12 +1251,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.euthanizeDog);
-            this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.repclaimpan);
             this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.panelHistory);
+            this.Controls.Add(this.euthanizeDog);
+            this.Controls.Add(this.adoptDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
@@ -1244,6 +1278,7 @@
             this.adoptDog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).EndInit();
             this.repclaimpan.ResumeLayout(false);
+            this.repclaimpan.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).EndInit();
             this.euthanizeDog.ResumeLayout(false);
             this.euthanizeDog.PerformLayout();
@@ -1342,7 +1377,7 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.ComboBox filt;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox month1;
         private System.Windows.Forms.Button reset;
         private System.Windows.Forms.Button hold;
         private System.Windows.Forms.Panel panelHistory;
@@ -1351,5 +1386,7 @@
         private System.Windows.Forms.ComboBox cbEmps;
         private impounddogpoundDataSet impounddogpoundDataSet;
         private System.Windows.Forms.BindingSource impounddogpoundDataSetBindingSource;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox month2;
     }
 }
