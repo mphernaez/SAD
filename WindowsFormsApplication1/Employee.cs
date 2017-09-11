@@ -1171,8 +1171,9 @@ namespace WindowsFormsApplication1
             }
             catch(Exception ex)
             {
-                return 0;
+                
                 MessageBox.Show(ex.ToString());
+                return 0;
             }
             
         }

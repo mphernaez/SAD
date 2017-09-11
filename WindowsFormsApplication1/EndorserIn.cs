@@ -73,10 +73,9 @@ namespace WindowsFormsApplication1
                         comm.ExecuteNonQuery();
                         MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction VALUES( transactionID, " + id + ", " + int.Parse(amtIn.Text) + ", '" + date + "', 'In', " + eID + ", '"+tbReason.Text+"', '" + expiration + "')", conn);
                         com.ExecuteNonQuery();
+                        this.Hide();
                         MessageBox.Show("Item Updated");
                         inv.refreshSI();
-                        this.Hide();
-                    
                     }
                     else
                     {

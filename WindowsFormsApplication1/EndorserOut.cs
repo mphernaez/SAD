@@ -33,18 +33,17 @@ namespace WindowsFormsApplication1
                 if (eID != 0)
                 {
                     String date = DateTime.Now.ToString("yyyy-MM-dd");
-                    MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - " + amtIn.Value + " WHERE itemID = " + id, conn);
+                    MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - " + int.Parse(amtOut.Text) + " WHERE itemID = " + id, conn);
                     comm.ExecuteNonQuery();
-                    MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, type, employeeID, reason) VALUES(" + id + ", " + amtIn.Value + ", '" + date + "', 'Out', " + eID + ", '" + tbReason.Text + "')", conn);
+                    MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, type, employeeID, reason) VALUES(" + id + ", " + int.Parse(amtOut.Text) + ", '" + date + "', 'Out', " + eID + ", '" + tbReason.Text + "')", conn);
                     com.ExecuteNonQuery();
-                    inv.refreshSI();
                     MessageBox.Show("Item Updated");
-                    
                     this.Hide();
-
+                    inv.refreshSO();
                 }
                 else
                 {
+                    conn.Close();
                     MessageBox.Show("Please Enter an Employee");
                 }
                 conn.Close();

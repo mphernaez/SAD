@@ -33,10 +33,10 @@
             this.tbReason = new System.Windows.Forms.TextBox();
             this.dgvEnd = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.amtIn = new System.Windows.Forms.NumericUpDown();
+            this.amtOut = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.amtIn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.amtOut)).BeginInit();
             this.SuspendLayout();
             // 
             // OK1
@@ -88,6 +88,7 @@
             this.dgvEnd.GridColor = System.Drawing.Color.White;
             this.dgvEnd.Location = new System.Drawing.Point(12, 43);
             this.dgvEnd.Name = "dgvEnd";
+            this.dgvEnd.ReadOnly = true;
             this.dgvEnd.RowHeadersVisible = false;
             this.dgvEnd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEnd.Size = new System.Drawing.Size(368, 401);
@@ -105,13 +106,13 @@
             this.label3.TabIndex = 102;
             this.label3.Text = "Amount";
             // 
-            // amtIn
+            // amtOut
             // 
-            this.amtIn.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amtIn.Location = new System.Drawing.Point(25, 543);
-            this.amtIn.Name = "amtIn";
-            this.amtIn.Size = new System.Drawing.Size(150, 26);
-            this.amtIn.TabIndex = 101;
+            this.amtOut.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amtOut.Location = new System.Drawing.Point(25, 543);
+            this.amtOut.Name = "amtOut";
+            this.amtOut.Size = new System.Drawing.Size(150, 26);
+            this.amtOut.TabIndex = 101;
             // 
             // label1
             // 
@@ -132,7 +133,7 @@
             this.ClientSize = new System.Drawing.Size(393, 627);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.amtIn);
+            this.Controls.Add(this.amtOut);
             this.Controls.Add(this.OK1);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.tbReason);
@@ -143,7 +144,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.EndorserOut_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.amtIn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.amtOut)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,7 +157,7 @@
         private System.Windows.Forms.TextBox tbReason;
         private System.Windows.Forms.DataGridView dgvEnd;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown amtIn;
+        private System.Windows.Forms.NumericUpDown amtOut;
         private System.Windows.Forms.Label label1;
     }
 }

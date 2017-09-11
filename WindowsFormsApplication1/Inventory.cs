@@ -71,7 +71,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT itemID, productName, description, quantity, minQuantity FROM items", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT * FROM items", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -80,29 +80,33 @@ namespace WindowsFormsApplication1
 
                 dgvin.Columns["itemID"].Visible = false;
                 dgvin.Columns["productName"].HeaderText = "Product Name";
-                dgvin.Columns["description"].HeaderText = "Decription";
+                dgvin.Columns["description"].HeaderText = "Description";
                 dgvin.Columns["quantity"].HeaderText = "Quantity";
                 dgvin.Columns["minQuantity"].HeaderText = "Minimum Quantity";
+                dgvin.Columns["measuredBy"].HeaderText = "Measured By";
                 dgvin.Columns["productName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvin.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvin.Columns["quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvin.Columns["minQuantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvin.Columns["measuredBy"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvin.ClearSelection();
 
                 conn.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
         }
+
+
         public void refreshSO()
         {
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT itemID, productName, description, quantity, minQuantity FROM items", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT * FROM items", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -111,14 +115,17 @@ namespace WindowsFormsApplication1
 
                 dgvo.Columns["itemID"].Visible = false;
                 dgvo.Columns["productName"].HeaderText = "Product Name";
-                dgvo.Columns["description"].HeaderText = "Decription";
+                dgvo.Columns["description"].HeaderText = "Description";
                 dgvo.Columns["quantity"].HeaderText = "Quantity";
                 dgvo.Columns["minQuantity"].HeaderText = "Minimum Quantity";
+                dgvo.Columns["measuredBy"].HeaderText = "Measured By";
                 dgvo.Columns["productName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvo.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvo.Columns["quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvo.Columns["minQuantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvo.Columns["measuredBy"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvo.ClearSelection();
+
                 conn.Close();
             }
             catch (Exception ex)
