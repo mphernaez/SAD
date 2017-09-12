@@ -38,6 +38,8 @@ namespace WindowsFormsApplication1
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            pictureBox1.Visible = false;
+            panelTrans.Visible = false;
             a.Visible = true;
             i.Visible = false;
             r.Visible = false;
@@ -49,6 +51,8 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            pictureBox1.Visible = false;
+            panelTrans.Visible = false;
             a.Visible = false;
             i.Visible = false;
             r.Visible = false;
@@ -137,6 +141,8 @@ namespace WindowsFormsApplication1
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            pictureBox1.Visible = false;
+            panelTrans.Visible = false;
             a.Visible = false;
             i.Visible = true;
             r.Visible = false;
@@ -366,6 +372,17 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
+        }
+
+        private void button14_Click_1(object sender, EventArgs e)
+        {
+            pictureBox1.Visible = true;
+            panelTrans.Visible = true;
+            a.Visible = false;
+            i.Visible = false;
+            r.Visible = false;
+            inv.Visible = true;
+            newitem.Visible = false;
         }
     }
 }
