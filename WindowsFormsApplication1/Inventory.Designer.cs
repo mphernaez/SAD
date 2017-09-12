@@ -448,7 +448,7 @@
             this.newitem.Controls.Add(this.tbname);
             this.newitem.Controls.Add(this.label2);
             this.newitem.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newitem.Location = new System.Drawing.Point(21, 196);
+            this.newitem.Location = new System.Drawing.Point(24, 196);
             this.newitem.Name = "newitem";
             this.newitem.Size = new System.Drawing.Size(1016, 543);
             this.newitem.TabIndex = 53;
@@ -643,9 +643,9 @@
             this.panelTrans.Controls.Add(this.dgvTrans);
             this.panelTrans.Controls.Add(this.cbTransType);
             this.panelTrans.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelTrans.Location = new System.Drawing.Point(29, 196);
+            this.panelTrans.Location = new System.Drawing.Point(24, 196);
             this.panelTrans.Name = "panelTrans";
-            this.panelTrans.Size = new System.Drawing.Size(1015, 536);
+            this.panelTrans.Size = new System.Drawing.Size(1016, 543);
             this.panelTrans.TabIndex = 57;
             this.panelTrans.Visible = false;
             // 
@@ -900,10 +900,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1070, 763);
-            this.Controls.Add(this.panelTrans);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.panelTrans);
             this.Controls.Add(this.inv);
             this.Controls.Add(this.newitem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
