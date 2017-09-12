@@ -789,6 +789,7 @@ namespace WindowsFormsApplication1
         public void refreshArchive()
         {
             cbEmps.Items.Clear();
+            cbEmps.Text = "Euthanized by";
             try
             {
                 conn.Open();
