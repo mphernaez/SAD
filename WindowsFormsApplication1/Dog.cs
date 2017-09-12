@@ -86,7 +86,7 @@ namespace WindowsFormsApplication1
             String size = "";
             String other = "";
             String breed = "";
-            if (!cbOperation.Text.Equals("Operation Date and Location") && tbColor.Text != "Color" && cbGender.Text != "Gender" && cbSize.Text != "Size" && tbDesc.Text != "Other Description") {
+            if (!cbOperation.Text.Equals("Operation Date and Location") && tbColor.Text != "Color" && cbGender.Text != "Gender" && cbSize.Text != "Size" && tbDesc.Text != "Markings") {
                 adminID = back.adminID;
                 operationID = cbOperation.SelectedIndex + 1;
                 color = tbColor.Text;
