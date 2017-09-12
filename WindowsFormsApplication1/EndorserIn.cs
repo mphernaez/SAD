@@ -175,5 +175,9 @@ namespace WindowsFormsApplication1
             else { loopDayDel(30); }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

@@ -103,5 +103,10 @@ namespace WindowsFormsApplication1
         {
             refreshEnd();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

@@ -129,6 +129,12 @@
     <Compile Include="EndorserOut.Designer.cs">
       <DependentUpon>EndorserOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="opEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="opEdit.Designer.cs">
+      <DependentUpon>opEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Viewinvent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EndorserOut.resx">
       <DependentUpon>EndorserOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="opEdit.resx">
+      <DependentUpon>opEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Viewinvent.resx">
       <DependentUpon>Viewinvent.cs</DependentUpon>
