@@ -46,6 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cbVaccEmp = new System.Windows.Forms.ComboBox();
             this.tbDay = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tbYear = new System.Windows.Forms.TextBox();
@@ -70,7 +71,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.printPreviewDialogAdt = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentAdt = new System.Drawing.Printing.PrintDocument();
-            this.cbVaccEmp = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -295,8 +295,21 @@
             this.panel3.Size = new System.Drawing.Size(658, 209);
             this.panel3.TabIndex = 20;
             // 
+            // cbVaccEmp
+            // 
+            this.cbVaccEmp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbVaccEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbVaccEmp.ForeColor = System.Drawing.Color.Black;
+            this.cbVaccEmp.FormattingEnabled = true;
+            this.cbVaccEmp.Location = new System.Drawing.Point(466, 162);
+            this.cbVaccEmp.Name = "cbVaccEmp";
+            this.cbVaccEmp.Size = new System.Drawing.Size(178, 28);
+            this.cbVaccEmp.TabIndex = 36;
+            this.cbVaccEmp.Visible = false;
+            // 
             // tbDay
             // 
+            this.tbDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tbDay.Enabled = false;
             this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDay.ForeColor = System.Drawing.Color.Black;
@@ -305,7 +318,6 @@
             this.tbDay.Name = "tbDay";
             this.tbDay.Size = new System.Drawing.Size(59, 28);
             this.tbDay.TabIndex = 38;
-            this.tbDay.Text = "Day";
             // 
             // label9
             // 
@@ -330,6 +342,7 @@
             // 
             // cbMonth
             // 
+            this.cbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMonth.Enabled = false;
             this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMonth.ForeColor = System.Drawing.Color.Black;
@@ -351,7 +364,6 @@
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(77, 28);
             this.cbMonth.TabIndex = 35;
-            this.cbMonth.Text = "Month";
             this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
             // tblname
@@ -539,18 +551,6 @@
             // printDocumentAdt
             // 
             this.printDocumentAdt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentAdt_PrintPage);
-            // 
-            // cbVaccEmp
-            // 
-            this.cbVaccEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbVaccEmp.ForeColor = System.Drawing.Color.Black;
-            this.cbVaccEmp.FormattingEnabled = true;
-            this.cbVaccEmp.Location = new System.Drawing.Point(466, 162);
-            this.cbVaccEmp.Name = "cbVaccEmp";
-            this.cbVaccEmp.Size = new System.Drawing.Size(178, 28);
-            this.cbVaccEmp.TabIndex = 36;
-            this.cbVaccEmp.Text = "Vaccinated by";
-            this.cbVaccEmp.Visible = false;
             // 
             // Adopt
             // 
