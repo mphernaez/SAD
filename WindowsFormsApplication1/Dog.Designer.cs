@@ -348,7 +348,7 @@
             this.reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reset.ForeColor = System.Drawing.Color.White;
-            this.reset.Location = new System.Drawing.Point(551, 144);
+            this.reset.Location = new System.Drawing.Point(636, 109);
             this.reset.Name = "reset";
             this.reset.Size = new System.Drawing.Size(60, 28);
             this.reset.TabIndex = 28;
@@ -365,7 +365,7 @@
             this.hold.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hold.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hold.ForeColor = System.Drawing.Color.White;
-            this.hold.Location = new System.Drawing.Point(487, 144);
+            this.hold.Location = new System.Drawing.Point(572, 109);
             this.hold.Name = "hold";
             this.hold.Size = new System.Drawing.Size(60, 28);
             this.hold.TabIndex = 27;
@@ -382,7 +382,7 @@
             this.btnClearDog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearDog.ForeColor = System.Drawing.Color.White;
-            this.btnClearDog.Location = new System.Drawing.Point(359, 339);
+            this.btnClearDog.Location = new System.Drawing.Point(357, 333);
             this.btnClearDog.Name = "btnClearDog";
             this.btnClearDog.Size = new System.Drawing.Size(260, 38);
             this.btnClearDog.TabIndex = 26;
@@ -404,7 +404,7 @@
             // 
             this.tbColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbColor.ForeColor = System.Drawing.Color.Gray;
-            this.tbColor.Location = new System.Drawing.Point(407, 187);
+            this.tbColor.Location = new System.Drawing.Point(276, 247);
             this.tbColor.Name = "tbColor";
             this.tbColor.Size = new System.Drawing.Size(205, 26);
             this.tbColor.TabIndex = 11;
@@ -421,7 +421,7 @@
             "Small (1ft)",
             "Large (2ft)",
             "Extra Large (more than 2ft)"});
-            this.cbSize.Location = new System.Drawing.Point(191, 229);
+            this.cbSize.Location = new System.Drawing.Point(276, 179);
             this.cbSize.Name = "cbSize";
             this.cbSize.Size = new System.Drawing.Size(205, 28);
             this.cbSize.TabIndex = 5;
@@ -434,7 +434,7 @@
             this.cbOperation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOperation.ForeColor = System.Drawing.Color.Gray;
             this.cbOperation.FormattingEnabled = true;
-            this.cbOperation.Location = new System.Drawing.Point(191, 144);
+            this.cbOperation.Location = new System.Drawing.Point(276, 109);
             this.cbOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbOperation.Name = "cbOperation";
             this.cbOperation.Size = new System.Drawing.Size(291, 28);
@@ -451,7 +451,7 @@
             this.btnAddDog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddDog.ForeColor = System.Drawing.Color.White;
-            this.btnAddDog.Location = new System.Drawing.Point(359, 295);
+            this.btnAddDog.Location = new System.Drawing.Point(357, 289);
             this.btnAddDog.Name = "btnAddDog";
             this.btnAddDog.Size = new System.Drawing.Size(260, 38);
             this.btnAddDog.TabIndex = 10;
@@ -463,10 +463,10 @@
             // 
             this.tbDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDesc.ForeColor = System.Drawing.Color.Gray;
-            this.tbDesc.Location = new System.Drawing.Point(620, 143);
+            this.tbDesc.Location = new System.Drawing.Point(487, 145);
             this.tbDesc.Multiline = true;
             this.tbDesc.Name = "tbDesc";
-            this.tbDesc.Size = new System.Drawing.Size(205, 113);
+            this.tbDesc.Size = new System.Drawing.Size(209, 128);
             this.tbDesc.TabIndex = 6;
             this.tbDesc.Text = "Other Descriptions";
             this.tbDesc.Enter += new System.EventHandler(this.tbDesc_Enter);
@@ -479,7 +479,7 @@
             this.cbGender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.cbGender.Location = new System.Drawing.Point(191, 187);
+            this.cbGender.Location = new System.Drawing.Point(276, 145);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(205, 28);
             this.cbGender.TabIndex = 3;
@@ -1347,6 +1347,7 @@
             "Maltese",
             "Mastiff",
             "Miniature Schnauzer",
+            "Mongrel",
             "Mountain Dog",
             "Newfoundland",
             "Otterhound",
@@ -1382,7 +1383,7 @@
             "Weimaraner",
             "Whippet",
             "Xoloitzcuintli (Xolo) "});
-            this.tbBreed.Location = new System.Drawing.Point(407, 229);
+            this.tbBreed.Location = new System.Drawing.Point(276, 213);
             this.tbBreed.Name = "tbBreed";
             this.tbBreed.Size = new System.Drawing.Size(205, 28);
             this.tbBreed.TabIndex = 29;
