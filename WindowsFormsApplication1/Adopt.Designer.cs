@@ -46,6 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cbVaccEmp = new System.Windows.Forms.ComboBox();
             this.tbDay = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tbYear = new System.Windows.Forms.TextBox();
@@ -70,7 +71,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.printPreviewDialogAdt = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentAdt = new System.Drawing.Printing.PrintDocument();
-            this.cbVaccEmp = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -99,7 +99,7 @@
             this.button1.Location = new System.Drawing.Point(273, 509);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(166, 41);
-            this.button1.TabIndex = 6;
+            this.button1.TabIndex = 34;
             this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -295,6 +295,18 @@
             this.panel3.Size = new System.Drawing.Size(658, 209);
             this.panel3.TabIndex = 20;
             // 
+            // cbVaccEmp
+            // 
+            this.cbVaccEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbVaccEmp.ForeColor = System.Drawing.Color.Black;
+            this.cbVaccEmp.FormattingEnabled = true;
+            this.cbVaccEmp.Location = new System.Drawing.Point(466, 162);
+            this.cbVaccEmp.Name = "cbVaccEmp";
+            this.cbVaccEmp.Size = new System.Drawing.Size(178, 28);
+            this.cbVaccEmp.TabIndex = 33;
+            this.cbVaccEmp.Text = "Vaccinated by";
+            this.cbVaccEmp.Visible = false;
+            // 
             // tbDay
             // 
             this.tbDay.Enabled = false;
@@ -304,7 +316,7 @@
             this.tbDay.Location = new System.Drawing.Point(258, 162);
             this.tbDay.Name = "tbDay";
             this.tbDay.Size = new System.Drawing.Size(59, 28);
-            this.tbDay.TabIndex = 38;
+            this.tbDay.TabIndex = 28;
             this.tbDay.Text = "Day";
             // 
             // label9
@@ -323,7 +335,7 @@
             this.tbYear.Location = new System.Drawing.Point(103, 163);
             this.tbYear.Name = "tbYear";
             this.tbYear.Size = new System.Drawing.Size(65, 26);
-            this.tbYear.TabIndex = 36;
+            this.tbYear.TabIndex = 26;
             this.tbYear.Text = "Year";
             this.tbYear.TextChanged += new System.EventHandler(this.tbYear_TextChanged);
             this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
@@ -350,7 +362,7 @@
             this.cbMonth.Location = new System.Drawing.Point(174, 162);
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(77, 28);
-            this.cbMonth.TabIndex = 35;
+            this.cbMonth.TabIndex = 27;
             this.cbMonth.Text = "Month";
             this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
@@ -397,7 +409,7 @@
             this.cbVaccine.Location = new System.Drawing.Point(341, 167);
             this.cbVaccine.Name = "cbVaccine";
             this.cbVaccine.Size = new System.Drawing.Size(122, 24);
-            this.cbVaccine.TabIndex = 29;
+            this.cbVaccine.TabIndex = 32;
             this.cbVaccine.Text = "Avail Vaccine";
             this.cbVaccine.UseVisualStyleBackColor = true;
             this.cbVaccine.CheckedChanged += new System.EventHandler(this.cbVaccine_CheckedChanged);
@@ -408,7 +420,7 @@
             this.tbIDtype.Location = new System.Drawing.Point(466, 92);
             this.tbIDtype.Name = "tbIDtype";
             this.tbIDtype.Size = new System.Drawing.Size(178, 26);
-            this.tbIDtype.TabIndex = 27;
+            this.tbIDtype.TabIndex = 30;
             // 
             // tbnumber
             // 
@@ -424,7 +436,7 @@
             this.tbIDnum.Location = new System.Drawing.Point(466, 128);
             this.tbIDnum.Name = "tbIDnum";
             this.tbIDnum.Size = new System.Drawing.Size(178, 26);
-            this.tbIDnum.TabIndex = 28;
+            this.tbIDnum.TabIndex = 31;
             // 
             // tbadd
             // 
@@ -433,7 +445,7 @@
             this.tbadd.Multiline = true;
             this.tbadd.Name = "tbadd";
             this.tbadd.Size = new System.Drawing.Size(237, 64);
-            this.tbadd.TabIndex = 26;
+            this.tbadd.TabIndex = 29;
             // 
             // tbfname
             // 
@@ -535,22 +547,11 @@
             this.printPreviewDialogAdt.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogAdt.Icon")));
             this.printPreviewDialogAdt.Name = "printPreviewDialogAdt";
             this.printPreviewDialogAdt.Visible = false;
+            this.printPreviewDialogAdt.Load += new System.EventHandler(this.printPreviewDialogAdt_Load);
             // 
             // printDocumentAdt
             // 
             this.printDocumentAdt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentAdt_PrintPage);
-            // 
-            // cbVaccEmp
-            // 
-            this.cbVaccEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbVaccEmp.ForeColor = System.Drawing.Color.Black;
-            this.cbVaccEmp.FormattingEnabled = true;
-            this.cbVaccEmp.Location = new System.Drawing.Point(466, 162);
-            this.cbVaccEmp.Name = "cbVaccEmp";
-            this.cbVaccEmp.Size = new System.Drawing.Size(178, 28);
-            this.cbVaccEmp.TabIndex = 36;
-            this.cbVaccEmp.Text = "Vaccinated by";
-            this.cbVaccEmp.Visible = false;
             // 
             // Adopt
             // 

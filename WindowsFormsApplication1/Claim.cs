@@ -164,6 +164,7 @@ namespace WindowsFormsApplication1
 
         private void printDocumentCR_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            
 
             e.Graphics.DrawString("Davao City Dog Pound", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(25, 100));
             e.Graphics.DrawString("Claimer's Details", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(25, 140));
@@ -173,22 +174,23 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Address: " + tbadd.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 240));
             e.Graphics.DrawString("Valid ID Type: " + tbIDtype.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 260));
             e.Graphics.DrawString("Valid ID Number: " + tbIDnum.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 280));
+            e.Graphics.DrawString("Payment: P" + labelPayment.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 480));
 
-            if (checkbox.Checked) e.Graphics.DrawString("**Availed Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
-            else e.Graphics.DrawString("**No Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 300));
+            if (checkbox.Checked) e.Graphics.DrawString("**Availed Vaccine, Vacinated by: " + cbVaccEmp.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 460));
+            else e.Graphics.DrawString("**No Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 460));
 
             Pen black = new Pen(Color.Black, 3);
-            Point p1 = new Point(25, 340);
-            Point p2 = new Point(800, 340);
+            Point p1 = new Point(25, 420);
+            Point p2 = new Point(800, 420);
             e.Graphics.DrawLine(black, p1, p2);
-            e.Graphics.DrawString("Dog Details ", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(25, 380));
-            e.Graphics.DrawString("Breed: " + breeds.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 400));
-            e.Graphics.DrawString("Color:" + color.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 420));
-            e.Graphics.DrawString("Size: " + size.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 440));
-            e.Graphics.DrawString("Gender: " + gender.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 460));
-            e.Graphics.DrawString("Location: " + location.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 480));
-            e.Graphics.DrawString("Date and Time Caught: " + date.Text + "," + time.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 500));
-            e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 800));
+            e.Graphics.DrawString("Dog Details ", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(400, 140));
+            e.Graphics.DrawString("Breed: " + breeds.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 180));
+            e.Graphics.DrawString("Color:" + color.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 200));
+            e.Graphics.DrawString("Size: " + size.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 220));
+            e.Graphics.DrawString("Gender: " + gender.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 240));
+            e.Graphics.DrawString("Location: " + location.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 260));
+            e.Graphics.DrawString("Date and Time Caught: " + date.Text + "," + time.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 440));
+            e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 600));
 
         }
 
@@ -255,10 +257,17 @@ namespace WindowsFormsApplication1
 
         private void Preview()
         {
-            printPreviewDialogCR.Document = printDocumentCR;
-            printPreviewDialogCR.ShowDialog();
-            printPreviewDialogCR.TopLevel = true;
+            
+            PrintPreviewDialog dlg = new PrintPreviewDialog();
+            dlg.Document = printDocumentCR;
+            ((Form)dlg).WindowState = FormWindowState.Maximized;
+            dlg.ShowDialog();
 
+        }
+
+        private void printPreviewDialogCR_Load(object sender, EventArgs e)
+        {
+           
         }
 
         private void refreshEmps()
