@@ -432,6 +432,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\header.png" />
+    <None Include="Resources\transaction.png" />
+    <None Include="Resources\history.png" />
     <None Include="Resources\exit.png" />
     <None Include="Resources\delete-button.png" />
     <None Include="Resources\cancel-music.png" />

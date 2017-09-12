@@ -48,6 +48,8 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            panelHistory.Visible = false;
+            pictureBox1.Visible = false;
             //panel2.Visible = false;
             addDog.Visible = true;
             searchDog.Visible = false;
@@ -58,12 +60,16 @@ namespace WindowsFormsApplication1
             ad.Visible = false;
             et.Visible = false;
             r.Visible = false;
+            repclaimpan.Visible = false;
             cbOperation.Items.Clear();
             addOperationsItems();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+            panelHistory.Visible = false;
+            pictureBox1.Visible = false;
             //panel2.Visible = false;
             searchDog.Visible = true;
             addDog.Visible = false;
@@ -74,6 +80,7 @@ namespace WindowsFormsApplication1
             ad.Visible = false;
             et.Visible = false;
             r.Visible = false;
+            repclaimpan.Visible = false;
 
         }
 
@@ -229,7 +236,9 @@ namespace WindowsFormsApplication1
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-            
+
+            panelHistory.Visible = false;
+            pictureBox1.Visible = false;
             searchDog.Visible = false;
             addDog.Visible = false;
             adoptDog.Visible = true;
@@ -239,7 +248,7 @@ namespace WindowsFormsApplication1
             ad.Visible = true;
             et.Visible = false;
             r.Visible = false;
-
+            repclaimpan.Visible = false;
 
             refreshAdoption();
         }
@@ -275,6 +284,9 @@ namespace WindowsFormsApplication1
 
         private void button6_Click_1(object sender, EventArgs e)
         {
+
+            panelHistory.Visible = false;
+            pictureBox1.Visible = false;
             //panel2.Visible = false;
             searchDog.Visible = false;
             addDog.Visible = false;
@@ -285,7 +297,8 @@ namespace WindowsFormsApplication1
             ad.Visible = false;
             et.Visible = true;
             r.Visible = false;
-            
+            repclaimpan.Visible = false;
+
             refreshArchive();
             
         }
@@ -350,6 +363,9 @@ namespace WindowsFormsApplication1
 
         private void button8_Click_1(object sender, EventArgs e)
         {
+
+            panelHistory.Visible = false;
+            pictureBox1.Visible = false;
             searchDog.Visible = false;
             addDog.Visible = false;
             adoptDog.Visible = false;
@@ -361,7 +377,6 @@ namespace WindowsFormsApplication1
             et.Visible = false;
             r.Visible = true;
             claimreportdgv.Visible = true;
-            panelHistory.Visible = false;
         }
             
 
@@ -989,6 +1004,23 @@ namespace WindowsFormsApplication1
         private void printPreviewDialog1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            panelHistory.Visible = true;
+            pictureBox1.Visible = true;
+            repclaimpan.Visible = false;
+            searchDog.Visible = false;
+            addDog.Visible = false;
+            adoptDog.Visible = false;
+            euthanizeDog.Visible = false;
+            a.Visible = false;
+            s.Visible = false;
+            ad.Visible = false;
+            et.Visible = false;
+            r.Visible = false;
+            
         }
     }
     }
