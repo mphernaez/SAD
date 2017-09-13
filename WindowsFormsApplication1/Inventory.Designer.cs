@@ -47,9 +47,6 @@
             this.dgvout = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.OK1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvin = new System.Windows.Forms.DataGridView();
             this.Sout = new System.Windows.Forms.Panel();
@@ -88,6 +85,15 @@
             this.panelTrans = new System.Windows.Forms.Panel();
             this.dgvTrans = new System.Windows.Forms.DataGridView();
             this.cbTransType = new System.Windows.Forms.ComboBox();
+            this.button15 = new System.Windows.Forms.Button();
+            this.panelReturn = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.button17 = new System.Windows.Forms.Button();
+            this.prodret = new System.Windows.Forms.ComboBox();
+            this.reasonret = new System.Windows.Forms.TextBox();
+            this.empret = new System.Windows.Forms.ComboBox();
+            this.quanret = new System.Windows.Forms.NumericUpDown();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.i)).BeginInit();
@@ -95,7 +101,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             this.inv.SuspendLayout();
             this.dgvout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvin)).BeginInit();
             this.Sout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -110,6 +115,8 @@
             this.hp.SuspendLayout();
             this.panelTrans.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrans)).BeginInit();
+            this.panelReturn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quanret)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -269,10 +276,12 @@
             // inv
             // 
             this.inv.BackColor = System.Drawing.Color.White;
+            this.inv.Controls.Add(this.button15);
             this.inv.Controls.Add(this.button9);
             this.inv.Controls.Add(this.button5);
             this.inv.Controls.Add(this.button16);
             this.inv.Controls.Add(this.label12);
+            this.inv.Controls.Add(this.panelReturn);
             this.inv.Controls.Add(this.dgvout);
             this.inv.Controls.Add(this.Sout);
             this.inv.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -289,7 +298,7 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(210, 82);
+            this.button9.Location = new System.Drawing.Point(310, 82);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(100, 32);
             this.button9.TabIndex = 56;
@@ -331,14 +340,11 @@
             // 
             this.dgvout.Controls.Add(this.label6);
             this.dgvout.Controls.Add(this.OK1);
-            this.dgvout.Controls.Add(this.checkBox1);
-            this.dgvout.Controls.Add(this.button6);
-            this.dgvout.Controls.Add(this.numericUpDown2);
             this.dgvout.Controls.Add(this.label7);
             this.dgvout.Controls.Add(this.dgvin);
             this.dgvout.Location = new System.Drawing.Point(11, 114);
             this.dgvout.Name = "dgvout";
-            this.dgvout.Size = new System.Drawing.Size(982, 319);
+            this.dgvout.Size = new System.Drawing.Size(982, 371);
             this.dgvout.TabIndex = 34;
             this.dgvout.Visible = false;
             // 
@@ -367,41 +373,6 @@
             this.OK1.Text = "OK";
             this.OK1.UseVisualStyleBackColor = false;
             this.OK1.Click += new System.EventHandler(this.OK1_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.checkBox1.Location = new System.Drawing.Point(169, 329);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(126, 30);
-            this.checkBox1.TabIndex = 44;
-            this.checkBox1.Text = "Damaged";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(445, 321);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(109, 38);
-            this.button6.TabIndex = 43;
-            this.button6.Text = "OK";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Font = new System.Drawing.Font("Trebuchet MS", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(301, 326);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(138, 32);
-            this.numericUpDown2.TabIndex = 42;
             // 
             // label7
             // 
@@ -443,7 +414,7 @@
             this.Sout.Controls.Add(this.dgvo);
             this.Sout.Location = new System.Drawing.Point(11, 114);
             this.Sout.Name = "Sout";
-            this.Sout.Size = new System.Drawing.Size(982, 319);
+            this.Sout.Size = new System.Drawing.Size(982, 361);
             this.Sout.TabIndex = 44;
             this.Sout.Visible = false;
             // 
@@ -886,13 +857,122 @@
             this.cbTransType.FormattingEnabled = true;
             this.cbTransType.Items.AddRange(new object[] {
             "Stock In",
-            "Stock Out"});
-            this.cbTransType.Location = new System.Drawing.Point(22, 34);
+            "Stock Out",
+            "Returns"});
+            this.cbTransType.Location = new System.Drawing.Point(22, 24);
             this.cbTransType.Name = "cbTransType";
             this.cbTransType.Size = new System.Drawing.Size(288, 28);
             this.cbTransType.TabIndex = 74;
             this.cbTransType.Text = "Transaction Type";
             this.cbTransType.SelectedIndexChanged += new System.EventHandler(this.cbTransType_SelectedIndexChanged);
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button15.FlatAppearance.BorderSize = 0;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button15.ForeColor = System.Drawing.Color.White;
+            this.button15.Location = new System.Drawing.Point(210, 82);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(100, 32);
+            this.button15.TabIndex = 57;
+            this.button15.Text = "Returns";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // panelReturn
+            // 
+            this.panelReturn.Controls.Add(this.label16);
+            this.panelReturn.Controls.Add(this.quanret);
+            this.panelReturn.Controls.Add(this.empret);
+            this.panelReturn.Controls.Add(this.reasonret);
+            this.panelReturn.Controls.Add(this.prodret);
+            this.panelReturn.Controls.Add(this.label15);
+            this.panelReturn.Controls.Add(this.button17);
+            this.panelReturn.Location = new System.Drawing.Point(12, 114);
+            this.panelReturn.Name = "panelReturn";
+            this.panelReturn.Size = new System.Drawing.Size(982, 374);
+            this.panelReturn.TabIndex = 59;
+            this.panelReturn.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label15.Location = new System.Drawing.Point(388, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(172, 31);
+            this.label15.TabIndex = 58;
+            this.label15.Text = "Return Stock";
+            // 
+            // button17
+            // 
+            this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button17.FlatAppearance.BorderSize = 0;
+            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button17.ForeColor = System.Drawing.Color.White;
+            this.button17.Location = new System.Drawing.Point(379, 262);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(200, 56);
+            this.button17.TabIndex = 45;
+            this.button17.Text = "Produce Item Replacement Form";
+            this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // prodret
+            // 
+            this.prodret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prodret.ForeColor = System.Drawing.Color.Black;
+            this.prodret.FormattingEnabled = true;
+            this.prodret.Location = new System.Drawing.Point(357, 71);
+            this.prodret.Name = "prodret";
+            this.prodret.Size = new System.Drawing.Size(235, 28);
+            this.prodret.TabIndex = 73;
+            this.prodret.Text = "Product Name";
+            // 
+            // reasonret
+            // 
+            this.reasonret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reasonret.ForeColor = System.Drawing.Color.Black;
+            this.reasonret.Location = new System.Drawing.Point(289, 186);
+            this.reasonret.Multiline = true;
+            this.reasonret.Name = "reasonret";
+            this.reasonret.Size = new System.Drawing.Size(366, 50);
+            this.reasonret.TabIndex = 74;
+            this.reasonret.Text = "Reason";
+            this.reasonret.Enter += new System.EventHandler(this.reasonret_Enter);
+            // 
+            // empret
+            // 
+            this.empret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empret.ForeColor = System.Drawing.Color.Black;
+            this.empret.FormattingEnabled = true;
+            this.empret.Location = new System.Drawing.Point(357, 109);
+            this.empret.Name = "empret";
+            this.empret.Size = new System.Drawing.Size(235, 28);
+            this.empret.TabIndex = 75;
+            this.empret.Text = "Endorser";
+            // 
+            // quanret
+            // 
+            this.quanret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quanret.Location = new System.Drawing.Point(433, 149);
+            this.quanret.Name = "quanret";
+            this.quanret.Size = new System.Drawing.Size(159, 27);
+            this.quanret.TabIndex = 76;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(356, 151);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(71, 20);
+            this.label16.TabIndex = 77;
+            this.label16.Text = "Quantity";
             // 
             // Inventory
             // 
@@ -922,7 +1002,6 @@
             this.inv.PerformLayout();
             this.dgvout.ResumeLayout(false);
             this.dgvout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvin)).EndInit();
             this.Sout.ResumeLayout(false);
             this.Sout.PerformLayout();
@@ -945,6 +1024,9 @@
             this.hp.PerformLayout();
             this.panelTrans.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrans)).EndInit();
+            this.panelReturn.ResumeLayout(false);
+            this.panelReturn.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quanret)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -962,8 +1044,6 @@
         private System.Windows.Forms.Panel dgvout;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel Sout;
         private System.Windows.Forms.Label label5;
@@ -975,7 +1055,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown nudmin;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.PictureBox i;
         private System.Windows.Forms.PictureBox a;
         private System.Windows.Forms.PictureBox r;
@@ -1010,5 +1089,14 @@
         private System.Windows.Forms.DataGridView dgvTrans;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Panel panelReturn;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.ComboBox prodret;
+        private System.Windows.Forms.ComboBox empret;
+        private System.Windows.Forms.TextBox reasonret;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.NumericUpDown quanret;
     }
 }

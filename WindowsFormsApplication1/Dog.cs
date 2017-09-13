@@ -96,7 +96,7 @@ namespace WindowsFormsApplication1
             if (!cbOperation.Text.Equals("Operation Date and Location") && tbColor.Text != "Color" && cbGender.Text != "Gender" && cbSize.Text != "Size" && tbDesc.Text != "Markings")
             {
                 adminID = back.adminID;
-                operationID = cbOperation.SelectedIndex + 1;
+                //operationID = cbOperation.SelectedIndex + 1;
                 color = tbColor.Text;
                 breed = tbBreed.Text;
 

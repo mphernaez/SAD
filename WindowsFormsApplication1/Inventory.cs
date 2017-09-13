@@ -22,6 +22,8 @@ namespace WindowsFormsApplication1
         public empty back { get; set; }
         EndorserOut endO { get; set; }
         empty home;
+        int[] retprod;
+        int[] retemp;
         public Inventory(empty parent)
         {
             InitializeComponent();
@@ -153,6 +155,7 @@ namespace WindowsFormsApplication1
 
         private void button16_Click(object sender, EventArgs e)
         {
+            panelReturn.Visible = false;
             dgvout.Visible = true;
             Sout.Visible = false;
             button5.BackColor = Color.FromArgb(2, 170, 145);
@@ -162,6 +165,7 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
+            panelReturn.Visible = false;
             dgvout.Visible = false;
             Sout.Visible = true;
             button16.BackColor = Color.FromArgb(2, 170, 145);
@@ -318,7 +322,6 @@ namespace WindowsFormsApplication1
         {
             home.Show();
             this.Hide();
-
         }
 
         bool hasExp = true;
@@ -338,8 +341,35 @@ namespace WindowsFormsApplication1
             {
                 refreshTransOut();
             }
+            else if (cbTransType.SelectedIndex == 2)
+            {
+                refreshReturns();
+            }
         }
+        private void refreshReturns()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity', date AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Endorsed by', reason AS 'Reason of Returning' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE type = 'Return'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adp.Fill(dt);
 
+                dgvTrans.DataSource = dt;
+                dgvTrans.Columns["Product"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Endorsed by"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Reason of Returning"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
         private void refreshTransIn()
         {
             try
@@ -400,6 +430,85 @@ namespace WindowsFormsApplication1
             r.Visible = false;
             inv.Visible = true;
             newitem.Visible = false;
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            if (prodret.Text != "Product Name" && empret.Text != "Endorser" && quanret.Value != 0 && reasonret.Text != "Reason")
+            {
+                try
+                {
+                    string date = DateTime.Now.ToString("yyyy-MM-dd");
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, employeeID, quantity, date, type, reason) VALUES("+retprod[prodret.SelectedIndex]+", "+retemp[empret.SelectedIndex]+", "+quanret.Value+", '"+date+"', 'Return', '"+reasonret.Text+"')", conn);
+                    comm.ExecuteNonQuery();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show(ex.ToString());
+                }
+                prodret.Items.Clear();
+                empret.Items.Clear();
+                reasonret.Text = "Reason";
+            }
+            else
+            {
+                MessageBox.Show("Please enter required fields");
+            }
+                
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            panelReturn.Visible = true;
+            dgvout.Visible = false;
+            Sout.Visible = false;
+            prodret.Items.Clear();
+            empret.Items.Clear();
+            reasonret.Text = "Reason";
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT itemID, CONCAT(productName, ' (', description, ')') AS product FROM items", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adp.Fill(dt);
+                retprod = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    retprod[i] = int.Parse(dt.Rows[i]["itemID"].ToString());
+                    prodret.Items.Add(dt.Rows[i]["product"].ToString());
+                }
+
+                MySqlCommand commm = new MySqlCommand("SELECT employeeID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS employee FROM employee INNER JOIN profile ON profile.personID = employee.employeeID", conn);
+                MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                System.Data.DataTable dta = new System.Data.DataTable();
+                adpt.Fill(dta);
+                retemp = new int[dta.Rows.Count];
+                for (int i = 0; i < dta.Rows.Count; i++)
+                {
+                    retemp[i] = int.Parse(dta.Rows[i]["employeeID"].ToString());
+                    empret.Items.Add(dta.Rows[i]["employee"].ToString());
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reasonret_Enter(object sender, EventArgs e)
+        {
+            reasonret.Text = "";
         }
     }
 }
