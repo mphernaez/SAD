@@ -913,7 +913,12 @@ namespace WindowsFormsApplication1
                 {
                     MySqlCommand comm;
                     MySqlDataAdapter adp;
-                    System.Data.DataTable dt;
+                    System.Data.DataTable dt = new System.Data.DataTable(); ;
+
+                    if (filt.SelectedIndex == 4)
+                    {
+                        //show print directly
+                    }
 
                     conn.Open();
                     if (filt.SelectedIndex == 0) //All
@@ -930,6 +935,9 @@ namespace WindowsFormsApplication1
                                         + "INNER JOIN dogtransaction ON dogprofile.dogID = dogtransaction.dogID "
                                         + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
                                         + "WHERE dogprofile.status = 'claimed' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
+                        adp = new MySqlDataAdapter(comm);
+                        dt = new System.Data.DataTable();
+                        adp.Fill(dt);
                     }
                     else if (filt.SelectedIndex == 2) //Adopted
                     {
@@ -941,15 +949,19 @@ namespace WindowsFormsApplication1
                                         + "INNER JOIN dogtransaction ON dogprofile.dogID = dogtransaction.dogID "
                                         + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
                                         + "WHERE dogprofile.status = 'adopted' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
+                        adp = new MySqlDataAdapter(comm);
+                        dt = new System.Data.DataTable();
+                        adp.Fill(dt);
                     }
-                    else //Euthanized
+                    else if(filt.SelectedIndex == 3)//Euthanized
                     {
                         comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, dogoperation.date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = 'euthanized' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogoperation.date", conn);
+                        adp = new MySqlDataAdapter(comm);
+                        dt = new System.Data.DataTable();
+                        adp.Fill(dt);
                     }
 
-                    adp = new MySqlDataAdapter(comm);
-                    dt = new System.Data.DataTable();
-                    adp.Fill(dt);
+                    
                     claimreportdgv.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, GraphicsUnit.Pixel);
                     claimreportdgv.DataSource = dt;
 

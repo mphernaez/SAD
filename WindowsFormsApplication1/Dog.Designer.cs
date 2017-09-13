@@ -990,7 +990,8 @@
             "All",
             "Claimed",
             "Adopted",
-            "Euthanized"});
+            "Euthanized",
+            "Monthly Summary Report"});
             this.filt.Location = new System.Drawing.Point(65, 26);
             this.filt.Name = "filt";
             this.filt.Size = new System.Drawing.Size(212, 28);
@@ -1440,12 +1441,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelHistory);
-            this.Controls.Add(this.euthanizeDog);
-            this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.repclaimpan);
             this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
+            this.Controls.Add(this.panelHistory);
+            this.Controls.Add(this.euthanizeDog);
+            this.Controls.Add(this.adoptDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
