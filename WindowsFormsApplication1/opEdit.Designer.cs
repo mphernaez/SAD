@@ -83,6 +83,7 @@
             this.cTeam.Location = new System.Drawing.Point(32, 48);
             this.cTeam.Name = "cTeam";
             this.cTeam.RowHeadersVisible = false;
+            this.cTeam.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.cTeam.Size = new System.Drawing.Size(207, 183);
             this.cTeam.TabIndex = 1;
             this.cTeam.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cTeam_CellClick);
@@ -118,6 +119,7 @@
             this.aEmp.Location = new System.Drawing.Point(305, 48);
             this.aEmp.Name = "aEmp";
             this.aEmp.RowHeadersVisible = false;
+            this.aEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.aEmp.Size = new System.Drawing.Size(197, 183);
             this.aEmp.TabIndex = 2;
             this.aEmp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.aEmp_CellContentClick);
@@ -662,6 +664,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "opEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.opEdit_Load);

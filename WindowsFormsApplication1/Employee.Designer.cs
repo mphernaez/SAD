@@ -180,6 +180,7 @@
             this.eTimeE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eTeamM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelAtt = new System.Windows.Forms.Panel();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
@@ -220,6 +221,7 @@
             // attendance
             // 
             this.attendance.BackColor = System.Drawing.Color.White;
+            this.attendance.Controls.Add(this.panelAtt);
             this.attendance.Controls.Add(this.button6);
             this.attendance.Controls.Add(this.button10);
             this.attendance.Controls.Add(this.button3);
@@ -914,7 +916,7 @@
             // 
             this.datee.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datee.FormattingEnabled = true;
-            this.datee.Location = new System.Drawing.Point(155, 66);
+            this.datee.Location = new System.Drawing.Point(63, 87);
             this.datee.Name = "datee";
             this.datee.Size = new System.Drawing.Size(155, 26);
             this.datee.TabIndex = 5;
@@ -926,7 +928,7 @@
             this.choice.Items.AddRange(new object[] {
             "Employees",
             "Operations"});
-            this.choice.Location = new System.Drawing.Point(155, 34);
+            this.choice.Location = new System.Drawing.Point(63, 52);
             this.choice.Name = "choice";
             this.choice.Size = new System.Drawing.Size(155, 26);
             this.choice.TabIndex = 5;
@@ -938,10 +940,11 @@
             this.view.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.view.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.view.ForeColor = System.Drawing.Color.Snow;
-            this.view.Location = new System.Drawing.Point(316, 33);
+            this.view.Location = new System.Drawing.Point(253, 52);
             this.view.Name = "view";
-            this.view.Size = new System.Drawing.Size(131, 29);
+            this.view.Size = new System.Drawing.Size(110, 29);
             this.view.TabIndex = 4;
+            this.view.Text = "View";
             this.view.UseVisualStyleBackColor = false;
             this.view.Click += new System.EventHandler(this.view_Click);
             // 
@@ -951,9 +954,9 @@
             this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button28.ForeColor = System.Drawing.Color.Snow;
-            this.button28.Location = new System.Drawing.Point(155, 98);
+            this.button28.Location = new System.Drawing.Point(373, 52);
             this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(106, 33);
+            this.button28.Size = new System.Drawing.Size(110, 29);
             this.button28.TabIndex = 4;
             this.button28.Text = "View Report";
             this.button28.UseVisualStyleBackColor = false;
@@ -963,11 +966,11 @@
             // 
             this.rep.AutoSize = true;
             this.rep.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rep.Location = new System.Drawing.Point(58, 30);
+            this.rep.Location = new System.Drawing.Point(30, 20);
             this.rep.Name = "rep";
-            this.rep.Size = new System.Drawing.Size(76, 25);
+            this.rep.Size = new System.Drawing.Size(87, 25);
             this.rep.TabIndex = 3;
-            this.rep.Text = "Report";
+            this.rep.Text = "Reports";
             // 
             // repEmp
             // 
@@ -975,12 +978,12 @@
             this.repEmp.AllowUserToDeleteRows = false;
             this.repEmp.BackgroundColor = System.Drawing.Color.White;
             this.repEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.repEmp.Location = new System.Drawing.Point(17, 142);
+            this.repEmp.Location = new System.Drawing.Point(35, 133);
             this.repEmp.Name = "repEmp";
             this.repEmp.ReadOnly = true;
             this.repEmp.RowHeadersVisible = false;
             this.repEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.repEmp.Size = new System.Drawing.Size(983, 366);
+            this.repEmp.Size = new System.Drawing.Size(942, 387);
             this.repEmp.TabIndex = 0;
             // 
             // label1
@@ -2360,6 +2363,13 @@
             this.eStat.Name = "eStat";
             this.eStat.ReadOnly = true;
             // 
+            // panelAtt
+            // 
+            this.panelAtt.Location = new System.Drawing.Point(15, 114);
+            this.panelAtt.Name = "panelAtt";
+            this.panelAtt.Size = new System.Drawing.Size(982, 396);
+            this.panelAtt.TabIndex = 41;
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2370,10 +2380,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
-            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -2589,5 +2599,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn eTimeE;
         private System.Windows.Forms.DataGridViewTextBoxColumn eTeamM;
         private System.Windows.Forms.DataGridViewTextBoxColumn eStat;
+        private System.Windows.Forms.Panel panelAtt;
     }
 }
