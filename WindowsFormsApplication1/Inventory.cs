@@ -428,7 +428,7 @@ namespace WindowsFormsApplication1
             a.Visible = false;
             i.Visible = false;
             r.Visible = false;
-            inv.Visible = true;
+            inv.Visible = false;
             newitem.Visible = false;
         }
 
