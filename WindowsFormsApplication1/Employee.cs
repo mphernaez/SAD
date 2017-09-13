@@ -1590,7 +1590,6 @@ namespace WindowsFormsApplication1
             else
             {
                 MessageBox.Show("Please select type");
-
             }
         }
 

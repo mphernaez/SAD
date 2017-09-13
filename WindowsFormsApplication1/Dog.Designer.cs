@@ -113,8 +113,8 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.panelHistory = new System.Windows.Forms.Panel();
-            this.dgvHist = new System.Windows.Forms.DataGridView();
             this.cbTransType = new System.Windows.Forms.ComboBox();
+            this.dgvHist = new System.Windows.Forms.DataGridView();
             this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.impounddogpoundDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
@@ -1385,24 +1385,6 @@
             this.panelHistory.TabIndex = 29;
             this.panelHistory.Visible = false;
             // 
-            // dgvHist
-            // 
-            this.dgvHist.AllowUserToAddRows = false;
-            this.dgvHist.AllowUserToDeleteRows = false;
-            this.dgvHist.AllowUserToResizeColumns = false;
-            this.dgvHist.AllowUserToResizeRows = false;
-            this.dgvHist.BackgroundColor = System.Drawing.Color.White;
-            this.dgvHist.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvHist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHist.GridColor = System.Drawing.Color.White;
-            this.dgvHist.Location = new System.Drawing.Point(19, 53);
-            this.dgvHist.Name = "dgvHist";
-            this.dgvHist.ReadOnly = true;
-            this.dgvHist.RowHeadersVisible = false;
-            this.dgvHist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHist.Size = new System.Drawing.Size(982, 455);
-            this.dgvHist.TabIndex = 74;
-            // 
             // cbTransType
             // 
             this.cbTransType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1420,6 +1402,24 @@
             this.cbTransType.TabIndex = 73;
             this.cbTransType.Text = "Dog Status";
             this.cbTransType.SelectedIndexChanged += new System.EventHandler(this.cbTransType_SelectedIndexChanged);
+            // 
+            // dgvHist
+            // 
+            this.dgvHist.AllowUserToAddRows = false;
+            this.dgvHist.AllowUserToDeleteRows = false;
+            this.dgvHist.AllowUserToResizeColumns = false;
+            this.dgvHist.AllowUserToResizeRows = false;
+            this.dgvHist.BackgroundColor = System.Drawing.Color.White;
+            this.dgvHist.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvHist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHist.GridColor = System.Drawing.Color.White;
+            this.dgvHist.Location = new System.Drawing.Point(19, 53);
+            this.dgvHist.Name = "dgvHist";
+            this.dgvHist.ReadOnly = true;
+            this.dgvHist.RowHeadersVisible = false;
+            this.dgvHist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvHist.Size = new System.Drawing.Size(982, 455);
+            this.dgvHist.TabIndex = 74;
             // 
             // impounddogpoundDataSet
             // 
@@ -1440,12 +1440,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.addDog);
             this.Controls.Add(this.panelHistory);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.repclaimpan);
             this.Controls.Add(this.searchDog);
+            this.Controls.Add(this.addDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
