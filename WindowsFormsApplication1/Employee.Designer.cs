@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.attendance = new System.Windows.Forms.Panel();
+            this.panelAtt = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -180,7 +181,6 @@
             this.eTimeE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eTeamM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelAtt = new System.Windows.Forms.Panel();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
@@ -234,6 +234,13 @@
             this.attendance.Size = new System.Drawing.Size(1016, 543);
             this.attendance.TabIndex = 44;
             this.attendance.Visible = false;
+            // 
+            // panelAtt
+            // 
+            this.panelAtt.Location = new System.Drawing.Point(15, 114);
+            this.panelAtt.Name = "panelAtt";
+            this.panelAtt.Size = new System.Drawing.Size(982, 396);
+            this.panelAtt.TabIndex = 41;
             // 
             // button6
             // 
@@ -2012,10 +2019,10 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.newOperation);
-            this.DogCatchingOperation.Controls.Add(this.pnlActivity);
             this.DogCatchingOperation.Controls.Add(this.Edit);
             this.DogCatchingOperation.Controls.Add(this.Operations);
+            this.DogCatchingOperation.Controls.Add(this.newOperation);
+            this.DogCatchingOperation.Controls.Add(this.pnlActivity);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -2362,13 +2369,6 @@
             this.eStat.Name = "eStat";
             this.eStat.ReadOnly = true;
             // 
-            // panelAtt
-            // 
-            this.panelAtt.Location = new System.Drawing.Point(15, 114);
-            this.panelAtt.Name = "panelAtt";
-            this.panelAtt.Size = new System.Drawing.Size(982, 396);
-            this.panelAtt.TabIndex = 41;
-            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2379,10 +2379,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
