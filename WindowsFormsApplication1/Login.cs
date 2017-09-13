@@ -144,6 +144,8 @@ namespace WindowsFormsApplication1
                     com.ExecuteNonQuery();
                 }
 
+
+
                 conn.Close();
             }
             catch (Exception ex)

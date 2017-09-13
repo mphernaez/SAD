@@ -14,6 +14,8 @@ namespace WindowsFormsApplication1
 {
     public partial class Employee : Form
     {
+        int[] empact;
+        int[] matact;
         public int adminempid;
         public int adminID;
         private int y;
@@ -263,6 +265,8 @@ namespace WindowsFormsApplication1
             button3.BackColor = Color.FromArgb(251, 162, 80);
             dgvAttendanceIn.Visible = true;
             dgvAttendanceOut.Visible = false;
+            panelAtt.Visible = false;
+            refreshAttendance();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -272,6 +276,7 @@ namespace WindowsFormsApplication1
 
             dgvAttendanceIn.Visible = false;
             dgvAttendanceOut.Visible = true;
+            panelAtt.Visible = false;
 
             refreshAttendanceOut();
         }
@@ -1562,9 +1567,50 @@ namespace WindowsFormsApplication1
             pnlActivity.Visible = true;
             Edit.Visible = false;
             Operations.Visible = false;;
-
+            refreshActivity();
 
         }
+
+        private void refreshActivity()
+        {
+            cbempact.Enabled = true;
+            cbmatact.Enabled = true;
+            cbact.Enabled = true;
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT employee.employeeID AS emp, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM employee INNER JOIN profile ON profile.personID = employee.employeeID WHERE employee.employeeID NOT IN (SELECT employee.employeeID FROM operationteam INNER JOIN dogoperation ON dogoperation.teamID = operationteam.teamID INNER JOIN employee ON operationteam.employeeID = employee.employeeID WHERE dogoperation.status = 'OnGoing')", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                empact = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    empact[i] = int.Parse(dt.Rows[i]["emp"].ToString());
+                    cbempact.Items.Add(dt.Rows[i]["name"].ToString());
+                }
+                MySqlCommand commm = new MySqlCommand("SELECT itemID AS item, CONCAT(productName, ' (', description, ')') as product FROM items", conn);
+                MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                DataTable dta = new DataTable();
+                adpt.Fill(dta);
+                
+                matact = new int[dta.Rows.Count];
+                for (int i = 0; i < dta.Rows.Count; i++)
+                {
+                    matact[i] = int.Parse(dta.Rows[i]["item"].ToString());
+                    cbmatact.Items.Add(dta.Rows[i]["product"].ToString());
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
 
         private void button5_Click_1(object sender, EventArgs e)
         {
@@ -1602,17 +1648,46 @@ namespace WindowsFormsApplication1
         {
 
         }
-
+        
         private void button32_Click(object sender, EventArgs e)
         {
-
+           
+               
         }
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-
+            dgvAttendanceIn.Visible = false;
+            dgvAttendanceOut.Visible = false;
+            panelAtt.Visible = true;
+            refreshAttView();
         }
+        private void refreshAttView()
+        {
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Employee, time AS Time FROM attendance INNER JOIN profile ON profile.personID = attendance.employeeID WHERE type = 1 AND date = '"+date+"'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                dgvViewattin.DataSource = dt;
 
+                MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Employee, time AS Time FROM attendance INNER JOIN profile ON profile.personID = attendance.employeeID WHERE type = 0 AND date = '" + date + "'", conn);
+                MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                DataTable dta = new DataTable();
+                adpt.Fill(dta);
+
+                dgvViewattout.DataSource = dta;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
         private void dgvAttendanceIn_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -1848,6 +1923,20 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void actyr_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbmatact_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            numact.Visible = true;
+        }
+
+        private void panelviewatt_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 
