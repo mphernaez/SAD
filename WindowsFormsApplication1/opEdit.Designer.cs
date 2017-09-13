@@ -32,6 +32,8 @@
             this.pID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aEmp = new System.Windows.Forms.DataGridView();
+            this.pID1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbOpDay = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cbOpMonth = new System.Windows.Forms.ComboBox();
@@ -58,8 +60,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pID1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.cTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aEmp)).BeginInit();
             this.panel1.SuspendLayout();
@@ -121,6 +121,18 @@
             this.aEmp.Size = new System.Drawing.Size(197, 183);
             this.aEmp.TabIndex = 2;
             this.aEmp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.aEmp_CellContentClick);
+            // 
+            // pID1
+            // 
+            this.pID1.HeaderText = "Column1";
+            this.pID1.Name = "pID1";
+            this.pID1.Visible = false;
+            // 
+            // Name1
+            // 
+            this.Name1.HeaderText = "";
+            this.Name1.Name = "Name1";
+            this.Name1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // tbOpDay
             // 
@@ -491,12 +503,13 @@
             this.OK1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OK1.ForeColor = System.Drawing.Color.White;
-            this.OK1.Location = new System.Drawing.Point(194, 492);
+            this.OK1.Location = new System.Drawing.Point(166, 257);
             this.OK1.Name = "OK1";
             this.OK1.Size = new System.Drawing.Size(180, 42);
             this.OK1.TabIndex = 91;
             this.OK1.Text = "Save Changes";
             this.OK1.UseVisualStyleBackColor = false;
+            this.OK1.Click += new System.EventHandler(this.OK1_Click);
             // 
             // button19
             // 
@@ -568,6 +581,7 @@
             // 
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.OK1);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.button19);
             this.panel2.Controls.Add(this.aEmp);
@@ -576,7 +590,7 @@
             this.panel2.Enabled = false;
             this.panel2.Location = new System.Drawing.Point(28, 230);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(539, 245);
+            this.panel2.Size = new System.Drawing.Size(539, 312);
             this.panel2.TabIndex = 95;
             // 
             // button5
@@ -637,18 +651,6 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // pID1
-            // 
-            this.pID1.HeaderText = "Column1";
-            this.pID1.Name = "pID1";
-            this.pID1.Visible = false;
-            // 
-            // Name1
-            // 
-            this.Name1.HeaderText = "";
-            this.Name1.Name = "Name1";
-            this.Name1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
             // opEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -657,11 +659,9 @@
             this.ClientSize = new System.Drawing.Size(601, 569);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.OK1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.opEdit_Load);
