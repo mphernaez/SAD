@@ -305,7 +305,6 @@ namespace WindowsFormsApplication1
         {
             home.Show();
             this.Hide();
-
         }
 
         bool hasExp = true;
