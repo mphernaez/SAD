@@ -88,12 +88,10 @@ namespace WindowsFormsApplication1
                     }
                     i++;
                 }
-                MessageBox.Show(y + " " + m + " " + d);
                 tbOpYear.Text = y;
                 cbOpMonth.SelectedIndex = int.Parse(m) - 1;
                 responsiveDay(int.Parse(y));
                 tbOpDay.SelectedIndex = int.Parse(d) - 1;
-                MessageBox.Show(dt.Rows[0]["locationID"].ToString());
                 cbLocation.SelectedIndex = int.Parse(dt.Rows[0]["locationID"].ToString()) - 1;
                 tID = int.Parse(dt.Rows[0]["teamID"].ToString());
 
@@ -428,14 +426,25 @@ namespace WindowsFormsApplication1
                 int nt = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) +1;
                 MessageBox.Show(nt.ToString());
                 int idd;
-                 for(int i = 0; i < cTeam.Rows.Count; i++)
+                int[] ids = new int[cTeam.Rows.Count];
+                for (int i = 0; i < cTeam.Rows.Count; i++)
                 {
                     idd = int.Parse(cTeam.Rows[i].Cells["pID"].Value.ToString());
-                    co = new MySqlCommand("INSERT INTO operationteam VALUES(id, "+idd+", "+nt+")",conn);
-                    co.ExecuteNonQuery();
+                    ids[i] = idd;
                 }
 
+                if (emp.checkIfTeamExists(ids, cTeam.Rows.Count) == 0)
+                {
+                    for (int i = 0; i < cTeam.Rows.Count; i++)
+                    {
+                        co = new MySqlCommand("INSERT INTO operationteam ( employeeID, teamID ) VALUES ( " + ids[i] + ", " + nt + " )", conn);
+                        co.ExecuteNonQuery();
+                    }
 
+                } else
+                {
+                    nt = emp.checkIfTeamExists(ids, cTeam.Rows.Count);
+                }
                 MySqlCommand comm = new MySqlCommand("Update dogoperation SET date = '"+ndate+"', locationID = "+nl+", timeStart = '"+nts+"', teamID = "+nt+", timeEnd = '"+nte+"' WHERE operationID = " + id, conn);
                 comm.ExecuteNonQuery();
                 MessageBox.Show("Changes Saved");
