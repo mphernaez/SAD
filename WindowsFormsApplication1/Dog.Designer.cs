@@ -45,14 +45,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.addDog = new System.Windows.Forms.Panel();
-            this.tbBreed = new System.Windows.Forms.ComboBox();
-            this.btnClearDog = new System.Windows.Forms.Button();
-            this.tbColor = new System.Windows.Forms.TextBox();
-            this.cbSize = new System.Windows.Forms.ComboBox();
-            this.cbOperation = new System.Windows.Forms.ComboBox();
-            this.btnAddDog = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.tbDesc = new System.Windows.Forms.TextBox();
+            this.btnClearDog = new System.Windows.Forms.Button();
+            this.btnAddDog = new System.Windows.Forms.Button();
+            this.tbBreed = new System.Windows.Forms.ComboBox();
             this.cbGender = new System.Windows.Forms.ComboBox();
+            this.cbSize = new System.Windows.Forms.ComboBox();
+            this.tbColor = new System.Windows.Forms.TextBox();
+            this.cbOperation = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvProfiles = new System.Windows.Forms.DataGridView();
@@ -71,14 +73,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dgvAdoption = new System.Windows.Forms.DataGridView();
             this.repclaimpan = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.y1 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
-            this.month2 = new System.Windows.Forms.ComboBox();
-            this.month1 = new System.Windows.Forms.ComboBox();
+            this.m2 = new System.Windows.Forms.ComboBox();
+            this.m1 = new System.Windows.Forms.ComboBox();
             this.filt = new System.Windows.Forms.ComboBox();
             this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.euthanizeDog = new System.Windows.Forms.Panel();
@@ -115,8 +114,10 @@
             this.cbTransType = new System.Windows.Forms.ComboBox();
             this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.impounddogpoundDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button11 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.d1 = new System.Windows.Forms.ComboBox();
+            this.d2 = new System.Windows.Forms.ComboBox();
+            this.y2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
@@ -125,6 +126,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ad)).BeginInit();
             this.addDog.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).BeginInit();
             this.searchDog.SuspendLayout();
             this.adoptDog.SuspendLayout();
@@ -143,7 +145,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -365,6 +366,83 @@
             this.addDog.TabIndex = 2;
             this.addDog.Visible = false;
             // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.Location = new System.Drawing.Point(426, 369);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(171, 38);
+            this.button11.TabIndex = 30;
+            this.button11.Text = "Finish";
+            this.button11.UseVisualStyleBackColor = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.LightGray;
+            this.panel3.Controls.Add(this.tbDesc);
+            this.panel3.Controls.Add(this.btnClearDog);
+            this.panel3.Controls.Add(this.btnAddDog);
+            this.panel3.Controls.Add(this.tbBreed);
+            this.panel3.Controls.Add(this.cbGender);
+            this.panel3.Controls.Add(this.cbSize);
+            this.panel3.Controls.Add(this.tbColor);
+            this.panel3.Location = new System.Drawing.Point(244, 131);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(540, 229);
+            this.panel3.TabIndex = 30;
+            // 
+            // tbDesc
+            // 
+            this.tbDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDesc.ForeColor = System.Drawing.Color.Gray;
+            this.tbDesc.Location = new System.Drawing.Point(250, 14);
+            this.tbDesc.Multiline = true;
+            this.tbDesc.Name = "tbDesc";
+            this.tbDesc.Size = new System.Drawing.Size(266, 144);
+            this.tbDesc.TabIndex = 6;
+            this.tbDesc.Text = "Markings";
+            this.tbDesc.Enter += new System.EventHandler(this.tbDesc_Enter);
+            // 
+            // btnClearDog
+            // 
+            this.btnClearDog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
+            this.btnClearDog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnClearDog.FlatAppearance.BorderSize = 0;
+            this.btnClearDog.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
+            this.btnClearDog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearDog.ForeColor = System.Drawing.Color.White;
+            this.btnClearDog.Location = new System.Drawing.Point(273, 176);
+            this.btnClearDog.Name = "btnClearDog";
+            this.btnClearDog.Size = new System.Drawing.Size(171, 38);
+            this.btnClearDog.TabIndex = 26;
+            this.btnClearDog.Text = "Clear All";
+            this.btnClearDog.UseVisualStyleBackColor = false;
+            this.btnClearDog.Click += new System.EventHandler(this.btnClearDog_Click);
+            // 
+            // btnAddDog
+            // 
+            this.btnAddDog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.btnAddDog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddDog.FlatAppearance.BorderSize = 0;
+            this.btnAddDog.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
+            this.btnAddDog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddDog.ForeColor = System.Drawing.Color.White;
+            this.btnAddDog.Location = new System.Drawing.Point(97, 176);
+            this.btnAddDog.Name = "btnAddDog";
+            this.btnAddDog.Size = new System.Drawing.Size(171, 38);
+            this.btnAddDog.TabIndex = 10;
+            this.btnAddDog.Text = "Add";
+            this.btnAddDog.UseVisualStyleBackColor = false;
+            this.btnAddDog.Click += new System.EventHandler(this.button4_Click);
+            // 
             // tbBreed
             // 
             this.tbBreed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -482,33 +560,20 @@
             this.tbBreed.TabStop = false;
             this.tbBreed.Text = "Breed";
             // 
-            // btnClearDog
+            // cbGender
             // 
-            this.btnClearDog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
-            this.btnClearDog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnClearDog.FlatAppearance.BorderSize = 0;
-            this.btnClearDog.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
-            this.btnClearDog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearDog.ForeColor = System.Drawing.Color.White;
-            this.btnClearDog.Location = new System.Drawing.Point(273, 176);
-            this.btnClearDog.Name = "btnClearDog";
-            this.btnClearDog.Size = new System.Drawing.Size(171, 38);
-            this.btnClearDog.TabIndex = 26;
-            this.btnClearDog.Text = "Clear All";
-            this.btnClearDog.UseVisualStyleBackColor = false;
-            this.btnClearDog.Click += new System.EventHandler(this.btnClearDog_Click);
-            // 
-            // tbColor
-            // 
-            this.tbColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbColor.ForeColor = System.Drawing.Color.Gray;
-            this.tbColor.Location = new System.Drawing.Point(31, 93);
-            this.tbColor.Name = "tbColor";
-            this.tbColor.Size = new System.Drawing.Size(205, 26);
-            this.tbColor.TabIndex = 11;
-            this.tbColor.Text = "Color";
-            this.tbColor.Enter += new System.EventHandler(this.textBox3_Enter);
+            this.cbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbGender.ForeColor = System.Drawing.Color.Gray;
+            this.cbGender.FormattingEnabled = true;
+            this.cbGender.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.cbGender.Location = new System.Drawing.Point(31, 15);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(205, 28);
+            this.cbGender.TabIndex = 3;
+            this.cbGender.Text = "Gender";
+            this.cbGender.SelectedIndexChanged += new System.EventHandler(this.cbGender_SelectedIndexChanged);
             // 
             // cbSize
             // 
@@ -528,6 +593,17 @@
             this.cbSize.Text = "Size";
             this.cbSize.SelectedIndexChanged += new System.EventHandler(this.cbSize_SelectedIndexChanged);
             // 
+            // tbColor
+            // 
+            this.tbColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbColor.ForeColor = System.Drawing.Color.Gray;
+            this.tbColor.Location = new System.Drawing.Point(31, 93);
+            this.tbColor.Name = "tbColor";
+            this.tbColor.Size = new System.Drawing.Size(205, 26);
+            this.tbColor.TabIndex = 11;
+            this.tbColor.Text = "Color";
+            this.tbColor.Enter += new System.EventHandler(this.textBox3_Enter);
+            // 
             // cbOperation
             // 
             this.cbOperation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -540,50 +616,6 @@
             this.cbOperation.TabIndex = 1;
             this.cbOperation.Text = "Operation Date and Location";
             this.cbOperation.SelectedIndexChanged += new System.EventHandler(this.cbOperation_SelectedIndexChanged);
-            // 
-            // btnAddDog
-            // 
-            this.btnAddDog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.btnAddDog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddDog.FlatAppearance.BorderSize = 0;
-            this.btnAddDog.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
-            this.btnAddDog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddDog.ForeColor = System.Drawing.Color.White;
-            this.btnAddDog.Location = new System.Drawing.Point(97, 176);
-            this.btnAddDog.Name = "btnAddDog";
-            this.btnAddDog.Size = new System.Drawing.Size(171, 38);
-            this.btnAddDog.TabIndex = 10;
-            this.btnAddDog.Text = "Add";
-            this.btnAddDog.UseVisualStyleBackColor = false;
-            this.btnAddDog.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // tbDesc
-            // 
-            this.tbDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDesc.ForeColor = System.Drawing.Color.Gray;
-            this.tbDesc.Location = new System.Drawing.Point(250, 14);
-            this.tbDesc.Multiline = true;
-            this.tbDesc.Name = "tbDesc";
-            this.tbDesc.Size = new System.Drawing.Size(266, 144);
-            this.tbDesc.TabIndex = 6;
-            this.tbDesc.Text = "Markings";
-            this.tbDesc.Enter += new System.EventHandler(this.tbDesc_Enter);
-            // 
-            // cbGender
-            // 
-            this.cbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbGender.ForeColor = System.Drawing.Color.Gray;
-            this.cbGender.FormattingEnabled = true;
-            this.cbGender.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
-            this.cbGender.Location = new System.Drawing.Point(31, 15);
-            this.cbGender.Name = "cbGender";
-            this.cbGender.Size = new System.Drawing.Size(205, 28);
-            this.cbGender.TabIndex = 3;
-            this.cbGender.Text = "Gender";
-            this.cbGender.SelectedIndexChanged += new System.EventHandler(this.cbGender_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -815,14 +847,15 @@
             // repclaimpan
             // 
             this.repclaimpan.BackColor = System.Drawing.Color.White;
-            this.repclaimpan.Controls.Add(this.textBox4);
-            this.repclaimpan.Controls.Add(this.textBox2);
-            this.repclaimpan.Controls.Add(this.textBox3);
-            this.repclaimpan.Controls.Add(this.textBox1);
+            this.repclaimpan.Controls.Add(this.y2);
+            this.repclaimpan.Controls.Add(this.d2);
+            this.repclaimpan.Controls.Add(this.d1);
+            this.repclaimpan.Controls.Add(this.button17);
+            this.repclaimpan.Controls.Add(this.y1);
             this.repclaimpan.Controls.Add(this.label19);
             this.repclaimpan.Controls.Add(this.button16);
-            this.repclaimpan.Controls.Add(this.month2);
-            this.repclaimpan.Controls.Add(this.month1);
+            this.repclaimpan.Controls.Add(this.m2);
+            this.repclaimpan.Controls.Add(this.m1);
             this.repclaimpan.Controls.Add(this.filt);
             this.repclaimpan.Controls.Add(this.claimreportdgv);
             this.repclaimpan.Location = new System.Drawing.Point(29, 197);
@@ -831,44 +864,24 @@
             this.repclaimpan.TabIndex = 25;
             this.repclaimpan.Visible = false;
             // 
-            // textBox4
+            // y1
             // 
-            this.textBox4.Location = new System.Drawing.Point(369, 77);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(34, 20);
-            this.textBox4.TabIndex = 4;
-            this.textBox4.Text = "Day";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(151, 77);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(34, 20);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.Text = "Day";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(409, 77);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(49, 20);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.Text = "Year";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(191, 77);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(49, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Year";
+            this.y1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.y1.Location = new System.Drawing.Point(65, 68);
+            this.y1.Name = "y1";
+            this.y1.Size = new System.Drawing.Size(55, 26);
+            this.y1.TabIndex = 4;
+            this.y1.Text = "Year";
+            this.y1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.y1.Enter += new System.EventHandler(this.y1_Enter);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(252, 80);
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(311, 69);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(10, 13);
+            this.label19.Size = new System.Drawing.Size(14, 20);
             this.label19.TabIndex = 3;
             this.label19.Text = "-";
             // 
@@ -878,18 +891,20 @@
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.Location = new System.Drawing.Point(60, 108);
+            this.button16.Location = new System.Drawing.Point(706, 54);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(146, 40);
+            this.button16.Size = new System.Drawing.Size(107, 40);
             this.button16.TabIndex = 2;
-            this.button16.Text = "View Report";
+            this.button16.Text = "Print Report";
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // month2
+            // m2
             // 
-            this.month2.FormattingEnabled = true;
-            this.month2.Items.AddRange(new object[] {
+            this.m2.Enabled = false;
+            this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m2.FormattingEnabled = true;
+            this.m2.Items.AddRange(new object[] {
             "January",
             "February",
             "March",
@@ -902,16 +917,19 @@
             "October",
             "November",
             "December"});
-            this.month2.Location = new System.Drawing.Point(276, 76);
-            this.month2.Name = "month2";
-            this.month2.Size = new System.Drawing.Size(89, 21);
-            this.month2.TabIndex = 1;
-            this.month2.Text = "Month";
+            this.m2.Location = new System.Drawing.Point(391, 65);
+            this.m2.Name = "m2";
+            this.m2.Size = new System.Drawing.Size(113, 28);
+            this.m2.TabIndex = 1;
+            this.m2.Text = "Month";
+            this.m2.SelectedIndexChanged += new System.EventHandler(this.m2_SelectedIndexChanged);
             // 
-            // month1
+            // m1
             // 
-            this.month1.FormattingEnabled = true;
-            this.month1.Items.AddRange(new object[] {
+            this.m1.Enabled = false;
+            this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m1.FormattingEnabled = true;
+            this.m1.Items.AddRange(new object[] {
             "January",
             "February",
             "March",
@@ -924,25 +942,27 @@
             "October",
             "November",
             "December"});
-            this.month1.Location = new System.Drawing.Point(62, 76);
-            this.month1.Name = "month1";
-            this.month1.Size = new System.Drawing.Size(83, 21);
-            this.month1.TabIndex = 1;
-            this.month1.Text = "Month";
+            this.m1.Location = new System.Drawing.Point(121, 66);
+            this.m1.Name = "m1";
+            this.m1.Size = new System.Drawing.Size(113, 28);
+            this.m1.TabIndex = 1;
+            this.m1.Text = "Month";
+            this.m1.SelectedIndexChanged += new System.EventHandler(this.m1_SelectedIndexChanged);
             // 
             // filt
             // 
+            this.filt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filt.FormattingEnabled = true;
             this.filt.Items.AddRange(new object[] {
             "All",
             "Claimed",
-            "Unclaimed",
-            "Euthanized",
-            "Adopted"});
-            this.filt.Location = new System.Drawing.Point(62, 39);
+            "Adopted",
+            "Euthanized"});
+            this.filt.Location = new System.Drawing.Point(65, 26);
             this.filt.Name = "filt";
-            this.filt.Size = new System.Drawing.Size(146, 21);
+            this.filt.Size = new System.Drawing.Size(212, 28);
             this.filt.TabIndex = 1;
+            this.filt.Text = "Status";
             this.filt.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // claimreportdgv
@@ -960,12 +980,12 @@
             this.claimreportdgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.claimreportdgv.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.claimreportdgv.Location = new System.Drawing.Point(13, 159);
+            this.claimreportdgv.Location = new System.Drawing.Point(13, 100);
             this.claimreportdgv.Name = "claimreportdgv";
             this.claimreportdgv.ReadOnly = true;
             this.claimreportdgv.RowHeadersVisible = false;
             this.claimreportdgv.RowHeadersWidth = 30;
-            this.claimreportdgv.Size = new System.Drawing.Size(989, 319);
+            this.claimreportdgv.Size = new System.Drawing.Size(989, 378);
             this.claimreportdgv.TabIndex = 0;
             // 
             // euthanizeDog
@@ -1342,12 +1362,12 @@
             this.dgvHist.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvHist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHist.GridColor = System.Drawing.Color.White;
-            this.dgvHist.Location = new System.Drawing.Point(19, 97);
+            this.dgvHist.Location = new System.Drawing.Point(19, 53);
             this.dgvHist.Name = "dgvHist";
             this.dgvHist.ReadOnly = true;
             this.dgvHist.RowHeadersVisible = false;
             this.dgvHist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHist.Size = new System.Drawing.Size(982, 411);
+            this.dgvHist.Size = new System.Drawing.Size(982, 455);
             this.dgvHist.TabIndex = 74;
             // 
             // cbTransType
@@ -1356,14 +1376,16 @@
             this.cbTransType.ForeColor = System.Drawing.Color.Black;
             this.cbTransType.FormattingEnabled = true;
             this.cbTransType.Items.AddRange(new object[] {
+            "All",
             "Claimed",
             "Adopted",
-            "Euthanized"});
-            this.cbTransType.Location = new System.Drawing.Point(16, 53);
+            "Euthanized",
+            "Pending (Impounded)"});
+            this.cbTransType.Location = new System.Drawing.Point(19, 16);
             this.cbTransType.Name = "cbTransType";
             this.cbTransType.Size = new System.Drawing.Size(288, 28);
             this.cbTransType.TabIndex = 73;
-            this.cbTransType.Text = "Transaction Type";
+            this.cbTransType.Text = "Dog Status";
             this.cbTransType.SelectedIndexChanged += new System.EventHandler(this.cbTransType_SelectedIndexChanged);
             // 
             // impounddogpoundDataSet
@@ -1376,36 +1398,52 @@
             this.impounddogpoundDataSetBindingSource.DataSource = this.impounddogpoundDataSet;
             this.impounddogpoundDataSetBindingSource.Position = 0;
             // 
-            // panel3
+            // button17
             // 
-            this.panel3.BackColor = System.Drawing.Color.LightGray;
-            this.panel3.Controls.Add(this.tbDesc);
-            this.panel3.Controls.Add(this.btnClearDog);
-            this.panel3.Controls.Add(this.btnAddDog);
-            this.panel3.Controls.Add(this.tbBreed);
-            this.panel3.Controls.Add(this.cbGender);
-            this.panel3.Controls.Add(this.cbSize);
-            this.panel3.Controls.Add(this.tbColor);
-            this.panel3.Location = new System.Drawing.Point(244, 131);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(540, 229);
-            this.panel3.TabIndex = 30;
+            this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button17.ForeColor = System.Drawing.Color.White;
+            this.button17.Location = new System.Drawing.Point(590, 54);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(107, 40);
+            this.button17.TabIndex = 5;
+            this.button17.Text = "View";
+            this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
-            // button11
+            // d1
             // 
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(426, 369);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(171, 38);
-            this.button11.TabIndex = 30;
-            this.button11.Text = "Finish";
-            this.button11.UseVisualStyleBackColor = false;
+            this.d1.Enabled = false;
+            this.d1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d1.FormattingEnabled = true;
+            this.d1.Location = new System.Drawing.Point(235, 66);
+            this.d1.Name = "d1";
+            this.d1.Size = new System.Drawing.Size(65, 28);
+            this.d1.TabIndex = 6;
+            this.d1.Text = "Day";
+            // 
+            // d2
+            // 
+            this.d2.Enabled = false;
+            this.d2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d2.FormattingEnabled = true;
+            this.d2.Location = new System.Drawing.Point(505, 65);
+            this.d2.Name = "d2";
+            this.d2.Size = new System.Drawing.Size(65, 28);
+            this.d2.TabIndex = 7;
+            this.d2.Text = "Day";
+            // 
+            // y2
+            // 
+            this.y2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.y2.Location = new System.Drawing.Point(335, 67);
+            this.y2.Name = "y2";
+            this.y2.Size = new System.Drawing.Size(55, 26);
+            this.y2.TabIndex = 8;
+            this.y2.Text = "Year";
+            this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged);
+            this.y2.Enter += new System.EventHandler(this.y2_Enter);
             // 
             // Dog
             // 
@@ -1416,12 +1454,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.repclaimpan);
+            this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.panelHistory);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
-            this.Controls.Add(this.repclaimpan);
-            this.Controls.Add(this.searchDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
@@ -1437,6 +1475,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ad)).EndInit();
             this.addDog.ResumeLayout(false);
             this.addDog.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).EndInit();
             this.searchDog.ResumeLayout(false);
             this.searchDog.PerformLayout();
@@ -1465,8 +1505,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1543,7 +1581,7 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.ComboBox filt;
-        private System.Windows.Forms.ComboBox month1;
+        private System.Windows.Forms.ComboBox m1;
         private System.Windows.Forms.Panel panelHistory;
         private System.Windows.Forms.ComboBox cbTransType;
         private System.Windows.Forms.DataGridView dgvHist;
@@ -1551,15 +1589,16 @@
         private impounddogpoundDataSet impounddogpoundDataSet;
         private System.Windows.Forms.BindingSource impounddogpoundDataSetBindingSource;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ComboBox month2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox m2;
+        private System.Windows.Forms.TextBox y1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ComboBox tbBreed;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.ComboBox d2;
+        private System.Windows.Forms.ComboBox d1;
+        private System.Windows.Forms.TextBox y2;
     }
 }

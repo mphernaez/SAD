@@ -29,10 +29,10 @@ namespace WindowsFormsApplication1
         int i = -40;
         int[] opid; //id for every combobox item
         public empty back { get; set; }
-        
+
         public MySqlConnection conn;
         empty home;
-        
+
         public Dog(empty parent)
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1
 
         private void AddDog_Load(object sender, EventArgs e)
         {
-           // this.Top = 112; //262
+            // this.Top = 112; //262
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -93,7 +93,8 @@ namespace WindowsFormsApplication1
             String size = "";
             String other = "";
             String breed = "";
-            if (!cbOperation.Text.Equals("Operation Date and Location") && tbColor.Text != "Color" && cbGender.Text != "Gender" && cbSize.Text != "Size" && tbDesc.Text != "Markings") {
+            if (!cbOperation.Text.Equals("Operation Date and Location") && tbColor.Text != "Color" && cbGender.Text != "Gender" && cbSize.Text != "Size" && tbDesc.Text != "Markings")
+            {
                 adminID = back.adminID;
                 operationID = cbOperation.SelectedIndex + 1;
                 color = tbColor.Text;
@@ -123,10 +124,10 @@ namespace WindowsFormsApplication1
                     MySqlDataAdapter adp = new MySqlDataAdapter(com);
                     System.Data.DataTable dt = new System.Data.DataTable();
                     adp.Fill(dt);
-                   
+
                     int y = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
                     Boolean stop = false;
-                    for(int x = 0; x < y && stop == false; x++)
+                    for (int x = 0; x < y && stop == false; x++)
                     {
                         MySqlCommand comm = new MySqlCommand("SELECT breed, color, gender, otherDesc FROM dogprofile WHERE dogprofile.status = 'unclaimed'", conn);
                         MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
@@ -144,18 +145,19 @@ namespace WindowsFormsApplication1
                             genders = 0;
                         }
 
-                        if(data.Rows[x]["breed"].ToString() == tbBreed.Text && data.Rows[x]["color"].ToString() == tbColor.Text && genders == cbGender.SelectedIndex && data.Rows[x]["OtherDesc"].ToString() == tbDesc.Text)
+                        if (data.Rows[x]["breed"].ToString() == tbBreed.Text && data.Rows[x]["color"].ToString() == tbColor.Text && genders == cbGender.SelectedIndex && data.Rows[x]["OtherDesc"].ToString() == tbDesc.Text)
                         {
                             stop = true;
                             MessageBox.Show("It seems like there is an exact copy of the dog in the profiles. Please change or add more to the dog's description/s.");
                         }
                     }
-                    
 
-                    if (stop == false) {
+
+                    if (stop == false)
+                    {
                         MySqlCommand comm = new MySqlCommand("INSERT INTO dogprofile(operationID, color, gender, size, otherDesc, breed, status) VALUES(" + operationID + ",'" + color + "', '" + gender + "', '" + size + "', '" + other + "', '" + breed + "', '" + "unclaimed" + "')", conn);
                         comm.ExecuteNonQuery();
-                        
+
                         cbGender.Text = "Gender";
                         cbSize.Text = "Size";
                         tbBreed.Text = "Breed";
@@ -192,7 +194,7 @@ namespace WindowsFormsApplication1
         }
 
         private void dgvProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
-            
+
         {
             if (e.RowIndex != -1)
             {
@@ -202,7 +204,8 @@ namespace WindowsFormsApplication1
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            if (dogID != 0) {
+            if (dogID != 0)
+            {
                 Claim claim = new Claim();
                 claim.dogID = this.dogID;
                 claim.adminID = this.adminID;
@@ -254,7 +257,8 @@ namespace WindowsFormsApplication1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            if (adoptID != 0) {
+            if (adoptID != 0)
+            {
                 Adopt adopt = new Adopt();
                 adopt.dogID = this.adoptID;
                 adopt.adminID = this.adminID;
@@ -299,7 +303,7 @@ namespace WindowsFormsApplication1
             repclaimpan.Visible = false;
 
             refreshArchive();
-            
+
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -312,16 +316,16 @@ namespace WindowsFormsApplication1
 
                     MySqlCommand comm = new MySqlCommand("UPDATE dogprofile SET dogprofile.status = 'euthanized' WHERE dogID = " + dogID, conn);
                     comm.ExecuteNonQuery();
-                    
+
 
                     comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID = 2", conn);
                     comm.ExecuteNonQuery();
                     string date = DateTime.Now.ToString("yyyy-MM-dd");
-                    
+
                     comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, type, employeeID) VALUES(2, 1, '" + date + "', 'Euthanasia', 'Out', " + empids[cbEmps.SelectedIndex] + ")", conn);
                     comm.ExecuteNonQuery();
 
-                    comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('"+date+ "', " + empids[cbEmps.SelectedIndex] + ", 'Euthanasia' )", conn);
+                    comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('" + date + "', " + empids[cbEmps.SelectedIndex] + ", 'Euthanasia' )", conn);
                     comm.ExecuteNonQuery();
                     String messbox = "";
 
@@ -342,7 +346,7 @@ namespace WindowsFormsApplication1
                     conn.Close();
                 }
             }
-            else if(dogID == 0)
+            else if (dogID == 0)
             {
                 MessageBox.Show("Please select a dog");
             }
@@ -362,7 +366,7 @@ namespace WindowsFormsApplication1
 
         private void button8_Click_1(object sender, EventArgs e)
         {
-
+            
             panelHistory.Visible = false;
             pictureBox1.Visible = false;
             searchDog.Visible = false;
@@ -377,11 +381,11 @@ namespace WindowsFormsApplication1
             r.Visible = true;
             claimreportdgv.Visible = true;
         }
-            
+
 
         private void cbOperation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbOperation.Text != "Operation Date and Location")
+            if (cbOperation.Text != "Operation Date and Location")
             {
                 cbOperation.ForeColor = Color.Black;
             }
@@ -389,7 +393,7 @@ namespace WindowsFormsApplication1
 
         private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbGender.Text != "Gender")
+            if (cbGender.Text != "Gender")
             {
                 cbGender.ForeColor = Color.Black;
             }
@@ -397,7 +401,7 @@ namespace WindowsFormsApplication1
 
         private void cbSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbSize.Text != "Size")
+            if (cbSize.Text != "Size")
             {
                 cbSize.ForeColor = Color.Black;
             }
@@ -452,7 +456,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Please Select an Employee");
             }
         }
-        
+
         private void tbBreedSearch_TextChanged(object sender, EventArgs e)
         {
             refreshSearch();
@@ -499,7 +503,7 @@ namespace WindowsFormsApplication1
             home.Show();
             this.Hide();
         }
-        
+
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             Bitmap bit = new Bitmap(this.claimreportdgv.Width, this.claimreportdgv.Height);
@@ -510,230 +514,7 @@ namespace WindowsFormsApplication1
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (filt.Text == "All")
-            {
-                try
-                {
-                    conn.Open();
 
-                    MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, SUBSTRING(date, 1, 11) AS date, CONCAT(timeStart, '-', timeEnd) AS time, dogprofile.status AS status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                    System.Data.DataTable dt = new System.Data.DataTable();
-                    adp.Fill(dt);
-
-
-                    claimreportdgv.DataSource = dt;
-
-                    claimreportdgv.Columns["breed"].HeaderText = "Breed";
-                    claimreportdgv.Columns["gender"].HeaderText = "Gender";
-                    claimreportdgv.Columns["size"].HeaderText = "Size";
-                    claimreportdgv.Columns["color"].HeaderText = "Color";
-                    claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
-                    claimreportdgv.Columns["description"].HeaderText = "Location Caught";
-                    claimreportdgv.Columns["date"].HeaderText = "Date Caught";
-                    claimreportdgv.Columns["time"].HeaderText = "Time Caught";
-                    claimreportdgv.Columns["status"].HeaderText = "Status";
-
-
-                    claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                    conn.Close();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    conn.Close();
-                }
-            }
-            else if (filt.Text == "Claimed")
-            {
-                try
-                {
-                    conn.Open();
-                    //where status = claimed
-                    MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, SUBSTRING(date, 1, 11) AS date, CONCAT(timeStart, '-', timeEnd) AS time, dogprofile.status AS status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID  WHERE dogprofile.status = 'claimed'", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                    System.Data.DataTable dt = new System.Data.DataTable();
-                    adp.Fill(dt);
-
-
-                    claimreportdgv.DataSource = dt;
-
-                    claimreportdgv.Columns["breed"].HeaderText = "Breed";
-                    claimreportdgv.Columns["gender"].HeaderText = "Gender";
-                    claimreportdgv.Columns["size"].HeaderText = "Size";
-                    claimreportdgv.Columns["color"].HeaderText = "Color";
-                    claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
-                    claimreportdgv.Columns["description"].HeaderText = "Location Caught";
-                    claimreportdgv.Columns["date"].HeaderText = "Date Caught";
-                    claimreportdgv.Columns["time"].HeaderText = "Time Caught";
-                    claimreportdgv.Columns["status"].HeaderText = "Status";
-
-
-                    claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                    conn.Close();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    conn.Close();
-                }
-            }
-            else if (filt.Text == "Unclaimed")
-            {
-                try
-                {
-                    conn.Open();
-                    //where status = unclaimed
-                    MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, SUBSTRING(date, 1, 11) AS date, CONCAT(timeStart, '-', timeEnd) AS time, dogprofile.status AS status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID  WHERE dogprofile.status = 'unclaimed'", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                    System.Data.DataTable dt = new System.Data.DataTable();
-                    adp.Fill(dt);
-
-
-                    claimreportdgv.DataSource = dt;
-
-                    claimreportdgv.Columns["breed"].HeaderText = "Breed";
-                    claimreportdgv.Columns["gender"].HeaderText = "Gender";
-                    claimreportdgv.Columns["size"].HeaderText = "Size";
-                    claimreportdgv.Columns["color"].HeaderText = "Color";
-                    claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
-                    claimreportdgv.Columns["description"].HeaderText = "Location Caught";
-                    claimreportdgv.Columns["date"].HeaderText = "Date Caught";
-                    claimreportdgv.Columns["time"].HeaderText = "Time Caught";
-                    claimreportdgv.Columns["status"].HeaderText = "Status";
-
-
-                    claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                    conn.Close();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    conn.Close();
-                }
-            }
-            else if (filt.Text == "Euthanized")
-            {
-                try
-                {
-                    conn.Open();
-                    //where status = euthanized
-                    MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, SUBSTRING(date, 1, 11) AS date, CONCAT(timeStart, '-', timeEnd) AS time, dogprofile.status AS status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID  WHERE dogprofile.status = 'euthanized'", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                    System.Data.DataTable dt = new System.Data.DataTable();
-                    adp.Fill(dt);
-
-
-                    claimreportdgv.DataSource = dt;
-
-                    claimreportdgv.Columns["breed"].HeaderText = "Breed";
-                    claimreportdgv.Columns["gender"].HeaderText = "Gender";
-                    claimreportdgv.Columns["size"].HeaderText = "Size";
-                    claimreportdgv.Columns["color"].HeaderText = "Color";
-                    claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
-                    claimreportdgv.Columns["description"].HeaderText = "Location Caught";
-                    claimreportdgv.Columns["date"].HeaderText = "Date Caught";
-                    claimreportdgv.Columns["time"].HeaderText = "Time Caught";
-                    claimreportdgv.Columns["status"].HeaderText = "Status";
-
-
-                    claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                    conn.Close();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    conn.Close();
-                }
-            }
-            else if (filt.Text == "Adopted")
-            {
-                try
-                {
-                    conn.Open();
-                    //where status = adopted
-                    MySqlCommand com = new MySqlCommand("SELECT breed, gender, size, color, otherDesc, description, SUBSTRING(date, 1, 11) AS date, CONCAT(timeStart, '-', timeEnd) AS time, dogprofile.status AS status FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID INNER JOIN location ON location.locationID = dogoperation.locationID  WHERE dogprofile.status = 'adopted'", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                    System.Data.DataTable dt = new System.Data.DataTable();
-                    adp.Fill(dt);
-
-
-                    claimreportdgv.DataSource = dt;
-
-                    claimreportdgv.Columns["breed"].HeaderText = "Breed";
-                    claimreportdgv.Columns["gender"].HeaderText = "Gender";
-                    claimreportdgv.Columns["size"].HeaderText = "Size";
-                    claimreportdgv.Columns["color"].HeaderText = "Color";
-                    claimreportdgv.Columns["otherDesc"].HeaderText = "Other Description";
-                    claimreportdgv.Columns["description"].HeaderText = "Location Caught";
-                    claimreportdgv.Columns["date"].HeaderText = "Date Caught";
-                    claimreportdgv.Columns["time"].HeaderText = "Time Caught";
-                    claimreportdgv.Columns["status"].HeaderText = "Status";
-
-
-                    claimreportdgv.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    claimreportdgv.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                    conn.Close();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    conn.Close();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select type");
-            }
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -915,29 +696,37 @@ namespace WindowsFormsApplication1
         {
             this.Hide();
         }
-        
 
-        
+
+
 
         private void cbTransType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbTransType.SelectedIndex == 0)
+            if (cbTransType.SelectedIndex == 1)
             {
                 refreshHist("claimed", "Claimer");
             }
-            else if(cbTransType.SelectedIndex == 1)
+            else if (cbTransType.SelectedIndex == 2)
             {
                 refreshHist("adopted", "Adoptor");
             }
+            else if (cbTransType.SelectedIndex == 3)
+            {
+                refreshEutUnc("euthanized");
+            }
+            else if (cbTransType.SelectedIndex == 4)
+            {
+                refreshEutUnc("unclaimed");
+            }
             else
             {
-                refreshEut();
+                refreshAll();
             }
         }
 
         private void refreshHist(string status, string x)
         {
-            
+
             try
             {
                 conn.Open();
@@ -963,29 +752,48 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
         }
-           
-            private void refreshEut()
+
+        private void refreshEutUnc(string stat)
+        {
+
+            try
             {
-                
-                try
-                {
-                    conn.Open();
-                    MySqlCommand comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = 'euthanized'", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    System.Data.DataTable dt = new System.Data.DataTable();
-                    adp.Fill(dt);
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = '" + stat + "'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adp.Fill(dt);
 
-                    dgvHist.DataSource = dt;
+                dgvHist.DataSource = dt;
 
-                    conn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    conn.Close();
-                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
         }
+        private void refreshAll()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY dogoperation.date", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adp.Fill(dt);
 
+                dgvHist.DataSource = dt;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
         private void cbEmps_SelectedIndexChanged(object sender, EventArgs e)
         {
             //MessageBox.Show(empids[cbEmps.SelectedIndex].ToString());
@@ -1010,7 +818,7 @@ namespace WindowsFormsApplication1
             ad.Visible = false;
             et.Visible = false;
             r.Visible = false;
-            
+
         }
 
         private void btnClearDog_Click(object sender, EventArgs e)
@@ -1021,6 +829,144 @@ namespace WindowsFormsApplication1
             tbColor.Text = "Color";
             tbDesc.Text = "Other Description";
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (y1.Text.Length == 4)
+            {
+                m1.Enabled = true;
+            }
+        }
+
+        private void m1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            d1.Enabled = true;
+            d1.Items.Clear();
+            responsiveDay(int.Parse(y1.Text));
+        }
+        private void m2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            d2.Enabled = true;
+            d2.Items.Clear();
+            responsiveDay2(int.Parse(y2.Text));
+        }
+        private void responsiveDay(int year)
+        {
+            int x;
+            if (m1.Text == "January" || m1.Text == "March" || m1.Text == "May" || m1.Text == "July" || m1.Text == "August" || m1.Text == "October" || m1.Text == "December") loopDay(31);
+            else if (m1.Text == "February") { if (year % 4 == 0) loopDay(29); else loopDay(28); }
+            else loopDay(30);
+        }
+        private void responsiveDay2(int year)
+        {
+            int x;
+            if (m2.Text == "January" || m2.Text == "March" || m2.Text == "May" || m2.Text == "July" || m2.Text == "August" || m2.Text == "October" || m2.Text == "December") loopDay2(31);
+            else if (m2.Text == "February") { if (year % 4 == 0) loopDay2(29); else loopDay2(28); }
+            else loopDay2(30);
+        }
+        private void loopDay(int x)
+        {
+            int i = 1;
+            while (i <= x)
+            {
+                d1.Items.Add(i.ToString());
+                i++;
+            }
+        }
+        private void loopDay2(int x)
+        {
+            int i = 1;
+            while (i <= x)
+            {
+                d2.Items.Add(i.ToString());
+                i++;
+            }
+        }
+        private void button17_Click(object sender, EventArgs e)
+        {
+            int year = int.Parse(DateTime.Now.ToString("yyyy"));
+            int month = int.Parse(DateTime.Now.ToString("MM"));
+            int day = int.Parse(DateTime.Now.ToString("dd"));
+            
+            if (filt.Text != "Status" && m1.Text != "Month" && m2.Text != "Month" && y1.Text != "Year" && d1.Text != "Day")
+            {
+                string datestart = y1.Text + "-" + (m1.SelectedIndex + 1).ToString() + "-" + d1.Text;
+                string dateend = y1.Text + "-" + (m2.SelectedIndex + 1).ToString() + "-" + d2.Text;
+                try
+                {
+                    MySqlCommand comm;
+                    MySqlDataAdapter adp;
+                    System.Data.DataTable dt;
+
+                    conn.Open();
+                    if (filt.SelectedIndex == 0) //All
+                    {
+                        comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.date BETWEEN '"+datestart+"' AND '"+dateend+"' ORDER BY dogoperation.date", conn);
+                    }
+                    else if (filt.SelectedIndex == 1) //Claimed
+                    {
+                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Claimer', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
+                                        + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', location.description AS Location, "
+                                        + "contactNumber AS 'Contact Number', address AS Address "
+                                        + "FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
+                                        + "INNER JOIN location ON dogoperation.locationID = location.locationID "
+                                        + "INNER JOIN dogtransaction ON dogprofile.dogID = dogtransaction.dogID "
+                                        + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
+                                        + "WHERE dogprofile.status = 'claimed' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
+                    }
+                    else if (filt.SelectedIndex == 2) //Adopted
+                    {
+                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Adopter', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
+                                        + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', location.description AS Location, "
+                                        + "contactNumber AS 'Contact Number', address AS Address "
+                                        + "FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
+                                        + "INNER JOIN location ON dogoperation.locationID = location.locationID "
+                                        + "INNER JOIN dogtransaction ON dogprofile.dogID = dogtransaction.dogID "
+                                        + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
+                                        + "WHERE dogprofile.status = 'adopted' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
+                    }
+                    else //Euthanized
+                    {
+                        comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, dogoperation.date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = 'euthanized' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogoperation.date", conn);
+                    }
+
+                    adp = new MySqlDataAdapter(comm);
+                    dt = new System.Data.DataTable();
+                    adp.Fill(dt);
+                    claimreportdgv.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, GraphicsUnit.Pixel);
+                    claimreportdgv.DataSource = dt;
+
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter required fields in correct format/value");
+            }
+        }
+
+        private void y1_Enter(object sender, EventArgs e)
+        {
+            y1.Text = "";
+        }
+
+        private void y2_TextChanged(object sender, EventArgs e)
+        {
+            if (y2.Text.Length == 4)
+            {
+                m2.Enabled = true;
+            }
+        }
+
+        private void y2_Enter(object sender, EventArgs e)
+        {
+            y2.Text = "";
+        }
     }
-    }
+}
 
