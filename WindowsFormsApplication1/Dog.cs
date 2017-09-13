@@ -512,6 +512,7 @@ namespace WindowsFormsApplication1
         {
             home.Show();
             this.Hide();
+            home.refreshNotif();
         }
 
         private void button14_Click(object sender, EventArgs e)

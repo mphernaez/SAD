@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1
 
         public int id;
         public int value;
+        public string rq;
         Inventory inv { get; set; }
         MySqlConnection conn = new MySqlConnection();
         public EndorserIn(Inventory parent)
@@ -72,7 +73,7 @@ namespace WindowsFormsApplication1
                         String date = tbYear.Text + "-" + (cbMonth.SelectedIndex + 1).ToString() + "-" + cbDay.Text + "-";
                         MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + " + int.Parse(amtIn.Text) + " WHERE itemID = " + id, conn);
                         comm.ExecuteNonQuery();
-                        MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction VALUES( transactionID, " + id + ", " + int.Parse(amtIn.Text) + ", '" + date + "', 'In', " + eID + ", '" + tbReason.Text + "', '" + expiration + "')", conn);
+                        MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction VALUES( transactionID, " + id + ", " + int.Parse(amtIn.Text) + ", '" + date + "', 'In', " + eID + ", '" + tbReason.Text + "', '" + expiration + "', "+rq+")", conn);
                         com.ExecuteNonQuery();
                         this.Hide();
                         MessageBox.Show("Item Updated");

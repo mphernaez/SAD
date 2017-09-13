@@ -222,16 +222,32 @@ namespace WindowsFormsApplication1
 
         private void OK1_Click(object sender, EventArgs e)
         {
-            end.id = itemID;
-            end.Show();
+            
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + itemID.ToString(), conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                end.amtLabel.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString();
+
+                MySqlCommand com = new MySqlCommand("SELECT COUNT(*), requestID FROM stockrequest WHERE delivered = 0 AND stockID = " + itemID, conn);
+                MySqlDataAdapter adpp = new MySqlDataAdapter(com);
+                DataTable dtt = new DataTable();
+                adpp.Fill(dtt);
+
+                if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) >= 1)
+                {
+                    end.id = itemID;
+                    end.Show();
+                    end.rq = dtt.Rows[0]["requestID"].ToString();
+                    MySqlCommand comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + itemID.ToString(), conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    end.amtLabel.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString();
+                    comm = new MySqlCommand("UPDATE stockrequest SET delivered = 1 WHERE stockID = " + itemID, conn);
+                    comm.ExecuteNonQuery();
+                } else
+                {
+                    MessageBox.Show("No Prior Stock Request Found");
+                }
                 conn.Close();
             }
             catch (Exception ex)
@@ -287,6 +303,7 @@ namespace WindowsFormsApplication1
         {
             home.Show();
             this.Hide();
+            home.refreshNotif();
         }
 
         private void button8_Click_1(object sender, EventArgs e)

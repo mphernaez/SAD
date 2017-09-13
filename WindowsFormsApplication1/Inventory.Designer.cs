@@ -903,9 +903,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelTrans);
             this.Controls.Add(this.inv);
             this.Controls.Add(this.newitem);
+            this.Controls.Add(this.panelTrans);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(27, 84);
             this.MaximizeBox = false;

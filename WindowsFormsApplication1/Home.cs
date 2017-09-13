@@ -160,13 +160,13 @@ namespace WindowsFormsApplication1
             refreshNotif();
         }
 
-        private void refreshNotif()
+        public void refreshNotif()
         {
             try
             {
                conn.Open();
 
-               MySqlCommand com = new MySqlCommand("SELECT COUNT(*) FROM items WHERE quantity != 0 AND quantity <= minQuantity ", conn);
+               MySqlCommand com = new MySqlCommand("SELECT COUNT(*) FROM items LEFT JOIN stockrequest ON stockID = itemID WHERE quantity <= minQuantity AND itemID NOT IN (SELECT stockID FROM stockrequest WHERE delivered = 0) ORDER BY productName", conn);
                MySqlDataAdapter adp = new MySqlDataAdapter(com);
                DataTable dt = new DataTable();
                adp.Fill(dt);
@@ -274,6 +274,7 @@ namespace WindowsFormsApplication1
                 items.Visible = false;
                 ne.Visible = false;
                 warnc = false;
+                items.Rows.Clear();
             }
         }
 
@@ -284,16 +285,51 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand comm = new MySqlCommand("SELECT producatName, quantity FROM items WHERE quantity <= minQuantity", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT itemId, productName, quantity FROM items LEFT JOIN stockrequest ON stockID = itemID WHERE quantity <= minQuantity AND itemID NOT IN (SELECT stockID FROM stockrequest WHERE delivered = 0) ORDER BY productName", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 items.DataSource = dt;
+                items.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, GraphicsUnit.Pixel);
+                for(int i = 0; i < items.Rows.Count; i++)
+                {
+                    items.Rows[i].Height = 30;
+                }
+
+                items.Columns["itemID"].Visible = false;
+                items.Columns["productName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                items.Columns["quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                items.ClearSelection();
                 conn.Close();
             } catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 conn.Close();
+            }
+        }
+
+        string itemID;
+        private void items_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                itemID = items.Rows[e.RowIndex].Cells["itemID"].Value.ToString();
+                try
+                {
+                    conn.Open();
+
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO stockrequest VALUES(requestID, '"+DateTime.Now.ToString("yyy-MM-dd")+"', "+itemID+", 0 )", conn);
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Item Request Created");
+                    items.ClearSelection();
+                    getWanrs();
+                    conn.Close();
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
             }
         }
 

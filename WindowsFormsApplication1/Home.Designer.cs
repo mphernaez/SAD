@@ -408,15 +408,24 @@
             // 
             // items
             // 
+            this.items.AllowUserToAddRows = false;
+            this.items.AllowUserToDeleteRows = false;
+            this.items.AllowUserToResizeColumns = false;
+            this.items.AllowUserToResizeRows = false;
             this.items.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.items.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.items.ColumnHeadersVisible = false;
             this.items.GridColor = System.Drawing.Color.White;
             this.items.Location = new System.Drawing.Point(8, 197);
             this.items.Name = "items";
-            this.items.Size = new System.Drawing.Size(225, 554);
+            this.items.RowHeadersVisible = false;
+            this.items.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.items.ShowCellToolTips = false;
+            this.items.Size = new System.Drawing.Size(284, 554);
             this.items.TabIndex = 11;
             this.items.Visible = false;
+            this.items.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_CellDoubleClick);
             // 
             // ne
             // 
