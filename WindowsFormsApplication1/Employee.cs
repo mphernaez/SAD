@@ -1741,7 +1741,7 @@ namespace WindowsFormsApplication1
         }
 
         int opId;
-        bool opOpen = false;
+        public bool opOpen = false;
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
