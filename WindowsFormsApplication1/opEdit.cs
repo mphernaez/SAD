@@ -130,7 +130,7 @@ namespace WindowsFormsApplication1
                 if (int.Parse(teh) > 12)
                 {
                     cbAMPMend.SelectedIndex = 1;
-                    te = (int.Parse(teh) - 12).ToString();
+                    teh = (int.Parse(teh) - 12).ToString();
                 }
                 else
                     cbAMPMend.SelectedIndex = 0;
@@ -158,8 +158,7 @@ namespace WindowsFormsApplication1
         int nl;
         private void button1_Click(object sender, EventArgs e)
         {
-            panel2.Enabled = true;
-            panel1.Enabled = false;
+            
             if (cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location" && cbAMPMend.Text != "AM/PM" && cbAMPMstart.Text != "AM/PM")
             {
                 ndate = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
@@ -204,8 +203,29 @@ namespace WindowsFormsApplication1
                 cTeam.Rows.Clear();
                 aEmp.Rows.Clear();
 
-                getTeam();
-                getEmps();
+                string dd = ndate + " " + nts;
+                DateTime myDate = Convert.ToDateTime(dd);
+                DateTime cD = DateTime.Now;
+                int result = DateTime.Compare(myDate, cD);
+                if (result > 0)
+                {
+
+                    {
+                        panel2.Enabled = true;
+                        panel1.Enabled = false;
+                        getTeam();
+                        getEmps();
+                        
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Please Input Valid Date & Time");
+                }
+
+
+               
 
             }
         }
@@ -236,6 +256,7 @@ namespace WindowsFormsApplication1
 
                    
                     cTeam.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
                     for (int i = 0; i < dtt.Rows.Count; i++)
                     {
                         nums.Add(int.Parse(dtt.Rows[i]["employeeID"].ToString()));
@@ -253,6 +274,14 @@ namespace WindowsFormsApplication1
                             else
                             {
                                 cTeam.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(229, 99, 82);
+                            }
+                        }
+                        if(nums.Count == 0)
+                        {
+                            for (int j = 0; j < cTeam.Rows.Count; j++)
+                            {
+                               cTeam.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(229, 99, 82);
+
                             }
                         }
 
@@ -284,12 +313,11 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm;
                 if (DateTime.Now.ToString("yyy-MM-dd") != Convert.ToDateTime(ndate).ToString("yyy-MM-dd"))
                 {
-                    comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID WHERE position = 'Catcher' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '"+ndate+"') THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END AND operationteam.teamID = " + tID + ")   UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active'", conn);
-
+                    comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID WHERE position = 'Catcher' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '"+ndate+"') THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END OR operationteam.teamID = " + tID + ")   UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active'", conn);
                 }
                 else
                 {
-                    comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID JOIN attendance ON attendance.employeeID = personID WHERE position = 'Catcher' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + ndate + "')THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END AND operationteam.teamID = " + tID + " ) AND attendance.date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 1  AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 0) UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN attendance ON attendance.employeeID = personID WHERE personID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active' AND attendance.date = '" + ndate + "' AND type = 0 AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + ndate + "' AND type = 0)", conn);
+                    comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID JOIN attendance ON attendance.employeeID = personID WHERE position = 'Catcher' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + ndate + "')THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END OR operationteam.teamID = " + tID + " ) AND attendance.date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 1  AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 0) UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN attendance ON attendance.employeeID = personID WHERE personID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active' AND attendance.date = '" + ndate + "' AND type = 0 AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + ndate + "' AND type = 0)", conn);
                 }
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
@@ -345,11 +373,14 @@ namespace WindowsFormsApplication1
             {
 
 
-                if(cTeam.Rows[rft].DefaultCellStyle.BackColor == Color.White)
+                if(cTeam.Rows[rft].DefaultCellStyle.BackColor != Color.FromArgb(229, 99, 82))
                 {
                     this.aEmp.Rows.Add(ti1, n1);
                 }
-                cTeam.Rows.RemoveAt(rft);
+
+                    cTeam.Rows.RemoveAt(rft);
+
+
                 cTeam.ClearSelection();
                 aEmp.ClearSelection();
                 okct = false;
@@ -373,8 +404,9 @@ namespace WindowsFormsApplication1
 
                 this.cTeam.Rows.Add(ti2, n2);
 
-                aEmp.Rows.RemoveAt(att);
+                    aEmp.Rows.RemoveAt(att);
 
+                
                 okct = false;
             }
             else
@@ -394,6 +426,48 @@ namespace WindowsFormsApplication1
                 ti2 = int.Parse(aEmp.Rows[e.RowIndex].Cells["pID1"].Value.ToString());
                 n2 = aEmp.Rows[e.RowIndex].Cells["Name1"].Value.ToString();
 
+            }
+        }
+
+        private void OK1_Click(object sender, EventArgs e)
+        {
+            updateOp();
+        }
+
+        private void updateOp()
+        {
+
+          
+            try
+            {
+                conn.Open();
+                MySqlCommand co;
+                MySqlCommand com = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                int nt = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) +1;
+                MessageBox.Show(nt.ToString());
+                int idd;
+                 for(int i = 0; i < cTeam.Rows.Count; i++)
+                {
+                    idd = int.Parse(cTeam.Rows[i].Cells["pID"].Value.ToString());
+                    co = new MySqlCommand("INSERT INTO operationteam VALUES(id, "+idd+", "+nt+")",conn);
+                    co.ExecuteNonQuery();
+                }
+
+
+                MySqlCommand comm = new MySqlCommand("Update dogoperation SET date = '"+ndate+"', locationID = "+nl+", timeStart = '"+nts+"', teamID = "+nt+", timeEnd = '"+nte+"' WHERE operationID = " + id, conn);
+                comm.ExecuteNonQuery();
+                MessageBox.Show("Changes Saved");
+                conn.Close();
+                this.Dispose();
+                emp.opOpen = false;
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
             }
         }
 
