@@ -1079,7 +1079,7 @@ namespace WindowsFormsApplication1
             tbOpDay.Enabled = false;
         }
 
-        private int checkIfTeamExists(int[] emps, int max) //emps = new operation team
+        public int checkIfTeamExists(int[] emps, int max) //emps = new operation team
         {
             try
             {

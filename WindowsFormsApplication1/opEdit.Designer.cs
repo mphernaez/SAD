@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.cTeam = new System.Windows.Forms.DataGridView();
-            this.pID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aEmp = new System.Windows.Forms.DataGridView();
             this.pID1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +58,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.cTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aEmp)).BeginInit();
             this.panel1.SuspendLayout();
@@ -88,20 +88,6 @@
             this.cTeam.TabIndex = 1;
             this.cTeam.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cTeam_CellClick);
             this.cTeam.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cTeam_CellContentClick);
-            // 
-            // pID
-            // 
-            this.pID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.pID.HeaderText = "Column1";
-            this.pID.Name = "pID";
-            this.pID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.pID.Visible = false;
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "";
-            this.Name.Name = "Name";
-            this.Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // aEmp
             // 
@@ -653,6 +639,19 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // pID
+            // 
+            this.pID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.pID.HeaderText = "Column1";
+            this.pID.Name = "pID";
+            this.pID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "";
+            this.Name.Name = "Name";
+            this.Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // opEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -664,6 +663,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.opEdit_Load);
@@ -708,9 +708,9 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn pID1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
     }
 }
