@@ -380,9 +380,25 @@ namespace WindowsFormsApplication1
             et.Visible = false;
             r.Visible = true;
             claimreportdgv.Visible = true;
+            refreshfilters();
         }
 
-
+        private void refreshfilters()
+        {
+            filt.Text = "Status";
+            y1.Text = "Year";
+            m1.Text = "Month";
+            d1.Items.Clear();
+            d1.Text = "Day";
+            y2.Text = "Year";
+            m2.Text = "Month";
+            d2.Items.Clear();
+            d2.Text = "Day";
+            m1.Enabled = false;
+            d1.Enabled = false;
+            m2.Enabled = false;
+            d2.Enabled = false;
+        }
         private void cbOperation_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbOperation.Text != "Operation Date and Location")

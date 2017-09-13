@@ -47,35 +47,12 @@ namespace WindowsFormsApplication1
                 date = dt.Rows[0]["date"].ToString();
                 ts = dt.Rows[0]["timeStart"].ToString();
                 te = dt.Rows[0]["timeEnd"].ToString();
-                foreach (char a in date)
-                {
-                    if (a != '/' && i == 1)
-                    {
-                        m += a;
-
-                    }
-                    else if (a != '/' && i == 2)
-                    {
-                        d += a;
-
-                    }
-                    else if (a != '/' && i == 3 && a != ' ')
-                    {
-                        y += a;
-
-                    }
-                    else if (a == '/')
-                    {
-                        i++;
-                    } else
-                    {
-                        break;
-                    }
-
-
-                }
-                i = 0;
                 
+                string y = date.Substring(6, 4);
+                string m = date.Substring(3, 2);
+                string d = date.Substring(0, 2);
+
+                i = 0;
                 foreach(char a in ts)
                 {
                     if (i < 2)
