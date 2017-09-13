@@ -59,6 +59,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dgvProfiles = new System.Windows.Forms.DataGridView();
             this.searchDog = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.cbGenderSearch = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -72,14 +73,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dgvAdoption = new System.Windows.Forms.DataGridView();
             this.repclaimpan = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.y1 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
-            this.month2 = new System.Windows.Forms.ComboBox();
-            this.month1 = new System.Windows.Forms.ComboBox();
+            this.m2 = new System.Windows.Forms.ComboBox();
+            this.m1 = new System.Windows.Forms.ComboBox();
             this.filt = new System.Windows.Forms.ComboBox();
             this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.euthanizeDog = new System.Windows.Forms.Panel();
@@ -116,6 +114,10 @@
             this.cbTransType = new System.Windows.Forms.ComboBox();
             this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.impounddogpoundDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button17 = new System.Windows.Forms.Button();
+            this.d1 = new System.Windows.Forms.ComboBox();
+            this.d2 = new System.Windows.Forms.ComboBox();
+            this.y2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
@@ -382,7 +384,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
+            this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.Controls.Add(this.tbDesc);
             this.panel3.Controls.Add(this.btnClearDog);
             this.panel3.Controls.Add(this.btnAddDog);
@@ -662,6 +664,7 @@
             // searchDog
             // 
             this.searchDog.BackColor = System.Drawing.Color.White;
+            this.searchDog.Controls.Add(this.label10);
             this.searchDog.Controls.Add(this.cbGenderSearch);
             this.searchDog.Controls.Add(this.label6);
             this.searchDog.Controls.Add(this.label5);
@@ -677,6 +680,18 @@
             this.searchDog.Size = new System.Drawing.Size(1015, 536);
             this.searchDog.TabIndex = 11;
             this.searchDog.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label10.Location = new System.Drawing.Point(616, 53);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(64, 20);
+            this.label10.TabIndex = 37;
+            this.label10.Text = "View All";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // cbGenderSearch
             // 
@@ -832,14 +847,15 @@
             // repclaimpan
             // 
             this.repclaimpan.BackColor = System.Drawing.Color.White;
-            this.repclaimpan.Controls.Add(this.textBox4);
-            this.repclaimpan.Controls.Add(this.textBox2);
-            this.repclaimpan.Controls.Add(this.textBox3);
-            this.repclaimpan.Controls.Add(this.textBox1);
+            this.repclaimpan.Controls.Add(this.y2);
+            this.repclaimpan.Controls.Add(this.d2);
+            this.repclaimpan.Controls.Add(this.d1);
+            this.repclaimpan.Controls.Add(this.button17);
+            this.repclaimpan.Controls.Add(this.y1);
             this.repclaimpan.Controls.Add(this.label19);
             this.repclaimpan.Controls.Add(this.button16);
-            this.repclaimpan.Controls.Add(this.month2);
-            this.repclaimpan.Controls.Add(this.month1);
+            this.repclaimpan.Controls.Add(this.m2);
+            this.repclaimpan.Controls.Add(this.m1);
             this.repclaimpan.Controls.Add(this.filt);
             this.repclaimpan.Controls.Add(this.claimreportdgv);
             this.repclaimpan.Location = new System.Drawing.Point(29, 197);
@@ -848,44 +864,24 @@
             this.repclaimpan.TabIndex = 25;
             this.repclaimpan.Visible = false;
             // 
-            // textBox4
+            // y1
             // 
-            this.textBox4.Location = new System.Drawing.Point(369, 77);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(34, 20);
-            this.textBox4.TabIndex = 4;
-            this.textBox4.Text = "Day";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(151, 77);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(34, 20);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.Text = "Day";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(409, 77);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(49, 20);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.Text = "Year";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(191, 77);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(49, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Year";
+            this.y1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.y1.Location = new System.Drawing.Point(65, 68);
+            this.y1.Name = "y1";
+            this.y1.Size = new System.Drawing.Size(55, 26);
+            this.y1.TabIndex = 4;
+            this.y1.Text = "Year";
+            this.y1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.y1.Enter += new System.EventHandler(this.y1_Enter);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(252, 80);
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(311, 69);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(10, 13);
+            this.label19.Size = new System.Drawing.Size(14, 20);
             this.label19.TabIndex = 3;
             this.label19.Text = "-";
             // 
@@ -895,18 +891,20 @@
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.Location = new System.Drawing.Point(60, 108);
+            this.button16.Location = new System.Drawing.Point(706, 54);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(146, 40);
+            this.button16.Size = new System.Drawing.Size(107, 40);
             this.button16.TabIndex = 2;
-            this.button16.Text = "View Report";
+            this.button16.Text = "Print Report";
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // month2
+            // m2
             // 
-            this.month2.FormattingEnabled = true;
-            this.month2.Items.AddRange(new object[] {
+            this.m2.Enabled = false;
+            this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m2.FormattingEnabled = true;
+            this.m2.Items.AddRange(new object[] {
             "January",
             "February",
             "March",
@@ -919,16 +917,19 @@
             "October",
             "November",
             "December"});
-            this.month2.Location = new System.Drawing.Point(276, 76);
-            this.month2.Name = "month2";
-            this.month2.Size = new System.Drawing.Size(89, 21);
-            this.month2.TabIndex = 1;
-            this.month2.Text = "Month";
+            this.m2.Location = new System.Drawing.Point(391, 65);
+            this.m2.Name = "m2";
+            this.m2.Size = new System.Drawing.Size(113, 28);
+            this.m2.TabIndex = 1;
+            this.m2.Text = "Month";
+            this.m2.SelectedIndexChanged += new System.EventHandler(this.m2_SelectedIndexChanged);
             // 
-            // month1
+            // m1
             // 
-            this.month1.FormattingEnabled = true;
-            this.month1.Items.AddRange(new object[] {
+            this.m1.Enabled = false;
+            this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m1.FormattingEnabled = true;
+            this.m1.Items.AddRange(new object[] {
             "January",
             "February",
             "March",
@@ -941,25 +942,27 @@
             "October",
             "November",
             "December"});
-            this.month1.Location = new System.Drawing.Point(62, 76);
-            this.month1.Name = "month1";
-            this.month1.Size = new System.Drawing.Size(83, 21);
-            this.month1.TabIndex = 1;
-            this.month1.Text = "Month";
+            this.m1.Location = new System.Drawing.Point(121, 66);
+            this.m1.Name = "m1";
+            this.m1.Size = new System.Drawing.Size(113, 28);
+            this.m1.TabIndex = 1;
+            this.m1.Text = "Month";
+            this.m1.SelectedIndexChanged += new System.EventHandler(this.m1_SelectedIndexChanged);
             // 
             // filt
             // 
+            this.filt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filt.FormattingEnabled = true;
             this.filt.Items.AddRange(new object[] {
             "All",
             "Claimed",
-            "Unclaimed",
-            "Euthanized",
-            "Adopted"});
-            this.filt.Location = new System.Drawing.Point(62, 39);
+            "Adopted",
+            "Euthanized"});
+            this.filt.Location = new System.Drawing.Point(65, 26);
             this.filt.Name = "filt";
-            this.filt.Size = new System.Drawing.Size(146, 21);
+            this.filt.Size = new System.Drawing.Size(212, 28);
             this.filt.TabIndex = 1;
+            this.filt.Text = "Status";
             this.filt.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // claimreportdgv
@@ -977,12 +980,12 @@
             this.claimreportdgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.claimreportdgv.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.claimreportdgv.Location = new System.Drawing.Point(13, 159);
+            this.claimreportdgv.Location = new System.Drawing.Point(13, 100);
             this.claimreportdgv.Name = "claimreportdgv";
             this.claimreportdgv.ReadOnly = true;
             this.claimreportdgv.RowHeadersVisible = false;
             this.claimreportdgv.RowHeadersWidth = 30;
-            this.claimreportdgv.Size = new System.Drawing.Size(989, 319);
+            this.claimreportdgv.Size = new System.Drawing.Size(989, 378);
             this.claimreportdgv.TabIndex = 0;
             // 
             // euthanizeDog
@@ -1359,12 +1362,12 @@
             this.dgvHist.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvHist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHist.GridColor = System.Drawing.Color.White;
-            this.dgvHist.Location = new System.Drawing.Point(19, 97);
+            this.dgvHist.Location = new System.Drawing.Point(19, 53);
             this.dgvHist.Name = "dgvHist";
             this.dgvHist.ReadOnly = true;
             this.dgvHist.RowHeadersVisible = false;
             this.dgvHist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHist.Size = new System.Drawing.Size(982, 411);
+            this.dgvHist.Size = new System.Drawing.Size(982, 455);
             this.dgvHist.TabIndex = 74;
             // 
             // cbTransType
@@ -1373,14 +1376,16 @@
             this.cbTransType.ForeColor = System.Drawing.Color.Black;
             this.cbTransType.FormattingEnabled = true;
             this.cbTransType.Items.AddRange(new object[] {
+            "All",
             "Claimed",
             "Adopted",
-            "Euthanized"});
-            this.cbTransType.Location = new System.Drawing.Point(16, 53);
+            "Euthanized",
+            "Pending (Impounded)"});
+            this.cbTransType.Location = new System.Drawing.Point(19, 16);
             this.cbTransType.Name = "cbTransType";
             this.cbTransType.Size = new System.Drawing.Size(288, 28);
             this.cbTransType.TabIndex = 73;
-            this.cbTransType.Text = "Transaction Type";
+            this.cbTransType.Text = "Dog Status";
             this.cbTransType.SelectedIndexChanged += new System.EventHandler(this.cbTransType_SelectedIndexChanged);
             // 
             // impounddogpoundDataSet
@@ -1393,6 +1398,53 @@
             this.impounddogpoundDataSetBindingSource.DataSource = this.impounddogpoundDataSet;
             this.impounddogpoundDataSetBindingSource.Position = 0;
             // 
+            // button17
+            // 
+            this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button17.ForeColor = System.Drawing.Color.White;
+            this.button17.Location = new System.Drawing.Point(590, 54);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(107, 40);
+            this.button17.TabIndex = 5;
+            this.button17.Text = "View";
+            this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // d1
+            // 
+            this.d1.Enabled = false;
+            this.d1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d1.FormattingEnabled = true;
+            this.d1.Location = new System.Drawing.Point(235, 66);
+            this.d1.Name = "d1";
+            this.d1.Size = new System.Drawing.Size(65, 28);
+            this.d1.TabIndex = 6;
+            this.d1.Text = "Day";
+            // 
+            // d2
+            // 
+            this.d2.Enabled = false;
+            this.d2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d2.FormattingEnabled = true;
+            this.d2.Location = new System.Drawing.Point(505, 65);
+            this.d2.Name = "d2";
+            this.d2.Size = new System.Drawing.Size(65, 28);
+            this.d2.TabIndex = 7;
+            this.d2.Text = "Day";
+            // 
+            // y2
+            // 
+            this.y2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.y2.Location = new System.Drawing.Point(335, 67);
+            this.y2.Name = "y2";
+            this.y2.Size = new System.Drawing.Size(55, 26);
+            this.y2.TabIndex = 8;
+            this.y2.Text = "Year";
+            this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged);
+            this.y2.Enter += new System.EventHandler(this.y2_Enter);
+            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1402,12 +1454,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.repclaimpan);
             this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.panelHistory);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
-            this.Controls.Add(this.repclaimpan);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
@@ -1496,6 +1548,7 @@
         private System.Windows.Forms.TextBox tbDesc;
         private System.Windows.Forms.ComboBox cbGender;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox a;
         private System.Windows.Forms.PictureBox r;
         private System.Windows.Forms.PictureBox et;
@@ -1528,7 +1581,7 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.ComboBox filt;
-        private System.Windows.Forms.ComboBox month1;
+        private System.Windows.Forms.ComboBox m1;
         private System.Windows.Forms.Panel panelHistory;
         private System.Windows.Forms.ComboBox cbTransType;
         private System.Windows.Forms.DataGridView dgvHist;
@@ -1536,15 +1589,16 @@
         private impounddogpoundDataSet impounddogpoundDataSet;
         private System.Windows.Forms.BindingSource impounddogpoundDataSetBindingSource;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ComboBox month2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox m2;
+        private System.Windows.Forms.TextBox y1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ComboBox tbBreed;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.ComboBox d2;
+        private System.Windows.Forms.ComboBox d1;
+        private System.Windows.Forms.TextBox y2;
     }
 }
