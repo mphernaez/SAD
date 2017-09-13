@@ -49,8 +49,8 @@ namespace WindowsFormsApplication1
                 te = dt.Rows[0]["timeEnd"].ToString();
                 
                 string y = date.Substring(6, 4);
-                string m = date.Substring(3, 2);
-                string d = date.Substring(0, 2);
+                string d = date.Substring(3, 2);
+                string m = date.Substring(0, 2);
 
                 i = 0;
                 foreach(char a in ts)
@@ -88,11 +88,12 @@ namespace WindowsFormsApplication1
                     }
                     i++;
                 }
-                
+                MessageBox.Show(y + " " + m + " " + d);
                 tbOpYear.Text = y;
                 cbOpMonth.SelectedIndex = int.Parse(m) - 1;
                 responsiveDay(int.Parse(y));
                 tbOpDay.SelectedIndex = int.Parse(d) - 1;
+                MessageBox.Show(dt.Rows[0]["locationID"].ToString());
                 cbLocation.SelectedIndex = int.Parse(dt.Rows[0]["locationID"].ToString()) - 1;
                 tID = int.Parse(dt.Rows[0]["teamID"].ToString());
 
