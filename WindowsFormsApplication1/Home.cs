@@ -180,23 +180,16 @@ namespace WindowsFormsApplication1
                 int empty;
                 empty = int.Parse(dtt.Rows[0]["COUNT(*)"].ToString());
                 tbwarning.Text = (warning + " Item/s need your attenion");
-                tbempty.Text = (empty + " Item/s have ran out");
                 if(warning > 0)
                 {
                     warningPanel.Visible = true;
                 }
-                if(empty > 0)
-                {
-                    emptyPanel.Visible = true;
-                }
+
                 if (warning == 0)
                 {
                     warningPanel.Visible = false;
                 }
-                if (empty == 0)
-                {
-                    emptyPanel.Visible = false;
-                }
+
                 conn.Close();
 
             }
@@ -236,7 +229,7 @@ namespace WindowsFormsApplication1
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            emptyPanel.Visible = false;
+
         }
 
         private void pictureBox2_Click_1(object sender, EventArgs e)
@@ -295,7 +288,7 @@ namespace WindowsFormsApplication1
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
-
+                items.DataSource = dt;
                 conn.Close();
             } catch(Exception ex)
             {
