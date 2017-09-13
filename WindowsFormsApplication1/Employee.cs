@@ -353,6 +353,8 @@ namespace WindowsFormsApplication1
             button15.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button31.BackColor = Color.FromArgb(2, 170, 145);
+            button33.BackColor = Color.FromArgb(2, 170, 145);
+            Edit.Visible = false;
             newOperation.Visible = true;
             pnlActivity.Visible = false;
 
@@ -365,9 +367,12 @@ namespace WindowsFormsApplication1
         {
             button21.BackColor = Color.FromArgb(251, 162, 80);
             button15.BackColor = Color.FromArgb(2, 170, 145);
+            button33.BackColor = Color.FromArgb(2, 170, 145);
+            Edit.Visible = false;
             newOperation.Visible = false;
             pnlActivity.Visible = false;
             Operations.Visible = true;
+            
 
             refreshOperationsView();
         }
@@ -1737,6 +1742,14 @@ namespace WindowsFormsApplication1
         private void button33_Click(object sender, EventArgs e)
         {
             Edit.Visible = true;
+            button33.BackColor = Color.FromArgb(251, 162, 80);
+            button21.BackColor = Color.FromArgb(2, 170, 145);
+            button31.BackColor = Color.FromArgb(2, 170, 145);
+            button15.BackColor = Color.FromArgb(2, 170, 145);
+            newOperation.Visible = false;
+            pnlActivity.Visible = false;
+
+            Operations.Visible = false;
             refreshEditop();
         }
 

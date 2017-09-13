@@ -261,6 +261,49 @@ namespace WindowsFormsApplication1
             }
         }
 
+        bool warnc = false;
+        private void warningPanel_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private void warningPanel_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!warnc)
+            {
+                items.Visible = true;
+                ne.Visible = true;
+                warnc = true;
+                getWanrs();
+            }
+            else
+            {
+                items.Visible = false;
+                ne.Visible = false;
+                warnc = false;
+            }
+        }
+
+
+        private void getWanrs()
+        {
+            try
+            {
+                conn.Open();
+
+                MySqlCommand comm = new MySqlCommand("SELECT producatName, quantity FROM items WHERE quantity <= minQuantity", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                conn.Close();
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseLocation = new Point(-e.X, -e.Y);
