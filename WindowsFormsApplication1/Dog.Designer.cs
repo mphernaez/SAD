@@ -45,10 +45,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.addDog = new System.Windows.Forms.Panel();
-            this.reset = new System.Windows.Forms.Button();
-            this.hold = new System.Windows.Forms.Button();
+            this.tbBreed = new System.Windows.Forms.ComboBox();
             this.btnClearDog = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
             this.tbColor = new System.Windows.Forms.TextBox();
             this.cbSize = new System.Windows.Forms.ComboBox();
             this.cbOperation = new System.Windows.Forms.ComboBox();
@@ -117,7 +115,8 @@
             this.cbTransType = new System.Windows.Forms.ComboBox();
             this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.impounddogpoundDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tbBreed = new System.Windows.Forms.ComboBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.button11 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
@@ -144,6 +143,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -354,17 +354,9 @@
             // addDog
             // 
             this.addDog.BackColor = System.Drawing.Color.White;
-            this.addDog.Controls.Add(this.tbBreed);
-            this.addDog.Controls.Add(this.reset);
-            this.addDog.Controls.Add(this.hold);
-            this.addDog.Controls.Add(this.btnClearDog);
-            this.addDog.Controls.Add(this.label9);
-            this.addDog.Controls.Add(this.tbColor);
-            this.addDog.Controls.Add(this.cbSize);
+            this.addDog.Controls.Add(this.button11);
+            this.addDog.Controls.Add(this.panel3);
             this.addDog.Controls.Add(this.cbOperation);
-            this.addDog.Controls.Add(this.btnAddDog);
-            this.addDog.Controls.Add(this.tbDesc);
-            this.addDog.Controls.Add(this.cbGender);
             this.addDog.Controls.Add(this.label2);
             this.addDog.Location = new System.Drawing.Point(29, 197);
             this.addDog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -373,39 +365,122 @@
             this.addDog.TabIndex = 2;
             this.addDog.Visible = false;
             // 
-            // reset
+            // tbBreed
             // 
-            this.reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
-            this.reset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.reset.FlatAppearance.BorderSize = 0;
-            this.reset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
-            this.reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reset.ForeColor = System.Drawing.Color.White;
-            this.reset.Location = new System.Drawing.Point(686, 153);
-            this.reset.Name = "reset";
-            this.reset.Size = new System.Drawing.Size(60, 28);
-            this.reset.TabIndex = 28;
-            this.reset.Text = "Reset";
-            this.reset.UseVisualStyleBackColor = false;
-            this.reset.Click += new System.EventHandler(this.reset_Click);
-            // 
-            // hold
-            // 
-            this.hold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.hold.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.hold.FlatAppearance.BorderSize = 0;
-            this.hold.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
-            this.hold.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hold.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hold.ForeColor = System.Drawing.Color.White;
-            this.hold.Location = new System.Drawing.Point(622, 153);
-            this.hold.Name = "hold";
-            this.hold.Size = new System.Drawing.Size(60, 28);
-            this.hold.TabIndex = 27;
-            this.hold.Text = "Hold";
-            this.hold.UseVisualStyleBackColor = false;
-            this.hold.Click += new System.EventHandler(this.hold_Click);
+            this.tbBreed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbBreed.ForeColor = System.Drawing.Color.Gray;
+            this.tbBreed.FormattingEnabled = true;
+            this.tbBreed.Items.AddRange(new object[] {
+            "Affenpinscher",
+            "Akita",
+            "Australian",
+            "Azawakh",
+            "Basenji",
+            "Beagle",
+            "Beauceron",
+            "Bergamasco",
+            "Bichon Frise",
+            "Bloodhound",
+            "Bolognese",
+            "Borzoi",
+            "Bouvier des Flandres",
+            "Boxer",
+            "Briard",
+            "Brittany",
+            "Bulldog",
+            "Bullmastiff",
+            "Cattle Dog",
+            "Chihuahua",
+            "Chin",
+            "Chinook",
+            "Chow Chow",
+            "Collie",
+            "Coonhound",
+            "Corgi",
+            "Coton De Tulear",
+            "Crested",
+            "Dachshund",
+            "Dalmatian",
+            "Dingo",
+            "Elkhound",
+            "Eskimo Dog",
+            "Field Spaniel",
+            "Foxhound",
+            "German Shepherd",
+            "Giant Schnauzer",
+            "Golden Retriever",
+            "Gordon Setter",
+            "Great Dane",
+            "Great Pyrenees",
+            "Greyhound",
+            "Griffon",
+            "Harrier",
+            "Havanese",
+            "Hokkaido",
+            "Hound",
+            "Husky",
+            "Japanese Spitz",
+            "Keeshond",
+            "Klee Kai",
+            "Komondor",
+            "Kuvasz",
+            "Labrador",
+            "Labradoodle",
+            "Heeler",
+            "Leonberger",
+            "Leopard Dog",
+            "Lhasa Apso",
+            "Lowchen",
+            "Lundehund",
+            "Malamute",
+            "Malinois",
+            "Maltese",
+            "Mastiff",
+            "Miniature Schnauzer",
+            "Mongrel",
+            "Mountain Dog",
+            "Newfoundland",
+            "Otterhound",
+            "Papillon",
+            "Pekingese",
+            "Pinscher",
+            "Pit Bull",
+            "Plott",
+            "Pointer",
+            "Pomeranian",
+            "Poodle",
+            "Pug",
+            "Puli",
+            "Ridgeback",
+            "Rottweiler",
+            "Saint Bernard",
+            "Saluki",
+            "Samoyed",
+            "Setter",
+            "Shar-Pei",
+            "Sheepdog",
+            "Shiba Inu",
+            "Shih Tzu",
+            "Sloughi",
+            "Springer Spaniel",
+            "Terrier",
+            "Tervuren",
+            "Toy Spaniel",
+            "Vallhund",
+            "Vizsla",
+            "Water Dog",
+            "Water Spaniel",
+            "Weimaraner",
+            "Whippet",
+            "Xoloitzcuintli (Xolo)",
+            "Yorkshire",
+            "UNIDENTIFIED"});
+            this.tbBreed.Location = new System.Drawing.Point(31, 130);
+            this.tbBreed.Name = "tbBreed";
+            this.tbBreed.Size = new System.Drawing.Size(205, 28);
+            this.tbBreed.TabIndex = 29;
+            this.tbBreed.TabStop = false;
+            this.tbBreed.Text = "Breed";
             // 
             // btnClearDog
             // 
@@ -416,29 +491,19 @@
             this.btnClearDog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearDog.ForeColor = System.Drawing.Color.White;
-            this.btnClearDog.Location = new System.Drawing.Point(378, 402);
+            this.btnClearDog.Location = new System.Drawing.Point(273, 176);
             this.btnClearDog.Name = "btnClearDog";
-            this.btnClearDog.Size = new System.Drawing.Size(260, 38);
+            this.btnClearDog.Size = new System.Drawing.Size(171, 38);
             this.btnClearDog.TabIndex = 26;
             this.btnClearDog.Text = "Clear All";
             this.btnClearDog.UseVisualStyleBackColor = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(187)))), ((int)(((byte)(210)))));
-            this.label9.Location = new System.Drawing.Point(452, 120);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 17);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "Add a new dog";
+            this.btnClearDog.Click += new System.EventHandler(this.btnClearDog_Click);
             // 
             // tbColor
             // 
             this.tbColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbColor.ForeColor = System.Drawing.Color.Gray;
-            this.tbColor.Location = new System.Drawing.Point(261, 272);
+            this.tbColor.Location = new System.Drawing.Point(31, 93);
             this.tbColor.Name = "tbColor";
             this.tbColor.Size = new System.Drawing.Size(205, 26);
             this.tbColor.TabIndex = 11;
@@ -455,7 +520,7 @@
             "Small (1ft)",
             "Large (2ft)",
             "Extra Large (more than 2ft)"});
-            this.cbSize.Location = new System.Drawing.Point(261, 232);
+            this.cbSize.Location = new System.Drawing.Point(31, 53);
             this.cbSize.Name = "cbSize";
             this.cbSize.Size = new System.Drawing.Size(205, 28);
             this.cbSize.TabIndex = 5;
@@ -468,10 +533,10 @@
             this.cbOperation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOperation.ForeColor = System.Drawing.Color.Gray;
             this.cbOperation.FormattingEnabled = true;
-            this.cbOperation.Location = new System.Drawing.Point(261, 153);
+            this.cbOperation.Location = new System.Drawing.Point(277, 94);
             this.cbOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbOperation.Name = "cbOperation";
-            this.cbOperation.Size = new System.Drawing.Size(353, 28);
+            this.cbOperation.Size = new System.Drawing.Size(483, 28);
             this.cbOperation.TabIndex = 1;
             this.cbOperation.Text = "Operation Date and Location";
             this.cbOperation.SelectedIndexChanged += new System.EventHandler(this.cbOperation_SelectedIndexChanged);
@@ -485,9 +550,9 @@
             this.btnAddDog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddDog.ForeColor = System.Drawing.Color.White;
-            this.btnAddDog.Location = new System.Drawing.Point(378, 358);
+            this.btnAddDog.Location = new System.Drawing.Point(97, 176);
             this.btnAddDog.Name = "btnAddDog";
-            this.btnAddDog.Size = new System.Drawing.Size(260, 38);
+            this.btnAddDog.Size = new System.Drawing.Size(171, 38);
             this.btnAddDog.TabIndex = 10;
             this.btnAddDog.Text = "Add";
             this.btnAddDog.UseVisualStyleBackColor = false;
@@ -497,7 +562,7 @@
             // 
             this.tbDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDesc.ForeColor = System.Drawing.Color.Gray;
-            this.tbDesc.Location = new System.Drawing.Point(480, 193);
+            this.tbDesc.Location = new System.Drawing.Point(250, 14);
             this.tbDesc.Multiline = true;
             this.tbDesc.Name = "tbDesc";
             this.tbDesc.Size = new System.Drawing.Size(266, 144);
@@ -513,7 +578,7 @@
             this.cbGender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.cbGender.Location = new System.Drawing.Point(261, 194);
+            this.cbGender.Location = new System.Drawing.Point(31, 15);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(205, 28);
             this.cbGender.TabIndex = 3;
@@ -525,7 +590,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label2.Location = new System.Drawing.Point(402, 81);
+            this.label2.Location = new System.Drawing.Point(408, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(215, 39);
             this.label2.TabIndex = 0;
@@ -1311,122 +1376,36 @@
             this.impounddogpoundDataSetBindingSource.DataSource = this.impounddogpoundDataSet;
             this.impounddogpoundDataSetBindingSource.Position = 0;
             // 
-            // tbBreed
+            // panel3
             // 
-            this.tbBreed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBreed.ForeColor = System.Drawing.Color.Gray;
-            this.tbBreed.FormattingEnabled = true;
-            this.tbBreed.Items.AddRange(new object[] {
-            "Affenpinscher",
-            "Akita",
-            "Australian",
-            "Azawakh",
-            "Basenji",
-            "Beagle",
-            "Beauceron",
-            "Bergamasco",
-            "Bichon Frise",
-            "Bloodhound",
-            "Bolognese",
-            "Borzoi",
-            "Bouvier des Flandres",
-            "Boxer",
-            "Briard",
-            "Brittany",
-            "Bulldog",
-            "Bullmastiff",
-            "Cattle Dog",
-            "Chihuahua",
-            "Chin",
-            "Chinook",
-            "Chow Chow",
-            "Collie",
-            "Coonhound",
-            "Corgi",
-            "Coton De Tulear",
-            "Crested",
-            "Dachshund",
-            "Dalmatian",
-            "Dingo",
-            "Elkhound",
-            "Eskimo Dog",
-            "Field Spaniel",
-            "Foxhound",
-            "German Shepherd",
-            "Giant Schnauzer",
-            "Golden Retriever",
-            "Gordon Setter",
-            "Great Dane",
-            "Great Pyrenees",
-            "Greyhound",
-            "Griffon",
-            "Harrier",
-            "Havanese",
-            "Hokkaido",
-            "Hound",
-            "Husky",
-            "Japanese Spitz",
-            "Keeshond",
-            "Klee Kai",
-            "Komondor",
-            "Kuvasz",
-            "Labrador",
-            "Labradoodle",
-            "Heeler",
-            "Leonberger",
-            "Leopard Dog",
-            "Lhasa Apso",
-            "Lowchen",
-            "Lundehund",
-            "Malamute",
-            "Malinois",
-            "Maltese",
-            "Mastiff",
-            "Miniature Schnauzer",
-            "Mongrel",
-            "Mountain Dog",
-            "Newfoundland",
-            "Otterhound",
-            "Papillon",
-            "Pekingese",
-            "Pinscher",
-            "Pit Bull",
-            "Plott",
-            "Pointer",
-            "Pomeranian",
-            "Poodle",
-            "Pug",
-            "Puli",
-            "Ridgeback",
-            "Rottweiler",
-            "Saint Bernard",
-            "Saluki",
-            "Samoyed",
-            "Setter",
-            "Shar-Pei",
-            "Sheepdog",
-            "Shiba Inu",
-            "Shih Tzu",
-            "Sloughi",
-            "Springer Spaniel",
-            "Terrier",
-            "Tervuren",
-            "Toy Spaniel",
-            "Vallhund",
-            "Vizsla",
-            "Water Dog",
-            "Water Spaniel",
-            "Weimaraner",
-            "Whippet",
-            "Xoloitzcuintli (Xolo)",
-            "Yorkshire",
-            "UNIDENTIFIED"});
-            this.tbBreed.Location = new System.Drawing.Point(261, 309);
-            this.tbBreed.Name = "tbBreed";
-            this.tbBreed.Size = new System.Drawing.Size(205, 28);
-            this.tbBreed.TabIndex = 29;
-            this.tbBreed.TabStop = false;
-            this.tbBreed.Text = "Breed";
+            this.panel3.BackColor = System.Drawing.Color.LightGray;
+            this.panel3.Controls.Add(this.tbDesc);
+            this.panel3.Controls.Add(this.btnClearDog);
+            this.panel3.Controls.Add(this.btnAddDog);
+            this.panel3.Controls.Add(this.tbBreed);
+            this.panel3.Controls.Add(this.cbGender);
+            this.panel3.Controls.Add(this.cbSize);
+            this.panel3.Controls.Add(this.tbColor);
+            this.panel3.Location = new System.Drawing.Point(244, 131);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(540, 229);
+            this.panel3.TabIndex = 30;
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.Location = new System.Drawing.Point(426, 369);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(171, 38);
+            this.button11.TabIndex = 30;
+            this.button11.Text = "Finish";
+            this.button11.UseVisualStyleBackColor = false;
             // 
             // Dog
             // 
@@ -1486,6 +1465,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1529,7 +1510,6 @@
         private System.Windows.Forms.TextBox tbDesc;
         private System.Windows.Forms.ComboBox cbGender;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox a;
         private System.Windows.Forms.PictureBox r;
@@ -1564,8 +1544,6 @@
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.ComboBox filt;
         private System.Windows.Forms.ComboBox month1;
-        private System.Windows.Forms.Button reset;
-        private System.Windows.Forms.Button hold;
         private System.Windows.Forms.Panel panelHistory;
         private System.Windows.Forms.ComboBox cbTransType;
         private System.Windows.Forms.DataGridView dgvHist;
@@ -1581,5 +1559,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ComboBox tbBreed;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button button11;
     }
 }
