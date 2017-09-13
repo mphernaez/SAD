@@ -117,5 +117,40 @@ namespace WindowsFormsApplication1
         {
             passwordTextBox.Text = "";
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            string yesterday = DateTime.Now.Date.AddDays(-6).ToString("yyyy-MM-dd");
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT employeeID FROM employee", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                int[] emps = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    emps[i] = int.Parse(dt.Rows[i]["employeeID"].ToString());
+                }
+
+                comm = new MySqlCommand("SELECT employee.employeeID AS emp FROM employee WHERE employee.employeeID NOT IN(SELECT employee.employeeID FROM employee INNER JOIN attendance ON attendance.employeeID = employee.employeeID WHERE date = '"+yesterday+ "' AND type = 0) AND employee.employeeID IN (SELECT employee.employeeID FROM employee INNER JOIN attendance ON attendance.employeeID = employee.employeeID WHERE date = '"+yesterday+"' AND type = 1)", conn); 
+                adp = new MySqlDataAdapter(comm);
+                dt = new DataTable();
+                adp.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    MySqlCommand com = new MySqlCommand("INSERT INTO attendance(date, employeeID, type, time) VALUES('"+yesterday+"', "+int.Parse(dt.Rows[i]["emp"].ToString())+", '0', '16:00')", conn);
+                    com.ExecuteNonQuery();
+                }
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
     }
 }
