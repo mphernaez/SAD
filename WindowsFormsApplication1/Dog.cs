@@ -157,7 +157,6 @@ namespace WindowsFormsApplication1
                         comm.ExecuteNonQuery();
                         
                         cbGender.Text = "Gender";
-                        if(btnhold == false) cbOperation.Text = "Operation Date and Location";
                         cbSize.Text = "Size";
                         tbBreed.Text = "Breed";
                         tbColor.Text = "Color";
@@ -916,18 +915,9 @@ namespace WindowsFormsApplication1
         {
             this.Hide();
         }
+        
 
-        private void hold_Click(object sender, EventArgs e)
-        {
-            btnhold = true;
-            cbOperation.Enabled = false;
-        }
-
-        private void reset_Click(object sender, EventArgs e)
-        {
-            btnhold = false;
-            cbOperation.Enabled = true;
-        }
+        
 
         private void cbTransType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1021,6 +1011,15 @@ namespace WindowsFormsApplication1
             et.Visible = false;
             r.Visible = false;
             
+        }
+
+        private void btnClearDog_Click(object sender, EventArgs e)
+        {
+            cbGender.Text = "Gender";
+            cbSize.Text = "Size";
+            tbBreed.Text = "Breed";
+            tbColor.Text = "Color";
+            tbDesc.Text = "Other Description";
         }
     }
     }
