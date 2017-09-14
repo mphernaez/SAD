@@ -129,6 +129,12 @@
     <Compile Include="EndorserOut.Designer.cs">
       <DependentUpon>EndorserOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditItem.Designer.cs">
+      <DependentUpon>EditItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="opEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Adopt.resx">
       <DependentUpon>Adopt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditItem.resx">
+      <DependentUpon>EditItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>
