@@ -14,6 +14,8 @@ namespace WindowsFormsApplication1
 {
     public partial class Employee : Form
     {
+        int[] empact;
+        int[] matact;
         public int adminempid;
         public int adminID;
         private int y;
@@ -243,9 +245,9 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 employeeID = int.Parse(dgvAttendanceIn.Rows[e.RowIndex].Cells["personID"].Value.ToString());
-                string att = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-                string time = DateTime.Now.ToString("hh:mm:ss");
-                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, time, type) VALUES('" + att + "', " + employeeID + ", '"+time+"', " + "1" + ") ", conn);
+                string att = DateTime.Now.ToString("yyyy-MM-dd");
+                string time = DateTime.Now.ToString("HH:mm");
+                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type, time) VALUES('" + att + "', " + employeeID + ", " + "1" + ", '"+time+"') ", conn);
                 comm.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Successfully Recorded Attendance!");
@@ -263,6 +265,8 @@ namespace WindowsFormsApplication1
             button3.BackColor = Color.FromArgb(251, 162, 80);
             dgvAttendanceIn.Visible = true;
             dgvAttendanceOut.Visible = false;
+            panelAtt.Visible = false;
+            refreshAttendance();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -272,6 +276,7 @@ namespace WindowsFormsApplication1
 
             dgvAttendanceIn.Visible = false;
             dgvAttendanceOut.Visible = true;
+            panelAtt.Visible = false;
 
             refreshAttendanceOut();
         }
@@ -353,6 +358,8 @@ namespace WindowsFormsApplication1
             button15.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button31.BackColor = Color.FromArgb(2, 170, 145);
+            button33.BackColor = Color.FromArgb(2, 170, 145);
+            Edit.Visible = false;
             newOperation.Visible = true;
             pnlActivity.Visible = false;
 
@@ -365,9 +372,13 @@ namespace WindowsFormsApplication1
         {
             button21.BackColor = Color.FromArgb(251, 162, 80);
             button15.BackColor = Color.FromArgb(2, 170, 145);
+            button33.BackColor = Color.FromArgb(2, 170, 145);
+            button31.BackColor = Color.FromArgb(2, 170, 145);
+            Edit.Visible = false;
             newOperation.Visible = false;
             pnlActivity.Visible = false;
             Operations.Visible = true;
+            
 
             refreshOperationsView();
         }
@@ -1073,7 +1084,7 @@ namespace WindowsFormsApplication1
             tbOpDay.Enabled = false;
         }
 
-        private int checkIfTeamExists(int[] emps, int max) //emps = new operation team
+        public int checkIfTeamExists(int[] emps, int max) //emps = new operation team
         {
             try
             {
@@ -1163,6 +1174,7 @@ namespace WindowsFormsApplication1
         {
             home.Show();
             this.Hide();
+            home.refreshNotif();
         }
 
         private void button18_Click_1(object sender, EventArgs e)
@@ -1327,9 +1339,9 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 employeeID = int.Parse(dgvAttendanceIn.Rows[e.RowIndex].Cells["personID"].Value.ToString());
-                string att = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-
-                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type) VALUES('" + att + "', " + employeeID + ", " + "0" + ") ", conn);
+                string att = DateTime.Now.ToString("yyyy-MM-dd");
+                string time = DateTime.Now.ToString("HH:mm");
+                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type, time) VALUES('" + att + "', " + employeeID + ", " + "0" + ", '"+time+"') ", conn);
                 comm.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Successfully Recorded Attendance!");
@@ -1494,9 +1506,9 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 employeeID = int.Parse(dgvAttendanceOut.Rows[e.RowIndex].Cells["personID"].Value.ToString());
-                string att = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-                string time = DateTime.Now.ToString("hh:mm:ss");
-                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, time, type) VALUES('" + att + "', " + employeeID + ", '" +time+ "', " + "0" + ") ", conn);
+                string att = DateTime.Now.ToString("yyyy-MM-dd");
+                string time = DateTime.Now.ToString("HH:mm");
+                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type, time) VALUES('" + att + "', " + employeeID + ", " + "0" + ", '"+time+"') ", conn);
                 comm.ExecuteNonQuery();
 
                 string date = DateTime.Now.ToString("yyyy-MM-dd");
@@ -1550,11 +1562,55 @@ namespace WindowsFormsApplication1
             button31.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button15.BackColor = Color.FromArgb(2, 170, 145);
+            button33.BackColor = Color.FromArgb(2, 170, 145);
             newOperation.Visible = false;
             pnlActivity.Visible = true;
+            Edit.Visible = false;
+            Operations.Visible = false;;
+            refreshActivity();
 
-            Operations.Visible = false;
         }
+
+        private void refreshActivity()
+        {
+            cbempact.Enabled = true;
+            cbmatact.Enabled = true;
+            cbact.Enabled = true;
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT employee.employeeID AS emp, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM employee INNER JOIN profile ON profile.personID = employee.employeeID WHERE employee.employeeID NOT IN (SELECT employee.employeeID FROM operationteam INNER JOIN dogoperation ON dogoperation.teamID = operationteam.teamID INNER JOIN employee ON operationteam.employeeID = employee.employeeID WHERE dogoperation.status = 'OnGoing')", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                empact = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    empact[i] = int.Parse(dt.Rows[i]["emp"].ToString());
+                    cbempact.Items.Add(dt.Rows[i]["name"].ToString());
+                }
+                MySqlCommand commm = new MySqlCommand("SELECT itemID AS item, CONCAT(productName, ' (', description, ')') as product FROM items", conn);
+                MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                DataTable dta = new DataTable();
+                adpt.Fill(dta);
+                
+                matact = new int[dta.Rows.Count];
+                for (int i = 0; i < dta.Rows.Count; i++)
+                {
+                    matact[i] = int.Parse(dta.Rows[i]["item"].ToString());
+                    cbmatact.Items.Add(dta.Rows[i]["product"].ToString());
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
 
         private void button5_Click_1(object sender, EventArgs e)
         {
@@ -1580,7 +1636,6 @@ namespace WindowsFormsApplication1
             else
             {
                 MessageBox.Show("Please select type");
-
             }
         }
 
@@ -1593,17 +1648,46 @@ namespace WindowsFormsApplication1
         {
 
         }
-
+        
         private void button32_Click(object sender, EventArgs e)
         {
-
+           
+               
         }
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-
+            dgvAttendanceIn.Visible = false;
+            dgvAttendanceOut.Visible = false;
+            panelAtt.Visible = true;
+            refreshAttView();
         }
+        private void refreshAttView()
+        {
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Employee, time AS Time FROM attendance INNER JOIN profile ON profile.personID = attendance.employeeID WHERE type = 1 AND date = '"+date+"'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                dgvViewattin.DataSource = dt;
 
+                MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Employee, time AS Time FROM attendance INNER JOIN profile ON profile.personID = attendance.employeeID WHERE type = 0 AND date = '" + date + "'", conn);
+                MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                DataTable dta = new DataTable();
+                adpt.Fill(dta);
+
+                dgvViewattout.DataSource = dta;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
         private void dgvAttendanceIn_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -1737,11 +1821,19 @@ namespace WindowsFormsApplication1
         private void button33_Click(object sender, EventArgs e)
         {
             Edit.Visible = true;
+            button33.BackColor = Color.FromArgb(251, 162, 80);
+            button21.BackColor = Color.FromArgb(2, 170, 145);
+            button31.BackColor = Color.FromArgb(2, 170, 145);
+            button15.BackColor = Color.FromArgb(2, 170, 145);
+            newOperation.Visible = false;
+            pnlActivity.Visible = false;
+
+            Operations.Visible = false;
             refreshEditop();
         }
 
         int opId;
-        bool opOpen = false;
+        public bool opOpen = false;
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1831,7 +1923,17 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void pOperation_Paint(object sender, PaintEventArgs e)
+        private void actyr_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbmatact_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            numact.Visible = true;
+        }
+
+        private void panelviewatt_Paint(object sender, PaintEventArgs e)
         {
 
         }

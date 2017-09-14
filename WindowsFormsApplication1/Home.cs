@@ -160,13 +160,13 @@ namespace WindowsFormsApplication1
             refreshNotif();
         }
 
-        private void refreshNotif()
+        public void refreshNotif()
         {
             try
             {
                conn.Open();
 
-               MySqlCommand com = new MySqlCommand("SELECT COUNT(*) FROM items WHERE quantity != 0 AND quantity <= minQuantity ", conn);
+               MySqlCommand com = new MySqlCommand("SELECT COUNT(*) FROM items LEFT JOIN stockrequest ON stockID = itemID WHERE quantity <= minQuantity AND itemID NOT IN (SELECT stockID FROM stockrequest WHERE delivered = 0) ORDER BY productName", conn);
                MySqlDataAdapter adp = new MySqlDataAdapter(com);
                DataTable dt = new DataTable();
                adp.Fill(dt);
@@ -180,23 +180,16 @@ namespace WindowsFormsApplication1
                 int empty;
                 empty = int.Parse(dtt.Rows[0]["COUNT(*)"].ToString());
                 tbwarning.Text = (warning + " Item/s need your attenion");
-                tbempty.Text = (empty + " Item/s have ran out");
                 if(warning > 0)
                 {
                     warningPanel.Visible = true;
                 }
-                if(empty > 0)
-                {
-                    emptyPanel.Visible = true;
-                }
+
                 if (warning == 0)
                 {
                     warningPanel.Visible = false;
                 }
-                if (empty == 0)
-                {
-                    emptyPanel.Visible = false;
-                }
+
                 conn.Close();
 
             }
@@ -236,7 +229,7 @@ namespace WindowsFormsApplication1
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            emptyPanel.Visible = false;
+
         }
 
         private void pictureBox2_Click_1(object sender, EventArgs e)
@@ -258,6 +251,85 @@ namespace WindowsFormsApplication1
                 emp.Location = mousePoss;
                 inv.Location = mousePoss;
 
+            }
+        }
+
+        bool warnc = false;
+        private void warningPanel_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private void warningPanel_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!warnc)
+            {
+                items.Visible = true;
+                ne.Visible = true;
+                warnc = true;
+                getWanrs();
+            }
+            else
+            {
+                items.Visible = false;
+                ne.Visible = false;
+                warnc = false;
+                items.Rows.Clear();
+            }
+        }
+
+
+        private void getWanrs()
+        {
+            try
+            {
+                conn.Open();
+
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT itemId, productName, quantity FROM items LEFT JOIN stockrequest ON stockID = itemID WHERE quantity <= minQuantity AND itemID NOT IN (SELECT stockID FROM stockrequest WHERE delivered = 0) ORDER BY productName", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                items.DataSource = dt;
+                items.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, GraphicsUnit.Pixel);
+                for(int i = 0; i < items.Rows.Count; i++)
+                {
+                    items.Rows[i].Height = 30;
+                }
+
+                items.Columns["itemID"].Visible = false;
+                items.Columns["productName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                items.Columns["quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                items.ClearSelection();
+                conn.Close();
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+
+        string itemID;
+        private void items_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                itemID = items.Rows[e.RowIndex].Cells["itemID"].Value.ToString();
+                try
+                {
+                    conn.Open();
+
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO stockrequest VALUES(requestID, '"+DateTime.Now.ToString("yyy-MM-dd")+"', "+itemID+", 0 )", conn);
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Item Request Created");
+                    items.ClearSelection();
+                    getWanrs();
+                    conn.Close();
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
             }
         }
 

@@ -660,7 +660,6 @@
             // 
             // claimRBindingSource
             // 
-            this.claimRBindingSource.DataSource = typeof(WindowsFormsApplication1.ClaimR);
             // 
             // Claim
             // 
