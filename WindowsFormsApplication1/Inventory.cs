@@ -510,5 +510,37 @@ namespace WindowsFormsApplication1
         {
             reasonret.Text = "";
         }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("INVENTORY", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(400, 100));
+
+            if (cbTransType.Text == "Stock In")
+            {
+                e.Graphics.DrawString("Stock In Summary Report", new System.Drawing.Font("Arial", 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 150));
+            } else if (cbTransType.Text == "Stock Out")
+            {
+                e.Graphics.DrawString("Stock Out Summary Report", new System.Drawing.Font("Arial", 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 150));
+            } else
+            {
+                e.Graphics.DrawString("Returns Summary Report", new System.Drawing.Font("Arial", 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 150));
+            }
+            Bitmap bit = new Bitmap(this.dgvTrans.Width, this.dgvTrans.Height);
+            dgvTrans.DrawToBitmap(bit, new Rectangle(15, 200, this.dgvTrans.Width, this.dgvTrans.Height));
+            e.Graphics.DrawImage(bit, 15, 100);
+            e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 800));
+        }
+        private void printTrans()
+        {
+            PrintPreviewDialog dlg = new PrintPreviewDialog();
+            dlg.Document = printDocument1;
+            ((Form)dlg).WindowState = FormWindowState.Maximized;
+            dlg.ShowDialog();
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            printTrans();
+        }
     }
 }

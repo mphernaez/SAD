@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using MySql.Data.MySqlClient;
-using Microsoft.Office.Interop.Excel;
 
 
 namespace WindowsFormsApplication1
@@ -20,6 +19,10 @@ namespace WindowsFormsApplication1
     {
         //45   
         //55
+        string location;
+        string date;
+        string time;
+        string[] emps;
         private Color use;
         public int dogID;
         public int adminID;
@@ -63,6 +66,7 @@ namespace WindowsFormsApplication1
             repclaimpan.Visible = false;
             cbOperation.Items.Clear();
             addOperationsItems();
+            dogOp.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -523,10 +527,24 @@ namespace WindowsFormsApplication1
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+           
+            if (filt.Text == "Claimed")
+            {
+                e.Graphics.DrawString("Claimed Dogs Summary Report", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 100));
+            } else if (filt.Text == "Adopted")
+            {
+                e.Graphics.DrawString("Adopted Dogs Summary Report", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 100));
+            } else if (filt.Text == "Euthanized")
+            {
+                e.Graphics.DrawString("Euthanized Dogs Summary Report", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 100));
+            } else
+            {
+                e.Graphics.DrawString("Dog Summary Report", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 100));
+            }
             Bitmap bit = new Bitmap(this.claimreportdgv.Width, this.claimreportdgv.Height);
-            claimreportdgv.DrawToBitmap(bit, new System.Drawing.Rectangle(0, 0, this.claimreportdgv.Width, this.claimreportdgv.Height));
-            e.Graphics.DrawString("Dog Summary Report", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(200, 100));
-            e.Graphics.DrawImage(bit, 15, 80);
+            claimreportdgv.DrawToBitmap(bit, new Rectangle(15, 200, this.claimreportdgv.Width, this.claimreportdgv.Height));
+            e.Graphics.DrawImage(bit, 15, 100);
+            e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 800));
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -543,12 +561,17 @@ namespace WindowsFormsApplication1
 
         private void print()
         {
-            printPreviewDialog1.Document = printDocument1;
-            if (DialogResult.OK == printPreviewDialog1.ShowDialog())
-            {
-                printDocument1.DocumentName = "Dog Summary Report";
-                printDocument1.Print();
-            }
+            PrintPreviewDialog dlg = new PrintPreviewDialog();
+            dlg.Document = printDocument1;
+            ((Form)dlg).WindowState = FormWindowState.Maximized;
+            dlg.ShowDialog();
+        }
+        private void finish()
+        {
+            PrintPreviewDialog dlg = new PrintPreviewDialog();
+            dlg.Document = printDocument2;
+            ((Form)dlg).WindowState = FormWindowState.Maximized;
+            dlg.ShowDialog();
         }
 
         private void addOperationsItems()
@@ -913,7 +936,7 @@ namespace WindowsFormsApplication1
                 {
                     MySqlCommand comm;
                     MySqlDataAdapter adp;
-                    System.Data.DataTable dt = new System.Data.DataTable(); ;
+                    System.Data.DataTable dt = new System.Data.DataTable();
 
                     if (filt.SelectedIndex == 4)
                     {
@@ -995,6 +1018,72 @@ namespace WindowsFormsApplication1
         private void y2_Enter(object sender, EventArgs e)
         {
             y2.Text = "";
+        }
+        
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+
+                MySqlCommand commm = new MySqlCommand("SELECT description AS Location, SUBSTRING(date, 1, 11) AS Date, CONCAT(timeStart, '-', timeEnd) AS Time FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                System.Data.DataTable dta = new System.Data.DataTable();
+                adpt.Fill(dta);
+                 location = dta.Rows[0]["Location"].ToString();
+                 time = dta.Rows[0]["Time"].ToString();
+                 date = dta.Rows[0]["Date"].ToString();
+                //MessageBox.Show(location + " " + date + " " + time);
+                MySqlCommand commmm = new MySqlCommand("SELECT DISTINCT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '. ', lastname) AS name FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON operationteam.employeeID = employee.employeeID INNER JOIN dogoperation ON dogoperation.teamID = operationteam.teamID WHERE dogoperation.operationID =" + opid[cbOperation.SelectedIndex], conn);
+                MySqlDataAdapter adptr = new MySqlDataAdapter(commmm);
+                System.Data.DataTable data = new System.Data.DataTable();
+                adptr.Fill(data);
+                emps = new string[data.Rows.Count];    
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
+                    emps[i] = data.Rows[i]["name"].ToString();
+                    //MessageBox.Show(emps[i]);
+                }
+
+
+                MySqlCommand comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings FROM dogprofile INNER JOIN dogoperation ON"
+                                        + " dogprofile.operationID = dogoperation.operationID WHERE dogoperation.operationID = "+opid[cbOperation.SelectedIndex], conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adp.Fill(dt);
+                
+                dogOp.DataSource = dt;
+                dogOp.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, GraphicsUnit.Pixel);
+               
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+
+            finish();
+        }
+
+        private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            
+            e.Graphics.DrawString("Location: Barangay " + location , new Font("Arial", 16, FontStyle.Bold), Brushes.Black, new Point(25, 100));
+            e.Graphics.DrawString("Date: " + date, new Font("Arial", 16, FontStyle.Bold), Brushes.Black, new Point(25, 145));
+            e.Graphics.DrawString("Time: " + time, new Font("Arial", 16, FontStyle.Bold), Brushes.Black, new Point(25, 195));
+            int x = 235;
+            e.Graphics.DrawString("Employees Involved: ", new Font("Arial", 16, FontStyle.Bold), Brushes.Black, new Point(25, 235));
+            for (int i = 0; i < emps.Length; i++) {
+                 e.Graphics.DrawString("            " + emps[i], new Font("Arial", 16, FontStyle.Bold), Brushes.Black, new Point(170, x));
+                x = x + 25;
+            }
+
+            Bitmap bit = new Bitmap(this.dogOp.Width, this.dogOp.Height);
+            dogOp.DrawToBitmap(bit, new Rectangle(25, 280, this.dogOp.Width, this.dogOp.Height));
+            e.Graphics.DrawImage(bit, 15, 100);
+            e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 800));
         }
     }
 }

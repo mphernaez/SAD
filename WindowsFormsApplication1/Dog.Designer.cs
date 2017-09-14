@@ -117,6 +117,8 @@
             this.dgvHist = new System.Windows.Forms.DataGridView();
             this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.impounddogpoundDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dogOp = new System.Windows.Forms.DataGridView();
+            this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
@@ -144,6 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dogOp)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -358,6 +361,7 @@
             this.addDog.Controls.Add(this.panel3);
             this.addDog.Controls.Add(this.cbOperation);
             this.addDog.Controls.Add(this.label2);
+            this.addDog.Controls.Add(this.dogOp);
             this.addDog.Location = new System.Drawing.Point(29, 197);
             this.addDog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addDog.Name = "addDog";
@@ -380,6 +384,7 @@
             this.button11.TabIndex = 30;
             this.button11.Text = "Finish";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // panel3
             // 
@@ -1432,6 +1437,23 @@
             this.impounddogpoundDataSetBindingSource.DataSource = this.impounddogpoundDataSet;
             this.impounddogpoundDataSetBindingSource.Position = 0;
             // 
+            // dogOp
+            // 
+            this.dogOp.AllowUserToAddRows = false;
+            this.dogOp.AllowUserToDeleteRows = false;
+            this.dogOp.BackgroundColor = System.Drawing.Color.White;
+            this.dogOp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dogOp.Location = new System.Drawing.Point(201, 5);
+            this.dogOp.Name = "dogOp";
+            this.dogOp.ReadOnly = true;
+            this.dogOp.RowHeadersVisible = false;
+            this.dogOp.Size = new System.Drawing.Size(682, 486);
+            this.dogOp.TabIndex = 31;
+            // 
+            // printDocument2
+            // 
+            this.printDocument2.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument2_PrintPage);
+            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1441,12 +1463,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.adoptDog);
-            this.Controls.Add(this.repclaimpan);
-            this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.panelHistory);
             this.Controls.Add(this.euthanizeDog);
+            this.Controls.Add(this.adoptDog);
+            this.Controls.Add(this.repclaimpan);
+            this.Controls.Add(this.searchDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
@@ -1492,6 +1514,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dogOp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1586,5 +1609,7 @@
         private System.Windows.Forms.ComboBox d2;
         private System.Windows.Forms.ComboBox d1;
         private System.Windows.Forms.TextBox y2;
+        private System.Windows.Forms.DataGridView dogOp;
+        private System.Drawing.Printing.PrintDocument printDocument2;
     }
 }

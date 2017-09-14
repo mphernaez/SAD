@@ -1641,7 +1641,7 @@ namespace WindowsFormsApplication1
 
         private void button28_Click_1(object sender, EventArgs e)
         {
-
+            reportEm();
         }
 
         private void specLoc_TextChanged(object sender, EventArgs e)
@@ -1934,6 +1934,26 @@ namespace WindowsFormsApplication1
         }
 
         private void panelviewatt_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bit = new Bitmap(this.repEmp.Width, this.repEmp.Height);
+            repEmp.DrawToBitmap(bit, new Rectangle(15, 100, this.repEmp.Width, this.repEmp.Height));
+            e.Graphics.DrawImage(bit, 15, 100);
+            e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 800));
+        }
+        private void reportEm()
+        {
+            PrintPreviewDialog dlg = new PrintPreviewDialog();
+            dlg.Document = printDocument1;
+            ((Form)dlg).WindowState = FormWindowState.Maximized;
+            dlg.ShowDialog();
+        }
+
+        private void panel2_Paint_1(object sender, PaintEventArgs e)
         {
 
         }
