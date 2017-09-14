@@ -21,6 +21,7 @@ namespace WindowsFormsApplication1
         EndorserIn end { get; set; }
         public empty back { get; set; }
         EndorserOut endO { get; set; }
+        EditItem eItem { get; set; }
         empty home;
         int[] retprod;
         int[] retemp;
@@ -71,6 +72,12 @@ namespace WindowsFormsApplication1
             refreshSO();
             dgvo.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
             dgvin.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvEdit.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvEdit.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvo.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvin.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvTrans.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvTrans.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
         }
 
         public void refreshSI()
@@ -160,6 +167,7 @@ namespace WindowsFormsApplication1
             Sout.Visible = false;
             button5.BackColor = Color.FromArgb(2, 170, 145);
             button16.BackColor = Color.FromArgb(251, 162, 80);
+            button15.BackColor = Color.FromArgb(2, 170, 145);
             refreshSI();
         }
 
@@ -170,6 +178,7 @@ namespace WindowsFormsApplication1
             Sout.Visible = true;
             button16.BackColor = Color.FromArgb(2, 170, 145);
             button5.BackColor = Color.FromArgb(251, 162, 80);
+            button15.BackColor = Color.FromArgb(2, 170, 145);
             refreshSO();
         }
 
@@ -466,6 +475,9 @@ namespace WindowsFormsApplication1
             Sout.Visible = false;
             prodret.Items.Clear();
             empret.Items.Clear();
+            button15.BackColor = Color.FromArgb(251, 162, 80);
+            button16.BackColor = Color.FromArgb(2, 170, 145);
+            button5.BackColor = Color.FromArgb(2, 170, 145);
             reasonret.Text = "Reason";
             try
             {
@@ -508,6 +520,93 @@ namespace WindowsFormsApplication1
         private void reasonret_Enter(object sender, EventArgs e)
         {
             reasonret.Text = "";
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            add.Visible = true;
+            Edit.Visible = false;
+            panelReturn.Visible = false;
+            button6.BackColor = Color.FromArgb(251, 162, 80);
+            button31.BackColor = Color.FromArgb(2, 170, 145);
+
+        }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            Edit.Visible = true;
+            add.Visible = false;
+            panelReturn.Visible = false;
+            button31.BackColor = Color.FromArgb(251, 162, 80);
+            button6.BackColor = Color.FromArgb(2, 170, 145);
+
+            refreshEdit();
+        }
+
+        int eID;
+        bool ei = false;
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex != -1)
+            {
+
+                eID = int.Parse(dgvEdit.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
+                ei = true;
+
+            }
+        }
+
+        public void refreshEdit()
+        {
+            try
+            {
+                conn.Open();
+
+
+                MySqlCommand comm = new MySqlCommand("SELECT itemID, productName, description, CONCAT(minQuantity, ' ', measuredBy) AS min FROM items", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvEdit.DataSource = dt;
+
+                dgvEdit.Columns["itemID"].Visible = false;
+
+                dgvEdit.Columns["productName"].HeaderText = "Product";
+                dgvEdit.Columns["description"].HeaderText = "Description";
+                dgvEdit.Columns["min"].HeaderText = "Minimum Quantity";
+
+                dgvEdit.Columns["productName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEdit.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEdit.Columns["min"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEdit.ClearSelection();
+                conn.Close();
+
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+
+        public bool eiOpen = false;
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (ei)
+            {
+                if (!eiOpen)
+                {
+                    eItem = new EditItem(this);
+                    eiOpen = true;
+
+                }
+
+                eItem.id = eID;
+                eItem.Show();
+            } else
+            {
+                MessageBox.Show("Please select an item");
+            }
         }
     }
 }
