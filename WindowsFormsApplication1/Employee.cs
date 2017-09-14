@@ -359,6 +359,7 @@ namespace WindowsFormsApplication1
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button31.BackColor = Color.FromArgb(2, 170, 145);
             button33.BackColor = Color.FromArgb(2, 170, 145);
+            panelViewAct.Visible = false;
             Edit.Visible = false;
             newOperation.Visible = true;
             pnlActivity.Visible = false;
@@ -378,7 +379,7 @@ namespace WindowsFormsApplication1
             newOperation.Visible = false;
             pnlActivity.Visible = false;
             Operations.Visible = true;
-            
+            panelViewAct.Visible = false;
 
             refreshOperationsView();
         }
@@ -1566,6 +1567,7 @@ namespace WindowsFormsApplication1
             newOperation.Visible = false;
             pnlActivity.Visible = true;
             Edit.Visible = false;
+            panelViewAct.Visible = false;
             Operations.Visible = false;;
             refreshActivity();
 
@@ -1576,6 +1578,13 @@ namespace WindowsFormsApplication1
             cbempact.Enabled = true;
             cbmatact.Enabled = true;
             cbact.Enabled = true;
+            numact.Value = 0;
+            cbact.Text = "Activity";
+            cbempact.Text = "To be done by";
+            cbmatact.Text = "Materials(If Applicable)";
+            measBy.Text = "";
+            cbempact.Items.Clear();
+            cbmatact.Items.Clear();
             try
             {
                 conn.Open();
@@ -1590,6 +1599,7 @@ namespace WindowsFormsApplication1
                     empact[i] = int.Parse(dt.Rows[i]["emp"].ToString());
                     cbempact.Items.Add(dt.Rows[i]["name"].ToString());
                 }
+                cbempact.Items.Add("None");
                 MySqlCommand commm = new MySqlCommand("SELECT itemID AS item, CONCAT(productName, ' (', description, ')') as product FROM items", conn);
                 MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
                 DataTable dta = new DataTable();
@@ -1827,7 +1837,7 @@ namespace WindowsFormsApplication1
             button15.BackColor = Color.FromArgb(2, 170, 145);
             newOperation.Visible = false;
             pnlActivity.Visible = false;
-
+            panelViewAct.Visible = false;
             Operations.Visible = false;
             refreshEditop();
         }
@@ -1931,12 +1941,155 @@ namespace WindowsFormsApplication1
         private void cbmatact_SelectedIndexChanged(object sender, EventArgs e)
         {
             numact.Visible = true;
+            measBy.Visible = true;
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + matact[cbmatact.SelectedIndex],conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                measBy.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString() + ":";
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void panelviewatt_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+        private void button32_Click_1(object sender, EventArgs e)
+        {
+            if (cbact.Text!="Activity" && cbempact.Text!="To be done by")
+            {
+                string time = DateTime.Now.ToString("HH:mm");
+                string date = DateTime.Now.ToString("yyyy-MM-dd");
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm;
+                    MySqlCommand commm;
+                    MySqlCommand commmm;
+                    
+                    if (cbmatact.Text != "Materials(If Applicable)")
+                    {
+                        if (checkavailability(int.Parse(numact.Value.ToString()), matact[cbmatact.SelectedIndex]) == true) {
+                            
+                            if (numact.Value != 0 && cbmatact.Text != "None")
+                            {
+                                comm = new MySqlCommand("INSERT INTO activity(timeEnd, employeeID, date, type) VALUES('" + time + "', " + empact[cbempact.SelectedIndex] + ", '" + date + "', '" + cbact.Text + "')", conn);
+                                comm.ExecuteNonQuery();
+                                commm = new MySqlCommand("UPDATE items SET quantity = quantity - " + numact.Value + " WHERE itemID = " + matact[cbmatact.SelectedIndex], conn);
+                                commm.ExecuteNonQuery();
+                                commmm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, type, employeeID, reason) VALUES(" + matact[cbmatact.SelectedIndex] + ", " + numact.Value + ", '" + date + "', 'Out', " + empact[cbempact.SelectedIndex] + ", 'Activity: " + cbact.Text + "')", conn);
+                                commmm.ExecuteNonQuery();
+                                MessageBox.Show("Activity Recorded!");
+                                conn.Close();
+                                refreshActivity();
+                            }
+                            else
+                            {
+                                conn.Close();
+                                MessageBox.Show("Quantity not valid");
+                            }
+                        }
+                        else
+                        {
+                            conn.Close();
+                            MessageBox.Show("Quantity not valid. Item is running out");
+                        }
+                    }
+                    else
+                    {
+                        comm = new MySqlCommand("INSERT INTO activity(timeEnd, employeeID, date, type) VALUES('" + time + "', " + empact[cbempact.SelectedIndex] + ", '" + date + "', '" + cbact.Text + "')", conn);
+                        comm.ExecuteNonQuery();
+                        MessageBox.Show("Activity Recorded!");
+                        conn.Close();
+                        refreshActivity();
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter required fields");
+            }
+        }
+
+        private Boolean checkavailability(int q, int id)
+        {
+            try
+            {
+                
+                MySqlCommand comm = new MySqlCommand("SELECT quantity FROM items WHERE itemID = " + id, conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                if (int.Parse(dt.Rows[0]["quantity"].ToString()) < q)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+                
+
+            }
+            catch (Exception ex)
+            {
+                
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+        }
+
+        private void button36_Click(object sender, EventArgs e)
+        {
+            panelViewAct.Visible = true;
+            newOperation.Visible = false;
+            pnlActivity.Visible = false;
+            Edit.Visible = false;
+            Operations.Visible = false;
+            refreshViewAct();
+        }
+        private void refreshViewAct()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(lastname, ', ',firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Name, CONCAT(items.productName, ' (', items.description, ')') AS Product, CONCAT(stocktransaction.quantity, ' (', items.measuredBy, ')') AS 'Used', activity.type AS Activity, activity.date AS Date, activity.timeEnd AS 'Time Ended' FROM profile INNER JOIN activity ON activity.employeeID = profile.personID INNER JOIN stocktransaction ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID GROUP BY activity.activityID ORDER BY activity.timeEnd", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvViewAct.DataSource = dt;
+                dgvViewAct.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvViewAct.Columns["Product"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvViewAct.Columns["Used"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvViewAct.Columns["Activity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvViewAct.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvViewAct.Columns["Time Ended"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
     }
 }
 
