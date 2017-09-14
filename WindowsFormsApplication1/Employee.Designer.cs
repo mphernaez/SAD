@@ -157,9 +157,11 @@
             this.button15 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.DogCatchingOperation = new System.Windows.Forms.Panel();
+            this.button36 = new System.Windows.Forms.Button();
             this.button33 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
             this.pnlActivity = new System.Windows.Forms.Panel();
+            this.measBy = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.button32 = new System.Windows.Forms.Button();
             this.numact = new System.Windows.Forms.NumericUpDown();
@@ -181,8 +183,6 @@
             this.eTimeE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eTeamM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.measBy = new System.Windows.Forms.Label();
-            this.button36 = new System.Windows.Forms.Button();
             this.panelViewAct = new System.Windows.Forms.Panel();
             this.dgvViewAct = new System.Windows.Forms.DataGridView();
             this.attendance.SuspendLayout();
@@ -2092,17 +2092,32 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
+            this.DogCatchingOperation.Controls.Add(this.panelViewAct);
             this.DogCatchingOperation.Controls.Add(this.pnlActivity);
             this.DogCatchingOperation.Controls.Add(this.Edit);
             this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
-            this.DogCatchingOperation.Controls.Add(this.panelViewAct);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
             this.DogCatchingOperation.Size = new System.Drawing.Size(1016, 543);
             this.DogCatchingOperation.TabIndex = 44;
             this.DogCatchingOperation.Visible = false;
+            // 
+            // button36
+            // 
+            this.button36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button36.FlatAppearance.BorderSize = 0;
+            this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button36.ForeColor = System.Drawing.Color.White;
+            this.button36.Location = new System.Drawing.Point(556, 84);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(100, 32);
+            this.button36.TabIndex = 79;
+            this.button36.Text = "Activities";
+            this.button36.UseVisualStyleBackColor = false;
+            this.button36.Click += new System.EventHandler(this.button36_Click);
             // 
             // button33
             // 
@@ -2148,6 +2163,15 @@
             this.pnlActivity.Size = new System.Drawing.Size(982, 412);
             this.pnlActivity.TabIndex = 77;
             this.pnlActivity.Visible = false;
+            // 
+            // measBy
+            // 
+            this.measBy.AutoSize = true;
+            this.measBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.measBy.Location = new System.Drawing.Point(386, 171);
+            this.measBy.Name = "measBy";
+            this.measBy.Size = new System.Drawing.Size(0, 20);
+            this.measBy.TabIndex = 86;
             // 
             // label11
             // 
@@ -2391,30 +2415,6 @@
             this.eStat.HeaderText = "Status";
             this.eStat.Name = "eStat";
             this.eStat.ReadOnly = true;
-            // 
-            // measBy
-            // 
-            this.measBy.AutoSize = true;
-            this.measBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.measBy.Location = new System.Drawing.Point(386, 171);
-            this.measBy.Name = "measBy";
-            this.measBy.Size = new System.Drawing.Size(0, 20);
-            this.measBy.TabIndex = 86;
-            // 
-            // button36
-            // 
-            this.button36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button36.FlatAppearance.BorderSize = 0;
-            this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button36.ForeColor = System.Drawing.Color.White;
-            this.button36.Location = new System.Drawing.Point(556, 84);
-            this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(100, 32);
-            this.button36.TabIndex = 79;
-            this.button36.Text = "Activities";
-            this.button36.UseVisualStyleBackColor = false;
-            this.button36.Click += new System.EventHandler(this.button36_Click);
             // 
             // panelViewAct
             // 

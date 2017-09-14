@@ -645,6 +645,7 @@
             this.pID.HeaderText = "Column1";
             this.pID.Name = "pID";
             this.pID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.pID.Visible = false;
             // 
             // Name
             // 

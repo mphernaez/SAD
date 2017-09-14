@@ -1875,7 +1875,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void refreshEditop()
+        public void refreshEditop()
         {
             editOperation.Rows.Clear();
             try

@@ -49,8 +49,8 @@ namespace WindowsFormsApplication1
                 te = dt.Rows[0]["timeEnd"].ToString();
                 
                 string y = date.Substring(6, 4);
-                string m = date.Substring(3, 2);
-                string d = date.Substring(0, 2);
+                string d = date.Substring(3, 2);
+                string m = date.Substring(0, 2);
 
                 i = 0;
                 foreach(char a in ts)
@@ -425,6 +425,7 @@ namespace WindowsFormsApplication1
         private void OK1_Click(object sender, EventArgs e)
         {
             updateOp();
+            emp.refreshEditop();
         }
 
         private void updateOp()
@@ -441,7 +442,6 @@ namespace WindowsFormsApplication1
                 adp.Fill(dt);
 
                 int nt = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) +1;
-                MessageBox.Show(nt.ToString());
                 int idd;
                 int[] ids = new int[cTeam.Rows.Count];
                 for (int i = 0; i < cTeam.Rows.Count; i++)
