@@ -166,7 +166,7 @@ namespace WindowsFormsApplication1
             {
                conn.Open();
 
-               MySqlCommand com = new MySqlCommand("SELECT COUNT(*) FROM items LEFT JOIN stockrequest ON stockID = itemID WHERE quantity <= minQuantity AND itemID NOT IN (SELECT stockID FROM stockrequest WHERE delivered = 0) ORDER BY productName", conn);
+               MySqlCommand com = new MySqlCommand("SELECT DISTINCT COUNT(*) FROM items WHERE quantity <= minQuantity AND itemID NOT IN (SELECT stockID FROM stockrequest WHERE delivered = 0) ORDER BY productName", conn);
                MySqlDataAdapter adp = new MySqlDataAdapter(com);
                DataTable dt = new DataTable();
                adp.Fill(dt);
@@ -323,8 +323,8 @@ namespace WindowsFormsApplication1
                     comm.ExecuteNonQuery();
                     MessageBox.Show("Item Request Created");
                     items.ClearSelection();
-                    getWanrs();
                     conn.Close();
+                    getWanrs();
                 } catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
