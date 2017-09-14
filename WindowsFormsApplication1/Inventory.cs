@@ -246,8 +246,7 @@ namespace WindowsFormsApplication1
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     end.amtLabel.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString();
-                    comm = new MySqlCommand("UPDATE stockrequest SET delivered = 1 WHERE stockID = " + itemID, conn);
-                    comm.ExecuteNonQuery();
+                   
                 } else
                 {
                     MessageBox.Show("No Prior Stock Request Found");

@@ -29,6 +29,8 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
             refreshEnd();
+            dgvEnd.ClearSelection();
+
         }
         public void refreshEnd()
         {
@@ -47,7 +49,7 @@ namespace WindowsFormsApplication1
                 dgvEnd.Columns["lastname"].HeaderText = "Lastname";
                 dgvEnd.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvEnd.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvEnd.ClearSelection();
+                
 
 
                 conn.Close();
@@ -76,6 +78,8 @@ namespace WindowsFormsApplication1
                         MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction VALUES( transactionID, " + id + ", " + int.Parse(amtIn.Text) + ", '" + date + "', 'In', " + eID + ", '" + tbReason.Text + "', '" + expiration + "', "+rq+")", conn);
                         com.ExecuteNonQuery();
                         this.Hide();
+                        comm = new MySqlCommand("UPDATE stockrequest SET delivered = 1 WHERE stockID = " + id, conn);
+                        comm.ExecuteNonQuery();
                         MessageBox.Show("Item Updated");
                         inv.refreshSI();
                     }

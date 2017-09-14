@@ -134,75 +134,92 @@ namespace WindowsFormsApplication1
         int nl;
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            if (cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location" && cbAMPMend.Text != "AM/PM" && cbAMPMstart.Text != "AM/PM")
+            try
             {
-                ndate = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
-
-                int hs = int.Parse(tbStarth.Text), he = int.Parse(tbEndh.Text);
-                string hss; string hee;
-                if (cbAMPMstart.SelectedIndex == 1)
+                if (cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location" && cbAMPMend.Text != "AM/PM" && cbAMPMstart.Text != "AM/PM")
                 {
-                    hs = hs + 12;
-                }
-                if (cbAMPMend.SelectedIndex == 1)
-                {
-                    he = he + 12;
-                }
-                if (hs < 10)
-                {
-                    hss = "0" + hs.ToString();
-                }
-                else
-                    hss = hs.ToString();
-                if (he < 10)
-                {
-                    hee = "0" + he.ToString();
-                }
-                else
-                    hee = he.ToString();
+                    ndate = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
 
-
-                if (int.Parse(tbStartm.Text) < 10 && tbStartm.Text.Substring(0, 1) != "0")
-                {
-                    tbStartm.Text = "0" + tbStartm.Text;
-                }
-
-                if (int.Parse(tbEndm.Text) < 10 && tbEndm.Text.Substring(0, 1) != "0")
-                {
-                    tbEndm.Text = "0" + tbEndm.Text;
-                }
-                nts = hss + ":" + tbStartm.Text;
-                nte = hee + ":" + hee;
-                nl = cbLocation.SelectedIndex;
-
-                cTeam.Rows.Clear();
-                aEmp.Rows.Clear();
-
-                string dd = ndate + " " + nts;
-                DateTime myDate = Convert.ToDateTime(dd);
-                DateTime cD = DateTime.Now;
-                int result = DateTime.Compare(myDate, cD);
-                if (result > 0)
-                {
-
+                    int hs = int.Parse(tbStarth.Text), he = int.Parse(tbEndh.Text);
+                    string hss; string hee;
+                    if (cbAMPMstart.SelectedIndex == 1)
                     {
-                        panel2.Enabled = true;
-                        panel1.Enabled = false;
-                        getTeam();
-                        getEmps();
-                        
+                        hs = hs + 12;
+                    }
+                    if (cbAMPMend.SelectedIndex == 1)
+                    {
+                        he = he + 12;
+                    }
+                    if (hs < 10)
+                    {
+                        hss = "0" + hs.ToString();
+                    }
+                    else
+                        hss = hs.ToString();
+                    if (he < 10)
+                    {
+                        hee = "0" + he.ToString();
+                    }
+                    else
+                        hee = he.ToString();
+
+
+                    if (int.Parse(tbStartm.Text) < 10 && tbStartm.Text.Substring(0, 1) != "0")
+                    {
+                        tbStartm.Text = "0" + tbStartm.Text;
                     }
 
+                    if (int.Parse(tbEndm.Text) < 10 && tbEndm.Text.Substring(0, 1) != "0")
+                    {
+                        tbEndm.Text = "0" + tbEndm.Text;
+                    }
+                    nts = hss + ":" + tbStartm.Text;
+                    nte = hee + ":" + hee;
+                    nl = cbLocation.SelectedIndex;
+
+                    cTeam.Rows.Clear();
+                    aEmp.Rows.Clear();
+
+                    string dd = ndate + " " + nts;
+                    DateTime myDate = Convert.ToDateTime(dd);
+                    DateTime cD = DateTime.Now;
+                    int result = DateTime.Compare(myDate, cD);
+                    MySqlCommand con = new MySqlCommand("SELECT COUNT(*) FROM dogoperation WHERE date = '" + ndate + "' AND locationID = " + nl, conn);
+                    MySqlDataAdapter adt = new MySqlDataAdapter(con);
+                    DataTable dtt = new DataTable();
+                    adt.Fill(dtt);
+                    if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) == 0)
+                    {
+                        if (result > 0)
+                        {
+
+                            {
+                                panel2.Enabled = true;
+                                panel1.Enabled = false;
+                                getTeam();
+                                getEmps();
+
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please Input Valid Date & Time");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a different location");
+                    }
+
+
+
+
                 }
-                else
-                {
-                    MessageBox.Show("Please Input Valid Date & Time");
-                }
-
-
-               
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 

@@ -1231,6 +1231,8 @@ namespace WindowsFormsApplication1
 
         private void button28_Click(object sender, EventArgs e)
         {
+            
+            
             if (cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location" && cbAMPMend.Text != "AM/PM" && cbAMPMstart.Text != "AM/PM")
             {
                 d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
@@ -1271,28 +1273,39 @@ namespace WindowsFormsApplication1
 
                 ts = hss + ":" + tbStartm.Text;
                 te = hee + ":" + hee;
-                location = cbLocation.SelectedIndex;
+                location = cbLocation.SelectedIndex + 1;
                 String da = d + " " + ts;
                 DateTime myDate = Convert.ToDateTime(da);
                 DateTime cD = DateTime.Now;
                 int result = DateTime.Compare(myDate, cD);
-                if (result > 0)
+                MySqlCommand con = new MySqlCommand("SELECT COUNT(*) FROM dogoperation WHERE date = '"+d+"' AND locationID = " + location, conn);
+                MySqlDataAdapter adt = new MySqlDataAdapter(con);
+                DataTable dtt = new DataTable();
+                adt.Fill(dtt);
+                if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) == 0)
                 {
-
+                    if (result > 0)
                     {
-                        pteam.Enabled = true;
-                        pOperation.Enabled = false;
+
+                        {
+                            pteam.Enabled = true;
+                            pOperation.Enabled = false;
 
 
-                        //MessageBox.Show(d + ts + te + location);
+                            //MessageBox.Show(d + ts + te + location);
 
-                        refreshTeam();
+                            refreshTeam();
+                        }
+
                     }
-
+                    else
+                    {
+                        MessageBox.Show("Please Input Valid Date & Time");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Please Input Valid Date & Time");
+                    MessageBox.Show("Please Enter Different Location");
                 }
             }
             else

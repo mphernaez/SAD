@@ -253,6 +253,7 @@ namespace WindowsFormsApplication1
             repclaimpan.Visible = false;
 
             refreshAdoption();
+            dgvAdoption.ClearSelection();
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -303,6 +304,7 @@ namespace WindowsFormsApplication1
             repclaimpan.Visible = false;
 
             refreshArchive();
+            dgvArchive.ClearSelection();
 
         }
 
@@ -654,7 +656,7 @@ namespace WindowsFormsApplication1
                 dgvProfiles.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvProfiles.Columns["UCASE(size)"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvProfiles.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+                dgvProfiles.ClearSelection();
                 conn.Close();
             }
             catch (Exception ex)
@@ -760,7 +762,7 @@ namespace WindowsFormsApplication1
                 adp.Fill(dt);
 
                 dgvHist.DataSource = dt;
-
+                dgvHist.ClearSelection();
                 conn.Close();
             }
             catch (Exception ex)
@@ -782,7 +784,7 @@ namespace WindowsFormsApplication1
                 adp.Fill(dt);
 
                 dgvHist.DataSource = dt;
-
+                dgvHist.ClearSelection();
                 conn.Close();
             }
             catch (Exception ex)
@@ -802,7 +804,7 @@ namespace WindowsFormsApplication1
                 adp.Fill(dt);
 
                 dgvHist.DataSource = dt;
-
+                dgvHist.ClearSelection();
                 conn.Close();
             }
             catch (Exception ex)
@@ -995,6 +997,11 @@ namespace WindowsFormsApplication1
         private void y2_Enter(object sender, EventArgs e)
         {
             y2.Text = "";
+        }
+
+        private void searchDog_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
