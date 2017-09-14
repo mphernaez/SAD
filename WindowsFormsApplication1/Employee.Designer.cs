@@ -67,6 +67,14 @@
             this.tbaddress = new System.Windows.Forms.TextBox();
             this.cbgender = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ne = new System.Windows.Forms.PictureBox();
+            this.r = new System.Windows.Forms.PictureBox();
+            this.o = new System.Windows.Forms.PictureBox();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.a = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.datee = new System.Windows.Forms.ComboBox();
             this.choice = new System.Windows.Forms.ComboBox();
@@ -78,19 +86,25 @@
             this.impounddogpoundDataSet1 = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.pe = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
             this.ip = new System.Windows.Forms.Panel();
+            this.button16 = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.ep = new System.Windows.Forms.Panel();
+            this.button18 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.dp = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
+            this.button25 = new System.Windows.Forms.Button();
             this.hp = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.button26 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Operations = new System.Windows.Forms.Panel();
+            this.button27 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -138,6 +152,7 @@
             this.button15 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.DogCatchingOperation = new System.Windows.Forms.Panel();
+            this.button33 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
             this.pnlActivity = new System.Windows.Forms.Panel();
             this.button32 = new System.Windows.Forms.Button();
@@ -150,28 +165,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button33 = new System.Windows.Forms.Button();
             this.Edit = new System.Windows.Forms.Panel();
+            this.button34 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.editOperation = new System.Windows.Forms.DataGridView();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button26 = new System.Windows.Forms.Button();
-            this.ne = new System.Windows.Forms.PictureBox();
-            this.r = new System.Windows.Forms.PictureBox();
-            this.o = new System.Windows.Forms.PictureBox();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.a = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button34 = new System.Windows.Forms.Button();
-            this.button27 = new System.Windows.Forms.Button();
             this.eTeamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eOperationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -191,6 +191,10 @@
             this.addPanel.SuspendLayout();
             this.pnlAdmin.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.o)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.repEmp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).BeginInit();
@@ -211,10 +215,6 @@
             this.pnlActivity.SuspendLayout();
             this.Edit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editOperation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ne)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.o)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
             this.SuspendLayout();
             // 
             // attendance
@@ -224,8 +224,8 @@
             this.attendance.Controls.Add(this.button10);
             this.attendance.Controls.Add(this.button3);
             this.attendance.Controls.Add(this.label3);
-            this.attendance.Controls.Add(this.dgvAttendanceIn);
             this.attendance.Controls.Add(this.dgvAttendanceOut);
+            this.attendance.Controls.Add(this.dgvAttendanceIn);
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.attendance.Location = new System.Drawing.Point(24, 196);
             this.attendance.Name = "attendance";
@@ -778,6 +778,123 @@
             this.panel1.Size = new System.Drawing.Size(1070, 84);
             this.panel1.TabIndex = 42;
             // 
+            // ne
+            // 
+            this.ne.BackColor = System.Drawing.Color.Transparent;
+            this.ne.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.ne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ne.Location = new System.Drawing.Point(713, 70);
+            this.ne.Name = "ne";
+            this.ne.Size = new System.Drawing.Size(28, 31);
+            this.ne.TabIndex = 52;
+            this.ne.TabStop = false;
+            this.ne.Visible = false;
+            // 
+            // r
+            // 
+            this.r.BackColor = System.Drawing.Color.Transparent;
+            this.r.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.r.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.r.Location = new System.Drawing.Point(892, 68);
+            this.r.Name = "r";
+            this.r.Size = new System.Drawing.Size(28, 31);
+            this.r.TabIndex = 51;
+            this.r.TabStop = false;
+            this.r.Visible = false;
+            // 
+            // o
+            // 
+            this.o.BackColor = System.Drawing.Color.Transparent;
+            this.o.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.o.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.o.Location = new System.Drawing.Point(832, 70);
+            this.o.Name = "o";
+            this.o.Size = new System.Drawing.Size(28, 31);
+            this.o.TabIndex = 50;
+            this.o.TabStop = false;
+            this.o.Visible = false;
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.Transparent;
+            this.button14.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.catch2;
+            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Location = new System.Drawing.Point(817, 14);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(55, 55);
+            this.button14.TabIndex = 40;
+            this.toolTip1.SetToolTip(this.button14, "Operations");
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.rep;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Location = new System.Drawing.Point(878, 15);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(55, 52);
+            this.button8.TabIndex = 38;
+            this.toolTip1.SetToolTip(this.button8, "Reports");
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // a
+            // 
+            this.a.BackColor = System.Drawing.Color.Transparent;
+            this.a.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.a.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.a.Location = new System.Drawing.Point(773, 70);
+            this.a.Name = "a";
+            this.a.Size = new System.Drawing.Size(28, 31);
+            this.a.TabIndex = 47;
+            this.a.TabStop = false;
+            this.a.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Untitled_1;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(757, 14);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(55, 55);
+            this.button2.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.button2, "Attendance");
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.employees;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(696, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(55, 55);
+            this.button1.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.button1, "New/Edit");
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -901,6 +1018,24 @@
             this.panel3.Size = new System.Drawing.Size(1071, 112);
             this.panel3.TabIndex = 46;
             // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.Transparent;
+            this.button9.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.open_exit_door;
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button9.Location = new System.Drawing.Point(979, 14);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(70, 70);
+            this.button9.TabIndex = 5;
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click_1);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -942,6 +1077,24 @@
             this.ip.Size = new System.Drawing.Size(106, 168);
             this.ip.TabIndex = 9;
             // 
+            // button16
+            // 
+            this.button16.BackColor = System.Drawing.Color.Transparent;
+            this.button16.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.archive_black_box;
+            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button16.FlatAppearance.BorderSize = 0;
+            this.button16.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button16.Location = new System.Drawing.Point(18, 14);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(70, 70);
+            this.button16.TabIndex = 4;
+            this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.button16_Click_1);
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -963,6 +1116,24 @@
             this.ep.Name = "ep";
             this.ep.Size = new System.Drawing.Size(106, 168);
             this.ep.TabIndex = 9;
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.Transparent;
+            this.button18.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.user_silhouette;
+            this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button18.FlatAppearance.BorderSize = 0;
+            this.button18.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button18.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button18.Location = new System.Drawing.Point(21, 14);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(70, 70);
+            this.button18.TabIndex = 3;
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click_1);
             // 
             // label17
             // 
@@ -997,6 +1168,26 @@
             this.label12.Text = "Impound \r\nManagement";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // button25
+            // 
+            this.button25.BackColor = System.Drawing.Color.Transparent;
+            this.button25.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.paw_print_;
+            this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button25.FlatAppearance.BorderSize = 0;
+            this.button25.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button25.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button25.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.button25.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button25.Location = new System.Drawing.Point(18, 8);
+            this.button25.Margin = new System.Windows.Forms.Padding(0);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(76, 80);
+            this.button25.TabIndex = 2;
+            this.button25.UseVisualStyleBackColor = false;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
+            // 
             // hp
             // 
             this.hp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
@@ -1018,6 +1209,25 @@
             this.label7.TabIndex = 47;
             this.label7.Text = "Home";
             // 
+            // button26
+            // 
+            this.button26.BackColor = System.Drawing.Color.Transparent;
+            this.button26.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.home1;
+            this.button26.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button26.FlatAppearance.BorderSize = 0;
+            this.button26.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button26.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button26.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button26.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button26.Location = new System.Drawing.Point(11, 9);
+            this.button26.Margin = new System.Windows.Forms.Padding(0);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(85, 80);
+            this.button26.TabIndex = 7;
+            this.button26.UseVisualStyleBackColor = false;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
+            // 
             // Operations
             // 
             this.Operations.Controls.Add(this.button27);
@@ -1031,6 +1241,21 @@
             this.Operations.Size = new System.Drawing.Size(982, 412);
             this.Operations.TabIndex = 41;
             this.Operations.Visible = false;
+            // 
+            // button27
+            // 
+            this.button27.BackColor = System.Drawing.Color.Transparent;
+            this.button27.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources._61444;
+            this.button27.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button27.FlatAppearance.BorderSize = 0;
+            this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button27.ForeColor = System.Drawing.Color.White;
+            this.button27.Location = new System.Drawing.Point(350, 21);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(29, 32);
+            this.button27.TabIndex = 76;
+            this.button27.UseVisualStyleBackColor = false;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
             // 
             // button7
             // 
@@ -1202,6 +1427,7 @@
             this.pOperation.Name = "pOperation";
             this.pOperation.Size = new System.Drawing.Size(949, 128);
             this.pOperation.TabIndex = 76;
+            this.pOperation.Paint += new System.Windows.Forms.PaintEventHandler(this.pOperation_Paint);
             // 
             // tbOpDay
             // 
@@ -1795,6 +2021,21 @@
             this.DogCatchingOperation.TabIndex = 44;
             this.DogCatchingOperation.Visible = false;
             // 
+            // button33
+            // 
+            this.button33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button33.FlatAppearance.BorderSize = 0;
+            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button33.ForeColor = System.Drawing.Color.White;
+            this.button33.Location = new System.Drawing.Point(315, 84);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(100, 32);
+            this.button33.TabIndex = 78;
+            this.button33.Text = "Edit";
+            this.button33.UseVisualStyleBackColor = false;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
+            // 
             // button31
             // 
             this.button31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
@@ -1956,21 +2197,6 @@
             this.textBox4.Text = "00";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button33
-            // 
-            this.button33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button33.FlatAppearance.BorderSize = 0;
-            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button33.ForeColor = System.Drawing.Color.White;
-            this.button33.Location = new System.Drawing.Point(315, 84);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(100, 32);
-            this.button33.TabIndex = 78;
-            this.button33.Text = "Edit";
-            this.button33.UseVisualStyleBackColor = false;
-            this.button33.Click += new System.EventHandler(this.button33_Click);
-            // 
             // Edit
             // 
             this.Edit.Controls.Add(this.button34);
@@ -1984,6 +2210,20 @@
             this.Edit.Size = new System.Drawing.Size(982, 412);
             this.Edit.TabIndex = 77;
             this.Edit.Visible = false;
+            // 
+            // button34
+            // 
+            this.button34.BackColor = System.Drawing.Color.Transparent;
+            this.button34.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources._61444;
+            this.button34.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button34.FlatAppearance.BorderSize = 0;
+            this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button34.ForeColor = System.Drawing.Color.White;
+            this.button34.Location = new System.Drawing.Point(350, 21);
+            this.button34.Name = "button34";
+            this.button34.Size = new System.Drawing.Size(29, 32);
+            this.button34.TabIndex = 76;
+            this.button34.UseVisualStyleBackColor = false;
             // 
             // button35
             // 
@@ -2072,245 +2312,6 @@
             this.editOperation.TabIndex = 42;
             this.editOperation.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Transparent;
-            this.button9.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.open_exit_door;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button9.Location = new System.Drawing.Point(979, 14);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(70, 70);
-            this.button9.TabIndex = 5;
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click_1);
-            // 
-            // button16
-            // 
-            this.button16.BackColor = System.Drawing.Color.Transparent;
-            this.button16.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.archive_black_box;
-            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button16.FlatAppearance.BorderSize = 0;
-            this.button16.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button16.Location = new System.Drawing.Point(18, 14);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(70, 70);
-            this.button16.TabIndex = 4;
-            this.button16.UseVisualStyleBackColor = false;
-            this.button16.Click += new System.EventHandler(this.button16_Click_1);
-            // 
-            // button18
-            // 
-            this.button18.BackColor = System.Drawing.Color.Transparent;
-            this.button18.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.user_silhouette;
-            this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button18.FlatAppearance.BorderSize = 0;
-            this.button18.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button18.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button18.Location = new System.Drawing.Point(21, 14);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(70, 70);
-            this.button18.TabIndex = 3;
-            this.button18.UseVisualStyleBackColor = false;
-            this.button18.Click += new System.EventHandler(this.button18_Click_1);
-            // 
-            // button25
-            // 
-            this.button25.BackColor = System.Drawing.Color.Transparent;
-            this.button25.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.paw_print_;
-            this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button25.FlatAppearance.BorderSize = 0;
-            this.button25.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button25.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button25.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.button25.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button25.Location = new System.Drawing.Point(18, 8);
-            this.button25.Margin = new System.Windows.Forms.Padding(0);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(76, 80);
-            this.button25.TabIndex = 2;
-            this.button25.UseVisualStyleBackColor = false;
-            this.button25.Click += new System.EventHandler(this.button25_Click);
-            // 
-            // button26
-            // 
-            this.button26.BackColor = System.Drawing.Color.Transparent;
-            this.button26.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.home1;
-            this.button26.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button26.FlatAppearance.BorderSize = 0;
-            this.button26.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button26.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button26.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button26.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button26.Location = new System.Drawing.Point(11, 9);
-            this.button26.Margin = new System.Windows.Forms.Padding(0);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(85, 80);
-            this.button26.TabIndex = 7;
-            this.button26.UseVisualStyleBackColor = false;
-            this.button26.Click += new System.EventHandler(this.button26_Click);
-            // 
-            // ne
-            // 
-            this.ne.BackColor = System.Drawing.Color.Transparent;
-            this.ne.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
-            this.ne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ne.Location = new System.Drawing.Point(713, 70);
-            this.ne.Name = "ne";
-            this.ne.Size = new System.Drawing.Size(28, 31);
-            this.ne.TabIndex = 52;
-            this.ne.TabStop = false;
-            this.ne.Visible = false;
-            // 
-            // r
-            // 
-            this.r.BackColor = System.Drawing.Color.Transparent;
-            this.r.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
-            this.r.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.r.Location = new System.Drawing.Point(892, 68);
-            this.r.Name = "r";
-            this.r.Size = new System.Drawing.Size(28, 31);
-            this.r.TabIndex = 51;
-            this.r.TabStop = false;
-            this.r.Visible = false;
-            // 
-            // o
-            // 
-            this.o.BackColor = System.Drawing.Color.Transparent;
-            this.o.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
-            this.o.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.o.Location = new System.Drawing.Point(832, 70);
-            this.o.Name = "o";
-            this.o.Size = new System.Drawing.Size(28, 31);
-            this.o.TabIndex = 50;
-            this.o.TabStop = false;
-            this.o.Visible = false;
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.Transparent;
-            this.button14.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.catch2;
-            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Location = new System.Drawing.Point(817, 14);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(55, 55);
-            this.button14.TabIndex = 40;
-            this.toolTip1.SetToolTip(this.button14, "Operations");
-            this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.rep;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(878, 15);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(55, 52);
-            this.button8.TabIndex = 38;
-            this.toolTip1.SetToolTip(this.button8, "Reports");
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // a
-            // 
-            this.a.BackColor = System.Drawing.Color.Transparent;
-            this.a.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
-            this.a.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.a.Location = new System.Drawing.Point(773, 70);
-            this.a.Name = "a";
-            this.a.Size = new System.Drawing.Size(28, 31);
-            this.a.TabIndex = 47;
-            this.a.TabStop = false;
-            this.a.Visible = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Untitled_1;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(757, 14);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(55, 55);
-            this.button2.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.button2, "Attendance");
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.employees;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(696, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(55, 55);
-            this.button1.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.button1, "New/Edit");
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button34
-            // 
-            this.button34.BackColor = System.Drawing.Color.Transparent;
-            this.button34.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources._61444;
-            this.button34.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button34.FlatAppearance.BorderSize = 0;
-            this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button34.ForeColor = System.Drawing.Color.White;
-            this.button34.Location = new System.Drawing.Point(350, 21);
-            this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(29, 32);
-            this.button34.TabIndex = 76;
-            this.button34.UseVisualStyleBackColor = false;
-            // 
-            // button27
-            // 
-            this.button27.BackColor = System.Drawing.Color.Transparent;
-            this.button27.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources._61444;
-            this.button27.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button27.FlatAppearance.BorderSize = 0;
-            this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button27.ForeColor = System.Drawing.Color.White;
-            this.button27.Location = new System.Drawing.Point(350, 21);
-            this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(29, 32);
-            this.button27.TabIndex = 76;
-            this.button27.UseVisualStyleBackColor = false;
-            this.button27.Click += new System.EventHandler(this.button27_Click);
-            // 
             // eTeamID
             // 
             this.eTeamID.HeaderText = "teamID";
@@ -2370,10 +2371,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.DogCatchingOperation);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.DogCatchingOperation);
+            this.Controls.Add(this.addEmployee);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -2395,6 +2396,10 @@
             this.pnlAdmin.ResumeLayout(false);
             this.pnlAdmin.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ne)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.r)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.o)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.a)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.repEmp)).EndInit();
@@ -2428,10 +2433,6 @@
             this.Edit.ResumeLayout(false);
             this.Edit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editOperation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ne)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.r)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.o)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.a)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

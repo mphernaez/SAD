@@ -244,8 +244,8 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 employeeID = int.Parse(dgvAttendanceIn.Rows[e.RowIndex].Cells["personID"].Value.ToString());
                 string att = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-
-                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type) VALUES('" + att + "', " + employeeID + ", " + "1" + ") ", conn);
+                string time = DateTime.Now.ToString("hh:mm:ss");
+                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, time, type) VALUES('" + att + "', " + employeeID + ", '"+time+"', " + "1" + ") ", conn);
                 comm.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Successfully Recorded Attendance!");
@@ -1495,8 +1495,8 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 employeeID = int.Parse(dgvAttendanceOut.Rows[e.RowIndex].Cells["personID"].Value.ToString());
                 string att = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-
-                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type) VALUES('" + att + "', " + employeeID + ", " + "0" + ") ", conn);
+                string time = DateTime.Now.ToString("hh:mm:ss");
+                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, time, type) VALUES('" + att + "', " + employeeID + ", '" +time+ "', " + "0" + ") ", conn);
                 comm.ExecuteNonQuery();
 
                 string date = DateTime.Now.ToString("yyyy-MM-dd");
@@ -1831,6 +1831,10 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void pOperation_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 
