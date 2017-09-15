@@ -48,8 +48,8 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            panelHistory.Visible = false;
-            pictureBox1.Visible = false;
+            
+            
             //panel2.Visible = false;
             addDog.Visible = true;
             searchDog.Visible = false;
@@ -68,8 +68,7 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
 
-            panelHistory.Visible = false;
-            pictureBox1.Visible = false;
+            
             //panel2.Visible = false;
             searchDog.Visible = true;
             addDog.Visible = false;
@@ -239,8 +238,7 @@ namespace WindowsFormsApplication1
         private void button5_Click_1(object sender, EventArgs e)
         {
 
-            panelHistory.Visible = false;
-            pictureBox1.Visible = false;
+           
             searchDog.Visible = false;
             addDog.Visible = false;
             adoptDog.Visible = true;
@@ -289,8 +287,7 @@ namespace WindowsFormsApplication1
         private void button6_Click_1(object sender, EventArgs e)
         {
 
-            panelHistory.Visible = false;
-            pictureBox1.Visible = false;
+            
             //panel2.Visible = false;
             searchDog.Visible = false;
             addDog.Visible = false;
@@ -369,8 +366,7 @@ namespace WindowsFormsApplication1
         private void button8_Click_1(object sender, EventArgs e)
         {
             
-            panelHistory.Visible = false;
-            pictureBox1.Visible = false;
+            
             searchDog.Visible = false;
             addDog.Visible = false;
             adoptDog.Visible = false;
@@ -530,10 +526,165 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Dog Summary Report", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(200, 100));
             e.Graphics.DrawImage(bit, 15, 80);
         }
-
+        //IMPOUNDING SUMMARY REPORT
+        int impounded, claimed, adopted, amount, euthanized, alive, vaccinated, clients;
+        string[] vaccinators; //employees
+        int[] vaccinecount;   //vaccine count per employee
+                              //EX. vaccinators[i] has vaccinecount[i] vaccines for the specified date range
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            button16.Visible = true;
+            if (filt.Text != "Status" && m1.Text != "Month" && m2.Text != "Month" && y1.Text != "Year" && d1.Text != "Day")
+            {
+                int year = int.Parse(DateTime.Now.ToString("yyyy"));
+                int month = int.Parse(DateTime.Now.ToString("MM"));
+                int day = int.Parse(DateTime.Now.ToString("dd"));
+                string datestart = y1.Text + "-" + (m1.SelectedIndex + 1).ToString() + "-" + d1.Text;
+                string dateend = y1.Text + "-" + (m2.SelectedIndex + 1).ToString() + "-" + d2.Text;
+                try
+                {
+                    MySqlCommand comm;
+                    MySqlDataAdapter adp;
+                    System.Data.DataTable dt = new System.Data.DataTable(); ;
+                    
+                    conn.Open();
+                    if (filt.SelectedIndex == 0) //Claimed
+                    {
+                        claimreportdgv.Visible = true;
+                        panelSummary.Visible = false;
+                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Claimer', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
+                                        + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', location.description AS Location, "
+                                        + "contactNumber AS 'Contact Number', address AS Address "
+                                        + "FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
+                                        + "INNER JOIN location ON dogoperation.locationID = location.locationID "
+                                        + "INNER JOIN dogtransaction ON dogprofile.dogID = dogtransaction.dogID "
+                                        + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
+                                        + "WHERE dogprofile.status = 'claimed' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
+                        adp = new MySqlDataAdapter(comm);
+                        dt = new System.Data.DataTable();
+                        adp.Fill(dt);
+                    }
+                    else if (filt.SelectedIndex == 1) //Adopted
+                    {
+                        claimreportdgv.Visible = true;
+                        panelSummary.Visible = false;
+                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Adopter', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
+                                        + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', location.description AS Location, "
+                                        + "contactNumber AS 'Contact Number', address AS Address "
+                                        + "FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
+                                        + "INNER JOIN location ON dogoperation.locationID = location.locationID "
+                                        + "INNER JOIN dogtransaction ON dogprofile.dogID = dogtransaction.dogID "
+                                        + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
+                                        + "WHERE dogprofile.status = 'adopted' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
+                        adp = new MySqlDataAdapter(comm);
+                        dt = new System.Data.DataTable();
+                        adp.Fill(dt);
+                    }
+                    else if (filt.SelectedIndex == 2)//Euthanized
+                    {
+                        claimreportdgv.Visible = true;
+                        panelSummary.Visible = false;
+                        comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, dogoperation.date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = 'euthanized' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogoperation.date", conn);
+                        adp = new MySqlDataAdapter(comm);
+                        dt = new System.Data.DataTable();
+                        adp.Fill(dt);
+                    }
+                    else if (filt.SelectedIndex == 3)
+                    {
+                        MySqlCommand commm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
+                                                                +"WHERE dogoperation.date  BETWEEN '"+datestart+"' AND '"+dateend+"'", conn);
+                        MySqlDataAdapter adpp = new MySqlDataAdapter(commm); System.Data.DataTable dtt = new System.Data.DataTable(); adpp.Fill(dtt);
+                        impounded = int.Parse(dtt.Rows[0]["c"].ToString());
 
+                        MySqlCommand commmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
+                                                                + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' "
+                                                                +"AND dogprofile.status = 'claimed'", conn);
+                        adpp = new MySqlDataAdapter(commmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
+                        claimed = int.Parse(dtt.Rows[0]["c"].ToString());
+
+                        MySqlCommand commmmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
+                                                                + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' "
+                                                                +"AND dogprofile.status = 'adopted'", conn);
+                        adpp = new MySqlDataAdapter(commmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
+                        adopted = int.Parse(dtt.Rows[0]["c"].ToString());
+
+                        MySqlCommand commmmmm = new MySqlCommand("SELECT SUM(payment) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
+                                                                + "INNER JOIN dogtransaction ON dogtransaction.dogID = dogprofile.dogID WHERE dogtransaction.date  "
+                                                                +"BETWEEN '" + datestart + "' AND '" + dateend + "'", conn);
+                        adpp = new MySqlDataAdapter(commmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
+                        amount = int.Parse(dtt.Rows[0]["c"].ToString());
+
+                        MySqlCommand commmmmmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
+                                                                    + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' " 
+                                                                    +"AND dogprofile.status = 'euthanized'", conn);
+                        adpp = new MySqlDataAdapter(commmmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
+                        euthanized = int.Parse(dtt.Rows[0]["c"].ToString());
+
+                        MySqlCommand commmmmmmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
+                                                                    + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' " 
+                                                                    +"AND dogprofile.status = 'unclaimed'", conn);
+                        adpp = new MySqlDataAdapter(commmmmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
+                        alive = int.Parse(dtt.Rows[0]["c"].ToString());
+
+                        MySqlCommand commmmmmmmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogtransaction WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' AND vaccine = 1", conn);
+                        adpp = new MySqlDataAdapter(commmmmmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
+                        vaccinated = int.Parse(dtt.Rows[0]["c"].ToString());
+
+                        MySqlCommand commmmmmmmmm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '. ', lastname) AS name, " 
+                                                                    +"COUNT(profile.lastname) AS Vaccinations "
+                                                                    + "FROM profile "
+                                                                    + "INNER JOIN employee ON employee.employeeID = profile.personID "
+                                                                    + "INNER JOIN activity ON activity.employeeID = employee.employeeID "
+                                                                    + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' AND type = 'Vaccination' "
+                                                                    + "GROUP BY name "
+                                                                    + "ORDER BY Vaccinations DESC", conn);
+                        adp = new MySqlDataAdapter(commmmmmmmmm);
+                        System.Data.DataTable dta = new System.Data.DataTable();
+                        adp.Fill(dta);
+                        vaccinators = new string[dta.Rows.Count];
+                        vaccinecount = new int[dta.Rows.Count];
+                        for (int i = 0; i < dta.Rows.Count; i++)
+                        {
+                            vaccinators[i] = dta.Rows[i]["name"].ToString();
+                            vaccinecount[i] = int.Parse(dta.Rows[i]["Vaccinations"].ToString());
+                        }
+
+                        MySqlCommand commmmmmmmmmm = new MySqlCommand("SELECT COUNT(client.personID) AS c FROM client "
+                                                                        + "INNER JOIN dogtransaction ON dogtransaction.personID = client.personID "
+                                                                        +"WHERE date BETWEEN '"+datestart+"' AND '"+dateend+"'", conn);
+                        adpp = new MySqlDataAdapter(commmmmmmmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
+                        clients = int.Parse(dtt.Rows[0]["c"].ToString());
+
+                        claimreportdgv.Visible = false;
+                        panelSummary.Visible = true;
+
+                        claim.Text = claimed.ToString();
+                        adopt.Text = adopted.ToString();
+                        euth.Text = euthanized.ToString();
+                        imp.Text = impounded.ToString();
+                        amt.Text = amount.ToString();
+                        uncl.Text = alive.ToString();
+                        vacc.Text = vaccinated.ToString();
+                        client.Text = clients.ToString();
+                        dgvVacc.DataSource = dta;
+                    }
+
+
+                    claimreportdgv.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, GraphicsUnit.Pixel);
+                    claimreportdgv.DataSource = dt;
+
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter required fields in correct format/value");
+            }
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -721,98 +872,10 @@ namespace WindowsFormsApplication1
 
         private void cbTransType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbTransType.SelectedIndex == 1)
-            {
-                refreshHist("claimed", "Claimer");
-            }
-            else if (cbTransType.SelectedIndex == 2)
-            {
-                refreshHist("adopted", "Adoptor");
-            }
-            else if (cbTransType.SelectedIndex == 3)
-            {
-                refreshEutUnc("euthanized");
-            }
-            else if (cbTransType.SelectedIndex == 4)
-            {
-                refreshEutUnc("unclaimed");
-            }
-            else
-            {
-                refreshAll();
-            }
+           
         }
 
-        private void refreshHist(string status, string x)
-        {
-
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS '" + x + "', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
-                                        + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', location.description AS Location, "
-                                        + "contactNumber AS 'Contact Number', address AS Address "
-                                        + "FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
-                                        + "INNER JOIN location ON dogoperation.locationID = location.locationID "
-                                        + "INNER JOIN dogtransaction ON dogprofile.dogID = dogtransaction.dogID "
-                                        + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
-                                        + "WHERE dogprofile.status = '" + status + "'", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                System.Data.DataTable dt = new System.Data.DataTable();
-                adp.Fill(dt);
-
-                dgvHist.DataSource = dt;
-                dgvHist.ClearSelection();
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
-            }
-        }
-
-        private void refreshEutUnc(string stat)
-        {
-
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = '" + stat + "'", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                System.Data.DataTable dt = new System.Data.DataTable();
-                adp.Fill(dt);
-
-                dgvHist.DataSource = dt;
-                dgvHist.ClearSelection();
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
-            }
-        }
-        private void refreshAll()
-        {
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY dogoperation.date", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                System.Data.DataTable dt = new System.Data.DataTable();
-                adp.Fill(dt);
-
-                dgvHist.DataSource = dt;
-                dgvHist.ClearSelection();
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
-            }
-        }
+        
         private void cbEmps_SelectedIndexChanged(object sender, EventArgs e)
         {
             //MessageBox.Show(empids[cbEmps.SelectedIndex].ToString());
@@ -825,8 +888,6 @@ namespace WindowsFormsApplication1
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            panelHistory.Visible = true;
-            pictureBox1.Visible = true;
             repclaimpan.Visible = false;
             searchDog.Visible = false;
             addDog.Visible = false;
@@ -892,6 +953,12 @@ namespace WindowsFormsApplication1
                 i++;
             }
         }
+
+        private void panelSummary_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void loopDay2(int x)
         {
             int i = 1;
@@ -903,82 +970,9 @@ namespace WindowsFormsApplication1
         }
         private void button17_Click(object sender, EventArgs e)
         {
-            int year = int.Parse(DateTime.Now.ToString("yyyy"));
-            int month = int.Parse(DateTime.Now.ToString("MM"));
-            int day = int.Parse(DateTime.Now.ToString("dd"));
             
-            if (filt.Text != "Status" && m1.Text != "Month" && m2.Text != "Month" && y1.Text != "Year" && d1.Text != "Day")
-            {
-                string datestart = y1.Text + "-" + (m1.SelectedIndex + 1).ToString() + "-" + d1.Text;
-                string dateend = y1.Text + "-" + (m2.SelectedIndex + 1).ToString() + "-" + d2.Text;
-                try
-                {
-                    MySqlCommand comm;
-                    MySqlDataAdapter adp;
-                    System.Data.DataTable dt = new System.Data.DataTable(); ;
-
-                    if (filt.SelectedIndex == 4)
-                    {
-                        //show print directly
-                    }
-
-                    conn.Open();
-                    if (filt.SelectedIndex == 0) //All
-                    {
-                        comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.date BETWEEN '"+datestart+"' AND '"+dateend+"' ORDER BY dogoperation.date", conn);
-                    }
-                    else if (filt.SelectedIndex == 1) //Claimed
-                    {
-                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Claimer', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
-                                        + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', location.description AS Location, "
-                                        + "contactNumber AS 'Contact Number', address AS Address "
-                                        + "FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
-                                        + "INNER JOIN location ON dogoperation.locationID = location.locationID "
-                                        + "INNER JOIN dogtransaction ON dogprofile.dogID = dogtransaction.dogID "
-                                        + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
-                                        + "WHERE dogprofile.status = 'claimed' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
-                        adp = new MySqlDataAdapter(comm);
-                        dt = new System.Data.DataTable();
-                        adp.Fill(dt);
-                    }
-                    else if (filt.SelectedIndex == 2) //Adopted
-                    {
-                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Adopter', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
-                                        + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', location.description AS Location, "
-                                        + "contactNumber AS 'Contact Number', address AS Address "
-                                        + "FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
-                                        + "INNER JOIN location ON dogoperation.locationID = location.locationID "
-                                        + "INNER JOIN dogtransaction ON dogprofile.dogID = dogtransaction.dogID "
-                                        + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
-                                        + "WHERE dogprofile.status = 'adopted' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
-                        adp = new MySqlDataAdapter(comm);
-                        dt = new System.Data.DataTable();
-                        adp.Fill(dt);
-                    }
-                    else if(filt.SelectedIndex == 3)//Euthanized
-                    {
-                        comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, dogoperation.date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = 'euthanized' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogoperation.date", conn);
-                        adp = new MySqlDataAdapter(comm);
-                        dt = new System.Data.DataTable();
-                        adp.Fill(dt);
-                    }
-
-                    
-                    claimreportdgv.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, GraphicsUnit.Pixel);
-                    claimreportdgv.DataSource = dt;
-
-                    conn.Close();
-                }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please enter required fields in correct format/value");
-            }
+            
+            
         }
 
         private void y1_Enter(object sender, EventArgs e)
@@ -1000,6 +994,11 @@ namespace WindowsFormsApplication1
         }
 
         private void searchDog_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelHistory_Paint(object sender, PaintEventArgs e)
         {
 
         }

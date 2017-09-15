@@ -45,7 +45,7 @@ namespace WindowsFormsApplication1
             panelTrans.Visible = false;
             a.Visible = true;
             i.Visible = false;
-            r.Visible = false;
+            
             newitem.Visible = true;
             inv.Visible = false;
 
@@ -58,7 +58,7 @@ namespace WindowsFormsApplication1
             panelTrans.Visible = false;
             a.Visible = false;
             i.Visible = false;
-            r.Visible = false;
+            
             panelTrans.Visible = true;
             inv.Visible = false;
             newitem.Visible = false;
@@ -154,7 +154,7 @@ namespace WindowsFormsApplication1
             panelTrans.Visible = false;
             a.Visible = false;
             i.Visible = true;
-            r.Visible = false;
+            
             inv.Visible = true;
             newitem.Visible = false;
 
@@ -435,7 +435,7 @@ namespace WindowsFormsApplication1
             panelTrans.Visible = true;
             a.Visible = false;
             i.Visible = false;
-            r.Visible = false;
+            
             inv.Visible = false;
             newitem.Visible = false;
         }
@@ -649,7 +649,13 @@ namespace WindowsFormsApplication1
 
         private void button18_Click(object sender, EventArgs e)
         {
-            reportEm();
+           
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (cbTransType.Text != "Transaction Type") reportEm();
+            else MessageBox.Show("Please Select a Transaction");
         }
     }
 }
