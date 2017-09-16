@@ -70,6 +70,25 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dgvAdoption = new System.Windows.Forms.DataGridView();
             this.repclaimpan = new System.Windows.Forms.Panel();
+            this.panelSummary = new System.Windows.Forms.Panel();
+            this.client = new System.Windows.Forms.Label();
+            this.vacc = new System.Windows.Forms.Label();
+            this.uncl = new System.Windows.Forms.Label();
+            this.amt = new System.Windows.Forms.Label();
+            this.euth = new System.Windows.Forms.Label();
+            this.adopt = new System.Windows.Forms.Label();
+            this.claim = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.dgvVacc = new System.Windows.Forms.DataGridView();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.imp = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.y2 = new System.Windows.Forms.TextBox();
             this.d2 = new System.Windows.Forms.ComboBox();
             this.d1 = new System.Windows.Forms.ComboBox();
@@ -107,29 +126,11 @@
             this.hp = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.monthlyRep = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.impounddogpoundDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panelSummary = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.imp = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.dgvVacc = new System.Windows.Forms.DataGridView();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.claim = new System.Windows.Forms.Label();
-            this.adopt = new System.Windows.Forms.Label();
-            this.euth = new System.Windows.Forms.Label();
-            this.amt = new System.Windows.Forms.Label();
-            this.uncl = new System.Windows.Forms.Label();
-            this.vacc = new System.Windows.Forms.Label();
-            this.client = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -143,6 +144,8 @@
             this.adoptDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).BeginInit();
             this.repclaimpan.SuspendLayout();
+            this.panelSummary.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVacc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).BeginInit();
             this.euthanizeDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).BeginInit();
@@ -154,8 +157,6 @@
             this.hp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).BeginInit();
-            this.panelSummary.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVacc)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -832,6 +833,265 @@
             this.repclaimpan.TabIndex = 25;
             this.repclaimpan.Visible = false;
             // 
+            // panelSummary
+            // 
+            this.panelSummary.BackColor = System.Drawing.Color.White;
+            this.panelSummary.Controls.Add(this.client);
+            this.panelSummary.Controls.Add(this.vacc);
+            this.panelSummary.Controls.Add(this.uncl);
+            this.panelSummary.Controls.Add(this.amt);
+            this.panelSummary.Controls.Add(this.euth);
+            this.panelSummary.Controls.Add(this.adopt);
+            this.panelSummary.Controls.Add(this.claim);
+            this.panelSummary.Controls.Add(this.label27);
+            this.panelSummary.Controls.Add(this.label26);
+            this.panelSummary.Controls.Add(this.dgvVacc);
+            this.panelSummary.Controls.Add(this.label25);
+            this.panelSummary.Controls.Add(this.label24);
+            this.panelSummary.Controls.Add(this.label23);
+            this.panelSummary.Controls.Add(this.label22);
+            this.panelSummary.Controls.Add(this.label21);
+            this.panelSummary.Controls.Add(this.label20);
+            this.panelSummary.Controls.Add(this.imp);
+            this.panelSummary.Controls.Add(this.label9);
+            this.panelSummary.Location = new System.Drawing.Point(13, 106);
+            this.panelSummary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelSummary.Name = "panelSummary";
+            this.panelSummary.Size = new System.Drawing.Size(989, 402);
+            this.panelSummary.TabIndex = 44;
+            this.panelSummary.Visible = false;
+            this.panelSummary.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSummary_Paint);
+            // 
+            // client
+            // 
+            this.client.AutoSize = true;
+            this.client.BackColor = System.Drawing.Color.Transparent;
+            this.client.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.client.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.client.ForeColor = System.Drawing.Color.Black;
+            this.client.Location = new System.Drawing.Point(250, 267);
+            this.client.Name = "client";
+            this.client.Size = new System.Drawing.Size(60, 24);
+            this.client.TabIndex = 18;
+            this.client.Text = "00000";
+            // 
+            // vacc
+            // 
+            this.vacc.AutoSize = true;
+            this.vacc.BackColor = System.Drawing.Color.Transparent;
+            this.vacc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vacc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vacc.ForeColor = System.Drawing.Color.Black;
+            this.vacc.Location = new System.Drawing.Point(250, 237);
+            this.vacc.Name = "vacc";
+            this.vacc.Size = new System.Drawing.Size(60, 24);
+            this.vacc.TabIndex = 17;
+            this.vacc.Text = "00000";
+            // 
+            // uncl
+            // 
+            this.uncl.AutoSize = true;
+            this.uncl.BackColor = System.Drawing.Color.Transparent;
+            this.uncl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.uncl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uncl.ForeColor = System.Drawing.Color.Black;
+            this.uncl.Location = new System.Drawing.Point(250, 205);
+            this.uncl.Name = "uncl";
+            this.uncl.Size = new System.Drawing.Size(60, 24);
+            this.uncl.TabIndex = 16;
+            this.uncl.Text = "00000";
+            // 
+            // amt
+            // 
+            this.amt.AutoSize = true;
+            this.amt.BackColor = System.Drawing.Color.Transparent;
+            this.amt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.amt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amt.ForeColor = System.Drawing.Color.Black;
+            this.amt.Location = new System.Drawing.Point(337, 140);
+            this.amt.Name = "amt";
+            this.amt.Size = new System.Drawing.Size(60, 24);
+            this.amt.TabIndex = 15;
+            this.amt.Text = "00000";
+            // 
+            // euth
+            // 
+            this.euth.AutoSize = true;
+            this.euth.BackColor = System.Drawing.Color.Transparent;
+            this.euth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.euth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.euth.ForeColor = System.Drawing.Color.Black;
+            this.euth.Location = new System.Drawing.Point(250, 173);
+            this.euth.Name = "euth";
+            this.euth.Size = new System.Drawing.Size(60, 24);
+            this.euth.TabIndex = 14;
+            this.euth.Text = "00000";
+            // 
+            // adopt
+            // 
+            this.adopt.AutoSize = true;
+            this.adopt.BackColor = System.Drawing.Color.Transparent;
+            this.adopt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adopt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adopt.ForeColor = System.Drawing.Color.Black;
+            this.adopt.Location = new System.Drawing.Point(250, 107);
+            this.adopt.Name = "adopt";
+            this.adopt.Size = new System.Drawing.Size(60, 24);
+            this.adopt.TabIndex = 13;
+            this.adopt.Text = "00000";
+            // 
+            // claim
+            // 
+            this.claim.AutoSize = true;
+            this.claim.BackColor = System.Drawing.Color.Transparent;
+            this.claim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.claim.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.claim.ForeColor = System.Drawing.Color.Black;
+            this.claim.Location = new System.Drawing.Point(250, 74);
+            this.claim.Name = "claim";
+            this.claim.Size = new System.Drawing.Size(60, 24);
+            this.claim.TabIndex = 12;
+            this.claim.Text = "00000";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.Transparent;
+            this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.Gray;
+            this.label27.Location = new System.Drawing.Point(54, 267);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(133, 24);
+            this.label27.TabIndex = 11;
+            this.label27.Text = "Clients served:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Gray;
+            this.label26.Location = new System.Drawing.Point(509, 42);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(117, 24);
+            this.label26.TabIndex = 10;
+            this.label26.Text = "Vaccinations";
+            // 
+            // dgvVacc
+            // 
+            this.dgvVacc.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvVacc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVacc.Location = new System.Drawing.Point(513, 66);
+            this.dgvVacc.Name = "dgvVacc";
+            this.dgvVacc.Size = new System.Drawing.Size(415, 225);
+            this.dgvVacc.TabIndex = 9;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Gray;
+            this.label25.Location = new System.Drawing.Point(55, 237);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(165, 24);
+            this.label25.TabIndex = 8;
+            this.label25.Text = "Heads vaccinated:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Gray;
+            this.label24.Location = new System.Drawing.Point(55, 205);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(113, 24);
+            this.label24.TabIndex = 7;
+            this.label24.Text = "Heads alive:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.Gray;
+            this.label23.Location = new System.Drawing.Point(55, 140);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(270, 24);
+            this.label23.TabIndex = 6;
+            this.label23.Text = "Total amount from transactions:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Gray;
+            this.label22.Location = new System.Drawing.Point(56, 173);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(163, 24);
+            this.label22.TabIndex = 5;
+            this.label22.Text = "Heads euthanized";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Gray;
+            this.label21.Location = new System.Drawing.Point(56, 107);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(144, 24);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "Heads adopted:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Gray;
+            this.label20.Location = new System.Drawing.Point(56, 74);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(141, 24);
+            this.label20.TabIndex = 3;
+            this.label20.Text = "Heads claimed:";
+            // 
+            // imp
+            // 
+            this.imp.AutoSize = true;
+            this.imp.BackColor = System.Drawing.Color.Transparent;
+            this.imp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imp.ForeColor = System.Drawing.Color.Black;
+            this.imp.Location = new System.Drawing.Point(250, 43);
+            this.imp.Name = "imp";
+            this.imp.Size = new System.Drawing.Size(60, 24);
+            this.imp.TabIndex = 2;
+            this.imp.Text = "00000";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Gray;
+            this.label9.Location = new System.Drawing.Point(56, 43);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(172, 24);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Heads impounded:";
+            // 
             // y2
             // 
             this.y2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1327,9 +1587,9 @@
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
-            // printDocument1
+            // monthlyRep
             // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            
             // 
             // printPreviewDialog1
             // 
@@ -1351,265 +1611,6 @@
             // 
             this.impounddogpoundDataSetBindingSource.DataSource = this.impounddogpoundDataSet;
             this.impounddogpoundDataSetBindingSource.Position = 0;
-            // 
-            // panelSummary
-            // 
-            this.panelSummary.BackColor = System.Drawing.Color.White;
-            this.panelSummary.Controls.Add(this.client);
-            this.panelSummary.Controls.Add(this.vacc);
-            this.panelSummary.Controls.Add(this.uncl);
-            this.panelSummary.Controls.Add(this.amt);
-            this.panelSummary.Controls.Add(this.euth);
-            this.panelSummary.Controls.Add(this.adopt);
-            this.panelSummary.Controls.Add(this.claim);
-            this.panelSummary.Controls.Add(this.label27);
-            this.panelSummary.Controls.Add(this.label26);
-            this.panelSummary.Controls.Add(this.dgvVacc);
-            this.panelSummary.Controls.Add(this.label25);
-            this.panelSummary.Controls.Add(this.label24);
-            this.panelSummary.Controls.Add(this.label23);
-            this.panelSummary.Controls.Add(this.label22);
-            this.panelSummary.Controls.Add(this.label21);
-            this.panelSummary.Controls.Add(this.label20);
-            this.panelSummary.Controls.Add(this.imp);
-            this.panelSummary.Controls.Add(this.label9);
-            this.panelSummary.Location = new System.Drawing.Point(13, 106);
-            this.panelSummary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panelSummary.Name = "panelSummary";
-            this.panelSummary.Size = new System.Drawing.Size(989, 402);
-            this.panelSummary.TabIndex = 44;
-            this.panelSummary.Visible = false;
-            this.panelSummary.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSummary_Paint);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Gray;
-            this.label9.Location = new System.Drawing.Point(56, 43);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(172, 24);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Heads impounded:";
-            // 
-            // imp
-            // 
-            this.imp.AutoSize = true;
-            this.imp.BackColor = System.Drawing.Color.Transparent;
-            this.imp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.imp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imp.ForeColor = System.Drawing.Color.Black;
-            this.imp.Location = new System.Drawing.Point(250, 43);
-            this.imp.Name = "imp";
-            this.imp.Size = new System.Drawing.Size(60, 24);
-            this.imp.TabIndex = 2;
-            this.imp.Text = "00000";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.Gray;
-            this.label20.Location = new System.Drawing.Point(56, 74);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(141, 24);
-            this.label20.TabIndex = 3;
-            this.label20.Text = "Heads claimed:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.Gray;
-            this.label21.Location = new System.Drawing.Point(56, 107);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(144, 24);
-            this.label21.TabIndex = 4;
-            this.label21.Text = "Heads adopted:";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Gray;
-            this.label22.Location = new System.Drawing.Point(56, 173);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(163, 24);
-            this.label22.TabIndex = 5;
-            this.label22.Text = "Heads euthanized";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.Gray;
-            this.label23.Location = new System.Drawing.Point(55, 140);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(270, 24);
-            this.label23.TabIndex = 6;
-            this.label23.Text = "Total amount from transactions:";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.Gray;
-            this.label24.Location = new System.Drawing.Point(55, 205);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(113, 24);
-            this.label24.TabIndex = 7;
-            this.label24.Text = "Heads alive:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.Gray;
-            this.label25.Location = new System.Drawing.Point(55, 237);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(165, 24);
-            this.label25.TabIndex = 8;
-            this.label25.Text = "Heads vaccinated:";
-            // 
-            // dgvVacc
-            // 
-            this.dgvVacc.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvVacc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVacc.Location = new System.Drawing.Point(513, 66);
-            this.dgvVacc.Name = "dgvVacc";
-            this.dgvVacc.Size = new System.Drawing.Size(415, 225);
-            this.dgvVacc.TabIndex = 9;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.Color.Transparent;
-            this.label26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.Gray;
-            this.label26.Location = new System.Drawing.Point(509, 42);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(117, 24);
-            this.label26.TabIndex = 10;
-            this.label26.Text = "Vaccinations";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.Transparent;
-            this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.Gray;
-            this.label27.Location = new System.Drawing.Point(54, 267);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(133, 24);
-            this.label27.TabIndex = 11;
-            this.label27.Text = "Clients served:";
-            // 
-            // claim
-            // 
-            this.claim.AutoSize = true;
-            this.claim.BackColor = System.Drawing.Color.Transparent;
-            this.claim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.claim.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.claim.ForeColor = System.Drawing.Color.Black;
-            this.claim.Location = new System.Drawing.Point(250, 74);
-            this.claim.Name = "claim";
-            this.claim.Size = new System.Drawing.Size(60, 24);
-            this.claim.TabIndex = 12;
-            this.claim.Text = "00000";
-            // 
-            // adopt
-            // 
-            this.adopt.AutoSize = true;
-            this.adopt.BackColor = System.Drawing.Color.Transparent;
-            this.adopt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.adopt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adopt.ForeColor = System.Drawing.Color.Black;
-            this.adopt.Location = new System.Drawing.Point(250, 107);
-            this.adopt.Name = "adopt";
-            this.adopt.Size = new System.Drawing.Size(60, 24);
-            this.adopt.TabIndex = 13;
-            this.adopt.Text = "00000";
-            // 
-            // euth
-            // 
-            this.euth.AutoSize = true;
-            this.euth.BackColor = System.Drawing.Color.Transparent;
-            this.euth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.euth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.euth.ForeColor = System.Drawing.Color.Black;
-            this.euth.Location = new System.Drawing.Point(250, 173);
-            this.euth.Name = "euth";
-            this.euth.Size = new System.Drawing.Size(60, 24);
-            this.euth.TabIndex = 14;
-            this.euth.Text = "00000";
-            // 
-            // amt
-            // 
-            this.amt.AutoSize = true;
-            this.amt.BackColor = System.Drawing.Color.Transparent;
-            this.amt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.amt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amt.ForeColor = System.Drawing.Color.Black;
-            this.amt.Location = new System.Drawing.Point(337, 140);
-            this.amt.Name = "amt";
-            this.amt.Size = new System.Drawing.Size(60, 24);
-            this.amt.TabIndex = 15;
-            this.amt.Text = "00000";
-            // 
-            // uncl
-            // 
-            this.uncl.AutoSize = true;
-            this.uncl.BackColor = System.Drawing.Color.Transparent;
-            this.uncl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.uncl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uncl.ForeColor = System.Drawing.Color.Black;
-            this.uncl.Location = new System.Drawing.Point(250, 205);
-            this.uncl.Name = "uncl";
-            this.uncl.Size = new System.Drawing.Size(60, 24);
-            this.uncl.TabIndex = 16;
-            this.uncl.Text = "00000";
-            // 
-            // vacc
-            // 
-            this.vacc.AutoSize = true;
-            this.vacc.BackColor = System.Drawing.Color.Transparent;
-            this.vacc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vacc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vacc.ForeColor = System.Drawing.Color.Black;
-            this.vacc.Location = new System.Drawing.Point(250, 237);
-            this.vacc.Name = "vacc";
-            this.vacc.Size = new System.Drawing.Size(60, 24);
-            this.vacc.TabIndex = 17;
-            this.vacc.Text = "00000";
-            // 
-            // client
-            // 
-            this.client.AutoSize = true;
-            this.client.BackColor = System.Drawing.Color.Transparent;
-            this.client.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.client.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.client.ForeColor = System.Drawing.Color.Black;
-            this.client.Location = new System.Drawing.Point(250, 267);
-            this.client.Name = "client";
-            this.client.Size = new System.Drawing.Size(60, 24);
-            this.client.TabIndex = 18;
-            this.client.Text = "00000";
             // 
             // Dog
             // 
@@ -1649,6 +1650,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).EndInit();
             this.repclaimpan.ResumeLayout(false);
             this.repclaimpan.PerformLayout();
+            this.panelSummary.ResumeLayout(false);
+            this.panelSummary.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVacc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).EndInit();
             this.euthanizeDog.ResumeLayout(false);
             this.euthanizeDog.PerformLayout();
@@ -1667,9 +1671,6 @@
             this.hp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSetBindingSource)).EndInit();
-            this.panelSummary.ResumeLayout(false);
-            this.panelSummary.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVacc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1741,7 +1742,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Drawing.Printing.PrintDocument monthlyRep;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.ComboBox filt;
@@ -1777,5 +1778,6 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.DataGridView dgvVacc;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

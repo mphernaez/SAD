@@ -519,12 +519,25 @@ namespace WindowsFormsApplication1
             this.Hide();
         }
 
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void monthlyRep_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            Bitmap bit = new Bitmap(this.claimreportdgv.Width, this.claimreportdgv.Height);
-            claimreportdgv.DrawToBitmap(bit, new System.Drawing.Rectangle(0, 0, this.claimreportdgv.Width, this.claimreportdgv.Height));
-            e.Graphics.DrawString("Dog Summary Report", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(200, 100));
-            e.Graphics.DrawImage(bit, 15, 80);
+            e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, 50));
+            e.Graphics.DrawString("City of Davao", new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(400, 60));
+            e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(400, 60));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + d1.Text + "," + y1 + "-" + m2.Text + d2.Text + y2.Text, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
+            /* point structure kulang
+            e.Graphics.DrawString("1. Total number of heads impounded   " + impounded, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
+            e.Graphics.DrawString("2. Total number of heads claimed     " + claimed, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
+            e.Graphics.DrawString("2. Total number of heads adopted     " + adopted, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
+            e.Graphics.DrawString("3. Total amount from transactions    " + amount, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
+            e.Graphics.DrawString("4. Total number of heads euthanized  " + euthanized, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
+            e.Graphics.DrawString("5. Total number of heads alive       " + alive, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
+            e.Graphics.DrawString("6. Total number of heads vaccinated  " + vaccinated, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
+            e.Graphics.DrawString("7. No. of clients served    " + clients, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
+            e.Graphics.DrawString("* Remarks: ", new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
+            */
+
         }
         //IMPOUNDING SUMMARY REPORT
         int impounded, claimed, adopted, amount, euthanized, alive, vaccinated, clients;
@@ -696,12 +709,10 @@ namespace WindowsFormsApplication1
 
         private void print()
         {
-            printPreviewDialog1.Document = printDocument1;
-            if (DialogResult.OK == printPreviewDialog1.ShowDialog())
-            {
-                printDocument1.DocumentName = "Dog Summary Report";
-                printDocument1.Print();
-            }
+            PrintPreviewDialog dlg = new PrintPreviewDialog();
+            dlg.Document = monthlyRep;
+            ((Form)dlg).WindowState = FormWindowState.Maximized;
+            dlg.ShowDialog();
         }
 
         private void addOperationsItems()
