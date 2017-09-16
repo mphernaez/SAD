@@ -521,23 +521,34 @@ namespace WindowsFormsApplication1
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            string f = "Times New Roman";
+            int fsize = 14;
+            e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, 50));
+            e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(350, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new System.Drawing.Font(f, 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(160, 100));
+            e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font(f, 18, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(50, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + d1.Text + ", " + y1.Text + " - " + m2.Text + d2.Text + ", " + y2.Text, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 170));
+            
+            e.Graphics.DrawString("1. Total number of heads impounded:   ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 240));
+            e.Graphics.DrawString("2. Total number of heads claimed:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 280));
+            e.Graphics.DrawString("2. Total number of heads adopted:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 320));
+            e.Graphics.DrawString("3. Total amount from transactions:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 360));
+            e.Graphics.DrawString("4. Total number of heads euthanized:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 400));
+            e.Graphics.DrawString("5. Total number of heads alive:       ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 440));
+            e.Graphics.DrawString("6. Total number of heads vaccinated:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 480));
+            e.Graphics.DrawString("7. No. of clients served:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 520));
+            e.Graphics.DrawString("* Remarks: ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 560));
 
-            e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, 50));
-            e.Graphics.DrawString("City of Davao", new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + d1.Text + "," + y1 + "-" + m2.Text + d2.Text + y2.Text, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            /* point structure kulang
-            e.Graphics.DrawString("1. Total number of heads impounded   " + impounded, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("2. Total number of heads claimed     " + claimed, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("2. Total number of heads adopted     " + adopted, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("3. Total amount from transactions    " + amount, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("4. Total number of heads euthanized  " + euthanized, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("5. Total number of heads alive       " + alive, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("6. Total number of heads vaccinated  " + vaccinated, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("7. No. of clients served    " + clients, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("* Remarks: ", new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            */
+            e.Graphics.DrawString("" + impounded, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 240));
+            e.Graphics.DrawString("" + claimed, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 280));
+            e.Graphics.DrawString("" + adopted, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 320));
+            e.Graphics.DrawString("" + amount, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 360));
+            e.Graphics.DrawString("" + euthanized, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 400));
+            e.Graphics.DrawString("" + alive, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 440));
+            e.Graphics.DrawString("" + vaccinated, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 480));
+            e.Graphics.DrawString("" + clients, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 520));
+            e.Graphics.DrawString("", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 560));
+
         }
         //IMPOUNDING SUMMARY REPORT
         int impounded, claimed, adopted, amount, euthanized, alive, vaccinated, clients;
@@ -546,6 +557,7 @@ namespace WindowsFormsApplication1
                               //EX. vaccinators[i] has vaccinecount[i] vaccines for the specified date range
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             button16.Visible = true;
             if (filt.Text != "Status" && m1.Text != "Month" && m2.Text != "Month" && y1.Text != "Year" && d1.Text != "Day")
             {
@@ -559,10 +571,11 @@ namespace WindowsFormsApplication1
                     MySqlCommand comm;
                     MySqlDataAdapter adp;
                     System.Data.DataTable dt = new System.Data.DataTable(); ;
-                    
+
                     conn.Open();
                     if (filt.SelectedIndex == 0) //Claimed
                     {
+                        button16.Enabled = true;
                         claimreportdgv.Visible = true;
                         panelSummary.Visible = false;
                         comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Claimer', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
@@ -579,6 +592,7 @@ namespace WindowsFormsApplication1
                     }
                     else if (filt.SelectedIndex == 1) //Adopted
                     {
+                        button16.Enabled = true;
                         claimreportdgv.Visible = true;
                         panelSummary.Visible = false;
                         comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Adopter', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
@@ -595,6 +609,7 @@ namespace WindowsFormsApplication1
                     }
                     else if (filt.SelectedIndex == 2)//Euthanized
                     {
+                        button16.Enabled = true;
                         claimreportdgv.Visible = true;
                         panelSummary.Visible = false;
                         comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, dogoperation.date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = 'euthanized' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogoperation.date", conn);
@@ -604,38 +619,39 @@ namespace WindowsFormsApplication1
                     }
                     else if (filt.SelectedIndex == 3)
                     {
+                        button16.Enabled = true;
                         MySqlCommand commm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
-                                                                +"WHERE dogoperation.date  BETWEEN '"+datestart+"' AND '"+dateend+"'", conn);
+                                                                + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "'", conn);
                         MySqlDataAdapter adpp = new MySqlDataAdapter(commm); System.Data.DataTable dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         impounded = int.Parse(dtt.Rows[0]["c"].ToString());
 
                         MySqlCommand commmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
                                                                 + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' "
-                                                                +"AND dogprofile.status = 'claimed'", conn);
+                                                                + "AND dogprofile.status = 'claimed'", conn);
                         adpp = new MySqlDataAdapter(commmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         claimed = int.Parse(dtt.Rows[0]["c"].ToString());
 
                         MySqlCommand commmmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
                                                                 + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' "
-                                                                +"AND dogprofile.status = 'adopted'", conn);
+                                                                + "AND dogprofile.status = 'adopted'", conn);
                         adpp = new MySqlDataAdapter(commmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         adopted = int.Parse(dtt.Rows[0]["c"].ToString());
 
                         MySqlCommand commmmmm = new MySqlCommand("SELECT SUM(payment) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
                                                                 + "INNER JOIN dogtransaction ON dogtransaction.dogID = dogprofile.dogID WHERE dogtransaction.date  "
-                                                                +"BETWEEN '" + datestart + "' AND '" + dateend + "'", conn);
+                                                                + "BETWEEN '" + datestart + "' AND '" + dateend + "'", conn);
                         adpp = new MySqlDataAdapter(commmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         amount = int.Parse(dtt.Rows[0]["c"].ToString());
 
                         MySqlCommand commmmmmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
-                                                                    + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' " 
-                                                                    +"AND dogprofile.status = 'euthanized'", conn);
+                                                                    + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' "
+                                                                    + "AND dogprofile.status = 'euthanized'", conn);
                         adpp = new MySqlDataAdapter(commmmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         euthanized = int.Parse(dtt.Rows[0]["c"].ToString());
 
                         MySqlCommand commmmmmmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
-                                                                    + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' " 
-                                                                    +"AND dogprofile.status = 'unclaimed'", conn);
+                                                                    + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' "
+                                                                    + "AND dogprofile.status = 'unclaimed'", conn);
                         adpp = new MySqlDataAdapter(commmmmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         alive = int.Parse(dtt.Rows[0]["c"].ToString());
 
@@ -643,8 +659,8 @@ namespace WindowsFormsApplication1
                         adpp = new MySqlDataAdapter(commmmmmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         vaccinated = int.Parse(dtt.Rows[0]["c"].ToString());
 
-                        MySqlCommand commmmmmmmmm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '. ', lastname) AS name, " 
-                                                                    +"COUNT(profile.lastname) AS Vaccinations "
+                        MySqlCommand commmmmmmmmm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '. ', lastname) AS name, "
+                                                                    + "COUNT(profile.lastname) AS Vaccinations "
                                                                     + "FROM profile "
                                                                     + "INNER JOIN employee ON employee.employeeID = profile.personID "
                                                                     + "INNER JOIN activity ON activity.employeeID = employee.employeeID "
@@ -664,7 +680,7 @@ namespace WindowsFormsApplication1
 
                         MySqlCommand commmmmmmmmmm = new MySqlCommand("SELECT COUNT(client.personID) AS c FROM client "
                                                                         + "INNER JOIN dogtransaction ON dogtransaction.personID = client.personID "
-                                                                        +"WHERE date BETWEEN '"+datestart+"' AND '"+dateend+"'", conn);
+                                                                        + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "'", conn);
                         adpp = new MySqlDataAdapter(commmmmmmmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         clients = int.Parse(dtt.Rows[0]["c"].ToString());
 
@@ -693,8 +709,7 @@ namespace WindowsFormsApplication1
                     conn.Close();
                     MessageBox.Show(ex.ToString());
                 }
-            }
-            else
+            } else
             {
                 MessageBox.Show("Please enter required fields in correct format/value");
             }
@@ -709,13 +724,36 @@ namespace WindowsFormsApplication1
 
         private void print()
         {
-            printPreviewDialog1.Document = printDocument1;
-            if (DialogResult.OK == printPreviewDialog1.ShowDialog())
+            if (filt.SelectedIndex == 0)
             {
-                printDocument1.DocumentName = "Dog Summary Report";
-                printDocument1.Print();
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument2;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+            } else if (filt.SelectedIndex == 1)
+            {
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument3;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+            } else if (filt.SelectedIndex == 2)
+            {
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument4;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+            } else if (filt.SelectedIndex == 3)
+            {
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument1;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+            } else
+            {
+
             }
         }
+
 
         private void addOperationsItems()
         {
@@ -969,6 +1007,12 @@ namespace WindowsFormsApplication1
 
         private void panelSummary_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+        PrintRow = 0;
+        private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            //claim
 
         }
 
