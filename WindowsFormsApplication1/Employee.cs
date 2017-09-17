@@ -1305,7 +1305,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    MessageBox.Show("Please Enter Different Location");
+                    MessageBox.Show("The same location is recorded for the same date entered. \n Please Enter Different Location");
                 }
             }
             else
