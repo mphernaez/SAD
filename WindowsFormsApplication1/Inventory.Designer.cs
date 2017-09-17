@@ -259,15 +259,15 @@
             // 
             this.inv.BackColor = System.Drawing.Color.White;
             this.inv.Controls.Add(this.button19);
-            this.inv.Controls.Add(this.panelRequest);
             this.inv.Controls.Add(this.button15);
             this.inv.Controls.Add(this.button9);
             this.inv.Controls.Add(this.button5);
             this.inv.Controls.Add(this.button16);
             this.inv.Controls.Add(this.label12);
-            this.inv.Controls.Add(this.Sout);
             this.inv.Controls.Add(this.panelReturn);
             this.inv.Controls.Add(this.dgvout);
+            this.inv.Controls.Add(this.panelRequest);
+            this.inv.Controls.Add(this.Sout);
             this.inv.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inv.Location = new System.Drawing.Point(24, 196);
             this.inv.Name = "inv";

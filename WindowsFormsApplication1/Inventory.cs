@@ -466,6 +466,9 @@ namespace WindowsFormsApplication1
                 }
                 prodret.Items.Clear();
                 empret.Items.Clear();
+                prodret.Text = "Product Name";
+                empret.Text = "Endorser";
+                quanret.Value = 0;
                 reasonret.Text = "Reason";
             }
             else
