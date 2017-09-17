@@ -1087,6 +1087,7 @@
             this.pnlEmpFilt.Name = "pnlEmpFilt";
             this.pnlEmpFilt.Size = new System.Drawing.Size(361, 46);
             this.pnlEmpFilt.TabIndex = 16;
+            this.pnlEmpFilt.Visible = false;
             // 
             // cbEmpFilt
             // 

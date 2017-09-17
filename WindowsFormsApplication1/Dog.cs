@@ -590,9 +590,9 @@ namespace WindowsFormsApplication1
                         button16.Enabled = true;
                         claimreportdgv.Visible = true;
                         panelSummary.Visible = false;
-                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Claimer', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
+                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Claimer', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, SUBSTRING(dogoperation.date, 1, 11) AS 'Date Caught', "
                                         + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', location.description AS Location, "
-                                        + "contactNumber AS 'Contact Number', address AS Address "
+                                        + "contactNumber AS 'Contact Number' "
                                         + "FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
                                         + "INNER JOIN location ON dogoperation.locationID = location.locationID "
                                         + "INNER JOIN dogtransaction ON dogprofile.dogID = dogtransaction.dogID "
@@ -608,9 +608,9 @@ namespace WindowsFormsApplication1
                         button16.Enabled = true;
                         claimreportdgv.Visible = true;
                         panelSummary.Visible = false;
-                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Adopter', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
+                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Adopter', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, SUBSTRING(dogoperation.date, 1, 11) AS 'Date Caught', "
                                         + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', location.description AS Location, "
-                                        + "contactNumber AS 'Contact Number', address AS Address "
+                                        + "contactNumber AS 'Contact Number' "
                                         + "FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
                                         + "INNER JOIN location ON dogoperation.locationID = location.locationID "
                                         + "INNER JOIN dogtransaction ON dogprofile.dogID = dogtransaction.dogID "
@@ -626,7 +626,7 @@ namespace WindowsFormsApplication1
                         button16.Enabled = true;
                         claimreportdgv.Visible = true;
                         panelSummary.Visible = false;
-                        comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, dogoperation.date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = 'euthanized' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogoperation.date", conn);
+                        comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, SUBSTRING(dogoperation.date, 1, 11) AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = 'euthanized' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogoperation.date", conn);
                         adp = new MySqlDataAdapter(comm);
                         dteut = new DataTable();
                         adp.Fill(dteut);

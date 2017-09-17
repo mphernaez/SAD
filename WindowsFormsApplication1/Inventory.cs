@@ -18,6 +18,7 @@ namespace WindowsFormsApplication1
         public MySqlConnection conn = new MySqlConnection();
         public int adminID;
         public int itemID = 0;
+        DataTable dtclaim;
         EndorserIn end { get; set; }
         public empty back { get; set; }
         EndorserOut endO { get; set; }
@@ -748,7 +749,7 @@ namespace WindowsFormsApplication1
 
                 x = 0;
                 y += 30;
-
+                int rowcount = 0;
                 // Process each row and place each item under correct column.
                 foreach (DataRow row in dtclaim.Rows)
                 {
