@@ -79,6 +79,7 @@
             this.m2 = new System.Windows.Forms.ComboBox();
             this.m1 = new System.Windows.Forms.ComboBox();
             this.filt = new System.Windows.Forms.ComboBox();
+            this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.panelSummary = new System.Windows.Forms.Panel();
             this.client = new System.Windows.Forms.Label();
             this.vacc = new System.Windows.Forms.Label();
@@ -98,7 +99,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.imp = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.euthanizeDog = new System.Windows.Forms.Panel();
             this.cbEmps = new System.Windows.Forms.ComboBox();
             this.btnDone = new System.Windows.Forms.Button();
@@ -147,9 +147,9 @@
             this.adoptDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).BeginInit();
             this.repclaimpan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).BeginInit();
             this.panelSummary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVacc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).BeginInit();
             this.euthanizeDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).BeginInit();
             this.panel2.SuspendLayout();
@@ -972,6 +972,29 @@
             this.filt.Text = "Status";
             this.filt.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // claimreportdgv
+            // 
+            this.claimreportdgv.AllowUserToAddRows = false;
+            this.claimreportdgv.AllowUserToDeleteRows = false;
+            this.claimreportdgv.AllowUserToResizeColumns = false;
+            this.claimreportdgv.AllowUserToResizeRows = false;
+            this.claimreportdgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.claimreportdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.claimreportdgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.claimreportdgv.BackgroundColor = System.Drawing.Color.White;
+            this.claimreportdgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.claimreportdgv.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.claimreportdgv.Location = new System.Drawing.Point(9, 100);
+            this.claimreportdgv.Name = "claimreportdgv";
+            this.claimreportdgv.ReadOnly = true;
+            this.claimreportdgv.RowHeadersVisible = false;
+            this.claimreportdgv.RowHeadersWidth = 30;
+            this.claimreportdgv.Size = new System.Drawing.Size(989, 378);
+            this.claimreportdgv.TabIndex = 0;
+            // 
             // panelSummary
             // 
             this.panelSummary.BackColor = System.Drawing.Color.White;
@@ -1230,29 +1253,6 @@
             this.label9.Size = new System.Drawing.Size(172, 24);
             this.label9.TabIndex = 1;
             this.label9.Text = "Heads impounded:";
-            // 
-            // claimreportdgv
-            // 
-            this.claimreportdgv.AllowUserToAddRows = false;
-            this.claimreportdgv.AllowUserToDeleteRows = false;
-            this.claimreportdgv.AllowUserToResizeColumns = false;
-            this.claimreportdgv.AllowUserToResizeRows = false;
-            this.claimreportdgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.claimreportdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.claimreportdgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.claimreportdgv.BackgroundColor = System.Drawing.Color.White;
-            this.claimreportdgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.claimreportdgv.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.claimreportdgv.Location = new System.Drawing.Point(9, 100);
-            this.claimreportdgv.Name = "claimreportdgv";
-            this.claimreportdgv.ReadOnly = true;
-            this.claimreportdgv.RowHeadersVisible = false;
-            this.claimreportdgv.RowHeadersWidth = 30;
-            this.claimreportdgv.Size = new System.Drawing.Size(989, 378);
-            this.claimreportdgv.TabIndex = 0;
             // 
             // euthanizeDog
             // 
@@ -1620,6 +1620,14 @@
             // 
             this.printDocument2.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument2_PrintPage);
             // 
+            // printDocument3
+            // 
+            this.printDocument3.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument3_PrintPage);
+            // 
+            // printDocument4
+            // 
+            this.printDocument4.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument4_PrintPage);
+            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1658,10 +1666,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).EndInit();
             this.repclaimpan.ResumeLayout(false);
             this.repclaimpan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).EndInit();
             this.panelSummary.ResumeLayout(false);
             this.panelSummary.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVacc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).EndInit();
             this.euthanizeDog.ResumeLayout(false);
             this.euthanizeDog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).EndInit();
