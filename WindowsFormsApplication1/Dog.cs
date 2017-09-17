@@ -524,33 +524,43 @@ namespace WindowsFormsApplication1
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            string f = "Times New Roman";
+            string f = "Arial";
             int fsize = 14;
             e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, 50));
             e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(350, 70));
             e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new System.Drawing.Font(f, 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(160, 100));
-            e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font(f, 18, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(50, 130));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + d1.Text + ", " + y1.Text + " - " + m2.Text + d2.Text + ", " + y2.Text, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 170));
+            e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font(f, 18, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(65, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 170));
             
-            e.Graphics.DrawString("1. Total number of heads impounded:   ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 240));
-            e.Graphics.DrawString("2. Total number of heads claimed:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 280));
-            e.Graphics.DrawString("2. Total number of heads adopted:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 320));
-            e.Graphics.DrawString("3. Total amount from transactions:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 360));
-            e.Graphics.DrawString("4. Total number of heads euthanized:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 400));
-            e.Graphics.DrawString("5. Total number of heads alive:       ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 440));
-            e.Graphics.DrawString("6. Total number of heads vaccinated:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 480));
-            e.Graphics.DrawString("7. No. of clients served:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 520));
-            e.Graphics.DrawString("* Remarks: ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 560));
+            e.Graphics.DrawString("Total number of heads impounded:   ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 240));
+            e.Graphics.DrawString("Total number of heads claimed:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 280));
+            e.Graphics.DrawString("Total number of heads adopted:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 320));
+            e.Graphics.DrawString("Total amount from transactions:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 360));
+            e.Graphics.DrawString("Total number of heads euthanized:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 400));
+            e.Graphics.DrawString("Total number of heads alive:       ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 440));
+            e.Graphics.DrawString("Total number of heads vaccinated:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 480));
+            e.Graphics.DrawString("Vaccinators: ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 520));
+            
+            int x = 520;
+            for (int i = 0; i < vaccinators.Length; i++)
+            {
+                x = x + 20;
+                e.Graphics.DrawString(vaccinators[i], new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(250, x));
+                e.Graphics.DrawString(vaccinecount[i].ToString(), new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(475, x));
+            }
 
-            e.Graphics.DrawString("" + impounded, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 240));
-            e.Graphics.DrawString("" + claimed, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 280));
-            e.Graphics.DrawString("" + adopted, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 320));
-            e.Graphics.DrawString("" + amount, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 360));
-            e.Graphics.DrawString("" + euthanized, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 400));
-            e.Graphics.DrawString("" + alive, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 440));
-            e.Graphics.DrawString("" + vaccinated, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 480));
-            e.Graphics.DrawString("" + clients, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 520));
-            e.Graphics.DrawString("", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 560));
+            e.Graphics.DrawString("No. of clients served:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, x + 40));
+            e.Graphics.DrawString("* Remarks: ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, x + 80));
+
+            e.Graphics.DrawString("" + impounded, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 240));
+            e.Graphics.DrawString("" + claimed, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 280));
+            e.Graphics.DrawString("" + adopted, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 320));
+            e.Graphics.DrawString("" + amount, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 360));
+            e.Graphics.DrawString("" + euthanized, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 400));
+            e.Graphics.DrawString("" + alive, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 440));
+            e.Graphics.DrawString("" + vaccinated, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 480));
+            e.Graphics.DrawString("" + clients, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, x + 40));
+            e.Graphics.DrawString("", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(470, x + 80));
 
         }
         //IMPOUNDING SUMMARY REPORT
