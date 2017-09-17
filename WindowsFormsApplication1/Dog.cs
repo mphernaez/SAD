@@ -1089,10 +1089,46 @@ namespace WindowsFormsApplication1
             }
 
         }
-
+        string date;
+        string time;
+        string location;
+        string[] employees; //employee team
+        DataTable dtoperation; //dogs
         private void button11_Click(object sender, EventArgs e)
         {
+            int operationID = opid[cbOperation.SelectedIndex];
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT description AS Location, date AS Date, CONCAT(timeStart, '-', timeEnd) AS Time FROM dogpound.dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adp.Fill(dt);
+                location = dt.Rows[0]["Location"].ToString();
+                time = dt.Rows[0]["Time"].ToString();
+                date = dt.Rows[0]["Date"].ToString();
 
+                comm = new MySqlCommand("SELECT DISTINCT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', lastname) AS Name FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON employee.employeeID = operationTeam.employeeID INNER JOIN dogoperation ON operationteam.teamID = dogoperation.teamID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                adp = new MySqlDataAdapter(comm);
+                dt = new System.Data.DataTable();
+                adp.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    employees[i] = dt.Rows[i]["Name"].ToString();
+                }
+
+                comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                adp = new MySqlDataAdapter(comm);
+                dtoperation = new System.Data.DataTable();
+                adp.Fill(dtoperation);
+                
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void loopDay2(int x)

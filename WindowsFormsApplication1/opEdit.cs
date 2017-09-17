@@ -49,8 +49,8 @@ namespace WindowsFormsApplication1
                 te = dt.Rows[0]["timeEnd"].ToString();
                 
                 string y = date.Substring(6, 4);
-                string d = date.Substring(3, 2);
-                string m = date.Substring(0, 2);
+                string m = date.Substring(3, 2);
+                string d = date.Substring(0, 2);
 
                 i = 0;
                 foreach(char a in ts)

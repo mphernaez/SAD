@@ -1272,7 +1272,7 @@ namespace WindowsFormsApplication1
                 }
 
                 ts = hss + ":" + tbStartm.Text;
-                te = hee + ":" + hee;
+                te = hee + ":" + tbEndm.Text;
                 location = cbLocation.SelectedIndex + 1;
                 String da = d + " " + ts;
                 DateTime myDate = Convert.ToDateTime(da);
