@@ -70,6 +70,16 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dgvAdoption = new System.Windows.Forms.DataGridView();
             this.repclaimpan = new System.Windows.Forms.Panel();
+            this.y2 = new System.Windows.Forms.TextBox();
+            this.d2 = new System.Windows.Forms.ComboBox();
+            this.d1 = new System.Windows.Forms.ComboBox();
+            this.y1 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.button16 = new System.Windows.Forms.Button();
+            this.m2 = new System.Windows.Forms.ComboBox();
+            this.m1 = new System.Windows.Forms.ComboBox();
+            this.filt = new System.Windows.Forms.ComboBox();
+            this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.panelSummary = new System.Windows.Forms.Panel();
             this.client = new System.Windows.Forms.Label();
             this.vacc = new System.Windows.Forms.Label();
@@ -89,16 +99,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.imp = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.y2 = new System.Windows.Forms.TextBox();
-            this.d2 = new System.Windows.Forms.ComboBox();
-            this.d1 = new System.Windows.Forms.ComboBox();
-            this.y1 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.button16 = new System.Windows.Forms.Button();
-            this.m2 = new System.Windows.Forms.ComboBox();
-            this.m1 = new System.Windows.Forms.ComboBox();
-            this.filt = new System.Windows.Forms.ComboBox();
-            this.claimreportdgv = new System.Windows.Forms.DataGridView();
             this.euthanizeDog = new System.Windows.Forms.Panel();
             this.cbEmps = new System.Windows.Forms.ComboBox();
             this.btnDone = new System.Windows.Forms.Button();
@@ -146,9 +146,9 @@
             this.adoptDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).BeginInit();
             this.repclaimpan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).BeginInit();
             this.panelSummary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVacc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).BeginInit();
             this.euthanizeDog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).BeginInit();
             this.panel2.SuspendLayout();
@@ -835,6 +835,164 @@
             this.repclaimpan.TabIndex = 25;
             this.repclaimpan.Visible = false;
             // 
+            // y2
+            // 
+            this.y2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.y2.Location = new System.Drawing.Point(333, 27);
+            this.y2.Name = "y2";
+            this.y2.Size = new System.Drawing.Size(55, 26);
+            this.y2.TabIndex = 8;
+            this.y2.Text = "Year";
+            this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged);
+            this.y2.Enter += new System.EventHandler(this.y2_Enter);
+            // 
+            // d2
+            // 
+            this.d2.Enabled = false;
+            this.d2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d2.FormattingEnabled = true;
+            this.d2.Location = new System.Drawing.Point(503, 25);
+            this.d2.Name = "d2";
+            this.d2.Size = new System.Drawing.Size(65, 28);
+            this.d2.TabIndex = 7;
+            this.d2.Text = "Day";
+            // 
+            // d1
+            // 
+            this.d1.Enabled = false;
+            this.d1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d1.FormattingEnabled = true;
+            this.d1.Location = new System.Drawing.Point(233, 26);
+            this.d1.Name = "d1";
+            this.d1.Size = new System.Drawing.Size(65, 28);
+            this.d1.TabIndex = 6;
+            this.d1.Text = "Day";
+            // 
+            // y1
+            // 
+            this.y1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.y1.Location = new System.Drawing.Point(63, 28);
+            this.y1.Name = "y1";
+            this.y1.Size = new System.Drawing.Size(55, 26);
+            this.y1.TabIndex = 4;
+            this.y1.Text = "Year";
+            this.y1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.y1.Enter += new System.EventHandler(this.y1_Enter);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(309, 29);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(14, 20);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "-";
+            // 
+            // button16
+            // 
+            this.button16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button16.Enabled = false;
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button16.ForeColor = System.Drawing.Color.White;
+            this.button16.Location = new System.Drawing.Point(281, 68);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(107, 31);
+            this.button16.TabIndex = 2;
+            this.button16.Text = "Print Report";
+            this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // m2
+            // 
+            this.m2.Enabled = false;
+            this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m2.FormattingEnabled = true;
+            this.m2.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.m2.Location = new System.Drawing.Point(389, 25);
+            this.m2.Name = "m2";
+            this.m2.Size = new System.Drawing.Size(113, 28);
+            this.m2.TabIndex = 1;
+            this.m2.Text = "Month";
+            this.m2.SelectedIndexChanged += new System.EventHandler(this.m2_SelectedIndexChanged);
+            // 
+            // m1
+            // 
+            this.m1.Enabled = false;
+            this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m1.FormattingEnabled = true;
+            this.m1.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.m1.Location = new System.Drawing.Point(119, 26);
+            this.m1.Name = "m1";
+            this.m1.Size = new System.Drawing.Size(113, 28);
+            this.m1.TabIndex = 1;
+            this.m1.Text = "Month";
+            this.m1.SelectedIndexChanged += new System.EventHandler(this.m1_SelectedIndexChanged);
+            // 
+            // filt
+            // 
+            this.filt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filt.FormattingEnabled = true;
+            this.filt.Items.AddRange(new object[] {
+            "Claimed",
+            "Adopted",
+            "Euthanized",
+            "Monthly Summary Report"});
+            this.filt.Location = new System.Drawing.Point(62, 70);
+            this.filt.Name = "filt";
+            this.filt.Size = new System.Drawing.Size(212, 28);
+            this.filt.TabIndex = 1;
+            this.filt.Text = "Status";
+            this.filt.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // claimreportdgv
+            // 
+            this.claimreportdgv.AllowUserToAddRows = false;
+            this.claimreportdgv.AllowUserToDeleteRows = false;
+            this.claimreportdgv.AllowUserToResizeColumns = false;
+            this.claimreportdgv.AllowUserToResizeRows = false;
+            this.claimreportdgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.claimreportdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.claimreportdgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.claimreportdgv.BackgroundColor = System.Drawing.Color.White;
+            this.claimreportdgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.claimreportdgv.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.claimreportdgv.Location = new System.Drawing.Point(9, 100);
+            this.claimreportdgv.Name = "claimreportdgv";
+            this.claimreportdgv.ReadOnly = true;
+            this.claimreportdgv.RowHeadersVisible = false;
+            this.claimreportdgv.RowHeadersWidth = 30;
+            this.claimreportdgv.Size = new System.Drawing.Size(989, 378);
+            this.claimreportdgv.TabIndex = 0;
+            // 
             // panelSummary
             // 
             this.panelSummary.BackColor = System.Drawing.Color.White;
@@ -1093,164 +1251,6 @@
             this.label9.Size = new System.Drawing.Size(172, 24);
             this.label9.TabIndex = 1;
             this.label9.Text = "Heads impounded:";
-            // 
-            // y2
-            // 
-            this.y2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.y2.Location = new System.Drawing.Point(333, 27);
-            this.y2.Name = "y2";
-            this.y2.Size = new System.Drawing.Size(55, 26);
-            this.y2.TabIndex = 8;
-            this.y2.Text = "Year";
-            this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged);
-            this.y2.Enter += new System.EventHandler(this.y2_Enter);
-            // 
-            // d2
-            // 
-            this.d2.Enabled = false;
-            this.d2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.d2.FormattingEnabled = true;
-            this.d2.Location = new System.Drawing.Point(503, 25);
-            this.d2.Name = "d2";
-            this.d2.Size = new System.Drawing.Size(65, 28);
-            this.d2.TabIndex = 7;
-            this.d2.Text = "Day";
-            // 
-            // d1
-            // 
-            this.d1.Enabled = false;
-            this.d1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.d1.FormattingEnabled = true;
-            this.d1.Location = new System.Drawing.Point(233, 26);
-            this.d1.Name = "d1";
-            this.d1.Size = new System.Drawing.Size(65, 28);
-            this.d1.TabIndex = 6;
-            this.d1.Text = "Day";
-            // 
-            // y1
-            // 
-            this.y1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.y1.Location = new System.Drawing.Point(63, 28);
-            this.y1.Name = "y1";
-            this.y1.Size = new System.Drawing.Size(55, 26);
-            this.y1.TabIndex = 4;
-            this.y1.Text = "Year";
-            this.y1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.y1.Enter += new System.EventHandler(this.y1_Enter);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(309, 29);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(14, 20);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "-";
-            // 
-            // button16
-            // 
-            this.button16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button16.Enabled = false;
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.Location = new System.Drawing.Point(281, 68);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(107, 31);
-            this.button16.TabIndex = 2;
-            this.button16.Text = "Print Report";
-            this.button16.UseVisualStyleBackColor = false;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // m2
-            // 
-            this.m2.Enabled = false;
-            this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m2.FormattingEnabled = true;
-            this.m2.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.m2.Location = new System.Drawing.Point(389, 25);
-            this.m2.Name = "m2";
-            this.m2.Size = new System.Drawing.Size(113, 28);
-            this.m2.TabIndex = 1;
-            this.m2.Text = "Month";
-            this.m2.SelectedIndexChanged += new System.EventHandler(this.m2_SelectedIndexChanged);
-            // 
-            // m1
-            // 
-            this.m1.Enabled = false;
-            this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m1.FormattingEnabled = true;
-            this.m1.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.m1.Location = new System.Drawing.Point(119, 26);
-            this.m1.Name = "m1";
-            this.m1.Size = new System.Drawing.Size(113, 28);
-            this.m1.TabIndex = 1;
-            this.m1.Text = "Month";
-            this.m1.SelectedIndexChanged += new System.EventHandler(this.m1_SelectedIndexChanged);
-            // 
-            // filt
-            // 
-            this.filt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filt.FormattingEnabled = true;
-            this.filt.Items.AddRange(new object[] {
-            "Claimed",
-            "Adopted",
-            "Euthanized",
-            "Monthly Summary Report"});
-            this.filt.Location = new System.Drawing.Point(62, 70);
-            this.filt.Name = "filt";
-            this.filt.Size = new System.Drawing.Size(212, 28);
-            this.filt.TabIndex = 1;
-            this.filt.Text = "Status";
-            this.filt.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // claimreportdgv
-            // 
-            this.claimreportdgv.AllowUserToAddRows = false;
-            this.claimreportdgv.AllowUserToDeleteRows = false;
-            this.claimreportdgv.AllowUserToResizeColumns = false;
-            this.claimreportdgv.AllowUserToResizeRows = false;
-            this.claimreportdgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.claimreportdgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.claimreportdgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.claimreportdgv.BackgroundColor = System.Drawing.Color.White;
-            this.claimreportdgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.claimreportdgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.claimreportdgv.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.claimreportdgv.Location = new System.Drawing.Point(9, 100);
-            this.claimreportdgv.Name = "claimreportdgv";
-            this.claimreportdgv.ReadOnly = true;
-            this.claimreportdgv.RowHeadersVisible = false;
-            this.claimreportdgv.RowHeadersWidth = 30;
-            this.claimreportdgv.Size = new System.Drawing.Size(989, 378);
-            this.claimreportdgv.TabIndex = 0;
             // 
             // euthanizeDog
             // 
@@ -1656,10 +1656,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdoption)).EndInit();
             this.repclaimpan.ResumeLayout(false);
             this.repclaimpan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).EndInit();
             this.panelSummary.ResumeLayout(false);
             this.panelSummary.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVacc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.claimreportdgv)).EndInit();
             this.euthanizeDog.ResumeLayout(false);
             this.euthanizeDog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).EndInit();
