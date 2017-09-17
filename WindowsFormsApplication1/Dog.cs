@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using MySql.Data.MySqlClient;
-using Microsoft.Office.Interop.Excel;
 
 
 namespace WindowsFormsApplication1
@@ -20,6 +19,10 @@ namespace WindowsFormsApplication1
     {
         //45   
         //55
+
+        DataTable dtclaim;
+        DataTable dtadopt;
+        DataTable dteut;
         private Color use;
         public int dogID;
         public int adminID;
@@ -587,8 +590,8 @@ namespace WindowsFormsApplication1
                                         + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
                                         + "WHERE dogprofile.status = 'claimed' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
                         adp = new MySqlDataAdapter(comm);
-                        dt = new System.Data.DataTable();
-                        adp.Fill(dt);
+                        dtclaim = new DataTable();
+                        adp.Fill(dtclaim);
                     }
                     else if (filt.SelectedIndex == 1) //Adopted
                     {
@@ -604,8 +607,8 @@ namespace WindowsFormsApplication1
                                         + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
                                         + "WHERE dogprofile.status = 'adopted' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
                         adp = new MySqlDataAdapter(comm);
-                        dt = new System.Data.DataTable();
-                        adp.Fill(dt);
+                        dtadopt = new DataTable();
+                        adp.Fill(dtadopt);
                     }
                     else if (filt.SelectedIndex == 2)//Euthanized
                     {
@@ -614,8 +617,8 @@ namespace WindowsFormsApplication1
                         panelSummary.Visible = false;
                         comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, dogoperation.date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = 'euthanized' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogoperation.date", conn);
                         adp = new MySqlDataAdapter(comm);
-                        dt = new System.Data.DataTable();
-                        adp.Fill(dt);
+                        dteut = new DataTable();
+                        adp.Fill(dteut);
                     }
                     else if (filt.SelectedIndex == 3)
                     {
@@ -1009,10 +1012,76 @@ namespace WindowsFormsApplication1
         {
 
         }
-        PrintRow = 0;
+        int rowcount = 0;
         private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             //claim
+           
+            string header = "Claimed Dogs Summary Report";
+            string footer = string.Empty;
+            int columnCount = claimreportdgv.Columns.Count;
+            int maxRows = claimreportdgv.Rows.Count;
+
+            using (Graphics g = e.Graphics)
+            {
+                Brush brush = new SolidBrush(Color.Black);
+                Pen pen = new Pen(brush);
+                Font font = new Font("Arial", 10);
+                SizeF size;
+
+                int x = 0, y = 0, width = 100;
+                float xPadding;
+
+                // Here title is written, sets to top-middle position of the page
+                size = g.MeasureString(header, font);
+                xPadding = (width - size.Width) / 2;
+                g.DrawString(header, font, brush, x + 100, y + 2);
+
+                x = 0;
+                y += 10;
+
+                // Writes out all column names in designated locations, aligned as a table
+                foreach (DataColumn column in dtclaim.Columns)
+                {
+                    size = g.MeasureString(column.ColumnName, font);
+                    xPadding = (width - size.Width) / 2;
+                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 2);
+                    x += width;
+                }
+
+                x = 0;
+                y += 10;
+
+                // Process each row and place each item under correct column.
+                foreach (DataRow row in dtclaim.Rows)
+                {
+                    rowcount++;
+
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        size = g.MeasureString(row[i].ToString(), font);
+                        xPadding = (width - size.Width) / 2;
+
+                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 2);
+                        x += width;
+                    }
+
+                    e.HasMorePages = rowcount - 1 < maxRows;
+
+                    x = 0;
+                    y += 10;
+                }
+
+                
+
+                x = 0;
+                y += 30;
+            }
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
 
         }
 
@@ -1056,6 +1125,10 @@ namespace WindowsFormsApplication1
         }
 
         private void panelHistory_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void finish()
         {
 
         }
