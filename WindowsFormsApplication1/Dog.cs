@@ -1091,7 +1091,7 @@ namespace WindowsFormsApplication1
         DataTable dtoperation; //dogs
         private void button11_Click(object sender, EventArgs e)
         {
-            int operationID = opid[cbOperation.SelectedIndex];
+             int operationID = opid[cbOperation.SelectedIndex];
             try
             {
                 conn.Open();

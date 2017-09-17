@@ -44,9 +44,9 @@ namespace WindowsFormsApplication1
         {
             pictureBox1.Visible = false;
             panelTrans.Visible = false;
-            a.Visible = true;.
+            a.Visible = true;
             i.Visible = false;
-            
+
             newitem.Visible = true;
             inv.Visible = false;
 
@@ -59,7 +59,7 @@ namespace WindowsFormsApplication1
             panelTrans.Visible = false;
             a.Visible = false;
             i.Visible = false;
-            
+
             panelTrans.Visible = true;
             inv.Visible = false;
             newitem.Visible = false;
@@ -155,7 +155,7 @@ namespace WindowsFormsApplication1
             panelTrans.Visible = false;
             a.Visible = false;
             i.Visible = true;
-            
+
             inv.Visible = true;
             newitem.Visible = false;
 
@@ -240,7 +240,7 @@ namespace WindowsFormsApplication1
 
         private void OK1_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 conn.Open();
@@ -260,8 +260,9 @@ namespace WindowsFormsApplication1
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     end.amtLabel.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString();
-                   
-                } else
+
+                }
+                else
                 {
                     MessageBox.Show("No Prior Stock Request Found");
                 }
@@ -440,7 +441,7 @@ namespace WindowsFormsApplication1
             panelTrans.Visible = true;
             a.Visible = false;
             i.Visible = false;
-            
+
             inv.Visible = false;
             newitem.Visible = false;
         }
@@ -453,7 +454,7 @@ namespace WindowsFormsApplication1
                 {
                     string date = DateTime.Now.ToString("yyyy-MM-dd");
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, employeeID, quantity, date, type, reason) VALUES("+retprod[prodret.SelectedIndex]+", "+retemp[empret.SelectedIndex]+", "+quanret.Value+", '"+date+"', 'Return', '"+reasonret.Text+"')", conn);
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, employeeID, quantity, date, type, reason) VALUES(" + retprod[prodret.SelectedIndex] + ", " + retemp[empret.SelectedIndex] + ", " + quanret.Value + ", '" + date + "', 'Return', '" + reasonret.Text + "')", conn);
                     comm.ExecuteNonQuery();
                     conn.Close();
                 }
@@ -470,7 +471,7 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please enter required fields");
             }
-                
+
         }
 
         private void button15_Click(object sender, EventArgs e)
@@ -554,7 +555,7 @@ namespace WindowsFormsApplication1
         bool ei = false;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex != -1)
+            if (e.RowIndex != -1)
             {
 
                 eID = int.Parse(dgvEdit.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
@@ -589,7 +590,8 @@ namespace WindowsFormsApplication1
                 dgvEdit.ClearSelection();
                 conn.Close();
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 conn.Close();
@@ -610,7 +612,8 @@ namespace WindowsFormsApplication1
 
                 eItem.id = eID;
                 eItem.Show();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Please select an item");
             }
@@ -656,7 +659,7 @@ namespace WindowsFormsApplication1
 
         private void button18_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -677,7 +680,7 @@ namespace WindowsFormsApplication1
             button19.BackColor = Color.FromArgb(251, 162, 80);
             refreshRequest();
         }
-
+        DataTable dtReq;
         private void refreshRequest()
         {
             try
@@ -685,9 +688,9 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand("SELECT itemID, productName AS 'Product Name', description AS 'Product Description', quantity AS 'Quantity' FROM items WHERE quantity < minQuantity", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                dgvRequest.DataSource = dt;
+                dtReq = new DataTable();
+                adp.Fill(dtReq);
+                dgvRequest.DataSource = dtReq;
                 dgvRequest.Columns["itemID"].Visible = false;
                 dgvRequest.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvRequest.Columns["Product Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -708,7 +711,63 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < dgvRequest.Rows.Count; i++)
             {
                 request[i] = int.Parse(dgvRequest.Rows[i].Cells[0].Value.ToString());
-                
+
+            }
+        }
+
+        private void ItemReq_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
+            e.Graphics.DrawString("CLAIMED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
+            //e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
+
+            string footer = string.Empty;
+            int columnCount = dgvRequest.Columns.Count;
+            int maxRows = dgvRequest.Rows.Count;
+
+            using (Graphics g = e.Graphics)
+            {
+                Brush brush = new SolidBrush(Color.Black);
+                Pen pen = new Pen(brush);
+                Font font = new Font("Arial", 12);
+                SizeF size;
+
+                int x = 0, y = 300, width = 100;
+                float xPadding;
+
+                // Writes out all column names in designated locations, aligned as a table
+                foreach (DataColumn column in dtclaim.Columns)
+                {
+                    size = g.MeasureString(column.ColumnName, font);
+                    xPadding = (width - size.Width) / 2;
+                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 5);
+                    x += width;
+                }
+
+                x = 0;
+                y += 30;
+
+                // Process each row and place each item under correct column.
+                foreach (DataRow row in dtclaim.Rows)
+                {
+                    rowcount++;
+
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        size = g.MeasureString(row[i].ToString(), font);
+                        xPadding = (width - size.Width) / 2;
+
+                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 5);
+                        x += width;
+                    }
+
+                    e.HasMorePages = rowcount - 1 < maxRows;
+
+                    x = 0;
+                    y += 30;
+                }
             }
         }
     }

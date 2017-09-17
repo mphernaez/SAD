@@ -81,6 +81,22 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dgvOpSumm = new System.Windows.Forms.DataGridView();
+            this.loc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.team = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbFilt = new System.Windows.Forms.CheckBox();
+            this.pnlEmpFilt = new System.Windows.Forms.Panel();
+            this.cbEmpFilt = new System.Windows.Forms.ComboBox();
+            this.y2 = new System.Windows.Forms.TextBox();
+            this.d2 = new System.Windows.Forms.ComboBox();
+            this.d1 = new System.Windows.Forms.ComboBox();
+            this.y1 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.m2 = new System.Windows.Forms.ComboBox();
+            this.m1 = new System.Windows.Forms.ComboBox();
             this.choice = new System.Windows.Forms.ComboBox();
             this.button28 = new System.Windows.Forms.Button();
             this.repEmp = new System.Windows.Forms.DataGridView();
@@ -182,22 +198,9 @@
             this.eTimeE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eTeamM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.y2 = new System.Windows.Forms.TextBox();
-            this.d2 = new System.Windows.Forms.ComboBox();
-            this.d1 = new System.Windows.Forms.ComboBox();
-            this.y1 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.m2 = new System.Windows.Forms.ComboBox();
-            this.m1 = new System.Windows.Forms.ComboBox();
-            this.pnlEmpFilt = new System.Windows.Forms.Panel();
-            this.cbEmpFilt = new System.Windows.Forms.ComboBox();
-            this.cbFilt = new System.Windows.Forms.CheckBox();
-            this.dgvOpSumm = new System.Windows.Forms.DataGridView();
-            this.loc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.date1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.team = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDocument2 = new System.Drawing.Printing.PrintDocument();
+            this.printDocument3 = new System.Drawing.Printing.PrintDocument();
             this.attendance.SuspendLayout();
             this.panelAtt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattout)).BeginInit();
@@ -217,6 +220,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.o)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).BeginInit();
+            this.pnlEmpFilt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.repEmp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -239,8 +244,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numact)).BeginInit();
             this.Edit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editOperation)).BeginInit();
-            this.pnlEmpFilt.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).BeginInit();
             this.SuspendLayout();
             // 
             // attendance
@@ -1012,6 +1015,192 @@
             this.panel2.Size = new System.Drawing.Size(1016, 543);
             this.panel2.TabIndex = 32;
             this.panel2.Visible = false;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
+            // 
+            // dgvOpSumm
+            // 
+            this.dgvOpSumm.AllowUserToAddRows = false;
+            this.dgvOpSumm.AllowUserToDeleteRows = false;
+            this.dgvOpSumm.BackgroundColor = System.Drawing.Color.White;
+            this.dgvOpSumm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOpSumm.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.loc,
+            this.time,
+            this.date1,
+            this.team,
+            this.imp});
+            this.dgvOpSumm.Location = new System.Drawing.Point(35, 155);
+            this.dgvOpSumm.Name = "dgvOpSumm";
+            this.dgvOpSumm.ReadOnly = true;
+            this.dgvOpSumm.RowHeadersVisible = false;
+            this.dgvOpSumm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOpSumm.Size = new System.Drawing.Size(942, 365);
+            this.dgvOpSumm.TabIndex = 18;
+            this.dgvOpSumm.Visible = false;
+            // 
+            // loc
+            // 
+            this.loc.HeaderText = "Location";
+            this.loc.Name = "loc";
+            this.loc.ReadOnly = true;
+            // 
+            // time
+            // 
+            this.time.HeaderText = "Time";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            // 
+            // date1
+            // 
+            this.date1.HeaderText = "Date";
+            this.date1.Name = "date1";
+            this.date1.ReadOnly = true;
+            // 
+            // team
+            // 
+            this.team.HeaderText = "Employees";
+            this.team.Name = "team";
+            this.team.ReadOnly = true;
+            // 
+            // imp
+            // 
+            this.imp.HeaderText = "Heads Caught";
+            this.imp.Name = "imp";
+            this.imp.ReadOnly = true;
+            // 
+            // cbFilt
+            // 
+            this.cbFilt.AutoSize = true;
+            this.cbFilt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFilt.Location = new System.Drawing.Point(38, 69);
+            this.cbFilt.Name = "cbFilt";
+            this.cbFilt.Size = new System.Drawing.Size(157, 24);
+            this.cbFilt.TabIndex = 17;
+            this.cbFilt.Text = "Filter by Employee";
+            this.cbFilt.UseVisualStyleBackColor = true;
+            this.cbFilt.CheckedChanged += new System.EventHandler(this.cbFilt_CheckedChanged);
+            // 
+            // pnlEmpFilt
+            // 
+            this.pnlEmpFilt.Controls.Add(this.cbEmpFilt);
+            this.pnlEmpFilt.Location = new System.Drawing.Point(195, 55);
+            this.pnlEmpFilt.Name = "pnlEmpFilt";
+            this.pnlEmpFilt.Size = new System.Drawing.Size(361, 46);
+            this.pnlEmpFilt.TabIndex = 16;
+            // 
+            // cbEmpFilt
+            // 
+            this.cbEmpFilt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEmpFilt.FormattingEnabled = true;
+            this.cbEmpFilt.Location = new System.Drawing.Point(17, 7);
+            this.cbEmpFilt.Name = "cbEmpFilt";
+            this.cbEmpFilt.Size = new System.Drawing.Size(333, 28);
+            this.cbEmpFilt.TabIndex = 17;
+            this.cbEmpFilt.Text = "Employee";
+            // 
+            // y2
+            // 
+            this.y2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.y2.Location = new System.Drawing.Point(308, 21);
+            this.y2.Name = "y2";
+            this.y2.Size = new System.Drawing.Size(55, 26);
+            this.y2.TabIndex = 15;
+            this.y2.Text = "Year";
+            this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged);
+            this.y2.Enter += new System.EventHandler(this.y2_Enter);
+            // 
+            // d2
+            // 
+            this.d2.Enabled = false;
+            this.d2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d2.FormattingEnabled = true;
+            this.d2.Location = new System.Drawing.Point(478, 19);
+            this.d2.Name = "d2";
+            this.d2.Size = new System.Drawing.Size(65, 28);
+            this.d2.TabIndex = 14;
+            this.d2.Text = "Day";
+            // 
+            // d1
+            // 
+            this.d1.Enabled = false;
+            this.d1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d1.FormattingEnabled = true;
+            this.d1.Location = new System.Drawing.Point(208, 20);
+            this.d1.Name = "d1";
+            this.d1.Size = new System.Drawing.Size(65, 28);
+            this.d1.TabIndex = 13;
+            this.d1.Text = "Day";
+            // 
+            // y1
+            // 
+            this.y1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.y1.Location = new System.Drawing.Point(38, 22);
+            this.y1.Name = "y1";
+            this.y1.Size = new System.Drawing.Size(55, 26);
+            this.y1.TabIndex = 12;
+            this.y1.Text = "Year";
+            this.y1.TextChanged += new System.EventHandler(this.y1_TextChanged);
+            this.y1.Enter += new System.EventHandler(this.y1_Enter);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(284, 23);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(14, 20);
+            this.label21.TabIndex = 11;
+            this.label21.Text = "-";
+            // 
+            // m2
+            // 
+            this.m2.Enabled = false;
+            this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m2.FormattingEnabled = true;
+            this.m2.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.m2.Location = new System.Drawing.Point(364, 19);
+            this.m2.Name = "m2";
+            this.m2.Size = new System.Drawing.Size(113, 28);
+            this.m2.TabIndex = 9;
+            this.m2.Text = "Month";
+            this.m2.SelectedIndexChanged += new System.EventHandler(this.m2_SelectedIndexChanged);
+            // 
+            // m1
+            // 
+            this.m1.Enabled = false;
+            this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m1.FormattingEnabled = true;
+            this.m1.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.m1.Location = new System.Drawing.Point(94, 20);
+            this.m1.Name = "m1";
+            this.m1.Size = new System.Drawing.Size(113, 28);
+            this.m1.TabIndex = 10;
+            this.m1.Text = "Month";
+            this.m1.SelectedIndexChanged += new System.EventHandler(this.m1_SelectedIndexChanged);
             // 
             // choice
             // 
@@ -2434,190 +2623,9 @@
             this.eStat.Name = "eStat";
             this.eStat.ReadOnly = true;
             // 
-            // y2
+            // printDocument3
             // 
-            this.y2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.y2.Location = new System.Drawing.Point(308, 21);
-            this.y2.Name = "y2";
-            this.y2.Size = new System.Drawing.Size(55, 26);
-            this.y2.TabIndex = 15;
-            this.y2.Text = "Year";
-            this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged);
-            this.y2.Enter += new System.EventHandler(this.y2_Enter);
-            // 
-            // d2
-            // 
-            this.d2.Enabled = false;
-            this.d2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.d2.FormattingEnabled = true;
-            this.d2.Location = new System.Drawing.Point(478, 19);
-            this.d2.Name = "d2";
-            this.d2.Size = new System.Drawing.Size(65, 28);
-            this.d2.TabIndex = 14;
-            this.d2.Text = "Day";
-            // 
-            // d1
-            // 
-            this.d1.Enabled = false;
-            this.d1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.d1.FormattingEnabled = true;
-            this.d1.Location = new System.Drawing.Point(208, 20);
-            this.d1.Name = "d1";
-            this.d1.Size = new System.Drawing.Size(65, 28);
-            this.d1.TabIndex = 13;
-            this.d1.Text = "Day";
-            // 
-            // y1
-            // 
-            this.y1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.y1.Location = new System.Drawing.Point(38, 22);
-            this.y1.Name = "y1";
-            this.y1.Size = new System.Drawing.Size(55, 26);
-            this.y1.TabIndex = 12;
-            this.y1.Text = "Year";
-            this.y1.TextChanged += new System.EventHandler(this.y1_TextChanged);
-            this.y1.Enter += new System.EventHandler(this.y1_Enter);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(284, 23);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(14, 20);
-            this.label21.TabIndex = 11;
-            this.label21.Text = "-";
-            // 
-            // m2
-            // 
-            this.m2.Enabled = false;
-            this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m2.FormattingEnabled = true;
-            this.m2.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.m2.Location = new System.Drawing.Point(364, 19);
-            this.m2.Name = "m2";
-            this.m2.Size = new System.Drawing.Size(113, 28);
-            this.m2.TabIndex = 9;
-            this.m2.Text = "Month";
-            this.m2.SelectedIndexChanged += new System.EventHandler(this.m2_SelectedIndexChanged);
-            // 
-            // m1
-            // 
-            this.m1.Enabled = false;
-            this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m1.FormattingEnabled = true;
-            this.m1.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.m1.Location = new System.Drawing.Point(94, 20);
-            this.m1.Name = "m1";
-            this.m1.Size = new System.Drawing.Size(113, 28);
-            this.m1.TabIndex = 10;
-            this.m1.Text = "Month";
-            this.m1.SelectedIndexChanged += new System.EventHandler(this.m1_SelectedIndexChanged);
-            // 
-            // pnlEmpFilt
-            // 
-            this.pnlEmpFilt.Controls.Add(this.cbEmpFilt);
-            this.pnlEmpFilt.Location = new System.Drawing.Point(195, 55);
-            this.pnlEmpFilt.Name = "pnlEmpFilt";
-            this.pnlEmpFilt.Size = new System.Drawing.Size(361, 46);
-            this.pnlEmpFilt.TabIndex = 16;
-            // 
-            // cbEmpFilt
-            // 
-            this.cbEmpFilt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEmpFilt.FormattingEnabled = true;
-            this.cbEmpFilt.Location = new System.Drawing.Point(17, 7);
-            this.cbEmpFilt.Name = "cbEmpFilt";
-            this.cbEmpFilt.Size = new System.Drawing.Size(333, 28);
-            this.cbEmpFilt.TabIndex = 17;
-            this.cbEmpFilt.Text = "Employee";
-            // 
-            // cbFilt
-            // 
-            this.cbFilt.AutoSize = true;
-            this.cbFilt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFilt.Location = new System.Drawing.Point(38, 69);
-            this.cbFilt.Name = "cbFilt";
-            this.cbFilt.Size = new System.Drawing.Size(157, 24);
-            this.cbFilt.TabIndex = 17;
-            this.cbFilt.Text = "Filter by Employee";
-            this.cbFilt.UseVisualStyleBackColor = true;
-            this.cbFilt.CheckedChanged += new System.EventHandler(this.cbFilt_CheckedChanged);
-            // 
-            // dgvOpSumm
-            // 
-            this.dgvOpSumm.AllowUserToAddRows = false;
-            this.dgvOpSumm.AllowUserToDeleteRows = false;
-            this.dgvOpSumm.BackgroundColor = System.Drawing.Color.White;
-            this.dgvOpSumm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOpSumm.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.loc,
-            this.time,
-            this.date1,
-            this.team,
-            this.imp});
-            this.dgvOpSumm.Location = new System.Drawing.Point(35, 155);
-            this.dgvOpSumm.Name = "dgvOpSumm";
-            this.dgvOpSumm.ReadOnly = true;
-            this.dgvOpSumm.RowHeadersVisible = false;
-            this.dgvOpSumm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOpSumm.Size = new System.Drawing.Size(942, 365);
-            this.dgvOpSumm.TabIndex = 18;
-            this.dgvOpSumm.Visible = false;
-            // 
-            // loc
-            // 
-            this.loc.HeaderText = "Location";
-            this.loc.Name = "loc";
-            this.loc.ReadOnly = true;
-            // 
-            // time
-            // 
-            this.time.HeaderText = "Time";
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            // 
-            // date1
-            // 
-            this.date1.HeaderText = "Date";
-            this.date1.Name = "date1";
-            this.date1.ReadOnly = true;
-            // 
-            // team
-            // 
-            this.team.HeaderText = "Employees";
-            this.team.Name = "team";
-            this.team.ReadOnly = true;
-            // 
-            // imp
-            // 
-            this.imp.HeaderText = "Heads Caught";
-            this.imp.Name = "imp";
-            this.imp.ReadOnly = true;
+            this.printDocument3.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument3_PrintPage);
             // 
             // Employee
             // 
@@ -2629,10 +2637,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
-            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -2664,6 +2672,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.a)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).EndInit();
+            this.pnlEmpFilt.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.repEmp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -2698,8 +2708,6 @@
             this.Edit.ResumeLayout(false);
             this.Edit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editOperation)).EndInit();
-            this.pnlEmpFilt.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2875,5 +2883,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn date1;
         private System.Windows.Forms.DataGridViewTextBoxColumn team;
         private System.Windows.Forms.DataGridViewTextBoxColumn imp;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Drawing.Printing.PrintDocument printDocument2;
+        private System.Drawing.Printing.PrintDocument printDocument3;
     }
 }

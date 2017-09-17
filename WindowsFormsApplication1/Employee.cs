@@ -1833,7 +1833,7 @@ namespace WindowsFormsApplication1
         }
         private void button28_Click_1(object sender, EventArgs e)
         {
-
+            print();
         }
 
         private void specLoc_TextChanged(object sender, EventArgs e)
@@ -1846,11 +1846,14 @@ namespace WindowsFormsApplication1
            
                
         }
-
+        
         private void button6_Click_1(object sender, EventArgs e)
         {
             dgvAttendanceIn.Visible = false;
             dgvAttendanceOut.Visible = false;
+
+            print();
+
             panelAtt.Visible = true;
             refreshAttView();
         }
@@ -1886,6 +1889,7 @@ namespace WindowsFormsApplication1
 
         }
 
+        DataTable dtOp;
         private void view_Click(object sender, EventArgs e)
         {
             if (choice.Text == "Employees")
@@ -1947,13 +1951,14 @@ namespace WindowsFormsApplication1
                     }
 
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
+                    dtOp = new DataTable();
+                    adp.Fill(dtOp);
+                    dgvOperationsView.DataSource = dtOp;
 
-                    for (int x = 0; x < dt.Rows.Count; x++)
+                    for (int x = 0; x < dtOp.Rows.Count; x++)
                     {
-                        int teamID = int.Parse(dt.Rows[x]["teamID"].ToString());
-                        int opID = int.Parse(dt.Rows[x]["operationID"].ToString());
+                        int teamID = int.Parse(dtOp.Rows[x]["teamID"].ToString());
+                        int opID = int.Parse(dtOp.Rows[x]["operationID"].ToString());
                         MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', Firstname) AS emp FROM operationteam INNER JOIN profile on profile.personID = operationteam.employeeID WHERE teamID = " + teamID.ToString(), conn);
                         MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
                         DataTable dta = new DataTable();
@@ -1964,11 +1969,11 @@ namespace WindowsFormsApplication1
                             string nl = Environment.NewLine;
                             team = team + dta.Rows[j]["emp"].ToString() + nl;
                         }
-                        string loc = dt.Rows[x]["description"].ToString();
-                        string date = dt.Rows[x]["date"].ToString();
-                        string start = dt.Rows[x]["timeStart"].ToString();
-                        string end = dt.Rows[x]["timeEnd"].ToString();
-                        string status = dt.Rows[x]["status"].ToString();
+                        string loc = dtOp.Rows[x]["description"].ToString();
+                        string date = dtOp.Rows[x]["date"].ToString();
+                        string start = dtOp.Rows[x]["timeStart"].ToString();
+                        string end = dtOp.Rows[x]["timeEnd"].ToString();
+                        string status = dtOp.Rows[x]["status"].ToString();
                         repEmp.Rows.Add(teamID.ToString(), opID.ToString(), loc, date, start, end, team, status);
                     }
 
@@ -2356,6 +2361,95 @@ namespace WindowsFormsApplication1
                 i++;
             }
         }
+
+        private void panel2_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void print()
+        {
+            if(choice.SelectedIndex == 0)
+            {
+                printDocument1.DefaultPageSettings.Landscape = true;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument1;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+
+            } else if (choice.SelectedIndex == 1)
+            {
+                printDocument2.DefaultPageSettings.Landscape = true;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument2;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+
+            } else if (choice.SelectedIndex == 2)
+            {
+                printDocument3.DefaultPageSettings.Landscape = true;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument3;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+            }
+        }
+        int rowcount = 0;
+        private void printDocument3_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
+            e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
+
+            string footer = string.Empty;
+            int columnCount = repEmp.Columns.Count;
+            int maxRows = repEmp.Rows.Count;
+
+            using (Graphics g = e.Graphics)
+            {
+                Brush brush = new SolidBrush(Color.Black);
+                Pen pen = new Pen(brush);
+                Font font = new Font("Arial", 12);
+                SizeF size;
+
+                int x = 0, y = 300, width = 100;
+                float xPadding;
+
+                // Writes out all column names in designated locations, aligned as a table
+                foreach (DataColumn column in dtOp.Columns)
+                {
+                    size = g.MeasureString(column.ColumnName, font);
+                    xPadding = (width - size.Width) / 2;
+                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 5);
+                    x += width;
+                }
+
+                x = 0;
+                y += 30;
+
+                // Process each row and place each item under correct column.
+                foreach (DataRow row in dtOp.Rows)
+                {
+                    rowcount++;
+
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        size = g.MeasureString(row[i].ToString(), font);
+                        xPadding = (width - size.Width) / 2;
+
+                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 5);
+                        x += width;
+                    }
+
+                    e.HasMorePages = rowcount - 1 < maxRows;
+
+                    x = 0;
+                    y += 30;
+                }
+            }
+            }
     }
 }
 
