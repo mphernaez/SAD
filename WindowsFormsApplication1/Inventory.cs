@@ -162,23 +162,27 @@ namespace WindowsFormsApplication1
 
         private void button16_Click(object sender, EventArgs e)
         {
+            panelRequest.Visible = false;
             panelReturn.Visible = false;
             dgvout.Visible = true;
             Sout.Visible = false;
             button5.BackColor = Color.FromArgb(2, 170, 145);
             button16.BackColor = Color.FromArgb(251, 162, 80);
             button15.BackColor = Color.FromArgb(2, 170, 145);
+            button19.BackColor = Color.FromArgb(2, 170, 145);
             refreshSI();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            panelRequest.Visible = false;
             panelReturn.Visible = false;
             dgvout.Visible = false;
             Sout.Visible = true;
             button16.BackColor = Color.FromArgb(2, 170, 145);
             button5.BackColor = Color.FromArgb(251, 162, 80);
             button15.BackColor = Color.FromArgb(2, 170, 145);
+            button19.BackColor = Color.FromArgb(2, 170, 145);
             refreshSO();
         }
 
@@ -470,6 +474,7 @@ namespace WindowsFormsApplication1
 
         private void button15_Click(object sender, EventArgs e)
         {
+            panelRequest.Visible = false;
             panelReturn.Visible = true;
             dgvout.Visible = false;
             Sout.Visible = false;
@@ -478,6 +483,7 @@ namespace WindowsFormsApplication1
             button15.BackColor = Color.FromArgb(251, 162, 80);
             button16.BackColor = Color.FromArgb(2, 170, 145);
             button5.BackColor = Color.FromArgb(2, 170, 145);
+            button19.BackColor = Color.FromArgb(2, 170, 145);
             reasonret.Text = "Reason";
             try
             {
@@ -656,6 +662,43 @@ namespace WindowsFormsApplication1
         {
             if (cbTransType.Text != "Transaction Type") reportEm();
             else MessageBox.Show("Please Select a Transaction");
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            panelRequest.Visible = true;
+            panelReturn.Visible = false;
+            dgvout.Visible = false;
+            Sout.Visible = false;
+            button5.BackColor = Color.FromArgb(2, 170, 145);
+            button16.BackColor = Color.FromArgb(2, 170, 145);
+            button15.BackColor = Color.FromArgb(2, 170, 145);
+            button19.BackColor = Color.FromArgb(251, 162, 80);
+            refreshRequest();
+        }
+
+        private void refreshRequest()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT productName AS 'Product Name', description AS 'Product Description', quantity AS 'Quantity' FROM items WHERE quantity < minQuantity", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                dgvRequest.DataSource = dt;
+
+                dgvRequest.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvRequest.Columns["Product Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvRequest.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
