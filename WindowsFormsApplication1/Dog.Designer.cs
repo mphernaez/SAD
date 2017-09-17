@@ -133,6 +133,7 @@
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
             this.printDocument4 = new System.Drawing.Printing.PrintDocument();
+            this.printDocument5 = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -364,6 +365,7 @@
             this.button11.TabIndex = 30;
             this.button11.Text = "Finish";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // panel3
             // 
@@ -827,8 +829,8 @@
             this.repclaimpan.Controls.Add(this.m2);
             this.repclaimpan.Controls.Add(this.m1);
             this.repclaimpan.Controls.Add(this.filt);
-            this.repclaimpan.Controls.Add(this.claimreportdgv);
             this.repclaimpan.Controls.Add(this.panelSummary);
+            this.repclaimpan.Controls.Add(this.claimreportdgv);
             this.repclaimpan.Location = new System.Drawing.Point(29, 197);
             this.repclaimpan.Name = "repclaimpan";
             this.repclaimpan.Size = new System.Drawing.Size(1015, 536);
@@ -1627,11 +1629,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.repclaimpan);
-            this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
+            this.Controls.Add(this.repclaimpan);
+            this.Controls.Add(this.searchDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
@@ -1787,5 +1789,6 @@
         private System.Drawing.Printing.PrintDocument printDocument2;
         private System.Drawing.Printing.PrintDocument printDocument3;
         private System.Drawing.Printing.PrintDocument printDocument4;
+        private System.Drawing.Printing.PrintDocument printDocument5;
     }
 }

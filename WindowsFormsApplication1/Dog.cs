@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using MySql.Data.MySqlClient;
-using Microsoft.Office.Interop.Excel;
 
 
 namespace WindowsFormsApplication1
@@ -20,6 +19,10 @@ namespace WindowsFormsApplication1
     {
         //45   
         //55
+
+        DataTable dtclaim;
+        DataTable dtadopt;
+        DataTable dteut;
         private Color use;
         public int dogID;
         public int adminID;
@@ -521,43 +524,33 @@ namespace WindowsFormsApplication1
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            string f = "Arial";
+            string f = "Times New Roman";
             int fsize = 14;
-            
             e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, 50));
-            e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 18, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(360, 70));
+            e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(350, 70));
             e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new System.Drawing.Font(f, 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(160, 100));
-            e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font(f, 18, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(65, 130));
-            e.Graphics.DrawString("For the Month of  " + m1.Text +" "+ d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new System.Drawing.Font(f, 18, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(65, 170));
+            e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font(f, 18, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(50, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + d1.Text + ", " + y1.Text + " - " + m2.Text + d2.Text + ", " + y2.Text, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 170));
             
-            e.Graphics.DrawString("Total number of heads impounded:   ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 240));
-            e.Graphics.DrawString("Total number of heads claimed:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 280));
-            e.Graphics.DrawString("Total number of heads adopted:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 320));
-            e.Graphics.DrawString("Total amount from transactions:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 360));
-            e.Graphics.DrawString("Total number of heads euthanized:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 400));
-            e.Graphics.DrawString("Total number of heads alive:       ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 440));
-            e.Graphics.DrawString("Total number of heads vaccinated:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 480));
-            e.Graphics.DrawString("Vaccinations:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(160, 520));
-            int x = 520;
-            for(int i = 0; i < vaccinators.Length; i++)
-            {
-                x = x + 20;
-                e.Graphics.DrawString(vaccinators[i], new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(190, x));
-                e.Graphics.DrawString(vaccinecount[i].ToString(), new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, x));
-            } 
-            
-            e.Graphics.DrawString("No. of clients served:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, x + 40));
-            e.Graphics.DrawString("* Remarks: ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, x + 80));
+            e.Graphics.DrawString("1. Total number of heads impounded:   ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 240));
+            e.Graphics.DrawString("2. Total number of heads claimed:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 280));
+            e.Graphics.DrawString("2. Total number of heads adopted:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 320));
+            e.Graphics.DrawString("3. Total amount from transactions:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 360));
+            e.Graphics.DrawString("4. Total number of heads euthanized:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 400));
+            e.Graphics.DrawString("5. Total number of heads alive:       ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 440));
+            e.Graphics.DrawString("6. Total number of heads vaccinated:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 480));
+            e.Graphics.DrawString("7. No. of clients served:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 520));
+            e.Graphics.DrawString("* Remarks: ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 560));
 
-            e.Graphics.DrawString("" + impounded, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(470, 240));
-            e.Graphics.DrawString("" + claimed, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(470, 280));
-            e.Graphics.DrawString("" + adopted, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(470, 320));
-            e.Graphics.DrawString("" + amount, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(470, 360));
-            e.Graphics.DrawString("" + euthanized, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(470, 400));
-            e.Graphics.DrawString("" + alive, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(470, 440));
-            e.Graphics.DrawString("" + vaccinated, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(470, 480));
-            e.Graphics.DrawString("" + clients, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(470, x + 40));
-            e.Graphics.DrawString("", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(470, x + 80));
+            e.Graphics.DrawString("" + impounded, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 240));
+            e.Graphics.DrawString("" + claimed, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 280));
+            e.Graphics.DrawString("" + adopted, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 320));
+            e.Graphics.DrawString("" + amount, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 360));
+            e.Graphics.DrawString("" + euthanized, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 400));
+            e.Graphics.DrawString("" + alive, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 440));
+            e.Graphics.DrawString("" + vaccinated, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 480));
+            e.Graphics.DrawString("" + clients, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 520));
+            e.Graphics.DrawString("", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 560));
 
         }
         //IMPOUNDING SUMMARY REPORT
@@ -597,8 +590,8 @@ namespace WindowsFormsApplication1
                                         + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
                                         + "WHERE dogprofile.status = 'claimed' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
                         adp = new MySqlDataAdapter(comm);
-                        dt = new System.Data.DataTable();
-                        adp.Fill(dt);
+                        dtclaim = new DataTable();
+                        adp.Fill(dtclaim);
                     }
                     else if (filt.SelectedIndex == 1) //Adopted
                     {
@@ -614,8 +607,8 @@ namespace WindowsFormsApplication1
                                         + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
                                         + "WHERE dogprofile.status = 'adopted' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
                         adp = new MySqlDataAdapter(comm);
-                        dt = new System.Data.DataTable();
-                        adp.Fill(dt);
+                        dtadopt = new DataTable();
+                        adp.Fill(dtadopt);
                     }
                     else if (filt.SelectedIndex == 2)//Euthanized
                     {
@@ -624,8 +617,8 @@ namespace WindowsFormsApplication1
                         panelSummary.Visible = false;
                         comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, dogoperation.date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = 'euthanized' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogoperation.date", conn);
                         adp = new MySqlDataAdapter(comm);
-                        dt = new System.Data.DataTable();
-                        adp.Fill(dt);
+                        dteut = new DataTable();
+                        adp.Fill(dteut);
                     }
                     else if (filt.SelectedIndex == 3)
                     {
@@ -1019,10 +1012,76 @@ namespace WindowsFormsApplication1
         {
 
         }
-        int PrintRow = 0;
+        int rowcount = 0;
         private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             //claim
+           
+            string header = "Claimed Dogs Summary Report";
+            string footer = string.Empty;
+            int columnCount = claimreportdgv.Columns.Count;
+            int maxRows = claimreportdgv.Rows.Count;
+
+            using (Graphics g = e.Graphics)
+            {
+                Brush brush = new SolidBrush(Color.Black);
+                Pen pen = new Pen(brush);
+                Font font = new Font("Arial", 10);
+                SizeF size;
+
+                int x = 0, y = 0, width = 100;
+                float xPadding;
+
+                // Here title is written, sets to top-middle position of the page
+                size = g.MeasureString(header, font);
+                xPadding = (width - size.Width) / 2;
+                g.DrawString(header, font, brush, x + 100, y + 2);
+
+                x = 0;
+                y += 10;
+
+                // Writes out all column names in designated locations, aligned as a table
+                foreach (DataColumn column in dtclaim.Columns)
+                {
+                    size = g.MeasureString(column.ColumnName, font);
+                    xPadding = (width - size.Width) / 2;
+                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 2);
+                    x += width;
+                }
+
+                x = 0;
+                y += 10;
+
+                // Process each row and place each item under correct column.
+                foreach (DataRow row in dtclaim.Rows)
+                {
+                    rowcount++;
+
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        size = g.MeasureString(row[i].ToString(), font);
+                        xPadding = (width - size.Width) / 2;
+
+                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 2);
+                        x += width;
+                    }
+
+                    e.HasMorePages = rowcount - 1 < maxRows;
+
+                    x = 0;
+                    y += 10;
+                }
+
+                
+
+                x = 0;
+                y += 30;
+            }
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
 
         }
 
@@ -1066,6 +1125,10 @@ namespace WindowsFormsApplication1
         }
 
         private void panelHistory_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void finish()
         {
 
         }
