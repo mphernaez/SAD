@@ -570,7 +570,6 @@ namespace WindowsFormsApplication1
                               //EX. vaccinators[i] has vaccinecount[i] vaccines for the specified date range
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             button16.Visible = true;
             if (filt.Text != "Status" && m1.Text != "Month" && m2.Text != "Month" && y1.Text != "Year" && d1.Text != "Day")
             {
@@ -602,6 +601,7 @@ namespace WindowsFormsApplication1
                         adp = new MySqlDataAdapter(comm);
                         dtclaim = new DataTable();
                         adp.Fill(dtclaim);
+                        claimreportdgv.DataSource = dtclaim;
                     }
                     else if (filt.SelectedIndex == 1) //Adopted
                     {
@@ -619,6 +619,7 @@ namespace WindowsFormsApplication1
                         adp = new MySqlDataAdapter(comm);
                         dtadopt = new DataTable();
                         adp.Fill(dtadopt);
+                        claimreportdgv.DataSource = dtadopt;
                     }
                     else if (filt.SelectedIndex == 2)//Euthanized
                     {
@@ -629,6 +630,7 @@ namespace WindowsFormsApplication1
                         adp = new MySqlDataAdapter(comm);
                         dteut = new DataTable();
                         adp.Fill(dteut);
+                        claimreportdgv.DataSource = dteut;
                     }
                     else if (filt.SelectedIndex == 3)
                     {
@@ -713,8 +715,6 @@ namespace WindowsFormsApplication1
 
 
                     claimreportdgv.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, GraphicsUnit.Pixel);
-                    claimreportdgv.DataSource = dt;
-
                     conn.Close();
                 }
                 catch (Exception ex)
@@ -1036,7 +1036,7 @@ namespace WindowsFormsApplication1
             {
                 Brush brush = new SolidBrush(Color.Black);
                 Pen pen = new Pen(brush);
-                Font font = new Font("Arial", 10);
+                Font font = new Font("Arial", 12);
                 SizeF size;
 
                 int x = 0, y = 0, width = 100;
@@ -1048,7 +1048,7 @@ namespace WindowsFormsApplication1
                 g.DrawString(header, font, brush, x + 100, y + 2);
 
                 x = 0;
-                y += 10;
+                y += 20;
 
                 // Writes out all column names in designated locations, aligned as a table
                 foreach (DataColumn column in dtclaim.Columns)
@@ -1060,7 +1060,7 @@ namespace WindowsFormsApplication1
                 }
 
                 x = 0;
-                y += 10;
+                y += 20;
 
                 // Process each row and place each item under correct column.
                 foreach (DataRow row in dtclaim.Rows)
@@ -1079,7 +1079,7 @@ namespace WindowsFormsApplication1
                     e.HasMorePages = rowcount - 1 < maxRows;
 
                     x = 0;
-                    y += 10;
+                    y += 20;
                 }
 
                 

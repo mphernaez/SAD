@@ -829,8 +829,8 @@
             this.repclaimpan.Controls.Add(this.m2);
             this.repclaimpan.Controls.Add(this.m1);
             this.repclaimpan.Controls.Add(this.filt);
-            this.repclaimpan.Controls.Add(this.panelSummary);
             this.repclaimpan.Controls.Add(this.claimreportdgv);
+            this.repclaimpan.Controls.Add(this.panelSummary);
             this.repclaimpan.Location = new System.Drawing.Point(29, 197);
             this.repclaimpan.Name = "repclaimpan";
             this.repclaimpan.Size = new System.Drawing.Size(1015, 536);
