@@ -25,6 +25,7 @@ namespace WindowsFormsApplication1
         empty home;
         int[] retprod;
         int[] retemp;
+        int[] request; //itemID of items that need to be requested
         public Inventory(empty parent)
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace WindowsFormsApplication1
         {
             pictureBox1.Visible = false;
             panelTrans.Visible = false;
-            a.Visible = true;
+            a.Visible = true;.
             i.Visible = false;
             
             newitem.Visible = true;
@@ -682,12 +683,12 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT productName AS 'Product Name', description AS 'Product Description', quantity AS 'Quantity' FROM items WHERE quantity < minQuantity", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT itemID, productName AS 'Product Name', description AS 'Product Description', quantity AS 'Quantity' FROM items WHERE quantity < minQuantity", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 dgvRequest.DataSource = dt;
-
+                dgvRequest.Columns["itemID"].Visible = false;
                 dgvRequest.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvRequest.Columns["Product Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvRequest.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -698,6 +699,16 @@ namespace WindowsFormsApplication1
             {
                 conn.Close();
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void button18_Click_1(object sender, EventArgs e)
+        {
+            request = new int[dgvRequest.Rows.Count];
+            for (int i = 0; i < dgvRequest.Rows.Count; i++)
+            {
+                request[i] = int.Parse(dgvRequest.Rows[i].Cells[0].Value.ToString());
+                
             }
         }
     }
