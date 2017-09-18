@@ -298,6 +298,7 @@
             // 
             // cbVaccEmp
             // 
+            this.cbVaccEmp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVaccEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbVaccEmp.ForeColor = System.Drawing.Color.Black;
             this.cbVaccEmp.FormattingEnabled = true;
@@ -305,11 +306,11 @@
             this.cbVaccEmp.Name = "cbVaccEmp";
             this.cbVaccEmp.Size = new System.Drawing.Size(189, 28);
             this.cbVaccEmp.TabIndex = 33;
-            this.cbVaccEmp.Text = "Vaccinated by";
             this.cbVaccEmp.Visible = false;
             // 
             // tbDay
             // 
+            this.tbDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tbDay.Enabled = false;
             this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDay.FormattingEnabled = true;
@@ -317,7 +318,6 @@
             this.tbDay.Name = "tbDay";
             this.tbDay.Size = new System.Drawing.Size(51, 28);
             this.tbDay.TabIndex = 28;
-            this.tbDay.Text = "Day";
             // 
             // label17
             // 
@@ -342,6 +342,7 @@
             // 
             // cbMonth
             // 
+            this.cbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMonth.Enabled = false;
             this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMonth.ForeColor = System.Drawing.Color.Black;
@@ -363,7 +364,6 @@
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(77, 28);
             this.cbMonth.TabIndex = 27;
-            this.cbMonth.Text = "Month";
             this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
             // breed
@@ -657,9 +657,6 @@
             // printDocumentCR
             // 
             this.printDocumentCR.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentCR_PrintPage);
-            // 
-            // claimRBindingSource
-            // 
             // 
             // Claim
             // 

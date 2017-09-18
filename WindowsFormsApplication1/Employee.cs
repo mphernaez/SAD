@@ -1635,7 +1635,21 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT employee.employeeID AS emp, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM employee INNER JOIN profile ON profile.personID = employee.employeeID WHERE employee.employeeID NOT IN (SELECT employee.employeeID FROM operationteam INNER JOIN dogoperation ON dogoperation.teamID = operationteam.teamID INNER JOIN employee ON operationteam.employeeID = employee.employeeID WHERE dogoperation.status = 'OnGoing')", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT employee.employeeID AS emp, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name "
+                                                    +"FROM employee "
+                                                    + "INNER JOIN profile ON profile.personID = employee.employeeID "
+                                                    + "INNER JOIN attendance ON attendance.employeeID = employee.employeeID "
+                                                    + "WHERE employee.employeeID "
+                                                    + "NOT IN(SELECT employeeID FROM attendance WHERE date = '2017-09-19' AND type = 0) "
+                                                    + "AND employee.employeeID "
+                                                    + "IN(SELECT employeeID FROM attendance WHERE date = '2017-09-19' AND type = 1) "
+                                                    + "AND employee.employeeID "
+                                                    + "NOT IN "
+                                                    + "(SELECT employee.employeeID "
+                                                    + "FROM operationteam "
+                                                    + "INNER JOIN dogoperation ON dogoperation.teamID = operationteam.teamID "
+                                                    + "INNER JOIN employee ON operationteam.employeeID = employee.employeeID "
+                                                    + " WHERE dogoperation.status = 'OnGoing')", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
