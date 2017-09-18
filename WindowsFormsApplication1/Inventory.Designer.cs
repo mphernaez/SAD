@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inventory));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button14 = new System.Windows.Forms.Button();
@@ -39,14 +40,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.inv = new System.Windows.Forms.Panel();
+            this.button19 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.Sout = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.OK2 = new System.Windows.Forms.Button();
-            this.dgvo = new System.Windows.Forms.DataGridView();
             this.panelReturn = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.quanret = new System.Windows.Forms.NumericUpDown();
@@ -59,6 +57,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.OK1 = new System.Windows.Forms.Button();
             this.dgvin = new System.Windows.Forms.DataGridView();
+            this.panelRequest = new System.Windows.Forms.Panel();
+            this.fgerf = new System.Windows.Forms.Label();
+            this.button18 = new System.Windows.Forms.Button();
+            this.dgvRequest = new System.Windows.Forms.DataGridView();
+            this.Sout = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.OK2 = new System.Windows.Forms.Button();
+            this.dgvo = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.tbname = new System.Windows.Forms.TextBox();
             this.tbdesc = new System.Windows.Forms.TextBox();
@@ -94,21 +100,24 @@
             this.button13 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelTrans = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.dgvTrans = new System.Windows.Forms.DataGridView();
             this.cbTransType = new System.Windows.Forms.ComboBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.button2 = new System.Windows.Forms.Button();
+            this.ItemReq = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.i)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
             this.inv.SuspendLayout();
-            this.Sout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvo)).BeginInit();
             this.panelReturn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quanret)).BeginInit();
             this.dgvout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvin)).BeginInit();
+            this.panelRequest.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRequest)).BeginInit();
+            this.Sout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvo)).BeginInit();
             this.newitem.SuspendLayout();
             this.Edit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEdit)).BeginInit();
@@ -141,9 +150,9 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(991, 71);
+            this.pictureBox1.Location = new System.Drawing.Point(883, 72);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(28, 31);
             this.pictureBox1.TabIndex = 58;
@@ -160,7 +169,7 @@
             this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Location = new System.Drawing.Point(977, 15);
+            this.button14.Location = new System.Drawing.Point(869, 16);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(55, 55);
             this.button14.TabIndex = 57;
@@ -171,9 +180,9 @@
             // i
             // 
             this.i.BackColor = System.Drawing.Color.Transparent;
-            this.i.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.i.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("i.BackgroundImage")));
             this.i.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.i.Location = new System.Drawing.Point(932, 71);
+            this.i.Location = new System.Drawing.Point(824, 72);
             this.i.Name = "i";
             this.i.Size = new System.Drawing.Size(28, 31);
             this.i.TabIndex = 55;
@@ -190,7 +199,7 @@
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(918, 15);
+            this.button3.Location = new System.Drawing.Point(810, 16);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(55, 55);
             this.button3.TabIndex = 3;
@@ -201,9 +210,9 @@
             // a
             // 
             this.a.BackColor = System.Drawing.Color.Transparent;
-            this.a.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.triangle_512;
+            this.a.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("a.BackgroundImage")));
             this.a.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.a.Location = new System.Drawing.Point(872, 71);
+            this.a.Location = new System.Drawing.Point(764, 72);
             this.a.Name = "a";
             this.a.Size = new System.Drawing.Size(28, 31);
             this.a.TabIndex = 54;
@@ -219,7 +228,7 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(857, 15);
+            this.button1.Location = new System.Drawing.Point(749, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(55, 55);
             this.button1.TabIndex = 0;
@@ -249,20 +258,37 @@
             // inv
             // 
             this.inv.BackColor = System.Drawing.Color.White;
+            this.inv.Controls.Add(this.button19);
             this.inv.Controls.Add(this.button15);
             this.inv.Controls.Add(this.button9);
             this.inv.Controls.Add(this.button5);
             this.inv.Controls.Add(this.button16);
             this.inv.Controls.Add(this.label12);
-            this.inv.Controls.Add(this.Sout);
             this.inv.Controls.Add(this.panelReturn);
             this.inv.Controls.Add(this.dgvout);
+            this.inv.Controls.Add(this.panelRequest);
+            this.inv.Controls.Add(this.Sout);
             this.inv.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inv.Location = new System.Drawing.Point(24, 196);
             this.inv.Name = "inv";
             this.inv.Size = new System.Drawing.Size(1016, 543);
             this.inv.TabIndex = 52;
             this.inv.Visible = false;
+            // 
+            // button19
+            // 
+            this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button19.FlatAppearance.BorderSize = 0;
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button19.ForeColor = System.Drawing.Color.White;
+            this.button19.Location = new System.Drawing.Point(310, 82);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(100, 32);
+            this.button19.TabIndex = 60;
+            this.button19.Text = "Request";
+            this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // button15
             // 
@@ -286,7 +312,7 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(310, 82);
+            this.button9.Location = new System.Drawing.Point(410, 82);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(100, 32);
             this.button9.TabIndex = 56;
@@ -323,62 +349,6 @@
             this.button16.Text = "Stock In";
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // Sout
-            // 
-            this.Sout.Controls.Add(this.label4);
-            this.Sout.Controls.Add(this.OK2);
-            this.Sout.Controls.Add(this.dgvo);
-            this.Sout.Location = new System.Drawing.Point(11, 114);
-            this.Sout.Name = "Sout";
-            this.Sout.Size = new System.Drawing.Size(982, 361);
-            this.Sout.TabIndex = 44;
-            this.Sout.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label4.Location = new System.Drawing.Point(16, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 31);
-            this.label4.TabIndex = 57;
-            this.label4.Text = "Stock-Out";
-            // 
-            // OK2
-            // 
-            this.OK2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.OK2.FlatAppearance.BorderSize = 0;
-            this.OK2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OK2.ForeColor = System.Drawing.Color.White;
-            this.OK2.Location = new System.Drawing.Point(840, 259);
-            this.OK2.Name = "OK2";
-            this.OK2.Size = new System.Drawing.Size(124, 42);
-            this.OK2.TabIndex = 47;
-            this.OK2.Text = "OK";
-            this.OK2.UseVisualStyleBackColor = false;
-            this.OK2.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // dgvo
-            // 
-            this.dgvo.AllowUserToAddRows = false;
-            this.dgvo.AllowUserToDeleteRows = false;
-            this.dgvo.AllowUserToResizeColumns = false;
-            this.dgvo.AllowUserToResizeRows = false;
-            this.dgvo.BackgroundColor = System.Drawing.Color.White;
-            this.dgvo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvo.GridColor = System.Drawing.Color.White;
-            this.dgvo.Location = new System.Drawing.Point(12, 53);
-            this.dgvo.Name = "dgvo";
-            this.dgvo.ReadOnly = true;
-            this.dgvo.RowHeadersVisible = false;
-            this.dgvo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvo.Size = new System.Drawing.Size(952, 200);
-            this.dgvo.TabIndex = 20;
-            this.dgvo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvo_CellClick);
             // 
             // panelReturn
             // 
@@ -529,6 +499,117 @@
             this.dgvin.TabIndex = 20;
             this.dgvin.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvin_CellClick);
             // 
+            // panelRequest
+            // 
+            this.panelRequest.Controls.Add(this.fgerf);
+            this.panelRequest.Controls.Add(this.button18);
+            this.panelRequest.Controls.Add(this.dgvRequest);
+            this.panelRequest.Location = new System.Drawing.Point(10, 114);
+            this.panelRequest.Name = "panelRequest";
+            this.panelRequest.Size = new System.Drawing.Size(982, 374);
+            this.panelRequest.TabIndex = 58;
+            this.panelRequest.Visible = false;
+            // 
+            // fgerf
+            // 
+            this.fgerf.AutoSize = true;
+            this.fgerf.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fgerf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.fgerf.Location = new System.Drawing.Point(16, 12);
+            this.fgerf.Name = "fgerf";
+            this.fgerf.Size = new System.Drawing.Size(248, 31);
+            this.fgerf.TabIndex = 57;
+            this.fgerf.Text = "Items Running Out:";
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button18.FlatAppearance.BorderSize = 0;
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button18.ForeColor = System.Drawing.Color.White;
+            this.button18.Location = new System.Drawing.Point(704, 314);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(262, 42);
+            this.button18.TabIndex = 47;
+            this.button18.Text = "Generate Item Request Form";
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click_1);
+            // 
+            // dgvRequest
+            // 
+            this.dgvRequest.AllowUserToAddRows = false;
+            this.dgvRequest.AllowUserToDeleteRows = false;
+            this.dgvRequest.AllowUserToResizeColumns = false;
+            this.dgvRequest.AllowUserToResizeRows = false;
+            this.dgvRequest.BackgroundColor = System.Drawing.Color.White;
+            this.dgvRequest.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvRequest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRequest.GridColor = System.Drawing.Color.White;
+            this.dgvRequest.Location = new System.Drawing.Point(12, 53);
+            this.dgvRequest.Name = "dgvRequest";
+            this.dgvRequest.ReadOnly = true;
+            this.dgvRequest.RowHeadersVisible = false;
+            this.dgvRequest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRequest.Size = new System.Drawing.Size(952, 248);
+            this.dgvRequest.TabIndex = 20;
+            // 
+            // Sout
+            // 
+            this.Sout.Controls.Add(this.label4);
+            this.Sout.Controls.Add(this.OK2);
+            this.Sout.Controls.Add(this.dgvo);
+            this.Sout.Location = new System.Drawing.Point(11, 114);
+            this.Sout.Name = "Sout";
+            this.Sout.Size = new System.Drawing.Size(982, 361);
+            this.Sout.TabIndex = 44;
+            this.Sout.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label4.Location = new System.Drawing.Point(16, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(136, 31);
+            this.label4.TabIndex = 57;
+            this.label4.Text = "Stock-Out";
+            // 
+            // OK2
+            // 
+            this.OK2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.OK2.FlatAppearance.BorderSize = 0;
+            this.OK2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OK2.ForeColor = System.Drawing.Color.White;
+            this.OK2.Location = new System.Drawing.Point(840, 259);
+            this.OK2.Name = "OK2";
+            this.OK2.Size = new System.Drawing.Size(124, 42);
+            this.OK2.TabIndex = 47;
+            this.OK2.Text = "OK";
+            this.OK2.UseVisualStyleBackColor = false;
+            this.OK2.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // dgvo
+            // 
+            this.dgvo.AllowUserToAddRows = false;
+            this.dgvo.AllowUserToDeleteRows = false;
+            this.dgvo.AllowUserToResizeColumns = false;
+            this.dgvo.AllowUserToResizeRows = false;
+            this.dgvo.BackgroundColor = System.Drawing.Color.White;
+            this.dgvo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvo.GridColor = System.Drawing.Color.White;
+            this.dgvo.Location = new System.Drawing.Point(12, 53);
+            this.dgvo.Name = "dgvo";
+            this.dgvo.ReadOnly = true;
+            this.dgvo.RowHeadersVisible = false;
+            this.dgvo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvo.Size = new System.Drawing.Size(952, 200);
+            this.dgvo.TabIndex = 20;
+            this.dgvo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvo_CellClick);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -565,8 +646,8 @@
             this.newitem.Controls.Add(this.label5);
             this.newitem.Controls.Add(this.button31);
             this.newitem.Controls.Add(this.button6);
-            this.newitem.Controls.Add(this.Edit);
             this.newitem.Controls.Add(this.add);
+            this.newitem.Controls.Add(this.Edit);
             this.newitem.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newitem.Location = new System.Drawing.Point(24, 196);
             this.newitem.Name = "newitem";
@@ -754,7 +835,7 @@
             // button8
             // 
             this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.open_exit_door;
+            this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
@@ -814,7 +895,7 @@
             // button10
             // 
             this.button10.BackColor = System.Drawing.Color.Transparent;
-            this.button10.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.archive_black_box;
+            this.button10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button10.BackgroundImage")));
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button10.FlatAppearance.BorderSize = 0;
             this.button10.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
@@ -853,7 +934,7 @@
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.Transparent;
-            this.button11.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.user_silhouette;
+            this.button11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button11.BackgroundImage")));
             this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
@@ -904,7 +985,7 @@
             // button12
             // 
             this.button12.BackColor = System.Drawing.Color.Transparent;
-            this.button12.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.paw_print_;
+            this.button12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button12.BackgroundImage")));
             this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button12.FlatAppearance.BorderSize = 0;
             this.button12.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
@@ -945,7 +1026,7 @@
             // button13
             // 
             this.button13.BackColor = System.Drawing.Color.Transparent;
-            this.button13.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.home1;
+            this.button13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button13.BackgroundImage")));
             this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button13.FlatAppearance.BorderSize = 0;
             this.button13.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
@@ -973,6 +1054,21 @@
             this.panelTrans.Size = new System.Drawing.Size(1016, 543);
             this.panelTrans.TabIndex = 57;
             this.panelTrans.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(316, 21);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 32);
+            this.button2.TabIndex = 77;
+            this.button2.Text = "View Report";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // dgvTrans
             // 
@@ -1012,20 +1108,9 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // button2
+            // ItemReq
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(545, 24);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 32);
-            this.button2.TabIndex = 77;
-            this.button2.Text = "View Report";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.ItemReq.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.ItemReq_PrintPage);
             // 
             // Inventory
             // 
@@ -1036,9 +1121,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelTrans);
             this.Controls.Add(this.inv);
             this.Controls.Add(this.newitem);
+            this.Controls.Add(this.panelTrans);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(27, 84);
             this.MaximizeBox = false;
@@ -1052,15 +1137,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.a)).EndInit();
             this.inv.ResumeLayout(false);
             this.inv.PerformLayout();
-            this.Sout.ResumeLayout(false);
-            this.Sout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvo)).EndInit();
             this.panelReturn.ResumeLayout(false);
             this.panelReturn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quanret)).EndInit();
             this.dgvout.ResumeLayout(false);
             this.dgvout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvin)).EndInit();
+            this.panelRequest.ResumeLayout(false);
+            this.panelRequest.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRequest)).EndInit();
+            this.Sout.ResumeLayout(false);
+            this.Sout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvo)).EndInit();
             this.newitem.ResumeLayout(false);
             this.newitem.PerformLayout();
             this.Edit.ResumeLayout(false);
@@ -1158,5 +1246,11 @@
         private System.Windows.Forms.Label label7;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Panel panelRequest;
+        private System.Windows.Forms.Label fgerf;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.DataGridView dgvRequest;
+        private System.Drawing.Printing.PrintDocument ItemReq;
     }
 }
