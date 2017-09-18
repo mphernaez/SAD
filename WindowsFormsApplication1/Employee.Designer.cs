@@ -262,7 +262,6 @@
             this.attendance.Size = new System.Drawing.Size(1016, 543);
             this.attendance.TabIndex = 44;
             this.attendance.Visible = false;
-            this.attendance.Paint += new System.Windows.Forms.PaintEventHandler(this.attendance_Paint);
             // 
             // button6
             // 
@@ -2339,7 +2338,6 @@
             this.panelViewAct.Size = new System.Drawing.Size(982, 412);
             this.panelViewAct.TabIndex = 87;
             this.panelViewAct.Visible = false;
-            this.panelViewAct.Paint += new System.Windows.Forms.PaintEventHandler(this.panelViewAct_Paint);
             // 
             // dgvViewAct
             // 
