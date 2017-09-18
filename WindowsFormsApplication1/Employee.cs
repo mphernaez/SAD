@@ -491,7 +491,7 @@ namespace WindowsFormsApplication1
 
             if (editemployeeID != 0)
             {
-                emp.Show();
+                emp.ShowDialog();
                 emp.employeeID = this.editemployeeID;
                 emp.TopMost = true;
                 try
@@ -2044,7 +2044,7 @@ namespace WindowsFormsApplication1
                     opOpen = true;
                 }
                 op.id = opId;
-                op.Show();
+                op.ShowDialog();
                                 
             }
         }

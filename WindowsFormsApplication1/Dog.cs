@@ -212,7 +212,7 @@ namespace WindowsFormsApplication1
                 claim.dogID = this.dogID;
                 claim.adminID = this.adminID;
                 claim.dog = this;
-                claim.Show();
+                claim.ShowDialog();
             }
             else
             {
@@ -265,7 +265,7 @@ namespace WindowsFormsApplication1
                 adopt.dogID = this.adoptID;
                 adopt.adminID = this.adminID;
                 adopt.dog = this;
-                adopt.Show();
+                adopt.ShowDialog();
             }
             else
             {

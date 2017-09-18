@@ -228,7 +228,7 @@ namespace WindowsFormsApplication1
         private void button8_Click(object sender, EventArgs e)
         {
             endO.id = itemID;
-            endO.Show();
+            endO.ShowDialog();
         }
 
         private void dgvo_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -254,7 +254,7 @@ namespace WindowsFormsApplication1
                 if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) >= 1)
                 {
                     end.id = itemID;
-                    end.Show();
+                    end.ShowDialog();
                     end.rq = dtt.Rows[0]["requestID"].ToString();
                     MySqlCommand comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + itemID.ToString(), conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -615,7 +615,7 @@ namespace WindowsFormsApplication1
                 }
 
                 eItem.id = eID;
-                eItem.Show();
+                eItem.ShowDialog();
             }
             else
             {

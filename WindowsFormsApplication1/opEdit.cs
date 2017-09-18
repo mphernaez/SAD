@@ -44,7 +44,7 @@ namespace WindowsFormsApplication1
                 adp.Fill(dt);
 
                 int i = 1;
-                date = dt.Rows[0]["date"].ToString();
+                date = (Convert.ToDateTime(dt.Rows[0]["date"].ToString())).ToString("dd MM yyy");
                 ts = dt.Rows[0]["timeStart"].ToString();
                 te = dt.Rows[0]["timeEnd"].ToString();
                 
