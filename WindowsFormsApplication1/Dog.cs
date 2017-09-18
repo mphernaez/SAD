@@ -1097,6 +1097,11 @@ namespace WindowsFormsApplication1
         private void button11_Click(object sender, EventArgs e)
         {
             int operationID = opid[cbOperation.SelectedIndex];
+
+            PrintPreviewDialog fin = new PrintPreviewDialog();
+            fin.Document = printDocument5;
+            ((Form)fin).WindowState = FormWindowState.Maximized;
+            fin.ShowDialog();
             try
             {
                 conn.Open();
@@ -1126,7 +1131,8 @@ namespace WindowsFormsApplication1
                 adp.Fill(dtoperation);
 
                 conn.Close();
-                finish();
+                
+                
             }
             catch (Exception ex)
             {
@@ -1273,7 +1279,16 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Time: " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 220));
             e.Graphics.DrawString("Employees Invovled: " + employees, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 250));
             int x = 250;
-            //
+            for (int i = 0; i < employees.Length; i++)
+            {
+                x = x + 250;
+                e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, x));
+            }
+        }
+
+        private void addDog_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void button17_Click(object sender, EventArgs e)
@@ -1312,10 +1327,7 @@ namespace WindowsFormsApplication1
         }
         private void finish()
         {
-            PrintPreviewDialog dlg = new PrintPreviewDialog();
-            dlg.Document = printDocument5;
-            ((Form)dlg).WindowState = FormWindowState.Maximized;
-            dlg.ShowDialog();
+            
         }
     }
 }

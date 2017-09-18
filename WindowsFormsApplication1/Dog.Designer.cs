@@ -349,6 +349,7 @@
             this.addDog.Size = new System.Drawing.Size(1015, 536);
             this.addDog.TabIndex = 2;
             this.addDog.Visible = false;
+            this.addDog.Paint += new System.Windows.Forms.PaintEventHandler(this.addDog_Paint);
             // 
             // button11
             // 
@@ -1628,6 +1629,10 @@
             // 
             this.printDocument4.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument4_PrintPage);
             // 
+            // printDocument5
+            // 
+            this.printDocument5.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument5_PrintPage);
+            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1637,11 +1642,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.repclaimpan);
+            this.Controls.Add(this.searchDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";

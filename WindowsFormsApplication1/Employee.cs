@@ -2450,6 +2450,16 @@ namespace WindowsFormsApplication1
                 }
             }
             }
+
+        private void attendance_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelViewAct_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 
