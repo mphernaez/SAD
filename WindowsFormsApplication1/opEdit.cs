@@ -183,14 +183,16 @@ namespace WindowsFormsApplication1
                     string dd = ndate + " " + nts;
                     DateTime myDate = Convert.ToDateTime(dd);
                     DateTime cD = DateTime.Now;
+                    DateTime ts = Convert.ToDateTime(ndate + " " + nte);
                     int result = DateTime.Compare(myDate, cD);
+                    int resul = DateTime.Compare(ts, myDate);
                     MySqlCommand con = new MySqlCommand("SELECT COUNT(*) FROM dogoperation WHERE date = '" + ndate + "' AND locationID = " + nl, conn);
                     MySqlDataAdapter adt = new MySqlDataAdapter(con);
                     DataTable dtt = new DataTable();
                     adt.Fill(dtt);
                     if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) == 0)
                     {
-                        if (result > 0)
+                        if (result > 0 && resul > 0)
                         {
 
                             {
@@ -434,40 +436,57 @@ namespace WindowsFormsApplication1
           
             try
             {
-                conn.Open();
-                MySqlCommand co;
-                MySqlCommand com = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-
-                int nt = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) +1;
-                int idd;
-                int[] ids = new int[cTeam.Rows.Count];
-                for (int i = 0; i < cTeam.Rows.Count; i++)
+                
+                bool j = false;
+                for(int i = 0; i < cTeam.Rows.Count; i++)
                 {
-                    idd = int.Parse(cTeam.Rows[i].Cells["pID"].Value.ToString());
-                    ids[i] = idd;
+                    if(cTeam.Rows[i].DefaultCellStyle.BackColor == Color.FromArgb(229, 99, 82))
+                    {
+                        j = true;
+                    }
                 }
-
-                if (emp.checkIfTeamExists(ids, cTeam.Rows.Count) == 0)
+                if (!j)
                 {
+                    conn.Open();
+                    MySqlCommand co;
+                    MySqlCommand com = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+
+                    int nt = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) + 1;
+                    int idd;
+                    int[] ids = new int[cTeam.Rows.Count];
                     for (int i = 0; i < cTeam.Rows.Count; i++)
                     {
-                        co = new MySqlCommand("INSERT INTO operationteam ( employeeID, teamID ) VALUES ( " + ids[i] + ", " + nt + " )", conn);
-                        co.ExecuteNonQuery();
+                        idd = int.Parse(cTeam.Rows[i].Cells["pID"].Value.ToString());
+                        ids[i] = idd;
                     }
 
+                    if (emp.checkIfTeamExists(ids, cTeam.Rows.Count) == 0)
+                    {
+                        for (int i = 0; i < cTeam.Rows.Count; i++)
+                        {
+                            co = new MySqlCommand("INSERT INTO operationteam ( employeeID, teamID ) VALUES ( " + ids[i] + ", " + nt + " )", conn);
+                            co.ExecuteNonQuery();
+                        }
+
+                    }
+                    else
+                    {
+                        nt = emp.checkIfTeamExists(ids, cTeam.Rows.Count);
+                    }
+                    MySqlCommand comm = new MySqlCommand("Update dogoperation SET date = '" + ndate + "', locationID = " + nl + ", timeStart = '" + nts + "', teamID = " + nt + ", timeEnd = '" + nte + "' WHERE operationID = " + id, conn);
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Changes Saved");
+
+                    conn.Close();
+                    this.Dispose();
+                    emp.opOpen = false;
                 } else
                 {
-                    nt = emp.checkIfTeamExists(ids, cTeam.Rows.Count);
+                    MessageBox.Show("Please remove employees not present");
                 }
-                MySqlCommand comm = new MySqlCommand("Update dogoperation SET date = '"+ndate+"', locationID = "+nl+", timeStart = '"+nts+"', teamID = "+nt+", timeEnd = '"+nte+"' WHERE operationID = " + id, conn);
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Changes Saved");
-                conn.Close();
-                this.Dispose();
-                emp.opOpen = false;
             } catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
