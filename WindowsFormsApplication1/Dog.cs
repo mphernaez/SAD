@@ -1278,12 +1278,7 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Date: " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 190));
             e.Graphics.DrawString("Time: " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 220));
             e.Graphics.DrawString("Employees Invovled: " + employees, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 250));
-            int x = 250;
-            for (int i = 0; i < employees.Length; i++)
-            {
-                x = x + 250;
-                e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, x));
-            }
+            
         }
 
         private void addDog_Paint(object sender, PaintEventArgs e)
