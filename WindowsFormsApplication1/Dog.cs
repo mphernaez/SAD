@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using MySql.Data.MySqlClient;
-using Microsoft.Office.Interop.Excel;
 
 
 namespace WindowsFormsApplication1
@@ -20,6 +19,10 @@ namespace WindowsFormsApplication1
     {
         //45   
         //55
+
+        DataTable dtclaim;
+        DataTable dtadopt;
+        DataTable dteut;
         private Color use;
         public int dogID;
         public int adminID;
@@ -48,8 +51,8 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            
+
+
             //panel2.Visible = false;
             addDog.Visible = true;
             searchDog.Visible = false;
@@ -68,7 +71,7 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
 
-            
+
             //panel2.Visible = false;
             searchDog.Visible = true;
             addDog.Visible = false;
@@ -238,7 +241,7 @@ namespace WindowsFormsApplication1
         private void button5_Click_1(object sender, EventArgs e)
         {
 
-           
+
             searchDog.Visible = false;
             addDog.Visible = false;
             adoptDog.Visible = true;
@@ -287,7 +290,7 @@ namespace WindowsFormsApplication1
         private void button6_Click_1(object sender, EventArgs e)
         {
 
-            
+
             //panel2.Visible = false;
             searchDog.Visible = false;
             addDog.Visible = false;
@@ -365,8 +368,8 @@ namespace WindowsFormsApplication1
 
         private void button8_Click_1(object sender, EventArgs e)
         {
-            
-            
+
+
             searchDog.Visible = false;
             addDog.Visible = false;
             adoptDog.Visible = false;
@@ -519,24 +522,45 @@ namespace WindowsFormsApplication1
             this.Hide();
         }
 
-        private void monthlyRep_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, 50));
-            e.Graphics.DrawString("City of Davao", new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + d1.Text + "," + y1 + "-" + m2.Text + d2.Text + y2.Text, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            /* point structure kulang
-            e.Graphics.DrawString("1. Total number of heads impounded   " + impounded, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("2. Total number of heads claimed     " + claimed, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("2. Total number of heads adopted     " + adopted, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("3. Total amount from transactions    " + amount, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("4. Total number of heads euthanized  " + euthanized, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("5. Total number of heads alive       " + alive, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("6. Total number of heads vaccinated  " + vaccinated, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("7. No. of clients served    " + clients, new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            e.Graphics.DrawString("* Remarks: ", new System.Drawing.Font("Arial", 24, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(400, 60));
-            */
+            string f = "Arial";
+            int fsize = 14;
+            e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, 50));
+            e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(350, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new System.Drawing.Font(f, 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(160, 100));
+            e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font(f, 18, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(65, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 170));
+
+            e.Graphics.DrawString("Total number of heads impounded:   ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 240));
+            e.Graphics.DrawString("Total number of heads claimed:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 280));
+            e.Graphics.DrawString("Total number of heads adopted:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 320));
+            e.Graphics.DrawString("Total amount from transactions:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 360));
+            e.Graphics.DrawString("Total number of heads euthanized:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 400));
+            e.Graphics.DrawString("Total number of heads alive:       ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 440));
+            e.Graphics.DrawString("Total number of heads vaccinated:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 480));
+            e.Graphics.DrawString("Vaccinators: ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 520));
+
+            int x = 520;
+            for (int i = 0; i < vaccinators.Length; i++)
+            {
+                x = x + 20;
+                e.Graphics.DrawString(vaccinators[i], new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(250, x));
+                e.Graphics.DrawString(vaccinecount[i].ToString(), new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(475, x));
+            }
+
+            e.Graphics.DrawString("No. of clients served:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, x + 40));
+            e.Graphics.DrawString("* Remarks: ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, x + 80));
+
+            e.Graphics.DrawString("" + impounded, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 240));
+            e.Graphics.DrawString("" + claimed, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 280));
+            e.Graphics.DrawString("" + adopted, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 320));
+            e.Graphics.DrawString("" + amount, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 360));
+            e.Graphics.DrawString("" + euthanized, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 400));
+            e.Graphics.DrawString("" + alive, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 440));
+            e.Graphics.DrawString("" + vaccinated, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 480));
+            e.Graphics.DrawString("" + clients, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, x + 40));
+            e.Graphics.DrawString("", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(470, x + 80));
 
         }
         //IMPOUNDING SUMMARY REPORT
@@ -559,10 +583,11 @@ namespace WindowsFormsApplication1
                     MySqlCommand comm;
                     MySqlDataAdapter adp;
                     System.Data.DataTable dt = new System.Data.DataTable(); ;
-                    
+
                     conn.Open();
                     if (filt.SelectedIndex == 0) //Claimed
                     {
+                        button16.Enabled = true;
                         claimreportdgv.Visible = true;
                         panelSummary.Visible = false;
                         comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Claimer', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
@@ -574,11 +599,13 @@ namespace WindowsFormsApplication1
                                         + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
                                         + "WHERE dogprofile.status = 'claimed' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
                         adp = new MySqlDataAdapter(comm);
-                        dt = new System.Data.DataTable();
-                        adp.Fill(dt);
+                        dtclaim = new DataTable();
+                        adp.Fill(dtclaim);
+                        claimreportdgv.DataSource = dtclaim;
                     }
                     else if (filt.SelectedIndex == 1) //Adopted
                     {
+                        button16.Enabled = true;
                         claimreportdgv.Visible = true;
                         panelSummary.Visible = false;
                         comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Adopter', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
@@ -590,52 +617,56 @@ namespace WindowsFormsApplication1
                                         + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
                                         + "WHERE dogprofile.status = 'adopted' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogtransaction.date", conn);
                         adp = new MySqlDataAdapter(comm);
-                        dt = new System.Data.DataTable();
-                        adp.Fill(dt);
+                        dtadopt = new DataTable();
+                        adp.Fill(dtadopt);
+                        claimreportdgv.DataSource = dtadopt;
                     }
                     else if (filt.SelectedIndex == 2)//Euthanized
                     {
+                        button16.Enabled = true;
                         claimreportdgv.Visible = true;
                         panelSummary.Visible = false;
                         comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, dogoperation.date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = 'euthanized' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogoperation.date", conn);
                         adp = new MySqlDataAdapter(comm);
-                        dt = new System.Data.DataTable();
-                        adp.Fill(dt);
+                        dteut = new DataTable();
+                        adp.Fill(dteut);
+                        claimreportdgv.DataSource = dteut;
                     }
                     else if (filt.SelectedIndex == 3)
                     {
+                        button16.Enabled = true;
                         MySqlCommand commm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
-                                                                +"WHERE dogoperation.date  BETWEEN '"+datestart+"' AND '"+dateend+"'", conn);
+                                                                + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "'", conn);
                         MySqlDataAdapter adpp = new MySqlDataAdapter(commm); System.Data.DataTable dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         impounded = int.Parse(dtt.Rows[0]["c"].ToString());
 
                         MySqlCommand commmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
                                                                 + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' "
-                                                                +"AND dogprofile.status = 'claimed'", conn);
+                                                                + "AND dogprofile.status = 'claimed'", conn);
                         adpp = new MySqlDataAdapter(commmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         claimed = int.Parse(dtt.Rows[0]["c"].ToString());
 
                         MySqlCommand commmmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
                                                                 + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' "
-                                                                +"AND dogprofile.status = 'adopted'", conn);
+                                                                + "AND dogprofile.status = 'adopted'", conn);
                         adpp = new MySqlDataAdapter(commmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         adopted = int.Parse(dtt.Rows[0]["c"].ToString());
 
                         MySqlCommand commmmmm = new MySqlCommand("SELECT SUM(payment) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
                                                                 + "INNER JOIN dogtransaction ON dogtransaction.dogID = dogprofile.dogID WHERE dogtransaction.date  "
-                                                                +"BETWEEN '" + datestart + "' AND '" + dateend + "'", conn);
+                                                                + "BETWEEN '" + datestart + "' AND '" + dateend + "'", conn);
                         adpp = new MySqlDataAdapter(commmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         amount = int.Parse(dtt.Rows[0]["c"].ToString());
 
                         MySqlCommand commmmmmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
-                                                                    + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' " 
-                                                                    +"AND dogprofile.status = 'euthanized'", conn);
+                                                                    + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' "
+                                                                    + "AND dogprofile.status = 'euthanized'", conn);
                         adpp = new MySqlDataAdapter(commmmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         euthanized = int.Parse(dtt.Rows[0]["c"].ToString());
 
                         MySqlCommand commmmmmmm = new MySqlCommand("SELECT COUNT(dogID) AS c FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
-                                                                    + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' " 
-                                                                    +"AND dogprofile.status = 'unclaimed'", conn);
+                                                                    + "WHERE dogoperation.date  BETWEEN '" + datestart + "' AND '" + dateend + "' "
+                                                                    + "AND dogprofile.status = 'unclaimed'", conn);
                         adpp = new MySqlDataAdapter(commmmmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         alive = int.Parse(dtt.Rows[0]["c"].ToString());
 
@@ -643,8 +674,8 @@ namespace WindowsFormsApplication1
                         adpp = new MySqlDataAdapter(commmmmmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         vaccinated = int.Parse(dtt.Rows[0]["c"].ToString());
 
-                        MySqlCommand commmmmmmmmm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '. ', lastname) AS name, " 
-                                                                    +"COUNT(profile.lastname) AS Vaccinations "
+                        MySqlCommand commmmmmmmmm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '. ', lastname) AS name, "
+                                                                    + "COUNT(profile.lastname) AS Vaccinations "
                                                                     + "FROM profile "
                                                                     + "INNER JOIN employee ON employee.employeeID = profile.personID "
                                                                     + "INNER JOIN activity ON activity.employeeID = employee.employeeID "
@@ -664,7 +695,7 @@ namespace WindowsFormsApplication1
 
                         MySqlCommand commmmmmmmmmm = new MySqlCommand("SELECT COUNT(client.personID) AS c FROM client "
                                                                         + "INNER JOIN dogtransaction ON dogtransaction.personID = client.personID "
-                                                                        +"WHERE date BETWEEN '"+datestart+"' AND '"+dateend+"'", conn);
+                                                                        + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "'", conn);
                         adpp = new MySqlDataAdapter(commmmmmmmmmm); dtt = new System.Data.DataTable(); adpp.Fill(dtt);
                         clients = int.Parse(dtt.Rows[0]["c"].ToString());
 
@@ -684,8 +715,6 @@ namespace WindowsFormsApplication1
 
 
                     claimreportdgv.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, GraphicsUnit.Pixel);
-                    claimreportdgv.DataSource = dt;
-
                     conn.Close();
                 }
                 catch (Exception ex)
@@ -709,11 +738,43 @@ namespace WindowsFormsApplication1
 
         private void print()
         {
-            PrintPreviewDialog dlg = new PrintPreviewDialog();
-            dlg.Document = monthlyRep;
-            ((Form)dlg).WindowState = FormWindowState.Maximized;
-            dlg.ShowDialog();
+            if (filt.SelectedIndex == 0)
+            {
+                printDocument2.DefaultPageSettings.Landscape = true;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument2;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+            }
+            else if (filt.SelectedIndex == 1)
+            {
+                printDocument3.DefaultPageSettings.Landscape = true;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument3;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+            }
+            else if (filt.SelectedIndex == 2)
+            {
+                printDocument4.DefaultPageSettings.Landscape = true;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument4;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+            }
+            else if (filt.SelectedIndex == 3)
+            {
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument1;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+            }
+            else
+            {
+
+            }
         }
+
 
         private void addOperationsItems()
         {
@@ -883,10 +944,10 @@ namespace WindowsFormsApplication1
 
         private void cbTransType_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
-        
+
         private void cbEmps_SelectedIndexChanged(object sender, EventArgs e)
         {
             //MessageBox.Show(empids[cbEmps.SelectedIndex].ToString());
@@ -969,6 +1030,110 @@ namespace WindowsFormsApplication1
         {
 
         }
+        int rowcount = 0;
+        private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            //claim
+
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
+            e.Graphics.DrawString("CLAIMED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
+
+            string footer = string.Empty;
+            int columnCount = claimreportdgv.Columns.Count;
+            int maxRows = claimreportdgv.Rows.Count;
+
+            using (Graphics g = e.Graphics)
+            {
+                Brush brush = new SolidBrush(Color.Black);
+                Pen pen = new Pen(brush);
+                Font font = new Font("Arial", 12);
+                SizeF size;
+
+                int x = 0, y = 300, width = 100;
+                float xPadding;
+
+                // Writes out all column names in designated locations, aligned as a table
+                foreach (DataColumn column in dtclaim.Columns)
+                {
+                    size = g.MeasureString(column.ColumnName, font);
+                    xPadding = (width - size.Width) / 2;
+                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 5);
+                    x += width;
+                }
+
+                x = 0;
+                y += 30;
+
+                // Process each row and place each item under correct column.
+                foreach (DataRow row in dtclaim.Rows)
+                {
+                    rowcount++;
+
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        size = g.MeasureString(row[i].ToString(), font);
+                        xPadding = (width - size.Width) / 2;
+
+                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 5);
+                        x += width;
+                    }
+
+                    e.HasMorePages = rowcount - 1 < maxRows;
+
+                    x = 0;
+                    y += 30;
+                }
+            }
+
+        }
+        string date;
+        string time;
+        string location;
+        string[] employees; //employee team
+        DataTable dtoperation; //dogs
+        private void button11_Click(object sender, EventArgs e)
+        {
+            int operationID = opid[cbOperation.SelectedIndex];
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT description AS Location, date AS Date, CONCAT(timeStart, '-', timeEnd) AS Time FROM dogpound.dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adp.Fill(dt);
+                location = dt.Rows[0]["Location"].ToString();
+                time = dt.Rows[0]["Time"].ToString();
+                date = dt.Rows[0]["Date"].ToString();
+
+                comm = new MySqlCommand("SELECT DISTINCT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', lastname) AS Name FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON employee.employeeID = operationTeam.employeeID INNER JOIN dogoperation ON operationteam.teamID = dogoperation.teamID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                adp = new MySqlDataAdapter(comm);
+                dt = new System.Data.DataTable();
+                adp.Fill(dt);
+
+                employees = new string[dt.Rows.Count];
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    employees[i] = dt.Rows[i]["Name"].ToString();
+                }
+
+                comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                adp = new MySqlDataAdapter(comm);
+                dtoperation = new System.Data.DataTable();
+                adp.Fill(dtoperation);
+
+                conn.Close();
+                finish();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
 
         private void loopDay2(int x)
         {
@@ -979,11 +1144,143 @@ namespace WindowsFormsApplication1
                 i++;
             }
         }
+
+        private void printDocument3_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
+            e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
+
+            string footer = string.Empty;
+            int columnCount = claimreportdgv.Columns.Count;
+            int maxRows = claimreportdgv.Rows.Count;
+
+            using (Graphics g = e.Graphics)
+            {
+                Brush brush = new SolidBrush(Color.Black);
+                Pen pen = new Pen(brush);
+                Font font = new Font("Arial", 12);
+                SizeF size;
+
+                int x = 0, y = 300, width = 100;
+                float xPadding;
+
+                // Writes out all column names in designated locations, aligned as a table
+                foreach (DataColumn column in dtadopt.Columns)
+                {
+                    size = g.MeasureString(column.ColumnName, font);
+                    xPadding = (width - size.Width) / 2;
+                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 5);
+                    x += width;
+                }
+
+                x = 0;
+                y += 30;
+
+                // Process each row and place each item under correct column.
+                foreach (DataRow row in dtadopt.Rows)
+                {
+                    rowcount++;
+
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        size = g.MeasureString(row[i].ToString(), font);
+                        xPadding = (width - size.Width) / 2;
+
+                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 5);
+                        x += width;
+                    }
+
+                    e.HasMorePages = rowcount - 1 < maxRows;
+
+                    x = 0;
+                    y += 30;
+                }
+
+            }
+        }
+
+        private void printDocument4_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
+            e.Graphics.DrawString("EUTHANIZED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
+
+            string footer = string.Empty;
+            int columnCount = claimreportdgv.Columns.Count;
+            int maxRows = claimreportdgv.Rows.Count;
+
+            using (Graphics g = e.Graphics)
+            {
+                Brush brush = new SolidBrush(Color.Black);
+                Pen pen = new Pen(brush);
+                Font font = new Font("Arial", 12);
+                SizeF size;
+
+                int x = 0, y = 300, width = 100;
+                float xPadding;
+
+                // Writes out all column names in designated locations, aligned as a table
+                foreach (DataColumn column in dteut.Columns)
+                {
+                    size = g.MeasureString(column.ColumnName, font);
+                    xPadding = (width - size.Width) / 2;
+                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 5);
+                    x += width;
+                }
+
+                x = 0;
+                y += 30;
+
+                // Process each row and place each item under correct column.
+                foreach (DataRow row in dteut.Rows)
+                {
+                    rowcount++;
+
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        size = g.MeasureString(row[i].ToString(), font);
+                        xPadding = (width - size.Width) / 2;
+
+                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 5);
+                        x += width;
+                    }
+
+                    e.HasMorePages = rowcount - 1 < maxRows;
+
+                    x = 0;
+                    y += 30;
+                }
+
+            }
+        }
+
+        private void printDocument5_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            string f = "Times New Roman";
+            int fsize = 14;
+            e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, 50));
+            e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(350, 70));
+            e.Graphics.DrawString("DAVAO CITY DOG POUND", new System.Drawing.Font(f, 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(160, 100));
+
+            e.Graphics.DrawString("Location: " + location, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 170));
+            e.Graphics.DrawString("Date: " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 190));
+            e.Graphics.DrawString("Time: " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 220));
+            e.Graphics.DrawString("Employees Invovled: " + employees, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 250));
+            int x = 250;
+            //
+        }
+
         private void button17_Click(object sender, EventArgs e)
         {
-            
-            
-            
+
+
+
         }
 
         private void y1_Enter(object sender, EventArgs e)
@@ -1012,6 +1309,13 @@ namespace WindowsFormsApplication1
         private void panelHistory_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        private void finish()
+        {
+            PrintPreviewDialog dlg = new PrintPreviewDialog();
+            dlg.Document = printDocument5;
+            ((Form)dlg).WindowState = FormWindowState.Maximized;
+            dlg.ShowDialog();
         }
     }
 }

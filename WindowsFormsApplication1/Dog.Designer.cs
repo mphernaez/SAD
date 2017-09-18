@@ -131,6 +131,10 @@
             this.impounddogpoundDataSet = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.impounddogpoundDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDocument2 = new System.Drawing.Printing.PrintDocument();
+            this.printDocument3 = new System.Drawing.Printing.PrintDocument();
+            this.printDocument4 = new System.Drawing.Printing.PrintDocument();
+            this.printDocument5 = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -1587,10 +1591,6 @@
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
-            // monthlyRep
-            // 
-            
-            // 
             // printPreviewDialog1
             // 
             this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
@@ -1779,5 +1779,9 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.DataGridView dgvVacc;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Drawing.Printing.PrintDocument printDocument2;
+        private System.Drawing.Printing.PrintDocument printDocument3;
+        private System.Drawing.Printing.PrintDocument printDocument4;
+        private System.Drawing.Printing.PrintDocument printDocument5;
     }
 }
