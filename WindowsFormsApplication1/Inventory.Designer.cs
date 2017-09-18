@@ -152,7 +152,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(991, 71);
+            this.pictureBox1.Location = new System.Drawing.Point(883, 72);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(28, 31);
             this.pictureBox1.TabIndex = 58;
@@ -169,7 +169,7 @@
             this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Location = new System.Drawing.Point(977, 15);
+            this.button14.Location = new System.Drawing.Point(869, 16);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(55, 55);
             this.button14.TabIndex = 57;
@@ -182,7 +182,7 @@
             this.i.BackColor = System.Drawing.Color.Transparent;
             this.i.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("i.BackgroundImage")));
             this.i.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.i.Location = new System.Drawing.Point(932, 71);
+            this.i.Location = new System.Drawing.Point(824, 72);
             this.i.Name = "i";
             this.i.Size = new System.Drawing.Size(28, 31);
             this.i.TabIndex = 55;
@@ -199,7 +199,7 @@
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(918, 15);
+            this.button3.Location = new System.Drawing.Point(810, 16);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(55, 55);
             this.button3.TabIndex = 3;
@@ -212,7 +212,7 @@
             this.a.BackColor = System.Drawing.Color.Transparent;
             this.a.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("a.BackgroundImage")));
             this.a.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.a.Location = new System.Drawing.Point(872, 71);
+            this.a.Location = new System.Drawing.Point(764, 72);
             this.a.Name = "a";
             this.a.Size = new System.Drawing.Size(28, 31);
             this.a.TabIndex = 54;
@@ -228,7 +228,7 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(857, 15);
+            this.button1.Location = new System.Drawing.Point(749, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(55, 55);
             this.button1.TabIndex = 0;
