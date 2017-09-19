@@ -140,7 +140,7 @@ namespace WindowsFormsApplication1
                 adp.Fill(dt);
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    MySqlCommand com = new MySqlCommand("INSERT INTO attendance(date, employeeID, type, time) VALUES('"+yesterday+"', "+int.Parse(dt.Rows[i]["emp"].ToString())+", '0', '16:00')", conn);
+                    MySqlCommand com = new MySqlCommand("INSERT INTO attendance(date, employeeID, type, time) VALUES('"+yesterday+"', "+int.Parse(dt.Rows[i]["emp"].ToString())+", '0', '17:00')", conn);
                     com.ExecuteNonQuery();
                 }
 

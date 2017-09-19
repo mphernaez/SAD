@@ -18,6 +18,7 @@ namespace WindowsFormsApplication1
         public MySqlConnection conn = new MySqlConnection();
         public int adminID;
         public int itemID = 0;
+        DataTable dtclaim;
         EndorserIn end { get; set; }
         public empty back { get; set; }
         EndorserOut endO { get; set; }
@@ -25,6 +26,7 @@ namespace WindowsFormsApplication1
         empty home;
         int[] retprod;
         int[] retemp;
+        int[] request; //itemID of items that need to be requested
         public Inventory(empty parent)
         {
             InitializeComponent();
@@ -45,7 +47,7 @@ namespace WindowsFormsApplication1
             panelTrans.Visible = false;
             a.Visible = true;
             i.Visible = false;
-            r.Visible = false;
+
             newitem.Visible = true;
             inv.Visible = false;
 
@@ -58,7 +60,7 @@ namespace WindowsFormsApplication1
             panelTrans.Visible = false;
             a.Visible = false;
             i.Visible = false;
-            r.Visible = false;
+
             panelTrans.Visible = true;
             inv.Visible = false;
             newitem.Visible = false;
@@ -154,7 +156,7 @@ namespace WindowsFormsApplication1
             panelTrans.Visible = false;
             a.Visible = false;
             i.Visible = true;
-            r.Visible = false;
+
             inv.Visible = true;
             newitem.Visible = false;
 
@@ -162,23 +164,27 @@ namespace WindowsFormsApplication1
 
         private void button16_Click(object sender, EventArgs e)
         {
+            panelRequest.Visible = false;
             panelReturn.Visible = false;
             dgvout.Visible = true;
             Sout.Visible = false;
             button5.BackColor = Color.FromArgb(2, 170, 145);
             button16.BackColor = Color.FromArgb(251, 162, 80);
             button15.BackColor = Color.FromArgb(2, 170, 145);
+            button19.BackColor = Color.FromArgb(2, 170, 145);
             refreshSI();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            panelRequest.Visible = false;
             panelReturn.Visible = false;
             dgvout.Visible = false;
             Sout.Visible = true;
             button16.BackColor = Color.FromArgb(2, 170, 145);
             button5.BackColor = Color.FromArgb(251, 162, 80);
             button15.BackColor = Color.FromArgb(2, 170, 145);
+            button19.BackColor = Color.FromArgb(2, 170, 145);
             refreshSO();
         }
 
@@ -222,7 +228,7 @@ namespace WindowsFormsApplication1
         private void button8_Click(object sender, EventArgs e)
         {
             endO.id = itemID;
-            endO.Show();
+            endO.ShowDialog();
         }
 
         private void dgvo_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -235,7 +241,7 @@ namespace WindowsFormsApplication1
 
         private void OK1_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 conn.Open();
@@ -248,15 +254,16 @@ namespace WindowsFormsApplication1
                 if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) >= 1)
                 {
                     end.id = itemID;
-                    end.Show();
+                    end.ShowDialog();
                     end.rq = dtt.Rows[0]["requestID"].ToString();
                     MySqlCommand comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + itemID.ToString(), conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     end.amtLabel.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString();
-                   
-                } else
+
+                }
+                else
                 {
                     MessageBox.Show("No Prior Stock Request Found");
                 }
@@ -435,7 +442,7 @@ namespace WindowsFormsApplication1
             panelTrans.Visible = true;
             a.Visible = false;
             i.Visible = false;
-            r.Visible = false;
+
             inv.Visible = false;
             newitem.Visible = false;
         }
@@ -448,7 +455,7 @@ namespace WindowsFormsApplication1
                 {
                     string date = DateTime.Now.ToString("yyyy-MM-dd");
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, employeeID, quantity, date, type, reason) VALUES("+retprod[prodret.SelectedIndex]+", "+retemp[empret.SelectedIndex]+", "+quanret.Value+", '"+date+"', 'Return', '"+reasonret.Text+"')", conn);
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, employeeID, quantity, date, type, reason) VALUES(" + retprod[prodret.SelectedIndex] + ", " + retemp[empret.SelectedIndex] + ", " + quanret.Value + ", '" + date + "', 'Return', '" + reasonret.Text + "')", conn);
                     comm.ExecuteNonQuery();
                     conn.Close();
                 }
@@ -459,17 +466,21 @@ namespace WindowsFormsApplication1
                 }
                 prodret.Items.Clear();
                 empret.Items.Clear();
+                prodret.Text = "Product Name";
+                empret.Text = "Endorser";
+                quanret.Value = 0;
                 reasonret.Text = "Reason";
             }
             else
             {
                 MessageBox.Show("Please enter required fields");
             }
-                
+
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
+            panelRequest.Visible = false;
             panelReturn.Visible = true;
             dgvout.Visible = false;
             Sout.Visible = false;
@@ -478,6 +489,7 @@ namespace WindowsFormsApplication1
             button15.BackColor = Color.FromArgb(251, 162, 80);
             button16.BackColor = Color.FromArgb(2, 170, 145);
             button5.BackColor = Color.FromArgb(2, 170, 145);
+            button19.BackColor = Color.FromArgb(2, 170, 145);
             reasonret.Text = "Reason";
             try
             {
@@ -547,7 +559,7 @@ namespace WindowsFormsApplication1
         bool ei = false;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex != -1)
+            if (e.RowIndex != -1)
             {
 
                 eID = int.Parse(dgvEdit.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
@@ -582,7 +594,8 @@ namespace WindowsFormsApplication1
                 dgvEdit.ClearSelection();
                 conn.Close();
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 conn.Close();
@@ -602,10 +615,163 @@ namespace WindowsFormsApplication1
                 }
 
                 eItem.id = eID;
-                eItem.Show();
-            } else
+                eItem.ShowDialog();
+            }
+            else
             {
                 MessageBox.Show("Please select an item");
+            }
+        }
+
+        private void reportEm()
+        {
+            PrintPreviewDialog dlg = new PrintPreviewDialog();
+            dlg.Document = printDocument1;
+            ((Form)dlg).WindowState = FormWindowState.Maximized;
+            dlg.ShowDialog();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("INVENTORY", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(400, 100));
+
+            if (cbTransType.Text == "Stock In")
+            {
+                e.Graphics.DrawString("Stock In Summary Report", new System.Drawing.Font("Arial", 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 150));
+            }
+            else if (cbTransType.Text == "Stock Out")
+            {
+                e.Graphics.DrawString("Stock Out Summary Report", new System.Drawing.Font("Arial", 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 150));
+            }
+            else
+            {
+                e.Graphics.DrawString("Returns Summary Report", new System.Drawing.Font("Arial", 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 150));
+            }
+            Bitmap bit = new Bitmap(this.dgvTrans.Width, this.dgvTrans.Height);
+            dgvTrans.DrawToBitmap(bit, new Rectangle(15, 200, this.dgvTrans.Width, this.dgvTrans.Height));
+            e.Graphics.DrawImage(bit, 15, 100);
+            e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 800));
+        }
+        private void printTrans()
+        {
+            PrintPreviewDialog dlg = new PrintPreviewDialog();
+            dlg.Document = printDocument1;
+            ((Form)dlg).WindowState = FormWindowState.Maximized;
+            dlg.ShowDialog();
+        }
+
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (cbTransType.Text != "Transaction Type") reportEm();
+            else MessageBox.Show("Please Select a Transaction");
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            panelRequest.Visible = true;
+            panelReturn.Visible = false;
+            dgvout.Visible = false;
+            Sout.Visible = false;
+            button5.BackColor = Color.FromArgb(2, 170, 145);
+            button16.BackColor = Color.FromArgb(2, 170, 145);
+            button15.BackColor = Color.FromArgb(2, 170, 145);
+            button19.BackColor = Color.FromArgb(251, 162, 80);
+            refreshRequest();
+        }
+        DataTable dtReq;
+        private void refreshRequest()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT itemID, productName AS 'Product Name', description AS 'Product Description', quantity AS 'Quantity' FROM items WHERE quantity < minQuantity", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                dtReq = new DataTable();
+                adp.Fill(dtReq);
+                dgvRequest.DataSource = dtReq;
+                dgvRequest.Columns["itemID"].Visible = false;
+                dgvRequest.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvRequest.Columns["Product Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvRequest.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void button18_Click_1(object sender, EventArgs e)
+        {
+            request = new int[dgvRequest.Rows.Count];
+            for (int i = 0; i < dgvRequest.Rows.Count; i++)
+            {
+                request[i] = int.Parse(dgvRequest.Rows[i].Cells[0].Value.ToString());
+
+            }
+        }
+
+        private void ItemReq_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
+            e.Graphics.DrawString("CLAIMED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
+            //e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
+
+            string footer = string.Empty;
+            int columnCount = dgvRequest.Columns.Count;
+            int maxRows = dgvRequest.Rows.Count;
+
+            using (Graphics g = e.Graphics)
+            {
+                Brush brush = new SolidBrush(Color.Black);
+                Pen pen = new Pen(brush);
+                Font font = new Font("Arial", 12);
+                SizeF size;
+
+                int x = 0, y = 300, width = 100;
+                float xPadding;
+
+                // Writes out all column names in designated locations, aligned as a table
+                foreach (DataColumn column in dtclaim.Columns)
+                {
+                    size = g.MeasureString(column.ColumnName, font);
+                    xPadding = (width - size.Width) / 2;
+                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 5);
+                    x += width;
+                }
+
+                x = 0;
+                y += 30;
+                int rowcount = 0;
+                // Process each row and place each item under correct column.
+                foreach (DataRow row in dtclaim.Rows)
+                {
+                    rowcount++;
+
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        size = g.MeasureString(row[i].ToString(), font);
+                        xPadding = (width - size.Width) / 2;
+
+                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 5);
+                        x += width;
+                    }
+
+                    e.HasMorePages = rowcount - 1 < maxRows;
+
+                    x = 0;
+                    y += 30;
+                }
             }
         }
     }

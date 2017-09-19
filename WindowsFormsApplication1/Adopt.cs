@@ -78,9 +78,15 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            preview();
-            if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text !="" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "" && cbMonth.Text != "Month" && tbDay.Text != "Day" && tbYear.Text != "Year")
+
+            if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text != "" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "" && cbMonth.Text != "" && tbDay.Text != "" && tbYear.Text != "Year")
             {
+                if (cbVaccine.Checked && cbVaccEmp.Text == "")
+                {
+                    MessageBox.Show("Please enter required fields");
+                }
+                else
+                {
                     String fname = tbfname.Text;
                     String mname = tbmname.Text;
                     String lname = tblname.Text;
@@ -98,58 +104,71 @@ namespace WindowsFormsApplication1
                     {
                         vaccine = 1;
                     }
-                
-                try
-                {
-                    conn.Open();
-                    MySqlCommand comm = new MySqlCommand("INSERT INTO profile(firstname, middlename, lastname, contactNumber, address, birthdate) VALUES('" + fname + "', '" + mname + "','" + lname + "', '" + num + "', '" + add + "', '" + bday + "')", conn);
-                    comm.ExecuteNonQuery();
 
-                    comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-
-                    int personID = int.Parse(dt.Rows[0]["MAX(personID)"].ToString());
-
-                    comm = new MySqlCommand("INSERT INTO client(personID, validIDType, validIDNumber) VALUES(" + personID + ", '" + idtype + "', '" + idnum + "')", conn);
-                    comm.ExecuteNonQuery();
-
-                    comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, vaccine, type) VALUES(" + personID + ", " + dogID + ", '" + date + "', " + "0" + ", " + vaccine + ", '" + "adopt" + "')", conn);
-                    comm.ExecuteNonQuery();
-
-                    comm = new MySqlCommand("UPDATE dogprofile SET status = 'adopted' WHERE dogID = " + dogID, conn);
-                    comm.ExecuteNonQuery();
-                    string messbox;
-                    if (vaccine == 1)
+                    try
                     {
-                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID = 1", conn);
+                        conn.Open();
+                        MySqlCommand comm = new MySqlCommand("INSERT INTO profile(firstname, middlename, lastname, contactNumber, address, birthdate) VALUES('" + fname + "', '" + mname + "','" + lname + "', '" + num + "', '" + add + "', '" + bday + "')", conn);
                         comm.ExecuteNonQuery();
-                        string datenow = DateTime.Now.ToString("yyyy-MM-dd");
-                        comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, employeeID, type) VALUES(1, 1, '" + datenow + "', 'Adopt', "+empids[cbVaccEmp.SelectedIndex]+", 'Out')", conn);
+
+                        comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                        DataTable dt = new DataTable();
+                        adp.Fill(dt);
+
+                        int personID = int.Parse(dt.Rows[0]["MAX(personID)"].ToString());
+
+                        comm = new MySqlCommand("INSERT INTO client(personID, validIDType, validIDNumber) VALUES(" + personID + ", '" + idtype + "', '" + idnum + "')", conn);
                         comm.ExecuteNonQuery();
-                        comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('"+date+"', "+empids[cbVaccEmp.SelectedIndex]+", 'Vaccination')", conn);
+
+                        comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, vaccine, type) VALUES(" + personID + ", " + dogID + ", '" + date + "', " + "0" + ", " + vaccine + ", '" + "adopt" + "')", conn);
                         comm.ExecuteNonQuery();
-                        comm = new MySqlCommand("SELECT quantity FROM items WHERE itemID = 1", conn);
-                        MySqlDataReader read = comm.ExecuteReader();
-                        while (read.Read())
+
+                        comm = new MySqlCommand("UPDATE dogprofile SET status = 'adopted' WHERE dogID = " + dogID, conn);
+                        comm.ExecuteNonQuery();
+                        string messbox;
+                        if (vaccine == 1)
                         {
-                            int quantity = int.Parse(read[0].ToString());
-                            messbox = "Successfully Adopted and Vaccinated! Vaccine Quantity is now: " + quantity.ToString();
+                            comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Vaccine'", conn);
+                            comm.ExecuteNonQuery();
+                            comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Syringe'", conn);
+                            comm.ExecuteNonQuery();
+                            string datenow = DateTime.Now.ToString("yyyy-MM-dd");
+                            comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, employeeID, type) VALUES(1, 1, '" + datenow + "', 'Adopt', " + empids[cbVaccEmp.SelectedIndex] + ", 'Out')", conn);
+                            comm.ExecuteNonQuery();
+                            comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, employeeID, type) VALUES(5, 1, '" + datenow + "', 'Adopt', " + empids[cbVaccEmp.SelectedIndex] + ", 'Out')", conn);
+                            comm.ExecuteNonQuery();
+                            comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('" + date + "', " + empids[cbVaccEmp.SelectedIndex] + ", 'Vaccination')", conn);
+                            comm.ExecuteNonQuery();
+                            comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Vaccine'", conn);
+                            MySqlDataAdapter adpp = new MySqlDataAdapter(comm);
+                            DataTable dtt = new DataTable();
+                            adpp.Fill(dtt);
+                            string nl = Environment.NewLine;
+                            int quantity = int.Parse(dtt.Rows[0]["quantity"].ToString());
+                            messbox = "Successfully Adopted and Vaccinated!" + nl + "Vaccine Quantity is now: " + quantity.ToString();
+                            comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Syringe'", conn);
+                            MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
+                            DataTable dttt = new DataTable();
+                            adpt.Fill(dttt);
+                            int quan = int.Parse(dttt.Rows[0]["quantity"].ToString());
+                            messbox = messbox + nl + "Syringe Quantity is now: " + quan.ToString();
                         }
+                        else
+                        {
+                            messbox = "Successfully Adopted!";
+                        }
+                        MessageBox.Show(messbox);
+                        preview();
+                        dog.Show();
+                        this.Close();
+                        conn.Close();
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        messbox = "Adopted Claimed!";
+                        MessageBox.Show(ex.ToString());
+                        conn.Close();
                     }
-                    dog.Show();
-                    this.Close();
-                    conn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    conn.Close();
                 }
             }
             else

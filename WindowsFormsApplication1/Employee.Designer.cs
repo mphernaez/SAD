@@ -47,6 +47,13 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.pnlArchive = new System.Windows.Forms.Panel();
+            this.button29 = new System.Windows.Forms.Button();
+            this.dgvReactivate = new System.Windows.Forms.DataGridView();
+            this.editPanel = new System.Windows.Forms.Panel();
+            this.button24 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.dgvEdit = new System.Windows.Forms.DataGridView();
             this.addPanel = new System.Windows.Forms.Panel();
             this.pnlAdmin = new System.Windows.Forms.Panel();
             this.tbUser = new System.Windows.Forms.TextBox();
@@ -64,13 +71,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.tbaddress = new System.Windows.Forms.TextBox();
             this.cbgender = new System.Windows.Forms.ComboBox();
-            this.pnlArchive = new System.Windows.Forms.Panel();
-            this.button29 = new System.Windows.Forms.Button();
-            this.dgvReactivate = new System.Windows.Forms.DataGridView();
-            this.editPanel = new System.Windows.Forms.Panel();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.dgvEdit = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ne = new System.Windows.Forms.PictureBox();
             this.r = new System.Windows.Forms.PictureBox();
@@ -81,11 +81,24 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.datee = new System.Windows.Forms.ComboBox();
+            this.dgvOpSumm = new System.Windows.Forms.DataGridView();
+            this.loc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.team = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbFilt = new System.Windows.Forms.CheckBox();
+            this.pnlEmpFilt = new System.Windows.Forms.Panel();
+            this.cbEmpFilt = new System.Windows.Forms.ComboBox();
+            this.y2 = new System.Windows.Forms.TextBox();
+            this.d2 = new System.Windows.Forms.ComboBox();
+            this.d1 = new System.Windows.Forms.ComboBox();
+            this.y1 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.m2 = new System.Windows.Forms.ComboBox();
+            this.m1 = new System.Windows.Forms.ComboBox();
             this.choice = new System.Windows.Forms.ComboBox();
-            this.view = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
-            this.rep = new System.Windows.Forms.Label();
             this.repEmp = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.impounddogpoundDataSet1 = new WindowsFormsApplication1.impounddogpoundDataSet();
@@ -160,6 +173,8 @@
             this.button36 = new System.Windows.Forms.Button();
             this.button33 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
+            this.panelViewAct = new System.Windows.Forms.Panel();
+            this.dgvViewAct = new System.Windows.Forms.DataGridView();
             this.pnlActivity = new System.Windows.Forms.Panel();
             this.measBy = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -183,8 +198,9 @@
             this.eTimeE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eTeamM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelViewAct = new System.Windows.Forms.Panel();
-            this.dgvViewAct = new System.Windows.Forms.DataGridView();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDocument2 = new System.Drawing.Printing.PrintDocument();
+            this.printDocument3 = new System.Drawing.Printing.PrintDocument();
             this.attendance.SuspendLayout();
             this.panelAtt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattout)).BeginInit();
@@ -192,18 +208,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
             this.addEmployee.SuspendLayout();
-            this.addPanel.SuspendLayout();
-            this.pnlAdmin.SuspendLayout();
             this.pnlArchive.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReactivate)).BeginInit();
             this.editPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEdit)).BeginInit();
+            this.addPanel.SuspendLayout();
+            this.pnlAdmin.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.o)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).BeginInit();
+            this.pnlEmpFilt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.repEmp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -220,12 +238,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.newTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).BeginInit();
             this.DogCatchingOperation.SuspendLayout();
+            this.panelViewAct.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvViewAct)).BeginInit();
             this.pnlActivity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numact)).BeginInit();
             this.Edit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editOperation)).BeginInit();
-            this.panelViewAct.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvViewAct)).BeginInit();
             this.SuspendLayout();
             // 
             // attendance
@@ -420,9 +438,9 @@
             this.addEmployee.Controls.Add(this.button12);
             this.addEmployee.Controls.Add(this.button11);
             this.addEmployee.Controls.Add(this.label2);
-            this.addEmployee.Controls.Add(this.addPanel);
             this.addEmployee.Controls.Add(this.pnlArchive);
             this.addEmployee.Controls.Add(this.editPanel);
+            this.addEmployee.Controls.Add(this.addPanel);
             this.addEmployee.Location = new System.Drawing.Point(24, 196);
             this.addEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addEmployee.Name = "addEmployee";
@@ -500,6 +518,118 @@
             this.label2.Size = new System.Drawing.Size(307, 39);
             this.label2.TabIndex = 0;
             this.label2.Text = "Employee Profiling";
+            // 
+            // pnlArchive
+            // 
+            this.pnlArchive.BackColor = System.Drawing.Color.White;
+            this.pnlArchive.Controls.Add(this.button29);
+            this.pnlArchive.Controls.Add(this.dgvReactivate);
+            this.pnlArchive.Location = new System.Drawing.Point(15, 114);
+            this.pnlArchive.Name = "pnlArchive";
+            this.pnlArchive.Size = new System.Drawing.Size(982, 412);
+            this.pnlArchive.TabIndex = 43;
+            this.pnlArchive.Visible = false;
+            // 
+            // button29
+            // 
+            this.button29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
+            this.button29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button29.FlatAppearance.BorderSize = 0;
+            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button29.ForeColor = System.Drawing.Color.White;
+            this.button29.Location = new System.Drawing.Point(857, 348);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(109, 38);
+            this.button29.TabIndex = 42;
+            this.button29.Text = "Activate";
+            this.button29.UseVisualStyleBackColor = false;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
+            // 
+            // dgvReactivate
+            // 
+            this.dgvReactivate.AllowUserToAddRows = false;
+            this.dgvReactivate.AllowUserToDeleteRows = false;
+            this.dgvReactivate.AllowUserToResizeColumns = false;
+            this.dgvReactivate.AllowUserToResizeRows = false;
+            this.dgvReactivate.BackgroundColor = System.Drawing.Color.White;
+            this.dgvReactivate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvReactivate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReactivate.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvReactivate.GridColor = System.Drawing.Color.White;
+            this.dgvReactivate.Location = new System.Drawing.Point(12, 14);
+            this.dgvReactivate.Name = "dgvReactivate";
+            this.dgvReactivate.ReadOnly = true;
+            this.dgvReactivate.RowHeadersVisible = false;
+            this.dgvReactivate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvReactivate.Size = new System.Drawing.Size(952, 318);
+            this.dgvReactivate.TabIndex = 0;
+            this.dgvReactivate.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReactivate_CellClick);
+            // 
+            // editPanel
+            // 
+            this.editPanel.BackColor = System.Drawing.Color.White;
+            this.editPanel.Controls.Add(this.button24);
+            this.editPanel.Controls.Add(this.button13);
+            this.editPanel.Controls.Add(this.dgvEdit);
+            this.editPanel.Location = new System.Drawing.Point(15, 114);
+            this.editPanel.Name = "editPanel";
+            this.editPanel.Size = new System.Drawing.Size(982, 406);
+            this.editPanel.TabIndex = 24;
+            this.editPanel.Visible = false;
+            // 
+            // button24
+            // 
+            this.button24.BackColor = System.Drawing.Color.IndianRed;
+            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button24.FlatAppearance.BorderSize = 0;
+            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button24.ForeColor = System.Drawing.Color.White;
+            this.button24.Location = new System.Drawing.Point(853, 350);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(109, 38);
+            this.button24.TabIndex = 42;
+            this.button24.Text = "Inactivate";
+            this.button24.UseVisualStyleBackColor = false;
+            this.button24.Click += new System.EventHandler(this.button24_Click_1);
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.Location = new System.Drawing.Point(738, 350);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(109, 38);
+            this.button13.TabIndex = 41;
+            this.button13.Text = "Edit";
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // dgvEdit
+            // 
+            this.dgvEdit.AllowUserToAddRows = false;
+            this.dgvEdit.AllowUserToDeleteRows = false;
+            this.dgvEdit.AllowUserToResizeColumns = false;
+            this.dgvEdit.AllowUserToResizeRows = false;
+            this.dgvEdit.BackgroundColor = System.Drawing.Color.White;
+            this.dgvEdit.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvEdit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEdit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvEdit.GridColor = System.Drawing.Color.White;
+            this.dgvEdit.Location = new System.Drawing.Point(12, 14);
+            this.dgvEdit.Name = "dgvEdit";
+            this.dgvEdit.ReadOnly = true;
+            this.dgvEdit.RowHeadersVisible = false;
+            this.dgvEdit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEdit.Size = new System.Drawing.Size(952, 318);
+            this.dgvEdit.TabIndex = 0;
+            this.dgvEdit.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEdit_CellClick);
+            this.dgvEdit.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // addPanel
             // 
@@ -731,118 +861,6 @@
             this.cbgender.Text = "Gender";
             this.cbgender.SelectedIndexChanged += new System.EventHandler(this.cbgender_SelectedIndexChanged);
             // 
-            // pnlArchive
-            // 
-            this.pnlArchive.BackColor = System.Drawing.Color.White;
-            this.pnlArchive.Controls.Add(this.button29);
-            this.pnlArchive.Controls.Add(this.dgvReactivate);
-            this.pnlArchive.Location = new System.Drawing.Point(15, 114);
-            this.pnlArchive.Name = "pnlArchive";
-            this.pnlArchive.Size = new System.Drawing.Size(982, 412);
-            this.pnlArchive.TabIndex = 43;
-            this.pnlArchive.Visible = false;
-            // 
-            // button29
-            // 
-            this.button29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
-            this.button29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button29.FlatAppearance.BorderSize = 0;
-            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button29.ForeColor = System.Drawing.Color.White;
-            this.button29.Location = new System.Drawing.Point(857, 348);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(109, 38);
-            this.button29.TabIndex = 42;
-            this.button29.Text = "Activate";
-            this.button29.UseVisualStyleBackColor = false;
-            this.button29.Click += new System.EventHandler(this.button29_Click);
-            // 
-            // dgvReactivate
-            // 
-            this.dgvReactivate.AllowUserToAddRows = false;
-            this.dgvReactivate.AllowUserToDeleteRows = false;
-            this.dgvReactivate.AllowUserToResizeColumns = false;
-            this.dgvReactivate.AllowUserToResizeRows = false;
-            this.dgvReactivate.BackgroundColor = System.Drawing.Color.White;
-            this.dgvReactivate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvReactivate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReactivate.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvReactivate.GridColor = System.Drawing.Color.White;
-            this.dgvReactivate.Location = new System.Drawing.Point(12, 14);
-            this.dgvReactivate.Name = "dgvReactivate";
-            this.dgvReactivate.ReadOnly = true;
-            this.dgvReactivate.RowHeadersVisible = false;
-            this.dgvReactivate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReactivate.Size = new System.Drawing.Size(952, 318);
-            this.dgvReactivate.TabIndex = 0;
-            this.dgvReactivate.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReactivate_CellClick);
-            // 
-            // editPanel
-            // 
-            this.editPanel.BackColor = System.Drawing.Color.White;
-            this.editPanel.Controls.Add(this.button24);
-            this.editPanel.Controls.Add(this.button13);
-            this.editPanel.Controls.Add(this.dgvEdit);
-            this.editPanel.Location = new System.Drawing.Point(15, 114);
-            this.editPanel.Name = "editPanel";
-            this.editPanel.Size = new System.Drawing.Size(982, 406);
-            this.editPanel.TabIndex = 24;
-            this.editPanel.Visible = false;
-            // 
-            // button24
-            // 
-            this.button24.BackColor = System.Drawing.Color.IndianRed;
-            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button24.FlatAppearance.BorderSize = 0;
-            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button24.ForeColor = System.Drawing.Color.White;
-            this.button24.Location = new System.Drawing.Point(853, 350);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(109, 38);
-            this.button24.TabIndex = 42;
-            this.button24.Text = "Inactivate";
-            this.button24.UseVisualStyleBackColor = false;
-            this.button24.Click += new System.EventHandler(this.button24_Click_1);
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(738, 350);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(109, 38);
-            this.button13.TabIndex = 41;
-            this.button13.Text = "Edit";
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // dgvEdit
-            // 
-            this.dgvEdit.AllowUserToAddRows = false;
-            this.dgvEdit.AllowUserToDeleteRows = false;
-            this.dgvEdit.AllowUserToResizeColumns = false;
-            this.dgvEdit.AllowUserToResizeRows = false;
-            this.dgvEdit.BackgroundColor = System.Drawing.Color.White;
-            this.dgvEdit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvEdit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEdit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvEdit.GridColor = System.Drawing.Color.White;
-            this.dgvEdit.Location = new System.Drawing.Point(12, 14);
-            this.dgvEdit.Name = "dgvEdit";
-            this.dgvEdit.ReadOnly = true;
-            this.dgvEdit.RowHeadersVisible = false;
-            this.dgvEdit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEdit.Size = new System.Drawing.Size(952, 318);
-            this.dgvEdit.TabIndex = 0;
-            this.dgvEdit.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEdit_CellClick);
-            this.dgvEdit.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(162)))), ((int)(((byte)(80)))));
@@ -979,53 +997,226 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.datee);
+            this.panel2.Controls.Add(this.dgvOpSumm);
+            this.panel2.Controls.Add(this.cbFilt);
+            this.panel2.Controls.Add(this.pnlEmpFilt);
+            this.panel2.Controls.Add(this.y2);
+            this.panel2.Controls.Add(this.d2);
+            this.panel2.Controls.Add(this.d1);
+            this.panel2.Controls.Add(this.y1);
+            this.panel2.Controls.Add(this.label21);
+            this.panel2.Controls.Add(this.m2);
+            this.panel2.Controls.Add(this.m1);
             this.panel2.Controls.Add(this.choice);
-            this.panel2.Controls.Add(this.view);
             this.panel2.Controls.Add(this.button28);
-            this.panel2.Controls.Add(this.rep);
             this.panel2.Controls.Add(this.repEmp);
             this.panel2.Location = new System.Drawing.Point(24, 196);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1016, 543);
             this.panel2.TabIndex = 32;
             this.panel2.Visible = false;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
             // 
-            // datee
+            // dgvOpSumm
             // 
-            this.datee.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datee.FormattingEnabled = true;
-            this.datee.Location = new System.Drawing.Point(63, 87);
-            this.datee.Name = "datee";
-            this.datee.Size = new System.Drawing.Size(155, 26);
-            this.datee.TabIndex = 5;
+            this.dgvOpSumm.AllowUserToAddRows = false;
+            this.dgvOpSumm.AllowUserToDeleteRows = false;
+            this.dgvOpSumm.BackgroundColor = System.Drawing.Color.White;
+            this.dgvOpSumm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOpSumm.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.loc,
+            this.time,
+            this.date1,
+            this.team,
+            this.imp});
+            this.dgvOpSumm.Location = new System.Drawing.Point(35, 155);
+            this.dgvOpSumm.Name = "dgvOpSumm";
+            this.dgvOpSumm.ReadOnly = true;
+            this.dgvOpSumm.RowHeadersVisible = false;
+            this.dgvOpSumm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOpSumm.Size = new System.Drawing.Size(942, 365);
+            this.dgvOpSumm.TabIndex = 18;
+            this.dgvOpSumm.Visible = false;
+            // 
+            // loc
+            // 
+            this.loc.HeaderText = "Location";
+            this.loc.Name = "loc";
+            this.loc.ReadOnly = true;
+            // 
+            // time
+            // 
+            this.time.HeaderText = "Time";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            // 
+            // date1
+            // 
+            this.date1.HeaderText = "Date";
+            this.date1.Name = "date1";
+            this.date1.ReadOnly = true;
+            // 
+            // team
+            // 
+            this.team.HeaderText = "Employees";
+            this.team.Name = "team";
+            this.team.ReadOnly = true;
+            // 
+            // imp
+            // 
+            this.imp.HeaderText = "Heads Caught";
+            this.imp.Name = "imp";
+            this.imp.ReadOnly = true;
+            // 
+            // cbFilt
+            // 
+            this.cbFilt.AutoSize = true;
+            this.cbFilt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFilt.Location = new System.Drawing.Point(38, 69);
+            this.cbFilt.Name = "cbFilt";
+            this.cbFilt.Size = new System.Drawing.Size(157, 24);
+            this.cbFilt.TabIndex = 17;
+            this.cbFilt.Text = "Filter by Employee";
+            this.cbFilt.UseVisualStyleBackColor = true;
+            this.cbFilt.CheckedChanged += new System.EventHandler(this.cbFilt_CheckedChanged);
+            // 
+            // pnlEmpFilt
+            // 
+            this.pnlEmpFilt.Controls.Add(this.cbEmpFilt);
+            this.pnlEmpFilt.Location = new System.Drawing.Point(195, 55);
+            this.pnlEmpFilt.Name = "pnlEmpFilt";
+            this.pnlEmpFilt.Size = new System.Drawing.Size(361, 46);
+            this.pnlEmpFilt.TabIndex = 16;
+            this.pnlEmpFilt.Visible = false;
+            // 
+            // cbEmpFilt
+            // 
+            this.cbEmpFilt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEmpFilt.FormattingEnabled = true;
+            this.cbEmpFilt.Location = new System.Drawing.Point(17, 7);
+            this.cbEmpFilt.Name = "cbEmpFilt";
+            this.cbEmpFilt.Size = new System.Drawing.Size(333, 28);
+            this.cbEmpFilt.TabIndex = 17;
+            this.cbEmpFilt.Text = "Employee";
+            // 
+            // y2
+            // 
+            this.y2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.y2.Location = new System.Drawing.Point(308, 21);
+            this.y2.Name = "y2";
+            this.y2.Size = new System.Drawing.Size(55, 26);
+            this.y2.TabIndex = 15;
+            this.y2.Text = "Year";
+            this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged);
+            this.y2.Enter += new System.EventHandler(this.y2_Enter);
+            // 
+            // d2
+            // 
+            this.d2.Enabled = false;
+            this.d2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d2.FormattingEnabled = true;
+            this.d2.Location = new System.Drawing.Point(478, 19);
+            this.d2.Name = "d2";
+            this.d2.Size = new System.Drawing.Size(65, 28);
+            this.d2.TabIndex = 14;
+            this.d2.Text = "Day";
+            // 
+            // d1
+            // 
+            this.d1.Enabled = false;
+            this.d1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d1.FormattingEnabled = true;
+            this.d1.Location = new System.Drawing.Point(208, 20);
+            this.d1.Name = "d1";
+            this.d1.Size = new System.Drawing.Size(65, 28);
+            this.d1.TabIndex = 13;
+            this.d1.Text = "Day";
+            // 
+            // y1
+            // 
+            this.y1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.y1.Location = new System.Drawing.Point(38, 22);
+            this.y1.Name = "y1";
+            this.y1.Size = new System.Drawing.Size(55, 26);
+            this.y1.TabIndex = 12;
+            this.y1.Text = "Year";
+            this.y1.TextChanged += new System.EventHandler(this.y1_TextChanged);
+            this.y1.Enter += new System.EventHandler(this.y1_Enter);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(284, 23);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(14, 20);
+            this.label21.TabIndex = 11;
+            this.label21.Text = "-";
+            // 
+            // m2
+            // 
+            this.m2.Enabled = false;
+            this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m2.FormattingEnabled = true;
+            this.m2.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.m2.Location = new System.Drawing.Point(364, 19);
+            this.m2.Name = "m2";
+            this.m2.Size = new System.Drawing.Size(113, 28);
+            this.m2.TabIndex = 9;
+            this.m2.Text = "Month";
+            this.m2.SelectedIndexChanged += new System.EventHandler(this.m2_SelectedIndexChanged);
+            // 
+            // m1
+            // 
+            this.m1.Enabled = false;
+            this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m1.FormattingEnabled = true;
+            this.m1.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.m1.Location = new System.Drawing.Point(94, 20);
+            this.m1.Name = "m1";
+            this.m1.Size = new System.Drawing.Size(113, 28);
+            this.m1.TabIndex = 10;
+            this.m1.Text = "Month";
+            this.m1.SelectedIndexChanged += new System.EventHandler(this.m1_SelectedIndexChanged);
             // 
             // choice
             // 
-            this.choice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.choice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.choice.FormattingEnabled = true;
             this.choice.Items.AddRange(new object[] {
-            "Employees",
+            "Attendance",
+            "Activities",
             "Operations"});
-            this.choice.Location = new System.Drawing.Point(63, 52);
+            this.choice.Location = new System.Drawing.Point(35, 111);
             this.choice.Name = "choice";
-            this.choice.Size = new System.Drawing.Size(155, 26);
+            this.choice.Size = new System.Drawing.Size(190, 28);
             this.choice.TabIndex = 5;
+            this.choice.Text = "Type";
             this.choice.SelectedIndexChanged += new System.EventHandler(this.choice_SelectedIndexChanged);
-            // 
-            // view
-            // 
-            this.view.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.view.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.view.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.view.ForeColor = System.Drawing.Color.Snow;
-            this.view.Location = new System.Drawing.Point(253, 52);
-            this.view.Name = "view";
-            this.view.Size = new System.Drawing.Size(110, 29);
-            this.view.TabIndex = 4;
-            this.view.Text = "View";
-            this.view.UseVisualStyleBackColor = false;
-            this.view.Click += new System.EventHandler(this.view_Click);
             // 
             // button28
             // 
@@ -1033,23 +1224,13 @@
             this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button28.ForeColor = System.Drawing.Color.Snow;
-            this.button28.Location = new System.Drawing.Point(373, 52);
+            this.button28.Location = new System.Drawing.Point(854, 109);
             this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(110, 29);
+            this.button28.Size = new System.Drawing.Size(123, 37);
             this.button28.TabIndex = 4;
-            this.button28.Text = "View Report";
+            this.button28.Text = "Print Report";
             this.button28.UseVisualStyleBackColor = false;
             this.button28.Click += new System.EventHandler(this.button28_Click_1);
-            // 
-            // rep
-            // 
-            this.rep.AutoSize = true;
-            this.rep.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rep.Location = new System.Drawing.Point(30, 20);
-            this.rep.Name = "rep";
-            this.rep.Size = new System.Drawing.Size(87, 25);
-            this.rep.TabIndex = 3;
-            this.rep.Text = "Reports";
             // 
             // repEmp
             // 
@@ -1057,12 +1238,12 @@
             this.repEmp.AllowUserToDeleteRows = false;
             this.repEmp.BackgroundColor = System.Drawing.Color.White;
             this.repEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.repEmp.Location = new System.Drawing.Point(35, 133);
+            this.repEmp.Location = new System.Drawing.Point(35, 155);
             this.repEmp.Name = "repEmp";
             this.repEmp.ReadOnly = true;
             this.repEmp.RowHeadersVisible = false;
             this.repEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.repEmp.Size = new System.Drawing.Size(942, 387);
+            this.repEmp.Size = new System.Drawing.Size(942, 365);
             this.repEmp.TabIndex = 0;
             // 
             // label1
@@ -2092,11 +2273,11 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.panelViewAct);
             this.DogCatchingOperation.Controls.Add(this.pnlActivity);
             this.DogCatchingOperation.Controls.Add(this.Edit);
             this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
+            this.DogCatchingOperation.Controls.Add(this.panelViewAct);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -2148,6 +2329,33 @@
             this.button31.Text = "New Activity";
             this.button31.UseVisualStyleBackColor = false;
             this.button31.Click += new System.EventHandler(this.button31_Click);
+            // 
+            // panelViewAct
+            // 
+            this.panelViewAct.Controls.Add(this.dgvViewAct);
+            this.panelViewAct.Location = new System.Drawing.Point(16, 115);
+            this.panelViewAct.Name = "panelViewAct";
+            this.panelViewAct.Size = new System.Drawing.Size(982, 412);
+            this.panelViewAct.TabIndex = 87;
+            this.panelViewAct.Visible = false;
+            // 
+            // dgvViewAct
+            // 
+            this.dgvViewAct.AllowUserToAddRows = false;
+            this.dgvViewAct.AllowUserToDeleteRows = false;
+            this.dgvViewAct.AllowUserToResizeColumns = false;
+            this.dgvViewAct.AllowUserToResizeRows = false;
+            this.dgvViewAct.BackgroundColor = System.Drawing.Color.White;
+            this.dgvViewAct.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvViewAct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViewAct.GridColor = System.Drawing.Color.White;
+            this.dgvViewAct.Location = new System.Drawing.Point(21, 20);
+            this.dgvViewAct.Name = "dgvViewAct";
+            this.dgvViewAct.ReadOnly = true;
+            this.dgvViewAct.RowHeadersVisible = false;
+            this.dgvViewAct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvViewAct.Size = new System.Drawing.Size(946, 371);
+            this.dgvViewAct.TabIndex = 2;
             // 
             // pnlActivity
             // 
@@ -2228,12 +2436,9 @@
             this.cbact.ForeColor = System.Drawing.Color.Black;
             this.cbact.FormattingEnabled = true;
             this.cbact.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F"});
+            "Disinfect Impounding Place",
+            "Bathe Dogs",
+            "Feed Dogs"});
             this.cbact.Location = new System.Drawing.Point(71, 94);
             this.cbact.Name = "cbact";
             this.cbact.Size = new System.Drawing.Size(307, 28);
@@ -2416,32 +2621,9 @@
             this.eStat.Name = "eStat";
             this.eStat.ReadOnly = true;
             // 
-            // panelViewAct
+            // printDocument3
             // 
-            this.panelViewAct.Controls.Add(this.dgvViewAct);
-            this.panelViewAct.Location = new System.Drawing.Point(16, 115);
-            this.panelViewAct.Name = "panelViewAct";
-            this.panelViewAct.Size = new System.Drawing.Size(982, 412);
-            this.panelViewAct.TabIndex = 87;
-            this.panelViewAct.Visible = false;
-            // 
-            // dgvViewAct
-            // 
-            this.dgvViewAct.AllowUserToAddRows = false;
-            this.dgvViewAct.AllowUserToDeleteRows = false;
-            this.dgvViewAct.AllowUserToResizeColumns = false;
-            this.dgvViewAct.AllowUserToResizeRows = false;
-            this.dgvViewAct.BackgroundColor = System.Drawing.Color.White;
-            this.dgvViewAct.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvViewAct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewAct.GridColor = System.Drawing.Color.White;
-            this.dgvViewAct.Location = new System.Drawing.Point(21, 20);
-            this.dgvViewAct.Name = "dgvViewAct";
-            this.dgvViewAct.ReadOnly = true;
-            this.dgvViewAct.RowHeadersVisible = false;
-            this.dgvViewAct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvViewAct.Size = new System.Drawing.Size(946, 371);
-            this.dgvViewAct.TabIndex = 2;
+            this.printDocument3.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument3_PrintPage);
             // 
             // Employee
             // 
@@ -2473,14 +2655,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).EndInit();
             this.addEmployee.ResumeLayout(false);
             this.addEmployee.PerformLayout();
-            this.addPanel.ResumeLayout(false);
-            this.addPanel.PerformLayout();
-            this.pnlAdmin.ResumeLayout(false);
-            this.pnlAdmin.PerformLayout();
             this.pnlArchive.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReactivate)).EndInit();
             this.editPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEdit)).EndInit();
+            this.addPanel.ResumeLayout(false);
+            this.addPanel.PerformLayout();
+            this.pnlAdmin.ResumeLayout(false);
+            this.pnlAdmin.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.r)).EndInit();
@@ -2488,6 +2670,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.a)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).EndInit();
+            this.pnlEmpFilt.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.repEmp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -2514,14 +2698,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).EndInit();
             this.DogCatchingOperation.ResumeLayout(false);
             this.DogCatchingOperation.PerformLayout();
+            this.panelViewAct.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvViewAct)).EndInit();
             this.pnlActivity.ResumeLayout(false);
             this.pnlActivity.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numact)).EndInit();
             this.Edit.ResumeLayout(false);
             this.Edit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editOperation)).EndInit();
-            this.panelViewAct.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvViewAct)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2649,10 +2833,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pID;
         private System.Windows.Forms.DataGridViewTextBoxColumn empname;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox datee;
         private System.Windows.Forms.ComboBox choice;
-        private System.Windows.Forms.Button view;
-        private System.Windows.Forms.Label rep;
         private System.Windows.Forms.Panel Edit;
         private System.Windows.Forms.Button button34;
         private System.Windows.Forms.Button button35;
@@ -2684,5 +2865,24 @@
         private System.Windows.Forms.Button button36;
         private System.Windows.Forms.Panel panelViewAct;
         private System.Windows.Forms.DataGridView dgvViewAct;
+        private System.Windows.Forms.CheckBox cbFilt;
+        private System.Windows.Forms.Panel pnlEmpFilt;
+        private System.Windows.Forms.ComboBox cbEmpFilt;
+        private System.Windows.Forms.TextBox y2;
+        private System.Windows.Forms.ComboBox d2;
+        private System.Windows.Forms.ComboBox d1;
+        private System.Windows.Forms.TextBox y1;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox m2;
+        private System.Windows.Forms.ComboBox m1;
+        private System.Windows.Forms.DataGridView dgvOpSumm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn loc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn team;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imp;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Drawing.Printing.PrintDocument printDocument2;
+        private System.Drawing.Printing.PrintDocument printDocument3;
     }
 }

@@ -491,7 +491,7 @@ namespace WindowsFormsApplication1
 
             if (editemployeeID != 0)
             {
-                emp.Show();
+                emp.ShowDialog();
                 emp.employeeID = this.editemployeeID;
                 emp.TopMost = true;
                 try
@@ -734,24 +734,26 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 allEmployees.Rows.Clear();
-                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID WHERE position = 'Catcher' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + d + "')THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END AND dogoperation.status = 'Finished')   UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active'", conn);
+                MySqlCommand comm;
+                if (DateTime.Now.ToString("yyyy-MM-dd") != Convert.ToDateTime(d).ToString("yyyy-MM-dd"))
+                {
+                    comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID WHERE position = 'Catcher' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + date + "') THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END)   UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active'", conn);
+                }
+                else
+                {
+                    comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID JOIN attendance ON attendance.employeeID = personID WHERE position = 'Catcher' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + d + "')THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END ) AND attendance.date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 1  AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 0) UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN attendance ON attendance.employeeID = personID WHERE personID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' AND employee.status = 'Active' AND attendance.date = '" + d + "' AND type = 0 AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + d + "' AND type = 0)", conn);
+                }
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
-
                 for (int x = 0; x < dt.Rows.Count; x++)
                 {
                     int pid = int.Parse(dt.Rows[x]["personID"].ToString());
                     string name = dt.Rows[x]["name"].ToString();
                     allEmployees.Rows.Add(pid.ToString(), name);
                 }
-
                 allEmployees.Columns["empname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                int i = 0;
-                int empid;
-
-                allEmployees.ClearSelection();
+                
                 conn.Close();
             }
             catch (Exception ex)
@@ -817,15 +819,41 @@ namespace WindowsFormsApplication1
                 // GROUP_CONCAT(CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.')) AS team,
                 String daten = DateTime.Now.ToString("yyyy-MM-dd");
                 String timen = DateTime.Now.ToString("HH:mm");
-                MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing' WHERE date = '" + daten + "' AND status != 'finished' AND status != 'OnGoing' AND (timeStart = '" + timen + "' OR timeStart < '" + timen + "')", conn);
-                comm.ExecuteNonQuery();
-                MySqlCommand com = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE date = '" + daten + "' AND status != 'finished' AND (timeEnd = '" + timen + "' OR timeEnd < '" + timen + "')", conn);
-                com.ExecuteNonQuery();
-                MySqlCommand co = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE date < '" + daten + "' AND status != 'finished'", conn);
-                co.ExecuteNonQuery();
+                MySqlCommand c = new MySqlCommand("SELECT DISTINCT operationID FROM dogoperation JOIN operationteam ON operationteam.teamID = dogoperation.teamID JOIN attendance ON attendance.employeeID = operationteam.employeeiD WHERE dogoperation.date = '2017-09-18' AND attendance.employeeID NOT IN (select employeeID from attendance where date = '2017-09-18' AND type != 0)", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(c);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing' WHERE date = '" + daten + "' AND status != 'finished' AND status != 'OnGoing' AND (timeStart = '" + timen + "' OR timeStart < '" + timen + "')", conn);
+                    comm.ExecuteNonQuery();
+                    MySqlCommand com = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE date = '" + daten + "' AND status != 'finished' AND (timeEnd = '" + timen + "' OR timeEnd < '" + timen + "')", conn);
+                    com.ExecuteNonQuery();
+                    MySqlCommand co = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE date < '" + daten + "' AND status != 'finished'", conn);
+                    co.ExecuteNonQuery();
+                if (dt.Rows.Count != 0)
+                {
+                    List<int> ids = new List<int>();
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        ids.Add(int.Parse(dt.Rows[i]["operationID"].ToString()));
+                    }
+                    for (int i = 0; i < ids.Count; i++)
+                    {
+                        MySqlCommand m = new MySqlCommand("UPDATE dogoperation SET status = 'Pending' WHERE operationID = " + ids[i], conn);
+                        m.ExecuteNonQuery();
+                    }
+                    for (int i = 0; i < dgvOperationsView.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < ids.Count; j++)
+                            if (dgvOperationsView.Rows[i].Cells["operationID"].Value.ToString() == ids[j].ToString())
+                            {
+                                dgvOperationsView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(242, 139, 123);
+                            }
+                    }
+                }
                 conn.Close();
 
-                refreshOperationsView();
             }
             catch (Exception ex)
             {
@@ -842,7 +870,7 @@ namespace WindowsFormsApplication1
 
 
                 conn.Open();
-                // GROUP_CONCAT(CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.')) AS team,
+                
                 MySqlCommand comm;
                 if (date == null)
                 {
@@ -910,6 +938,7 @@ namespace WindowsFormsApplication1
 
 
                 conn.Close();
+                refreshStatus();
             }
             catch (Exception ex)
             {
@@ -1210,17 +1239,19 @@ namespace WindowsFormsApplication1
 
                 if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "Pending")
                 {
-                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing', timeStart = '" + DateTime.Now.ToString("HH:mm") + "' WHERE operationID = " + operation, conn);
+                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing', timeStart = '" + DateTime.Now.ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyy-MM-dd") + "' WHERE operationID = " + operation, conn);
 
                     comm.ExecuteNonQuery();
                 }
                 else if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "OnGoing")
                 {
-                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'Finished', timeEnd = '" + DateTime.Now.ToString("HH:mm") + "' WHERE operationID = " + operation, conn);
+                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'Finished', timeEnd = '" + DateTime.Now.ToString("HH:mm") + "', date = '"+DateTime.Now.ToString("yyy-MM-dd")+"' WHERE operationID = " + operation, conn);
                     comm.ExecuteNonQuery();
                 }
 
+                
                 conn.Close();
+                refreshStatus();
                 refreshOperationsView();
             }
             catch (ArgumentOutOfRangeException)
@@ -1272,11 +1303,14 @@ namespace WindowsFormsApplication1
                 }
 
                 ts = hss + ":" + tbStartm.Text;
-                te = hee + ":" + hee;
+                te = hee + ":" + tbEndm.Text;
+
                 location = cbLocation.SelectedIndex + 1;
                 String da = d + " " + ts;
                 DateTime myDate = Convert.ToDateTime(da);
                 DateTime cD = DateTime.Now;
+                DateTime t = Convert.ToDateTime(d + " " + te);
+                int resul = DateTime.Compare(t, myDate);
                 int result = DateTime.Compare(myDate, cD);
                 MySqlCommand con = new MySqlCommand("SELECT COUNT(*) FROM dogoperation WHERE date = '"+d+"' AND locationID = " + location, conn);
                 MySqlDataAdapter adt = new MySqlDataAdapter(con);
@@ -1284,7 +1318,7 @@ namespace WindowsFormsApplication1
                 adt.Fill(dtt);
                 if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) == 0)
                 {
-                    if (result > 0)
+                    if (result > 0 && resul > 0)
                     {
 
                         {
@@ -1305,7 +1339,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    MessageBox.Show("Please Enter Different Location");
+                    MessageBox.Show("The same location is recorded for the same date entered. \n Please Enter Different Location");
                 }
             }
             else
@@ -1601,7 +1635,21 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT employee.employeeID AS emp, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name FROM employee INNER JOIN profile ON profile.personID = employee.employeeID WHERE employee.employeeID NOT IN (SELECT employee.employeeID FROM operationteam INNER JOIN dogoperation ON dogoperation.teamID = operationteam.teamID INNER JOIN employee ON operationteam.employeeID = employee.employeeID WHERE dogoperation.status = 'OnGoing')", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT employee.employeeID AS emp, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name "
+                                                    +"FROM employee "
+                                                    + "INNER JOIN profile ON profile.personID = employee.employeeID "
+                                                    + "INNER JOIN attendance ON attendance.employeeID = employee.employeeID "
+                                                    + "WHERE employee.employeeID "
+                                                    + "NOT IN(SELECT employeeID FROM attendance WHERE date = '2017-09-19' AND type = 0) "
+                                                    + "AND employee.employeeID "
+                                                    + "IN(SELECT employeeID FROM attendance WHERE date = '2017-09-19' AND type = 1) "
+                                                    + "AND employee.employeeID "
+                                                    + "NOT IN "
+                                                    + "(SELECT employee.employeeID "
+                                                    + "FROM operationteam "
+                                                    + "INNER JOIN dogoperation ON dogoperation.teamID = operationteam.teamID "
+                                                    + "INNER JOIN employee ON operationteam.employeeID = employee.employeeID "
+                                                    + " WHERE dogoperation.status = 'OnGoing')", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1645,26 +1693,195 @@ namespace WindowsFormsApplication1
         {
 
         }
-
+        int[] repEmpArr;
         private void choice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (choice.Text == "Employees")
+            if(choice.SelectedIndex == 0)
             {
-                view.Text = "View Employee";
+                dgvOpSumm.Visible = false;
+                cbFilt.Visible = true;
+                repEmp.Visible = true;
+                repAttendance();
             }
-            else if (choice.Text == "Operations")
+            else if (choice.SelectedIndex == 1)
             {
-                view.Text = "View Operations";
+                dgvOpSumm.Visible = false;
+                cbFilt.Visible = true;
+                repEmp.Visible = true;
+                repActivity();
             }
-            else
+            else if (choice.SelectedIndex == 2)
             {
-                MessageBox.Show("Please select type");
+                dgvOpSumm.Visible = true;
+                repEmp.Visible = false;
+                cbFilt.Visible = false;
+                pnlEmpFilt.Visible = false;
+                repOperation();
             }
         }
+        private void loadEmpRep()
+        {
+            cbEmpFilt.Items.Clear();
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT employeeID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS name FROM employee INNER JOIN profile ON personID = employeeID", conn);
+                MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adpt.Fill(dt);
+                repEmpArr = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    cbEmpFilt.Items.Add(dt.Rows[i]["name"].ToString());
+                    repEmpArr[i] = int.Parse(dt.Rows[i]["employeeID"].ToString());
+                }
 
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private void repActivity()
+        {
+            string datestart = y1.Text + "-" + (m1.SelectedIndex + 1).ToString() + "-" + d1.Text;
+            string dateend = y2.Text + "-" + (m2.SelectedIndex + 1).ToString() + "-" + d2.Text;
+            try
+            {
+                conn.Open();
+                MySqlCommand comm;
+                if (cbFilt.Checked && cbEmpFilt.Text != "Employee")
+                {
+                    comm = new MySqlCommand("SELECT date AS Date, timeEnd AS 'TimeRecorded', type AS Type, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Employee Name' FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '"+datestart+ "' AND '" + dateend + "' AND employeeID = " + repEmpArr[cbEmpFilt.SelectedIndex] + " ORDER BY date, type", conn);
+                    MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', middlename)  AS name FROM profile WHERE profile.personID = " + repEmpArr[cbEmpFilt.SelectedIndex], conn);
+                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                    DataTable dta = new DataTable();
+                    adpt.Fill(dta);
+                    employeefilteractivity = dta.Rows[0]["name"].ToString();
+                }
+                else
+                {
+                    comm = new MySqlCommand("SELECT date AS Date, type, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Employee Name' FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "'", conn);
+                }
+
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                repEmp.DataSource = dt;
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        string employeefilterattendance; //name of filtered employee
+        string employeefilteractivity;
+        private void repAttendance()
+        {
+            string datestart = y1.Text + "-" + (m1.SelectedIndex + 1).ToString() + "-" + d1.Text;
+            string dateend = y2.Text + "-" + (m2.SelectedIndex + 1).ToString() + "-" + d2.Text;
+            try
+            {
+                conn.Open();
+                MySqlCommand comm;
+                if (cbFilt.Checked && cbEmpFilt.Text != "Employee")
+                {
+                    comm = new MySqlCommand("SELECT date AS Date, time AS Time, "
+                                            + "CASE type WHEN 0 THEN 'Out' WHEN 1 THEN 'In' END AS Type "
+                                            + "FROM attendance INNER JOIN profile on profile.personID = attendance.employeeID "
+                                            + "INNER JOIN employee ON profile.personID = employee.employeeID "
+                                            + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' AND attendance.employeeID = " + repEmpArr[cbEmpFilt.SelectedIndex] + " ORDER BY date, type", conn);
+                    MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', middlename)  AS name FROM profile WHERE profile.personID = " + repEmpArr[cbEmpFilt.SelectedIndex], conn);
+                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                    DataTable dta = new DataTable();
+                    adpt.Fill(dta);
+                    employeefilterattendance = dta.Rows[0]["name"].ToString();
+                }
+                else
+                {
+                    comm = new MySqlCommand("SELECT date AS Date, time AS Time, CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS 'Employee Name', position AS Position, contactNumber AS ContactNumber, "
+                                            + "CASE type WHEN 0 THEN 'Out' WHEN 1 THEN 'In' END AS Type "
+                                            + "FROM attendance INNER JOIN profile on profile.personID = attendance.employeeID "
+                                            + "INNER JOIN employee ON profile.personID = employee.employeeID "
+                                            + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY date, type", conn);
+                }
+
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                repEmp.DataSource = dt;
+                
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private void repOperation()
+        {
+            string datestart = y1.Text + "-" + (m1.SelectedIndex+1).ToString() + "-" + d1.Text;
+            string dateend = y2.Text + "-" + (m2.SelectedIndex+1).ToString() + "-" + d2.Text;
+            try
+            {
+                conn.Open();
+
+                MySqlCommand comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, CONCAT(timeStart, '-', timeEnd) AS time, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date BETWEEN '" + datestart+ "' AND '" + dateend + "' AND status = 'Finished' ORDER BY  date, timeStart", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                for (int x = 0; x < dt.Rows.Count; x++)
+                {
+                    int teamID = int.Parse(dt.Rows[x]["teamID"].ToString());
+                    int opID = int.Parse(dt.Rows[x]["operationID"].ToString());
+                    MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', Firstname) AS emp FROM operationteam INNER JOIN profile on profile.personID = operationteam.employeeID WHERE teamID = " + teamID.ToString(), conn);
+                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                    DataTable dta = new DataTable();
+                    adpt.Fill(dta);
+                    string team = "";
+                    for (int j = 0; j < dta.Rows.Count; j++)
+                    {
+                        string nl = Environment.NewLine;
+                        team = team + dta.Rows[j]["emp"].ToString() + nl;
+                    }
+                    string loc = "Barangay" + dt.Rows[x]["description"].ToString();
+                    string date = dt.Rows[x]["date"].ToString();
+                    string time = dt.Rows[x]["time"].ToString(); 
+                    string status = dt.Rows[x]["status"].ToString();
+                    commm = new MySqlCommand("SELECT COUNT(dogID) AS imp FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE dogprofile.operationID = " + opID, conn);
+                    adpt = new MySqlDataAdapter(commm);
+                    dta = new DataTable();
+                    adpt.Fill(dta);
+                    int imp = int.Parse(dta.Rows[0]["imp"].ToString());
+                    dgvOpSumm.Rows.Add(loc, date, time, team, imp);
+                }
+
+                dgvOpSumm.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgvOpSumm.Columns["team"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dgvOpSumm.Columns["loc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOpSumm.Columns["date1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOpSumm.Columns["time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOpSumm.Columns["team"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOpSumm.Columns["imp"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
         private void button28_Click_1(object sender, EventArgs e)
         {
-
+            print();
         }
 
         private void specLoc_TextChanged(object sender, EventArgs e)
@@ -1677,11 +1894,14 @@ namespace WindowsFormsApplication1
            
                
         }
-
+        
         private void button6_Click_1(object sender, EventArgs e)
         {
             dgvAttendanceIn.Visible = false;
             dgvAttendanceOut.Visible = false;
+
+            print();
+
             panelAtt.Visible = true;
             refreshAttView();
         }
@@ -1717,6 +1937,7 @@ namespace WindowsFormsApplication1
 
         }
 
+        DataTable dtOp;
         private void view_Click(object sender, EventArgs e)
         {
             if (choice.Text == "Employees")
@@ -1778,13 +1999,14 @@ namespace WindowsFormsApplication1
                     }
 
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
+                    dtOp = new DataTable();
+                    adp.Fill(dtOp);
+                    dgvOperationsView.DataSource = dtOp;
 
-                    for (int x = 0; x < dt.Rows.Count; x++)
+                    for (int x = 0; x < dtOp.Rows.Count; x++)
                     {
-                        int teamID = int.Parse(dt.Rows[x]["teamID"].ToString());
-                        int opID = int.Parse(dt.Rows[x]["operationID"].ToString());
+                        int teamID = int.Parse(dtOp.Rows[x]["teamID"].ToString());
+                        int opID = int.Parse(dtOp.Rows[x]["operationID"].ToString());
                         MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', Firstname) AS emp FROM operationteam INNER JOIN profile on profile.personID = operationteam.employeeID WHERE teamID = " + teamID.ToString(), conn);
                         MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
                         DataTable dta = new DataTable();
@@ -1795,11 +2017,11 @@ namespace WindowsFormsApplication1
                             string nl = Environment.NewLine;
                             team = team + dta.Rows[j]["emp"].ToString() + nl;
                         }
-                        string loc = dt.Rows[x]["description"].ToString();
-                        string date = dt.Rows[x]["date"].ToString();
-                        string start = dt.Rows[x]["timeStart"].ToString();
-                        string end = dt.Rows[x]["timeEnd"].ToString();
-                        string status = dt.Rows[x]["status"].ToString();
+                        string loc = dtOp.Rows[x]["description"].ToString();
+                        string date = dtOp.Rows[x]["date"].ToString();
+                        string start = dtOp.Rows[x]["timeStart"].ToString();
+                        string end = dtOp.Rows[x]["timeEnd"].ToString();
+                        string status = dtOp.Rows[x]["status"].ToString();
                         repEmp.Rows.Add(teamID.ToString(), opID.ToString(), loc, date, start, end, team, status);
                     }
 
@@ -1870,7 +2092,7 @@ namespace WindowsFormsApplication1
                     opOpen = true;
                 }
                 op.id = opId;
-                op.Show();
+                op.ShowDialog();
                                 
             }
         }
@@ -2103,6 +2325,184 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void cbFilt_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbFilt.Checked)
+            {
+                pnlEmpFilt.Visible = true;
+                loadEmpRep();
+            }
+            else
+            {
+                pnlEmpFilt.Visible = false;
+            }
+        }
+
+        private void y1_TextChanged(object sender, EventArgs e)
+        {
+            if (y1.Text.Length == 4)
+            {
+                m1.Enabled = true;
+            }
+        }
+
+        private void y2_TextChanged(object sender, EventArgs e)
+        {
+            if (y2.Text.Length == 4)
+            {
+                m2.Enabled = true;
+            }
+        }
+
+        private void y2_Enter(object sender, EventArgs e)
+        {
+            y2.Text = "";
+        }
+
+        private void y1_Enter(object sender, EventArgs e)
+        {
+            y1.Text = "";
+        }
+
+        private void m1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            d1.Enabled = true;
+            d1.Items.Clear();
+            responsiveDay1(int.Parse(y1.Text));
+        }
+
+        private void m2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            d2.Enabled = true;
+            d2.Items.Clear();
+            responsiveDay2(int.Parse(y2.Text));
+        }
+        private void responsiveDay1(int year)
+        {
+            int x;
+            if (m1.Text == "January" || m1.Text == "March" || m1.Text == "May" || m1.Text == "July" || m1.Text == "August" || m1.Text == "October" || m1.Text == "December") loopDay1(31);
+            else if (m1.Text == "February") { if (year % 4 == 0) loopDay1(29); else loopDay1(28); }
+            else loopDay1(30);
+        }
+        private void responsiveDay2(int year)
+        {
+            int x;
+            if (m2.Text == "January" || m2.Text == "March" || m2.Text == "May" || m2.Text == "July" || m2.Text == "August" || m2.Text == "October" || m2.Text == "December") loopDay2(31);
+            else if (m2.Text == "February") { if (year % 4 == 0) loopDay2(29); else loopDay2(28); }
+            else loopDay2(30);
+        }
+        private void loopDay1(int x)
+        {
+            int i = 1;
+            while (i <= x)
+            {
+                d1.Items.Add(i.ToString());
+                i++;
+            }
+        }
+        private void loopDay2(int x)
+        {
+            int i = 1;
+            while (i <= x)
+            {
+                d2.Items.Add(i.ToString());
+                i++;
+            }
+        }
+
+        private void panel2_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void print()
+        {
+            if(choice.SelectedIndex == 0)
+            {
+                printDocument1.DefaultPageSettings.Landscape = true;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument1;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+
+            } else if (choice.SelectedIndex == 1)
+            {
+                printDocument2.DefaultPageSettings.Landscape = true;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument2;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+
+            } else if (choice.SelectedIndex == 2)
+            {
+                printDocument3.DefaultPageSettings.Landscape = true;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument3;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
+            }
+        }
+        int rowcount = 0;
+        private void printDocument3_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
+            e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
+
+            string footer = string.Empty;
+            int columnCount = repEmp.Columns.Count;
+            int maxRows = repEmp.Rows.Count;
+
+            using (Graphics g = e.Graphics)
+            {
+                Brush brush = new SolidBrush(Color.Black);
+                Pen pen = new Pen(brush);
+                Font font = new Font("Arial", 12);
+                SizeF size;
+
+                int x = 0, y = 300, width = 100;
+                float xPadding;
+
+                // Writes out all column names in designated locations, aligned as a table
+                foreach (DataColumn column in dtOp.Columns)
+                {
+                    size = g.MeasureString(column.ColumnName, font);
+                    xPadding = (width - size.Width) / 2;
+                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 5);
+                    x += width;
+                }
+
+                x = 0;
+                y += 30;
+
+                // Process each row and place each item under correct column.
+                foreach (DataRow row in dtOp.Rows)
+                {
+                    rowcount++;
+
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        size = g.MeasureString(row[i].ToString(), font);
+                        xPadding = (width - size.Width) / 2;
+
+                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 5);
+                        x += width;
+                    }
+
+                    e.HasMorePages = rowcount - 1 < maxRows;
+
+                    x = 0;
+                    y += 30;
+                }
+            }
+            }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+            refreshEdit();
+        }
     }
 }
 
