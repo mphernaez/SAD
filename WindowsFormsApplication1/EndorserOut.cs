@@ -31,7 +31,6 @@ namespace WindowsFormsApplication1
             {
                 try
                 {
-
                     conn.Open();
                     if (eID != 0)
                     {
