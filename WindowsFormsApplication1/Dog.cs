@@ -1102,10 +1102,7 @@ namespace WindowsFormsApplication1
             
             int operationID = opid[cbOperation.SelectedIndex];
 
-            PrintPreviewDialog fin = new PrintPreviewDialog();
-            fin.Document = printDocument5;
-            ((Form)fin).WindowState = FormWindowState.Maximized;
-            fin.ShowDialog();
+            
             try
             {
                 conn.Open();
@@ -1145,8 +1142,11 @@ namespace WindowsFormsApplication1
                 }
 
                 conn.Close();
-                
-                
+                PrintPreviewDialog fin = new PrintPreviewDialog();
+                fin.Document = printDocument5;
+                ((Form)fin).WindowState = FormWindowState.Maximized;
+                fin.ShowDialog();
+
             }
             catch (Exception ex)
             {
@@ -1289,10 +1289,16 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("DAVAO CITY DOG POUND", new System.Drawing.Font(f, 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(160, 100));
 
             e.Graphics.DrawString("Location: " + location, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 170));
-            e.Graphics.DrawString("Date: " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 190));
-            e.Graphics.DrawString("Time: " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 220));
-            e.Graphics.DrawString("Employees Invovled: " + employees, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 250));
-            
+            e.Graphics.DrawString("Date: " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 200));
+            e.Graphics.DrawString("Time: " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 230));
+            e.Graphics.DrawString("Employees Invovled: ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 260));
+            int x = 260;
+            for (int i = 0; i < employees.Length; i++)
+            {
+                e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, x));
+                x = x + 20;
+            }
+            //dog datatable?
         }
 
         private void addDog_Paint(object sender, PaintEventArgs e)

@@ -1240,17 +1240,17 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 operation = int.Parse(dgvOperationsView.Rows[e.RowIndex].Cells["operationID"].Value.ToString());
 
-                if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "Pending")
-                {
-                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing', timeStart = '" + DateTime.Now.ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' WHERE operationID = " + operation, conn);
+                    if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "Pending")
+                    {
+                        MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing', timeStart = '" + DateTime.Now.ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' WHERE operationID = " + operation, conn);
 
-                    comm.ExecuteNonQuery();
-                }
-                else if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "OnGoing")
-                {
-                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'Finished', timeEnd = '" + DateTime.Now.ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' WHERE operationID = " + operation, conn);
-                    comm.ExecuteNonQuery();
-                }
+                        comm.ExecuteNonQuery();
+                    }
+                    else if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "OnGoing")
+                    {
+                        MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'Finished', timeEnd = '" + DateTime.Now.ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' WHERE operationID = " + operation, conn);
+                        comm.ExecuteNonQuery();
+                    }
 
                 
                 conn.Close();
