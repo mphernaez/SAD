@@ -45,6 +45,10 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
+            this.Sout = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.OK2 = new System.Windows.Forms.Button();
+            this.dgvo = new System.Windows.Forms.DataGridView();
             this.panelReturn = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.quanret = new System.Windows.Forms.NumericUpDown();
@@ -61,10 +65,6 @@
             this.fgerf = new System.Windows.Forms.Label();
             this.button18 = new System.Windows.Forms.Button();
             this.dgvRequest = new System.Windows.Forms.DataGridView();
-            this.Sout = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.OK2 = new System.Windows.Forms.Button();
-            this.dgvo = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.tbname = new System.Windows.Forms.TextBox();
             this.tbdesc = new System.Windows.Forms.TextBox();
@@ -104,19 +104,26 @@
             this.dgvTrans = new System.Windows.Forms.DataGridView();
             this.cbTransType = new System.Windows.Forms.ComboBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.y2 = new System.Windows.Forms.TextBox();
+            this.d2 = new System.Windows.Forms.ComboBox();
+            this.d1 = new System.Windows.Forms.ComboBox();
+            this.y1 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.m2 = new System.Windows.Forms.ComboBox();
+            this.m1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.i)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
             this.inv.SuspendLayout();
+            this.Sout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvo)).BeginInit();
             this.panelReturn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quanret)).BeginInit();
             this.dgvout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvin)).BeginInit();
             this.panelRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRequest)).BeginInit();
-            this.Sout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvo)).BeginInit();
             this.newitem.SuspendLayout();
             this.add.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudmin)).BeginInit();
@@ -349,6 +356,62 @@
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
+            // Sout
+            // 
+            this.Sout.Controls.Add(this.label4);
+            this.Sout.Controls.Add(this.OK2);
+            this.Sout.Controls.Add(this.dgvo);
+            this.Sout.Location = new System.Drawing.Point(11, 114);
+            this.Sout.Name = "Sout";
+            this.Sout.Size = new System.Drawing.Size(982, 361);
+            this.Sout.TabIndex = 44;
+            this.Sout.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label4.Location = new System.Drawing.Point(16, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(136, 31);
+            this.label4.TabIndex = 57;
+            this.label4.Text = "Stock-Out";
+            // 
+            // OK2
+            // 
+            this.OK2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.OK2.FlatAppearance.BorderSize = 0;
+            this.OK2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OK2.ForeColor = System.Drawing.Color.White;
+            this.OK2.Location = new System.Drawing.Point(840, 259);
+            this.OK2.Name = "OK2";
+            this.OK2.Size = new System.Drawing.Size(124, 42);
+            this.OK2.TabIndex = 47;
+            this.OK2.Text = "OK";
+            this.OK2.UseVisualStyleBackColor = false;
+            this.OK2.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // dgvo
+            // 
+            this.dgvo.AllowUserToAddRows = false;
+            this.dgvo.AllowUserToDeleteRows = false;
+            this.dgvo.AllowUserToResizeColumns = false;
+            this.dgvo.AllowUserToResizeRows = false;
+            this.dgvo.BackgroundColor = System.Drawing.Color.White;
+            this.dgvo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvo.GridColor = System.Drawing.Color.White;
+            this.dgvo.Location = new System.Drawing.Point(12, 53);
+            this.dgvo.Name = "dgvo";
+            this.dgvo.ReadOnly = true;
+            this.dgvo.RowHeadersVisible = false;
+            this.dgvo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvo.Size = new System.Drawing.Size(952, 200);
+            this.dgvo.TabIndex = 20;
+            this.dgvo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvo_CellClick);
+            // 
             // panelReturn
             // 
             this.panelReturn.Controls.Add(this.label16);
@@ -552,62 +615,6 @@
             this.dgvRequest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRequest.Size = new System.Drawing.Size(952, 248);
             this.dgvRequest.TabIndex = 20;
-            // 
-            // Sout
-            // 
-            this.Sout.Controls.Add(this.label4);
-            this.Sout.Controls.Add(this.OK2);
-            this.Sout.Controls.Add(this.dgvo);
-            this.Sout.Location = new System.Drawing.Point(11, 114);
-            this.Sout.Name = "Sout";
-            this.Sout.Size = new System.Drawing.Size(982, 361);
-            this.Sout.TabIndex = 44;
-            this.Sout.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label4.Location = new System.Drawing.Point(16, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 31);
-            this.label4.TabIndex = 57;
-            this.label4.Text = "Stock-Out";
-            // 
-            // OK2
-            // 
-            this.OK2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.OK2.FlatAppearance.BorderSize = 0;
-            this.OK2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OK2.ForeColor = System.Drawing.Color.White;
-            this.OK2.Location = new System.Drawing.Point(840, 259);
-            this.OK2.Name = "OK2";
-            this.OK2.Size = new System.Drawing.Size(124, 42);
-            this.OK2.TabIndex = 47;
-            this.OK2.Text = "OK";
-            this.OK2.UseVisualStyleBackColor = false;
-            this.OK2.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // dgvo
-            // 
-            this.dgvo.AllowUserToAddRows = false;
-            this.dgvo.AllowUserToDeleteRows = false;
-            this.dgvo.AllowUserToResizeColumns = false;
-            this.dgvo.AllowUserToResizeRows = false;
-            this.dgvo.BackgroundColor = System.Drawing.Color.White;
-            this.dgvo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvo.GridColor = System.Drawing.Color.White;
-            this.dgvo.Location = new System.Drawing.Point(12, 53);
-            this.dgvo.Name = "dgvo";
-            this.dgvo.ReadOnly = true;
-            this.dgvo.RowHeadersVisible = false;
-            this.dgvo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvo.Size = new System.Drawing.Size(952, 200);
-            this.dgvo.TabIndex = 20;
-            this.dgvo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvo_CellClick);
             // 
             // label2
             // 
@@ -1044,6 +1051,13 @@
             // panelTrans
             // 
             this.panelTrans.BackColor = System.Drawing.Color.White;
+            this.panelTrans.Controls.Add(this.y2);
+            this.panelTrans.Controls.Add(this.d2);
+            this.panelTrans.Controls.Add(this.d1);
+            this.panelTrans.Controls.Add(this.y1);
+            this.panelTrans.Controls.Add(this.label21);
+            this.panelTrans.Controls.Add(this.m2);
+            this.panelTrans.Controls.Add(this.m1);
             this.panelTrans.Controls.Add(this.button2);
             this.panelTrans.Controls.Add(this.dgvTrans);
             this.panelTrans.Controls.Add(this.cbTransType);
@@ -1061,11 +1075,11 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(316, 21);
+            this.button2.Location = new System.Drawing.Point(316, 64);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 32);
             this.button2.TabIndex = 77;
-            this.button2.Text = "View Report";
+            this.button2.Text = "Print Report";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
@@ -1079,12 +1093,12 @@
             this.dgvTrans.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTrans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTrans.GridColor = System.Drawing.Color.White;
-            this.dgvTrans.Location = new System.Drawing.Point(22, 77);
+            this.dgvTrans.Location = new System.Drawing.Point(22, 102);
             this.dgvTrans.Name = "dgvTrans";
             this.dgvTrans.ReadOnly = true;
             this.dgvTrans.RowHeadersVisible = false;
             this.dgvTrans.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTrans.Size = new System.Drawing.Size(982, 411);
+            this.dgvTrans.Size = new System.Drawing.Size(982, 386);
             this.dgvTrans.TabIndex = 75;
             // 
             // cbTransType
@@ -1095,8 +1109,9 @@
             this.cbTransType.Items.AddRange(new object[] {
             "Stock In",
             "Stock Out",
-            "Returns"});
-            this.cbTransType.Location = new System.Drawing.Point(22, 24);
+            "Returns",
+            "Requests"});
+            this.cbTransType.Location = new System.Drawing.Point(22, 67);
             this.cbTransType.Name = "cbTransType";
             this.cbTransType.Size = new System.Drawing.Size(288, 28);
             this.cbTransType.TabIndex = 74;
@@ -1107,6 +1122,110 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // y2
+            // 
+            this.y2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.y2.Location = new System.Drawing.Point(293, 25);
+            this.y2.Name = "y2";
+            this.y2.Size = new System.Drawing.Size(55, 26);
+            this.y2.TabIndex = 84;
+            this.y2.Text = "Year";
+            this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged_1);
+            this.y2.Enter += new System.EventHandler(this.y2_Enter_1);
+            // 
+            // d2
+            // 
+            this.d2.Enabled = false;
+            this.d2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d2.FormattingEnabled = true;
+            this.d2.Location = new System.Drawing.Point(463, 23);
+            this.d2.Name = "d2";
+            this.d2.Size = new System.Drawing.Size(65, 28);
+            this.d2.TabIndex = 83;
+            this.d2.Text = "Day";
+            // 
+            // d1
+            // 
+            this.d1.Enabled = false;
+            this.d1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.d1.FormattingEnabled = true;
+            this.d1.Location = new System.Drawing.Point(193, 24);
+            this.d1.Name = "d1";
+            this.d1.Size = new System.Drawing.Size(65, 28);
+            this.d1.TabIndex = 82;
+            this.d1.Text = "Day";
+            // 
+            // y1
+            // 
+            this.y1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.y1.Location = new System.Drawing.Point(23, 26);
+            this.y1.Name = "y1";
+            this.y1.Size = new System.Drawing.Size(55, 26);
+            this.y1.TabIndex = 81;
+            this.y1.Text = "Year";
+            this.y1.TextChanged += new System.EventHandler(this.y1_TextChanged_1);
+            this.y1.Enter += new System.EventHandler(this.y1_Enter_1);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(269, 27);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(14, 20);
+            this.label21.TabIndex = 80;
+            this.label21.Text = "-";
+            // 
+            // m2
+            // 
+            this.m2.Enabled = false;
+            this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m2.FormattingEnabled = true;
+            this.m2.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.m2.Location = new System.Drawing.Point(349, 23);
+            this.m2.Name = "m2";
+            this.m2.Size = new System.Drawing.Size(113, 28);
+            this.m2.TabIndex = 78;
+            this.m2.Text = "Month";
+            this.m2.SelectedIndexChanged += new System.EventHandler(this.m2_SelectedIndexChanged_1);
+            // 
+            // m1
+            // 
+            this.m1.Enabled = false;
+            this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.m1.FormattingEnabled = true;
+            this.m1.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.m1.Location = new System.Drawing.Point(79, 24);
+            this.m1.Name = "m1";
+            this.m1.Size = new System.Drawing.Size(113, 28);
+            this.m1.TabIndex = 79;
+            this.m1.Text = "Month";
+            this.m1.SelectedIndexChanged += new System.EventHandler(this.m1_SelectedIndexChanged_1);
+            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1116,9 +1235,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.panelTrans);
             this.Controls.Add(this.inv);
             this.Controls.Add(this.newitem);
-            this.Controls.Add(this.panelTrans);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(27, 84);
             this.MaximizeBox = false;
@@ -1132,6 +1251,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.a)).EndInit();
             this.inv.ResumeLayout(false);
             this.inv.PerformLayout();
+            this.Sout.ResumeLayout(false);
+            this.Sout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvo)).EndInit();
             this.panelReturn.ResumeLayout(false);
             this.panelReturn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quanret)).EndInit();
@@ -1141,9 +1263,6 @@
             this.panelRequest.ResumeLayout(false);
             this.panelRequest.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRequest)).EndInit();
-            this.Sout.ResumeLayout(false);
-            this.Sout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvo)).EndInit();
             this.newitem.ResumeLayout(false);
             this.newitem.PerformLayout();
             this.add.ResumeLayout(false);
@@ -1165,6 +1284,7 @@
             this.hp.ResumeLayout(false);
             this.hp.PerformLayout();
             this.panelTrans.ResumeLayout(false);
+            this.panelTrans.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrans)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1246,5 +1366,12 @@
         private System.Windows.Forms.Label fgerf;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.DataGridView dgvRequest;
+        private System.Windows.Forms.TextBox y2;
+        private System.Windows.Forms.ComboBox d2;
+        private System.Windows.Forms.ComboBox d1;
+        private System.Windows.Forms.TextBox y1;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox m2;
+        private System.Windows.Forms.ComboBox m1;
     }
 }

@@ -359,15 +359,48 @@ namespace WindowsFormsApplication1
             else if (cbTransType.SelectedIndex == 2)
             {
                 refreshReturns();
+                button2.Enabled = false;
+            }
+            else
+            {
+                refreshRequests();
+                button2.Enabled = false;
             }
         }
         DataTable dtRet;
-        private void refreshReturns()
+
+        private void refreshRequests()
         {
+            string datestart = y1.Text + '-' + (m1.SelectedIndex + 1).ToString() + '-' + d1.Text;
+            string dateend = y2.Text + '-' + (m2.SelectedIndex + 1).ToString() + '-' + d2.Text;
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity', SUBSTRING(date, 1, 11) AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Endorsed by', reason AS 'Reason of Returning' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE type = 'Return'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT date AS Date, CONCAT(productName, ' (', description, ')') AS Item FROM stockrequest INNER JOIN items ON stockrequest.stockID = items.itemID WHERE date BETWEEN '"+datestart+"' AND '"+dateend+"'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dtReq = new System.Data.DataTable();
+                adp.Fill(dtReq);
+
+                dgvTrans.DataSource = dtReq;
+                dgvTrans.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvTrans.Columns["Item"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+        private void refreshReturns()
+        {
+            string datestart = y1.Text + '-' + (m1.SelectedIndex + 1).ToString() + '-' + d1.Text;
+            string dateend = y2.Text + '-' + (m2.SelectedIndex + 1).ToString() + '-' + d2.Text;
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity', SUBSTRING(date, 1, 11) AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Endorsed by', reason AS 'Reason of Returning' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE date BETWEEN '"+datestart+"' AND '" + dateend + "' AND type = 'Return'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 dtRet = new System.Data.DataTable();
                 adp.Fill(dtRet);
@@ -389,10 +422,12 @@ namespace WindowsFormsApplication1
         DataTable dtTrans;
         private void refreshTransIn()
         {
+            string datestart = y1.Text + '-' + (m1.SelectedIndex+1).ToString() + '-' + d1.Text;
+            string dateend = y2.Text + '-' + (m2.SelectedIndex + 1).ToString() + '-' + d2.Text;
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity Added', SUBSTRING(date, 1, 11) AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Endorsed by', reason AS 'Reason of Endorsement', SUBSTRING(expiration, 1, 11) AS 'Product Expiration' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE type = 'In'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity Added', SUBSTRING(date, 1, 11) AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Endorsed by', reason AS 'Reason of Endorsement', SUBSTRING(expiration, 1, 11) AS 'Product Expiration' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE stocktransaction.date BETWEEN '" + datestart + "' AND '" + dateend + "' AND  type = 'In'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 dtTrans = new DataTable();
                 adp.Fill(dtTrans);
@@ -416,15 +451,16 @@ namespace WindowsFormsApplication1
         DataTable dtOut;
         private void refreshTransOut()
         {
+            string datestart = y1.Text + '-' + (m1.SelectedIndex + 1).ToString() + '-' + d1.Text;
+            string dateend = y2.Text + '-' + (m2.SelectedIndex + 1).ToString() + '-' + d2.Text;
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity Deducted', SUBSTRING(date, 1, 11) AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Deducted by', reason AS 'Reason of Deduction' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE type = 'Out'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity Deducted', SUBSTRING(date, 1, 11) AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Deducted by', reason AS 'Reason of Deduction' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE stocktransaction.date BETWEEN '" + datestart + "' AND '" + dateend + "' AND  type = 'Out'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 dtOut= new DataTable();
                 adp.Fill(dtOut);
                 dgvTrans.DataSource = dtOut;
-
                 dgvTrans.DataSource = dtOut;
                 dgvTrans.Columns["Product"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvTrans.Columns["Quantity Deducted"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -641,7 +677,7 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
             e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
             e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
-            e.Graphics.DrawString("INVENTORY", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
+            e.Graphics.DrawString("INVENTORY", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(475, 130));
 
             if (cbTransType.Text == "Stock In")
             {
@@ -857,7 +893,110 @@ namespace WindowsFormsApplication1
 
             }
         }
+        private void y1_TextChanged(object sender, EventArgs e)
+        {
+            if (y1.Text.Length == 4)
+            {
+                m1.Enabled = true;
+            }
+        }
 
-      
+        private void y2_TextChanged(object sender, EventArgs e)
+        {
+            if (y2.Text.Length == 4)
+            {
+                m2.Enabled = true;
+            }
+        }
+
+        private void y2_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void y1_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void m1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            d1.Enabled = true;
+            d1.Items.Clear();
+            responsiveDay1(int.Parse(y1.Text));
+        }
+
+        private void m2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            d2.Enabled = true;
+            d2.Items.Clear();
+            responsiveDay2(int.Parse(y2.Text));
+        }
+        private void responsiveDay1(int year)
+        {
+            int x;
+            if (m1.Text == "January" || m1.Text == "March" || m1.Text == "May" || m1.Text == "July" || m1.Text == "August" || m1.Text == "October" || m1.Text == "December") loopDay1(31);
+            else if (m1.Text == "February") { if (year % 4 == 0) loopDay1(29); else loopDay1(28); }
+            else loopDay1(30);
+        }
+        private void responsiveDay2(int year)
+        {
+            int x;
+            if (m2.Text == "January" || m2.Text == "March" || m2.Text == "May" || m2.Text == "July" || m2.Text == "August" || m2.Text == "October" || m2.Text == "December") loopDay2(31);
+            else if (m2.Text == "February") { if (year % 4 == 0) loopDay2(29); else loopDay2(28); }
+            else loopDay2(30);
+        }
+        private void loopDay1(int x)
+        {
+            int i = 1;
+            while (i <= x)
+            {
+                d1.Items.Add(i.ToString());
+                i++;
+            }
+        }
+        private void loopDay2(int x)
+        {
+            int i = 1;
+            while (i <= x)
+            {
+                d2.Items.Add(i.ToString());
+                i++;
+            }
+        }
+
+        private void y1_Enter_1(object sender, EventArgs e)
+        {
+            y1.Text = "";
+        }
+
+        private void y2_Enter_1(object sender, EventArgs e)
+        {
+            y2.Text = "";
+        }
+
+        private void m1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            d1.Enabled = true;
+            d1.Items.Clear();
+            responsiveDay1(int.Parse(y1.Text));
+        }
+
+        private void m2_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            d2.Enabled = true;
+            d2.Items.Clear();
+            responsiveDay2(int.Parse(y2.Text));
+        }
+
+        private void y1_TextChanged_1(object sender, EventArgs e)
+        {
+            if (y1.Text.Length == 4) m1.Enabled = true;
+        }
+
+        private void y2_TextChanged_1(object sender, EventArgs e)
+        {
+            if (y2.Text.Length == 4) m2.Enabled = true;
         }
     }
+}

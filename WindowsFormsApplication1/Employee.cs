@@ -32,6 +32,9 @@ namespace WindowsFormsApplication1
         int backID;
         string backname;
         int raempID;
+        DataTable dtatt;
+        DataTable dtact;
+        DataTable dtop;
         public empty back { get; set; }
         public MySqlConnection conn = new MySqlConnection();
         public opEdit op { get; set; }
@@ -1720,6 +1723,11 @@ namespace WindowsFormsApplication1
                 cbFilt.Visible = true;
                 repEmp.Visible = true;
                 repAttendance();
+                printDocument1.DefaultPageSettings.Landscape = true;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument1;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
             }
             else if (choice.SelectedIndex == 1)
             {
@@ -1727,6 +1735,11 @@ namespace WindowsFormsApplication1
                 cbFilt.Visible = true;
                 repEmp.Visible = true;
                 repActivity();
+                printDocument2.DefaultPageSettings.Landscape = true;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument1;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
             }
             else if (choice.SelectedIndex == 2)
             {
@@ -1735,6 +1748,11 @@ namespace WindowsFormsApplication1
                 cbFilt.Visible = false;
                 pnlEmpFilt.Visible = false;
                 repOperation();
+                printDocument3.DefaultPageSettings.Landscape = true;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument1;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
             }
         }
         private void loadEmpRep()
@@ -1785,10 +1803,10 @@ namespace WindowsFormsApplication1
                 }
 
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
+                dtact = new DataTable();
+                adp.Fill(dtact);
 
-                repEmp.DataSource = dt;
+                repEmp.DataSource = dtact;
                 conn.Close();
 
             }
@@ -1831,10 +1849,10 @@ namespace WindowsFormsApplication1
                 }
 
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
+                dtatt = new DataTable();
+                adp.Fill(dtatt);
 
-                repEmp.DataSource = dt;
+                repEmp.DataSource = dtatt;
                 
                 conn.Close();
             }
@@ -2521,6 +2539,16 @@ namespace WindowsFormsApplication1
         private void button34_Click(object sender, EventArgs e)
         {
             refreshEdit();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
+        }
+
+        private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
         }
     }
 }
