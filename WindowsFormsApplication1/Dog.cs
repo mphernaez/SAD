@@ -1106,7 +1106,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT description AS Location, date AS Date, CONCAT(timeStart, '-', timeEnd) AS Time FROM dogpound.dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                MySqlCommand comm = new MySqlCommand("SELECT description AS Location, SUBSTRING(date, 1, 11) AS Date, CONCAT(timeStart, '-', timeEnd) AS Time FROM dogpound.dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
@@ -1311,7 +1311,7 @@ namespace WindowsFormsApplication1
                 Font font = new Font("Arial", 12);
                 SizeF size;
 
-                int x = 25, y = 200, width = 180;
+                int x = 25, y = 500, width = 180;
                 float xPadding;
 
                 // Writes out all column names in designated locations, aligned as a table
