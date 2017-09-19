@@ -361,17 +361,18 @@ namespace WindowsFormsApplication1
                 refreshReturns();
             }
         }
+        DataTable dtRet;
         private void refreshReturns()
         {
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity', date AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Endorsed by', reason AS 'Reason of Returning' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE type = 'Return'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity', SUBSTRING(date, 1, 11) AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Endorsed by', reason AS 'Reason of Returning' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE type = 'Return'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                System.Data.DataTable dt = new System.Data.DataTable();
-                adp.Fill(dt);
+                dtRet = new System.Data.DataTable();
+                adp.Fill(dtRet);
 
-                dgvTrans.DataSource = dt;
+                dgvTrans.DataSource = dtRet;
                 dgvTrans.Columns["Product"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvTrans.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvTrans.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -385,17 +386,18 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
         }
+        DataTable dtTrans;
         private void refreshTransIn()
         {
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity Added', date AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Endorsed by', reason AS 'Reason of Endorsement', expiration AS 'Product Expiration' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE type = 'In'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity Added', SUBSTRING(date, 1, 11) AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Endorsed by', reason AS 'Reason of Endorsement', SUBSTRING(expiration, 1, 11) AS 'Product Expiration' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE type = 'In'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                System.Data.DataTable dt = new System.Data.DataTable();
-                adp.Fill(dt);
+                dtTrans = new DataTable();
+                adp.Fill(dtTrans);
+                dgvTrans.DataSource = dtTrans;
 
-                dgvTrans.DataSource = dt;
                 dgvTrans.Columns["Product"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvTrans.Columns["Quantity Added"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvTrans.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -411,17 +413,19 @@ namespace WindowsFormsApplication1
             }
 
         }
+        DataTable dtOut;
         private void refreshTransOut()
         {
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity Deducted', date AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Deducted by', reason AS 'Reason of Deduction' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE type = 'Out'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(productName, '-', description) AS Product, stocktransaction.quantity AS 'Quantity Deducted', SUBSTRING(date, 1, 11) AS 'Date', CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Deducted by', reason AS 'Reason of Deduction' FROM dogpound.stocktransaction INNER JOIN profile ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE type = 'Out'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                System.Data.DataTable dt = new System.Data.DataTable();
-                adp.Fill(dt);
+                dtOut= new DataTable();
+                adp.Fill(dtOut);
+                dgvTrans.DataSource = dtOut;
 
-                dgvTrans.DataSource = dt;
+                dgvTrans.DataSource = dtOut;
                 dgvTrans.Columns["Product"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvTrans.Columns["Quantity Deducted"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvTrans.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -625,42 +629,175 @@ namespace WindowsFormsApplication1
 
         private void reportEm()
         {
+            printDocument1.DefaultPageSettings.Landscape = true;
             PrintPreviewDialog dlg = new PrintPreviewDialog();
             dlg.Document = printDocument1;
             ((Form)dlg).WindowState = FormWindowState.Maximized;
             dlg.ShowDialog();
         }
-
+        int rowcount = 0;
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawString("INVENTORY", new System.Drawing.Font("Arial", 24, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(400, 100));
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
+            e.Graphics.DrawString("INVENTORY", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
 
             if (cbTransType.Text == "Stock In")
             {
-                e.Graphics.DrawString("Stock In Summary Report", new System.Drawing.Font("Arial", 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 150));
+                string footer = string.Empty;
+                int columnCount = dgvTrans.Columns.Count;
+                int maxRows = dgvTrans.Rows.Count;
+
+                using (Graphics g = e.Graphics)
+                {
+                    Brush brush = new SolidBrush(Color.Black);
+                    Pen pen = new Pen(brush);
+                    Font font = new Font("Arial", 12);
+                    SizeF size;
+
+                    int x = 25, y = 200, width = 180;
+                    float xPadding;
+
+                    // Writes out all column names in designated locations, aligned as a table
+                    foreach (DataColumn column in dtTrans.Columns)
+                    {
+                        size = g.MeasureString(column.ColumnName, font);
+                        xPadding = (width - size.Width) / 2;
+                        g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 10);
+                        x += width;
+                    }
+
+                    x = 25;
+                    y += 50;
+                    int rowcount = 0;
+                    // Process each row and place each item under correct column.
+                    foreach (DataRow row in dtTrans.Rows)
+                    {
+                        rowcount++;
+
+                        for (int i = 0; i < columnCount; i++)
+                        {
+                            size = g.MeasureString(row[i].ToString(), font);
+                            xPadding = (width - size.Width) / 2;
+
+                            g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 10);
+                            x += width;
+                        }
+
+                        e.HasMorePages = rowcount - 1 < maxRows;
+
+                        x = 25;
+                        y += 50;
+                    }
+                }
             }
+
             else if (cbTransType.Text == "Stock Out")
             {
-                e.Graphics.DrawString("Stock Out Summary Report", new System.Drawing.Font("Arial", 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 150));
+                //e.Graphics.DrawString("Stock Out Summary Report", new System.Drawing.Font("Arial", 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 150));
+
+                string footer = string.Empty;
+                int columnCount = dgvTrans.Columns.Count;
+                int maxRows = dgvTrans.Rows.Count;
+
+                using (Graphics g = e.Graphics)
+                {
+                    Brush brush = new SolidBrush(Color.Black);
+                    Pen pen = new Pen(brush);
+                    Font font = new Font("Arial", 12);
+                    SizeF size;
+
+                    int x = 25, y = 200, width = 180;
+                    float xPadding;
+
+                    // Writes out all column names in designated locations, aligned as a table
+                    foreach (DataColumn column in dtOut.Columns)
+                    {
+                        size = g.MeasureString(column.ColumnName, font);
+                        xPadding = (width - size.Width) / 2;
+                        g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 10);
+                        x += width;
+                    }
+
+                    x = 25;
+                    y += 50;
+                    int rowcount = 0;
+                    // Process each row and place each item under correct column.
+                    foreach (DataRow row in dtOut.Rows)
+                    {
+                        rowcount++;
+
+                        for (int i = 0; i < columnCount; i++)
+                        {
+                            size = g.MeasureString(row[i].ToString(), font);
+                            xPadding = (width - size.Width) / 2;
+
+                            g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 10);
+                            x += width;
+                        }
+
+                        e.HasMorePages = rowcount - 1 < maxRows;
+
+                        x = 25;
+                        y += 50;
+                    }
+                }
             }
             else
             {
                 e.Graphics.DrawString("Returns Summary Report", new System.Drawing.Font("Arial", 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 150));
+
+                string footer = string.Empty;
+                int columnCount = dgvTrans.Columns.Count;
+                int maxRows = dgvTrans.Rows.Count;
+
+                using (Graphics g = e.Graphics)
+                {
+                    Brush brush = new SolidBrush(Color.Black);
+                    Pen pen = new Pen(brush);
+                    Font font = new Font("Arial", 12);
+                    SizeF size;
+
+                    int x = 25, y = 200, width = 180;
+                    float xPadding;
+
+                    // Writes out all column names in designated locations, aligned as a table
+                    foreach (DataColumn column in dtRet.Columns)
+                    {
+                        size = g.MeasureString(column.ColumnName, font);
+                        xPadding = (width - size.Width) / 2;
+                        g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 10);
+                        x += width;
+                    }
+
+                    x = 25;
+                    y += 50;
+                    int rowcount = 0;
+                    // Process each row and place each item under correct column.
+                    foreach (DataRow row in dtRet.Rows)
+                    {
+                        rowcount++;
+
+                        for (int i = 0; i < columnCount; i++)
+                        {
+                            size = g.MeasureString(row[i].ToString(), font);
+                            xPadding = (width - size.Width) / 2;
+
+                            g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 10);
+                            x += width;
+                        }
+
+                        e.HasMorePages = rowcount - 1 < maxRows;
+
+                        x = 25;
+                        y += 50;
+                    }
+                }
             }
-            Bitmap bit = new Bitmap(this.dgvTrans.Width, this.dgvTrans.Height);
-            dgvTrans.DrawToBitmap(bit, new Rectangle(15, 200, this.dgvTrans.Width, this.dgvTrans.Height));
-            e.Graphics.DrawImage(bit, 15, 100);
-            e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 800));
+            
         }
-        private void printTrans()
-        {
-            PrintPreviewDialog dlg = new PrintPreviewDialog();
-            dlg.Document = printDocument1;
-            ((Form)dlg).WindowState = FormWindowState.Maximized;
-            dlg.ShowDialog();
-        }
-
-
+        
         private void button18_Click(object sender, EventArgs e)
         {
 
@@ -670,6 +807,8 @@ namespace WindowsFormsApplication1
         {
             if (cbTransType.Text != "Transaction Type") reportEm();
             else MessageBox.Show("Please Select a Transaction");
+            
+
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -719,60 +858,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void ItemReq_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
-            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
-            e.Graphics.DrawString("CLAIMED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
-            //e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
-
-            string footer = string.Empty;
-            int columnCount = dgvRequest.Columns.Count;
-            int maxRows = dgvRequest.Rows.Count;
-
-            using (Graphics g = e.Graphics)
-            {
-                Brush brush = new SolidBrush(Color.Black);
-                Pen pen = new Pen(brush);
-                Font font = new Font("Arial", 12);
-                SizeF size;
-
-                int x = 0, y = 300, width = 100;
-                float xPadding;
-
-                // Writes out all column names in designated locations, aligned as a table
-                foreach (DataColumn column in dtclaim.Columns)
-                {
-                    size = g.MeasureString(column.ColumnName, font);
-                    xPadding = (width - size.Width) / 2;
-                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 5);
-                    x += width;
-                }
-
-                x = 0;
-                y += 30;
-                int rowcount = 0;
-                // Process each row and place each item under correct column.
-                foreach (DataRow row in dtclaim.Rows)
-                {
-                    rowcount++;
-
-                    for (int i = 0; i < columnCount; i++)
-                    {
-                        size = g.MeasureString(row[i].ToString(), font);
-                        xPadding = (width - size.Width) / 2;
-
-                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 5);
-                        x += width;
-                    }
-
-                    e.HasMorePages = rowcount - 1 < maxRows;
-
-                    x = 0;
-                    y += 30;
-                }
-            }
+      
         }
     }
-}
