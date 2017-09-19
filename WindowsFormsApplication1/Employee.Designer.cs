@@ -270,7 +270,7 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(213, 84);
+            this.button6.Location = new System.Drawing.Point(217, 84);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(112, 32);
             this.button6.TabIndex = 40;
@@ -285,7 +285,7 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(114, 84);
+            this.button10.Location = new System.Drawing.Point(116, 84);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(100, 32);
             this.button10.TabIndex = 30;
@@ -440,9 +440,9 @@
             this.addEmployee.Controls.Add(this.button12);
             this.addEmployee.Controls.Add(this.button11);
             this.addEmployee.Controls.Add(this.label2);
-            this.addEmployee.Controls.Add(this.pnlArchive);
             this.addEmployee.Controls.Add(this.editPanel);
             this.addEmployee.Controls.Add(this.addPanel);
+            this.addEmployee.Controls.Add(this.pnlArchive);
             this.addEmployee.Location = new System.Drawing.Point(24, 196);
             this.addEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addEmployee.Name = "addEmployee";
@@ -457,7 +457,7 @@
             this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button30.ForeColor = System.Drawing.Color.White;
-            this.button30.Location = new System.Drawing.Point(215, 84);
+            this.button30.Location = new System.Drawing.Point(217, 84);
             this.button30.Name = "button30";
             this.button30.Size = new System.Drawing.Size(100, 32);
             this.button30.TabIndex = 40;
@@ -472,11 +472,11 @@
             this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button23.ForeColor = System.Drawing.Color.White;
-            this.button23.Location = new System.Drawing.Point(315, 84);
+            this.button23.Location = new System.Drawing.Point(318, 84);
             this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(100, 32);
+            this.button23.Size = new System.Drawing.Size(165, 32);
             this.button23.TabIndex = 39;
-            this.button23.Text = "View All";
+            this.button23.Text = "Today\'s Attendance";
             this.button23.UseVisualStyleBackColor = false;
             this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
@@ -487,7 +487,7 @@
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.Location = new System.Drawing.Point(115, 84);
+            this.button12.Location = new System.Drawing.Point(116, 84);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(100, 32);
             this.button12.TabIndex = 23;
@@ -2258,7 +2258,7 @@
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button21.ForeColor = System.Drawing.Color.White;
-            this.button21.Location = new System.Drawing.Point(154, 84);
+            this.button21.Location = new System.Drawing.Point(156, 84);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(100, 32);
             this.button21.TabIndex = 39;
@@ -2275,11 +2275,11 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.Edit);
-            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.panelViewAct);
             this.DogCatchingOperation.Controls.Add(this.pnlActivity);
+            this.DogCatchingOperation.Controls.Add(this.Edit);
+            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -2294,7 +2294,7 @@
             this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button36.ForeColor = System.Drawing.Color.White;
-            this.button36.Location = new System.Drawing.Point(556, 84);
+            this.button36.Location = new System.Drawing.Point(561, 84);
             this.button36.Name = "button36";
             this.button36.Size = new System.Drawing.Size(100, 32);
             this.button36.TabIndex = 79;
@@ -2309,7 +2309,7 @@
             this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button33.ForeColor = System.Drawing.Color.White;
-            this.button33.Location = new System.Drawing.Point(254, 84);
+            this.button33.Location = new System.Drawing.Point(257, 84);
             this.button33.Name = "button33";
             this.button33.Size = new System.Drawing.Size(161, 32);
             this.button33.TabIndex = 78;
@@ -2324,7 +2324,7 @@
             this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button31.ForeColor = System.Drawing.Color.White;
-            this.button31.Location = new System.Drawing.Point(415, 84);
+            this.button31.Location = new System.Drawing.Point(419, 84);
             this.button31.Name = "button31";
             this.button31.Size = new System.Drawing.Size(141, 32);
             this.button31.TabIndex = 42;
@@ -2645,10 +2645,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
-            this.Controls.Add(this.attendance);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
