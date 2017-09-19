@@ -1311,7 +1311,7 @@ namespace WindowsFormsApplication1
                 Font font = new Font("Arial", 12);
                 SizeF size;
 
-                int x = 25, y = 500, width = 180;
+                int x = 25, y = 450, width = 180;
                 float xPadding;
 
                 // Writes out all column names in designated locations, aligned as a table
