@@ -563,6 +563,7 @@
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Adopt";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OKAY";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Adopt_FormClosing);

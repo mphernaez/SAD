@@ -264,7 +264,7 @@ namespace WindowsFormsApplication1
                 adopt.dogID = this.adoptID;
                 adopt.adminID = this.adminID;
                 adopt.dog = this;
-                adopt.Show();
+                adopt.ShowDialog();
             }
             else
             {

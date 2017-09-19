@@ -24,6 +24,19 @@ namespace WindowsFormsApplication1
             conn = new MySqlConnection("Server=localhost;Database=dogpound;Uid=root;Pwd=root;");
         }
         //n mnbnm
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                const int CS_DROPSHADOW = 0x20000;
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
+        }
+
+
         private void Adopt_Load(object sender, EventArgs e)
         {
             try
