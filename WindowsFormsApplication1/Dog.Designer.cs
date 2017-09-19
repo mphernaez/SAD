@@ -43,8 +43,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.addDog = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.addSub = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.subloc = new System.Windows.Forms.ComboBox();
             this.tbDesc = new System.Windows.Forms.TextBox();
             this.btnClearDog = new System.Windows.Forms.Button();
             this.btnAddDog = new System.Windows.Forms.Button();
@@ -134,9 +137,6 @@
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
             this.printDocument4 = new System.Drawing.Printing.PrintDocument();
             this.printDocument5 = new System.Drawing.Printing.PrintDocument();
-            this.subloc = new System.Windows.Forms.ComboBox();
-            this.addSub = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -356,6 +356,34 @@
             this.addDog.Visible = false;
             this.addDog.Paint += new System.Windows.Forms.PaintEventHandler(this.addDog_Paint);
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(307, 124);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(81, 26);
+            this.button4.TabIndex = 31;
+            this.button4.Text = "Add Sublocation";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click_2);
+            // 
+            // addSub
+            // 
+            this.addSub.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addSub.ForeColor = System.Drawing.Color.Gray;
+            this.addSub.Location = new System.Drawing.Point(65, 124);
+            this.addSub.Name = "addSub";
+            this.addSub.Size = new System.Drawing.Size(236, 26);
+            this.addSub.TabIndex = 31;
+            this.addSub.Text = "Add Sublocation";
+            this.addSub.Enter += new System.EventHandler(this.addSub_Enter);
+            // 
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
@@ -388,6 +416,18 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(540, 262);
             this.panel3.TabIndex = 30;
+            // 
+            // subloc
+            // 
+            this.subloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subloc.ForeColor = System.Drawing.Color.Gray;
+            this.subloc.FormattingEnabled = true;
+            this.subloc.Location = new System.Drawing.Point(31, 167);
+            this.subloc.Name = "subloc";
+            this.subloc.Size = new System.Drawing.Size(292, 28);
+            this.subloc.TabIndex = 30;
+            this.subloc.TabStop = false;
+            this.subloc.Text = "Sublocation";
             // 
             // tbDesc
             // 
@@ -1639,46 +1679,6 @@
             // 
             this.printDocument5.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument5_PrintPage);
             // 
-            // subloc
-            // 
-            this.subloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subloc.ForeColor = System.Drawing.Color.Gray;
-            this.subloc.FormattingEnabled = true;
-            this.subloc.Location = new System.Drawing.Point(31, 167);
-            this.subloc.Name = "subloc";
-            this.subloc.Size = new System.Drawing.Size(292, 28);
-            this.subloc.TabIndex = 30;
-            this.subloc.TabStop = false;
-            this.subloc.Text = "Sublocation";
-            // 
-            // addSub
-            // 
-            this.addSub.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addSub.ForeColor = System.Drawing.Color.Gray;
-            this.addSub.Location = new System.Drawing.Point(65, 124);
-            this.addSub.Name = "addSub";
-            this.addSub.Size = new System.Drawing.Size(236, 26);
-            this.addSub.TabIndex = 31;
-            this.addSub.Text = "Add Sublocation";
-            this.addSub.Enter += new System.EventHandler(this.addSub_Enter);
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(307, 124);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(81, 26);
-            this.button4.TabIndex = 31;
-            this.button4.Text = "Add Sublocation";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click_2);
-            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1688,11 +1688,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.addDog);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.repclaimpan);
             this.Controls.Add(this.searchDog);
-            this.Controls.Add(this.addDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";

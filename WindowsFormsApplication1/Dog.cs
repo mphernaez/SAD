@@ -1142,6 +1142,8 @@ namespace WindowsFormsApplication1
                 }
 
                 conn.Close();
+
+                printDocument5.DefaultPageSettings.Landscape = true;
                 PrintPreviewDialog fin = new PrintPreviewDialog();
                 fin.Document = printDocument5;
                 ((Form)fin).WindowState = FormWindowState.Maximized;
@@ -1292,13 +1294,58 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Date: " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 200));
             e.Graphics.DrawString("Time: " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 230));
             e.Graphics.DrawString("Employees Invovled: ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 260));
-            int x = 260;
+            int l = 260;
             for (int i = 0; i < employees.Length; i++)
             {
-                e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, x));
-                x = x + 20;
+                e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, l));
+                l = l + 20;
             }
-            //dog datatable?
+            string footer = string.Empty;
+            int columnCount = dtoperation.Columns.Count;
+            int maxRows = dtoperation.Rows.Count;
+
+            using (Graphics g = e.Graphics)
+            {
+                Brush brush = new SolidBrush(Color.Black);
+                Pen pen = new Pen(brush);
+                Font font = new Font("Arial", 12);
+                SizeF size;
+
+                int x = 25, y = 200, width = 180;
+                float xPadding;
+
+                // Writes out all column names in designated locations, aligned as a table
+                foreach (DataColumn column in dtoperation.Columns)
+                {
+                    size = g.MeasureString(column.ColumnName, font);
+                    xPadding = (width - size.Width) / 2;
+                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 10);
+                    x += width;
+                }
+
+                x = 25;
+                y += 50;
+                int rowcount = 0;
+                // Process each row and place each item under correct column.
+                foreach (DataRow row in dtoperation.Rows)
+                {
+                    rowcount++;
+
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        size = g.MeasureString(row[i].ToString(), font);
+                        xPadding = (width - size.Width) / 2;
+
+                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 10);
+                        x += width;
+                    }
+
+                    e.HasMorePages = rowcount - 1 < maxRows;
+
+                    x = 25;
+                    y += 50;
+                }
+            }
         }
 
         private void addDog_Paint(object sender, PaintEventArgs e)
