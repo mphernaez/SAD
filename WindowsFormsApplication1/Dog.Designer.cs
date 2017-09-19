@@ -134,6 +134,9 @@
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
             this.printDocument4 = new System.Drawing.Printing.PrintDocument();
             this.printDocument5 = new System.Drawing.Printing.PrintDocument();
+            this.subloc = new System.Windows.Forms.ComboBox();
+            this.addSub = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -339,6 +342,8 @@
             // addDog
             // 
             this.addDog.BackColor = System.Drawing.Color.White;
+            this.addDog.Controls.Add(this.button4);
+            this.addDog.Controls.Add(this.addSub);
             this.addDog.Controls.Add(this.button11);
             this.addDog.Controls.Add(this.panel3);
             this.addDog.Controls.Add(this.cbOperation);
@@ -360,7 +365,7 @@
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(66, 394);
+            this.button11.Location = new System.Drawing.Point(65, 438);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(171, 38);
             this.button11.TabIndex = 30;
@@ -371,6 +376,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.LightGray;
+            this.panel3.Controls.Add(this.subloc);
             this.panel3.Controls.Add(this.tbDesc);
             this.panel3.Controls.Add(this.btnClearDog);
             this.panel3.Controls.Add(this.btnAddDog);
@@ -378,9 +384,9 @@
             this.panel3.Controls.Add(this.cbGender);
             this.panel3.Controls.Add(this.cbSize);
             this.panel3.Controls.Add(this.tbColor);
-            this.panel3.Location = new System.Drawing.Point(66, 134);
+            this.panel3.Location = new System.Drawing.Point(65, 162);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(540, 229);
+            this.panel3.Size = new System.Drawing.Size(540, 262);
             this.panel3.TabIndex = 30;
             // 
             // tbDesc
@@ -390,7 +396,7 @@
             this.tbDesc.Location = new System.Drawing.Point(250, 14);
             this.tbDesc.Multiline = true;
             this.tbDesc.Name = "tbDesc";
-            this.tbDesc.Size = new System.Drawing.Size(266, 144);
+            this.tbDesc.Size = new System.Drawing.Size(266, 105);
             this.tbDesc.TabIndex = 6;
             this.tbDesc.Text = "Markings";
             this.tbDesc.Enter += new System.EventHandler(this.tbDesc_Enter);
@@ -404,7 +410,7 @@
             this.btnClearDog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearDog.ForeColor = System.Drawing.Color.White;
-            this.btnClearDog.Location = new System.Drawing.Point(273, 176);
+            this.btnClearDog.Location = new System.Drawing.Point(278, 214);
             this.btnClearDog.Name = "btnClearDog";
             this.btnClearDog.Size = new System.Drawing.Size(171, 38);
             this.btnClearDog.TabIndex = 26;
@@ -421,7 +427,7 @@
             this.btnAddDog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddDog.ForeColor = System.Drawing.Color.White;
-            this.btnAddDog.Location = new System.Drawing.Point(97, 176);
+            this.btnAddDog.Location = new System.Drawing.Point(102, 214);
             this.btnAddDog.Name = "btnAddDog";
             this.btnAddDog.Size = new System.Drawing.Size(171, 38);
             this.btnAddDog.TabIndex = 10;
@@ -541,7 +547,7 @@
             "UNIDENTIFIED"});
             this.tbBreed.Location = new System.Drawing.Point(31, 130);
             this.tbBreed.Name = "tbBreed";
-            this.tbBreed.Size = new System.Drawing.Size(205, 28);
+            this.tbBreed.Size = new System.Drawing.Size(292, 28);
             this.tbBreed.TabIndex = 29;
             this.tbBreed.TabStop = false;
             this.tbBreed.Text = "Breed";
@@ -1633,6 +1639,46 @@
             // 
             this.printDocument5.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument5_PrintPage);
             // 
+            // subloc
+            // 
+            this.subloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subloc.ForeColor = System.Drawing.Color.Gray;
+            this.subloc.FormattingEnabled = true;
+            this.subloc.Location = new System.Drawing.Point(31, 167);
+            this.subloc.Name = "subloc";
+            this.subloc.Size = new System.Drawing.Size(292, 28);
+            this.subloc.TabIndex = 30;
+            this.subloc.TabStop = false;
+            this.subloc.Text = "Sublocation";
+            // 
+            // addSub
+            // 
+            this.addSub.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addSub.ForeColor = System.Drawing.Color.Gray;
+            this.addSub.Location = new System.Drawing.Point(65, 124);
+            this.addSub.Name = "addSub";
+            this.addSub.Size = new System.Drawing.Size(236, 26);
+            this.addSub.TabIndex = 31;
+            this.addSub.Text = "Add Sublocation";
+            this.addSub.Enter += new System.EventHandler(this.addSub_Enter);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(307, 124);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(81, 26);
+            this.button4.TabIndex = 31;
+            this.button4.Text = "Add Sublocation";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click_2);
+            // 
             // Dog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1803,5 +1849,8 @@
         private System.Drawing.Printing.PrintDocument printDocument3;
         private System.Drawing.Printing.PrintDocument printDocument4;
         private System.Drawing.Printing.PrintDocument printDocument5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox addSub;
+        private System.Windows.Forms.ComboBox subloc;
     }
 }

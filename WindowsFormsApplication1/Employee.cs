@@ -263,6 +263,8 @@ namespace WindowsFormsApplication1
         {
             button10.BackColor = Color.FromArgb(2, 170, 145);
             button3.BackColor = Color.FromArgb(251, 162, 80);
+            lblIn.Visible = false;
+            lblout.Visible = false;
             dgvAttendanceIn.Visible = true;
             dgvAttendanceOut.Visible = false;
             panelAtt.Visible = false;
@@ -273,7 +275,8 @@ namespace WindowsFormsApplication1
         {
             button3.BackColor = Color.FromArgb(2, 170, 145);
             button10.BackColor = Color.FromArgb(251, 162, 80);
-
+            lblIn.Visible = false;
+            lblout.Visible = false;
             dgvAttendanceIn.Visible = false;
             dgvAttendanceOut.Visible = true;
             panelAtt.Visible = false;
@@ -1237,17 +1240,17 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 operation = int.Parse(dgvOperationsView.Rows[e.RowIndex].Cells["operationID"].Value.ToString());
 
-                if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "Pending")
-                {
-                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing', timeStart = '" + DateTime.Now.ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyy-MM-dd") + "' WHERE operationID = " + operation, conn);
+                    if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "Pending")
+                    {
+                        MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing', timeStart = '" + DateTime.Now.ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' WHERE operationID = " + operation, conn);
 
-                    comm.ExecuteNonQuery();
-                }
-                else if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "OnGoing")
-                {
-                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'Finished', timeEnd = '" + DateTime.Now.ToString("HH:mm") + "', date = '"+DateTime.Now.ToString("yyy-MM-dd")+"' WHERE operationID = " + operation, conn);
-                    comm.ExecuteNonQuery();
-                }
+                        comm.ExecuteNonQuery();
+                    }
+                    else if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "OnGoing")
+                    {
+                        MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'Finished', timeEnd = '" + DateTime.Now.ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' WHERE operationID = " + operation, conn);
+                        comm.ExecuteNonQuery();
+                    }
 
                 
                 conn.Close();
@@ -1262,7 +1265,6 @@ namespace WindowsFormsApplication1
 
         private void button28_Click(object sender, EventArgs e)
         {
-            
             
             if (cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location" && cbAMPMend.Text != "AM/PM" && cbAMPMstart.Text != "AM/PM")
             {
@@ -1899,7 +1901,8 @@ namespace WindowsFormsApplication1
         {
             dgvAttendanceIn.Visible = false;
             dgvAttendanceOut.Visible = false;
-
+            lblIn.Visible = true;
+            lblout.Visible = true;
             print();
 
             panelAtt.Visible = true;

@@ -433,14 +433,13 @@ namespace WindowsFormsApplication1
         private void updateOp()
         {
 
-          
+
             try
             {
-                
                 bool j = false;
-                for(int i = 0; i < cTeam.Rows.Count; i++)
+                for (int i = 0; i < cTeam.Rows.Count; i++)
                 {
-                    if(cTeam.Rows[i].DefaultCellStyle.BackColor == Color.FromArgb(229, 99, 82))
+                    if (cTeam.Rows[i].DefaultCellStyle.BackColor == Color.FromArgb(229, 99, 82))
                     {
                         j = true;
                     }
@@ -457,41 +456,48 @@ namespace WindowsFormsApplication1
                     int nt = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) + 1;
                     int idd;
                     int[] ids = new int[cTeam.Rows.Count];
-                    for (int i = 0; i < cTeam.Rows.Count; i++)
-                    {
-                        idd = int.Parse(cTeam.Rows[i].Cells["pID"].Value.ToString());
-                        ids[i] = idd;
-                    }
 
-                    if (emp.checkIfTeamExists(ids, cTeam.Rows.Count) == 0)
+                    if (cTeam.Rows.Count > 2)
                     {
                         for (int i = 0; i < cTeam.Rows.Count; i++)
                         {
-                            co = new MySqlCommand("INSERT INTO operationteam ( employeeID, teamID ) VALUES ( " + ids[i] + ", " + nt + " )", conn);
-                            co.ExecuteNonQuery();
+                            idd = int.Parse(cTeam.Rows[i].Cells["pID"].Value.ToString());
+                            ids[i] = idd;
                         }
 
+                        if (emp.checkIfTeamExists(ids, cTeam.Rows.Count) == 0)
+                        {
+                            for (int i = 0; i < cTeam.Rows.Count; i++)
+                            {
+                                co = new MySqlCommand("INSERT INTO operationteam ( employeeID, teamID ) VALUES ( " + ids[i] + ", " + nt + " )", conn);
+                                co.ExecuteNonQuery();
+                            }
+                        }
+                        else
+                        {
+                            nt = emp.checkIfTeamExists(ids, cTeam.Rows.Count);
+                        }
+                        MySqlCommand comm = new MySqlCommand("Update dogoperation SET date = '" + ndate + "', locationID = " + nl + ", timeStart = '" + nts + "', teamID = " + nt + ", timeEnd = '" + nte + "' WHERE operationID = " + id, conn);
+                        comm.ExecuteNonQuery();
+                        MessageBox.Show("Changes Saved");
+
+                        conn.Close();
+                        this.Dispose();
+                        emp.opOpen = false;
                     }
                     else
                     {
-                        nt = emp.checkIfTeamExists(ids, cTeam.Rows.Count);
+                        MessageBox.Show("Please assign more than 1 catcher");
                     }
-                    MySqlCommand comm = new MySqlCommand("Update dogoperation SET date = '" + ndate + "', locationID = " + nl + ", timeStart = '" + nts + "', teamID = " + nt + ", timeEnd = '" + nte + "' WHERE operationID = " + id, conn);
-                    comm.ExecuteNonQuery();
-                    MessageBox.Show("Changes Saved");
-
-                    conn.Close();
-                    this.Dispose();
-                    emp.opOpen = false;
-                } else
-                {
-                    MessageBox.Show("Please remove employees not present");
+                    
                 }
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 conn.Close();
             }
+        
         }
 
         private void cTeam_CellClick(object sender, DataGridViewCellEventArgs e)
