@@ -1311,7 +1311,7 @@ namespace WindowsFormsApplication1
                 Font font = new Font("Arial", 12);
                 SizeF size;
 
-                int x = 25, y = 450, width = 180;
+                int x = 0, y = 370, width = 180;
                 float xPadding;
 
                 // Writes out all column names in designated locations, aligned as a table
@@ -1323,7 +1323,7 @@ namespace WindowsFormsApplication1
                     x += width;
                 }
 
-                x = 25;
+                x = 0;
                 y += 50;
                 int rowcount = 0;
                 // Process each row and place each item under correct column.
@@ -1342,7 +1342,7 @@ namespace WindowsFormsApplication1
 
                     e.HasMorePages = rowcount - 1 < maxRows;
 
-                    x = 25;
+                    x = 0;
                     y += 50;
                 }
             }
