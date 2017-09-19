@@ -1015,7 +1015,7 @@
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.Location = new System.Drawing.Point(882, 68);
+            this.button16.Location = new System.Drawing.Point(878, 65);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(120, 33);
             this.button16.TabIndex = 2;
@@ -1747,6 +1747,7 @@
             // 
             // printDocument5
             // 
+            this.printDocument5.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument5_BeginPrint);
             this.printDocument5.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument5_PrintPage);
             // 
             // Dog

@@ -333,25 +333,34 @@ namespace WindowsFormsApplication1
                     comm.ExecuteNonQuery();
 
 
-                    comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE itemID = 2", conn);
+                    comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Euthanasia Injection'", conn);
+                    comm.ExecuteNonQuery();
+                    comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Syringe'", conn);
                     comm.ExecuteNonQuery();
                     string date = DateTime.Now.ToString("yyyy-MM-dd");
 
                     comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, type, employeeID) VALUES(2, 1, '" + date + "', 'Euthanasia', 'Out', " + empids[cbEmps.SelectedIndex] + ")", conn);
                     comm.ExecuteNonQuery();
 
+                    comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, type, vaccine) VALUES("+ empids[cbEmps.SelectedIndex] + ", "+dogID+", '"+date+"', 0, 'euthanize', 1)", conn);
+                    comm.ExecuteNonQuery();
+
                     comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('" + date + "', " + empids[cbEmps.SelectedIndex] + ", 'Euthanasia' )", conn);
                     comm.ExecuteNonQuery();
                     String messbox = "";
+                    string nl = Environment.NewLine;
+                    comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Euthanasia Injection'", conn);
+                    MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
+                    DataTable dtt = new DataTable();
+                    adpt.Fill(dtt);
+                    comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Syringe'", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dttt = new DataTable();
+                    adp.Fill(dttt);
 
-                    comm = new MySqlCommand("SELECT quantity FROM items WHERE itemID = 2", conn);
-                    MySqlDataReader read = comm.ExecuteReader();
-                    while (read.Read())
-                    {
-                        int quantity = int.Parse(read[0].ToString());
-                        messbox = "Successfully Euthanized. Injection for Euthanasia quantity is now: " + quantity.ToString();
-                    }
-                    MessageBox.Show(messbox.ToString());
+                    messbox = "Successfully Euthanized Dog. " + nl + "Injection for Euthanasia Quantity is now: " + dtt.Rows[0]["quantity"].ToString() + nl + "Syringe Quantity is now: " + dttt.Rows[0]["quantity"].ToString();
+
+                    MessageBox.Show(messbox);
                     conn.Close();
                     refreshArchive();
                 }
@@ -455,9 +464,16 @@ namespace WindowsFormsApplication1
 
                     MySqlCommand comm = new MySqlCommand("UPDATE dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID SET dogprofile.status = 'euthanized' WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND dogprofile.status = 'unclaimed'", conn);
                     comm.ExecuteNonQuery();
-
                     int num = dgvArchive.Rows.Count;
-                    comm = new MySqlCommand("UPDATE items SET quantity=quantity-" + num + " WHERE itemID = 2", conn);
+                    for (int i = 0; i < num; i++)
+                    {
+                        int dogid = int.Parse(dgvArchive.Rows[i].Cells["dogID"].Value.ToString());
+                        comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, type, vaccine) VALUES(" + empids[cbEmps.SelectedIndex] + ", " + dogid + ", '" + DateTime.Now.ToString("yyyy-MM-dd") + "', 0, 'euthanize', 1)", conn);
+                        comm.ExecuteNonQuery();
+                    }
+                    comm = new MySqlCommand("UPDATE items SET quantity=quantity-" + num + " WHERE description = 'Euthanasia Injection'", conn);
+                    comm.ExecuteNonQuery();
+                    comm = new MySqlCommand("UPDATE items SET quantity=quantity-" + num + " WHERE description = 'Syringe'", conn);
                     comm.ExecuteNonQuery();
                     string date = DateTime.Now.ToString("yyyy-MM-dd");
                     comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, type, employeeID) VALUES(2, " + num + ", '" + date + "', 'Euthanasia', 'Out', " + empids[cbEmps.SelectedIndex] + ")", conn);
@@ -465,13 +481,18 @@ namespace WindowsFormsApplication1
                     comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('" + date + "', " + empids[cbEmps.SelectedIndex] + ", 'Euthanasia' )", conn);
                     comm.ExecuteNonQuery();
                     String messbox = "";
-                    comm = new MySqlCommand("SELECT quantity FROM items WHERE itemID = 2", conn);
-                    MySqlDataReader read = comm.ExecuteReader();
-                    while (read.Read())
-                    {
-                        int quantity = int.Parse(read[0].ToString());
-                        messbox = "Successfully Euthanized All. Injection for Euthanasia Quantity is now: " + quantity.ToString();
-                    }
+                    string nl = Environment.NewLine;
+                    comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Euthanasia Injection'", conn);
+                    MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
+                    DataTable dtt = new DataTable();
+                    adpt.Fill(dtt);
+                    comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Syringe'", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dttt = new DataTable();
+                    adp.Fill(dttt);
+
+                    messbox = "Successfully Euthanized All. " + nl + "Injection for Euthanasia Quantity is now: " + dtt.Rows[0]["quantity"].ToString() + nl + "Syringe Quantity is now: "+dttt.Rows[0]["quantity"].ToString();
+                    
                     MessageBox.Show(messbox);
                     conn.Close();
                     refreshArchive();
@@ -544,7 +565,7 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(350, 70));
             e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new System.Drawing.Font(f, 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(160, 100));
             e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font(f, 18, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(65, 130));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 170));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 170));
 
             e.Graphics.DrawString("Total number of heads impounded:   ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 240));
             e.Graphics.DrawString("Total number of heads claimed:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 280));
@@ -604,8 +625,8 @@ namespace WindowsFormsApplication1
                         button16.Enabled = true;
                         claimreportdgv.Visible = true;
                         panelSummary.Visible = false;
-                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Claimer', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
-                                        + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', location.description AS Location, "
+                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Claimer', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, SUBSTRING(dogoperation.date, 1, 11) AS 'Date Caught', "
+                                        + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', sublocation AS Location, "
                                         + "contactNumber AS 'Contact Number', address AS Address "
                                         + "FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
                                         + "INNER JOIN location ON dogoperation.locationID = location.locationID "
@@ -622,8 +643,8 @@ namespace WindowsFormsApplication1
                         button16.Enabled = true;
                         claimreportdgv.Visible = true;
                         panelSummary.Visible = false;
-                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Adopter', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, dogoperation.date AS 'Date Caught', "
-                                        + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', location.description AS Location, "
+                        comm = new MySqlCommand("SELECT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' ', lastname) AS 'Adopter', breed AS Breed, color AS Color, dogprofile.gender AS Gender, otherDesc AS Markings, dogprofile.size AS Size, SUBSTRING(dogoperation.date, 1, 11) AS 'Date Caught', "
+                                        + "CONCAT(dogoperation.timeStart, '-', dogoperation.timeEnd) AS 'Time Caught', sublocation AS Location, "
                                         + "contactNumber AS 'Contact Number', address AS Address "
                                         + "FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID "
                                         + "INNER JOIN location ON dogoperation.locationID = location.locationID "
@@ -640,11 +661,24 @@ namespace WindowsFormsApplication1
                         button16.Enabled = true;
                         claimreportdgv.Visible = true;
                         panelSummary.Visible = false;
-                        comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, dogoperation.date AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', description AS Location FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogprofile.status = 'euthanized' AND dogoperation.date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY dogoperation.date", conn);
+                        comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, dogprofile.gender AS Gender, otherDesc AS Markings, "
+                                                +"SUBSTRING(dogoperation.date, 1, 11) AS 'Date Caught', CONCAT(timeStart, '-', timeEnd) AS 'Time Caught', "
+                                                + "sublocation AS Location, CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '. ', lastname) AS Employee, "
+                                                + "SUBSTRING(dogtransaction.date, 1, 11) AS 'Date Euthanized' "
+                                                + "FROM dogprofile "
+                                                + "INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID "
+                                                + "INNER JOIN location ON location.locationID = dogoperation.locationID "
+                                                + "INNER JOIN dogtransaction ON dogtransaction.dogID = dogprofile.dogID "
+                                                + "INNER JOIN profile ON dogtransaction.personID = profile.personID "
+                                                + "WHERE dogprofile.status = 'euthanized' AND dogoperation.date "
+                                                + "BETWEEN '" + datestart+"' AND '"+dateend+ "' "
+                                                + "ORDER BY dogoperation.date DESC", conn);
                         adp = new MySqlDataAdapter(comm);
                         dteut = new DataTable();
                         adp.Fill(dteut);
                         claimreportdgv.DataSource = dteut;
+
+                        comm = new MySqlCommand("SELECT ");
                     }
                     else if (filt.SelectedIndex == 3)
                     {
@@ -754,7 +788,7 @@ namespace WindowsFormsApplication1
         {
             if (filt.SelectedIndex == 0)
             {
-                printDocument2.DefaultPageSettings.Landscape = true;
+                printDocument2.DefaultPageSettings.Landscape = false;
                 PrintPreviewDialog dlg = new PrintPreviewDialog();
                 dlg.Document = printDocument2;
                 ((Form)dlg).WindowState = FormWindowState.Maximized;
@@ -762,7 +796,7 @@ namespace WindowsFormsApplication1
             }
             else if (filt.SelectedIndex == 1)
             {
-                printDocument3.DefaultPageSettings.Landscape = true;
+                printDocument3.DefaultPageSettings.Landscape = false;
                 PrintPreviewDialog dlg = new PrintPreviewDialog();
                 dlg.Document = printDocument3;
                 ((Form)dlg).WindowState = FormWindowState.Maximized;
@@ -770,7 +804,7 @@ namespace WindowsFormsApplication1
             }
             else if (filt.SelectedIndex == 2)
             {
-                printDocument4.DefaultPageSettings.Landscape = true;
+                printDocument4.DefaultPageSettings.Landscape = false;
                 PrintPreviewDialog dlg = new PrintPreviewDialog();
                 dlg.Document = printDocument4;
                 ((Form)dlg).WindowState = FormWindowState.Maximized;
@@ -1048,60 +1082,39 @@ namespace WindowsFormsApplication1
         private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             //claim
-
-            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
-            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
-            e.Graphics.DrawString("CLAIMED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
-
-            string footer = string.Empty;
-            int columnCount = claimreportdgv.Columns.Count;
-            int maxRows = claimreportdgv.Rows.Count;
-
-            using (Graphics g = e.Graphics)
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+            e.Graphics.DrawString("CLAIMED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+            e.Graphics.DrawString("Claimer", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
+            e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(375, 220));
+            int ad = 220; int dog = 220;
+            for (int i = 0; i < dtadopt.Rows.Count; i++)
             {
-                Brush brush = new SolidBrush(Color.Black);
-                Pen pen = new Pen(brush);
-                Font font = new Font("Arial", 12);
-                SizeF size;
+                ad = dog + 40; dog = dog + 40;
+                e.Graphics.DrawString(dtclaim.Rows[i]["Claimer"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                ad = ad + 20;
+                e.Graphics.DrawString("Contact Number: " + dtclaim.Rows[i]["Contact Number"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                ad = ad + 20;
+                e.Graphics.DrawString("Address: " + dtclaim.Rows[i]["Address"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                ad = ad + 20;
+                e.Graphics.DrawString("Breed: " + dtclaim.Rows[i]["Breed"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
+                e.Graphics.DrawString("Location: " + dtclaim.Rows[i]["Location"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Color: " + dtclaim.Rows[i]["Color"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
+                e.Graphics.DrawString("Date Caught: " + dtclaim.Rows[i]["Date Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Size: " + dtclaim.Rows[i]["Size"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
+                e.Graphics.DrawString("Time Caught: " + dtclaim.Rows[i]["Time Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Gender: " + dtclaim.Rows[i]["Gender"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
+                e.Graphics.DrawString("Markings: " + dtclaim.Rows[i]["Markings"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                dog = dog + 20;
 
-                int x = 0, y = 300, width = 100;
-                float xPadding;
-
-                // Writes out all column names in designated locations, aligned as a table
-                foreach (DataColumn column in dtclaim.Columns)
-                {
-                    size = g.MeasureString(column.ColumnName, font);
-                    xPadding = (width - size.Width) / 2;
-                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 5);
-                    x += width;
-                }
-
-                x = 0;
-                y += 30;
-
-                // Process each row and place each item under correct column.
-                foreach (DataRow row in dtclaim.Rows)
-                {
-                    rowcount++;
-
-                    for (int i = 0; i < columnCount; i++)
-                    {
-                        size = g.MeasureString(row[i].ToString(), font);
-                        xPadding = (width - size.Width) / 2;
-
-                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 5);
-                        x += width;
-                    }
-
-                    e.HasMorePages = rowcount - 1 < maxRows;
-
-                    x = 0;
-                    y += 30;
-                }
+                if (i - (9 * pages) > 9) { e.HasMorePages = true; }
             }
-
+            e.HasMorePages = false;
         }
         string date;
         string time;
@@ -1138,7 +1151,7 @@ namespace WindowsFormsApplication1
                     employees[i] = dt.Rows[i]["Name"].ToString();
                 }
 
-                comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, sublocation AS 'Specific Location Caught' FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, UPPER(size) AS Size, gender AS Gender, otherDesc AS Markings, sublocation AS 'Location' FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
                 adp = new MySqlDataAdapter(comm);
                 dtoperation = new System.Data.DataTable();
                 adp.Fill(dtoperation);
@@ -1181,149 +1194,135 @@ namespace WindowsFormsApplication1
 
         private void printDocument3_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-
-            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
-            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
-            e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
-
-            string footer = string.Empty;
-            int columnCount = claimreportdgv.Columns.Count;
-            int maxRows = claimreportdgv.Rows.Count;
-
-            using (Graphics g = e.Graphics)
+           
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+            e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+            e.Graphics.DrawString("Adoptor", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
+            e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(375, 220));
+            int ad = 220; int dog = 220;
+            for (int i = 0; i < dtadopt.Rows.Count; i++)
             {
-                Brush brush = new SolidBrush(Color.Black);
-                Pen pen = new Pen(brush);
-                Font font = new Font("Arial", 12);
-                SizeF size;
-
-                int x = 0, y = 300, width = 100;
-                float xPadding;
-
-                // Writes out all column names in designated locations, aligned as a table
-                foreach (DataColumn column in dtadopt.Columns)
-                {
-                    size = g.MeasureString(column.ColumnName, font);
-                    xPadding = (width - size.Width) / 2;
-                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 5);
-                    x += width;
+                string address = dtadopt.Rows[i]["Address"].ToString();
+                int len = address.Length;
+                ad = dog + 50; dog = dog + 50;
+                e.Graphics.DrawString(dtadopt.Rows[i]["Adopter"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                ad = ad + 20;
+                e.Graphics.DrawString("Contact Number: "+dtadopt.Rows[i]["Contact Number"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                ad = ad + 20;
+                e.Graphics.DrawString("Address: ", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                ad = ad + 20;
+                int y = 0; //35
+                Boolean notdone = true;
+                while (notdone) {
+                    if (len < 1) notdone = false;
+                    else if(len < 25) e.Graphics.DrawString(address.Substring(y, len), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, ad));
+                    else e.Graphics.DrawString(address.Substring(y, 25) + '-', new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, ad));
+                    len = len - 25;
+                    y = y + 25;
+                    ad = ad + 20;
                 }
-
-                x = 0;
-                y += 30;
-
-                // Process each row and place each item under correct column.
-                foreach (DataRow row in dtadopt.Rows)
-                {
-                    rowcount++;
-
-                    for (int i = 0; i < columnCount; i++)
-                    {
-                        size = g.MeasureString(row[i].ToString(), font);
-                        xPadding = (width - size.Width) / 2;
-
-                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 5);
-                        x += width;
-                    }
-
-                    e.HasMorePages = rowcount - 1 < maxRows;
-
-                    x = 0;
-                    y += 30;
-                }
-
+                ad = ad + 20;
+                e.Graphics.DrawString("Breed: "+dtadopt.Rows[i]["Breed"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
+                e.Graphics.DrawString("Location: " + dtadopt.Rows[i]["Location"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Color: "+dtadopt.Rows[i]["Color"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
+                e.Graphics.DrawString("Date Caught: " + dtadopt.Rows[i]["Date Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Size: "+dtadopt.Rows[i]["Size"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
+                e.Graphics.DrawString("Time Caught: " + dtadopt.Rows[i]["Time Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Gender: "+dtadopt.Rows[i]["Gender"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
+                e.Graphics.DrawString("Markings: " + dtadopt.Rows[i]["Markings"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                dog = dog + 20;
+                
+                if (i - (9*pages) > 9) { e.HasMorePages = true; }
             }
+            e.HasMorePages = false;
+
+           
         }
 
         private void printDocument4_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
-            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
-            e.Graphics.DrawString("EUTHANIZED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
-
-            string footer = string.Empty;
-            int columnCount = claimreportdgv.Columns.Count;
-            int maxRows = claimreportdgv.Rows.Count;
-
-            using (Graphics g = e.Graphics)
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+            e.Graphics.DrawString("EUTHANIZED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(190, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+            int dog = 200; int op = 200;
+            int a = 0; int b = 0;
+            
+            for (int i = 0; i < dteut.Rows.Count; i++)
             {
-                Brush brush = new SolidBrush(Color.Black);
-                Pen pen = new Pen(brush);
-                Font font = new Font("Arial", 12);
-                SizeF size;
-
-                int x = 0, y = 300, width = 100;
-                float xPadding;
-
-                // Writes out all column names in designated locations, aligned as a table
-                foreach (DataColumn column in dteut.Columns)
+                if (i % 2 == 0) { a = 30; b = 180; dog = op + 40; op = op + 40; }
+                else { a = 430; b = 600; dog = dog - 100; op = op - 100; }
+                
+                e.Graphics.DrawString("Breed: " + dteut.Rows[i]["Breed"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(a, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Gender: " + dteut.Rows[i]["Gender"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(a, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Size:" + dteut.Rows[i]["Size"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(a, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Color: " + dteut.Rows[i]["Color"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(a, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Markings: " + dteut.Rows[i]["Markings"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(a, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Location: " + dteut.Rows[i]["Location"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(b, op));
+                op = op + 20;
+                e.Graphics.DrawString("Date Caught: " + dteut.Rows[i]["Date Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(b, op));
+                op = op + 20;
+                e.Graphics.DrawString("Time Caught: " + dteut.Rows[i]["Time Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(b, op));
+                op = op + 20;
+                e.Graphics.DrawString("Euthanized By: " , new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(b, op));
+                op = op + 20;
+                e.Graphics.DrawString(dteut.Rows[i]["Employee"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(b + 30, op));
+                op = op + 20;
+                e.Graphics.DrawString("Date Euthanized: " + dteut.Rows[i]["Date Euthanized"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(b, op));
+                if (i % 14 == 0)
                 {
-                    size = g.MeasureString(column.ColumnName, font);
-                    xPadding = (width - size.Width) / 2;
-                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 5);
-                    x += width;
-                }
-
-                x = 0;
-                y += 30;
-
-                // Process each row and place each item under correct column.
-                foreach (DataRow row in dteut.Rows)
-                {
-                    rowcount++;
-
-                    for (int i = 0; i < columnCount; i++)
-                    {
-                        size = g.MeasureString(row[i].ToString(), font);
-                        xPadding = (width - size.Width) / 2;
-
-                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 5);
-                        x += width;
-                    }
-
-                    e.HasMorePages = rowcount - 1 < maxRows;
-
-                    x = 0;
-                    y += 30;
+                    e.HasMorePages = true;
                 }
 
             }
+            e.HasMorePages = false;
         }
-
+        int pages;
         private void printDocument5_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            string f = "Times New Roman";
+            string f = "Arial";
             int fsize = 14;
-            e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, 50));
-            e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(350, 70));
-            e.Graphics.DrawString("DAVAO CITY DOG POUND", new System.Drawing.Font(f, 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(160, 100));
+            e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 50));
+            e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 70));
+            e.Graphics.DrawString("DAVAO CITY DOG POUND", new System.Drawing.Font(f, 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(400, 100));
 
-            e.Graphics.DrawString("Location: " + location, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 170));
-            e.Graphics.DrawString("Date: " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 200));
-            e.Graphics.DrawString("Time: " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 230));
-            e.Graphics.DrawString("Employees Invovled: ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 260));
-            int l = 260;
+            e.Graphics.DrawString("Location: BRGY. " + location, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(240, 170));
+            e.Graphics.DrawString("Date:  " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(240, 200));
+            e.Graphics.DrawString("Time:  " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(240, 230));
+            e.Graphics.DrawString("Employees Invovled:  ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(525, 170));
+            int l = 170;
             for (int i = 0; i < employees.Length; i++)
             {
-                e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, l));
-                l = l + 20;
+                e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(750, l));
+                l = l + 25;
             }
+
+
             string footer = string.Empty;
             int columnCount = dtoperation.Columns.Count;
             int maxRows = dtoperation.Rows.Count;
-
+            int prt;
             using (Graphics g = e.Graphics)
             {
+
                 Brush brush = new SolidBrush(Color.Black);
                 Pen pen = new Pen(brush);
                 Font font = new Font("Arial", 12);
                 SizeF size;
 
-                int x = 0, y = 370, width = 180;
+                int x = 0, y = 300, width = 180;
                 float xPadding;
 
                 // Writes out all column names in designated locations, aligned as a table
@@ -1331,18 +1330,19 @@ namespace WindowsFormsApplication1
                 {
                     size = g.MeasureString(column.ColumnName, font);
                     xPadding = (width - size.Width) / 2;
-                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 10);
+                    g.DrawString(column.ColumnName, new System.Drawing.Font(f, 14, FontStyle.Bold), brush, x + xPadding, y + 10);
                     x += width;
                 }
 
                 x = 0;
-                y += 50;
+                y += 40;
                 int rowcount = 0;
+
                 // Process each row and place each item under correct column.
                 foreach (DataRow row in dtoperation.Rows)
                 {
-                    rowcount++;
 
+                    rowcount++;
                     for (int i = 0; i < columnCount; i++)
                     {
                         size = g.MeasureString(row[i].ToString(), font);
@@ -1350,14 +1350,20 @@ namespace WindowsFormsApplication1
 
                         g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 10);
                         x += width;
+
                     }
 
-                    e.HasMorePages = rowcount - 1 < maxRows;
 
                     x = 0;
-                    y += 50;
+                    y += 25;
+
+
                 }
+
+                prt = y;
             }
+            if (prt > 700) e.HasMorePages = true;
+            e.HasMorePages = false;
         }
 
         private void addDog_Paint(object sender, PaintEventArgs e)
@@ -1376,6 +1382,11 @@ namespace WindowsFormsApplication1
         private void addSub_Enter(object sender, EventArgs e)
         {
             addSub.Text = "";
+        }
+
+        private void printDocument5_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            pages = 0;
         }
 
         private void button17_Click(object sender, EventArgs e)

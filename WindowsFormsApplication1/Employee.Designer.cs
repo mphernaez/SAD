@@ -81,12 +81,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dgvOpSumm = new System.Windows.Forms.DataGridView();
-            this.loc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.date1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.team = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbFilt = new System.Windows.Forms.CheckBox();
             this.pnlEmpFilt = new System.Windows.Forms.Panel();
             this.cbEmpFilt = new System.Windows.Forms.ComboBox();
@@ -99,6 +93,12 @@
             this.m1 = new System.Windows.Forms.ComboBox();
             this.choice = new System.Windows.Forms.ComboBox();
             this.button28 = new System.Windows.Forms.Button();
+            this.dgvOpSumm = new System.Windows.Forms.DataGridView();
+            this.loc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.team = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.repEmp = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.impounddogpoundDataSet1 = new WindowsFormsApplication1.impounddogpoundDataSet();
@@ -173,16 +173,6 @@
             this.button36 = new System.Windows.Forms.Button();
             this.button33 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
-            this.panelViewAct = new System.Windows.Forms.Panel();
-            this.dgvViewAct = new System.Windows.Forms.DataGridView();
-            this.pnlActivity = new System.Windows.Forms.Panel();
-            this.measBy = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button32 = new System.Windows.Forms.Button();
-            this.numact = new System.Windows.Forms.NumericUpDown();
-            this.cbmatact = new System.Windows.Forms.ComboBox();
-            this.cbact = new System.Windows.Forms.ComboBox();
-            this.cbempact = new System.Windows.Forms.ComboBox();
             this.Edit = new System.Windows.Forms.Panel();
             this.button34 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
@@ -198,6 +188,16 @@
             this.eTimeE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eTeamM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelViewAct = new System.Windows.Forms.Panel();
+            this.dgvViewAct = new System.Windows.Forms.DataGridView();
+            this.pnlActivity = new System.Windows.Forms.Panel();
+            this.measBy = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button32 = new System.Windows.Forms.Button();
+            this.numact = new System.Windows.Forms.NumericUpDown();
+            this.cbmatact = new System.Windows.Forms.ComboBox();
+            this.cbact = new System.Windows.Forms.ComboBox();
+            this.cbempact = new System.Windows.Forms.ComboBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
@@ -220,8 +220,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.o)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).BeginInit();
             this.pnlEmpFilt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repEmp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -238,12 +238,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.newTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).BeginInit();
             this.DogCatchingOperation.SuspendLayout();
+            this.Edit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.editOperation)).BeginInit();
             this.panelViewAct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewAct)).BeginInit();
             this.pnlActivity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numact)).BeginInit();
-            this.Edit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.editOperation)).BeginInit();
             this.SuspendLayout();
             // 
             // attendance
@@ -1019,57 +1019,6 @@
             this.panel2.Visible = false;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
             // 
-            // dgvOpSumm
-            // 
-            this.dgvOpSumm.AllowUserToAddRows = false;
-            this.dgvOpSumm.AllowUserToDeleteRows = false;
-            this.dgvOpSumm.BackgroundColor = System.Drawing.Color.White;
-            this.dgvOpSumm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOpSumm.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.loc,
-            this.time,
-            this.date1,
-            this.team,
-            this.imp});
-            this.dgvOpSumm.Location = new System.Drawing.Point(35, 155);
-            this.dgvOpSumm.Name = "dgvOpSumm";
-            this.dgvOpSumm.ReadOnly = true;
-            this.dgvOpSumm.RowHeadersVisible = false;
-            this.dgvOpSumm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOpSumm.Size = new System.Drawing.Size(942, 365);
-            this.dgvOpSumm.TabIndex = 18;
-            this.dgvOpSumm.Visible = false;
-            // 
-            // loc
-            // 
-            this.loc.HeaderText = "Location";
-            this.loc.Name = "loc";
-            this.loc.ReadOnly = true;
-            // 
-            // time
-            // 
-            this.time.HeaderText = "Time";
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            // 
-            // date1
-            // 
-            this.date1.HeaderText = "Date";
-            this.date1.Name = "date1";
-            this.date1.ReadOnly = true;
-            // 
-            // team
-            // 
-            this.team.HeaderText = "Employees";
-            this.team.Name = "team";
-            this.team.ReadOnly = true;
-            // 
-            // imp
-            // 
-            this.imp.HeaderText = "Heads Caught";
-            this.imp.Name = "imp";
-            this.imp.ReadOnly = true;
-            // 
             // cbFilt
             // 
             this.cbFilt.AutoSize = true;
@@ -1233,6 +1182,57 @@
             this.button28.Text = "Print Report";
             this.button28.UseVisualStyleBackColor = false;
             this.button28.Click += new System.EventHandler(this.button28_Click_1);
+            // 
+            // dgvOpSumm
+            // 
+            this.dgvOpSumm.AllowUserToAddRows = false;
+            this.dgvOpSumm.AllowUserToDeleteRows = false;
+            this.dgvOpSumm.BackgroundColor = System.Drawing.Color.White;
+            this.dgvOpSumm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOpSumm.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.loc,
+            this.time,
+            this.date1,
+            this.team,
+            this.imp});
+            this.dgvOpSumm.Location = new System.Drawing.Point(35, 155);
+            this.dgvOpSumm.Name = "dgvOpSumm";
+            this.dgvOpSumm.ReadOnly = true;
+            this.dgvOpSumm.RowHeadersVisible = false;
+            this.dgvOpSumm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOpSumm.Size = new System.Drawing.Size(942, 365);
+            this.dgvOpSumm.TabIndex = 18;
+            this.dgvOpSumm.Visible = false;
+            // 
+            // loc
+            // 
+            this.loc.HeaderText = "Location";
+            this.loc.Name = "loc";
+            this.loc.ReadOnly = true;
+            // 
+            // time
+            // 
+            this.time.HeaderText = "Time";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            // 
+            // date1
+            // 
+            this.date1.HeaderText = "Date";
+            this.date1.Name = "date1";
+            this.date1.ReadOnly = true;
+            // 
+            // team
+            // 
+            this.team.HeaderText = "Employees";
+            this.team.Name = "team";
+            this.team.ReadOnly = true;
+            // 
+            // imp
+            // 
+            this.imp.HeaderText = "Heads Caught";
+            this.imp.Name = "imp";
+            this.imp.ReadOnly = true;
             // 
             // repEmp
             // 
@@ -2332,133 +2332,6 @@
             this.button31.UseVisualStyleBackColor = false;
             this.button31.Click += new System.EventHandler(this.button31_Click);
             // 
-            // panelViewAct
-            // 
-            this.panelViewAct.Controls.Add(this.dgvViewAct);
-            this.panelViewAct.Location = new System.Drawing.Point(16, 115);
-            this.panelViewAct.Name = "panelViewAct";
-            this.panelViewAct.Size = new System.Drawing.Size(982, 412);
-            this.panelViewAct.TabIndex = 87;
-            this.panelViewAct.Visible = false;
-            // 
-            // dgvViewAct
-            // 
-            this.dgvViewAct.AllowUserToAddRows = false;
-            this.dgvViewAct.AllowUserToDeleteRows = false;
-            this.dgvViewAct.AllowUserToResizeColumns = false;
-            this.dgvViewAct.AllowUserToResizeRows = false;
-            this.dgvViewAct.BackgroundColor = System.Drawing.Color.White;
-            this.dgvViewAct.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvViewAct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewAct.GridColor = System.Drawing.Color.White;
-            this.dgvViewAct.Location = new System.Drawing.Point(21, 20);
-            this.dgvViewAct.Name = "dgvViewAct";
-            this.dgvViewAct.ReadOnly = true;
-            this.dgvViewAct.RowHeadersVisible = false;
-            this.dgvViewAct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvViewAct.Size = new System.Drawing.Size(946, 371);
-            this.dgvViewAct.TabIndex = 2;
-            // 
-            // pnlActivity
-            // 
-            this.pnlActivity.Controls.Add(this.measBy);
-            this.pnlActivity.Controls.Add(this.label11);
-            this.pnlActivity.Controls.Add(this.button32);
-            this.pnlActivity.Controls.Add(this.numact);
-            this.pnlActivity.Controls.Add(this.cbmatact);
-            this.pnlActivity.Controls.Add(this.cbact);
-            this.pnlActivity.Controls.Add(this.cbempact);
-            this.pnlActivity.Location = new System.Drawing.Point(17, 116);
-            this.pnlActivity.Name = "pnlActivity";
-            this.pnlActivity.Size = new System.Drawing.Size(982, 412);
-            this.pnlActivity.TabIndex = 77;
-            this.pnlActivity.Visible = false;
-            // 
-            // measBy
-            // 
-            this.measBy.AutoSize = true;
-            this.measBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.measBy.Location = new System.Drawing.Point(386, 171);
-            this.measBy.Name = "measBy";
-            this.measBy.Size = new System.Drawing.Size(0, 20);
-            this.measBy.TabIndex = 86;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label11.Location = new System.Drawing.Point(68, 39);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(157, 39);
-            this.label11.TabIndex = 85;
-            this.label11.Text = "Activities";
-            // 
-            // button32
-            // 
-            this.button32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button32.FlatAppearance.BorderSize = 0;
-            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button32.ForeColor = System.Drawing.Color.White;
-            this.button32.Location = new System.Drawing.Point(70, 225);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(123, 34);
-            this.button32.TabIndex = 79;
-            this.button32.Text = "Record";
-            this.button32.UseVisualStyleBackColor = false;
-            this.button32.Click += new System.EventHandler(this.button32_Click_1);
-            // 
-            // numact
-            // 
-            this.numact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numact.Location = new System.Drawing.Point(388, 194);
-            this.numact.Name = "numact";
-            this.numact.Size = new System.Drawing.Size(126, 26);
-            this.numact.TabIndex = 84;
-            this.numact.Visible = false;
-            // 
-            // cbmatact
-            // 
-            this.cbmatact.Enabled = false;
-            this.cbmatact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbmatact.ForeColor = System.Drawing.Color.Black;
-            this.cbmatact.FormattingEnabled = true;
-            this.cbmatact.Location = new System.Drawing.Point(71, 163);
-            this.cbmatact.Name = "cbmatact";
-            this.cbmatact.Size = new System.Drawing.Size(307, 28);
-            this.cbmatact.TabIndex = 83;
-            this.cbmatact.Text = "Materials (If Applicable)";
-            this.cbmatact.SelectedIndexChanged += new System.EventHandler(this.cbmatact_SelectedIndexChanged);
-            // 
-            // cbact
-            // 
-            this.cbact.Enabled = false;
-            this.cbact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbact.ForeColor = System.Drawing.Color.Black;
-            this.cbact.FormattingEnabled = true;
-            this.cbact.Items.AddRange(new object[] {
-            "Disinfect Impounding Place",
-            "Bathe Dogs",
-            "Feed Dogs"});
-            this.cbact.Location = new System.Drawing.Point(71, 94);
-            this.cbact.Name = "cbact";
-            this.cbact.Size = new System.Drawing.Size(307, 28);
-            this.cbact.TabIndex = 82;
-            this.cbact.Text = "Activity";
-            // 
-            // cbempact
-            // 
-            this.cbempact.Enabled = false;
-            this.cbempact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbempact.ForeColor = System.Drawing.Color.Black;
-            this.cbempact.FormattingEnabled = true;
-            this.cbempact.Location = new System.Drawing.Point(71, 128);
-            this.cbempact.Name = "cbempact";
-            this.cbempact.Size = new System.Drawing.Size(307, 28);
-            this.cbempact.TabIndex = 81;
-            this.cbempact.Text = "To be done by";
-            // 
             // Edit
             // 
             this.Edit.Controls.Add(this.button34);
@@ -2623,6 +2496,133 @@
             this.eStat.Name = "eStat";
             this.eStat.ReadOnly = true;
             // 
+            // panelViewAct
+            // 
+            this.panelViewAct.Controls.Add(this.dgvViewAct);
+            this.panelViewAct.Location = new System.Drawing.Point(16, 115);
+            this.panelViewAct.Name = "panelViewAct";
+            this.panelViewAct.Size = new System.Drawing.Size(982, 412);
+            this.panelViewAct.TabIndex = 87;
+            this.panelViewAct.Visible = false;
+            // 
+            // dgvViewAct
+            // 
+            this.dgvViewAct.AllowUserToAddRows = false;
+            this.dgvViewAct.AllowUserToDeleteRows = false;
+            this.dgvViewAct.AllowUserToResizeColumns = false;
+            this.dgvViewAct.AllowUserToResizeRows = false;
+            this.dgvViewAct.BackgroundColor = System.Drawing.Color.White;
+            this.dgvViewAct.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvViewAct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViewAct.GridColor = System.Drawing.Color.White;
+            this.dgvViewAct.Location = new System.Drawing.Point(21, 20);
+            this.dgvViewAct.Name = "dgvViewAct";
+            this.dgvViewAct.ReadOnly = true;
+            this.dgvViewAct.RowHeadersVisible = false;
+            this.dgvViewAct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvViewAct.Size = new System.Drawing.Size(946, 371);
+            this.dgvViewAct.TabIndex = 2;
+            // 
+            // pnlActivity
+            // 
+            this.pnlActivity.Controls.Add(this.measBy);
+            this.pnlActivity.Controls.Add(this.label11);
+            this.pnlActivity.Controls.Add(this.button32);
+            this.pnlActivity.Controls.Add(this.numact);
+            this.pnlActivity.Controls.Add(this.cbmatact);
+            this.pnlActivity.Controls.Add(this.cbact);
+            this.pnlActivity.Controls.Add(this.cbempact);
+            this.pnlActivity.Location = new System.Drawing.Point(17, 116);
+            this.pnlActivity.Name = "pnlActivity";
+            this.pnlActivity.Size = new System.Drawing.Size(982, 412);
+            this.pnlActivity.TabIndex = 77;
+            this.pnlActivity.Visible = false;
+            // 
+            // measBy
+            // 
+            this.measBy.AutoSize = true;
+            this.measBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.measBy.Location = new System.Drawing.Point(386, 171);
+            this.measBy.Name = "measBy";
+            this.measBy.Size = new System.Drawing.Size(0, 20);
+            this.measBy.TabIndex = 86;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label11.Location = new System.Drawing.Point(68, 39);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(157, 39);
+            this.label11.TabIndex = 85;
+            this.label11.Text = "Activities";
+            // 
+            // button32
+            // 
+            this.button32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button32.FlatAppearance.BorderSize = 0;
+            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button32.ForeColor = System.Drawing.Color.White;
+            this.button32.Location = new System.Drawing.Point(70, 225);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(123, 34);
+            this.button32.TabIndex = 79;
+            this.button32.Text = "Record";
+            this.button32.UseVisualStyleBackColor = false;
+            this.button32.Click += new System.EventHandler(this.button32_Click_1);
+            // 
+            // numact
+            // 
+            this.numact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numact.Location = new System.Drawing.Point(388, 194);
+            this.numact.Name = "numact";
+            this.numact.Size = new System.Drawing.Size(126, 26);
+            this.numact.TabIndex = 84;
+            this.numact.Visible = false;
+            // 
+            // cbmatact
+            // 
+            this.cbmatact.Enabled = false;
+            this.cbmatact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbmatact.ForeColor = System.Drawing.Color.Black;
+            this.cbmatact.FormattingEnabled = true;
+            this.cbmatact.Location = new System.Drawing.Point(71, 163);
+            this.cbmatact.Name = "cbmatact";
+            this.cbmatact.Size = new System.Drawing.Size(307, 28);
+            this.cbmatact.TabIndex = 83;
+            this.cbmatact.Text = "Materials (If Applicable)";
+            this.cbmatact.SelectedIndexChanged += new System.EventHandler(this.cbmatact_SelectedIndexChanged);
+            // 
+            // cbact
+            // 
+            this.cbact.Enabled = false;
+            this.cbact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbact.ForeColor = System.Drawing.Color.Black;
+            this.cbact.FormattingEnabled = true;
+            this.cbact.Items.AddRange(new object[] {
+            "Disinfect Impounding Place",
+            "Bathe Dogs",
+            "Feed Dogs"});
+            this.cbact.Location = new System.Drawing.Point(71, 94);
+            this.cbact.Name = "cbact";
+            this.cbact.Size = new System.Drawing.Size(307, 28);
+            this.cbact.TabIndex = 82;
+            this.cbact.Text = "Activity";
+            // 
+            // cbempact
+            // 
+            this.cbempact.Enabled = false;
+            this.cbempact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbempact.ForeColor = System.Drawing.Color.Black;
+            this.cbempact.FormattingEnabled = true;
+            this.cbempact.Location = new System.Drawing.Point(71, 128);
+            this.cbempact.Name = "cbempact";
+            this.cbempact.Size = new System.Drawing.Size(307, 28);
+            this.cbempact.TabIndex = 81;
+            this.cbempact.Text = "To be done by";
+            // 
             // printDocument3
             // 
             this.printDocument3.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument3_PrintPage);
@@ -2672,8 +2672,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.a)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).EndInit();
             this.pnlEmpFilt.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repEmp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -2700,14 +2700,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).EndInit();
             this.DogCatchingOperation.ResumeLayout(false);
             this.DogCatchingOperation.PerformLayout();
+            this.Edit.ResumeLayout(false);
+            this.Edit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.editOperation)).EndInit();
             this.panelViewAct.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewAct)).EndInit();
             this.pnlActivity.ResumeLayout(false);
             this.pnlActivity.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numact)).EndInit();
-            this.Edit.ResumeLayout(false);
-            this.Edit.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.editOperation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
