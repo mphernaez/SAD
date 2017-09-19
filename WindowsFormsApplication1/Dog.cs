@@ -95,6 +95,7 @@ namespace WindowsFormsApplication1
             String size = "";
             String other = "";
             String breed = "";
+
             if (!cbOperation.Text.Equals("Operation Date and Location") && tbColor.Text != "Color" && cbGender.Text != "Gender" && cbSize.Text != "Size" && tbDesc.Text != "Markings")
             {
                 adminID = back.adminID;
@@ -157,7 +158,7 @@ namespace WindowsFormsApplication1
 
                     if (stop == false)
                     {
-                        MySqlCommand comm = new MySqlCommand("INSERT INTO dogprofile(operationID, color, gender, size, otherDesc, breed, status) VALUES(" + operationID + ",'" + color + "', '" + gender + "', '" + size + "', '" + other + "', '" + breed + "', '" + "unclaimed" + "')", conn);
+                        MySqlCommand comm = new MySqlCommand("INSERT INTO dogprofile(operationID, color, gender, size, otherDesc, breed, status, sublocation) VALUES(" + operationID + ",'" + color + "', '" + gender + "', '" + size + "', '" + other + "', '" + breed + "', '" + "unclaimed" + "', '"+subloc.Text+"')", conn);
                         comm.ExecuteNonQuery();
 
                         cbGender.Text = "Gender";
@@ -165,7 +166,7 @@ namespace WindowsFormsApplication1
                         tbBreed.Text = "Breed";
                         tbColor.Text = "Color";
                         tbDesc.Text = "Other Description";
-
+                        subloc.Text = "Sublocation";
                         MessageBox.Show("Profile Added Successfully");
                     }
                     conn.Close();
@@ -402,6 +403,7 @@ namespace WindowsFormsApplication1
         }
         private void cbOperation_SelectedIndexChanged(object sender, EventArgs e)
         {
+            subloc.Items.Clear();
             if (cbOperation.Text != "Operation Date and Location")
             {
                 cbOperation.ForeColor = Color.Black;
@@ -1093,9 +1095,11 @@ namespace WindowsFormsApplication1
         string time;
         string location;
         string[] employees; //employee team
+        string[] sublocations; //sublocations
         DataTable dtoperation; //dogs
         private void button11_Click(object sender, EventArgs e)
         {
+            
             int operationID = opid[cbOperation.SelectedIndex];
 
             PrintPreviewDialog fin = new PrintPreviewDialog();
@@ -1125,10 +1129,20 @@ namespace WindowsFormsApplication1
                     employees[i] = dt.Rows[i]["Name"].ToString();
                 }
 
-                comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, otherDesc AS Markings, sublocation AS 'Specific Location Caught' FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
                 adp = new MySqlDataAdapter(comm);
                 dtoperation = new System.Data.DataTable();
                 adp.Fill(dtoperation);
+
+                comm = new MySqlCommand("SELECT DISTINCT sublocation FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE operationID = " + opid[cbOperation.SelectedIndex], conn);
+                adp = new MySqlDataAdapter(comm);
+                dt = new System.Data.DataTable();
+                sublocations = new string[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    sublocations[i] = dt.Rows[i]["sublocation"].ToString();
+                    MessageBox.Show(sublocations[i]);
+                }
 
                 conn.Close();
                 
@@ -1284,6 +1298,19 @@ namespace WindowsFormsApplication1
         private void addDog_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button4_Click_2(object sender, EventArgs e)
+        {
+            if (addSub.Text != "Add Sublocation") {
+                subloc.Items.Add(addSub.Text);
+                addSub.Text = "Add Sublocation";
+            }
+        }
+
+        private void addSub_Enter(object sender, EventArgs e)
+        {
+            addSub.Text = "";
         }
 
         private void button17_Click(object sender, EventArgs e)
