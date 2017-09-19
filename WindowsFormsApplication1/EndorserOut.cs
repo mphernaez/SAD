@@ -32,21 +32,31 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-                    if (eID != 0)
+                    MySqlCommand co = new MySqlCommand("SELECT quantity FROM items WHERE itemID = " + id, conn);
+                    MySqlDataAdapter a = new MySqlDataAdapter(co);
+                    DataTable d = new DataTable();
+                    a.Fill(d);
+                    if (int.Parse(d.Rows[0]["quantity"].ToString()) - int.Parse(amtOut.Text) >= 0)
                     {
-                        String date = DateTime.Now.ToString("yyyy-MM-dd");
-                        MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - " + int.Parse(amtOut.Text) + " WHERE itemID = " + id, conn);
-                        comm.ExecuteNonQuery();
-                        MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, type, employeeID, reason) VALUES(" + id + ", " + int.Parse(amtOut.Text) + ", '" + date + "', 'Out', " + eID + ", '" + tbReason.Text + "')", conn);
-                        com.ExecuteNonQuery();
-                        MessageBox.Show("Item Updated");
-                        this.Hide();
-                        inv.refreshSO();
-                    }
-                    else
+                        if (eID != 0)
+                        {
+                            String date = DateTime.Now.ToString("yyyy-MM-dd");
+                            MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity - " + int.Parse(amtOut.Text) + " WHERE itemID = " + id, conn);
+                            comm.ExecuteNonQuery();
+                            MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, type, employeeID, reason) VALUES(" + id + ", " + int.Parse(amtOut.Text) + ", '" + date + "', 'Out', " + eID + ", '" + tbReason.Text + "')", conn);
+                            com.ExecuteNonQuery();
+                            MessageBox.Show("Item Updated");
+                            this.Hide();
+                            inv.refreshSO();
+                        }
+                        else
+                        {
+                            conn.Close();
+                            MessageBox.Show("Please Enter an Employee");
+                        }
+                    } else
                     {
-                        conn.Close();
-                        MessageBox.Show("Please Enter an Employee");
+                        MessageBox.Show("Please enter valid value to stockout");
                     }
                     conn.Close();
                 }

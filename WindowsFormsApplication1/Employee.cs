@@ -124,6 +124,22 @@ namespace WindowsFormsApplication1
             tmr.Tick += new EventHandler(tmr_Tick);
             tmr.Start();
             refreshStatus();
+            editOperation.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvOperationsView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvViewAct.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvViewAct.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvAttendanceIn.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvAttendanceIn.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvAttendanceOut.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvAttendanceOut.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvReactivate.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvReactivate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvEdit.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvEdit.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvOpSumm.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            repEmp.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+
+
             //this.Top = 112;// 262
 
         }
@@ -822,7 +838,7 @@ namespace WindowsFormsApplication1
                 // GROUP_CONCAT(CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.')) AS team,
                 String daten = DateTime.Now.ToString("yyyy-MM-dd");
                 String timen = DateTime.Now.ToString("HH:mm");
-                MySqlCommand c = new MySqlCommand("SELECT DISTINCT operationID FROM dogoperation JOIN operationteam ON operationteam.teamID = dogoperation.teamID JOIN attendance ON attendance.employeeID = operationteam.employeeiD WHERE dogoperation.date = '2017-09-18' AND attendance.employeeID NOT IN (select employeeID from attendance where date = '2017-09-18' AND type != 0)", conn);
+                MySqlCommand c = new MySqlCommand("SELECT DISTINCT operationID FROM dogoperation JOIN operationteam ON operationteam.teamID = dogoperation.teamID JOIN attendance ON attendance.employeeID = operationteam.employeeiD WHERE dogoperation.date = '"+daten+"' AND attendance.employeeID NOT IN (select employeeID from attendance where date = '"+daten+"' AND type != 0)", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(c);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -843,7 +859,7 @@ namespace WindowsFormsApplication1
                     }
                     for (int i = 0; i < ids.Count; i++)
                     {
-                        MySqlCommand m = new MySqlCommand("UPDATE dogoperation SET status = 'Pending' WHERE operationID = " + ids[i], conn);
+                        MySqlCommand m = new MySqlCommand("UPDATE dogoperation SET status = 'Pending' WHERE date = '"+daten+"' AND operationID = " + ids[i], conn);
                         m.ExecuteNonQuery();
                     }
                     for (int i = 0; i < dgvOperationsView.Rows.Count; i++)
@@ -1242,7 +1258,7 @@ namespace WindowsFormsApplication1
 
                     if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "Pending")
                     {
-                        MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing', timeStart = '" + DateTime.Now.ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' WHERE operationID = " + operation, conn);
+                        MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing', timeStart = '" + DateTime.Now.ToString("HH:mm") + "', timeEnd = '"+ DateTime.Now.AddHours(3).ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' WHERE operationID = " + operation, conn);
 
                         comm.ExecuteNonQuery();
                     }

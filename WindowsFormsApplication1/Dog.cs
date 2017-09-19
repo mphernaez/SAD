@@ -46,6 +46,18 @@ namespace WindowsFormsApplication1
 
         private void AddDog_Load(object sender, EventArgs e)
         {
+            dgvArchive.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvArchive.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvAdoption.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvAdoption.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvProfiles.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvProfiles.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            claimreportdgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            claimreportdgv.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvVacc.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvVacc.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            claimreportdgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            claimreportdgv.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
             // this.Top = 112; //262
         }
 
@@ -938,7 +950,7 @@ namespace WindowsFormsApplication1
 
         public void trig()
         {
-            this.Hide();
+            this.Close();
         }
 
 

@@ -142,9 +142,12 @@ namespace WindowsFormsApplication1
             log.hom = this;
             log.Show();
             this.Close();
-            dog.trig();
-            emp.trig();
-            inv.trig();
+            if(odog == true)
+                dog.trig();
+            if(oemp == true)
+                emp.trig();
+            if(oinv == true)
+                inv.trig();
             
         }
         bool odog, oinv, oemp = false;
@@ -274,7 +277,6 @@ namespace WindowsFormsApplication1
                 items.Visible = false;
                 ne.Visible = false;
                 warnc = false;
-                items.Rows.Clear();
             }
         }
 
@@ -342,5 +344,8 @@ namespace WindowsFormsApplication1
         {
             BringToFront();
         }
+
+
+
     }
 }

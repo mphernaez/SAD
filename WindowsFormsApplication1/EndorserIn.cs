@@ -68,19 +68,21 @@ namespace WindowsFormsApplication1
                 try
                 {
 
-                    conn.Open();
+                    
                     if (eID != 0)
                     {
+                        conn.Open();
                         String expiration = tbYr.Text + "-" + (cbMo.SelectedIndex + 1).ToString() + "-" + cbDa.Text + "-";
                         String date = tbYear.Text + "-" + (cbMonth.SelectedIndex + 1).ToString() + "-" + cbDay.Text + "-";
                         MySqlCommand comm = new MySqlCommand("UPDATE items SET quantity = quantity + " + int.Parse(amtIn.Text) + " WHERE itemID = " + id, conn);
                         comm.ExecuteNonQuery();
-                        MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction VALUES( transactionID, " + id + ", " + int.Parse(amtIn.Text) + ", '" + date + "', 'In', " + eID + ", '" + tbReason.Text + "', '" + expiration + "', "+rq+")", conn);
+                        MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction VALUES( transactionID, " + id + ", " + int.Parse(amtIn.Text) + ", '" + date + "', 'In', " + eID + ", '" + tbReason.Text + "', '" + expiration + "', "+rq+" )", conn);
                         com.ExecuteNonQuery();
                         this.Hide();
                         comm = new MySqlCommand("UPDATE stockrequest SET delivered = 1 WHERE stockID = " + id, conn);
                         comm.ExecuteNonQuery();
                         MessageBox.Show("Item Updated");
+                        conn.Close();
                         inv.refreshSI();
                     }
                     else
@@ -92,7 +94,7 @@ namespace WindowsFormsApplication1
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Please enter required fields");
+                    MessageBox.Show(ex.ToString());
                     conn.Close();
                 }
             }
