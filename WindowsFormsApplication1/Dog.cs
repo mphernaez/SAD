@@ -1389,6 +1389,11 @@ namespace WindowsFormsApplication1
             pages = 0;
         }
 
+        private void tbColor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
         private void button17_Click(object sender, EventArgs e)
         {
 

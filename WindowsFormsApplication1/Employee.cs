@@ -381,6 +381,7 @@ namespace WindowsFormsApplication1
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button31.BackColor = Color.FromArgb(2, 170, 145);
             button33.BackColor = Color.FromArgb(2, 170, 145);
+            button36.BackColor = Color.FromArgb(2, 170, 145);
             panelViewAct.Visible = false;
             Edit.Visible = false;
             newOperation.Visible = true;
@@ -397,6 +398,7 @@ namespace WindowsFormsApplication1
             button15.BackColor = Color.FromArgb(2, 170, 145);
             button33.BackColor = Color.FromArgb(2, 170, 145);
             button31.BackColor = Color.FromArgb(2, 170, 145);
+            button36.BackColor = Color.FromArgb(2, 170, 145);
             Edit.Visible = false;
             newOperation.Visible = false;
             pnlActivity.Visible = false;
@@ -1632,6 +1634,7 @@ namespace WindowsFormsApplication1
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button15.BackColor = Color.FromArgb(2, 170, 145);
             button33.BackColor = Color.FromArgb(2, 170, 145);
+            button36.BackColor = Color.FromArgb(2, 170, 145);
             newOperation.Visible = false;
             pnlActivity.Visible = true;
             Edit.Visible = false;
@@ -1723,11 +1726,7 @@ namespace WindowsFormsApplication1
                 cbFilt.Visible = true;
                 repEmp.Visible = true;
                 repAttendance();
-                printDocument1.DefaultPageSettings.Landscape = true;
-                PrintPreviewDialog dlg = new PrintPreviewDialog();
-                dlg.Document = printDocument1;
-                ((Form)dlg).WindowState = FormWindowState.Maximized;
-                dlg.ShowDialog();
+                
             }
             else if (choice.SelectedIndex == 1)
             {
@@ -1735,11 +1734,7 @@ namespace WindowsFormsApplication1
                 cbFilt.Visible = true;
                 repEmp.Visible = true;
                 repActivity();
-                printDocument2.DefaultPageSettings.Landscape = true;
-                PrintPreviewDialog dlg = new PrintPreviewDialog();
-                dlg.Document = printDocument1;
-                ((Form)dlg).WindowState = FormWindowState.Maximized;
-                dlg.ShowDialog();
+                
             }
             else if (choice.SelectedIndex == 2)
             {
@@ -1748,11 +1743,6 @@ namespace WindowsFormsApplication1
                 cbFilt.Visible = false;
                 pnlEmpFilt.Visible = false;
                 repOperation();
-                printDocument3.DefaultPageSettings.Landscape = true;
-                PrintPreviewDialog dlg = new PrintPreviewDialog();
-                dlg.Document = printDocument1;
-                ((Form)dlg).WindowState = FormWindowState.Maximized;
-                dlg.ShowDialog();
             }
         }
         private void loadEmpRep()
@@ -2107,6 +2097,8 @@ namespace WindowsFormsApplication1
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button31.BackColor = Color.FromArgb(2, 170, 145);
             button15.BackColor = Color.FromArgb(2, 170, 145);
+            button36.BackColor = Color.FromArgb(2, 170, 145);
+
             newOperation.Visible = false;
             pnlActivity.Visible = false;
             panelViewAct.Visible = false;
@@ -2329,6 +2321,11 @@ namespace WindowsFormsApplication1
 
         private void button36_Click(object sender, EventArgs e)
         {
+            button36.BackColor = Color.FromArgb(251, 162, 80);
+            button21.BackColor = Color.FromArgb(2, 170, 145);
+            button31.BackColor = Color.FromArgb(2, 170, 145);
+            button33.BackColor = Color.FromArgb(2, 170, 145);
+            button15.BackColor = Color.FromArgb(2, 170, 145);
             panelViewAct.Visible = true;
             newOperation.Visible = false;
             pnlActivity.Visible = false;
@@ -2541,14 +2538,20 @@ namespace WindowsFormsApplication1
             refreshEdit();
         }
 
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void tbStarth_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
         {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
 
+
+        private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }
