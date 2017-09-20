@@ -1090,30 +1090,31 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Claimer", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
             e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(375, 220));
             int ad = 220; int dog = 220;
-            for (int i = 0; i < dtadopt.Rows.Count; i++)
-            {
-                ad = dog + 40; dog = dog + 40;
-                e.Graphics.DrawString(dtclaim.Rows[i]["Claimer"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
-                ad = ad + 20;
-                e.Graphics.DrawString("Contact Number: " + dtclaim.Rows[i]["Contact Number"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
-                ad = ad + 20;
-                e.Graphics.DrawString("Address: " + dtclaim.Rows[i]["Address"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
-                ad = ad + 20;
-                e.Graphics.DrawString("Breed: " + dtclaim.Rows[i]["Breed"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
-                e.Graphics.DrawString("Location: " + dtclaim.Rows[i]["Location"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
-                dog = dog + 20;
-                e.Graphics.DrawString("Color: " + dtclaim.Rows[i]["Color"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
-                e.Graphics.DrawString("Date Caught: " + dtclaim.Rows[i]["Date Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
-                dog = dog + 20;
-                e.Graphics.DrawString("Size: " + dtclaim.Rows[i]["Size"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
-                e.Graphics.DrawString("Time Caught: " + dtclaim.Rows[i]["Time Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
-                dog = dog + 20;
-                e.Graphics.DrawString("Gender: " + dtclaim.Rows[i]["Gender"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
-                e.Graphics.DrawString("Markings: " + dtclaim.Rows[i]["Markings"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
-                dog = dog + 20;
+            
+                for (int i = 0; i < dtclaim.Rows.Count; i++)
+                {
+                    ad = dog + 40; dog = dog + 40;
+                    e.Graphics.DrawString(dtclaim.Rows[i]["Claimer"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                    ad = ad + 20;
+                    e.Graphics.DrawString("Contact Number: " + dtclaim.Rows[i]["Contact Number"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                    ad = ad + 20;
+                    e.Graphics.DrawString("Address: " + dtclaim.Rows[i]["Address"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                    ad = ad + 20;
+                    e.Graphics.DrawString("Breed: " + dtclaim.Rows[i]["Breed"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
+                    e.Graphics.DrawString("Location: " + dtclaim.Rows[i]["Location"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                    dog = dog + 20;
+                    e.Graphics.DrawString("Color: " + dtclaim.Rows[i]["Color"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
+                    e.Graphics.DrawString("Date Caught: " + dtclaim.Rows[i]["Date Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                    dog = dog + 20;
+                    e.Graphics.DrawString("Size: " + dtclaim.Rows[i]["Size"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
+                    e.Graphics.DrawString("Time Caught: " + dtclaim.Rows[i]["Time Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                    dog = dog + 20;
+                    e.Graphics.DrawString("Gender: " + dtclaim.Rows[i]["Gender"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
+                    e.Graphics.DrawString("Markings: " + dtclaim.Rows[i]["Markings"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                    dog = dog + 20;
 
-                if (i - (9 * pages) > 9) { e.HasMorePages = true; }
-            }
+                    if (i - (9 * pages) > 9) { e.HasMorePages = true; }
+                }
             e.HasMorePages = false;
         }
         string date;
@@ -1249,9 +1250,9 @@ namespace WindowsFormsApplication1
         {
             e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
             e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(170, 100));
             e.Graphics.DrawString("EUTHANIZED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(190, 130));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(150, 170));
             int dog = 200; int op = 200;
             int a = 0; int b = 0;
             

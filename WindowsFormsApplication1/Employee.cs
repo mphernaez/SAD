@@ -2484,54 +2484,19 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
             e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
             e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
-
-            string footer = string.Empty;
-            int columnCount = repEmp.Columns.Count;
-            int maxRows = repEmp.Rows.Count;
-
-            using (Graphics g = e.Graphics)
+            int x = 240;
+            for (int i = 0; i < dgvOpSumm.Rows.Count; i++)
             {
-                Brush brush = new SolidBrush(Color.Black);
-                Pen pen = new Pen(brush);
-                Font font = new Font("Arial", 12);
-                SizeF size;
+                e.Graphics.DrawString(dgvOpSumm.Rows[i].Cells["loc"].ToString(), new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(150, x));
+               
+                e.Graphics.DrawString(dgvOpSumm.Rows[i].Cells["date1"].ToString(), new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(250, x));
+                e.Graphics.DrawString(dgvOpSumm.Rows[i].Cells["time"].ToString(), new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(250, x));
+                e.Graphics.DrawString(dgvOpSumm.Rows[i].Cells["imp"].ToString(), new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(250, x));
 
-                int x = 0, y = 300, width = 100;
-                float xPadding;
-
-                // Writes out all column names in designated locations, aligned as a table
-                foreach (DataColumn column in dtOp.Columns)
-                {
-                    size = g.MeasureString(column.ColumnName, font);
-                    xPadding = (width - size.Width) / 2;
-                    g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 5);
-                    x += width;
-                }
-
-                x = 0;
-                y += 30;
-
-                // Process each row and place each item under correct column.
-                foreach (DataRow row in dtOp.Rows)
-                {
-                    rowcount++;
-
-                    for (int i = 0; i < columnCount; i++)
-                    {
-                        size = g.MeasureString(row[i].ToString(), font);
-                        xPadding = (width - size.Width) / 2;
-
-                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 5);
-                        x += width;
-                    }
-
-                    e.HasMorePages = rowcount - 1 < maxRows;
-
-                    x = 0;
-                    y += 30;
-                }
+                e.Graphics.DrawString(dgvOpSumm.Rows[i].Cells["team"].ToString(), new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(250, x));
+                x = x + 30;
             }
-            }
+        }
 
         private void button34_Click(object sender, EventArgs e)
         {
@@ -2594,6 +2559,15 @@ namespace WindowsFormsApplication1
             {
                 textBox2.Text = "";
             }
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+            e.Graphics.DrawString("", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
         }
     }
 }
