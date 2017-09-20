@@ -2553,6 +2553,48 @@ namespace WindowsFormsApplication1
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+        private void textBox6_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (textBox6.Text == "Year")
+            {
+                textBox6.Text = "";
+            }
+        }
+
+        private void textBox7_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(textBox7.Text == "Day")
+            {
+                textBox7.Text = "";
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBox3_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(textBox3.Text == "Day")
+            {
+                textBox3.Text = "";
+            }
+        }
+
+        private void textBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+           if(textBox2.Text == "Year")
+            {
+                textBox2.Text = "";
+            }
+        }
     }
 }
 

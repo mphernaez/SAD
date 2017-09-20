@@ -1595,9 +1595,11 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownHeight = 80;
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.ForeColor = System.Drawing.Color.Gray;
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.IntegralHeight = false;
             this.comboBox2.Items.AddRange(new object[] {
             "January",
             "February",
@@ -1622,22 +1624,28 @@
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.ForeColor = System.Drawing.Color.Gray;
             this.textBox2.Location = new System.Drawing.Point(174, 26);
+            this.textBox2.MaxLength = 4;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(65, 26);
             this.textBox2.TabIndex = 74;
             this.textBox2.Text = "Year";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseClick);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.ForeColor = System.Drawing.Color.Gray;
             this.textBox3.Location = new System.Drawing.Point(116, 26);
+            this.textBox3.MaxLength = 2;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(52, 26);
             this.textBox3.TabIndex = 73;
             this.textBox3.Text = "Day";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox3_MouseClick);
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // dgvOperationsView
             // 
@@ -1751,10 +1759,12 @@
             // 
             // tbOpDay
             // 
+            this.tbOpDay.DropDownHeight = 100;
             this.tbOpDay.Enabled = false;
             this.tbOpDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbOpDay.ForeColor = System.Drawing.Color.Black;
             this.tbOpDay.FormattingEnabled = true;
+            this.tbOpDay.IntegralHeight = false;
             this.tbOpDay.Location = new System.Drawing.Point(446, 9);
             this.tbOpDay.Name = "tbOpDay";
             this.tbOpDay.Size = new System.Drawing.Size(52, 28);
@@ -1787,10 +1797,12 @@
             // 
             // cbOpMonth
             // 
+            this.cbOpMonth.DropDownHeight = 100;
             this.cbOpMonth.Enabled = false;
             this.cbOpMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOpMonth.ForeColor = System.Drawing.Color.Black;
             this.cbOpMonth.FormattingEnabled = true;
+            this.cbOpMonth.IntegralHeight = false;
             this.cbOpMonth.Items.AddRange(new object[] {
             "January",
             "February",
@@ -1945,8 +1957,10 @@
             // 
             // cbLocation
             // 
+            this.cbLocation.DropDownHeight = 100;
             this.cbLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLocation.FormattingEnabled = true;
+            this.cbLocation.IntegralHeight = false;
             this.cbLocation.Items.AddRange(new object[] {
             "1-A",
             "2-A",
@@ -2336,11 +2350,11 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.Edit);
-            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.panelViewAct);
             this.DogCatchingOperation.Controls.Add(this.pnlActivity);
+            this.DogCatchingOperation.Controls.Add(this.Edit);
+            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -2437,9 +2451,12 @@
             // 
             // comboBox5
             // 
+            this.comboBox5.DropDownHeight = 80;
+            this.comboBox5.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox5.ForeColor = System.Drawing.Color.Gray;
             this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.IntegralHeight = false;
             this.comboBox5.Items.AddRange(new object[] {
             "January",
             "February",
@@ -2470,6 +2487,7 @@
             this.textBox6.TabIndex = 74;
             this.textBox6.Text = "Year";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox6_MouseClick);
             this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // textBox7
@@ -2483,6 +2501,7 @@
             this.textBox7.TabIndex = 73;
             this.textBox7.Text = "Day";
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox7_MouseClick);
             this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
             // 
             // editOperation
@@ -2702,10 +2721,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
