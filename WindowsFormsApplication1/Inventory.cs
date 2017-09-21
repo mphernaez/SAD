@@ -676,10 +676,10 @@ namespace WindowsFormsApplication1
         int rowcount = 0;
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
-            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
-            e.Graphics.DrawString("INVENTORY", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(475, 130));
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
+            e.Graphics.DrawString("INVENTORY", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(475, 130));
 
             if (cbTransType.Text == "Stock In")
             {

@@ -35,6 +35,9 @@ namespace WindowsFormsApplication1
         DataTable dtatt;
         DataTable dtact;
         DataTable dtop;
+        int[] repop;
+        string[] subloc;
+        int[] countsub;
         public empty back { get; set; }
         public MySqlConnection conn = new MySqlConnection();
         public opEdit op { get; set; }
@@ -1665,14 +1668,15 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
+                string date = DateTime.Now.ToString("yyyy-MM-dd");
                 MySqlCommand comm = new MySqlCommand("SELECT DISTINCT employee.employeeID AS emp, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name "
                                                     +"FROM employee "
                                                     + "INNER JOIN profile ON profile.personID = employee.employeeID "
                                                     + "INNER JOIN attendance ON attendance.employeeID = employee.employeeID "
                                                     + "WHERE employee.employeeID "
-                                                    + "NOT IN(SELECT employeeID FROM attendance WHERE date = '2017-09-19' AND type = 0) "
+                                                    + "NOT IN(SELECT employeeID FROM attendance WHERE date = '" + date + "' AND type = 0) "
                                                     + "AND employee.employeeID "
-                                                    + "IN(SELECT employeeID FROM attendance WHERE date = '2017-09-19' AND type = 1) "
+                                                    + "IN(SELECT employeeID FROM attendance WHERE date = '" + date + "' AND type = 1) "
                                                     + "AND employee.employeeID "
                                                     + "NOT IN "
                                                     + "(SELECT employee.employeeID "
@@ -1690,7 +1694,7 @@ namespace WindowsFormsApplication1
                     empact[i] = int.Parse(dt.Rows[i]["emp"].ToString());
                     cbempact.Items.Add(dt.Rows[i]["name"].ToString());
                 }
-                cbempact.Items.Add("None");
+                
                 MySqlCommand commm = new MySqlCommand("SELECT itemID AS item, CONCAT(productName, ' (', description, ')') as product FROM items", conn);
                 MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
                 DataTable dta = new DataTable();
@@ -1702,6 +1706,7 @@ namespace WindowsFormsApplication1
                     matact[i] = int.Parse(dta.Rows[i]["item"].ToString());
                     cbmatact.Items.Add(dta.Rows[i]["product"].ToString());
                 }
+                cbmatact.Items.Add("None");
                 conn.Close();
             }
             catch (Exception ex)
@@ -1896,8 +1901,12 @@ namespace WindowsFormsApplication1
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
+                subloc = new string[dt.Rows.Count];
+                repop = new int[dt.Rows.Count];
+                countsub = new int[dt.Rows.Count];
                 for (int x = 0; x < dt.Rows.Count; x++)
                 {
+                    repop[x] = int.Parse(dt.Rows[x]["operationID"].ToString());
                     int teamID = int.Parse(dt.Rows[x]["teamID"].ToString());
                     int opID = int.Parse(dt.Rows[x]["operationID"].ToString());
                     MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', Firstname) AS emp FROM operationteam INNER JOIN profile on profile.personID = operationteam.employeeID WHERE teamID = " + teamID.ToString(), conn);
@@ -1910,7 +1919,7 @@ namespace WindowsFormsApplication1
                         string nl = Environment.NewLine;
                         team = team + dta.Rows[j]["emp"].ToString() + nl;
                     }
-                    string loc = "Barangay" + dt.Rows[x]["description"].ToString();
+                    string loc = "Brgy. " + dt.Rows[x]["description"].ToString();
                     string date = dt.Rows[x]["date"].ToString();
                     string time = dt.Rows[x]["time"].ToString(); 
                     string status = dt.Rows[x]["status"].ToString();
@@ -1919,7 +1928,7 @@ namespace WindowsFormsApplication1
                     dta = new DataTable();
                     adpt.Fill(dta);
                     int imp = int.Parse(dta.Rows[0]["imp"].ToString());
-                    dgvOpSumm.Rows.Add(loc, date, time, team, imp);
+                    dgvOpSumm.Rows.Add(loc, time, date, team, imp);
                 }
 
                 dgvOpSumm.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -1930,12 +1939,14 @@ namespace WindowsFormsApplication1
                 dgvOpSumm.Columns["team"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvOpSumm.Columns["imp"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 conn.Close();
+                loadsubloc();
             }
             catch (Exception ex)
             {
                 conn.Close();
                 MessageBox.Show(ex.ToString());
             }
+            
         }
         private void button28_Click_1(object sender, EventArgs e)
         {
@@ -2512,22 +2523,36 @@ namespace WindowsFormsApplication1
         int rowcount = 0;
         private void printDocument3_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
-            e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
-            e.Graphics.DrawString("OPERATIONS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(280, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(335, 70));
+            e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
+            e.Graphics.DrawString("OPERATIONS REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(270, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(120, 170));
+            
             int x = 240;
+            
             for (int i = 0; i < dgvOpSumm.Rows.Count; i++)
             {
-                e.Graphics.DrawString(dgvOpSumm.Rows[i].Cells["loc"].ToString(), new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(150, x));
-               
-                e.Graphics.DrawString(dgvOpSumm.Rows[i].Cells["date1"].ToString(), new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(250, x));
-                e.Graphics.DrawString(dgvOpSumm.Rows[i].Cells["time"].ToString(), new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(250, x));
-                e.Graphics.DrawString(dgvOpSumm.Rows[i].Cells["imp"].ToString(), new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(250, x));
-
-                e.Graphics.DrawString(dgvOpSumm.Rows[i].Cells["team"].ToString(), new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(250, x));
-                x = x + 30;
+                
+                e.Graphics.DrawString("Date:  " + dgvOpSumm.Rows[i].Cells["date1"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
+                e.Graphics.DrawString("Location:  " + dgvOpSumm.Rows[i].Cells["loc"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, x));
+                e.Graphics.DrawString("Employees involved: ", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(545, x));
+                x = x + 25;
+                e.Graphics.DrawString("Time:  " + dgvOpSumm.Rows[i].Cells["time"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
+                e.Graphics.DrawString("Sublocations: ", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, x));
+                e.Graphics.DrawString(dgvOpSumm.Rows[i].Cells["team"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(565, x));
+                x = x + 25;
+                e.Graphics.DrawString("Number of heads caught:  "+dgvOpSumm.Rows[i].Cells["imp"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
+                e.Graphics.DrawString(subloc[i], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(320, x));
+                
+                if (countsub[i] > 3)
+                {
+                    x = x + (25 * (countsub[i])); 
+                }
+                else
+                {
+                    x = x + 50;
+                }
             }
         }
 
@@ -2694,6 +2719,34 @@ namespace WindowsFormsApplication1
         private void cbbdaymonth_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void loadsubloc()
+        {
+            string nl = Environment.NewLine;
+            try {
+                conn.Open();
+                for (int i = 0; i < repop.Length; i++)
+                {
+                    MySqlCommand comm = new MySqlCommand("SELECT DISTINCT sublocation FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE dogprofile.operationID = "+repop[i]+" ORDER by sublocation", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    countsub[i] = dt.Rows.Count;
+                    
+                    for (int j = 0; j < dt.Rows.Count; j++)
+                    {
+                        subloc[i] = subloc[i] + dt.Rows[j]["sublocation"].ToString() + nl;
+                    }
+                    
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
