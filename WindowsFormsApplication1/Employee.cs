@@ -1786,16 +1786,17 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm;
                 if (cbFilt.Checked && cbEmpFilt.Text != "Employee")
                 {
-                    comm = new MySqlCommand("SELECT date AS Date, timeEnd AS 'TimeRecorded', type AS Type, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Employee Name' FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '"+datestart+ "' AND '" + dateend + "' AND employeeID = " + repEmpArr[cbEmpFilt.SelectedIndex] + " ORDER BY date, type", conn);
-                    MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', middlename)  AS name FROM profile WHERE profile.personID = " + repEmpArr[cbEmpFilt.SelectedIndex], conn);
+                    comm = new MySqlCommand("SELECT SUBSTRING(date,1, 11) AS Date, timeEnd AS 'Time Recorded', type AS Type FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '"+datestart+ "' AND '" + dateend + "' AND employeeID = " + repEmpArr[cbEmpFilt.SelectedIndex] + " ORDER BY date, type", conn);
+                    MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', middlename)  AS name, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE profile.personID = " + repEmpArr[cbEmpFilt.SelectedIndex], conn);
                     MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
                     DataTable dta = new DataTable();
                     adpt.Fill(dta);
                     employeefilteractivity = dta.Rows[0]["name"].ToString();
+                    employeeposact = dta.Rows[0]["position"].ToString();
                 }
                 else
                 {
-                    comm = new MySqlCommand("SELECT date AS Date, type, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Employee Name' FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "'", conn);
+                    comm = new MySqlCommand("SELECT date AS Date, type AS Type, timeEnd AS Time, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Employee Name' FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "'", conn);
                 }
 
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -1814,6 +1815,10 @@ namespace WindowsFormsApplication1
         }
         string employeefilterattendance; //name of filtered employee
         string employeefilteractivity;
+        string employeeposact;
+        string employeeposatt;
+        string[] attdates;
+        int[] countdates;
         private void repAttendance()
         {
             string datestart = y1.Text + "-" + (m1.SelectedIndex + 1).ToString() + "-" + d1.Text;
@@ -1824,30 +1829,51 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm;
                 if (cbFilt.Checked && cbEmpFilt.Text != "Employee")
                 {
-                    comm = new MySqlCommand("SELECT date AS Date, time AS Time, "
+                    comm = new MySqlCommand("SELECT SUBSTRING(date, 1, 11) AS Date, time AS Time, "
                                             + "CASE type WHEN 0 THEN 'Out' WHEN 1 THEN 'In' END AS Type "
                                             + "FROM attendance INNER JOIN profile on profile.personID = attendance.employeeID "
                                             + "INNER JOIN employee ON profile.personID = employee.employeeID "
                                             + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' AND attendance.employeeID = " + repEmpArr[cbEmpFilt.SelectedIndex] + " ORDER BY date, type", conn);
-                    MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', middlename)  AS name FROM profile WHERE profile.personID = " + repEmpArr[cbEmpFilt.SelectedIndex], conn);
+                    MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', middlename) AS name, position FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE profile.personID = " + repEmpArr[cbEmpFilt.SelectedIndex], conn);
                     MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
                     DataTable dta = new DataTable();
                     adpt.Fill(dta);
                     employeefilterattendance = dta.Rows[0]["name"].ToString();
+                    employeeposatt = dta.Rows[0]["position"].ToString();
                 }
                 else
                 {
-                    comm = new MySqlCommand("SELECT date AS Date, time AS Time, CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS 'Employee Name', position AS Position, contactNumber AS ContactNumber, "
+                    comm = new MySqlCommand("SELECT SUBSTRING(date, 1, 11) AS Date, time AS Time, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS 'Employee Name', position AS Position, contactNumber AS ContactNumber, "
                                             + "CASE type WHEN 0 THEN 'Out' WHEN 1 THEN 'In' END AS Type "
                                             + "FROM attendance INNER JOIN profile on profile.personID = attendance.employeeID "
                                             + "INNER JOIN employee ON profile.personID = employee.employeeID "
-                                            + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY date, type", conn);
+                                            + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY date, lastname, type", conn);
                 }
 
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 dtatt = new DataTable();
                 adp.Fill(dtatt);
 
+                MySqlCommand commmm = new MySqlCommand("SELECT DISTINCT SUBSTRING(date, 1, 11) AS Date "
+                                            + "FROM attendance INNER JOIN profile on profile.personID = attendance.employeeID "
+                                            + "INNER JOIN employee ON profile.personID = employee.employeeID "
+                                            + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY date, 'Employee Name', type", conn);
+                MySqlDataAdapter adptt = new MySqlDataAdapter(commmm);
+                DataTable dtt = new DataTable();
+                adptt.Fill(dtt);
+                attdates = new string[dtt.Rows.Count];
+                countdates = new int[dtt.Rows.Count];
+                for (int i = 0; i < dtt.Rows.Count; i++)
+                {
+                    attdates[i] = dtt.Rows[i]["Date"].ToString();
+                    MySqlCommand com = new MySqlCommand("SELECT COUNT(*) AS c FROM attendance WHERE date = '"+attdates[i]+"'", conn);
+                    MySqlDataAdapter adpttt = new MySqlDataAdapter(com);
+                    DataTable dttt = new DataTable();
+                    adpttt.Fill(dttt);
+                    countdates[i] = int.Parse(dttt.Rows[0]["c"].ToString());
+                }
+
+               
                 repEmp.DataSource = dtatt;
                 
                 conn.Close();
@@ -2460,7 +2486,7 @@ namespace WindowsFormsApplication1
         {
             if(choice.SelectedIndex == 0)
             {
-                printDocument1.DefaultPageSettings.Landscape = true;
+                printDocument1.DefaultPageSettings.Landscape = false;
                 PrintPreviewDialog dlg = new PrintPreviewDialog();
                 dlg.Document = printDocument1;
                 ((Form)dlg).WindowState = FormWindowState.Maximized;
@@ -2468,7 +2494,7 @@ namespace WindowsFormsApplication1
 
             } else if (choice.SelectedIndex == 1)
             {
-                printDocument2.DefaultPageSettings.Landscape = true;
+                printDocument2.DefaultPageSettings.Landscape = false;
                 PrintPreviewDialog dlg = new PrintPreviewDialog();
                 dlg.Document = printDocument2;
                 ((Form)dlg).WindowState = FormWindowState.Maximized;
@@ -2476,7 +2502,7 @@ namespace WindowsFormsApplication1
 
             } else if (choice.SelectedIndex == 2)
             {
-                printDocument3.DefaultPageSettings.Landscape = true;
+                printDocument3.DefaultPageSettings.Landscape = false;
                 PrintPreviewDialog dlg = new PrintPreviewDialog();
                 dlg.Document = printDocument3;
                 ((Form)dlg).WindowState = FormWindowState.Maximized;
@@ -2489,7 +2515,7 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
             e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
             e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
-            e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
+            e.Graphics.DrawString("OPERATIONS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(350, 130));
             e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(300, 170));
             int x = 240;
             for (int i = 0; i < dgvOpSumm.Rows.Count; i++)
@@ -2573,8 +2599,71 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
             e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
             e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
-            e.Graphics.DrawString("", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
+            e.Graphics.DrawString("ATTENDANCE REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 130));
             e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+            if (cbFilt.Checked && employeefilterattendance!="")
+            {
+                e.Graphics.DrawString(employeefilterattendance + " - " + employeeposatt, new Font("Arial", 16, FontStyle.Bold), Brushes.Black, new Point(100, 220));
+                int x = 280;
+                for (int i = 0; i < dtatt.Rows.Count; i = i + 2)
+                {
+                    string date = dtatt.Rows[i]["Date"].ToString();
+                    e.Graphics.DrawString(date, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(100, x));
+                    e.Graphics.DrawString(dtatt.Rows[i + 0]["Type"].ToString() + ": " + dtatt.Rows[i + 0]["Time"].ToString() + "   " + dtatt.Rows[i + 1]["Type"].ToString() + ": " + dtatt.Rows[i + 1]["Time"].ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(250, x));
+                    x = x + 30;
+                }
+            }
+            else
+            {
+                int count = 0;
+                int x = 240;
+                for (int i = 0; i < attdates.Length; i++)
+                {
+                    string date = attdates[i];
+                    e.Graphics.DrawString(date, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(80, x));
+                    x = x + 40;
+                    for (int j = 0; j < countdates[i]; j++) {
+                        string time = dtatt.Rows[count]["Time"].ToString();
+                        string emp = dtatt.Rows[count]["Employee Name"].ToString();
+                        string pos = dtatt.Rows[count]["Position"].ToString();
+                        string contact = dtatt.Rows[count]["ContactNumber"].ToString();
+                        string type = dtatt.Rows[count]["Type"].ToString();
+                        if (count > 0) {
+                            if (emp != dtatt.Rows[count - 1]["Employee Name"].ToString()) {
+                                e.Graphics.DrawString(emp + " - " + pos + "   ", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(120, x));
+                                e.Graphics.DrawString(type + ": " + time, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(500, x));
+                            }
+                            else
+                            {
+                                e.Graphics.DrawString(type + ": " + time, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(600, x-15));
+                            }
+                        }
+                        else
+                        {
+                            e.Graphics.DrawString(emp + " - " + pos + "   ", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(120, x));
+                            e.Graphics.DrawString(type + ": " + time, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(500, x));
+                        }
+                        count++;
+                        x = x + 15;
+                    }
+                    x = x + 20;
+                }
+            }
+
+
+        }
+
+        private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
+            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+            e.Graphics.DrawString("ACTIVITY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
+            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+            if (employeefilteractivity != "")
+            {
+                e.Graphics.DrawString("Employee: " + employeefilteractivity + " - " + employeeposact, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(100, 220));
+            }
         }
     }
 }

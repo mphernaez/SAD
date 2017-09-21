@@ -120,7 +120,14 @@ namespace WindowsFormsApplication1
 
         private void Login_Load(object sender, EventArgs e)
         {
-            string yesterday = DateTime.Now.Date.AddDays(-6).ToString("yyyy-MM-dd");
+            string[] yesterday = new String[7];
+            int x = 0;
+            for (int i = -1; i > -7; i--)
+            {
+                yesterday[x] = DateTime.Now.Date.AddDays(i).ToString("yyyy-MM-dd");
+                x++;
+            }
+            
             try
             {
                 conn.Open();
@@ -134,16 +141,18 @@ namespace WindowsFormsApplication1
                     emps[i] = int.Parse(dt.Rows[i]["employeeID"].ToString());
                 }
 
-                comm = new MySqlCommand("SELECT employee.employeeID AS emp FROM employee WHERE employee.employeeID NOT IN(SELECT employee.employeeID FROM employee INNER JOIN attendance ON attendance.employeeID = employee.employeeID WHERE date = '"+yesterday+ "' AND type = 0) AND employee.employeeID IN (SELECT employee.employeeID FROM employee INNER JOIN attendance ON attendance.employeeID = employee.employeeID WHERE date = '"+yesterday+"' AND type = 1)", conn); 
-                adp = new MySqlDataAdapter(comm);
-                dt = new DataTable();
-                adp.Fill(dt);
-                for (int i = 0; i < dt.Rows.Count; i++)
+                for (int j = 0; j < yesterday.Length; j++)
                 {
-                    MySqlCommand com = new MySqlCommand("INSERT INTO attendance(date, employeeID, type, time) VALUES('"+yesterday+"', "+int.Parse(dt.Rows[i]["emp"].ToString())+", '0', '17:00')", conn);
-                    com.ExecuteNonQuery();
+                    comm = new MySqlCommand("SELECT employee.employeeID AS emp FROM employee WHERE employee.employeeID NOT IN(SELECT employee.employeeID FROM employee INNER JOIN attendance ON attendance.employeeID = employee.employeeID WHERE date = '" + yesterday[j] + "' AND type = 0) AND employee.employeeID IN (SELECT employee.employeeID FROM employee INNER JOIN attendance ON attendance.employeeID = employee.employeeID WHERE date = '" + yesterday[j] + "' AND type = 1)", conn);
+                    adp = new MySqlDataAdapter(comm);
+                    dt = new DataTable();
+                    adp.Fill(dt);
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        MySqlCommand com = new MySqlCommand("INSERT INTO attendance(date, employeeID, type, time) VALUES('" + yesterday[j] + "', " + int.Parse(dt.Rows[i]["emp"].ToString()) + ", '0', '17:00')", conn);
+                        com.ExecuteNonQuery();
+                    }
                 }
-
 
 
                 conn.Close();

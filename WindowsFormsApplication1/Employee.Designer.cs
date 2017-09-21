@@ -257,9 +257,9 @@
             this.attendance.Controls.Add(this.button10);
             this.attendance.Controls.Add(this.button3);
             this.attendance.Controls.Add(this.label3);
+            this.attendance.Controls.Add(this.dgvAttendanceOut);
             this.attendance.Controls.Add(this.panelAtt);
             this.attendance.Controls.Add(this.dgvAttendanceIn);
-            this.attendance.Controls.Add(this.dgvAttendanceOut);
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.attendance.Location = new System.Drawing.Point(24, 196);
             this.attendance.Name = "attendance";
@@ -2706,6 +2706,10 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // printDocument2
+            // 
+            this.printDocument2.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument2_PrintPage);
+            // 
             // printDocument3
             // 
             this.printDocument3.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument3_PrintPage);
@@ -2720,10 +2724,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.attendance);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
