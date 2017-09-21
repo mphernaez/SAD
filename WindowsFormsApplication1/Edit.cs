@@ -106,6 +106,10 @@ namespace WindowsFormsApplication1
             else pnlAdminEdit.Visible = true;
             
         }
-        
+
+        private void cbgender_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

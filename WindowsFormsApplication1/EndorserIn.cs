@@ -188,5 +188,10 @@ namespace WindowsFormsApplication1
         {
             this.Hide();
         }
+
+        private void cbMonth_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

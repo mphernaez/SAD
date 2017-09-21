@@ -312,10 +312,10 @@
             this.inv.Controls.Add(this.button5);
             this.inv.Controls.Add(this.button16);
             this.inv.Controls.Add(this.label12);
+            this.inv.Controls.Add(this.panelReturn);
             this.inv.Controls.Add(this.dgvout);
             this.inv.Controls.Add(this.panelRequest);
             this.inv.Controls.Add(this.Sout);
-            this.inv.Controls.Add(this.panelReturn);
             this.inv.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inv.Location = new System.Drawing.Point(24, 196);
             this.inv.Name = "inv";
@@ -608,6 +608,7 @@
             this.empret.Size = new System.Drawing.Size(235, 28);
             this.empret.TabIndex = 75;
             this.empret.Text = "Endorser";
+            this.empret.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.empret_KeyPress);
             // 
             // reasonret
             // 
@@ -631,6 +632,7 @@
             this.prodret.Size = new System.Drawing.Size(235, 28);
             this.prodret.TabIndex = 73;
             this.prodret.Text = "Product Name";
+            this.prodret.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.empret_KeyPress);
             // 
             // label15
             // 
@@ -828,6 +830,7 @@
             this.msBy.Size = new System.Drawing.Size(121, 28);
             this.msBy.TabIndex = 43;
             this.msBy.Text = "Measured by";
+            this.msBy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.msBy_KeyPress);
             // 
             // label3
             // 
@@ -1131,6 +1134,7 @@
             this.d2.Size = new System.Drawing.Size(65, 28);
             this.d2.TabIndex = 83;
             this.d2.Text = "Day";
+            this.d2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
             // 
             // d1
             // 
@@ -1142,6 +1146,7 @@
             this.d1.Size = new System.Drawing.Size(65, 28);
             this.d1.TabIndex = 82;
             this.d1.Text = "Day";
+            this.d1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
             // 
             // y1
             // 
@@ -1187,6 +1192,7 @@
             this.m2.TabIndex = 78;
             this.m2.Text = "Month";
             this.m2.SelectedIndexChanged += new System.EventHandler(this.m2_SelectedIndexChanged_1);
+            this.m2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
             // 
             // m1
             // 
@@ -1211,6 +1217,7 @@
             this.m1.TabIndex = 79;
             this.m1.Text = "Month";
             this.m1.SelectedIndexChanged += new System.EventHandler(this.m1_SelectedIndexChanged_1);
+            this.m1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
             // 
             // button2
             // 
@@ -1261,6 +1268,7 @@
             this.cbTransType.TabIndex = 74;
             this.cbTransType.Text = "Transaction Type";
             this.cbTransType.SelectedIndexChanged += new System.EventHandler(this.cbTransType_SelectedIndexChanged);
+            this.cbTransType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
             // 
             // printDocument1
             // 

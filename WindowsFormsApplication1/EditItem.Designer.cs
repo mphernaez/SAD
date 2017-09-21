@@ -65,6 +65,7 @@
             this.msBy.Size = new System.Drawing.Size(121, 28);
             this.msBy.TabIndex = 49;
             this.msBy.Text = "Measured by";
+            this.msBy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.msBy_KeyPress);
             // 
             // tbname
             // 

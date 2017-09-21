@@ -75,6 +75,7 @@
             this.cbposition.TabIndex = 48;
             this.cbposition.Text = "Position";
             this.cbposition.SelectedIndexChanged += new System.EventHandler(this.cbposition_SelectedIndexChanged);
+            this.cbposition.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbgender_KeyPress);
             // 
             // tbfname
             // 
@@ -164,6 +165,7 @@
             this.cbgender.Size = new System.Drawing.Size(176, 28);
             this.cbgender.TabIndex = 44;
             this.cbgender.Text = "Gender";
+            this.cbgender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbgender_KeyPress);
             // 
             // Edit
             // 
