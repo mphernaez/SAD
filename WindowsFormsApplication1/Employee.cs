@@ -265,21 +265,24 @@ namespace WindowsFormsApplication1
         private int employeeID;
         private void dgvProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                conn.Open();
-                employeeID = int.Parse(dgvAttendanceIn.Rows[e.RowIndex].Cells["personID"].Value.ToString());
-                string att = DateTime.Now.ToString("yyyy-MM-dd");
-                string time = DateTime.Now.ToString("HH:mm");
-                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type, time) VALUES('" + att + "', " + employeeID + ", " + "1" + ", '"+time+"') ", conn);
-                comm.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Successfully Recorded Attendance!");
-                refreshAttendance();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                conn.Close();
+            DialogResult result = MessageBox.Show("Record Attendance In?", "Confirmation", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes) {
+                try
+                {
+                    conn.Open();
+                    employeeID = int.Parse(dgvAttendanceIn.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+                    string att = DateTime.Now.ToString("yyyy-MM-dd");
+                    string time = DateTime.Now.ToString("HH:mm");
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type, time) VALUES('" + att + "', " + employeeID + ", " + "1" + ", '" + time + "') ", conn);
+                    comm.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Successfully Recorded Attendance!");
+                    refreshAttendance();
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -1582,23 +1585,27 @@ namespace WindowsFormsApplication1
 
         private void dgvAttendanceOut_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            DialogResult result = MessageBox.Show("Record Attendance Out?", "Confirmation", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
             {
-                conn.Open();
-                employeeID = int.Parse(dgvAttendanceOut.Rows[e.RowIndex].Cells["personID"].Value.ToString());
-                string att = DateTime.Now.ToString("yyyy-MM-dd");
-                string time = DateTime.Now.ToString("HH:mm");
-                MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type, time) VALUES('" + att + "', " + employeeID + ", " + "0" + ", '"+time+"') ", conn);
-                comm.ExecuteNonQuery();
+                try
+                {
+                    conn.Open();
+                    employeeID = int.Parse(dgvAttendanceOut.Rows[e.RowIndex].Cells["personID"].Value.ToString());
+                    string att = DateTime.Now.ToString("yyyy-MM-dd");
+                    string time = DateTime.Now.ToString("HH:mm");
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO attendance(date, employeeID, type, time) VALUES('" + att + "', " + employeeID + ", " + "0" + ", '" + time + "') ", conn);
+                    comm.ExecuteNonQuery();
 
-                string date = DateTime.Now.ToString("yyyy-MM-dd");
-                MessageBox.Show("Successfully Recorded Attendance Out!");
-                conn.Close();
-                refreshAttendanceOut();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                conn.Close();
+                    string date = DateTime.Now.ToString("yyyy-MM-dd");
+                    MessageBox.Show("Successfully Recorded Attendance Out!");
+                    conn.Close();
+                    refreshAttendanceOut();
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    conn.Close();
+                }
             }
         }
 
