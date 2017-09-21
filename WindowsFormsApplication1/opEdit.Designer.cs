@@ -147,6 +147,7 @@
             this.tbOpDay.TabIndex = 90;
             this.tbOpDay.Text = "Day";
             this.tbOpDay.SelectedIndexChanged += new System.EventHandler(this.tbOpDay_SelectedIndexChanged);
+            this.tbOpDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbOpDay_KeyPress);
             // 
             // label9
             // 
@@ -182,6 +183,7 @@
             this.cbOpMonth.TabIndex = 88;
             this.cbOpMonth.Text = "Month";
             this.cbOpMonth.SelectedIndexChanged += new System.EventHandler(this.cbOpMonth_SelectedIndexChanged);
+            this.cbOpMonth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbOpDay_KeyPress);
             // 
             // tbOpYear
             // 
@@ -207,6 +209,7 @@
             this.cbAMPMend.Size = new System.Drawing.Size(73, 28);
             this.cbAMPMend.TabIndex = 86;
             this.cbAMPMend.Text = "AM/PM";
+            this.cbAMPMend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbOpDay_KeyPress);
             // 
             // cbAMPMstart
             // 
@@ -220,6 +223,7 @@
             this.cbAMPMstart.Size = new System.Drawing.Size(73, 28);
             this.cbAMPMstart.TabIndex = 85;
             this.cbAMPMstart.Text = "AM/PM";
+            this.cbAMPMstart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbOpDay_KeyPress);
             // 
             // label16
             // 
@@ -497,6 +501,7 @@
             this.cbLocation.Size = new System.Drawing.Size(229, 28);
             this.cbLocation.TabIndex = 76;
             this.cbLocation.Text = " ";
+            this.cbLocation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbOpDay_KeyPress);
             // 
             // OK1
             // 

@@ -288,6 +288,11 @@ namespace WindowsFormsApplication1
            
         }
 
+        private void cbMonth_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
         private void refreshEmps()
         {
             cbVaccEmp.Items.Clear();

@@ -111,6 +111,7 @@
             this.cbDay.Size = new System.Drawing.Size(52, 30);
             this.cbDay.TabIndex = 84;
             this.cbDay.Text = "Day";
+            this.cbDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMonth_KeyPress);
             // 
             // cbMonth
             // 
@@ -137,6 +138,7 @@
             this.cbMonth.TabIndex = 83;
             this.cbMonth.Text = "Month";
             this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
+            this.cbMonth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMonth_KeyPress);
             // 
             // tbYear
             // 
@@ -211,6 +213,7 @@
             this.cbDa.Size = new System.Drawing.Size(52, 30);
             this.cbDa.TabIndex = 98;
             this.cbDa.Text = "Day";
+            this.cbDa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMonth_KeyPress);
             // 
             // label2
             // 
@@ -248,6 +251,7 @@
             this.cbMo.TabIndex = 95;
             this.cbMo.Text = "Month";
             this.cbMo.SelectedIndexChanged += new System.EventHandler(this.cbMo_SelectedIndexChanged);
+            this.cbMo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMonth_KeyPress);
             // 
             // tbYr
             // 

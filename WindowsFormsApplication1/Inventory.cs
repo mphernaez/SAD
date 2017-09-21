@@ -1002,5 +1002,20 @@ namespace WindowsFormsApplication1
         {
             if (y2.Text.Length == 4) m2.Enabled = true;
         }
+
+        private void msBy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void m1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void empret_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

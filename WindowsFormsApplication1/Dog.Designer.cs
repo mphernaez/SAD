@@ -498,6 +498,7 @@
             this.subloc.TabIndex = 30;
             this.subloc.TabStop = false;
             this.subloc.Text = "Sublocation";
+            this.subloc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGender_KeyPress);
             // 
             // tbDesc
             // 
@@ -516,7 +517,6 @@
             this.btnClearDog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
             this.btnClearDog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClearDog.FlatAppearance.BorderSize = 0;
-            this.btnClearDog.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(150)))), ((int)(((byte)(128)))));
             this.btnClearDog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearDog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearDog.ForeColor = System.Drawing.Color.White;
@@ -661,6 +661,7 @@
             this.tbBreed.TabIndex = 29;
             this.tbBreed.TabStop = false;
             this.tbBreed.Text = "Breed";
+            this.tbBreed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGender_KeyPress);
             // 
             // cbGender
             // 
@@ -676,6 +677,7 @@
             this.cbGender.TabIndex = 3;
             this.cbGender.Text = "Gender";
             this.cbGender.SelectedIndexChanged += new System.EventHandler(this.cbGender_SelectedIndexChanged);
+            this.cbGender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGender_KeyPress);
             // 
             // cbSize
             // 
@@ -694,6 +696,7 @@
             this.cbSize.TabStop = false;
             this.cbSize.Text = "Size";
             this.cbSize.SelectedIndexChanged += new System.EventHandler(this.cbSize_SelectedIndexChanged);
+            this.cbSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGender_KeyPress);
             // 
             // tbColor
             // 
@@ -719,6 +722,7 @@
             this.cbOperation.TabIndex = 1;
             this.cbOperation.Text = "Operation Date and Location";
             this.cbOperation.SelectedIndexChanged += new System.EventHandler(this.cbOperation_SelectedIndexChanged);
+            this.cbOperation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbOperation_KeyPress);
             // 
             // label2
             // 
@@ -796,6 +800,7 @@
             this.cbGenderSearch.Size = new System.Drawing.Size(89, 30);
             this.cbGenderSearch.TabIndex = 3;
             this.cbGenderSearch.SelectedIndexChanged += new System.EventHandler(this.cbGenderSearch_SelectedIndexChanged);
+            this.cbGenderSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGenderSearch_KeyPress);
             // 
             // label6
             // 
@@ -975,6 +980,7 @@
             this.d2.Size = new System.Drawing.Size(65, 28);
             this.d2.TabIndex = 7;
             this.d2.Text = "Day";
+            this.d2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.d2_KeyPress);
             // 
             // d1
             // 
@@ -986,6 +992,7 @@
             this.d1.Size = new System.Drawing.Size(65, 28);
             this.d1.TabIndex = 6;
             this.d1.Text = "Day";
+            this.d1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.d1_KeyPress);
             // 
             // y1
             // 
@@ -1045,6 +1052,7 @@
             this.m2.TabIndex = 1;
             this.m2.Text = "Month";
             this.m2.SelectedIndexChanged += new System.EventHandler(this.m2_SelectedIndexChanged);
+            this.m2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m2_KeyPress);
             // 
             // m1
             // 
@@ -1069,6 +1077,7 @@
             this.m1.TabIndex = 1;
             this.m1.Text = "Month";
             this.m1.SelectedIndexChanged += new System.EventHandler(this.m1_SelectedIndexChanged);
+            this.m1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
             // 
             // filt
             // 
@@ -1086,6 +1095,7 @@
             this.filt.TabIndex = 1;
             this.filt.Text = "Status";
             this.filt.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.filt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filt_KeyPress);
             // 
             // claimreportdgv
             // 
@@ -1396,6 +1406,7 @@
             this.cbEmps.TabIndex = 75;
             this.cbEmps.Text = "Euthanized by";
             this.cbEmps.SelectedIndexChanged += new System.EventHandler(this.cbEmps_SelectedIndexChanged);
+            this.cbEmps.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEmps_KeyPress);
             // 
             // btnDone
             // 
@@ -1757,11 +1768,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.repclaimpan);
-            this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
+            this.Controls.Add(this.repclaimpan);
+            this.Controls.Add(this.searchDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";

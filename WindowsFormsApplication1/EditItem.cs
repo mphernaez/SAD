@@ -99,5 +99,10 @@ namespace WindowsFormsApplication1
             inv.refreshEdit();
             inv.eiOpen = false;
         }
+
+        private void msBy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

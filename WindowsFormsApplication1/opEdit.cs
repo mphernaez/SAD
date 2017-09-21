@@ -515,6 +515,12 @@ namespace WindowsFormsApplication1
         }
 
         int ti1, ti2;
+
+        private void tbOpDay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
         String n1, n2;
         private void cTeam_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
