@@ -1793,7 +1793,7 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm;
                 if (cbFilt.Checked && cbEmpFilt.Text != "Employee")
                 {
-                    comm = new MySqlCommand("SELECT SUBSTRING(date,1, 11) AS Date, timeEnd AS 'Time Recorded', type AS Type FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '"+datestart+ "' AND '" + dateend + "' AND employeeID = " + repEmpArr[cbEmpFilt.SelectedIndex] + " ORDER BY date, time, type", conn);
+                    comm = new MySqlCommand("SELECT SUBSTRING(date,1, 11) AS Date, timeEnd AS 'Time Recorded', type AS Type FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '"+datestart+ "' AND '" + dateend + "' AND employeeID = " + repEmpArr[cbEmpFilt.SelectedIndex] + " ORDER BY date, timeEnd, type", conn);
                     MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', middlename)  AS name, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE profile.personID = " + repEmpArr[cbEmpFilt.SelectedIndex], conn);
                     MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
                     DataTable dta = new DataTable();
@@ -1823,7 +1823,7 @@ namespace WindowsFormsApplication1
                 
                 for (int i = 0; i < actdates.Length; i++)
                 {
-                    MySqlCommand commmm = new MySqlCommand("SELECT COUNT(*) as c FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE SUBSTRING(date, 1, 10) = '"+actdates[i]+"'", conn);
+                    MySqlCommand commmm = new MySqlCommand("SELECT COUNT(*) as c FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE SUBSTRING(date, 1, 11) = '"+actdates[i]+"'", conn);
                     MySqlDataAdapter adpttt = new MySqlDataAdapter(commmm);
                     DataTable dttt = new DataTable();
                     adpttt.Fill(dttt);
@@ -2543,7 +2543,7 @@ namespace WindowsFormsApplication1
                 dlg.ShowDialog();
             }
         }
-        int i = 0;
+        int it = 0;
         Boolean noheader = false;
         private void printDocument3_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
@@ -2562,36 +2562,36 @@ namespace WindowsFormsApplication1
                 x = 40;
             }
             int rows = 0;
-            while(i < dgvOpSumm.Rows.Count)
+            while(it < dgvOpSumm.Rows.Count)
             {
-                e.Graphics.DrawString("Date:  " + dgvOpSumm.Rows[i].Cells["date1"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
-                e.Graphics.DrawString("Location:  " + dgvOpSumm.Rows[i].Cells["loc"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, x));
+                e.Graphics.DrawString("Date:  " + dgvOpSumm.Rows[it].Cells["date1"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
+                e.Graphics.DrawString("Location:  " + dgvOpSumm.Rows[it].Cells["loc"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, x));
                 e.Graphics.DrawString("Employees involved: ", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(545, x));
                 x = x + 25;
-                e.Graphics.DrawString("Time:  " + dgvOpSumm.Rows[i].Cells["time"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
+                e.Graphics.DrawString("Time:  " + dgvOpSumm.Rows[it].Cells["time"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
                 e.Graphics.DrawString("Sublocations: ", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, x));
-                e.Graphics.DrawString(dgvOpSumm.Rows[i].Cells["team"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(565, x));
+                e.Graphics.DrawString(dgvOpSumm.Rows[it].Cells["team"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(565, x));
                 x = x + 25;
-                e.Graphics.DrawString("Number of heads caught:  "+dgvOpSumm.Rows[i].Cells["imp"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
-                e.Graphics.DrawString(subloc[i], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(320, x));
+                e.Graphics.DrawString("Number of heads caught:  "+dgvOpSumm.Rows[it].Cells["imp"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
+                e.Graphics.DrawString(subloc[it], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(320, x));
                 rows++;
-                int numemp = dgvOpSumm.Rows[i].Cells["team"].Value.ToString().Split('\n').Length;
-                if (countsub[i] > numemp - 1)
+                int numemp = dgvOpSumm.Rows[it].Cells["team"].Value.ToString().Split('\n').Length;
+                if (countsub[it] > numemp - 1)
                 {
-                    if (countsub[i] > 2) x = x + (25 * (countsub[i]));
+                    if (countsub[it] > 2) x = x + (25 * (countsub[it]));
                     else x = x + 50;
                 }
-                else if (countsub[i] < numemp - 1)
+                else if (countsub[it] < numemp - 1)
                 {
                     if (numemp > 4) x = x + (25 * (numemp-2));
                     else x = x + 50;
                 }
                 else
                 {
-                    if (countsub[i] >= 2) x = x + (25 * (countsub[i]));
+                    if (countsub[it] >= 2) x = x + (25 * (countsub[it]));
                 }
                 
-                i++;
+                it++;
                 if (x >= 1100)
                 {
                     rows = 0;
@@ -2788,6 +2788,7 @@ namespace WindowsFormsApplication1
                     else
                     {
                         e.HasMorePages = false;
+                        act = 0;
                     }
                     x = x + 25;
                     act++;
