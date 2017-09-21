@@ -1875,7 +1875,7 @@ namespace WindowsFormsApplication1
                                             + "CASE type WHEN 0 THEN 'Out' WHEN 1 THEN 'In' END AS Type "
                                             + "FROM attendance INNER JOIN profile on profile.personID = attendance.employeeID "
                                             + "INNER JOIN employee ON profile.personID = employee.employeeID "
-                                            + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY date, lastname, type", conn);
+                                            + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY date, lastname, firstname, type", conn);
                 }
 
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -2550,6 +2550,7 @@ namespace WindowsFormsApplication1
             
             int x;
             if (noheader == false) {
+                it = 0;
                 e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(280, 50));
                 e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(335, 70));
                 e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
@@ -2671,18 +2672,26 @@ namespace WindowsFormsApplication1
             }
         }
         int countt = 0;
+        Boolean noheader3 = false;
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
-            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
-            e.Graphics.DrawString("ATTENDANCE REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 130));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
-            
+            int x;
+            if (noheader3 == false) {
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
+                e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+                e.Graphics.DrawString("ATTENDANCE REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 130));
+                e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+                x = 240;
+            }
+            else
+            {
+                x = 40;
+            }
             if (cbFilt.Checked && employeefilterattendance!="")
             {
                 e.Graphics.DrawString(employeefilterattendance + " - " + employeeposatt, new Font("Arial", 16, FontStyle.Bold), Brushes.Black, new Point(100, 220));
-                int x = 280;
+                x = 280;
                 for (int i = 0; i < dtatt.Rows.Count; i = i + 2)
                 {
                     string date = dtatt.Rows[i]["Date"].ToString();
@@ -2694,135 +2703,71 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                int x = 240;
-                for (int i = 0; i < attdates.Length; i++)
-                {
-                    string date = attdates[i];
-                    e.Graphics.DrawString(date, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(80, x));
-                    x = x + 40;
-                    for (int j = 0; j < countdates[i]; j++) {
-                        string time = dtatt.Rows[countt]["Time"].ToString();
-                        string emp = dtatt.Rows[countt]["Employee Name"].ToString();
-                        string pos = dtatt.Rows[countt]["Position"].ToString();
-                        string contact = dtatt.Rows[countt]["ContactNumber"].ToString();
-                        string type = dtatt.Rows[countt]["Type"].ToString();
-                        if (countt > 0) {
-                            if (emp != dtatt.Rows[count - 1]["Employee Name"].ToString()) {
-                                e.Graphics.DrawString(emp + " - " + pos + "   ", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(120, x));
-                                e.Graphics.DrawString(type + ": " + time, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(500, x));
+                for (int j = 0; countt < dtatt.Rows.Count; j++) {
+                    if (countt != 0 && dtatt.Rows.Count - countt != 0 && dtatt.Rows[countt]["Date"].ToString() != dtatt.Rows[countt-1]["Date"].ToString())
+                    {
+                        x = x + 40;
+                        e.Graphics.DrawString(dtatt.Rows[countt]["Date"].ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(100, x));
+                        x = x + 35;
+                    }
+                    if (countt == 0)
+                    {
+                        x = x + 40;
+                        e.Graphics.DrawString(dtatt.Rows[countt]["Date"].ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(100, x));
+                        x = x + 35;
+                    }
+                    string time = dtatt.Rows[countt]["Time"].ToString();
+                    string emp = dtatt.Rows[countt]["Employee Name"].ToString();
+                    string pos = dtatt.Rows[countt]["Position"].ToString();
+                    string contact = dtatt.Rows[countt]["ContactNumber"].ToString();
+                    string type = dtatt.Rows[countt]["Type"].ToString();
+                    if (countt > 0) {
+                        if (emp != dtatt.Rows[countt - 1]["Employee Name"].ToString()) {
+                             e.Graphics.DrawString(emp + " - " + pos + "   ", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(120, x));
+                             e.Graphics.DrawString(type + ": " + time, new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, x));
+                            countt++;
+                            x = x + 15;
+                            
+                        }
+                        else //Out
+                        {
+                            e.Graphics.DrawString(type + ": " + time, new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(600, x-15));
+                            countt++;
+                            x = x + 15;
+                            if (x >= 950)
+                            {
+                                e.HasMorePages = true;
+                                noheader3 = true;
+                                return;
                             }
                             else
                             {
-                                e.Graphics.DrawString(type + ": " + time, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(600, x-15));
+                                e.HasMorePages = false;
+
                             }
                         }
-                        else
-                        {
-                            e.Graphics.DrawString(emp + " - " + pos + "   ", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(120, x));
-                            e.Graphics.DrawString(type + ": " + time, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(500, x));
-                        }
-                        count++;
+                    }
+                    else
+                    {
+                            e.Graphics.DrawString(emp + " - " + pos + "   ", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(120, x));
+                            e.Graphics.DrawString(type + ": " + time, new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, x));
+                            countt++;
                         x = x + 15;
                     }
-                    x = x + 20;
+                    
+                    
                 }
+                
             }
 
 
         }
         int act = 0;
+        int f = 0;
         Boolean noheader2 = false;
         private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            int x;
-            if (noheader2 == false)
-            {
-                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(280, 50));
-                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(335, 70));
-                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
-                e.Graphics.DrawString("ACTIVITIES REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(270, 130));
-                e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(120, 170));
-                
-                if (employeefilteractivity != "" && cbFilt.Checked)
-                {
-                    e.Graphics.DrawString(employeefilteractivity + " - " + employeeposact, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(100, 220));
-                    e.Graphics.DrawString("Date", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(120, 270));
-                    e.Graphics.DrawString("Time Recorded", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(320, 270));
-                    e.Graphics.DrawString("Activity", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(500, 270));
-                    x = 310;
-                }
-                else
-                {
-                    x = 220;
-                }
-            }
-            else
-            {
-                if (employeefilteractivity != "" && cbFilt.Checked)
-                {
-                    e.Graphics.DrawString("Date", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(100, 40));
-                    e.Graphics.DrawString("Time Recorded", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(300, 40));
-                    e.Graphics.DrawString("Activity", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(480, 40));
-                    x = 80;
-                }
-                else
-                {
-                    x = 40;
-                }
-            }
             
-            if (employeefilteractivity != "" && cbFilt.Checked) //if filter by employee
-            {
-                while (act < dtact.Rows.Count)
-                {
-                    e.Graphics.DrawString(dtact.Rows[act]["Date"].ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(120, x));
-                    e.Graphics.DrawString(dtact.Rows[act]["Time Recorded"].ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(320, x));
-                    e.Graphics.DrawString(dtact.Rows[act]["Type"].ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, x));
-                    
-                    if (x >= 1100)
-                    {
-                        e.HasMorePages = true;
-                        noheader2 = true;
-                        return;
-                    }
-                    else
-                    {
-                        e.HasMorePages = false;
-                        act = 0;
-                    }
-                    x = x + 25;
-                    act++;
-                }
-            }
-            else //If no filter (date)
-            {
-                
-                for (int f = 0; f < countdate.Length; f++)
-                {
-                    e.Graphics.DrawString(actdates[f], new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(100, x));
-                    x = x + 40;
-                    for (int j = 0; j < countdate[f] && act < repEmp.Rows.Count; j++)
-                    {
-                        e.Graphics.DrawString(repEmp.Rows[act].Cells["Employee Name"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, x));
-                        e.Graphics.DrawString(repEmp.Rows[act].Cells["Time Recorded"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(360, x));
-                        e.Graphics.DrawString(repEmp.Rows[act].Cells["Type"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(500, x));
-                        if (x >= 1000)
-                        {
-                            e.HasMorePages = true;
-                            noheader2 = true;
-                            return;
-                        }
-                        else
-                        {
-                            e.HasMorePages = false;
-                        }
-                        x = x + 25;
-                        act++;
-                    }
-                    x = x + 40;
-                }
-                    
-            }
         }
 
         private void m1_KeyPress(object sender, KeyPressEventArgs e)
@@ -2879,6 +2824,107 @@ namespace WindowsFormsApplication1
             {
                 conn.Close();
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void printDocument2_PrintPage_1(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            int x;
+            if (noheader2 == false)
+            {
+                act = 0;
+                f = 0;
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(280, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(335, 70));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
+                e.Graphics.DrawString("ACTIVITIES REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(270, 130));
+                e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(120, 170));
+
+                if (employeefilteractivity != "" && cbFilt.Checked)
+                {
+                    e.Graphics.DrawString(employeefilteractivity + " - " + employeeposact, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(100, 220));
+                    e.Graphics.DrawString("Date", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(120, 270));
+                    e.Graphics.DrawString("Time Recorded", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(320, 270));
+                    e.Graphics.DrawString("Activity", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(500, 270));
+                    x = 310;
+                }
+                else
+                {
+                    x = 220;
+                }
+            }
+            else
+            {
+                if (employeefilteractivity != "" && cbFilt.Checked)
+                {
+                    e.Graphics.DrawString("Date", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(100, 40));
+                    e.Graphics.DrawString("Time Recorded", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(300, 40));
+                    e.Graphics.DrawString("Activity", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(480, 40));
+                    x = 80;
+                }
+                else
+                {
+                    x = 40;
+                }
+            }
+
+            if (employeefilteractivity != "" && cbFilt.Checked) //if filter by employee
+            {
+                while (act < dtact.Rows.Count)
+                {
+                    e.Graphics.DrawString(dtact.Rows[act]["Date"].ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(120, x));
+                    e.Graphics.DrawString(dtact.Rows[act]["Time Recorded"].ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(320, x));
+                    e.Graphics.DrawString(dtact.Rows[act]["Type"].ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, x));
+
+                    if (x >= 1100)
+                    {
+                        e.HasMorePages = true;
+                        noheader2 = true;
+                        return;
+                    }
+                    else
+                    {
+                        e.HasMorePages = false;
+                        act = 0;
+                    }
+                    x = x + 25;
+                    act++;
+                }
+            }
+            else //If no filter (date)
+            {
+
+                for (int j = 0; act < repEmp.Rows.Count; j++)
+                {
+                    if (repEmp.Rows.Count - j != 0 && act != 0 && repEmp.Rows[act].Cells["Date"].Value.ToString() != repEmp.Rows[act - 1].Cells["Date"].Value.ToString())
+                    {
+                        x = x + 30;
+                        e.Graphics.DrawString(repEmp.Rows[act].Cells["Date"].Value.ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(120, x));
+                    }
+                    if (act == 0)
+                    {
+                        x = x + 30;
+                        e.Graphics.DrawString(repEmp.Rows[act].Cells["Date"].Value.ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(120, x));
+                    }
+                    e.Graphics.DrawString(repEmp.Rows[act].Cells["Employee Name"].Value.ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(250, x));
+                    e.Graphics.DrawString(repEmp.Rows[act].Cells["Time Recorded"].Value.ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(450, x));
+                    e.Graphics.DrawString(repEmp.Rows[act].Cells["Type"].Value.ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(520, x));
+                    if (x >= 1000)
+                    {
+                        e.HasMorePages = true;
+                        noheader2 = true;
+                        return;
+                    }
+                    else
+                    {
+                        e.HasMorePages = false;
+                    }
+                    x = x + 25;
+                    act++;
+                }
+
+
+
             }
         }
     }

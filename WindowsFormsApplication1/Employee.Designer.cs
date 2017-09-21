@@ -97,13 +97,13 @@
             this.m1 = new System.Windows.Forms.ComboBox();
             this.choice = new System.Windows.Forms.ComboBox();
             this.button28 = new System.Windows.Forms.Button();
+            this.repEmp = new System.Windows.Forms.DataGridView();
             this.dgvOpSumm = new System.Windows.Forms.DataGridView();
             this.loc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.team = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.repEmp = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.impounddogpoundDataSet1 = new WindowsFormsApplication1.impounddogpoundDataSet();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -225,8 +225,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
             this.panel2.SuspendLayout();
             this.pnlEmpFilt.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repEmp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).BeginInit();
             this.panel3.SuspendLayout();
             this.pe.SuspendLayout();
@@ -651,7 +651,6 @@
             this.cbbdaymonth.Size = new System.Drawing.Size(147, 28);
             this.cbbdaymonth.TabIndex = 35;
             this.cbbdaymonth.Text = "Month";
-            this.cbbdaymonth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbbdaymonth_KeyPress);
             // 
             // cbposition
             // 
@@ -668,7 +667,6 @@
             this.cbposition.TabIndex = 40;
             this.cbposition.Text = "Position";
             this.cbposition.SelectedIndexChanged += new System.EventHandler(this.cbposition_SelectedIndexChanged);
-            this.cbposition.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbbdaymonth_KeyPress);
             // 
             // tbfname
             // 
@@ -756,7 +754,6 @@
             this.cbgender.TabIndex = 34;
             this.cbgender.Text = "Gender";
             this.cbgender.SelectedIndexChanged += new System.EventHandler(this.cbgender_SelectedIndexChanged);
-            this.cbgender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbbdaymonth_KeyPress);
             // 
             // pnlArchive
             // 
@@ -1108,7 +1105,6 @@
             this.cbEmpFilt.Size = new System.Drawing.Size(333, 28);
             this.cbEmpFilt.TabIndex = 17;
             this.cbEmpFilt.Text = "Employee";
-            this.cbEmpFilt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
             // 
             // y2
             // 
@@ -1130,7 +1126,6 @@
             this.d2.Size = new System.Drawing.Size(65, 28);
             this.d2.TabIndex = 14;
             this.d2.Text = "Day";
-            this.d2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
             // 
             // d1
             // 
@@ -1142,7 +1137,6 @@
             this.d1.Size = new System.Drawing.Size(65, 28);
             this.d1.TabIndex = 13;
             this.d1.Text = "Day";
-            this.d1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
             // 
             // y1
             // 
@@ -1187,7 +1181,6 @@
             this.m2.TabIndex = 9;
             this.m2.Text = "Month";
             this.m2.SelectedIndexChanged += new System.EventHandler(this.m2_SelectedIndexChanged);
-            this.m2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
             // 
             // m1
             // 
@@ -1212,7 +1205,6 @@
             this.m1.TabIndex = 10;
             this.m1.Text = "Month";
             this.m1.SelectedIndexChanged += new System.EventHandler(this.m1_SelectedIndexChanged);
-            this.m1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
             // 
             // choice
             // 
@@ -1228,7 +1220,6 @@
             this.choice.TabIndex = 5;
             this.choice.Text = "Type";
             this.choice.SelectedIndexChanged += new System.EventHandler(this.choice_SelectedIndexChanged);
-            this.choice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
             // 
             // button28
             // 
@@ -1243,6 +1234,20 @@
             this.button28.Text = "Print Report";
             this.button28.UseVisualStyleBackColor = false;
             this.button28.Click += new System.EventHandler(this.button28_Click_1);
+            // 
+            // repEmp
+            // 
+            this.repEmp.AllowUserToAddRows = false;
+            this.repEmp.AllowUserToDeleteRows = false;
+            this.repEmp.BackgroundColor = System.Drawing.Color.White;
+            this.repEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.repEmp.Location = new System.Drawing.Point(35, 155);
+            this.repEmp.Name = "repEmp";
+            this.repEmp.ReadOnly = true;
+            this.repEmp.RowHeadersVisible = false;
+            this.repEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.repEmp.Size = new System.Drawing.Size(942, 365);
+            this.repEmp.TabIndex = 0;
             // 
             // dgvOpSumm
             // 
@@ -1294,20 +1299,6 @@
             this.imp.HeaderText = "Heads Caught";
             this.imp.Name = "imp";
             this.imp.ReadOnly = true;
-            // 
-            // repEmp
-            // 
-            this.repEmp.AllowUserToAddRows = false;
-            this.repEmp.AllowUserToDeleteRows = false;
-            this.repEmp.BackgroundColor = System.Drawing.Color.White;
-            this.repEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.repEmp.Location = new System.Drawing.Point(35, 155);
-            this.repEmp.Name = "repEmp";
-            this.repEmp.ReadOnly = true;
-            this.repEmp.RowHeadersVisible = false;
-            this.repEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.repEmp.Size = new System.Drawing.Size(942, 365);
-            this.repEmp.TabIndex = 0;
             // 
             // label1
             // 
@@ -1728,7 +1719,6 @@
             this.comboBox2.Size = new System.Drawing.Size(93, 28);
             this.comboBox2.TabIndex = 75;
             this.comboBox2.Text = "Month";
-            this.comboBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox2_KeyPress);
             // 
             // newOperation
             // 
@@ -1776,7 +1766,6 @@
             this.tbOpDay.Size = new System.Drawing.Size(52, 28);
             this.tbOpDay.TabIndex = 75;
             this.tbOpDay.Text = "Day";
-            this.tbOpDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbOpMonth_KeyPress);
             // 
             // Next
             // 
@@ -1828,7 +1817,6 @@
             this.cbOpMonth.TabIndex = 72;
             this.cbOpMonth.Text = "Month";
             this.cbOpMonth.SelectedIndexChanged += new System.EventHandler(this.cbOpMonth_SelectedIndexChanged);
-            this.cbOpMonth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbOpMonth_KeyPress);
             // 
             // tbOpYear
             // 
@@ -1855,7 +1843,6 @@
             this.cbAMPMend.Size = new System.Drawing.Size(73, 28);
             this.cbAMPMend.TabIndex = 70;
             this.cbAMPMend.Text = "AM/PM";
-            this.cbAMPMend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbOpMonth_KeyPress);
             // 
             // cbAMPMstart
             // 
@@ -1869,7 +1856,6 @@
             this.cbAMPMstart.Size = new System.Drawing.Size(73, 28);
             this.cbAMPMstart.TabIndex = 69;
             this.cbAMPMstart.Text = "AM/PM";
-            this.cbAMPMstart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbOpMonth_KeyPress);
             // 
             // label16
             // 
@@ -2158,7 +2144,6 @@
             this.cbLocation.Size = new System.Drawing.Size(229, 28);
             this.cbLocation.TabIndex = 58;
             this.cbLocation.Text = "Location";
-            this.cbLocation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbOpMonth_KeyPress);
             // 
             // pteam
             // 
@@ -2488,7 +2473,6 @@
             this.cbmatact.TabIndex = 83;
             this.cbmatact.Text = "Materials (If Applicable)";
             this.cbmatact.SelectedIndexChanged += new System.EventHandler(this.cbmatact_SelectedIndexChanged);
-            this.cbmatact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbmatact_KeyPress);
             // 
             // cbact
             // 
@@ -2505,7 +2489,6 @@
             this.cbact.Size = new System.Drawing.Size(307, 28);
             this.cbact.TabIndex = 82;
             this.cbact.Text = "Activity";
-            this.cbact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbmatact_KeyPress);
             // 
             // cbempact
             // 
@@ -2518,7 +2501,6 @@
             this.cbempact.Size = new System.Drawing.Size(307, 28);
             this.cbempact.TabIndex = 81;
             this.cbempact.Text = "To be done by";
-            this.cbempact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbmatact_KeyPress);
             // 
             // Edit
             // 
@@ -2588,7 +2570,6 @@
             this.comboBox5.Size = new System.Drawing.Size(93, 28);
             this.comboBox5.TabIndex = 75;
             this.comboBox5.Text = "Month";
-            this.comboBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox5_KeyPress);
             // 
             // tbedityear
             // 
@@ -2727,7 +2708,7 @@
             // 
             // printDocument2
             // 
-            this.printDocument2.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument2_PrintPage);
+            this.printDocument2.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument2_PrintPage_1);
             // 
             // printDocument3
             // 
@@ -2780,8 +2761,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.pnlEmpFilt.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repEmp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOpSumm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.impounddogpoundDataSet1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
