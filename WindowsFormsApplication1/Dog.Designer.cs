@@ -1016,7 +1016,7 @@
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.Location = new System.Drawing.Point(878, 65);
+            this.button16.Location = new System.Drawing.Point(877, 65);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(120, 33);
             this.button16.TabIndex = 2;
@@ -1082,7 +1082,8 @@
             "Claimed",
             "Adopted",
             "Euthanized",
-            "Monthly Summary Report"});
+            "Monthly Summary Report",
+            "Unclaimed"});
             this.filt.Location = new System.Drawing.Point(62, 70);
             this.filt.Name = "filt";
             this.filt.Size = new System.Drawing.Size(212, 28);

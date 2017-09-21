@@ -31,6 +31,7 @@ namespace WindowsFormsApplication1
         Boolean btnhold = false;
         int i = -40;
         int[] opid; //id for every combobox item
+       
         public empty back { get; set; }
 
         public MySqlConnection conn;
@@ -620,6 +621,7 @@ namespace WindowsFormsApplication1
                     System.Data.DataTable dt = new System.Data.DataTable(); ;
 
                     conn.Open();
+                    
                     if (filt.SelectedIndex == 0) //Claimed
                     {
                         button16.Enabled = true;
@@ -760,7 +762,22 @@ namespace WindowsFormsApplication1
                         client.Text = clients.ToString();
                         dgvVacc.DataSource = dta;
                     }
-
+                    else if (filt.SelectedIndex == 4) //Unclaimed
+                    {
+                        button16.Enabled = false;
+                        button16.Enabled = true;
+                        claimreportdgv.Visible = true;
+                        panelSummary.Visible = false;
+                        comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, size AS Size, gender AS Gender, date AS Date, "
+                                                 + "CONCAT(timeStart, '-', timeEnd) AS Time, sublocation, otherDesc "
+                                                 + "FROM dogprofile "
+                                                 + "INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID "
+                                                 + "WHERE dogprofile.status = 'unclaimed'", conn);
+                        adp = new MySqlDataAdapter(comm);
+                        DataTable dta = new DataTable();
+                        adp.Fill(dta);
+                        claimreportdgv.DataSource = dta;
+                    }
 
                     claimreportdgv.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, GraphicsUnit.Pixel);
                     conn.Close();
@@ -1156,15 +1173,19 @@ namespace WindowsFormsApplication1
                 adp = new MySqlDataAdapter(comm);
                 dtoperation = new System.Data.DataTable();
                 adp.Fill(dtoperation);
-
-                comm = new MySqlCommand("SELECT DISTINCT sublocation FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE operationID = " + opid[cbOperation.SelectedIndex], conn);
-                adp = new MySqlDataAdapter(comm);
-                dt = new System.Data.DataTable();
-                sublocations = new string[dt.Rows.Count];
-                for (int i = 0; i < dt.Rows.Count; i++)
+               
+                MySqlCommand commm = new MySqlCommand("SELECT DISTINCT sublocation "
+                                        + "FROM dogprofile "
+                                        + "INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID "
+                                        + "WHERE dogprofile.operationID = "+opid[cbOperation.SelectedIndex]+ " "
+                                        + "ORDER BY sublocation", conn);
+                MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                DataTable dtt = new System.Data.DataTable();
+                adpt.Fill(dtt);
+                sublocations = new string[dtt.Rows.Count];
+                for (int i = 0; i < dtt.Rows.Count; i++)
                 {
-                    sublocations[i] = dt.Rows[i]["sublocation"].ToString();
-                    MessageBox.Show(sublocations[i]);
+                    sublocations[i] = dtt.Rows[i]["sublocation"].ToString();
                 }
 
                 conn.Close();
@@ -1299,73 +1320,83 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 70));
             e.Graphics.DrawString("DAVAO CITY DOG POUND", new System.Drawing.Font(f, 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(400, 100));
 
-            e.Graphics.DrawString("Location: BRGY. " + location, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(240, 170));
-            e.Graphics.DrawString("Date:  " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(240, 200));
-            e.Graphics.DrawString("Time:  " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(240, 230));
-            e.Graphics.DrawString("Employees Invovled:  ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(525, 170));
-            int l = 170;
-            for (int i = 0; i < employees.Length; i++)
+            e.Graphics.DrawString("Location: BRGY. " + location, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(420, 170));
+            e.Graphics.DrawString("Sublocations: ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(420, 200));
+            int z = 230;
+            int v = 0;
+            while (v < sublocations.Length)
             {
-                e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(750, l));
-                l = l + 25;
+                e.Graphics.DrawString(sublocations[v], new System.Drawing.Font(f, 14, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, z));
+                v++;
+                z = z + 25;
             }
-
-
-            string footer = string.Empty;
-            int columnCount = dtoperation.Columns.Count;
-            int maxRows = dtoperation.Rows.Count;
-            int prt;
-            using (Graphics g = e.Graphics)
-            {
-
-                Brush brush = new SolidBrush(Color.Black);
-                Pen pen = new Pen(brush);
-                Font font = new Font("Arial", 12);
-                SizeF size;
-
-                int x = 0, y = 300, width = 180;
-                float xPadding;
-
-                // Writes out all column names in designated locations, aligned as a table
-                foreach (DataColumn column in dtoperation.Columns)
+                e.Graphics.DrawString("Date:  " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 170));
+                e.Graphics.DrawString("Time:  " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 200));
+                e.Graphics.DrawString("Employees Invovled:  ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(650, 170));
+                int l = 200;
+                for (int i = 0; i < employees.Length; i++)
                 {
-                    size = g.MeasureString(column.ColumnName, font);
-                    xPadding = (width - size.Width) / 2;
-                    g.DrawString(column.ColumnName, new System.Drawing.Font(f, 14, FontStyle.Bold), brush, x + xPadding, y + 10);
-                    x += width;
+                    e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 14, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(675, l));
+                    l = l + 25;
                 }
 
-                x = 0;
-                y += 40;
-                int rowcount = 0;
 
-                // Process each row and place each item under correct column.
-                foreach (DataRow row in dtoperation.Rows)
+                string footer = string.Empty;
+                int columnCount = dtoperation.Columns.Count;
+                int maxRows = dtoperation.Rows.Count;
+                int prt;
+                using (Graphics g = e.Graphics)
                 {
 
-                    rowcount++;
-                    for (int i = 0; i < columnCount; i++)
-                    {
-                        size = g.MeasureString(row[i].ToString(), font);
-                        xPadding = (width - size.Width) / 2;
+                    Brush brush = new SolidBrush(Color.Black);
+                    Pen pen = new Pen(brush);
+                    Font font = new Font("Arial", 12);
+                    SizeF size;
 
-                        g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 10);
+                    int x = 0, y = z + 30, width = 180;
+                    float xPadding;
+
+                    // Writes out all column names in designated locations, aligned as a table
+                    foreach (DataColumn column in dtoperation.Columns)
+                    {
+                        size = g.MeasureString(column.ColumnName, font);
+                        xPadding = (width - size.Width) / 2;
+                        g.DrawString(column.ColumnName, new System.Drawing.Font(f, 14, FontStyle.Bold), brush, x + xPadding, y + 10);
                         x += width;
+                    }
+
+                    x = 0;
+                    y += 40;
+                    int rowcount = 0;
+
+                    // Process each row and place each item under correct column.
+                    foreach (DataRow row in dtoperation.Rows)
+                    {
+
+                        rowcount++;
+                        for (int i = 0; i < columnCount; i++)
+                        {
+                            size = g.MeasureString(row[i].ToString(), font);
+                            xPadding = (width - size.Width) / 2;
+
+                            g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 10);
+                            x += width;
+
+                        }
+
+
+                        x = 0;
+                        y += 25;
+
 
                     }
 
-
-                    x = 0;
-                    y += 25;
-
-
+                    prt = y;
                 }
-
-                prt = y;
+                if (prt > 700) e.HasMorePages = true;
+                e.HasMorePages = false;
             }
-            if (prt > 700) e.HasMorePages = true;
-            e.HasMorePages = false;
-        }
+        
 
         private void addDog_Paint(object sender, PaintEventArgs e)
         {
