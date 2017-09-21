@@ -28,6 +28,8 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            tbYear.Text = DateTime.Now.ToString("yyyy");
+            tbYr.Text = DateTime.Now.ToString("yyyy");
             refreshEnd();
             dgvEnd.ClearSelection();
 

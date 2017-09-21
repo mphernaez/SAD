@@ -962,7 +962,6 @@
             this.y2.Name = "y2";
             this.y2.Size = new System.Drawing.Size(55, 26);
             this.y2.TabIndex = 8;
-            this.y2.Text = "Year";
             this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged);
             this.y2.Enter += new System.EventHandler(this.y2_Enter);
             // 
@@ -995,7 +994,6 @@
             this.y1.Name = "y1";
             this.y1.Size = new System.Drawing.Size(55, 26);
             this.y1.TabIndex = 4;
-            this.y1.Text = "Year";
             this.y1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.y1.Enter += new System.EventHandler(this.y1_Enter);
             // 
@@ -1026,7 +1024,6 @@
             // 
             // m2
             // 
-            this.m2.Enabled = false;
             this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m2.FormattingEnabled = true;
             this.m2.Items.AddRange(new object[] {
@@ -1051,7 +1048,6 @@
             // 
             // m1
             // 
-            this.m1.Enabled = false;
             this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m1.FormattingEnabled = true;
             this.m1.Items.AddRange(new object[] {
@@ -1761,11 +1757,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.repclaimpan);
+            this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
-            this.Controls.Add(this.repclaimpan);
-            this.Controls.Add(this.searchDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";

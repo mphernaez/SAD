@@ -478,6 +478,8 @@ namespace WindowsFormsApplication1
 
         private void button14_Click_1(object sender, EventArgs e)
         {
+            y1.Text = DateTime.Now.ToString("yyyy");
+            y2.Text = DateTime.Now.ToString("yyyy");
             pictureBox1.Visible = true;
             panelTrans.Visible = true;
             a.Visible = false;

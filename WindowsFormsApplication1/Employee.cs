@@ -154,6 +154,8 @@ namespace WindowsFormsApplication1
 
         private void button8_Click(object sender, EventArgs e)
         {
+            y1.Text = DateTime.Now.ToString("yyyy");
+            y2.Text = DateTime.Now.ToString("yyyy");
             DogCatchingOperation.Visible = false;
             addEmployee.Visible = false;
             attendance.Visible = false;
@@ -377,6 +379,8 @@ namespace WindowsFormsApplication1
         Boolean doneclick = false;
         private void button15_Click(object sender, EventArgs e)
         {
+            tbOpYear.Text = DateTime.Now.ToString("yyyy");
+
             button15.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button31.BackColor = Color.FromArgb(2, 170, 145);
@@ -394,6 +398,8 @@ namespace WindowsFormsApplication1
 
         private void button21_Click(object sender, EventArgs e)
         {
+            tbviewyear.Text = DateTime.Now.ToString("yyyy");
+
             button21.BackColor = Color.FromArgb(251, 162, 80);
             button15.BackColor = Color.FromArgb(2, 170, 145);
             button33.BackColor = Color.FromArgb(2, 170, 145);
@@ -1239,7 +1245,7 @@ namespace WindowsFormsApplication1
 
         private void button7_Click_1(object sender, EventArgs e)
         {
-            int year = int.Parse(textBox2.Text);
+            int year = int.Parse(tbviewyear.Text);
             int month = comboBox2.SelectedIndex + 1;
             int day = int.Parse(textBox3.Text);
             date = year + "-" + month + "-" + day;
@@ -2092,6 +2098,7 @@ namespace WindowsFormsApplication1
 
         private void button33_Click(object sender, EventArgs e)
         {
+            tbedityear.Text = DateTime.Now.ToString("yyyy");
             Edit.Visible = true;
             button33.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
@@ -2521,9 +2528,9 @@ namespace WindowsFormsApplication1
 
         private void textBox6_MouseClick(object sender, MouseEventArgs e)
         {
-            if (textBox6.Text == "Year")
+            if (tbedityear.Text == "Year")
             {
-                textBox6.Text = "";
+                tbedityear.Text = "";
             }
         }
 
@@ -2555,9 +2562,9 @@ namespace WindowsFormsApplication1
 
         private void textBox2_MouseClick(object sender, MouseEventArgs e)
         {
-           if(textBox2.Text == "Year")
+           if(tbviewyear.Text == "Year")
             {
-                textBox2.Text = "";
+                tbviewyear.Text = "";
             }
         }
 

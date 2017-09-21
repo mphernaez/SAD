@@ -391,7 +391,8 @@ namespace WindowsFormsApplication1
 
         private void button8_Click_1(object sender, EventArgs e)
         {
-
+            y1.Text = DateTime.Now.ToString("yyyy");
+            y2.Text = DateTime.Now.ToString("yyyy");
 
             searchDog.Visible = false;
             addDog.Visible = false;
@@ -410,17 +411,17 @@ namespace WindowsFormsApplication1
         private void refreshfilters()
         {
             filt.Text = "Status";
-            y1.Text = "Year";
+            y1.Text = DateTime.Now.ToString("yyyy");
             m1.Text = "Month";
             d1.Items.Clear();
             d1.Text = "Day";
-            y2.Text = "Year";
+            y2.Text = DateTime.Now.ToString("yyyy");
             m2.Text = "Month";
             d2.Items.Clear();
             d2.Text = "Day";
-            m1.Enabled = false;
+            m1.Enabled = true;
             d1.Enabled = false;
-            m2.Enabled = false;
+            m2.Enabled = true;
             d2.Enabled = false;
         }
         private void cbOperation_SelectedIndexChanged(object sender, EventArgs e)

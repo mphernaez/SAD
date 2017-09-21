@@ -129,7 +129,7 @@
             this.button27 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbviewyear = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.dgvOperationsView = new System.Windows.Forms.DataGridView();
             this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -191,7 +191,7 @@
             this.button34 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tbedityear = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.editOperation = new System.Windows.Forms.DataGridView();
             this.eTeamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -276,9 +276,9 @@
             this.button6.ForeColor = System.Drawing.Color.White;
             this.button6.Location = new System.Drawing.Point(217, 84);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(112, 32);
+            this.button6.Size = new System.Drawing.Size(161, 32);
             this.button6.TabIndex = 40;
-            this.button6.Text = "View All";
+            this.button6.Text = "Today\'s Attendance";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
@@ -478,9 +478,9 @@
             this.button23.ForeColor = System.Drawing.Color.White;
             this.button23.Location = new System.Drawing.Point(318, 84);
             this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(165, 32);
+            this.button23.Size = new System.Drawing.Size(100, 32);
             this.button23.TabIndex = 39;
-            this.button23.Text = "Today\'s Attendance";
+            this.button23.Text = "View All";
             this.button23.UseVisualStyleBackColor = false;
             this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
@@ -1113,7 +1113,6 @@
             this.y2.Name = "y2";
             this.y2.Size = new System.Drawing.Size(55, 26);
             this.y2.TabIndex = 15;
-            this.y2.Text = "Year";
             this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged);
             this.y2.Enter += new System.EventHandler(this.y2_Enter);
             // 
@@ -1146,7 +1145,6 @@
             this.y1.Name = "y1";
             this.y1.Size = new System.Drawing.Size(55, 26);
             this.y1.TabIndex = 12;
-            this.y1.Text = "Year";
             this.y1.TextChanged += new System.EventHandler(this.y1_TextChanged);
             this.y1.Enter += new System.EventHandler(this.y1_Enter);
             // 
@@ -1162,7 +1160,6 @@
             // 
             // m2
             // 
-            this.m2.Enabled = false;
             this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m2.FormattingEnabled = true;
             this.m2.Items.AddRange(new object[] {
@@ -1187,7 +1184,6 @@
             // 
             // m1
             // 
-            this.m1.Enabled = false;
             this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m1.FormattingEnabled = true;
             this.m1.Items.AddRange(new object[] {
@@ -1554,7 +1550,7 @@
             this.Operations.Controls.Add(this.button27);
             this.Operations.Controls.Add(this.button7);
             this.Operations.Controls.Add(this.comboBox2);
-            this.Operations.Controls.Add(this.textBox2);
+            this.Operations.Controls.Add(this.tbviewyear);
             this.Operations.Controls.Add(this.textBox3);
             this.Operations.Controls.Add(this.dgvOperationsView);
             this.Operations.Location = new System.Drawing.Point(15, 114);
@@ -1619,19 +1615,19 @@
             this.comboBox2.TabIndex = 75;
             this.comboBox2.Text = "Month";
             // 
-            // textBox2
+            // tbviewyear
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.Gray;
-            this.textBox2.Location = new System.Drawing.Point(174, 26);
-            this.textBox2.MaxLength = 4;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(65, 26);
-            this.textBox2.TabIndex = 74;
-            this.textBox2.Text = "Year";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseClick);
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            this.tbviewyear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbviewyear.ForeColor = System.Drawing.Color.Gray;
+            this.tbviewyear.Location = new System.Drawing.Point(174, 26);
+            this.tbviewyear.MaxLength = 4;
+            this.tbviewyear.Name = "tbviewyear";
+            this.tbviewyear.Size = new System.Drawing.Size(65, 26);
+            this.tbviewyear.TabIndex = 74;
+            this.tbviewyear.Text = "Year";
+            this.tbviewyear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbviewyear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseClick);
+            this.tbviewyear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // textBox3
             // 
@@ -1798,7 +1794,6 @@
             // cbOpMonth
             // 
             this.cbOpMonth.DropDownHeight = 100;
-            this.cbOpMonth.Enabled = false;
             this.cbOpMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOpMonth.ForeColor = System.Drawing.Color.Black;
             this.cbOpMonth.FormattingEnabled = true;
@@ -2350,11 +2345,11 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
+            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.panelViewAct);
             this.DogCatchingOperation.Controls.Add(this.pnlActivity);
             this.DogCatchingOperation.Controls.Add(this.Edit);
-            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -2539,7 +2534,7 @@
             this.Edit.Controls.Add(this.button34);
             this.Edit.Controls.Add(this.button35);
             this.Edit.Controls.Add(this.comboBox5);
-            this.Edit.Controls.Add(this.textBox6);
+            this.Edit.Controls.Add(this.tbedityear);
             this.Edit.Controls.Add(this.textBox7);
             this.Edit.Controls.Add(this.editOperation);
             this.Edit.Location = new System.Drawing.Point(16, 114);
@@ -2603,19 +2598,19 @@
             this.comboBox5.TabIndex = 75;
             this.comboBox5.Text = "Month";
             // 
-            // textBox6
+            // tbedityear
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.ForeColor = System.Drawing.Color.Gray;
-            this.textBox6.Location = new System.Drawing.Point(174, 26);
-            this.textBox6.MaxLength = 4;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(65, 26);
-            this.textBox6.TabIndex = 74;
-            this.textBox6.Text = "Year";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox6_MouseClick);
-            this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
+            this.tbedityear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbedityear.ForeColor = System.Drawing.Color.Gray;
+            this.tbedityear.Location = new System.Drawing.Point(174, 26);
+            this.tbedityear.MaxLength = 4;
+            this.tbedityear.Name = "tbedityear";
+            this.tbedityear.Size = new System.Drawing.Size(65, 26);
+            this.tbedityear.TabIndex = 74;
+            this.tbedityear.Text = "Year";
+            this.tbedityear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbedityear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox6_MouseClick);
+            this.tbedityear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // textBox7
             // 
@@ -2725,10 +2720,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
-            this.Controls.Add(this.attendance);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -2875,7 +2870,7 @@
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbviewyear;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.DataGridView dgvOperationsView;
         private System.Windows.Forms.DataGridViewTextBoxColumn teamID;
@@ -2929,7 +2924,7 @@
         private System.Windows.Forms.Button button34;
         private System.Windows.Forms.Button button35;
         private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tbedityear;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.DataGridView editOperation;
         private System.Windows.Forms.Button button33;
