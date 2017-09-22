@@ -254,20 +254,21 @@ namespace WindowsFormsApplication1
                 if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) >= 1)
                 {
                     end.id = itemID;
-                    end.ShowDialog();
                     end.rq = dtt.Rows[0]["requestID"].ToString();
                     MySqlCommand comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + itemID.ToString(), conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
                     end.amtLabel.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString();
+                    conn.Close();
+                    end.ShowDialog();
 
                 }
                 else
                 {
                     MessageBox.Show("No Prior Stock Request Found");
                 }
-                conn.Close();
+                
             }
             catch (Exception ex)
             {

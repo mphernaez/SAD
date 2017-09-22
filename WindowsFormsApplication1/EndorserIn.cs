@@ -80,7 +80,7 @@ namespace WindowsFormsApplication1
                         comm.ExecuteNonQuery();
                         MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction VALUES( transactionID, " + id + ", " + int.Parse(amtIn.Text) + ", '" + date + "', 'In', " + eID + ", '" + tbReason.Text + "', '" + expiration + "', "+rq+" )", conn);
                         com.ExecuteNonQuery();
-                        this.Hide();
+                       this.Hide();
                         comm = new MySqlCommand("UPDATE stockrequest SET delivered = 1 WHERE stockID = " + id, conn);
                         comm.ExecuteNonQuery();
                         MessageBox.Show("Item Updated");
@@ -91,7 +91,7 @@ namespace WindowsFormsApplication1
                     {
                         MessageBox.Show("Please Enter an Employee");
                     }
-                    conn.Close();
+                    
 
                 }
                 catch (Exception ex)
