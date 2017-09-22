@@ -196,6 +196,7 @@
             this.tbOpYear.Text = "Year";
             this.tbOpYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbOpYear.TextChanged += new System.EventHandler(this.tbOpYear_TextChanged);
+            this.tbOpYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStarth_KeyPress);
             // 
             // cbAMPMend
             // 
@@ -275,6 +276,7 @@
             this.tbEndm.TabIndex = 80;
             this.tbEndm.Text = "00";
             this.tbEndm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbEndm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStarth_KeyPress);
             // 
             // tbStartm
             // 
@@ -286,6 +288,7 @@
             this.tbStartm.TabIndex = 79;
             this.tbStartm.Text = "00";
             this.tbStartm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbStartm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStarth_KeyPress);
             // 
             // tbEndh
             // 
@@ -297,6 +300,7 @@
             this.tbEndh.TabIndex = 78;
             this.tbEndh.Text = "00";
             this.tbEndh.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbEndh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStarth_KeyPress);
             // 
             // tbStarth
             // 
@@ -308,6 +312,7 @@
             this.tbStarth.TabIndex = 77;
             this.tbStarth.Text = "00";
             this.tbStarth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbStarth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStarth_KeyPress);
             // 
             // cbLocation
             // 
@@ -669,7 +674,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.opEdit_Load);

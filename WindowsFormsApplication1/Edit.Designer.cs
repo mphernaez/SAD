@@ -56,7 +56,7 @@
             this.tbbday.Location = new System.Drawing.Point(258, 191);
             this.tbbday.Multiline = true;
             this.tbbday.Name = "tbbday";
-            this.tbbday.Size = new System.Drawing.Size(374, 38);
+            this.tbbday.Size = new System.Drawing.Size(374, 28);
             this.tbbday.TabIndex = 45;
             this.tbbday.Text = "Birthday (yyyy-mm-dd)";
             // 
@@ -126,15 +126,15 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(162)))), ((int)(((byte)(80)))));
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(444, 442);
+            this.button4.Location = new System.Drawing.Point(447, 442);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(188, 38);
+            this.button4.Size = new System.Drawing.Size(185, 38);
             this.button4.TabIndex = 50;
             this.button4.Text = "Save";
             this.button4.UseVisualStyleBackColor = false;
@@ -145,10 +145,10 @@
             this.tbaddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbaddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbaddress.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.tbaddress.Location = new System.Drawing.Point(61, 235);
+            this.tbaddress.Location = new System.Drawing.Point(61, 225);
             this.tbaddress.Multiline = true;
             this.tbaddress.Name = "tbaddress";
-            this.tbaddress.Size = new System.Drawing.Size(571, 81);
+            this.tbaddress.Size = new System.Drawing.Size(571, 91);
             this.tbaddress.TabIndex = 46;
             this.tbaddress.Text = "Address";
             // 
@@ -185,7 +185,7 @@
             this.Edit.Controls.Add(this.tbcontactNumber);
             this.Edit.Location = new System.Drawing.Point(0, -2);
             this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(715, 719);
+            this.Edit.Size = new System.Drawing.Size(715, 551);
             this.Edit.TabIndex = 51;
             // 
             // pnlAdminEdit
@@ -236,7 +236,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label2.Location = new System.Drawing.Point(529, 199);
+            this.label2.Location = new System.Drawing.Point(539, 194);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 20);
             this.label2.TabIndex = 52;
@@ -259,7 +259,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.ClientSize = new System.Drawing.Size(714, 715);
+            this.ClientSize = new System.Drawing.Size(714, 549);
             this.Controls.Add(this.Edit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EditEmp";

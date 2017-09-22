@@ -335,12 +335,14 @@
             // 
             this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbYear.Location = new System.Drawing.Point(103, 163);
+            this.tbYear.MaxLength = 4;
             this.tbYear.Name = "tbYear";
             this.tbYear.Size = new System.Drawing.Size(65, 26);
             this.tbYear.TabIndex = 36;
             this.tbYear.Text = "Year";
             this.tbYear.TextChanged += new System.EventHandler(this.tbYear_TextChanged);
             this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
+            this.tbYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbYear_KeyPress);
             // 
             // cbMonth
             // 
@@ -429,9 +431,11 @@
             // 
             this.tbnumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbnumber.Location = new System.Drawing.Point(159, 127);
+            this.tbnumber.MaxLength = 11;
             this.tbnumber.Name = "tbnumber";
             this.tbnumber.Size = new System.Drawing.Size(158, 26);
             this.tbnumber.TabIndex = 25;
+            this.tbnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbYear_KeyPress);
             // 
             // tbIDnum
             // 
