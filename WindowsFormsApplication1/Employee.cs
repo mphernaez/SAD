@@ -1738,29 +1738,37 @@ namespace WindowsFormsApplication1
         int[] repEmpArr;
         private void choice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(choice.SelectedIndex == 0)
-            {
-                dgvOpSumm.Visible = false;
-                cbFilt.Visible = true;
-                repEmp.Visible = true;
-                repAttendance();
-                
+            if (m2.Text != "Month" && m1.Text != "Month" && y1.Text != "Day" && y2.Text != "Day") {
+                if (choice.SelectedIndex == 0)
+                {
+                    dgvOpSumm.Visible = false;
+                    cbFilt.Visible = true;
+                    repEmp.Visible = true;
+                    if (cbFilt.Checked && cbEmpFilt.Text == "Employee") MessageBox.Show("Please select an employee");
+                    else repAttendance();
+
+                }
+                else if (choice.SelectedIndex == 1)
+                {
+                    dgvOpSumm.Visible = false;
+                    cbFilt.Visible = true;
+                    repEmp.Visible = true;
+                    if (cbFilt.Checked && cbEmpFilt.Text == "Employee") MessageBox.Show("Please select an employee");
+                    else repActivity();
+
+                }
+                else if (choice.SelectedIndex == 2)
+                {
+                    dgvOpSumm.Visible = true;
+                    repEmp.Visible = false;
+                    cbFilt.Visible = false;
+                    pnlEmpFilt.Visible = false;
+                    repOperation();
+                }
             }
-            else if (choice.SelectedIndex == 1)
+            else
             {
-                dgvOpSumm.Visible = false;
-                cbFilt.Visible = true;
-                repEmp.Visible = true;
-                repActivity();
-                
-            }
-            else if (choice.SelectedIndex == 2)
-            {
-                dgvOpSumm.Visible = true;
-                repEmp.Visible = false;
-                cbFilt.Visible = false;
-                pnlEmpFilt.Visible = false;
-                repOperation();
+                MessageBox.Show("Please enter dates");
             }
         }
         private void loadEmpRep()
@@ -1769,14 +1777,15 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT employeeID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS name FROM employee INNER JOIN profile ON personID = employeeID", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT employeeID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS name, position FROM employee INNER JOIN profile ON personID = employeeID ORDER BY lastname, firstname" , conn);
                 MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adpt.Fill(dt);
                 repEmpArr = new int[dt.Rows.Count];
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    cbEmpFilt.Items.Add(dt.Rows[i]["name"].ToString());
+                    string load = dt.Rows[i]["name"].ToString() + " - " + dt.Rows[i]["position"].ToString();
+                    cbEmpFilt.Items.Add(load);
                     repEmpArr[i] = int.Parse(dt.Rows[i]["employeeID"].ToString());
                 }
 
@@ -1981,6 +1990,13 @@ namespace WindowsFormsApplication1
         private void button28_Click_1(object sender, EventArgs e)
         {
             print();
+            noheader = false;
+            noheader2 = false;
+            noheader3 = false;
+            countt = 0; //Attendance
+            act = 0; //Activities
+            it = 0; //Operations
+            
         }
 
         private void specLoc_TextChanged(object sender, EventArgs e)
@@ -2892,7 +2908,6 @@ namespace WindowsFormsApplication1
                     else
                     {
                         e.HasMorePages = false;
-                        act = 0;
                     }
                     x = x + 25;
                     act++;
@@ -2931,6 +2946,16 @@ namespace WindowsFormsApplication1
                 }
 
 
+
+            }
+        }
+
+        private void cbEmpFilt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (choice.Text != "Type")
+            {
+                if (choice.SelectedIndex == 0) repAttendance();
+                else if (choice.SelectedIndex == 1) repActivity();
 
             }
         }

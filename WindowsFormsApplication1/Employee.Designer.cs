@@ -1105,6 +1105,7 @@
             this.cbEmpFilt.Size = new System.Drawing.Size(333, 28);
             this.cbEmpFilt.TabIndex = 17;
             this.cbEmpFilt.Text = "Employee";
+            this.cbEmpFilt.SelectedIndexChanged += new System.EventHandler(this.cbEmpFilt_SelectedIndexChanged);
             // 
             // y2
             // 
@@ -2724,10 +2725,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.attendance);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;

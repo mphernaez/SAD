@@ -569,35 +569,35 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font(f, 18, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(65, 130));
             e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 170));
 
-            e.Graphics.DrawString("Total number of heads impounded:   ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 240));
-            e.Graphics.DrawString("Total number of heads claimed:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 280));
-            e.Graphics.DrawString("Total number of heads adopted:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 320));
-            e.Graphics.DrawString("Total amount from transactions:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 360));
-            e.Graphics.DrawString("Total number of heads euthanized:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 400));
-            e.Graphics.DrawString("Total number of heads alive:       ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 440));
-            e.Graphics.DrawString("Total number of heads vaccinated:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, 480));
+            e.Graphics.DrawString("Total number of heads impounded:   ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(195, 240));
+            e.Graphics.DrawString("Total number of heads claimed:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(195, 280));
+            e.Graphics.DrawString("Total number of heads adopted:     ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(195, 320));
+            e.Graphics.DrawString("Total amount from transactions:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(195, 360));
+            e.Graphics.DrawString("Total number of heads euthanized:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(195, 400));
+            e.Graphics.DrawString("Total number of heads alive:       ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(195, 440));
+            e.Graphics.DrawString("Total number of heads vaccinated:  ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(195, 480));
             e.Graphics.DrawString("Vaccinators: ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 520));
 
             int x = 520;
             for (int i = 0; i < vaccinators.Length; i++)
             {
                 x = x + 20;
-                e.Graphics.DrawString(vaccinators[i], new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(250, x));
-                e.Graphics.DrawString(vaccinecount[i].ToString(), new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(475, x));
+                e.Graphics.DrawString(vaccinators[i], new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(315, x));
+                e.Graphics.DrawString(vaccinecount[i].ToString(), new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(540, x));
             }
 
-            e.Graphics.DrawString("No. of clients served:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, x + 40));
-            e.Graphics.DrawString("* Remarks: ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(130, x + 80));
+            e.Graphics.DrawString("No. of clients served:    ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(195, x + 40));
+            e.Graphics.DrawString("* Remarks: ", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(195, x + 80));
 
-            e.Graphics.DrawString("" + impounded, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 240));
-            e.Graphics.DrawString("" + claimed, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 280));
-            e.Graphics.DrawString("" + adopted, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 320));
-            e.Graphics.DrawString("" + amount, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 360));
-            e.Graphics.DrawString("" + euthanized, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 400));
-            e.Graphics.DrawString("" + alive, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 440));
-            e.Graphics.DrawString("" + vaccinated, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 480));
-            e.Graphics.DrawString("" + clients, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, x + 40));
-            e.Graphics.DrawString("", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(470, x + 80));
+            e.Graphics.DrawString("" + impounded, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(565, 240));
+            e.Graphics.DrawString("" + claimed, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(565, 280));
+            e.Graphics.DrawString("" + adopted, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(565, 320));
+            e.Graphics.DrawString("" + amount, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(565, 360));
+            e.Graphics.DrawString("" + euthanized, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(565, 400));
+            e.Graphics.DrawString("" + alive, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(565, 440));
+            e.Graphics.DrawString("" + vaccinated, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(565, 480));
+            e.Graphics.DrawString("" + clients, new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(565, x + 40));
+            e.Graphics.DrawString("", new System.Drawing.Font(f, fsize, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(565, x + 80));
 
         }
         //IMPOUNDING SUMMARY REPORT
@@ -798,6 +798,12 @@ namespace WindowsFormsApplication1
         private void button16_Click(object sender, EventArgs e)
         {
             print();
+            claim1 = 0;
+            noheader1 = false;
+            adopt1 = 0;
+            noheader2 = false;
+            euth1 = 0;
+            noheader3 = false;
         }
 
         //FUNCTIONS
@@ -1096,44 +1102,79 @@ namespace WindowsFormsApplication1
         {
 
         }
-        int rowcount = 0;
+        int claim1 = 0;
+        Boolean noheader1 = false;
         private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            int ad;
+            int dog;
             //claim
-            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
-            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
-            e.Graphics.DrawString("CLAIMED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
-            e.Graphics.DrawString("Claimer", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
-            e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(375, 220));
-            int ad = 220; int dog = 220;
-            
-                for (int i = 0; i < dtclaim.Rows.Count; i++)
-                {
-                    ad = dog + 40; dog = dog + 40;
-                    e.Graphics.DrawString(dtclaim.Rows[i]["Claimer"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
-                    ad = ad + 20;
-                    e.Graphics.DrawString("Contact Number: " + dtclaim.Rows[i]["Contact Number"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
-                    ad = ad + 20;
-                    e.Graphics.DrawString("Address: " + dtclaim.Rows[i]["Address"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
-                    ad = ad + 20;
-                    e.Graphics.DrawString("Breed: " + dtclaim.Rows[i]["Breed"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
-                    e.Graphics.DrawString("Location: " + dtclaim.Rows[i]["Location"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
-                    dog = dog + 20;
-                    e.Graphics.DrawString("Color: " + dtclaim.Rows[i]["Color"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
-                    e.Graphics.DrawString("Date Caught: " + dtclaim.Rows[i]["Date Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
-                    dog = dog + 20;
-                    e.Graphics.DrawString("Size: " + dtclaim.Rows[i]["Size"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
-                    e.Graphics.DrawString("Time Caught: " + dtclaim.Rows[i]["Time Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
-                    dog = dog + 20;
-                    e.Graphics.DrawString("Gender: " + dtclaim.Rows[i]["Gender"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
-                    e.Graphics.DrawString("Markings: " + dtclaim.Rows[i]["Markings"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
-                    dog = dog + 20;
+            if (noheader1 == false)
+            {
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
+                e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+                e.Graphics.DrawString("CLAIMED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
+                e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+                e.Graphics.DrawString("Claimer", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
+                e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(360, 220));
+                ad = 220; dog = 220;
+            }
+            else
+            {
+                e.Graphics.DrawString("Claimer", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 40));
+                e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(375, 40));
+                ad = 40; dog = 40;
+            }
 
-                    if (i - (9 * pages) > 9) { e.HasMorePages = true; }
+            for (int i = 0; i < dtclaim.Rows.Count && claim1 < dtclaim.Rows.Count; i++)
+            {
+                int len = dtclaim.Rows[claim1]["Address"].ToString().Length;
+                string address = dtclaim.Rows[claim1]["Address"].ToString();
+                ad = dog + 40; dog = dog + 40;
+                e.Graphics.DrawString(dtclaim.Rows[claim1]["Claimer"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                ad = ad + 20;
+                e.Graphics.DrawString("Contact Number: " + dtclaim.Rows[claim1]["Contact Number"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                ad = ad + 20;
+                e.Graphics.DrawString("Address: ", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                ad = ad + 20;
+                int y = 0; //35
+                Boolean notdone = true;
+                while (notdone)
+                {
+                    if (len < 1) notdone = false;
+                    else if (len < 25) e.Graphics.DrawString(address.Substring(y, len), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, ad));
+                    else e.Graphics.DrawString(address.Substring(y, 25) + '-', new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, ad));
+                    len = len - 25;
+                    y = y + 25;
+                    ad = ad + 20;
                 }
-            e.HasMorePages = false;
+                ad = ad + 20;
+                e.Graphics.DrawString("Breed: " + dtclaim.Rows[claim1]["Breed"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(360, dog));
+                e.Graphics.DrawString("Location: " + dtclaim.Rows[claim1]["Location"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(535, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Color: " + dtclaim.Rows[claim1]["Color"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(360, dog));
+                e.Graphics.DrawString("Date Caught: " + dtclaim.Rows[claim1]["Date Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(535, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Size: " + dtclaim.Rows[claim1]["Size"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(360, dog));
+                e.Graphics.DrawString("Time Caught: " + dtclaim.Rows[claim1]["Time Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(535, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Gender: " + dtclaim.Rows[claim1]["Gender"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(360, dog));
+                e.Graphics.DrawString("Markings: " + dtclaim.Rows[claim1]["Markings"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(535, dog));
+                dog = dog + 20;
+                claim1++;
+                if (ad > 1000 || dog > 1000)
+                {
+                    e.HasMorePages = true;
+                    noheader1 = true;
+                    return;
+                }
+                else
+                {
+                    e.HasMorePages = false;
+                }
+            }
+                
         }
         string date;
         string time;
@@ -1214,26 +1255,36 @@ namespace WindowsFormsApplication1
                 i++;
             }
         }
-
+        int adopt1 = 0;
+        Boolean noheader2 = false;
         private void printDocument3_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-           
-            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
-            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
-            e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
-            e.Graphics.DrawString("Adoptor", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
-            e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(375, 220));
-            int ad = 220; int dog = 220;
-            for (int i = 0; i < dtadopt.Rows.Count; i++)
+            int ad, dog;
+            if (noheader2 == false) {
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
+                e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+                e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
+                e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+                e.Graphics.DrawString("Adoptor", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
+                e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(360, 220));
+                ad = 220; dog = 220;
+            }
+            else
             {
-                string address = dtadopt.Rows[i]["Address"].ToString();
+                e.Graphics.DrawString("Adoptor", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 40));
+                e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(375, 40));
+                ad = 40; dog = 40;
+            }
+
+            for (int i = 0; i < dtadopt.Rows.Count && adopt1 < dtadopt.Rows.Count; i++)
+            {
+                string address = dtadopt.Rows[adopt1]["Address"].ToString();
                 int len = address.Length;
                 ad = dog + 50; dog = dog + 50;
-                e.Graphics.DrawString(dtadopt.Rows[i]["Adopter"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                e.Graphics.DrawString(dtadopt.Rows[adopt1]["Adopter"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
                 ad = ad + 20;
-                e.Graphics.DrawString("Contact Number: "+dtadopt.Rows[i]["Contact Number"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
+                e.Graphics.DrawString("Contact Number: "+dtadopt.Rows[adopt1]["Contact Number"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
                 ad = ad + 20;
                 e.Graphics.DrawString("Address: ", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
                 ad = ad + 20;
@@ -1248,69 +1299,86 @@ namespace WindowsFormsApplication1
                     ad = ad + 20;
                 }
                 ad = ad + 20;
-                e.Graphics.DrawString("Breed: "+dtadopt.Rows[i]["Breed"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
-                e.Graphics.DrawString("Location: " + dtadopt.Rows[i]["Location"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                e.Graphics.DrawString("Breed: "+dtadopt.Rows[adopt1]["Breed"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(360, dog));
+                e.Graphics.DrawString("Location: " + dtadopt.Rows[adopt1]["Location"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(535, dog));
                 dog = dog + 20;
-                e.Graphics.DrawString("Color: "+dtadopt.Rows[i]["Color"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
-                e.Graphics.DrawString("Date Caught: " + dtadopt.Rows[i]["Date Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                e.Graphics.DrawString("Color: "+dtadopt.Rows[adopt1]["Color"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(360, dog));
+                e.Graphics.DrawString("Date Caught: " + dtadopt.Rows[adopt1]["Date Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(535, dog));
                 dog = dog + 20;
-                e.Graphics.DrawString("Size: "+dtadopt.Rows[i]["Size"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
-                e.Graphics.DrawString("Time Caught: " + dtadopt.Rows[i]["Time Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
+                e.Graphics.DrawString("Size: "+dtadopt.Rows[adopt1]["Size"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(360, dog));
+                e.Graphics.DrawString("Time Caught: " + dtadopt.Rows[adopt1]["Time Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(535, dog));
                 dog = dog + 20;
-                e.Graphics.DrawString("Gender: "+dtadopt.Rows[i]["Gender"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(375, dog));
-                e.Graphics.DrawString("Markings: " + dtadopt.Rows[i]["Markings"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(525, dog));
-                dog = dog + 20;
-                
-                if (i - (9*pages) > 9) { e.HasMorePages = true; }
-            }
-            e.HasMorePages = false;
-
-           
-        }
-
-        private void printDocument4_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
-            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(170, 100));
-            e.Graphics.DrawString("EUTHANIZED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(190, 130));
-            e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(150, 170));
-            int dog = 200; int op = 200;
-            int a = 0; int b = 0;
-            
-            for (int i = 0; i < dteut.Rows.Count; i++)
-            {
-                if (i % 2 == 0) { a = 30; b = 180; dog = op + 40; op = op + 40; }
-                else { a = 430; b = 600; dog = dog - 100; op = op - 100; }
-                
-                e.Graphics.DrawString("Breed: " + dteut.Rows[i]["Breed"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(a, dog));
-                dog = dog + 20;
-                e.Graphics.DrawString("Gender: " + dteut.Rows[i]["Gender"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(a, dog));
-                dog = dog + 20;
-                e.Graphics.DrawString("Size:" + dteut.Rows[i]["Size"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(a, dog));
-                dog = dog + 20;
-                e.Graphics.DrawString("Color: " + dteut.Rows[i]["Color"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(a, dog));
-                dog = dog + 20;
-                e.Graphics.DrawString("Markings: " + dteut.Rows[i]["Markings"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(a, dog));
-                dog = dog + 20;
-                e.Graphics.DrawString("Location: " + dteut.Rows[i]["Location"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(b, op));
-                op = op + 20;
-                e.Graphics.DrawString("Date Caught: " + dteut.Rows[i]["Date Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(b, op));
-                op = op + 20;
-                e.Graphics.DrawString("Time Caught: " + dteut.Rows[i]["Time Caught"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(b, op));
-                op = op + 20;
-                e.Graphics.DrawString("Euthanized By: " , new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(b, op));
-                op = op + 20;
-                e.Graphics.DrawString(dteut.Rows[i]["Employee"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(b + 30, op));
-                op = op + 20;
-                e.Graphics.DrawString("Date Euthanized: " + dteut.Rows[i]["Date Euthanized"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(b, op));
-                if (i % 14 == 0)
+                e.Graphics.DrawString("Gender: "+dtadopt.Rows[adopt1]["Gender"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(360, dog));
+                e.Graphics.DrawString("Markings: " + dtadopt.Rows[adopt1]["Markings"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(535, dog));
+                dog = dog + 10;
+                adopt1++;
+                if (ad > 1000 || dog > 1000)
                 {
                     e.HasMorePages = true;
+                    noheader2 = true;
+                    return;
+                }
+                else
+                {
+                    e.HasMorePages = false;
+                }
+            }
+            
+        }
+        int euth1 = 0;
+        Boolean noheader3 = false;
+        private void printDocument4_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            int dog, op;
+            if (noheader3 == false) {
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
+                e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(170, 100));
+                e.Graphics.DrawString("EUTHANIZED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(190, 130));
+                e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(150, 170));
+                dog = 200; op = 200;
+            }
+            else
+            {
+                dog = 40; op = 40;
+            }
+            
+            for (int i = 0; i < dteut.Rows.Count && euth1 < dteut.Rows.Count; i++)
+            {
+                dog = op + 40; op = op + 40;
+                
+                e.Graphics.DrawString("Breed: " + dteut.Rows[euth1]["Breed"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Gender: " + dteut.Rows[euth1]["Gender"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Size:" + dteut.Rows[euth1]["Size"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Color: " + dteut.Rows[euth1]["Color"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Markings: " + dteut.Rows[euth1]["Markings"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, dog));
+                dog = dog + 20;
+                e.Graphics.DrawString("Location: " + dteut.Rows[euth1]["Location"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, op));
+                op = op + 20;
+                e.Graphics.DrawString("Date Caught: " + dteut.Rows[euth1]["Date Caught"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, op));
+                op = op + 20;
+                e.Graphics.DrawString("Time Caught: " + dteut.Rows[euth1]["Time Caught"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, op));
+                op = op + 20;
+                e.Graphics.DrawString("Euthanized By: " + dteut.Rows[euth1]["Employee"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, op));
+                op = op + 20;
+                e.Graphics.DrawString("Date Euthanized: " + dteut.Rows[euth1]["Date Euthanized"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, op));
+                euth1++;
+                if (op > 1000 || dog > 1000)
+                {
+                    e.HasMorePages = true;
+                    noheader3 = false;
+                    return;
+                }
+                else
+                {
+                    e.HasMorePages = false;
                 }
 
             }
-            e.HasMorePages = false;
         }
         int pages;
         private void printDocument5_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
