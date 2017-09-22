@@ -35,12 +35,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvAttendanceOut = new System.Windows.Forms.DataGridView();
+            this.dgvAttendanceIn = new System.Windows.Forms.DataGridView();
             this.panelAtt = new System.Windows.Forms.Panel();
             this.lblout = new System.Windows.Forms.Label();
             this.lblIn = new System.Windows.Forms.Label();
             this.dgvViewattout = new System.Windows.Forms.DataGridView();
             this.dgvViewattin = new System.Windows.Forms.DataGridView();
-            this.dgvAttendanceIn = new System.Windows.Forms.DataGridView();
             this.addEmployee = new System.Windows.Forms.Panel();
             this.button30 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
@@ -177,14 +177,6 @@
             this.button36 = new System.Windows.Forms.Button();
             this.button33 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
-            this.pnlActivity = new System.Windows.Forms.Panel();
-            this.measBy = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button32 = new System.Windows.Forms.Button();
-            this.numact = new System.Windows.Forms.NumericUpDown();
-            this.cbmatact = new System.Windows.Forms.ComboBox();
-            this.cbact = new System.Windows.Forms.ComboBox();
-            this.cbempact = new System.Windows.Forms.ComboBox();
             this.Edit = new System.Windows.Forms.Panel();
             this.button34 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
@@ -202,15 +194,23 @@
             this.eStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelViewAct = new System.Windows.Forms.Panel();
             this.dgvViewAct = new System.Windows.Forms.DataGridView();
+            this.pnlActivity = new System.Windows.Forms.Panel();
+            this.measBy = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button32 = new System.Windows.Forms.Button();
+            this.numact = new System.Windows.Forms.NumericUpDown();
+            this.cbmatact = new System.Windows.Forms.ComboBox();
+            this.cbact = new System.Windows.Forms.ComboBox();
+            this.cbempact = new System.Windows.Forms.ComboBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
             this.panelAtt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
             this.addEmployee.SuspendLayout();
             this.addPanel.SuspendLayout();
             this.pnlAdmin.SuspendLayout();
@@ -242,12 +242,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.newTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).BeginInit();
             this.DogCatchingOperation.SuspendLayout();
-            this.pnlActivity.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numact)).BeginInit();
             this.Edit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editOperation)).BeginInit();
             this.panelViewAct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewAct)).BeginInit();
+            this.pnlActivity.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numact)).BeginInit();
             this.SuspendLayout();
             // 
             // attendance
@@ -333,7 +333,7 @@
             this.dgvAttendanceOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAttendanceOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAttendanceOut.GridColor = System.Drawing.Color.White;
-            this.dgvAttendanceOut.Location = new System.Drawing.Point(17, 121);
+            this.dgvAttendanceOut.Location = new System.Drawing.Point(17, 117);
             this.dgvAttendanceOut.Name = "dgvAttendanceOut";
             this.dgvAttendanceOut.ReadOnly = true;
             this.dgvAttendanceOut.RowHeadersVisible = false;
@@ -343,6 +343,27 @@
             this.dgvAttendanceOut.Visible = false;
             this.dgvAttendanceOut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellClick);
             this.dgvAttendanceOut.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellContentDoubleClick);
+            // 
+            // dgvAttendanceIn
+            // 
+            this.dgvAttendanceIn.AllowUserToAddRows = false;
+            this.dgvAttendanceIn.AllowUserToDeleteRows = false;
+            this.dgvAttendanceIn.AllowUserToResizeColumns = false;
+            this.dgvAttendanceIn.AllowUserToResizeRows = false;
+            this.dgvAttendanceIn.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAttendanceIn.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAttendanceIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAttendanceIn.GridColor = System.Drawing.Color.White;
+            this.dgvAttendanceIn.Location = new System.Drawing.Point(17, 118);
+            this.dgvAttendanceIn.Name = "dgvAttendanceIn";
+            this.dgvAttendanceIn.ReadOnly = true;
+            this.dgvAttendanceIn.RowHeadersVisible = false;
+            this.dgvAttendanceIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAttendanceIn.Size = new System.Drawing.Size(982, 396);
+            this.dgvAttendanceIn.TabIndex = 20;
+            this.dgvAttendanceIn.Visible = false;
+            this.dgvAttendanceIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellClick);
+            this.dgvAttendanceIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceIn_CellContentClick);
             // 
             // panelAtt
             // 
@@ -414,27 +435,6 @@
             this.dgvViewattin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvViewattin.Size = new System.Drawing.Size(480, 346);
             this.dgvViewattin.TabIndex = 21;
-            // 
-            // dgvAttendanceIn
-            // 
-            this.dgvAttendanceIn.AllowUserToAddRows = false;
-            this.dgvAttendanceIn.AllowUserToDeleteRows = false;
-            this.dgvAttendanceIn.AllowUserToResizeColumns = false;
-            this.dgvAttendanceIn.AllowUserToResizeRows = false;
-            this.dgvAttendanceIn.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAttendanceIn.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvAttendanceIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendanceIn.GridColor = System.Drawing.Color.White;
-            this.dgvAttendanceIn.Location = new System.Drawing.Point(17, 118);
-            this.dgvAttendanceIn.Name = "dgvAttendanceIn";
-            this.dgvAttendanceIn.ReadOnly = true;
-            this.dgvAttendanceIn.RowHeadersVisible = false;
-            this.dgvAttendanceIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendanceIn.Size = new System.Drawing.Size(982, 396);
-            this.dgvAttendanceIn.TabIndex = 20;
-            this.dgvAttendanceIn.Visible = false;
-            this.dgvAttendanceIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellClick);
-            this.dgvAttendanceIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceIn_CellContentClick);
             // 
             // addEmployee
             // 
@@ -720,7 +720,6 @@
             this.tbcontactNumber.TabIndex = 39;
             this.tbcontactNumber.Text = "Contact Number";
             this.tbcontactNumber.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbcontactNumber_MouseClick);
-            this.tbcontactNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbcontactNumber_KeyPress);
             // 
             // button4
             // 
@@ -2413,106 +2412,6 @@
             this.button31.UseVisualStyleBackColor = false;
             this.button31.Click += new System.EventHandler(this.button31_Click);
             // 
-            // pnlActivity
-            // 
-            this.pnlActivity.Controls.Add(this.measBy);
-            this.pnlActivity.Controls.Add(this.label11);
-            this.pnlActivity.Controls.Add(this.button32);
-            this.pnlActivity.Controls.Add(this.numact);
-            this.pnlActivity.Controls.Add(this.cbmatact);
-            this.pnlActivity.Controls.Add(this.cbact);
-            this.pnlActivity.Controls.Add(this.cbempact);
-            this.pnlActivity.Location = new System.Drawing.Point(17, 116);
-            this.pnlActivity.Name = "pnlActivity";
-            this.pnlActivity.Size = new System.Drawing.Size(982, 412);
-            this.pnlActivity.TabIndex = 77;
-            this.pnlActivity.Visible = false;
-            // 
-            // measBy
-            // 
-            this.measBy.AutoSize = true;
-            this.measBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.measBy.Location = new System.Drawing.Point(386, 171);
-            this.measBy.Name = "measBy";
-            this.measBy.Size = new System.Drawing.Size(0, 20);
-            this.measBy.TabIndex = 86;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label11.Location = new System.Drawing.Point(68, 39);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(157, 39);
-            this.label11.TabIndex = 85;
-            this.label11.Text = "Activities";
-            // 
-            // button32
-            // 
-            this.button32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button32.FlatAppearance.BorderSize = 0;
-            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button32.ForeColor = System.Drawing.Color.White;
-            this.button32.Location = new System.Drawing.Point(70, 225);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(123, 34);
-            this.button32.TabIndex = 79;
-            this.button32.Text = "Record";
-            this.button32.UseVisualStyleBackColor = false;
-            this.button32.Click += new System.EventHandler(this.button32_Click_1);
-            // 
-            // numact
-            // 
-            this.numact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numact.Location = new System.Drawing.Point(388, 194);
-            this.numact.Name = "numact";
-            this.numact.Size = new System.Drawing.Size(126, 26);
-            this.numact.TabIndex = 84;
-            this.numact.Visible = false;
-            // 
-            // cbmatact
-            // 
-            this.cbmatact.Enabled = false;
-            this.cbmatact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbmatact.ForeColor = System.Drawing.Color.Black;
-            this.cbmatact.FormattingEnabled = true;
-            this.cbmatact.Location = new System.Drawing.Point(71, 163);
-            this.cbmatact.Name = "cbmatact";
-            this.cbmatact.Size = new System.Drawing.Size(307, 28);
-            this.cbmatact.TabIndex = 83;
-            this.cbmatact.Text = "Materials (If Applicable)";
-            this.cbmatact.SelectedIndexChanged += new System.EventHandler(this.cbmatact_SelectedIndexChanged);
-            // 
-            // cbact
-            // 
-            this.cbact.Enabled = false;
-            this.cbact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbact.ForeColor = System.Drawing.Color.Black;
-            this.cbact.FormattingEnabled = true;
-            this.cbact.Items.AddRange(new object[] {
-            "Disinfect Impounding Place",
-            "Bathe Dogs",
-            "Feed Dogs"});
-            this.cbact.Location = new System.Drawing.Point(71, 94);
-            this.cbact.Name = "cbact";
-            this.cbact.Size = new System.Drawing.Size(307, 28);
-            this.cbact.TabIndex = 82;
-            this.cbact.Text = "Activity";
-            // 
-            // cbempact
-            // 
-            this.cbempact.Enabled = false;
-            this.cbempact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbempact.ForeColor = System.Drawing.Color.Black;
-            this.cbempact.FormattingEnabled = true;
-            this.cbempact.Location = new System.Drawing.Point(71, 128);
-            this.cbempact.Name = "cbempact";
-            this.cbempact.Size = new System.Drawing.Size(307, 28);
-            this.cbempact.TabIndex = 81;
-            this.cbempact.Text = "To be done by";
-            // 
             // Edit
             // 
             this.Edit.Controls.Add(this.button34);
@@ -2713,6 +2612,106 @@
             this.dgvViewAct.Size = new System.Drawing.Size(946, 371);
             this.dgvViewAct.TabIndex = 2;
             // 
+            // pnlActivity
+            // 
+            this.pnlActivity.Controls.Add(this.measBy);
+            this.pnlActivity.Controls.Add(this.label11);
+            this.pnlActivity.Controls.Add(this.button32);
+            this.pnlActivity.Controls.Add(this.numact);
+            this.pnlActivity.Controls.Add(this.cbmatact);
+            this.pnlActivity.Controls.Add(this.cbact);
+            this.pnlActivity.Controls.Add(this.cbempact);
+            this.pnlActivity.Location = new System.Drawing.Point(17, 116);
+            this.pnlActivity.Name = "pnlActivity";
+            this.pnlActivity.Size = new System.Drawing.Size(982, 412);
+            this.pnlActivity.TabIndex = 77;
+            this.pnlActivity.Visible = false;
+            // 
+            // measBy
+            // 
+            this.measBy.AutoSize = true;
+            this.measBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.measBy.Location = new System.Drawing.Point(386, 171);
+            this.measBy.Name = "measBy";
+            this.measBy.Size = new System.Drawing.Size(0, 20);
+            this.measBy.TabIndex = 86;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label11.Location = new System.Drawing.Point(68, 39);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(157, 39);
+            this.label11.TabIndex = 85;
+            this.label11.Text = "Activities";
+            // 
+            // button32
+            // 
+            this.button32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button32.FlatAppearance.BorderSize = 0;
+            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button32.ForeColor = System.Drawing.Color.White;
+            this.button32.Location = new System.Drawing.Point(70, 225);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(123, 34);
+            this.button32.TabIndex = 79;
+            this.button32.Text = "Record";
+            this.button32.UseVisualStyleBackColor = false;
+            this.button32.Click += new System.EventHandler(this.button32_Click_1);
+            // 
+            // numact
+            // 
+            this.numact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numact.Location = new System.Drawing.Point(388, 194);
+            this.numact.Name = "numact";
+            this.numact.Size = new System.Drawing.Size(126, 26);
+            this.numact.TabIndex = 84;
+            this.numact.Visible = false;
+            // 
+            // cbmatact
+            // 
+            this.cbmatact.Enabled = false;
+            this.cbmatact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbmatact.ForeColor = System.Drawing.Color.Black;
+            this.cbmatact.FormattingEnabled = true;
+            this.cbmatact.Location = new System.Drawing.Point(71, 163);
+            this.cbmatact.Name = "cbmatact";
+            this.cbmatact.Size = new System.Drawing.Size(307, 28);
+            this.cbmatact.TabIndex = 83;
+            this.cbmatact.Text = "Materials (If Applicable)";
+            this.cbmatact.SelectedIndexChanged += new System.EventHandler(this.cbmatact_SelectedIndexChanged);
+            // 
+            // cbact
+            // 
+            this.cbact.Enabled = false;
+            this.cbact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbact.ForeColor = System.Drawing.Color.Black;
+            this.cbact.FormattingEnabled = true;
+            this.cbact.Items.AddRange(new object[] {
+            "Disinfect Impounding Place",
+            "Bathe Dogs",
+            "Feed Dogs"});
+            this.cbact.Location = new System.Drawing.Point(71, 94);
+            this.cbact.Name = "cbact";
+            this.cbact.Size = new System.Drawing.Size(307, 28);
+            this.cbact.TabIndex = 82;
+            this.cbact.Text = "Activity";
+            // 
+            // cbempact
+            // 
+            this.cbempact.Enabled = false;
+            this.cbempact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbempact.ForeColor = System.Drawing.Color.Black;
+            this.cbempact.FormattingEnabled = true;
+            this.cbempact.Location = new System.Drawing.Point(71, 128);
+            this.cbempact.Name = "cbempact";
+            this.cbempact.Size = new System.Drawing.Size(307, 28);
+            this.cbempact.TabIndex = 81;
+            this.cbempact.Text = "To be done by";
+            // 
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
@@ -2735,10 +2734,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.DogCatchingOperation);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.DogCatchingOperation);
+            this.Controls.Add(this.addEmployee);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -2748,11 +2747,11 @@
             this.attendance.ResumeLayout(false);
             this.attendance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).EndInit();
             this.panelAtt.ResumeLayout(false);
             this.panelAtt.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).EndInit();
             this.addEmployee.ResumeLayout(false);
             this.addEmployee.PerformLayout();
             this.addPanel.ResumeLayout(false);
@@ -2799,14 +2798,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).EndInit();
             this.DogCatchingOperation.ResumeLayout(false);
             this.DogCatchingOperation.PerformLayout();
-            this.pnlActivity.ResumeLayout(false);
-            this.pnlActivity.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numact)).EndInit();
             this.Edit.ResumeLayout(false);
             this.Edit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editOperation)).EndInit();
             this.panelViewAct.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewAct)).EndInit();
+            this.pnlActivity.ResumeLayout(false);
+            this.pnlActivity.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numact)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

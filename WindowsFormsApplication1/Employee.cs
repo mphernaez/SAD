@@ -2027,13 +2027,13 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Employee, time AS Time FROM attendance INNER JOIN profile ON profile.personID = attendance.employeeID WHERE type = 1 AND date = '"+date+"'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Employee, position AS Position, time AS Time FROM attendance INNER JOIN profile ON profile.personID = attendance.employeeID INNER JOIN employee ON employee.employeeID = profile.personID WHERE type = 1 AND date = '"+date+"'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 dgvViewattin.DataSource = dt;
 
-                MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Employee, time AS Time FROM attendance INNER JOIN profile ON profile.personID = attendance.employeeID WHERE type = 0 AND date = '" + date + "'", conn);
+                MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Employee, position AS Position, time AS Time FROM attendance INNER JOIN profile ON profile.personID = attendance.employeeID INNER JOIN employee ON employee.employeeID = profile.personID WHERE type = 0 AND date = '" + date + "'", conn);
                 MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
                 DataTable dta = new DataTable();
                 adpt.Fill(dta);
