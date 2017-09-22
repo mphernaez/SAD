@@ -258,8 +258,8 @@
             this.attendance.Controls.Add(this.button3);
             this.attendance.Controls.Add(this.label3);
             this.attendance.Controls.Add(this.dgvAttendanceOut);
-            this.attendance.Controls.Add(this.panelAtt);
             this.attendance.Controls.Add(this.dgvAttendanceIn);
+            this.attendance.Controls.Add(this.panelAtt);
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.attendance.Location = new System.Drawing.Point(24, 196);
             this.attendance.Name = "attendance";
@@ -608,9 +608,11 @@
             // 
             // tbbdayyear
             // 
+            this.tbbdayyear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbbdayyear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbbdayyear.ForeColor = System.Drawing.Color.Gray;
             this.tbbdayyear.Location = new System.Drawing.Point(373, 88);
+            this.tbbdayyear.MaxLength = 4;
             this.tbbdayyear.Name = "tbbdayyear";
             this.tbbdayyear.Size = new System.Drawing.Size(77, 26);
             this.tbbdayyear.TabIndex = 37;
@@ -619,9 +621,11 @@
             // 
             // tbbdayday
             // 
+            this.tbbdayday.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbbdayday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbbdayday.ForeColor = System.Drawing.Color.Gray;
             this.tbbdayday.Location = new System.Drawing.Point(305, 88);
+            this.tbbdayday.MaxLength = 2;
             this.tbbdayday.Name = "tbbdayday";
             this.tbbdayday.Size = new System.Drawing.Size(62, 26);
             this.tbbdayday.TabIndex = 36;
@@ -670,6 +674,7 @@
             // 
             // tbfname
             // 
+            this.tbfname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbfname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbfname.ForeColor = System.Drawing.Color.Gray;
             this.tbfname.Location = new System.Drawing.Point(73, 48);
@@ -681,6 +686,7 @@
             // 
             // tbmname
             // 
+            this.tbmname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbmname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbmname.ForeColor = System.Drawing.Color.Gray;
             this.tbmname.Location = new System.Drawing.Point(362, 48);
@@ -692,6 +698,7 @@
             // 
             // tblname
             // 
+            this.tblname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tblname.ForeColor = System.Drawing.Color.Gray;
             this.tblname.Location = new System.Drawing.Point(648, 48);
@@ -703,14 +710,17 @@
             // 
             // tbcontactNumber
             // 
+            this.tbcontactNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbcontactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbcontactNumber.ForeColor = System.Drawing.Color.Gray;
             this.tbcontactNumber.Location = new System.Drawing.Point(71, 174);
+            this.tbcontactNumber.MaxLength = 11;
             this.tbcontactNumber.Name = "tbcontactNumber";
             this.tbcontactNumber.Size = new System.Drawing.Size(216, 26);
             this.tbcontactNumber.TabIndex = 39;
             this.tbcontactNumber.Text = "Contact Number";
             this.tbcontactNumber.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbcontactNumber_MouseClick);
+            this.tbcontactNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbcontactNumber_KeyPress);
             // 
             // button4
             // 
@@ -730,6 +740,7 @@
             // 
             // tbaddress
             // 
+            this.tbaddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbaddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbaddress.ForeColor = System.Drawing.Color.Gray;
             this.tbaddress.Location = new System.Drawing.Point(72, 128);
@@ -1585,7 +1596,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(100, 32);
             this.button7.TabIndex = 42;
-            this.button7.Text = "Temp Search";
+            this.button7.Text = "Search";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
@@ -2345,11 +2356,11 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.pnlActivity);
             this.DogCatchingOperation.Controls.Add(this.Edit);
             this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.panelViewAct);
+            this.DogCatchingOperation.Controls.Add(this.pnlActivity);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -2724,10 +2735,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.attendance);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.attendance);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;

@@ -153,6 +153,7 @@
             this.tbYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbYear.TextChanged += new System.EventHandler(this.tbYear_TextChanged);
             this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
+            this.tbYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbYr_KeyPress);
             // 
             // label15
             // 
@@ -266,6 +267,7 @@
             this.tbYr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbYr.TextChanged += new System.EventHandler(this.tbYr_TextChanged);
             this.tbYr.Enter += new System.EventHandler(this.tbYr_Enter);
+            this.tbYr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbYr_KeyPress);
             // 
             // amtLabel
             // 

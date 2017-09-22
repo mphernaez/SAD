@@ -37,7 +37,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT * FROM dogoperation WHERE operationID = " + id, conn);
+                MySqlCommand comm = new MySqlCommand("SELECT * FROM dogoperation JOIN location ON dogoperation.operationID = location.locationID WHERE operationID = " + id, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -91,8 +91,7 @@ namespace WindowsFormsApplication1
                 cbOpMonth.SelectedIndex = int.Parse(m) - 1;
                 responsiveDay(int.Parse(y));
                 tbOpDay.SelectedIndex = int.Parse(d) - 1;
-                cbLocation.SelectedIndex = int.Parse(dt.Rows[0]["locationID"].ToString()) - 1;
-                MessageBox.Show(dt.Rows[0]["locationID"].ToString());
+                cbLocation.SelectedValue = cbLocation.FindString(dt.Rows[0]["description"].ToString());
                 tID = int.Parse(dt.Rows[0]["teamID"].ToString());
 
                 if (int.Parse(tsh) > 12)
@@ -477,7 +476,11 @@ namespace WindowsFormsApplication1
                         {
                             nt = emp.checkIfTeamExists(ids, cTeam.Rows.Count);
                         }
-                        MySqlCommand comm = new MySqlCommand("Update dogoperation SET date = '" + ndate + "', locationID = " + nl + ", timeStart = '" + nts + "', teamID = " + nt + ", timeEnd = '" + nte + "' WHERE operationID = " + id, conn);
+                        MySqlCommand c = new MySqlCommand("SELECT locationID FROM location WHERE description = " + cbLocation.Text, conn);
+                        MySqlDataAdapter a = new MySqlDataAdapter(c);
+                        DataTable t = new DataTable();
+                        a.Fill(t);
+                        MySqlCommand comm = new MySqlCommand("Update dogoperation SET date = '" + ndate + "', locationID = " + t.Rows[0]["location"].ToString() + ", timeStart = '" + nts + "', teamID = " + nt + ", timeEnd = '" + nte + "' WHERE operationID = " + id, conn);
                         comm.ExecuteNonQuery();
                         MessageBox.Show("Changes Saved");
 
@@ -515,6 +518,11 @@ namespace WindowsFormsApplication1
         }
 
         int ti1, ti2;
+
+        private void tbStarth_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
 
         private void tbOpDay_KeyPress(object sender, KeyPressEventArgs e)
         {

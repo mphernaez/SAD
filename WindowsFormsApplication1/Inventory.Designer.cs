@@ -696,8 +696,8 @@
             this.newitem.Controls.Add(this.label5);
             this.newitem.Controls.Add(this.button31);
             this.newitem.Controls.Add(this.button6);
-            this.newitem.Controls.Add(this.Edit);
             this.newitem.Controls.Add(this.add);
+            this.newitem.Controls.Add(this.Edit);
             this.newitem.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newitem.Location = new System.Drawing.Point(24, 196);
             this.newitem.Name = "newitem";
@@ -1123,6 +1123,7 @@
             this.y2.Text = "Year";
             this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged_1);
             this.y2.Enter += new System.EventHandler(this.y2_Enter_1);
+            this.y2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.y2_KeyPress);
             // 
             // d2
             // 
@@ -1158,6 +1159,7 @@
             this.y1.Text = "Year";
             this.y1.TextChanged += new System.EventHandler(this.y1_TextChanged_1);
             this.y1.Enter += new System.EventHandler(this.y1_Enter_1);
+            this.y1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.y2_KeyPress);
             // 
             // label21
             // 

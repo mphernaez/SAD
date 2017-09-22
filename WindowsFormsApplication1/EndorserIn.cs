@@ -193,5 +193,10 @@ namespace WindowsFormsApplication1
         {
             e.Handled = true;
         }
+
+        private void tbYr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 }
