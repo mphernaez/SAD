@@ -565,7 +565,7 @@ namespace WindowsFormsApplication1
             int fsize = 14;
             e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, 50));
             e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(350, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new System.Drawing.Font(f, 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(160, 100));
+            e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
             e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font(f, 18, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(65, 130));
             e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 170));
 
@@ -1113,7 +1113,7 @@ namespace WindowsFormsApplication1
             {
                 e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
                 e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-                e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
                 e.Graphics.DrawString("CLAIMED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
                 e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
                 e.Graphics.DrawString("Claimer", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
@@ -1184,7 +1184,8 @@ namespace WindowsFormsApplication1
         DataTable dtoperation; //dogs
         private void button11_Click(object sender, EventArgs e)
         {
-            
+            op1 = 0;
+            noheader4 = false;
             int operationID = opid[cbOperation.SelectedIndex];
 
             
@@ -1232,7 +1233,7 @@ namespace WindowsFormsApplication1
 
                 conn.Close();
 
-                printDocument5.DefaultPageSettings.Landscape = true;
+                printDocument5.DefaultPageSettings.Landscape = false;
                 PrintPreviewDialog fin = new PrintPreviewDialog();
                 fin.Document = printDocument5;
                 ((Form)fin).WindowState = FormWindowState.Maximized;
@@ -1263,7 +1264,7 @@ namespace WindowsFormsApplication1
             if (noheader2 == false) {
                 e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
                 e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-                e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
                 e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
                 e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
                 e.Graphics.DrawString("Adoptor", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
@@ -1333,7 +1334,7 @@ namespace WindowsFormsApplication1
             if (noheader3 == false) {
                 e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
                 e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-                e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(170, 100));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
                 e.Graphics.DrawString("EUTHANIZED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(190, 130));
                 e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(150, 170));
                 dog = 200; op = 200;
@@ -1380,91 +1381,72 @@ namespace WindowsFormsApplication1
 
             }
         }
-        int pages;
+        int op1 = 0;
+        Boolean noheader4 = false;
         private void printDocument5_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             string f = "Arial";
-            int fsize = 14;
-            e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 50));
-            e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(500, 70));
-            e.Graphics.DrawString("DAVAO CITY DOG POUND", new System.Drawing.Font(f, 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(400, 100));
-
-            e.Graphics.DrawString("Location: BRGY. " + location, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(420, 170));
-            e.Graphics.DrawString("Sublocations: ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(420, 200));
-            int z = 230;
-            int v = 0;
-            while (v < sublocations.Length)
-            {
-                e.Graphics.DrawString(sublocations[v], new System.Drawing.Font(f, 14, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, z));
-                v++;
-                z = z + 25;
-            }
-                e.Graphics.DrawString("Date:  " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 170));
-                e.Graphics.DrawString("Time:  " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(200, 200));
-                e.Graphics.DrawString("Employees Invovled:  ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(650, 170));
-                int l = 200;
+            int x;
+            if (noheader4 == false) {
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
+                e.Graphics.DrawString("Operation Details", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(335, 150));
+                e.Graphics.DrawString("Location: BRGY. " + location, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(265, 190));
+                e.Graphics.DrawString("Sublocations: ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(265, 220));
+                int z = 245;
+                int v = 0;
+                while (v < sublocations.Length)
+                {
+                    e.Graphics.DrawString(sublocations[v], new System.Drawing.Font(f, 14, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(285, z));
+                    v++;
+                    z = z + 25;
+                }
+                e.Graphics.DrawString("Date:  " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(50, 190));
+                e.Graphics.DrawString("Time:  " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(50, 220));
+                e.Graphics.DrawString("Employees Involved:  ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(540, 190));
+                int l = 220;
                 for (int i = 0; i < employees.Length; i++)
                 {
-                    e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 14, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(675, l));
+                    e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 14, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(560, l));
                     l = l + 25;
                 }
-
-
-                string footer = string.Empty;
-                int columnCount = dtoperation.Columns.Count;
-                int maxRows = dtoperation.Rows.Count;
-                int prt;
-                using (Graphics g = e.Graphics)
-                {
-
-                    Brush brush = new SolidBrush(Color.Black);
-                    Pen pen = new Pen(brush);
-                    Font font = new Font("Arial", 12);
-                    SizeF size;
-
-                    int x = 0, y = z + 30, width = 180;
-                    float xPadding;
-
-                    // Writes out all column names in designated locations, aligned as a table
-                    foreach (DataColumn column in dtoperation.Columns)
-                    {
-                        size = g.MeasureString(column.ColumnName, font);
-                        xPadding = (width - size.Width) / 2;
-                        g.DrawString(column.ColumnName, new System.Drawing.Font(f, 14, FontStyle.Bold), brush, x + xPadding, y + 10);
-                        x += width;
-                    }
-
-                    x = 0;
-                    y += 40;
-                    int rowcount = 0;
-
-                    // Process each row and place each item under correct column.
-                    foreach (DataRow row in dtoperation.Rows)
-                    {
-
-                        rowcount++;
-                        for (int i = 0; i < columnCount; i++)
-                        {
-                            size = g.MeasureString(row[i].ToString(), font);
-                            xPadding = (width - size.Width) / 2;
-
-                            g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 10);
-                            x += width;
-
-                        }
-
-
-                        x = 0;
-                        y += 25;
-
-
-                    }
-
-                    prt = y;
-                }
-                if (prt > 700) e.HasMorePages = true;
-                e.HasMorePages = false;
+                if (z >= l) x = z + 40;
+                else x = l + 40;
+                e.Graphics.DrawString("Dogs Caught", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(340, x));
+                x = x + 40;
             }
+            else
+            {
+                x = 40;
+            }
+
+            while(op1 < dtoperation.Rows.Count)
+            {
+                
+                e.Graphics.DrawString("Breed: " + dtoperation.Rows[op1]["Breed"].ToString(), new System.Drawing.Font(f, 12, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(50, x));
+                e.Graphics.DrawString("Color: " + dtoperation.Rows[op1]["Color"].ToString(), new System.Drawing.Font(f, 12, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(260, x));
+                e.Graphics.DrawString("Markings: " + dtoperation.Rows[op1]["Markings"].ToString(), new System.Drawing.Font(f, 12, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(440, x));
+                x = x + 20;
+                e.Graphics.DrawString("Gender: " + dtoperation.Rows[op1]["Gender"].ToString(), new System.Drawing.Font(f, 12, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(50, x));
+                e.Graphics.DrawString("Size: " + dtoperation.Rows[op1]["Size"].ToString(), new System.Drawing.Font(f, 12, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(260, x));
+                e.Graphics.DrawString("Location: " + dtoperation.Rows[op1]["Location"].ToString(), new System.Drawing.Font(f, 12, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(440, x));
+                x = x + 50;
+                op1++;
+
+                if (x>1000)
+                {
+                    e.HasMorePages = true;
+                    noheader4 = true;
+                    return;
+                }
+                else
+                {
+                    e.HasMorePages = false;
+                }
+            }
+            
+        }
         
 
         private void addDog_Paint(object sender, PaintEventArgs e)
@@ -1484,10 +1466,9 @@ namespace WindowsFormsApplication1
         {
             addSub.Text = "";
         }
-
         private void printDocument5_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            pages = 0;
+           
         }
 
         private void tbColor_KeyPress(object sender, KeyPressEventArgs e)
