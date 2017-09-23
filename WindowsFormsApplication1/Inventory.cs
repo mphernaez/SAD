@@ -352,10 +352,12 @@ namespace WindowsFormsApplication1
             if (cbTransType.SelectedIndex == 0)
             {
                 refreshTransIn();
+                button2.Enabled = true;
             }
             else if (cbTransType.SelectedIndex == 1)
             {
                 refreshTransOut();
+                button2.Enabled = true;
             }
             else if (cbTransType.SelectedIndex == 2)
             {
@@ -668,172 +670,96 @@ namespace WindowsFormsApplication1
 
         private void reportEm()
         {
-            printDocument1.DefaultPageSettings.Landscape = true;
+            printDocument1.DefaultPageSettings.Landscape = false;
             PrintPreviewDialog dlg = new PrintPreviewDialog();
             dlg.Document = printDocument1;
             ((Form)dlg).WindowState = FormWindowState.Maximized;
             dlg.ShowDialog();
         }
         int rowcount = 0;
+        int si = 0;
+        Boolean noheader1 = false;
+        int x = 0;
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(450, 50));
-            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(500, 70));
-            e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(300, 100));
-            e.Graphics.DrawString("INVENTORY", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(475, 130));
+            
+            if (noheader1 == false) {
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
+                e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+           }
+            else
+            {
+                x = 40;
+            }
 
             if (cbTransType.Text == "Stock In")
             {
-                string footer = string.Empty;
-                int columnCount = dgvTrans.Columns.Count;
-                int maxRows = dgvTrans.Rows.Count;
-
-                using (Graphics g = e.Graphics)
+                if (noheader1 == false) {
+                    e.Graphics.DrawString("Stock-In REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(250, 130));
+                    x = 220;
+                }
+                while (si < dtTrans.Rows.Count)
                 {
-                    Brush brush = new SolidBrush(Color.Black);
-                    Pen pen = new Pen(brush);
-                    Font font = new Font("Arial", 12);
-                    SizeF size;
+                    e.Graphics.DrawString("Product: " + dtTrans.Rows[si]["Product"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
+                    e.Graphics.DrawString("Endorsed By: " + dtTrans.Rows[si]["Endorsed By"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(405, x));
+                    x = x + 25;
 
-                    int x = 25, y = 200, width = 180;
-                    float xPadding;
+                    e.Graphics.DrawString("Quantity Added: " + dtTrans.Rows[si]["Quantity Added"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
+                    e.Graphics.DrawString("Reason of Endorsement: " + dtTrans.Rows[si]["Reason of Endorsement"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(405, x));
+                    x = x + 25;
 
-                    // Writes out all column names in designated locations, aligned as a table
-                    foreach (DataColumn column in dtTrans.Columns)
+                    e.Graphics.DrawString("Date: " + dtTrans.Rows[si]["Date"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
+                    e.Graphics.DrawString("Product Expiration: " + dtTrans.Rows[si]["Product Expiration"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(405, x));
+                    x = x + 50;
+                    si++;
+
+                    if (x>1000)
                     {
-                        size = g.MeasureString(column.ColumnName, font);
-                        xPadding = (width - size.Width) / 2;
-                        g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 10);
-                        x += width;
+                        e.HasMorePages = true;
+                        noheader1 = true;
+                        return;
                     }
-
-                    x = 25;
-                    y += 50;
-                    int rowcount = 0;
-                    // Process each row and place each item under correct column.
-                    foreach (DataRow row in dtTrans.Rows)
+                    else
                     {
-                        rowcount++;
-
-                        for (int i = 0; i < columnCount; i++)
-                        {
-                            size = g.MeasureString(row[i].ToString(), font);
-                            xPadding = (width - size.Width) / 2;
-
-                            g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 10);
-                            x += width;
-                        }
-
-                        e.HasMorePages = rowcount - 1 < maxRows;
-
-                        x = 25;
-                        y += 50;
+                        e.HasMorePages = false;
                     }
                 }
             }
-
             else if (cbTransType.Text == "Stock Out")
             {
-                //e.Graphics.DrawString("Stock Out Summary Report", new System.Drawing.Font("Arial", 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 150));
-
-                string footer = string.Empty;
-                int columnCount = dgvTrans.Columns.Count;
-                int maxRows = dgvTrans.Rows.Count;
-
-                using (Graphics g = e.Graphics)
+                if (noheader1 == false)
                 {
-                    Brush brush = new SolidBrush(Color.Black);
-                    Pen pen = new Pen(brush);
-                    Font font = new Font("Arial", 12);
-                    SizeF size;
+                    e.Graphics.DrawString("Stock-Out REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(250, 130));
+                    x = 220;
+                }
+                while (si < dtOut.Rows.Count)
+                {
+                    e.Graphics.DrawString("Product: " + dtOut.Rows[si]["Product"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
+                    e.Graphics.DrawString("Deducted By: " + dtOut.Rows[si]["Deducted By"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(405, x));
+                    x = x + 25;
 
-                    int x = 25, y = 200, width = 180;
-                    float xPadding;
+                    e.Graphics.DrawString("Quantity Deducted: " + dtOut.Rows[si]["Quantity Deducted"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
+                    e.Graphics.DrawString("Reason of Deduction: " + dtOut.Rows[si]["Reason of Deduction"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(405, x));
+                    x = x + 25;
 
-                    // Writes out all column names in designated locations, aligned as a table
-                    foreach (DataColumn column in dtOut.Columns)
+                    e.Graphics.DrawString("Date: " + dtOut.Rows[si]["Date"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
+                    x = x + 50;
+                    si++;
+
+                    if (x > 1000)
                     {
-                        size = g.MeasureString(column.ColumnName, font);
-                        xPadding = (width - size.Width) / 2;
-                        g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 10);
-                        x += width;
+                        e.HasMorePages = true;
+                        noheader1 = true;
+                        return;
                     }
-
-                    x = 25;
-                    y += 50;
-                    int rowcount = 0;
-                    // Process each row and place each item under correct column.
-                    foreach (DataRow row in dtOut.Rows)
+                    else
                     {
-                        rowcount++;
-
-                        for (int i = 0; i < columnCount; i++)
-                        {
-                            size = g.MeasureString(row[i].ToString(), font);
-                            xPadding = (width - size.Width) / 2;
-
-                            g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 10);
-                            x += width;
-                        }
-
-                        e.HasMorePages = rowcount - 1 < maxRows;
-
-                        x = 25;
-                        y += 50;
+                        e.HasMorePages = false;
                     }
                 }
             }
-            else
-            {
-                e.Graphics.DrawString("Returns Summary Report", new System.Drawing.Font("Arial", 20, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(25, 150));
-
-                string footer = string.Empty;
-                int columnCount = dgvTrans.Columns.Count;
-                int maxRows = dgvTrans.Rows.Count;
-
-                using (Graphics g = e.Graphics)
-                {
-                    Brush brush = new SolidBrush(Color.Black);
-                    Pen pen = new Pen(brush);
-                    Font font = new Font("Arial", 12);
-                    SizeF size;
-
-                    int x = 25, y = 200, width = 180;
-                    float xPadding;
-
-                    // Writes out all column names in designated locations, aligned as a table
-                    foreach (DataColumn column in dtRet.Columns)
-                    {
-                        size = g.MeasureString(column.ColumnName, font);
-                        xPadding = (width - size.Width) / 2;
-                        g.DrawString(column.ColumnName, font, brush, x + xPadding, y + 10);
-                        x += width;
-                    }
-
-                    x = 25;
-                    y += 50;
-                    int rowcount = 0;
-                    // Process each row and place each item under correct column.
-                    foreach (DataRow row in dtRet.Rows)
-                    {
-                        rowcount++;
-
-                        for (int i = 0; i < columnCount; i++)
-                        {
-                            size = g.MeasureString(row[i].ToString(), font);
-                            xPadding = (width - size.Width) / 2;
-
-                            g.DrawString(row[i].ToString(), font, brush, x + xPadding, y + 10);
-                            x += width;
-                        }
-
-                        e.HasMorePages = rowcount - 1 < maxRows;
-
-                        x = 25;
-                        y += 50;
-                    }
-                }
-            }
+            
             
         }
         
@@ -846,8 +772,10 @@ namespace WindowsFormsApplication1
         {
             if (cbTransType.Text != "Transaction Type") reportEm();
             else MessageBox.Show("Please Select a Transaction");
-            
 
+            si = 0;
+            noheader1 = false;
+            x = 0;
         }
 
         private void button19_Click(object sender, EventArgs e)
