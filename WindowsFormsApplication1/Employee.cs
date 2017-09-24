@@ -783,11 +783,12 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm;
                 if (DateTime.Now.ToString("yyyy-MM-dd") != Convert.ToDateTime(d).ToString("yyyy-MM-dd"))
                 {
-                    comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID WHERE position = 'Catcher' OR position = 'Driver' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + date + "') THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END)   UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position FROM profile JOIN employee ON profile.personID = employee.employeeID WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' OR position = 'Driver' AND employee.status = 'Active'", conn);
+                    comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID WHERE (position = 'Catcher' OR position = 'Driver') AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + date + "') THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END)   UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position FROM profile JOIN employee ON profile.personID = employee.employeeID WHERE employeeID NOT IN(SELECT employeeID FROM operationteam) AND (position = 'Catcher' OR position = 'Driver') AND employee.status = 'Active'", conn);
                 }
                 else
                 {
-                    comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID JOIN attendance ON attendance.employeeID = personID WHERE position = 'Catcher' OR position = 'Driver' AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + d + "')THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END ) AND attendance.date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 1  AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 0) UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN attendance ON attendance.employeeID = personID WHERE personID NOT IN(SELECT employeeID FROM operationteam) AND position = 'Catcher' OR position = 'Driver' AND employee.status = 'Active' AND attendance.date = '" + d + "' AND type = 0 AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + d + "' AND type = 0)", conn);
+                    MessageBox.Show(d);
+                    comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID JOIN attendance ON attendance.employeeID = personID WHERE position = ('Catcher' OR position = 'Driver') AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + d + "')THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END ) AND attendance.date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 1  AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 0) UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN attendance ON attendance.employeeID = personID WHERE personID NOT IN(SELECT employeeID FROM operationteam) AND (position = 'Catcher' OR position = 'Driver') AND employee.status = 'Active' AND attendance.date = '" + d + "' AND type = 0 AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + d + "' AND type = 0)", conn);
                 }
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
@@ -1295,6 +1296,9 @@ namespace WindowsFormsApplication1
                     {
                         MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'Finished', timeEnd = '" + DateTime.Now.ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' WHERE operationID = " + operation, conn);
                         comm.ExecuteNonQuery();
+                        conn.Close();
+                        this.Hide();
+                        home.repDog();
                     }
 
                 
@@ -1310,7 +1314,6 @@ namespace WindowsFormsApplication1
 
         private void button28_Click(object sender, EventArgs e)
         {
-            
             if (cbOpMonth.Text != "Month" && tbOpDay.Text != "Day" && tbOpYear.Text != "Year" && tbStarth.Text != "00" && tbEndh.Text != "00" && cbLocation.Text != "Location" && cbAMPMend.Text != "AM/PM" && cbAMPMstart.Text != "AM/PM")
             {
                 d = tbOpYear.Text + "-" + (cbOpMonth.SelectedIndex + 1).ToString() + "-" + tbOpDay.Text;
@@ -1371,6 +1374,7 @@ namespace WindowsFormsApplication1
                         {
                             pteam.Enabled = true;
                             pOperation.Enabled = false;
+                            newTeam.Rows.Clear();
 
 
                             //MessageBox.Show(d + ts + te + location);
@@ -2972,6 +2976,36 @@ namespace WindowsFormsApplication1
                 else if (choice.SelectedIndex == 1) repActivity();
 
             }
+        }
+
+        private void cbLocation_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbact_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void comboBox5_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void comboBox2_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbbdaymonth_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void m1_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

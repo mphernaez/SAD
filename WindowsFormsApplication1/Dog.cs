@@ -45,6 +45,13 @@ namespace WindowsFormsApplication1
             home = parent;
         }
 
+        public void dogRep()
+        {
+            addDog.Visible = true;
+            a.Visible = true;
+            addOperationsItems();
+            
+        }
         private void AddDog_Load(object sender, EventArgs e)
         {
             dgvArchive.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);

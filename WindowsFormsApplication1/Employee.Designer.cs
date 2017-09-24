@@ -162,7 +162,13 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.newTeam = new System.Windows.Forms.DataGridView();
+            this.personID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pos1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allEmployees = new System.Windows.Forms.DataGridView();
+            this.pID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button17 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.button20 = new System.Windows.Forms.Button();
@@ -173,6 +179,16 @@
             this.button36 = new System.Windows.Forms.Button();
             this.button33 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
+            this.panelViewAct = new System.Windows.Forms.Panel();
+            this.dgvViewAct = new System.Windows.Forms.DataGridView();
+            this.pnlActivity = new System.Windows.Forms.Panel();
+            this.measBy = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button32 = new System.Windows.Forms.Button();
+            this.numact = new System.Windows.Forms.NumericUpDown();
+            this.cbmatact = new System.Windows.Forms.ComboBox();
+            this.cbact = new System.Windows.Forms.ComboBox();
+            this.cbempact = new System.Windows.Forms.ComboBox();
             this.Edit = new System.Windows.Forms.Panel();
             this.button34 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
@@ -188,25 +204,9 @@
             this.eTimeE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eTeamM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelViewAct = new System.Windows.Forms.Panel();
-            this.dgvViewAct = new System.Windows.Forms.DataGridView();
-            this.pnlActivity = new System.Windows.Forms.Panel();
-            this.measBy = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button32 = new System.Windows.Forms.Button();
-            this.numact = new System.Windows.Forms.NumericUpDown();
-            this.cbmatact = new System.Windows.Forms.ComboBox();
-            this.cbact = new System.Windows.Forms.ComboBox();
-            this.cbempact = new System.Windows.Forms.ComboBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
-            this.pID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pos1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
@@ -244,12 +244,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.newTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).BeginInit();
             this.DogCatchingOperation.SuspendLayout();
-            this.Edit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.editOperation)).BeginInit();
             this.panelViewAct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewAct)).BeginInit();
             this.pnlActivity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numact)).BeginInit();
+            this.Edit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.editOperation)).BeginInit();
             this.SuspendLayout();
             // 
             // attendance
@@ -259,9 +259,9 @@
             this.attendance.Controls.Add(this.button10);
             this.attendance.Controls.Add(this.button3);
             this.attendance.Controls.Add(this.label3);
+            this.attendance.Controls.Add(this.panelAtt);
             this.attendance.Controls.Add(this.dgvAttendanceOut);
             this.attendance.Controls.Add(this.dgvAttendanceIn);
-            this.attendance.Controls.Add(this.panelAtt);
             this.attendance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.attendance.Location = new System.Drawing.Point(24, 196);
             this.attendance.Name = "attendance";
@@ -638,9 +638,11 @@
             // 
             // cbbdaymonth
             // 
+            this.cbbdaymonth.DropDownHeight = 100;
             this.cbbdaymonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbdaymonth.ForeColor = System.Drawing.Color.Gray;
             this.cbbdaymonth.FormattingEnabled = true;
+            this.cbbdaymonth.IntegralHeight = false;
             this.cbbdaymonth.Items.AddRange(new object[] {
             "January",
             "February",
@@ -659,12 +661,15 @@
             this.cbbdaymonth.Size = new System.Drawing.Size(147, 28);
             this.cbbdaymonth.TabIndex = 35;
             this.cbbdaymonth.Text = "Month";
+            this.cbbdaymonth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbbdaymonth_KeyPress_1);
             // 
             // cbposition
             // 
+            this.cbposition.DropDownHeight = 100;
             this.cbposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbposition.ForeColor = System.Drawing.Color.Gray;
             this.cbposition.FormattingEnabled = true;
+            this.cbposition.IntegralHeight = false;
             this.cbposition.Items.AddRange(new object[] {
             "Admin",
             "Driver",
@@ -675,6 +680,7 @@
             this.cbposition.TabIndex = 40;
             this.cbposition.Text = "Position";
             this.cbposition.SelectedIndexChanged += new System.EventHandler(this.cbposition_SelectedIndexChanged);
+            this.cbposition.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbbdaymonth_KeyPress_1);
             // 
             // tbfname
             // 
@@ -756,9 +762,11 @@
             // 
             // cbgender
             // 
+            this.cbgender.DropDownHeight = 100;
             this.cbgender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbgender.ForeColor = System.Drawing.Color.Gray;
             this.cbgender.FormattingEnabled = true;
+            this.cbgender.IntegralHeight = false;
             this.cbgender.Items.AddRange(new object[] {
             "Male",
             "Female"});
@@ -768,6 +776,7 @@
             this.cbgender.TabIndex = 34;
             this.cbgender.Text = "Gender";
             this.cbgender.SelectedIndexChanged += new System.EventHandler(this.cbgender_SelectedIndexChanged);
+            this.cbgender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbbdaymonth_KeyPress_1);
             // 
             // pnlArchive
             // 
@@ -1112,13 +1121,16 @@
             // 
             // cbEmpFilt
             // 
+            this.cbEmpFilt.DropDownHeight = 100;
             this.cbEmpFilt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEmpFilt.FormattingEnabled = true;
+            this.cbEmpFilt.IntegralHeight = false;
             this.cbEmpFilt.Location = new System.Drawing.Point(17, 7);
             this.cbEmpFilt.Name = "cbEmpFilt";
             this.cbEmpFilt.Size = new System.Drawing.Size(333, 28);
             this.cbEmpFilt.TabIndex = 17;
             this.cbEmpFilt.Text = "Employee";
+            this.cbEmpFilt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress_1);
             // 
             // y2
             // 
@@ -1132,25 +1144,31 @@
             // 
             // d2
             // 
+            this.d2.DropDownHeight = 100;
             this.d2.Enabled = false;
             this.d2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.d2.FormattingEnabled = true;
+            this.d2.IntegralHeight = false;
             this.d2.Location = new System.Drawing.Point(478, 19);
             this.d2.Name = "d2";
             this.d2.Size = new System.Drawing.Size(65, 28);
             this.d2.TabIndex = 14;
             this.d2.Text = "Day";
+            this.d2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress_1);
             // 
             // d1
             // 
+            this.d1.DropDownHeight = 100;
             this.d1.Enabled = false;
             this.d1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.d1.FormattingEnabled = true;
+            this.d1.IntegralHeight = false;
             this.d1.Location = new System.Drawing.Point(208, 20);
             this.d1.Name = "d1";
             this.d1.Size = new System.Drawing.Size(65, 28);
             this.d1.TabIndex = 13;
             this.d1.Text = "Day";
+            this.d1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress_1);
             // 
             // y1
             // 
@@ -1174,8 +1192,10 @@
             // 
             // m2
             // 
+            this.m2.DropDownHeight = 100;
             this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m2.FormattingEnabled = true;
+            this.m2.IntegralHeight = false;
             this.m2.Items.AddRange(new object[] {
             "January",
             "February",
@@ -1195,11 +1215,14 @@
             this.m2.TabIndex = 9;
             this.m2.Text = "Month";
             this.m2.SelectedIndexChanged += new System.EventHandler(this.m2_SelectedIndexChanged);
+            this.m2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress_1);
             // 
             // m1
             // 
+            this.m1.DropDownHeight = 100;
             this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m1.FormattingEnabled = true;
+            this.m1.IntegralHeight = false;
             this.m1.Items.AddRange(new object[] {
             "January",
             "February",
@@ -1219,11 +1242,14 @@
             this.m1.TabIndex = 10;
             this.m1.Text = "Month";
             this.m1.SelectedIndexChanged += new System.EventHandler(this.m1_SelectedIndexChanged);
+            this.m1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress_1);
             // 
             // choice
             // 
+            this.choice.DropDownHeight = 100;
             this.choice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.choice.FormattingEnabled = true;
+            this.choice.IntegralHeight = false;
             this.choice.Items.AddRange(new object[] {
             "Attendance",
             "Activities",
@@ -1234,6 +1260,7 @@
             this.choice.TabIndex = 5;
             this.choice.Text = "Type";
             this.choice.SelectedIndexChanged += new System.EventHandler(this.choice_SelectedIndexChanged);
+            this.choice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress_1);
             // 
             // button28
             // 
@@ -1733,6 +1760,7 @@
             this.comboBox2.Size = new System.Drawing.Size(93, 28);
             this.comboBox2.TabIndex = 75;
             this.comboBox2.Text = "Month";
+            this.comboBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox2_KeyPress_1);
             // 
             // newOperation
             // 
@@ -1780,6 +1808,7 @@
             this.tbOpDay.Size = new System.Drawing.Size(52, 28);
             this.tbOpDay.TabIndex = 75;
             this.tbOpDay.Text = "Day";
+            this.tbOpDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbLocation_KeyPress);
             // 
             // Next
             // 
@@ -1831,6 +1860,7 @@
             this.cbOpMonth.TabIndex = 72;
             this.cbOpMonth.Text = "Month";
             this.cbOpMonth.SelectedIndexChanged += new System.EventHandler(this.cbOpMonth_SelectedIndexChanged);
+            this.cbOpMonth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbLocation_KeyPress);
             // 
             // tbOpYear
             // 
@@ -1857,6 +1887,7 @@
             this.cbAMPMend.Size = new System.Drawing.Size(73, 28);
             this.cbAMPMend.TabIndex = 70;
             this.cbAMPMend.Text = "AM/PM";
+            this.cbAMPMend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbLocation_KeyPress);
             // 
             // cbAMPMstart
             // 
@@ -1870,6 +1901,7 @@
             this.cbAMPMstart.Size = new System.Drawing.Size(73, 28);
             this.cbAMPMstart.TabIndex = 69;
             this.cbAMPMstart.Text = "AM/PM";
+            this.cbAMPMstart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbLocation_KeyPress);
             // 
             // label16
             // 
@@ -2158,6 +2190,7 @@
             this.cbLocation.Size = new System.Drawing.Size(229, 28);
             this.cbLocation.TabIndex = 58;
             this.cbLocation.Text = "Location";
+            this.cbLocation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbLocation_KeyPress);
             // 
             // pteam
             // 
@@ -2224,6 +2257,25 @@
             this.newTeam.TabIndex = 1;
             this.newTeam.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.newTeam_CellClick);
             // 
+            // personID
+            // 
+            this.personID.HeaderText = "personID";
+            this.personID.Name = "personID";
+            this.personID.ReadOnly = true;
+            this.personID.Visible = false;
+            // 
+            // pos1
+            // 
+            this.pos1.HeaderText = "";
+            this.pos1.Name = "pos1";
+            this.pos1.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
             // allEmployees
             // 
             this.allEmployees.AllowUserToAddRows = false;
@@ -2245,6 +2297,25 @@
             this.allEmployees.Size = new System.Drawing.Size(386, 131);
             this.allEmployees.TabIndex = 0;
             this.allEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.allEmployees_CellClick);
+            // 
+            // pID
+            // 
+            this.pID.HeaderText = "Column1";
+            this.pID.Name = "pID";
+            this.pID.ReadOnly = true;
+            this.pID.Visible = false;
+            // 
+            // empname
+            // 
+            this.empname.HeaderText = "";
+            this.empname.Name = "empname";
+            this.empname.ReadOnly = true;
+            // 
+            // pos
+            // 
+            this.pos.HeaderText = "";
+            this.pos.Name = "pos";
+            this.pos.ReadOnly = true;
             // 
             // button17
             // 
@@ -2392,6 +2463,136 @@
             this.button31.UseVisualStyleBackColor = false;
             this.button31.Click += new System.EventHandler(this.button31_Click);
             // 
+            // panelViewAct
+            // 
+            this.panelViewAct.Controls.Add(this.dgvViewAct);
+            this.panelViewAct.Location = new System.Drawing.Point(16, 115);
+            this.panelViewAct.Name = "panelViewAct";
+            this.panelViewAct.Size = new System.Drawing.Size(982, 412);
+            this.panelViewAct.TabIndex = 87;
+            this.panelViewAct.Visible = false;
+            // 
+            // dgvViewAct
+            // 
+            this.dgvViewAct.AllowUserToAddRows = false;
+            this.dgvViewAct.AllowUserToDeleteRows = false;
+            this.dgvViewAct.AllowUserToResizeColumns = false;
+            this.dgvViewAct.AllowUserToResizeRows = false;
+            this.dgvViewAct.BackgroundColor = System.Drawing.Color.White;
+            this.dgvViewAct.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvViewAct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViewAct.GridColor = System.Drawing.Color.White;
+            this.dgvViewAct.Location = new System.Drawing.Point(21, 20);
+            this.dgvViewAct.Name = "dgvViewAct";
+            this.dgvViewAct.ReadOnly = true;
+            this.dgvViewAct.RowHeadersVisible = false;
+            this.dgvViewAct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvViewAct.Size = new System.Drawing.Size(946, 371);
+            this.dgvViewAct.TabIndex = 2;
+            // 
+            // pnlActivity
+            // 
+            this.pnlActivity.Controls.Add(this.measBy);
+            this.pnlActivity.Controls.Add(this.label11);
+            this.pnlActivity.Controls.Add(this.button32);
+            this.pnlActivity.Controls.Add(this.numact);
+            this.pnlActivity.Controls.Add(this.cbmatact);
+            this.pnlActivity.Controls.Add(this.cbact);
+            this.pnlActivity.Controls.Add(this.cbempact);
+            this.pnlActivity.Location = new System.Drawing.Point(17, 116);
+            this.pnlActivity.Name = "pnlActivity";
+            this.pnlActivity.Size = new System.Drawing.Size(982, 412);
+            this.pnlActivity.TabIndex = 77;
+            this.pnlActivity.Visible = false;
+            // 
+            // measBy
+            // 
+            this.measBy.AutoSize = true;
+            this.measBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.measBy.Location = new System.Drawing.Point(386, 171);
+            this.measBy.Name = "measBy";
+            this.measBy.Size = new System.Drawing.Size(0, 20);
+            this.measBy.TabIndex = 86;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label11.Location = new System.Drawing.Point(68, 39);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(157, 39);
+            this.label11.TabIndex = 85;
+            this.label11.Text = "Activities";
+            // 
+            // button32
+            // 
+            this.button32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button32.FlatAppearance.BorderSize = 0;
+            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button32.ForeColor = System.Drawing.Color.White;
+            this.button32.Location = new System.Drawing.Point(70, 225);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(123, 34);
+            this.button32.TabIndex = 79;
+            this.button32.Text = "Record";
+            this.button32.UseVisualStyleBackColor = false;
+            this.button32.Click += new System.EventHandler(this.button32_Click_1);
+            // 
+            // numact
+            // 
+            this.numact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numact.Location = new System.Drawing.Point(388, 194);
+            this.numact.Name = "numact";
+            this.numact.Size = new System.Drawing.Size(126, 26);
+            this.numact.TabIndex = 84;
+            this.numact.Visible = false;
+            // 
+            // cbmatact
+            // 
+            this.cbmatact.Enabled = false;
+            this.cbmatact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbmatact.ForeColor = System.Drawing.Color.Black;
+            this.cbmatact.FormattingEnabled = true;
+            this.cbmatact.Location = new System.Drawing.Point(71, 163);
+            this.cbmatact.Name = "cbmatact";
+            this.cbmatact.Size = new System.Drawing.Size(307, 28);
+            this.cbmatact.TabIndex = 83;
+            this.cbmatact.Text = "Materials (If Applicable)";
+            this.cbmatact.SelectedIndexChanged += new System.EventHandler(this.cbmatact_SelectedIndexChanged);
+            this.cbmatact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbact_KeyPress);
+            // 
+            // cbact
+            // 
+            this.cbact.Enabled = false;
+            this.cbact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbact.ForeColor = System.Drawing.Color.Black;
+            this.cbact.FormattingEnabled = true;
+            this.cbact.Items.AddRange(new object[] {
+            "Disinfect Impounding Place",
+            "Bathe Dogs",
+            "Feed Dogs"});
+            this.cbact.Location = new System.Drawing.Point(71, 94);
+            this.cbact.Name = "cbact";
+            this.cbact.Size = new System.Drawing.Size(307, 28);
+            this.cbact.TabIndex = 82;
+            this.cbact.Text = "Activity";
+            this.cbact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbact_KeyPress);
+            // 
+            // cbempact
+            // 
+            this.cbempact.Enabled = false;
+            this.cbempact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbempact.ForeColor = System.Drawing.Color.Black;
+            this.cbempact.FormattingEnabled = true;
+            this.cbempact.Location = new System.Drawing.Point(71, 128);
+            this.cbempact.Name = "cbempact";
+            this.cbempact.Size = new System.Drawing.Size(307, 28);
+            this.cbempact.TabIndex = 81;
+            this.cbempact.Text = "To be done by";
+            this.cbempact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbact_KeyPress);
+            // 
             // Edit
             // 
             this.Edit.Controls.Add(this.button34);
@@ -2460,6 +2661,7 @@
             this.comboBox5.Size = new System.Drawing.Size(93, 28);
             this.comboBox5.TabIndex = 75;
             this.comboBox5.Text = "Month";
+            this.comboBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox5_KeyPress_1);
             // 
             // tbedityear
             // 
@@ -2565,133 +2767,6 @@
             this.eStat.Name = "eStat";
             this.eStat.ReadOnly = true;
             // 
-            // panelViewAct
-            // 
-            this.panelViewAct.Controls.Add(this.dgvViewAct);
-            this.panelViewAct.Location = new System.Drawing.Point(16, 115);
-            this.panelViewAct.Name = "panelViewAct";
-            this.panelViewAct.Size = new System.Drawing.Size(982, 412);
-            this.panelViewAct.TabIndex = 87;
-            this.panelViewAct.Visible = false;
-            // 
-            // dgvViewAct
-            // 
-            this.dgvViewAct.AllowUserToAddRows = false;
-            this.dgvViewAct.AllowUserToDeleteRows = false;
-            this.dgvViewAct.AllowUserToResizeColumns = false;
-            this.dgvViewAct.AllowUserToResizeRows = false;
-            this.dgvViewAct.BackgroundColor = System.Drawing.Color.White;
-            this.dgvViewAct.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvViewAct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewAct.GridColor = System.Drawing.Color.White;
-            this.dgvViewAct.Location = new System.Drawing.Point(21, 20);
-            this.dgvViewAct.Name = "dgvViewAct";
-            this.dgvViewAct.ReadOnly = true;
-            this.dgvViewAct.RowHeadersVisible = false;
-            this.dgvViewAct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvViewAct.Size = new System.Drawing.Size(946, 371);
-            this.dgvViewAct.TabIndex = 2;
-            // 
-            // pnlActivity
-            // 
-            this.pnlActivity.Controls.Add(this.measBy);
-            this.pnlActivity.Controls.Add(this.label11);
-            this.pnlActivity.Controls.Add(this.button32);
-            this.pnlActivity.Controls.Add(this.numact);
-            this.pnlActivity.Controls.Add(this.cbmatact);
-            this.pnlActivity.Controls.Add(this.cbact);
-            this.pnlActivity.Controls.Add(this.cbempact);
-            this.pnlActivity.Location = new System.Drawing.Point(17, 116);
-            this.pnlActivity.Name = "pnlActivity";
-            this.pnlActivity.Size = new System.Drawing.Size(982, 412);
-            this.pnlActivity.TabIndex = 77;
-            this.pnlActivity.Visible = false;
-            // 
-            // measBy
-            // 
-            this.measBy.AutoSize = true;
-            this.measBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.measBy.Location = new System.Drawing.Point(386, 171);
-            this.measBy.Name = "measBy";
-            this.measBy.Size = new System.Drawing.Size(0, 20);
-            this.measBy.TabIndex = 86;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label11.Location = new System.Drawing.Point(68, 39);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(157, 39);
-            this.label11.TabIndex = 85;
-            this.label11.Text = "Activities";
-            // 
-            // button32
-            // 
-            this.button32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button32.FlatAppearance.BorderSize = 0;
-            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button32.ForeColor = System.Drawing.Color.White;
-            this.button32.Location = new System.Drawing.Point(70, 225);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(123, 34);
-            this.button32.TabIndex = 79;
-            this.button32.Text = "Record";
-            this.button32.UseVisualStyleBackColor = false;
-            this.button32.Click += new System.EventHandler(this.button32_Click_1);
-            // 
-            // numact
-            // 
-            this.numact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numact.Location = new System.Drawing.Point(388, 194);
-            this.numact.Name = "numact";
-            this.numact.Size = new System.Drawing.Size(126, 26);
-            this.numact.TabIndex = 84;
-            this.numact.Visible = false;
-            // 
-            // cbmatact
-            // 
-            this.cbmatact.Enabled = false;
-            this.cbmatact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbmatact.ForeColor = System.Drawing.Color.Black;
-            this.cbmatact.FormattingEnabled = true;
-            this.cbmatact.Location = new System.Drawing.Point(71, 163);
-            this.cbmatact.Name = "cbmatact";
-            this.cbmatact.Size = new System.Drawing.Size(307, 28);
-            this.cbmatact.TabIndex = 83;
-            this.cbmatact.Text = "Materials (If Applicable)";
-            this.cbmatact.SelectedIndexChanged += new System.EventHandler(this.cbmatact_SelectedIndexChanged);
-            // 
-            // cbact
-            // 
-            this.cbact.Enabled = false;
-            this.cbact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbact.ForeColor = System.Drawing.Color.Black;
-            this.cbact.FormattingEnabled = true;
-            this.cbact.Items.AddRange(new object[] {
-            "Disinfect Impounding Place",
-            "Bathe Dogs",
-            "Feed Dogs"});
-            this.cbact.Location = new System.Drawing.Point(71, 94);
-            this.cbact.Name = "cbact";
-            this.cbact.Size = new System.Drawing.Size(307, 28);
-            this.cbact.TabIndex = 82;
-            this.cbact.Text = "Activity";
-            // 
-            // cbempact
-            // 
-            this.cbempact.Enabled = false;
-            this.cbempact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbempact.ForeColor = System.Drawing.Color.Black;
-            this.cbempact.FormattingEnabled = true;
-            this.cbempact.Location = new System.Drawing.Point(71, 128);
-            this.cbempact.Name = "cbempact";
-            this.cbempact.Size = new System.Drawing.Size(307, 28);
-            this.cbempact.TabIndex = 81;
-            this.cbempact.Text = "To be done by";
-            // 
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
@@ -2704,44 +2779,6 @@
             // 
             this.printDocument3.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument3_PrintPage);
             // 
-            // pID
-            // 
-            this.pID.HeaderText = "Column1";
-            this.pID.Name = "pID";
-            this.pID.ReadOnly = true;
-            this.pID.Visible = false;
-            // 
-            // empname
-            // 
-            this.empname.HeaderText = "";
-            this.empname.Name = "empname";
-            this.empname.ReadOnly = true;
-            // 
-            // pos
-            // 
-            this.pos.HeaderText = "";
-            this.pos.Name = "pos";
-            this.pos.ReadOnly = true;
-            // 
-            // personID
-            // 
-            this.personID.HeaderText = "personID";
-            this.personID.Name = "personID";
-            this.personID.ReadOnly = true;
-            this.personID.Visible = false;
-            // 
-            // pos1
-            // 
-            this.pos1.HeaderText = "";
-            this.pos1.Name = "pos1";
-            this.pos1.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2752,10 +2789,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
-            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -2816,14 +2853,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.allEmployees)).EndInit();
             this.DogCatchingOperation.ResumeLayout(false);
             this.DogCatchingOperation.PerformLayout();
-            this.Edit.ResumeLayout(false);
-            this.Edit.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.editOperation)).EndInit();
             this.panelViewAct.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewAct)).EndInit();
             this.pnlActivity.ResumeLayout(false);
             this.pnlActivity.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numact)).EndInit();
+            this.Edit.ResumeLayout(false);
+            this.Edit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.editOperation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

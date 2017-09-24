@@ -163,6 +163,11 @@ namespace WindowsFormsApplication1
             refreshNotif();
         }
 
+        public void repDog()
+        {
+            openDog();
+            dog.dogRep();
+        }
         public void refreshNotif()
         {
             try
