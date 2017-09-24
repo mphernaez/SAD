@@ -162,11 +162,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.newTeam = new System.Windows.Forms.DataGridView();
-            this.personID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allEmployees = new System.Windows.Forms.DataGridView();
-            this.pID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button17 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.button20 = new System.Windows.Forms.Button();
@@ -205,6 +201,12 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
+            this.pID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pos1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
@@ -566,6 +568,7 @@
             this.tbUser.Size = new System.Drawing.Size(166, 29);
             this.tbUser.TabIndex = 46;
             this.tbUser.Text = "Username";
+            this.tbUser.Visible = false;
             this.tbUser.Enter += new System.EventHandler(this.tbUser_Enter);
             // 
             // tbPass
@@ -578,6 +581,7 @@
             this.tbPass.Size = new System.Drawing.Size(183, 29);
             this.tbPass.TabIndex = 47;
             this.tbPass.Text = "Password";
+            this.tbPass.Visible = false;
             this.tbPass.Enter += new System.EventHandler(this.tbPass_Enter);
             // 
             // button22
@@ -662,9 +666,9 @@
             this.cbposition.ForeColor = System.Drawing.Color.Gray;
             this.cbposition.FormattingEnabled = true;
             this.cbposition.Items.AddRange(new object[] {
-            "Catcher",
             "Admin",
-            "Janitor"});
+            "Driver",
+            "Catcher"});
             this.cbposition.Location = new System.Drawing.Point(71, 217);
             this.cbposition.Name = "cbposition";
             this.cbposition.Size = new System.Drawing.Size(123, 28);
@@ -2208,6 +2212,7 @@
             this.newTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.newTeam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.personID,
+            this.pos1,
             this.name});
             this.newTeam.GridColor = System.Drawing.Color.White;
             this.newTeam.Location = new System.Drawing.Point(518, 67);
@@ -2219,19 +2224,6 @@
             this.newTeam.TabIndex = 1;
             this.newTeam.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.newTeam_CellClick);
             // 
-            // personID
-            // 
-            this.personID.HeaderText = "personID";
-            this.personID.Name = "personID";
-            this.personID.ReadOnly = true;
-            this.personID.Visible = false;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
             // allEmployees
             // 
             this.allEmployees.AllowUserToAddRows = false;
@@ -2242,7 +2234,8 @@
             this.allEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.allEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.pID,
-            this.empname});
+            this.empname,
+            this.pos});
             this.allEmployees.GridColor = System.Drawing.Color.White;
             this.allEmployees.Location = new System.Drawing.Point(32, 67);
             this.allEmployees.Name = "allEmployees";
@@ -2252,19 +2245,6 @@
             this.allEmployees.Size = new System.Drawing.Size(386, 131);
             this.allEmployees.TabIndex = 0;
             this.allEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.allEmployees_CellClick);
-            // 
-            // pID
-            // 
-            this.pID.HeaderText = "Column1";
-            this.pID.Name = "pID";
-            this.pID.ReadOnly = true;
-            this.pID.Visible = false;
-            // 
-            // empname
-            // 
-            this.empname.HeaderText = "";
-            this.empname.Name = "empname";
-            this.empname.ReadOnly = true;
             // 
             // button17
             // 
@@ -2355,11 +2335,11 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.Edit);
-            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.panelViewAct);
             this.DogCatchingOperation.Controls.Add(this.pnlActivity);
+            this.DogCatchingOperation.Controls.Add(this.Edit);
+            this.DogCatchingOperation.Controls.Add(this.Operations);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -2724,6 +2704,44 @@
             // 
             this.printDocument3.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument3_PrintPage);
             // 
+            // pID
+            // 
+            this.pID.HeaderText = "Column1";
+            this.pID.Name = "pID";
+            this.pID.ReadOnly = true;
+            this.pID.Visible = false;
+            // 
+            // empname
+            // 
+            this.empname.HeaderText = "";
+            this.empname.Name = "empname";
+            this.empname.ReadOnly = true;
+            // 
+            // pos
+            // 
+            this.pos.HeaderText = "";
+            this.pos.Name = "pos";
+            this.pos.ReadOnly = true;
+            // 
+            // personID
+            // 
+            this.personID.HeaderText = "personID";
+            this.personID.Name = "personID";
+            this.personID.ReadOnly = true;
+            this.personID.Visible = false;
+            // 
+            // pos1
+            // 
+            this.pos1.HeaderText = "";
+            this.pos1.Name = "pos1";
+            this.pos1.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2734,10 +2752,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.attendance);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.attendance);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -2915,8 +2933,6 @@
         private System.Windows.Forms.ComboBox cbLocation;
         private System.Windows.Forms.Panel pteam;
         private System.Windows.Forms.DataGridView newTeam;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridView allEmployees;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Label label6;
@@ -2930,8 +2946,6 @@
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Panel pnlActivity;
         private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn empname;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ComboBox choice;
         private System.Windows.Forms.Panel Edit;
@@ -2988,5 +3002,11 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn empname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pos1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
     }
 }
