@@ -952,5 +952,10 @@ namespace WindowsFormsApplication1
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+        private void y1_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }

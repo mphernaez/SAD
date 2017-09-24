@@ -217,8 +217,7 @@ namespace WindowsFormsApplication1
 
         private void tbbday_Click(object sender, EventArgs e)
         {
-            tbbdayday.Clear();
-            tbbdayyear.Clear();
+            
         }
 
         private void tbaddress_Click(object sender, EventArgs e)
@@ -608,7 +607,7 @@ namespace WindowsFormsApplication1
             string contact = tbcontactNumber.Text;
 
 
-            string bday = tbbdayyear.Text + '-' + (cbbdaymonth.SelectedIndex + 1).ToString() + '-' + tbbdayday.Text;
+            string bday = tbYear.Text + '-' + (cbMonth.SelectedIndex + 1).ToString() + '-' + cbDay.Text;
             string position = cbposition.Text;
 
             try
@@ -647,7 +646,7 @@ namespace WindowsFormsApplication1
             string lname = tblname.Text;
             string mname = tbmname.Text;
             string fname = tbfname.Text;
-            if (tblname.Text != "Lastname" && tbmname.Text != "Middlename" && tbfname.Text != "Firstname" && tbaddress.Text != "Address" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && cbposition.Text != "Position" && tbbdayday.Text != "Day" && tbbdayyear.Text != "Year" && cbbdaymonth.Text != "Month")
+            if (tblname.Text != "Lastname" && tblname.Text != "" && tbmname.Text != "Middlename" && tbmname.Text != "" && tbfname.Text != "Firstname" && tbfname.Text != "" && tbaddress.Text != "Address" && tbaddress.Text != "" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && tbcontactNumber.Text != "" && cbposition.Text != "Position" && cbDay.Text != "Day" && tbYear.Text != "Year" && cbMonth.Text != "Month")
             {
                 if (cbposition.Text != "Admin")
                 {
@@ -673,14 +672,15 @@ namespace WindowsFormsApplication1
             tbmname.Text = "Middlename";
             tbfname.Text = "Firstname";
             cbgender.Text = "Gender";
-            tbbdayday.Text = "Day";
-            tbbdayyear.Text = "Year";
-            cbbdaymonth.Text = "Month";
+            cbDay.Text = "Day";
+            cbDay.Items.Clear();
+            cbMonth.Text = "Month";
+            tbYear.Text = "Year";
             tbaddress.Text = "Address";
             tbcontactNumber.Text = "Contact Number";
             cbposition.Text = "Position";
 
-            cbposition.ForeColor = tbcontactNumber.ForeColor = tbaddress.ForeColor = tbbdayday.ForeColor = tbbdayyear.ForeColor = cbbdaymonth.ForeColor = cbgender.ForeColor = tbfname.ForeColor = tblname.ForeColor = tbmname.ForeColor = Color.Gray;
+            cbposition.ForeColor = tbcontactNumber.ForeColor = tbaddress.ForeColor = cbDay.ForeColor = tbYear.ForeColor = cbMonth.ForeColor = cbgender.ForeColor = tbfname.ForeColor = tblname.ForeColor = tbmname.ForeColor = Color.Gray;
         }
 
         private void button20_Click(object sender, EventArgs e)
@@ -1057,15 +1057,6 @@ namespace WindowsFormsApplication1
             tbPass.Text = "";
         }
 
-        private void tbbdayday_Enter(object sender, EventArgs e)
-        {
-            tbbdayday.Text = "";
-        }
-
-        private void tbbdayyear_Enter(object sender, EventArgs e)
-        {
-            tbbdayyear.Text = "";
-        }
 
         private void button20_Click_1(object sender, EventArgs e)
         {
@@ -3006,6 +2997,77 @@ namespace WindowsFormsApplication1
         private void m1_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void tbfname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void tbmname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void tblname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void tbcontactNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void tbYear_TextChanged(object sender, EventArgs e)
+        {
+            if (tbYear.Text.Length == 4)
+            {
+                cbMonth.Enabled = true;
+            }
+        }
+
+        private void tbYear_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void cbMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbDay.Items.Clear();
+            cbDay.Enabled = true;
+            int x;
+            if (cbMonth.Text == "January" || cbMonth.Text == "March" || cbMonth.Text == "May" || cbMonth.Text == "July" || cbMonth.Text == "August" || cbMonth.Text == "October" || cbMonth.Text == "December") loopDays(31);
+            else if (cbMonth.Text == "February") { if (int.Parse(tbYear.Text) % 4 == 0) loopDays(29); else loopDays(28); }
+            else loopDays(30);
+        }
+
+        private void loopDays(int x)
+        {
+            for (int i = 0; i <= x; i++)
+            {
+                cbDay.Items.Add(i.ToString());
+            }
+        }
+
+        private void tbYear_Enter(object sender, EventArgs e)
+        {
+            tbYear.Text = "";
+        }
+
+        private void y1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void y2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void tbOpYear_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
     }
 }

@@ -34,13 +34,13 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.dgvAttendanceOut = new System.Windows.Forms.DataGridView();
-            this.dgvAttendanceIn = new System.Windows.Forms.DataGridView();
             this.panelAtt = new System.Windows.Forms.Panel();
             this.lblout = new System.Windows.Forms.Label();
             this.lblIn = new System.Windows.Forms.Label();
             this.dgvViewattout = new System.Windows.Forms.DataGridView();
             this.dgvViewattin = new System.Windows.Forms.DataGridView();
+            this.dgvAttendanceOut = new System.Windows.Forms.DataGridView();
+            this.dgvAttendanceIn = new System.Windows.Forms.DataGridView();
             this.addEmployee = new System.Windows.Forms.Panel();
             this.button30 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
@@ -53,9 +53,6 @@
             this.tbPass = new System.Windows.Forms.TextBox();
             this.button22 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.tbbdayyear = new System.Windows.Forms.TextBox();
-            this.tbbdayday = new System.Windows.Forms.TextBox();
-            this.cbbdaymonth = new System.Windows.Forms.ComboBox();
             this.cbposition = new System.Windows.Forms.ComboBox();
             this.tbfname = new System.Windows.Forms.TextBox();
             this.tbmname = new System.Windows.Forms.TextBox();
@@ -207,12 +204,15 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
+            this.cbDay = new System.Windows.Forms.ComboBox();
+            this.tbYear = new System.Windows.Forms.TextBox();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
             this.attendance.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
             this.panelAtt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
             this.addEmployee.SuspendLayout();
             this.addPanel.SuspendLayout();
             this.pnlAdmin.SuspendLayout();
@@ -325,48 +325,6 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Attendance";
             // 
-            // dgvAttendanceOut
-            // 
-            this.dgvAttendanceOut.AllowUserToAddRows = false;
-            this.dgvAttendanceOut.AllowUserToDeleteRows = false;
-            this.dgvAttendanceOut.AllowUserToResizeColumns = false;
-            this.dgvAttendanceOut.AllowUserToResizeRows = false;
-            this.dgvAttendanceOut.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAttendanceOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvAttendanceOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendanceOut.GridColor = System.Drawing.Color.White;
-            this.dgvAttendanceOut.Location = new System.Drawing.Point(17, 117);
-            this.dgvAttendanceOut.Name = "dgvAttendanceOut";
-            this.dgvAttendanceOut.ReadOnly = true;
-            this.dgvAttendanceOut.RowHeadersVisible = false;
-            this.dgvAttendanceOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendanceOut.Size = new System.Drawing.Size(982, 315);
-            this.dgvAttendanceOut.TabIndex = 31;
-            this.dgvAttendanceOut.Visible = false;
-            this.dgvAttendanceOut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellClick);
-            this.dgvAttendanceOut.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellContentDoubleClick);
-            // 
-            // dgvAttendanceIn
-            // 
-            this.dgvAttendanceIn.AllowUserToAddRows = false;
-            this.dgvAttendanceIn.AllowUserToDeleteRows = false;
-            this.dgvAttendanceIn.AllowUserToResizeColumns = false;
-            this.dgvAttendanceIn.AllowUserToResizeRows = false;
-            this.dgvAttendanceIn.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAttendanceIn.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvAttendanceIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendanceIn.GridColor = System.Drawing.Color.White;
-            this.dgvAttendanceIn.Location = new System.Drawing.Point(17, 118);
-            this.dgvAttendanceIn.Name = "dgvAttendanceIn";
-            this.dgvAttendanceIn.ReadOnly = true;
-            this.dgvAttendanceIn.RowHeadersVisible = false;
-            this.dgvAttendanceIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendanceIn.Size = new System.Drawing.Size(982, 396);
-            this.dgvAttendanceIn.TabIndex = 20;
-            this.dgvAttendanceIn.Visible = false;
-            this.dgvAttendanceIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellClick);
-            this.dgvAttendanceIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceIn_CellContentClick);
-            // 
             // panelAtt
             // 
             this.panelAtt.Controls.Add(this.lblout);
@@ -437,6 +395,48 @@
             this.dgvViewattin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvViewattin.Size = new System.Drawing.Size(480, 346);
             this.dgvViewattin.TabIndex = 21;
+            // 
+            // dgvAttendanceOut
+            // 
+            this.dgvAttendanceOut.AllowUserToAddRows = false;
+            this.dgvAttendanceOut.AllowUserToDeleteRows = false;
+            this.dgvAttendanceOut.AllowUserToResizeColumns = false;
+            this.dgvAttendanceOut.AllowUserToResizeRows = false;
+            this.dgvAttendanceOut.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAttendanceOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAttendanceOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAttendanceOut.GridColor = System.Drawing.Color.White;
+            this.dgvAttendanceOut.Location = new System.Drawing.Point(17, 117);
+            this.dgvAttendanceOut.Name = "dgvAttendanceOut";
+            this.dgvAttendanceOut.ReadOnly = true;
+            this.dgvAttendanceOut.RowHeadersVisible = false;
+            this.dgvAttendanceOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAttendanceOut.Size = new System.Drawing.Size(982, 315);
+            this.dgvAttendanceOut.TabIndex = 31;
+            this.dgvAttendanceOut.Visible = false;
+            this.dgvAttendanceOut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellClick);
+            this.dgvAttendanceOut.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellContentDoubleClick);
+            // 
+            // dgvAttendanceIn
+            // 
+            this.dgvAttendanceIn.AllowUserToAddRows = false;
+            this.dgvAttendanceIn.AllowUserToDeleteRows = false;
+            this.dgvAttendanceIn.AllowUserToResizeColumns = false;
+            this.dgvAttendanceIn.AllowUserToResizeRows = false;
+            this.dgvAttendanceIn.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAttendanceIn.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAttendanceIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAttendanceIn.GridColor = System.Drawing.Color.White;
+            this.dgvAttendanceIn.Location = new System.Drawing.Point(17, 118);
+            this.dgvAttendanceIn.Name = "dgvAttendanceIn";
+            this.dgvAttendanceIn.ReadOnly = true;
+            this.dgvAttendanceIn.RowHeadersVisible = false;
+            this.dgvAttendanceIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAttendanceIn.Size = new System.Drawing.Size(982, 396);
+            this.dgvAttendanceIn.TabIndex = 20;
+            this.dgvAttendanceIn.Visible = false;
+            this.dgvAttendanceIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellClick);
+            this.dgvAttendanceIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceIn_CellContentClick);
             // 
             // addEmployee
             // 
@@ -529,12 +529,12 @@
             // 
             // addPanel
             // 
+            this.addPanel.Controls.Add(this.cbDay);
+            this.addPanel.Controls.Add(this.tbYear);
+            this.addPanel.Controls.Add(this.cbMonth);
             this.addPanel.Controls.Add(this.pnlAdmin);
             this.addPanel.Controls.Add(this.button22);
             this.addPanel.Controls.Add(this.label8);
-            this.addPanel.Controls.Add(this.tbbdayyear);
-            this.addPanel.Controls.Add(this.tbbdayday);
-            this.addPanel.Controls.Add(this.cbbdaymonth);
             this.addPanel.Controls.Add(this.cbposition);
             this.addPanel.Controls.Add(this.tbfname);
             this.addPanel.Controls.Add(this.tbmname);
@@ -610,59 +610,6 @@
             this.label8.TabIndex = 44;
             this.label8.Text = "Birthday:";
             // 
-            // tbbdayyear
-            // 
-            this.tbbdayyear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbbdayyear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbbdayyear.ForeColor = System.Drawing.Color.Gray;
-            this.tbbdayyear.Location = new System.Drawing.Point(373, 88);
-            this.tbbdayyear.MaxLength = 4;
-            this.tbbdayyear.Name = "tbbdayyear";
-            this.tbbdayyear.Size = new System.Drawing.Size(77, 26);
-            this.tbbdayyear.TabIndex = 37;
-            this.tbbdayyear.Text = "Year";
-            this.tbbdayyear.Enter += new System.EventHandler(this.tbbdayyear_Enter);
-            // 
-            // tbbdayday
-            // 
-            this.tbbdayday.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbbdayday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbbdayday.ForeColor = System.Drawing.Color.Gray;
-            this.tbbdayday.Location = new System.Drawing.Point(305, 88);
-            this.tbbdayday.MaxLength = 2;
-            this.tbbdayday.Name = "tbbdayday";
-            this.tbbdayday.Size = new System.Drawing.Size(62, 26);
-            this.tbbdayday.TabIndex = 36;
-            this.tbbdayday.Text = "Day";
-            this.tbbdayday.Enter += new System.EventHandler(this.tbbdayday_Enter);
-            // 
-            // cbbdaymonth
-            // 
-            this.cbbdaymonth.DropDownHeight = 100;
-            this.cbbdaymonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbdaymonth.ForeColor = System.Drawing.Color.Gray;
-            this.cbbdaymonth.FormattingEnabled = true;
-            this.cbbdaymonth.IntegralHeight = false;
-            this.cbbdaymonth.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.cbbdaymonth.Location = new System.Drawing.Point(152, 87);
-            this.cbbdaymonth.Name = "cbbdaymonth";
-            this.cbbdaymonth.Size = new System.Drawing.Size(147, 28);
-            this.cbbdaymonth.TabIndex = 35;
-            this.cbbdaymonth.Text = "Month";
-            this.cbbdaymonth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbbdaymonth_KeyPress_1);
-            // 
             // cbposition
             // 
             this.cbposition.DropDownHeight = 100;
@@ -693,6 +640,7 @@
             this.tbfname.TabIndex = 31;
             this.tbfname.Text = "Firstname";
             this.tbfname.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbfname_MouseClick);
+            this.tbfname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbfname_KeyPress);
             // 
             // tbmname
             // 
@@ -705,6 +653,7 @@
             this.tbmname.TabIndex = 32;
             this.tbmname.Text = "Middlename";
             this.tbmname.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbmname_MouseClick);
+            this.tbmname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbmname_KeyPress);
             // 
             // tblname
             // 
@@ -717,6 +666,7 @@
             this.tblname.TabIndex = 33;
             this.tblname.Text = "Lastname";
             this.tblname.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tblname_MouseClick);
+            this.tblname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tblname_KeyPress);
             // 
             // tbcontactNumber
             // 
@@ -730,6 +680,7 @@
             this.tbcontactNumber.TabIndex = 39;
             this.tbcontactNumber.Text = "Contact Number";
             this.tbcontactNumber.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbcontactNumber_MouseClick);
+            this.tbcontactNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbcontactNumber_KeyPress);
             // 
             // button4
             // 
@@ -1141,6 +1092,7 @@
             this.y2.TabIndex = 15;
             this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged);
             this.y2.Enter += new System.EventHandler(this.y2_Enter);
+            this.y2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.y2_KeyPress);
             // 
             // d2
             // 
@@ -1179,6 +1131,7 @@
             this.y1.TabIndex = 12;
             this.y1.TextChanged += new System.EventHandler(this.y1_TextChanged);
             this.y1.Enter += new System.EventHandler(this.y1_Enter);
+            this.y1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.y1_KeyPress);
             // 
             // label21
             // 
@@ -1874,6 +1827,7 @@
             this.tbOpYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbOpYear.TextChanged += new System.EventHandler(this.tbOpYear_TextChanged);
             this.tbOpYear.Enter += new System.EventHandler(this.tbOpYear_Enter);
+            this.tbOpYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbOpYear_KeyPress);
             // 
             // cbAMPMend
             // 
@@ -2779,6 +2733,58 @@
             // 
             this.printDocument3.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument3_PrintPage);
             // 
+            // cbDay
+            // 
+            this.cbDay.Enabled = false;
+            this.cbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDay.ForeColor = System.Drawing.Color.Gray;
+            this.cbDay.FormattingEnabled = true;
+            this.cbDay.Location = new System.Drawing.Point(309, 87);
+            this.cbDay.Name = "cbDay";
+            this.cbDay.Size = new System.Drawing.Size(51, 28);
+            this.cbDay.TabIndex = 51;
+            this.cbDay.Text = "Day";
+            // 
+            // tbYear
+            // 
+            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbYear.ForeColor = System.Drawing.Color.Gray;
+            this.tbYear.Location = new System.Drawing.Point(157, 88);
+            this.tbYear.MaxLength = 4;
+            this.tbYear.Name = "tbYear";
+            this.tbYear.Size = new System.Drawing.Size(65, 26);
+            this.tbYear.TabIndex = 49;
+            this.tbYear.Text = "Year";
+            this.tbYear.TextChanged += new System.EventHandler(this.tbYear_TextChanged);
+            this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
+            this.tbYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbYear_KeyPress);
+            // 
+            // cbMonth
+            // 
+            this.cbMonth.Enabled = false;
+            this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMonth.ForeColor = System.Drawing.Color.Gray;
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.cbMonth.Location = new System.Drawing.Point(226, 87);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(77, 28);
+            this.cbMonth.TabIndex = 50;
+            this.cbMonth.Text = "Month";
+            this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2789,10 +2795,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
-            this.Controls.Add(this.attendance);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -2801,12 +2807,12 @@
             this.Load += new System.EventHandler(this.Employee_Load);
             this.attendance.ResumeLayout(false);
             this.attendance.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).EndInit();
             this.panelAtt.ResumeLayout(false);
             this.panelAtt.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).EndInit();
             this.addEmployee.ResumeLayout(false);
             this.addEmployee.PerformLayout();
             this.addPanel.ResumeLayout(false);
@@ -2898,9 +2904,6 @@
         private System.Windows.Forms.PictureBox o;
         private System.Windows.Forms.PictureBox a;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.TextBox tbbdayyear;
-        private System.Windows.Forms.TextBox tbbdayday;
-        private System.Windows.Forms.ComboBox cbbdaymonth;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button23;
@@ -3045,5 +3048,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn personID;
         private System.Windows.Forms.DataGridViewTextBoxColumn pos1;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.ComboBox cbDay;
+        private System.Windows.Forms.TextBox tbYear;
+        private System.Windows.Forms.ComboBox cbMonth;
     }
 }

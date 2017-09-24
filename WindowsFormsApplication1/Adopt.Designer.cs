@@ -378,6 +378,7 @@
             this.tblname.Name = "tblname";
             this.tblname.Size = new System.Drawing.Size(193, 26);
             this.tblname.TabIndex = 24;
+            this.tblname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tblname_KeyPress);
             // 
             // label2
             // 
@@ -396,6 +397,7 @@
             this.tbmname.Name = "tbmname";
             this.tbmname.Size = new System.Drawing.Size(193, 26);
             this.tbmname.TabIndex = 23;
+            this.tbmname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbmname_KeyPress);
             // 
             // label8
             // 
@@ -461,6 +463,8 @@
             this.tbfname.Name = "tbfname";
             this.tbfname.Size = new System.Drawing.Size(193, 26);
             this.tbfname.TabIndex = 22;
+            this.tbfname.TextChanged += new System.EventHandler(this.tbfname_TextChanged);
+            this.tbfname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbfname_KeyPress);
             // 
             // label16
             // 

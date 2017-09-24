@@ -1160,6 +1160,7 @@
             this.y1.TextChanged += new System.EventHandler(this.y1_TextChanged_1);
             this.y1.Enter += new System.EventHandler(this.y1_Enter_1);
             this.y1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.y2_KeyPress);
+            this.y1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.y1_KeyUp);
             // 
             // label21
             // 

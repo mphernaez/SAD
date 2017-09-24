@@ -48,10 +48,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.addDog = new System.Windows.Forms.Panel();
+            this.label32 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.addSub = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label33 = new System.Windows.Forms.Label();
             this.subloc = new System.Windows.Forms.ComboBox();
             this.tbDesc = new System.Windows.Forms.TextBox();
             this.btnClearDog = new System.Windows.Forms.Button();
@@ -142,8 +144,6 @@
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
             this.printDocument4 = new System.Drawing.Printing.PrintDocument();
             this.printDocument5 = new System.Drawing.Printing.PrintDocument();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.r)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.et)).BeginInit();
@@ -429,6 +429,19 @@
             this.addDog.Visible = false;
             this.addDog.Paint += new System.Windows.Forms.PaintEventHandler(this.addDog_Paint);
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label32.Location = new System.Drawing.Point(160, 48);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(135, 25);
+            this.label32.TabIndex = 32;
+            this.label32.Text = "Dog Profiling";
+            this.toolTip1.SetToolTip(this.label32, "Add a new dog");
+            this.label32.UseMnemonic = false;
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
@@ -490,6 +503,19 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(540, 300);
             this.panel3.TabIndex = 30;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label33.Location = new System.Drawing.Point(26, 16);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(113, 25);
+            this.label33.TabIndex = 33;
+            this.label33.Text = "Add a Dog";
+            this.toolTip1.SetToolTip(this.label33, "Add a new dog");
+            this.label33.UseMnemonic = false;
             // 
             // subloc
             // 
@@ -845,6 +871,7 @@
             this.tbColorSearch.Size = new System.Drawing.Size(112, 28);
             this.tbColorSearch.TabIndex = 2;
             this.tbColorSearch.TextChanged += new System.EventHandler(this.tbColorSearch_TextChanged);
+            this.tbColorSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbColorSearch_KeyPress);
             // 
             // button3
             // 
@@ -871,6 +898,7 @@
             this.tbBreedSearch.Size = new System.Drawing.Size(135, 26);
             this.tbBreedSearch.TabIndex = 1;
             this.tbBreedSearch.TextChanged += new System.EventHandler(this.tbBreedSearch_TextChanged);
+            this.tbBreedSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBreedSearch_KeyPress);
             // 
             // adoptDog
             // 
@@ -973,6 +1001,7 @@
             this.y2.TabIndex = 8;
             this.y2.TextChanged += new System.EventHandler(this.y2_TextChanged);
             this.y2.Enter += new System.EventHandler(this.y2_Enter);
+            this.y2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.y2_KeyPress);
             // 
             // d2
             // 
@@ -1007,6 +1036,7 @@
             this.y1.TabIndex = 4;
             this.y1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.y1.Enter += new System.EventHandler(this.y1_Enter);
+            this.y1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.y1_KeyPress);
             // 
             // label19
             // 
@@ -1762,32 +1792,6 @@
             // 
             this.printDocument5.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument5_BeginPrint);
             this.printDocument5.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument5_PrintPage);
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label32.Location = new System.Drawing.Point(160, 48);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(135, 25);
-            this.label32.TabIndex = 32;
-            this.label32.Text = "Dog Profiling";
-            this.toolTip1.SetToolTip(this.label32, "Add a new dog");
-            this.label32.UseMnemonic = false;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label33.Location = new System.Drawing.Point(26, 16);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(113, 25);
-            this.label33.TabIndex = 33;
-            this.label33.Text = "Add a Dog";
-            this.toolTip1.SetToolTip(this.label33, "Add a new dog");
-            this.label33.UseMnemonic = false;
             // 
             // Dog
             // 

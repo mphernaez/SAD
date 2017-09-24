@@ -185,6 +185,7 @@
             this.tbfname.Name = "tbfname";
             this.tbfname.Size = new System.Drawing.Size(180, 26);
             this.tbfname.TabIndex = 22;
+            this.tbfname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbfname_KeyPress);
             // 
             // tbnumber
             // 
@@ -250,6 +251,7 @@
             this.tbmname.Name = "tbmname";
             this.tbmname.Size = new System.Drawing.Size(180, 26);
             this.tbmname.TabIndex = 23;
+            this.tbmname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbmname_KeyPress);
             // 
             // label15
             // 
@@ -268,6 +270,8 @@
             this.tblname.Name = "tblname";
             this.tblname.Size = new System.Drawing.Size(180, 26);
             this.tblname.TabIndex = 24;
+            this.tblname.TextChanged += new System.EventHandler(this.tblname_TextChanged);
+            this.tblname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tblname_KeyPress);
             // 
             // panel2
             // 
