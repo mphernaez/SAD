@@ -162,7 +162,7 @@
             "Female"});
             this.cbgender.Location = new System.Drawing.Point(62, 191);
             this.cbgender.Name = "cbgender";
-            this.cbgender.Size = new System.Drawing.Size(176, 28);
+            this.cbgender.Size = new System.Drawing.Size(190, 28);
             this.cbgender.TabIndex = 44;
             this.cbgender.Text = "Gender";
             this.cbgender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbgender_KeyPress);

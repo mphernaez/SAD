@@ -159,9 +159,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.newTeam = new System.Windows.Forms.DataGridView();
-            this.personID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pos1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allEmployees = new System.Windows.Forms.DataGridView();
             this.pID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.empname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -207,6 +204,9 @@
             this.cbDay = new System.Windows.Forms.ComboBox();
             this.tbYear = new System.Windows.Forms.TextBox();
             this.cbMonth = new System.Windows.Forms.ComboBox();
+            this.personID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pos1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attendance.SuspendLayout();
             this.panelAtt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattout)).BeginInit();
@@ -2199,8 +2199,8 @@
             this.newTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.newTeam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.personID,
-            this.pos1,
-            this.name});
+            this.name,
+            this.pos1});
             this.newTeam.GridColor = System.Drawing.Color.White;
             this.newTeam.Location = new System.Drawing.Point(518, 67);
             this.newTeam.Name = "newTeam";
@@ -2210,25 +2210,6 @@
             this.newTeam.Size = new System.Drawing.Size(386, 130);
             this.newTeam.TabIndex = 1;
             this.newTeam.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.newTeam_CellClick);
-            // 
-            // personID
-            // 
-            this.personID.HeaderText = "personID";
-            this.personID.Name = "personID";
-            this.personID.ReadOnly = true;
-            this.personID.Visible = false;
-            // 
-            // pos1
-            // 
-            this.pos1.HeaderText = "";
-            this.pos1.Name = "pos1";
-            this.pos1.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
             // 
             // allEmployees
             // 
@@ -2785,6 +2766,25 @@
             this.cbMonth.Text = "Month";
             this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
+            // personID
+            // 
+            this.personID.HeaderText = "personID";
+            this.personID.Name = "personID";
+            this.personID.ReadOnly = true;
+            this.personID.Visible = false;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // pos1
+            // 
+            this.pos1.HeaderText = "";
+            this.pos1.Name = "pos1";
+            this.pos1.ReadOnly = true;
+            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2795,10 +2795,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.attendance);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.attendance);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -3045,11 +3045,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pID;
         private System.Windows.Forms.DataGridViewTextBoxColumn empname;
         private System.Windows.Forms.DataGridViewTextBoxColumn pos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pos1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.ComboBox cbDay;
         private System.Windows.Forms.TextBox tbYear;
         private System.Windows.Forms.ComboBox cbMonth;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pos1;
     }
 }

@@ -29,7 +29,13 @@
         private void InitializeComponent()
         {
             this.cTeam = new System.Windows.Forms.DataGridView();
+            this.pID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aEmp = new System.Windows.Forms.DataGridView();
+            this.pID1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pos1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbOpDay = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cbOpMonth = new System.Windows.Forms.ComboBox();
@@ -56,12 +62,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pID1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pos1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.cTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aEmp)).BeginInit();
             this.panel1.SuspendLayout();
@@ -83,7 +83,7 @@
             this.pos,
             this.Name});
             this.cTeam.GridColor = System.Drawing.Color.White;
-            this.cTeam.Location = new System.Drawing.Point(32, 48);
+            this.cTeam.Location = new System.Drawing.Point(311, 56);
             this.cTeam.Name = "cTeam";
             this.cTeam.RowHeadersVisible = false;
             this.cTeam.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -91,6 +91,25 @@
             this.cTeam.TabIndex = 1;
             this.cTeam.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cTeam_CellClick);
             this.cTeam.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cTeam_CellContentClick);
+            // 
+            // pID
+            // 
+            this.pID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.pID.HeaderText = "Column1";
+            this.pID.Name = "pID";
+            this.pID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.pID.Visible = false;
+            // 
+            // pos
+            // 
+            this.pos.HeaderText = "";
+            this.pos.Name = "pos";
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "";
+            this.Name.Name = "Name";
+            this.Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // aEmp
             // 
@@ -106,14 +125,31 @@
             this.Name1,
             this.pos1});
             this.aEmp.GridColor = System.Drawing.Color.White;
-            this.aEmp.Location = new System.Drawing.Point(305, 48);
+            this.aEmp.Location = new System.Drawing.Point(24, 56);
             this.aEmp.Name = "aEmp";
             this.aEmp.RowHeadersVisible = false;
             this.aEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.aEmp.Size = new System.Drawing.Size(197, 183);
+            this.aEmp.Size = new System.Drawing.Size(207, 183);
             this.aEmp.TabIndex = 2;
             this.aEmp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.aEmp_CellClick);
             this.aEmp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.aEmp_CellContentClick);
+            // 
+            // pID1
+            // 
+            this.pID1.HeaderText = "Column1";
+            this.pID1.Name = "pID1";
+            this.pID1.Visible = false;
+            // 
+            // Name1
+            // 
+            this.Name1.HeaderText = "";
+            this.Name1.Name = "Name1";
+            this.Name1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // pos1
+            // 
+            this.pos1.HeaderText = "";
+            this.pos1.Name = "pos1";
             // 
             // tbOpDay
             // 
@@ -494,7 +530,7 @@
             this.OK1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OK1.ForeColor = System.Drawing.Color.White;
-            this.OK1.Location = new System.Drawing.Point(166, 257);
+            this.OK1.Location = new System.Drawing.Point(179, 254);
             this.OK1.Name = "OK1";
             this.OK1.Size = new System.Drawing.Size(180, 42);
             this.OK1.TabIndex = 91;
@@ -508,11 +544,11 @@
             this.button19.FlatAppearance.BorderSize = 0;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button19.ForeColor = System.Drawing.Color.White;
-            this.button19.Location = new System.Drawing.Point(249, 114);
+            this.button19.Location = new System.Drawing.Point(249, 97);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(45, 32);
             this.button19.TabIndex = 93;
-            this.button19.Text = "◀";
+            this.button19.Text = "▶";
             this.button19.UseVisualStyleBackColor = false;
             this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
@@ -522,11 +558,11 @@
             this.button17.FlatAppearance.BorderSize = 0;
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button17.ForeColor = System.Drawing.Color.White;
-            this.button17.Location = new System.Drawing.Point(249, 74);
+            this.button17.Location = new System.Drawing.Point(249, 135);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(45, 32);
             this.button17.TabIndex = 92;
-            this.button17.Text = "▶";
+            this.button17.Text = "◀";
             this.button17.UseVisualStyleBackColor = false;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
@@ -590,7 +626,7 @@
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(249, 13);
+            this.button5.Location = new System.Drawing.Point(249, 20);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(45, 32);
             this.button5.TabIndex = 96;
@@ -603,7 +639,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(354, 19);
+            this.label1.Location = new System.Drawing.Point(73, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 26);
             this.label1.TabIndex = 106;
@@ -614,11 +650,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(64, 19);
+            this.label3.Location = new System.Drawing.Point(357, 27);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(139, 26);
+            this.label3.Size = new System.Drawing.Size(120, 26);
             this.label3.TabIndex = 105;
-            this.label3.Text = "Current team";
+            this.label3.Text = "Final Team";
             // 
             // label2
             // 
@@ -641,42 +677,6 @@
             this.pictureBox1.TabIndex = 108;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // pID
-            // 
-            this.pID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.pID.HeaderText = "Column1";
-            this.pID.Name = "pID";
-            this.pID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.pID.Visible = false;
-            // 
-            // pos
-            // 
-            this.pos.HeaderText = "";
-            this.pos.Name = "pos";
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "";
-            this.Name.Name = "Name";
-            this.Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // pID1
-            // 
-            this.pID1.HeaderText = "Column1";
-            this.pID1.Name = "pID1";
-            this.pID1.Visible = false;
-            // 
-            // Name1
-            // 
-            this.Name1.HeaderText = "";
-            this.Name1.Name = "Name1";
-            this.Name1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // pos1
-            // 
-            this.pos1.HeaderText = "";
-            this.pos1.Name = "pos1";
             // 
             // opEdit
             // 

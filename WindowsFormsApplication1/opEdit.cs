@@ -175,7 +175,7 @@ namespace WindowsFormsApplication1
                         tbEndm.Text = "0" + tbEndm.Text;
                     }
                     nts = hss + ":" + tbStartm.Text;
-                    nte = hee + ":" + hee;
+                    nte = hee + ":" + tbEndm.Text;
                     nl = cbLocation.SelectedIndex;
 
                     cTeam.Rows.Clear();
@@ -437,78 +437,89 @@ namespace WindowsFormsApplication1
         private void updateOp()
         {
 
-
-            try
+            int xCount = cTeam.Rows.Cast<DataGridViewRow>().Select(row => row.Cells["pos"].Value.ToString()).Count(s => s == "Driver");
+            if (xCount == 1)
             {
-                bool j = false;
-                for (int i = 0; i < cTeam.Rows.Count; i++)
+                try
                 {
-                    if (cTeam.Rows[i].DefaultCellStyle.BackColor == Color.FromArgb(229, 99, 82))
+                    bool j = false;
+                    for (int i = 0; i < cTeam.Rows.Count; i++)
                     {
-                        j = true;
-                    }
-                }
-                if (!j)
-                {
-                    conn.Open();
-                    MySqlCommand co;
-                    MySqlCommand com = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(com);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-
-                    int nt = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) + 1;
-                    int idd;
-                    int[] ids = new int[cTeam.Rows.Count];
-
-                    if (cTeam.Rows.Count > 2)
-                    {
-                        for (int i = 0; i < cTeam.Rows.Count; i++)
+                        if (cTeam.Rows[i].DefaultCellStyle.BackColor == Color.FromArgb(229, 99, 82))
                         {
-                            idd = int.Parse(cTeam.Rows[i].Cells["pID"].Value.ToString());
-                            ids[i] = idd;
+                            j = true;
                         }
+                    }
+                    if (!j)
+                    {
+                        conn.Open();
+                        MySqlCommand co;
+                        MySqlCommand com = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(com);
+                        DataTable dt = new DataTable();
+                        adp.Fill(dt);
 
-                        if (emp.checkIfTeamExists(ids, cTeam.Rows.Count) == 0)
+                        int nt = int.Parse(dt.Rows[0]["MAX(teamID)"].ToString()) + 1;
+                        int idd;
+                        int[] ids = new int[cTeam.Rows.Count];
+
+                        if (cTeam.Rows.Count > 2)
                         {
                             for (int i = 0; i < cTeam.Rows.Count; i++)
                             {
-                                co = new MySqlCommand("INSERT INTO operationteam ( employeeID, teamID ) VALUES ( " + ids[i] + ", " + nt + " )", conn);
-                                co.ExecuteNonQuery();
+                                idd = int.Parse(cTeam.Rows[i].Cells["pID"].Value.ToString());
+                                ids[i] = idd;
                             }
+
+                            if (emp.checkIfTeamExists(ids, cTeam.Rows.Count) == 0)
+                            {
+                                for (int i = 0; i < cTeam.Rows.Count; i++)
+                                {
+                                    co = new MySqlCommand("INSERT INTO operationteam ( employeeID, teamID ) VALUES ( " + ids[i] + ", " + nt + " )", conn);
+                                    co.ExecuteNonQuery();
+                                }
+                            }
+                            else
+                            {
+                                nt = emp.checkIfTeamExists(ids, cTeam.Rows.Count);
+                            }
+                            MySqlCommand c = new MySqlCommand("SELECT locationID FROM location WHERE description = '" + cbLocation.Text + "'", conn);
+                            MySqlDataAdapter a = new MySqlDataAdapter(c);
+                            DataTable t = new DataTable();
+                            a.Fill(t);
+                            MySqlCommand comm = new MySqlCommand("Update dogoperation SET date = '" + ndate + "', locationID = " + t.Rows[0]["locationID"].ToString() + ", timeStart = '" + nts + "', teamID = " + nt + ", timeEnd = '" + nte + "' WHERE operationID = " + id, conn);
+                            comm.ExecuteNonQuery();
+                            MessageBox.Show("Changes Saved");
+
+                            conn.Close();
+                            this.Dispose();
+                            emp.opOpen = false;
                         }
                         else
                         {
-                            nt = emp.checkIfTeamExists(ids, cTeam.Rows.Count);
+                            MessageBox.Show("Please assign more than 1 catcher");
                         }
-                        MySqlCommand c = new MySqlCommand("SELECT locationID FROM location WHERE description = '" + cbLocation.Text + "'", conn);
-                        MySqlDataAdapter a = new MySqlDataAdapter(c);
-                        DataTable t = new DataTable();
-                        a.Fill(t);
-                        MySqlCommand comm = new MySqlCommand("Update dogoperation SET date = '" + ndate + "', locationID = " + t.Rows[0]["locationID"].ToString() + ", timeStart = '" + nts + "', teamID = " + nt + ", timeEnd = '" + nte + "' WHERE operationID = " + id, conn);
-                        comm.ExecuteNonQuery();
-                        MessageBox.Show("Changes Saved");
 
-                        conn.Close();
-                        this.Dispose();
-                        emp.opOpen = false;
                     }
                     else
                     {
-                        MessageBox.Show("Please assign more than 1 catcher");
+                        MessageBox.Show("Plese remove employees not present");
                     }
-                    
-                } else
+                }
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Plese remove employees not present");
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
                 }
             }
-            catch (Exception ex)
+            else if (xCount > 1)
             {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
+                MessageBox.Show("Choose ONLY 1 Driver");
             }
-        
+            else
+            {
+                MessageBox.Show("Choose 1 Driver");
+            }
         }
         
         private void cTeam_CellClick(object sender, DataGridViewCellEventArgs e)

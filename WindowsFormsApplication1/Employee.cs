@@ -1064,74 +1064,84 @@ namespace WindowsFormsApplication1
             empty = true;
             int teamid = 0;
             int empID = 0;
-            List<int> empss = new List<int>();
-            for (int i = 0; i < newTeam.Rows.Count; i++)
-            {
-                empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
-                empss.Add(empID);
-            }
-            int[] emps = empss.ToArray();
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT COUNT(*) FROM operationteam", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                int count = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
-                Boolean flag = false;
-
-                if (count > 0) //naay existing team
+            int xCount = newTeam.Rows.Cast<DataGridViewRow>().Select(row => row.Cells["pos1"].Value.ToString()).Count(s => s == "Driver");
+            if (xCount == 1) {
+                List<int> empss = new List<int>();
+                for (int i = 0; i < newTeam.Rows.Count; i++)
                 {
-                    MySqlCommand commm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
-                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
-                    DataTable dta = new DataTable();
-                    adpt.Fill(dta);
-                    teamid = int.Parse(dta.Rows[0]["MAX(teamID)"].ToString()) + 1;
-                    conn.Close();
-                    int check = checkIfTeamExists(emps, teamid - 1); //number of team
-                    int parameter = 0;
+                    empID = int.Parse(newTeam.Rows[i].Cells["personID"].Value.ToString());
+                    empss.Add(empID);
+                }
+                int[] emps = empss.ToArray();
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("SELECT COUNT(*) FROM operationteam", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    int count = int.Parse(dt.Rows[0]["COUNT(*)"].ToString());
+                    Boolean flag = false;
 
-                    if (check != 0) //team exists
+                    if (count > 0) //naay existing team
                     {
-                        parameter = check;
+                        MySqlCommand commm = new MySqlCommand("SELECT MAX(teamID) FROM operationteam", conn);
+                        MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                        DataTable dta = new DataTable();
+                        adpt.Fill(dta);
+                        teamid = int.Parse(dta.Rows[0]["MAX(teamID)"].ToString()) + 1;
                         conn.Close();
-                        addOperation(parameter);
-                    }
-                    else if (check == 0)
-                    { //team doesnt exist yet
-                        conn.Open();
-                        MySqlCommand commmm;
-                        Array.Sort(emps);
-                        for (int i = 0; i < emps.Length; i++)
+                        int check = checkIfTeamExists(emps, teamid - 1); //number of team
+                        int parameter = 0;
+
+                        if (check != 0) //team exists
                         {
-                            commmm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + emps[i] + ")", conn);
-                            commmm.ExecuteNonQuery();
+                            parameter = check;
+                            conn.Close();
+                            addOperation(parameter);
+                        }
+                        else if (check == 0)
+                        { //team doesnt exist yet
+                            conn.Open();
+                            MySqlCommand commmm;
+                            Array.Sort(emps);
+                            for (int i = 0; i < emps.Length; i++)
+                            {
+                                commmm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(" + teamid + ", " + emps[i] + ")", conn);
+                                commmm.ExecuteNonQuery();
+                            }
+                            conn.Close();
+                            addOperation(teamid);
                         }
                         conn.Close();
-                        addOperation(teamid);
                     }
-                    conn.Close();
-                }
-                else
-                {
-                    MySqlCommand commm;
-                    for (int i = 0; i < emps.Length; i++)
+                    else
                     {
-                        commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(1, " + emps[i] + ")", conn);
-                        commm.ExecuteNonQuery();
+                        MySqlCommand commm;
+                        for (int i = 0; i < emps.Length; i++)
+                        {
+                            commm = new MySqlCommand("INSERT INTO operationteam(teamID, employeeID) VALUES(1, " + emps[i] + ")", conn);
+                            commm.ExecuteNonQuery();
+                        }
                     }
+                    newTeam.Rows.Clear();
+                    allEmployees.DataSource = null;
                 }
-                newTeam.Rows.Clear();
-                allEmployees.DataSource = null;
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show(ex.ToString());
+                }
+                clearAddOperation();
             }
-            catch (Exception ex)
+            else if(xCount > 1)
             {
-                conn.Close();
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Choose ONLY 1 Driver");
             }
-            clearAddOperation();
-
+            else
+            {
+                MessageBox.Show("Choose 1 Driver");
+            }
         }
 
         private void clearAddOperation()
