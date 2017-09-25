@@ -627,7 +627,7 @@ namespace WindowsFormsApplication1
                 comm = new MySqlCommand("INSERT INTO employee(employeeID, position, status) VALUES('" + personID + "', '" + position + "', 'Active')", conn);
                 comm.ExecuteNonQuery();
 
-                if (cbposition.Text = "Admin") {
+                if (cbposition.Text == "Admin") {
                     comm = new MySqlCommand("INSERT INTO admin(username, password, employeeID) VALUES('" + tbUser.Text + "', '" + tbPass.Text + "', " + personID + ")", conn);
                     comm.ExecuteNonQuery();
                 }
