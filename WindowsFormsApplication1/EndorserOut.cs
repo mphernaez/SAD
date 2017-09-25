@@ -48,6 +48,10 @@ namespace WindowsFormsApplication1
                             MessageBox.Show("Item Updated");
                             this.Hide();
                             inv.refreshSO();
+                            
+                            tbReason.Text = "";
+                            amtOut.Value = 0;
+                            label3.Text = "Amount";
                         }
                         else
                         {
@@ -90,6 +94,12 @@ namespace WindowsFormsApplication1
                 dgvEnd.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvEnd.ClearSelection();
 
+                comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + id, conn);
+                adp = new MySqlDataAdapter(comm);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+                label3.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString();
 
                 conn.Close();
             }
@@ -116,6 +126,11 @@ namespace WindowsFormsApplication1
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void EndorserOut_Leave(object sender, EventArgs e)
+        {
+            
         }
     }
 }

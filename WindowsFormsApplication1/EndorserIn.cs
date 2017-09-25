@@ -30,6 +30,8 @@ namespace WindowsFormsApplication1
         {
             tbYear.Text = DateTime.Now.ToString("yyyy");
             tbYr.Text = DateTime.Now.ToString("yyyy");
+            cbMonth.SelectedIndex = int.Parse(DateTime.Now.ToString("MM")) - 1;
+            cbDay.SelectedIndex = int.Parse(DateTime.Now.ToString("dd")) - 1;
             refreshEnd();
             dgvEnd.ClearSelection();
 
@@ -51,8 +53,15 @@ namespace WindowsFormsApplication1
                 dgvEnd.Columns["lastname"].HeaderText = "Lastname";
                 dgvEnd.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvEnd.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                
 
+                comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + id, conn);
+                adp = new MySqlDataAdapter(comm);
+                dt = new DataTable();
+                adp.Fill(dt);
+
+                amtLabel.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString();
+
+                
 
                 conn.Close();
             }
@@ -69,8 +78,6 @@ namespace WindowsFormsApplication1
             {
                 try
                 {
-
-                    
                     if (eID != 0)
                     {
                         conn.Open();
@@ -80,12 +87,25 @@ namespace WindowsFormsApplication1
                         comm.ExecuteNonQuery();
                         MySqlCommand com = new MySqlCommand("INSERT INTO stocktransaction VALUES( transactionID, " + id + ", " + int.Parse(amtIn.Text) + ", '" + date + "', 'In', " + eID + ", '" + tbReason.Text + "', '" + expiration + "', "+rq+" )", conn);
                         com.ExecuteNonQuery();
-                       this.Hide();
+                        MessageBox.Show("Item Updated");
+                        this.Hide();
                         comm = new MySqlCommand("UPDATE stockrequest SET delivered = 1 WHERE stockID = " + id, conn);
                         comm.ExecuteNonQuery();
-                        MessageBox.Show("Item Updated");
+                        
                         conn.Close();
                         inv.refreshSI();
+                        
+                        tbYear.Text = DateTime.Now.ToString("yyyy");
+                        cbMonth.Text = "Month";
+                        cbDay.Text = "Day";
+                        cbDay.Items.Clear();
+                        tbReason.Text = "";
+                        tbYr.Text = DateTime.Now.ToString("yyyy");
+                        cbMo.Text = "Month";
+                        cbDa.Text = "Day";
+                        cbDa.Items.Clear();
+                        amtIn.Value = 0;
+                        amtLabel.Text = "Amount";
                     }
                     else
                     {
@@ -197,6 +217,11 @@ namespace WindowsFormsApplication1
         private void tbYr_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void EndorserIn_Leave(object sender, EventArgs e)
+        {
+            
         }
     }
 }

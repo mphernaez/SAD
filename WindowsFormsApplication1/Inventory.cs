@@ -855,6 +855,7 @@ namespace WindowsFormsApplication1
                         comm = new MySqlCommand("INSERT INTO stockrequest(date, stockID, delivered) VALUES('"+date+"', "+item+", 0)", conn);
                         comm.ExecuteNonQuery();
                     }
+                    
                     conn.Close();
                 }
                 catch (Exception ex)
@@ -863,11 +864,9 @@ namespace WindowsFormsApplication1
                     MessageBox.Show(ex.ToString());
                 }
             }
-
+            refreshRequest();
             
-
-
-        }
+         }
         private void y1_TextChanged(object sender, EventArgs e)
         {
             if (y1.Text.Length == 4)

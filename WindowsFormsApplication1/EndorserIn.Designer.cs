@@ -106,9 +106,9 @@
             "29",
             "30",
             "31"});
-            this.cbDay.Location = new System.Drawing.Point(218, 413);
+            this.cbDay.Location = new System.Drawing.Point(310, 411);
             this.cbDay.Name = "cbDay";
-            this.cbDay.Size = new System.Drawing.Size(52, 30);
+            this.cbDay.Size = new System.Drawing.Size(63, 30);
             this.cbDay.TabIndex = 84;
             this.cbDay.Text = "Day";
             this.cbDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMonth_KeyPress);
@@ -134,7 +134,7 @@
             "December"});
             this.cbMonth.Location = new System.Drawing.Point(99, 413);
             this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(113, 28);
+            this.cbMonth.Size = new System.Drawing.Size(205, 28);
             this.cbMonth.TabIndex = 83;
             this.cbMonth.Text = "Month";
             this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
@@ -209,9 +209,9 @@
             this.cbDa.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDa.ForeColor = System.Drawing.Color.Gray;
             this.cbDa.FormattingEnabled = true;
-            this.cbDa.Location = new System.Drawing.Point(218, 532);
+            this.cbDa.Location = new System.Drawing.Point(310, 532);
             this.cbDa.Name = "cbDa";
-            this.cbDa.Size = new System.Drawing.Size(52, 30);
+            this.cbDa.Size = new System.Drawing.Size(63, 30);
             this.cbDa.TabIndex = 98;
             this.cbDa.Text = "Day";
             this.cbDa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMonth_KeyPress);
@@ -248,7 +248,7 @@
             "December"});
             this.cbMo.Location = new System.Drawing.Point(99, 532);
             this.cbMo.Name = "cbMo";
-            this.cbMo.Size = new System.Drawing.Size(113, 28);
+            this.cbMo.Size = new System.Drawing.Size(205, 28);
             this.cbMo.TabIndex = 95;
             this.cbMo.Text = "Month";
             this.cbMo.SelectedIndexChanged += new System.EventHandler(this.cbMo_SelectedIndexChanged);
@@ -315,7 +315,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(393, 666);
+            this.ClientSize = new System.Drawing.Size(393, 675);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.amtLabel);
@@ -338,6 +338,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Leave += new System.EventHandler(this.EndorserIn_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.amtIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

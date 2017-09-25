@@ -157,6 +157,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.EndorserOut_Load);
+            this.Leave += new System.EventHandler(this.EndorserOut_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.amtOut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
