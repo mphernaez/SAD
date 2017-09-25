@@ -48,6 +48,9 @@
             this.button11 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.addPanel = new System.Windows.Forms.Panel();
+            this.cbDay = new System.Windows.Forms.ComboBox();
+            this.tbYear = new System.Windows.Forms.TextBox();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
             this.pnlAdmin = new System.Windows.Forms.Panel();
             this.tbUser = new System.Windows.Forms.TextBox();
             this.tbPass = new System.Windows.Forms.TextBox();
@@ -159,6 +162,9 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.newTeam = new System.Windows.Forms.DataGridView();
+            this.personID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pos1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allEmployees = new System.Windows.Forms.DataGridView();
             this.pID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.empname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -201,12 +207,6 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
-            this.cbDay = new System.Windows.Forms.ComboBox();
-            this.tbYear = new System.Windows.Forms.TextBox();
-            this.cbMonth = new System.Windows.Forms.ComboBox();
-            this.personID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pos1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attendance.SuspendLayout();
             this.panelAtt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattout)).BeginInit();
@@ -548,6 +548,58 @@
             this.addPanel.Size = new System.Drawing.Size(982, 405);
             this.addPanel.TabIndex = 21;
             this.addPanel.Visible = false;
+            // 
+            // cbDay
+            // 
+            this.cbDay.Enabled = false;
+            this.cbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDay.ForeColor = System.Drawing.Color.Gray;
+            this.cbDay.FormattingEnabled = true;
+            this.cbDay.Location = new System.Drawing.Point(309, 87);
+            this.cbDay.Name = "cbDay";
+            this.cbDay.Size = new System.Drawing.Size(51, 28);
+            this.cbDay.TabIndex = 51;
+            this.cbDay.Text = "Day";
+            // 
+            // tbYear
+            // 
+            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbYear.ForeColor = System.Drawing.Color.Gray;
+            this.tbYear.Location = new System.Drawing.Point(157, 88);
+            this.tbYear.MaxLength = 4;
+            this.tbYear.Name = "tbYear";
+            this.tbYear.Size = new System.Drawing.Size(65, 26);
+            this.tbYear.TabIndex = 49;
+            this.tbYear.Text = "Year";
+            this.tbYear.TextChanged += new System.EventHandler(this.tbYear_TextChanged);
+            this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
+            this.tbYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbYear_KeyPress);
+            // 
+            // cbMonth
+            // 
+            this.cbMonth.Enabled = false;
+            this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMonth.ForeColor = System.Drawing.Color.Gray;
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.cbMonth.Location = new System.Drawing.Point(226, 87);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(77, 28);
+            this.cbMonth.TabIndex = 50;
+            this.cbMonth.Text = "Month";
+            this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
             // pnlAdmin
             // 
@@ -2211,6 +2263,25 @@
             this.newTeam.TabIndex = 1;
             this.newTeam.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.newTeam_CellClick);
             // 
+            // personID
+            // 
+            this.personID.HeaderText = "personID";
+            this.personID.Name = "personID";
+            this.personID.ReadOnly = true;
+            this.personID.Visible = false;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // pos1
+            // 
+            this.pos1.HeaderText = "";
+            this.pos1.Name = "pos1";
+            this.pos1.ReadOnly = true;
+            // 
             // allEmployees
             // 
             this.allEmployees.AllowUserToAddRows = false;
@@ -2714,77 +2785,6 @@
             // 
             this.printDocument3.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument3_PrintPage);
             // 
-            // cbDay
-            // 
-            this.cbDay.Enabled = false;
-            this.cbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDay.ForeColor = System.Drawing.Color.Gray;
-            this.cbDay.FormattingEnabled = true;
-            this.cbDay.Location = new System.Drawing.Point(309, 87);
-            this.cbDay.Name = "cbDay";
-            this.cbDay.Size = new System.Drawing.Size(51, 28);
-            this.cbDay.TabIndex = 51;
-            this.cbDay.Text = "Day";
-            // 
-            // tbYear
-            // 
-            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbYear.ForeColor = System.Drawing.Color.Gray;
-            this.tbYear.Location = new System.Drawing.Point(157, 88);
-            this.tbYear.MaxLength = 4;
-            this.tbYear.Name = "tbYear";
-            this.tbYear.Size = new System.Drawing.Size(65, 26);
-            this.tbYear.TabIndex = 49;
-            this.tbYear.Text = "Year";
-            this.tbYear.TextChanged += new System.EventHandler(this.tbYear_TextChanged);
-            this.tbYear.Enter += new System.EventHandler(this.tbYear_Enter);
-            this.tbYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbYear_KeyPress);
-            // 
-            // cbMonth
-            // 
-            this.cbMonth.Enabled = false;
-            this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMonth.ForeColor = System.Drawing.Color.Gray;
-            this.cbMonth.FormattingEnabled = true;
-            this.cbMonth.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.cbMonth.Location = new System.Drawing.Point(226, 87);
-            this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(77, 28);
-            this.cbMonth.TabIndex = 50;
-            this.cbMonth.Text = "Month";
-            this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
-            // 
-            // personID
-            // 
-            this.personID.HeaderText = "personID";
-            this.personID.Name = "personID";
-            this.personID.ReadOnly = true;
-            this.personID.Visible = false;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // pos1
-            // 
-            this.pos1.HeaderText = "";
-            this.pos1.Name = "pos1";
-            this.pos1.ReadOnly = true;
-            // 
             // Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2795,10 +2795,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.DogCatchingOperation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
