@@ -990,7 +990,7 @@ namespace WindowsFormsApplication1
 
         private void y2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !((Keys)e.KeyChar == Keys.Back);
         }
 
         private void y1_KeyUp(object sender, KeyEventArgs e)

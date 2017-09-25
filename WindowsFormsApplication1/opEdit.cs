@@ -529,7 +529,7 @@ namespace WindowsFormsApplication1
 
         private void tbStarth_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !((Keys)e.KeyChar == Keys.Back);
         }
 
         private void aEmp_CellClick(object sender, DataGridViewCellEventArgs e)

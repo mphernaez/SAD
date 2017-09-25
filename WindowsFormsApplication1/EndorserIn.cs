@@ -216,7 +216,7 @@ namespace WindowsFormsApplication1
 
         private void tbYr_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !((Keys)e.KeyChar == Keys.Space) && !((Keys)e.KeyChar == Keys.Back);
         }
 
         private void EndorserIn_Leave(object sender, EventArgs e)
