@@ -1269,11 +1269,11 @@ namespace WindowsFormsApplication1
         {
             int ad, dog;
             if (noheader2 == false) {
-                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
-                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
-                e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
-                e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
+                e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
+                e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
                 e.Graphics.DrawString("Adoptor", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
                 e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(360, 220));
                 ad = 220; dog = 220;
