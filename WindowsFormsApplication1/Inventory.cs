@@ -227,8 +227,15 @@ namespace WindowsFormsApplication1
 
         private void button8_Click(object sender, EventArgs e)
         {
-            endO.id = itemID;
-            endO.ShowDialog();
+            if (itemID != 0)
+            {
+                endO.id = itemID;
+                endO.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please Select an Item");
+            }
         }
 
         private void dgvo_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -241,39 +248,44 @@ namespace WindowsFormsApplication1
 
         private void OK1_Click(object sender, EventArgs e)
         {
-
-            try
-            {
-                conn.Open();
-
-                MySqlCommand com = new MySqlCommand("SELECT COUNT(*), requestID FROM stockrequest WHERE delivered = 0 AND stockID = " + itemID, conn);
-                MySqlDataAdapter adpp = new MySqlDataAdapter(com);
-                DataTable dtt = new DataTable();
-                adpp.Fill(dtt);
-
-                if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) >= 1)
+            if (itemID != 0) {
+                try
                 {
-                    end.id = itemID;
-                    end.rq = dtt.Rows[0]["requestID"].ToString();
-                    MySqlCommand comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + itemID.ToString(), conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-                    end.amtLabel.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString();
+                    conn.Open();
+
+                    MySqlCommand com = new MySqlCommand("SELECT COUNT(*), requestID FROM stockrequest WHERE delivered = 0 AND stockID = " + itemID, conn);
+                    MySqlDataAdapter adpp = new MySqlDataAdapter(com);
+                    DataTable dtt = new DataTable();
+                    adpp.Fill(dtt);
+
+                    if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) >= 1)
+                    {
+                        end.id = itemID;
+                        end.rq = dtt.Rows[0]["requestID"].ToString();
+                        MySqlCommand comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + itemID.ToString(), conn);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                        DataTable dt = new DataTable();
+                        adp.Fill(dt);
+                        end.amtLabel.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString();
+                        conn.Close();
+                        end.ShowDialog();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Prior Stock Request Found");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
                     conn.Close();
-                    end.ShowDialog();
-
                 }
-                else
-                {
-                    MessageBox.Show("No Prior Stock Request Found");
-                }
-                
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
+                MessageBox.Show("Please Select an Item");
             }
         }
 
@@ -790,7 +802,7 @@ namespace WindowsFormsApplication1
             button15.BackColor = Color.FromArgb(2, 170, 145);
             button19.BackColor = Color.FromArgb(251, 162, 80);
             button9.BackColor = Color.FromArgb(2, 170, 145);
-
+            btn.BackColor = Color.FromArgb(251, 162, 80);
             refreshRequest();
         }
         DataTable dtReq;
@@ -799,7 +811,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT itemID, productName AS 'Product Name', description AS 'Product Description', quantity AS 'Quantity' FROM items WHERE quantity < minQuantity", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT itemID, productName AS 'Product Name', description AS 'Product Description', quantity AS 'Current Quantity' FROM items WHERE quantity < minQuantity AND itemID NOT IN(SELECT stockID FROM stockrequest WHERE delivered = 0)", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 dtReq = new DataTable();
                 adp.Fill(dtReq);
@@ -807,7 +819,18 @@ namespace WindowsFormsApplication1
                 dgvRequest.Columns["itemID"].Visible = false;
                 dgvRequest.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvRequest.Columns["Product Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvRequest.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvRequest.Columns["Current Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                comm = new MySqlCommand("SELECT productName AS 'Product Name', description AS 'Product Description', quantity AS 'Current Quantity', date AS 'Request Date' FROM items INNER JOIN stockrequest ON stockrequest.stockID = items.itemID WHERE quantity < minQuantity AND delivered = 0 ORDER BY date", conn);
+                adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvPendReq.DataSource = dt;
+                dgvPendReq.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvPendReq.Columns["Product Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvPendReq.Columns["Current Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvPendReq.Columns["Request Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 conn.Close();
             }
@@ -820,12 +843,30 @@ namespace WindowsFormsApplication1
 
         private void button18_Click_1(object sender, EventArgs e)
         {
-            request = new int[dgvRequest.Rows.Count];
-            for (int i = 0; i < dgvRequest.Rows.Count; i++)
-            {
-                request[i] = int.Parse(dgvRequest.Rows[i].Cells[0].Value.ToString());
-
+            if (dtReq.Rows.Count != 0) {
+                string date = DateTime.Now.ToString("yyyy-MM-dd");
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm;
+                    for (int i = 0; i < dtReq.Rows.Count; i++)
+                    {
+                        int item = int.Parse(dtReq.Rows[i]["itemID"].ToString());
+                        comm = new MySqlCommand("INSERT INTO stockrequest(date, stockID, delivered) VALUES('"+date+"', "+item+", 0)", conn);
+                        comm.ExecuteNonQuery();
+                    }
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show(ex.ToString());
+                }
             }
+
+            
+
+
         }
         private void y1_TextChanged(object sender, EventArgs e)
         {
@@ -956,6 +997,27 @@ namespace WindowsFormsApplication1
         private void y1_KeyUp(object sender, KeyEventArgs e)
         {
 
+        }
+
+        private void panelRequest_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn1_Click(object sender, EventArgs e)
+        {
+            btn.BackColor = Color.FromArgb(2, 170, 145);
+            btn1.BackColor = Color.FromArgb(251, 162, 80);
+            panelPending.Visible = true;
+            panelReq.Visible = false;
+        }
+
+        private void btn_Click(object sender, EventArgs e)
+        {
+            btn1.BackColor = Color.FromArgb(2, 170, 145);
+            btn.BackColor = Color.FromArgb(251, 162, 80);
+            panelReq.Visible = true;
+            panelPending.Visible = false;
         }
     }
 }
