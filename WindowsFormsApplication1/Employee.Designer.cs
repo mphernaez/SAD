@@ -446,9 +446,9 @@
             this.addEmployee.Controls.Add(this.button12);
             this.addEmployee.Controls.Add(this.button11);
             this.addEmployee.Controls.Add(this.label2);
-            this.addEmployee.Controls.Add(this.addPanel);
             this.addEmployee.Controls.Add(this.pnlArchive);
             this.addEmployee.Controls.Add(this.editPanel);
+            this.addEmployee.Controls.Add(this.addPanel);
             this.addEmployee.Location = new System.Drawing.Point(24, 196);
             this.addEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addEmployee.Name = "addEmployee";
@@ -545,7 +545,7 @@
             this.addPanel.Controls.Add(this.cbgender);
             this.addPanel.Location = new System.Drawing.Point(16, 114);
             this.addPanel.Name = "addPanel";
-            this.addPanel.Size = new System.Drawing.Size(982, 405);
+            this.addPanel.Size = new System.Drawing.Size(982, 414);
             this.addPanel.TabIndex = 21;
             this.addPanel.Visible = false;
             // 
@@ -794,7 +794,7 @@
             // 
             // button29
             // 
-            this.button29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
+            this.button29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
             this.button29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button29.FlatAppearance.BorderSize = 0;
             this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -848,7 +848,7 @@
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button24.ForeColor = System.Drawing.Color.White;
-            this.button24.Location = new System.Drawing.Point(853, 350);
+            this.button24.Location = new System.Drawing.Point(853, 357);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(109, 38);
             this.button24.TabIndex = 42;
@@ -864,7 +864,7 @@
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(738, 350);
+            this.button13.Location = new System.Drawing.Point(738, 357);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(109, 38);
             this.button13.TabIndex = 41;
@@ -888,7 +888,7 @@
             this.dgvEdit.ReadOnly = true;
             this.dgvEdit.RowHeadersVisible = false;
             this.dgvEdit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEdit.Size = new System.Drawing.Size(952, 318);
+            this.dgvEdit.Size = new System.Drawing.Size(952, 332);
             this.dgvEdit.TabIndex = 0;
             this.dgvEdit.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEdit_CellClick);
             this.dgvEdit.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);

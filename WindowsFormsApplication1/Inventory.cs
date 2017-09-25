@@ -275,7 +275,7 @@ namespace WindowsFormsApplication1
                     {
                         MessageBox.Show("No Prior Stock Request Found");
                     }
-
+                    conn.Close();
                 }
                 catch (Exception ex)
                 {

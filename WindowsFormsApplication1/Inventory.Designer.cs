@@ -319,10 +319,10 @@
             this.inv.Controls.Add(this.button5);
             this.inv.Controls.Add(this.button16);
             this.inv.Controls.Add(this.label12);
-            this.inv.Controls.Add(this.Sout);
             this.inv.Controls.Add(this.panelReturn);
             this.inv.Controls.Add(this.dgvout);
             this.inv.Controls.Add(this.panelRequest);
+            this.inv.Controls.Add(this.Sout);
             this.inv.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inv.Location = new System.Drawing.Point(24, 196);
             this.inv.Name = "inv";
@@ -412,7 +412,7 @@
             this.dgvout.Controls.Add(this.dgvin);
             this.dgvout.Location = new System.Drawing.Point(11, 114);
             this.dgvout.Name = "dgvout";
-            this.dgvout.Size = new System.Drawing.Size(982, 371);
+            this.dgvout.Size = new System.Drawing.Size(982, 412);
             this.dgvout.TabIndex = 34;
             this.dgvout.Visible = false;
             // 
@@ -434,7 +434,7 @@
             this.OK1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OK1.ForeColor = System.Drawing.Color.White;
-            this.OK1.Location = new System.Drawing.Point(840, 259);
+            this.OK1.Location = new System.Drawing.Point(841, 351);
             this.OK1.Name = "OK1";
             this.OK1.Size = new System.Drawing.Size(124, 42);
             this.OK1.TabIndex = 45;
@@ -457,7 +457,7 @@
             this.dgvin.ReadOnly = true;
             this.dgvin.RowHeadersVisible = false;
             this.dgvin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvin.Size = new System.Drawing.Size(952, 203);
+            this.dgvin.Size = new System.Drawing.Size(952, 290);
             this.dgvin.TabIndex = 20;
             this.dgvin.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvin_CellClick);
             // 
@@ -514,7 +514,7 @@
             this.Sout.Controls.Add(this.dgvo);
             this.Sout.Location = new System.Drawing.Point(11, 114);
             this.Sout.Name = "Sout";
-            this.Sout.Size = new System.Drawing.Size(982, 361);
+            this.Sout.Size = new System.Drawing.Size(982, 412);
             this.Sout.TabIndex = 44;
             this.Sout.Visible = false;
             // 
@@ -536,7 +536,7 @@
             this.OK2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OK2.ForeColor = System.Drawing.Color.White;
-            this.OK2.Location = new System.Drawing.Point(840, 259);
+            this.OK2.Location = new System.Drawing.Point(841, 351);
             this.OK2.Name = "OK2";
             this.OK2.Size = new System.Drawing.Size(124, 42);
             this.OK2.TabIndex = 47;
@@ -559,7 +559,7 @@
             this.dgvo.ReadOnly = true;
             this.dgvo.RowHeadersVisible = false;
             this.dgvo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvo.Size = new System.Drawing.Size(952, 200);
+            this.dgvo.Size = new System.Drawing.Size(952, 290);
             this.dgvo.TabIndex = 20;
             this.dgvo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvo_CellClick);
             // 
@@ -574,7 +574,7 @@
             this.panelReturn.Controls.Add(this.button17);
             this.panelReturn.Location = new System.Drawing.Point(12, 114);
             this.panelReturn.Name = "panelReturn";
-            this.panelReturn.Size = new System.Drawing.Size(982, 374);
+            this.panelReturn.Size = new System.Drawing.Size(982, 412);
             this.panelReturn.TabIndex = 59;
             this.panelReturn.Visible = false;
             // 
@@ -582,7 +582,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(28, 133);
+            this.label16.Location = new System.Drawing.Point(44, 165);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(71, 20);
             this.label16.TabIndex = 77;
@@ -591,7 +591,7 @@
             // quanret
             // 
             this.quanret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quanret.Location = new System.Drawing.Point(105, 131);
+            this.quanret.Location = new System.Drawing.Point(121, 163);
             this.quanret.Name = "quanret";
             this.quanret.Size = new System.Drawing.Size(159, 27);
             this.quanret.TabIndex = 76;
@@ -601,7 +601,7 @@
             this.empret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.empret.ForeColor = System.Drawing.Color.Black;
             this.empret.FormattingEnabled = true;
-            this.empret.Location = new System.Drawing.Point(29, 94);
+            this.empret.Location = new System.Drawing.Point(45, 126);
             this.empret.Name = "empret";
             this.empret.Size = new System.Drawing.Size(235, 28);
             this.empret.TabIndex = 75;
@@ -612,7 +612,7 @@
             // 
             this.reasonret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reasonret.ForeColor = System.Drawing.Color.Black;
-            this.reasonret.Location = new System.Drawing.Point(29, 167);
+            this.reasonret.Location = new System.Drawing.Point(45, 199);
             this.reasonret.Multiline = true;
             this.reasonret.Name = "reasonret";
             this.reasonret.Size = new System.Drawing.Size(452, 50);
@@ -625,7 +625,7 @@
             this.prodret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prodret.ForeColor = System.Drawing.Color.Black;
             this.prodret.FormattingEnabled = true;
-            this.prodret.Location = new System.Drawing.Point(29, 57);
+            this.prodret.Location = new System.Drawing.Point(45, 89);
             this.prodret.Name = "prodret";
             this.prodret.Size = new System.Drawing.Size(235, 28);
             this.prodret.TabIndex = 73;
@@ -637,7 +637,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label15.Location = new System.Drawing.Point(26, 16);
+            this.label15.Location = new System.Drawing.Point(43, 39);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(172, 31);
             this.label15.TabIndex = 58;
@@ -650,7 +650,7 @@
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button17.ForeColor = System.Drawing.Color.White;
-            this.button17.Location = new System.Drawing.Point(29, 228);
+            this.button17.Location = new System.Drawing.Point(45, 260);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(200, 56);
             this.button17.TabIndex = 45;
@@ -694,8 +694,8 @@
             this.newitem.Controls.Add(this.label5);
             this.newitem.Controls.Add(this.button31);
             this.newitem.Controls.Add(this.button6);
-            this.newitem.Controls.Add(this.add);
             this.newitem.Controls.Add(this.Edit);
+            this.newitem.Controls.Add(this.add);
             this.newitem.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newitem.Location = new System.Drawing.Point(24, 196);
             this.newitem.Name = "newitem";
@@ -839,7 +839,7 @@
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(835, 341);
+            this.button7.Location = new System.Drawing.Point(835, 347);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(124, 42);
             this.button7.TabIndex = 48;
@@ -1350,9 +1350,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.inv);
             this.Controls.Add(this.newitem);
             this.Controls.Add(this.panelTrans);
+            this.Controls.Add(this.inv);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(27, 84);
             this.MaximizeBox = false;
