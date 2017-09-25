@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand com = new MySqlCommand("SELECT date, lastname, firstname, type FROM activity JOIN profile ON activity.employeeID = profile.personID", conn);
+                MySqlCommand com = new MySqlCommand("SELECT date, lastname, firstname, type FROM activity JOIN profile ON activity.employeeID = profile.personID ORDER BY date", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(com);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);

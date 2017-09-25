@@ -520,7 +520,7 @@ namespace WindowsFormsApplication1
 
         private void tbBreedSearch_TextChanged(object sender, EventArgs e)
         {
-            refreshSearch();
+            refreshSearch();  
         }
 
         private void tbColorSearch_TextChanged(object sender, EventArgs e)
@@ -974,7 +974,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, color, gender, size FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE dogprofile.status = 'unclaimed' AND date > DATE_ADD(NOW(), INTERVAL -3 DAY)", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, color, gender, size FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE dogprofile.status = 'unclaimed' AND date < DATE_ADD(NOW(), INTERVAL -3 DAY)", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
@@ -1480,7 +1480,7 @@ namespace WindowsFormsApplication1
 
         private void tbColor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void m1_KeyPress(object sender, KeyPressEventArgs e)
@@ -1530,22 +1530,28 @@ namespace WindowsFormsApplication1
 
         private void y1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void y2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void tbBreedSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void tbColorSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void button17_Click_1(object sender, EventArgs e)
+        {
+            Viewdog v = new Viewdog();
+            v.ShowDialog();
         }
 
         private void button17_Click(object sender, EventArgs e)

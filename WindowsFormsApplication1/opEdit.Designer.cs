@@ -30,8 +30,8 @@
         {
             this.cTeam = new System.Windows.Forms.DataGridView();
             this.pID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aEmp = new System.Windows.Forms.DataGridView();
             this.pID1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,11 +80,12 @@
             this.cTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cTeam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.pID,
-            this.pos,
-            this.Name});
+            this.Name,
+            this.pos});
             this.cTeam.GridColor = System.Drawing.Color.White;
             this.cTeam.Location = new System.Drawing.Point(311, 56);
             this.cTeam.Name = "cTeam";
+            this.cTeam.ReadOnly = true;
             this.cTeam.RowHeadersVisible = false;
             this.cTeam.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.cTeam.Size = new System.Drawing.Size(207, 183);
@@ -97,19 +98,22 @@
             this.pID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.pID.HeaderText = "Column1";
             this.pID.Name = "pID";
+            this.pID.ReadOnly = true;
             this.pID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.pID.Visible = false;
-            // 
-            // pos
-            // 
-            this.pos.HeaderText = "";
-            this.pos.Name = "pos";
             // 
             // Name
             // 
             this.Name.HeaderText = "";
             this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
             this.Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // pos
+            // 
+            this.pos.HeaderText = "";
+            this.pos.Name = "pos";
+            this.pos.ReadOnly = true;
             // 
             // aEmp
             // 
@@ -127,6 +131,7 @@
             this.aEmp.GridColor = System.Drawing.Color.White;
             this.aEmp.Location = new System.Drawing.Point(24, 56);
             this.aEmp.Name = "aEmp";
+            this.aEmp.ReadOnly = true;
             this.aEmp.RowHeadersVisible = false;
             this.aEmp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.aEmp.Size = new System.Drawing.Size(207, 183);
@@ -138,18 +143,21 @@
             // 
             this.pID1.HeaderText = "Column1";
             this.pID1.Name = "pID1";
+            this.pID1.ReadOnly = true;
             this.pID1.Visible = false;
             // 
             // Name1
             // 
             this.Name1.HeaderText = "";
             this.Name1.Name = "Name1";
+            this.Name1.ReadOnly = true;
             this.Name1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // pos1
             // 
             this.pos1.HeaderText = "";
             this.pos1.Name = "pos1";
+            this.pos1.ReadOnly = true;
             // 
             // tbOpDay
             // 
@@ -689,6 +697,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            //this.Name = "opEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.opEdit_Load);
@@ -733,11 +742,11 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn pID1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name1;
         private System.Windows.Forms.DataGridViewTextBoxColumn pos1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pos;
     }
 }

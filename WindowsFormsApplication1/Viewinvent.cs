@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand com = new MySqlCommand("SELECT productName, description, quantity, minQuantity FROM items", conn);
+                MySqlCommand com = new MySqlCommand("SELECT productName, description, quantity, minQuantity FROM items ORDER BY itemID", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(com);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);

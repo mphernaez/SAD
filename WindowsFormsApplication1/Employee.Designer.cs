@@ -34,13 +34,13 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.dgvAttendanceOut = new System.Windows.Forms.DataGridView();
+            this.dgvAttendanceIn = new System.Windows.Forms.DataGridView();
             this.panelAtt = new System.Windows.Forms.Panel();
             this.lblout = new System.Windows.Forms.Label();
             this.lblIn = new System.Windows.Forms.Label();
             this.dgvViewattout = new System.Windows.Forms.DataGridView();
             this.dgvViewattin = new System.Windows.Forms.DataGridView();
-            this.dgvAttendanceOut = new System.Windows.Forms.DataGridView();
-            this.dgvAttendanceIn = new System.Windows.Forms.DataGridView();
             this.addEmployee = new System.Windows.Forms.Panel();
             this.button30 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
@@ -208,11 +208,11 @@
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
             this.attendance.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
             this.panelAtt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
             this.addEmployee.SuspendLayout();
             this.pnlArchive.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReactivate)).BeginInit();
@@ -325,6 +325,48 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Attendance";
             // 
+            // dgvAttendanceOut
+            // 
+            this.dgvAttendanceOut.AllowUserToAddRows = false;
+            this.dgvAttendanceOut.AllowUserToDeleteRows = false;
+            this.dgvAttendanceOut.AllowUserToResizeColumns = false;
+            this.dgvAttendanceOut.AllowUserToResizeRows = false;
+            this.dgvAttendanceOut.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAttendanceOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAttendanceOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAttendanceOut.GridColor = System.Drawing.Color.White;
+            this.dgvAttendanceOut.Location = new System.Drawing.Point(17, 117);
+            this.dgvAttendanceOut.Name = "dgvAttendanceOut";
+            this.dgvAttendanceOut.ReadOnly = true;
+            this.dgvAttendanceOut.RowHeadersVisible = false;
+            this.dgvAttendanceOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAttendanceOut.Size = new System.Drawing.Size(982, 315);
+            this.dgvAttendanceOut.TabIndex = 31;
+            this.dgvAttendanceOut.Visible = false;
+            this.dgvAttendanceOut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellClick);
+            this.dgvAttendanceOut.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellContentDoubleClick);
+            // 
+            // dgvAttendanceIn
+            // 
+            this.dgvAttendanceIn.AllowUserToAddRows = false;
+            this.dgvAttendanceIn.AllowUserToDeleteRows = false;
+            this.dgvAttendanceIn.AllowUserToResizeColumns = false;
+            this.dgvAttendanceIn.AllowUserToResizeRows = false;
+            this.dgvAttendanceIn.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAttendanceIn.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAttendanceIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAttendanceIn.GridColor = System.Drawing.Color.White;
+            this.dgvAttendanceIn.Location = new System.Drawing.Point(17, 118);
+            this.dgvAttendanceIn.Name = "dgvAttendanceIn";
+            this.dgvAttendanceIn.ReadOnly = true;
+            this.dgvAttendanceIn.RowHeadersVisible = false;
+            this.dgvAttendanceIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAttendanceIn.Size = new System.Drawing.Size(982, 396);
+            this.dgvAttendanceIn.TabIndex = 20;
+            this.dgvAttendanceIn.Visible = false;
+            this.dgvAttendanceIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellClick);
+            this.dgvAttendanceIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceIn_CellContentClick);
+            // 
             // panelAtt
             // 
             this.panelAtt.Controls.Add(this.lblout);
@@ -395,48 +437,6 @@
             this.dgvViewattin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvViewattin.Size = new System.Drawing.Size(480, 346);
             this.dgvViewattin.TabIndex = 21;
-            // 
-            // dgvAttendanceOut
-            // 
-            this.dgvAttendanceOut.AllowUserToAddRows = false;
-            this.dgvAttendanceOut.AllowUserToDeleteRows = false;
-            this.dgvAttendanceOut.AllowUserToResizeColumns = false;
-            this.dgvAttendanceOut.AllowUserToResizeRows = false;
-            this.dgvAttendanceOut.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAttendanceOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvAttendanceOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendanceOut.GridColor = System.Drawing.Color.White;
-            this.dgvAttendanceOut.Location = new System.Drawing.Point(17, 117);
-            this.dgvAttendanceOut.Name = "dgvAttendanceOut";
-            this.dgvAttendanceOut.ReadOnly = true;
-            this.dgvAttendanceOut.RowHeadersVisible = false;
-            this.dgvAttendanceOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendanceOut.Size = new System.Drawing.Size(982, 315);
-            this.dgvAttendanceOut.TabIndex = 31;
-            this.dgvAttendanceOut.Visible = false;
-            this.dgvAttendanceOut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellClick);
-            this.dgvAttendanceOut.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceOut_CellContentDoubleClick);
-            // 
-            // dgvAttendanceIn
-            // 
-            this.dgvAttendanceIn.AllowUserToAddRows = false;
-            this.dgvAttendanceIn.AllowUserToDeleteRows = false;
-            this.dgvAttendanceIn.AllowUserToResizeColumns = false;
-            this.dgvAttendanceIn.AllowUserToResizeRows = false;
-            this.dgvAttendanceIn.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAttendanceIn.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvAttendanceIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendanceIn.GridColor = System.Drawing.Color.White;
-            this.dgvAttendanceIn.Location = new System.Drawing.Point(17, 118);
-            this.dgvAttendanceIn.Name = "dgvAttendanceIn";
-            this.dgvAttendanceIn.ReadOnly = true;
-            this.dgvAttendanceIn.RowHeadersVisible = false;
-            this.dgvAttendanceIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendanceIn.Size = new System.Drawing.Size(982, 396);
-            this.dgvAttendanceIn.TabIndex = 20;
-            this.dgvAttendanceIn.Visible = false;
-            this.dgvAttendanceIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellClick);
-            this.dgvAttendanceIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendanceIn_CellContentClick);
             // 
             // addEmployee
             // 
@@ -1133,6 +1133,7 @@
             this.cbEmpFilt.Size = new System.Drawing.Size(333, 28);
             this.cbEmpFilt.TabIndex = 17;
             this.cbEmpFilt.Text = "Employee";
+            this.cbEmpFilt.SelectedIndexChanged += new System.EventHandler(this.cbEmpFilt_SelectedIndexChanged_1);
             this.cbEmpFilt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress_1);
             // 
             // y2
@@ -2795,10 +2796,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
-            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -2807,12 +2808,12 @@
             this.Load += new System.EventHandler(this.Employee_Load);
             this.attendance.ResumeLayout(false);
             this.attendance.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).EndInit();
             this.panelAtt.ResumeLayout(false);
             this.panelAtt.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewattin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).EndInit();
             this.addEmployee.ResumeLayout(false);
             this.addEmployee.PerformLayout();
             this.pnlArchive.ResumeLayout(false);

@@ -369,16 +369,11 @@ namespace WindowsFormsApplication1
 
             if (okct)
             {
-
-
                 if(cTeam.Rows[rft].DefaultCellStyle.BackColor != Color.FromArgb(229, 99, 82))
                 {
                     this.aEmp.Rows.Add(ti1, n1, pos00);
                 }
-
                 cTeam.Rows.RemoveAt(rft);
-
-
                 cTeam.ClearSelection();
                 aEmp.ClearSelection();
                 okct = false;
@@ -397,20 +392,16 @@ namespace WindowsFormsApplication1
 
             if (okae)
             {
-
-
-
-                this.cTeam.Rows.Add(ti2, n2, pos11);
-
+                    this.cTeam.Rows.Add(ti2, n2, pos11);
                     aEmp.Rows.RemoveAt(att);
-
+                    okae = false;
                 
-                okct = false;
             }
             else
             {
                 MessageBox.Show("Please Select an Employee");
             }
+
         }
 
         int rft, att;
