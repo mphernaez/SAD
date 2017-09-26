@@ -102,7 +102,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(21, 520);
+            this.label3.Location = new System.Drawing.Point(21, 515);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 102;
@@ -111,7 +111,7 @@
             // amtOut
             // 
             this.amtOut.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amtOut.Location = new System.Drawing.Point(25, 543);
+            this.amtOut.Location = new System.Drawing.Point(25, 538);
             this.amtOut.Name = "amtOut";
             this.amtOut.Size = new System.Drawing.Size(150, 26);
             this.amtOut.TabIndex = 101;

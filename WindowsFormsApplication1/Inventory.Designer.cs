@@ -48,14 +48,6 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.panelRequest = new System.Windows.Forms.Panel();
-            this.btn1 = new System.Windows.Forms.Button();
-            this.btn = new System.Windows.Forms.Button();
-            this.panelReq = new System.Windows.Forms.Panel();
-            this.button18 = new System.Windows.Forms.Button();
-            this.dgvRequest = new System.Windows.Forms.DataGridView();
-            this.panelPending = new System.Windows.Forms.Panel();
-            this.dgvPendReq = new System.Windows.Forms.DataGridView();
             this.Sout = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.OK2 = new System.Windows.Forms.Button();
@@ -72,6 +64,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.OK1 = new System.Windows.Forms.Button();
             this.dgvin = new System.Windows.Forms.DataGridView();
+            this.panelRequest = new System.Windows.Forms.Panel();
+            this.btn1 = new System.Windows.Forms.Button();
+            this.btn = new System.Windows.Forms.Button();
+            this.panelReq = new System.Windows.Forms.Panel();
+            this.button18 = new System.Windows.Forms.Button();
+            this.dgvRequest = new System.Windows.Forms.DataGridView();
+            this.panelPending = new System.Windows.Forms.Panel();
+            this.dgvPendReq = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.tbname = new System.Windows.Forms.TextBox();
             this.tbdesc = new System.Windows.Forms.TextBox();
@@ -79,15 +79,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button31 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.Edit = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.dgvEdit = new System.Windows.Forms.DataGridView();
             this.add = new System.Windows.Forms.Panel();
             this.msBy = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.nudmin = new System.Windows.Forms.NumericUpDown();
+            this.Edit = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.dgvEdit = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -123,22 +123,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.i)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a)).BeginInit();
             this.inv.SuspendLayout();
-            this.panelRequest.SuspendLayout();
-            this.panelReq.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRequest)).BeginInit();
-            this.panelPending.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendReq)).BeginInit();
             this.Sout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvo)).BeginInit();
             this.panelReturn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quanret)).BeginInit();
             this.dgvout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvin)).BeginInit();
+            this.panelRequest.SuspendLayout();
+            this.panelReq.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRequest)).BeginInit();
+            this.panelPending.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPendReq)).BeginInit();
             this.newitem.SuspendLayout();
-            this.Edit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEdit)).BeginInit();
             this.add.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudmin)).BeginInit();
+            this.Edit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEdit)).BeginInit();
             this.panel2.SuspendLayout();
             this.pe.SuspendLayout();
             this.ip.SuspendLayout();
@@ -405,118 +405,6 @@
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // panelRequest
-            // 
-            this.panelRequest.Controls.Add(this.btn1);
-            this.panelRequest.Controls.Add(this.btn);
-            this.panelRequest.Controls.Add(this.panelReq);
-            this.panelRequest.Controls.Add(this.panelPending);
-            this.panelRequest.Location = new System.Drawing.Point(10, 114);
-            this.panelRequest.Name = "panelRequest";
-            this.panelRequest.Size = new System.Drawing.Size(982, 412);
-            this.panelRequest.TabIndex = 58;
-            this.panelRequest.Visible = false;
-            this.panelRequest.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRequest_Paint);
-            // 
-            // btn1
-            // 
-            this.btn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.btn1.FlatAppearance.BorderSize = 0;
-            this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn1.ForeColor = System.Drawing.Color.White;
-            this.btn1.Location = new System.Drawing.Point(272, 22);
-            this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(150, 32);
-            this.btn1.TabIndex = 62;
-            this.btn1.Text = "Pending Requests";
-            this.btn1.UseVisualStyleBackColor = false;
-            this.btn1.Click += new System.EventHandler(this.btn1_Click);
-            // 
-            // btn
-            // 
-            this.btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.btn.FlatAppearance.BorderSize = 0;
-            this.btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn.ForeColor = System.Drawing.Color.White;
-            this.btn.Location = new System.Drawing.Point(13, 22);
-            this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(258, 32);
-            this.btn.TabIndex = 61;
-            this.btn.Text = "Items that Need to be Requested";
-            this.btn.UseVisualStyleBackColor = false;
-            this.btn.Click += new System.EventHandler(this.btn_Click);
-            // 
-            // panelReq
-            // 
-            this.panelReq.Controls.Add(this.button18);
-            this.panelReq.Controls.Add(this.dgvRequest);
-            this.panelReq.Location = new System.Drawing.Point(13, 53);
-            this.panelReq.Name = "panelReq";
-            this.panelReq.Size = new System.Drawing.Size(952, 339);
-            this.panelReq.TabIndex = 59;
-            // 
-            // button18
-            // 
-            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button18.FlatAppearance.BorderSize = 0;
-            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.ForeColor = System.Drawing.Color.White;
-            this.button18.Location = new System.Drawing.Point(662, 296);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(262, 32);
-            this.button18.TabIndex = 47;
-            this.button18.Text = "Generate Item Request Form";
-            this.button18.UseVisualStyleBackColor = false;
-            this.button18.Click += new System.EventHandler(this.button18_Click_1);
-            // 
-            // dgvRequest
-            // 
-            this.dgvRequest.AllowUserToAddRows = false;
-            this.dgvRequest.AllowUserToDeleteRows = false;
-            this.dgvRequest.AllowUserToResizeColumns = false;
-            this.dgvRequest.AllowUserToResizeRows = false;
-            this.dgvRequest.BackgroundColor = System.Drawing.Color.White;
-            this.dgvRequest.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvRequest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRequest.GridColor = System.Drawing.Color.White;
-            this.dgvRequest.Location = new System.Drawing.Point(33, 20);
-            this.dgvRequest.Name = "dgvRequest";
-            this.dgvRequest.ReadOnly = true;
-            this.dgvRequest.RowHeadersVisible = false;
-            this.dgvRequest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRequest.Size = new System.Drawing.Size(887, 263);
-            this.dgvRequest.TabIndex = 20;
-            // 
-            // panelPending
-            // 
-            this.panelPending.Controls.Add(this.dgvPendReq);
-            this.panelPending.Location = new System.Drawing.Point(13, 54);
-            this.panelPending.Name = "panelPending";
-            this.panelPending.Size = new System.Drawing.Size(952, 339);
-            this.panelPending.TabIndex = 60;
-            this.panelPending.Visible = false;
-            // 
-            // dgvPendReq
-            // 
-            this.dgvPendReq.AllowUserToAddRows = false;
-            this.dgvPendReq.AllowUserToDeleteRows = false;
-            this.dgvPendReq.AllowUserToResizeColumns = false;
-            this.dgvPendReq.AllowUserToResizeRows = false;
-            this.dgvPendReq.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPendReq.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvPendReq.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPendReq.GridColor = System.Drawing.Color.White;
-            this.dgvPendReq.Location = new System.Drawing.Point(33, 22);
-            this.dgvPendReq.Name = "dgvPendReq";
-            this.dgvPendReq.ReadOnly = true;
-            this.dgvPendReq.RowHeadersVisible = false;
-            this.dgvPendReq.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPendReq.Size = new System.Drawing.Size(887, 285);
-            this.dgvPendReq.TabIndex = 58;
-            // 
             // Sout
             // 
             this.Sout.Controls.Add(this.label4);
@@ -724,12 +612,124 @@
             this.dgvin.TabIndex = 20;
             this.dgvin.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvin_CellClick);
             // 
+            // panelRequest
+            // 
+            this.panelRequest.Controls.Add(this.btn1);
+            this.panelRequest.Controls.Add(this.btn);
+            this.panelRequest.Controls.Add(this.panelReq);
+            this.panelRequest.Controls.Add(this.panelPending);
+            this.panelRequest.Location = new System.Drawing.Point(10, 114);
+            this.panelRequest.Name = "panelRequest";
+            this.panelRequest.Size = new System.Drawing.Size(982, 412);
+            this.panelRequest.TabIndex = 58;
+            this.panelRequest.Visible = false;
+            this.panelRequest.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRequest_Paint);
+            // 
+            // btn1
+            // 
+            this.btn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.btn1.FlatAppearance.BorderSize = 0;
+            this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn1.ForeColor = System.Drawing.Color.White;
+            this.btn1.Location = new System.Drawing.Point(272, 22);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(150, 32);
+            this.btn1.TabIndex = 62;
+            this.btn1.Text = "Pending Requests";
+            this.btn1.UseVisualStyleBackColor = false;
+            this.btn1.Click += new System.EventHandler(this.btn1_Click);
+            // 
+            // btn
+            // 
+            this.btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.btn.FlatAppearance.BorderSize = 0;
+            this.btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn.ForeColor = System.Drawing.Color.White;
+            this.btn.Location = new System.Drawing.Point(13, 22);
+            this.btn.Name = "btn";
+            this.btn.Size = new System.Drawing.Size(258, 32);
+            this.btn.TabIndex = 61;
+            this.btn.Text = "Items that Need to be Requested";
+            this.btn.UseVisualStyleBackColor = false;
+            this.btn.Click += new System.EventHandler(this.btn_Click);
+            // 
+            // panelReq
+            // 
+            this.panelReq.Controls.Add(this.button18);
+            this.panelReq.Controls.Add(this.dgvRequest);
+            this.panelReq.Location = new System.Drawing.Point(13, 53);
+            this.panelReq.Name = "panelReq";
+            this.panelReq.Size = new System.Drawing.Size(952, 339);
+            this.panelReq.TabIndex = 59;
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button18.FlatAppearance.BorderSize = 0;
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button18.ForeColor = System.Drawing.Color.White;
+            this.button18.Location = new System.Drawing.Point(662, 296);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(262, 32);
+            this.button18.TabIndex = 47;
+            this.button18.Text = "Generate Item Request Form";
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click_1);
+            // 
+            // dgvRequest
+            // 
+            this.dgvRequest.AllowUserToAddRows = false;
+            this.dgvRequest.AllowUserToDeleteRows = false;
+            this.dgvRequest.AllowUserToResizeColumns = false;
+            this.dgvRequest.AllowUserToResizeRows = false;
+            this.dgvRequest.BackgroundColor = System.Drawing.Color.White;
+            this.dgvRequest.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvRequest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRequest.GridColor = System.Drawing.Color.White;
+            this.dgvRequest.Location = new System.Drawing.Point(33, 20);
+            this.dgvRequest.Name = "dgvRequest";
+            this.dgvRequest.ReadOnly = true;
+            this.dgvRequest.RowHeadersVisible = false;
+            this.dgvRequest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRequest.Size = new System.Drawing.Size(887, 263);
+            this.dgvRequest.TabIndex = 20;
+            // 
+            // panelPending
+            // 
+            this.panelPending.Controls.Add(this.dgvPendReq);
+            this.panelPending.Location = new System.Drawing.Point(13, 54);
+            this.panelPending.Name = "panelPending";
+            this.panelPending.Size = new System.Drawing.Size(952, 339);
+            this.panelPending.TabIndex = 60;
+            this.panelPending.Visible = false;
+            // 
+            // dgvPendReq
+            // 
+            this.dgvPendReq.AllowUserToAddRows = false;
+            this.dgvPendReq.AllowUserToDeleteRows = false;
+            this.dgvPendReq.AllowUserToResizeColumns = false;
+            this.dgvPendReq.AllowUserToResizeRows = false;
+            this.dgvPendReq.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPendReq.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPendReq.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPendReq.GridColor = System.Drawing.Color.White;
+            this.dgvPendReq.Location = new System.Drawing.Point(33, 22);
+            this.dgvPendReq.Name = "dgvPendReq";
+            this.dgvPendReq.ReadOnly = true;
+            this.dgvPendReq.RowHeadersVisible = false;
+            this.dgvPendReq.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPendReq.Size = new System.Drawing.Size(887, 285);
+            this.dgvPendReq.TabIndex = 58;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label2.Location = new System.Drawing.Point(18, 14);
+            this.label2.Location = new System.Drawing.Point(19, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 31);
             this.label2.TabIndex = 11;
@@ -738,7 +738,7 @@
             // tbname
             // 
             this.tbname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbname.Location = new System.Drawing.Point(21, 57);
+            this.tbname.Location = new System.Drawing.Point(44, 71);
             this.tbname.Name = "tbname";
             this.tbname.Size = new System.Drawing.Size(230, 26);
             this.tbname.TabIndex = 12;
@@ -747,7 +747,7 @@
             // tbdesc
             // 
             this.tbdesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbdesc.Location = new System.Drawing.Point(21, 89);
+            this.tbdesc.Location = new System.Drawing.Point(44, 103);
             this.tbdesc.Multiline = true;
             this.tbdesc.Name = "tbdesc";
             this.tbdesc.Size = new System.Drawing.Size(463, 66);
@@ -810,6 +810,72 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
+            // add
+            // 
+            this.add.Controls.Add(this.tbdesc);
+            this.add.Controls.Add(this.msBy);
+            this.add.Controls.Add(this.tbname);
+            this.add.Controls.Add(this.label3);
+            this.add.Controls.Add(this.button4);
+            this.add.Controls.Add(this.nudmin);
+            this.add.Controls.Add(this.label2);
+            this.add.Location = new System.Drawing.Point(16, 114);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(982, 412);
+            this.add.TabIndex = 44;
+            this.add.Visible = false;
+            // 
+            // msBy
+            // 
+            this.msBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.msBy.FormattingEnabled = true;
+            this.msBy.Items.AddRange(new object[] {
+            "Sack",
+            "Piece",
+            "Dozen",
+            "Bottle"});
+            this.msBy.Location = new System.Drawing.Point(44, 235);
+            this.msBy.Name = "msBy";
+            this.msBy.Size = new System.Drawing.Size(121, 28);
+            this.msBy.TabIndex = 43;
+            this.msBy.Text = "Measured by";
+            this.msBy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.msBy_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(44, 172);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(135, 20);
+            this.label3.TabIndex = 42;
+            this.label3.Text = "Minimum Quantity";
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(44, 295);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(168, 42);
+            this.button4.TabIndex = 24;
+            this.button4.Text = "Add";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // nudmin
+            // 
+            this.nudmin.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudmin.Location = new System.Drawing.Point(44, 195);
+            this.nudmin.Name = "nudmin";
+            this.nudmin.Size = new System.Drawing.Size(150, 26);
+            this.nudmin.TabIndex = 25;
+            // 
             // Edit
             // 
             this.Edit.Controls.Add(this.label7);
@@ -839,7 +905,7 @@
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(835, 347);
+            this.button7.Location = new System.Drawing.Point(808, 350);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(124, 42);
             this.button7.TabIndex = 48;
@@ -857,80 +923,14 @@
             this.dgvEdit.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEdit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEdit.GridColor = System.Drawing.Color.White;
-            this.dgvEdit.Location = new System.Drawing.Point(17, 57);
+            this.dgvEdit.Location = new System.Drawing.Point(45, 57);
             this.dgvEdit.Name = "dgvEdit";
             this.dgvEdit.ReadOnly = true;
             this.dgvEdit.RowHeadersVisible = false;
             this.dgvEdit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEdit.Size = new System.Drawing.Size(942, 266);
+            this.dgvEdit.Size = new System.Drawing.Size(887, 279);
             this.dgvEdit.TabIndex = 0;
             this.dgvEdit.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // add
-            // 
-            this.add.Controls.Add(this.tbdesc);
-            this.add.Controls.Add(this.msBy);
-            this.add.Controls.Add(this.tbname);
-            this.add.Controls.Add(this.label3);
-            this.add.Controls.Add(this.button4);
-            this.add.Controls.Add(this.nudmin);
-            this.add.Controls.Add(this.label2);
-            this.add.Location = new System.Drawing.Point(16, 114);
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(982, 412);
-            this.add.TabIndex = 44;
-            this.add.Visible = false;
-            // 
-            // msBy
-            // 
-            this.msBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.msBy.FormattingEnabled = true;
-            this.msBy.Items.AddRange(new object[] {
-            "Sack",
-            "Piece",
-            "Dozen",
-            "Bottle"});
-            this.msBy.Location = new System.Drawing.Point(21, 221);
-            this.msBy.Name = "msBy";
-            this.msBy.Size = new System.Drawing.Size(121, 28);
-            this.msBy.TabIndex = 43;
-            this.msBy.Text = "Measured by";
-            this.msBy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.msBy_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(21, 158);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(135, 20);
-            this.label3.TabIndex = 42;
-            this.label3.Text = "Minimum Quantity";
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(21, 281);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(168, 42);
-            this.button4.TabIndex = 24;
-            this.button4.Text = "Add";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // nudmin
-            // 
-            this.nudmin.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudmin.Location = new System.Drawing.Point(21, 181);
-            this.nudmin.Name = "nudmin";
-            this.nudmin.Size = new System.Drawing.Size(150, 26);
-            this.nudmin.TabIndex = 25;
             // 
             // panel2
             // 
@@ -1368,11 +1368,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.a)).EndInit();
             this.inv.ResumeLayout(false);
             this.inv.PerformLayout();
-            this.panelRequest.ResumeLayout(false);
-            this.panelReq.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRequest)).EndInit();
-            this.panelPending.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendReq)).EndInit();
             this.Sout.ResumeLayout(false);
             this.Sout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvo)).EndInit();
@@ -1382,14 +1377,19 @@
             this.dgvout.ResumeLayout(false);
             this.dgvout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvin)).EndInit();
+            this.panelRequest.ResumeLayout(false);
+            this.panelReq.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRequest)).EndInit();
+            this.panelPending.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPendReq)).EndInit();
             this.newitem.ResumeLayout(false);
             this.newitem.PerformLayout();
-            this.Edit.ResumeLayout(false);
-            this.Edit.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEdit)).EndInit();
             this.add.ResumeLayout(false);
             this.add.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudmin)).EndInit();
+            this.Edit.ResumeLayout(false);
+            this.Edit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEdit)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.pe.ResumeLayout(false);

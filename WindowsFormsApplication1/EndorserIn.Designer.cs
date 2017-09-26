@@ -106,7 +106,7 @@
             "29",
             "30",
             "31"});
-            this.cbDay.Location = new System.Drawing.Point(310, 411);
+            this.cbDay.Location = new System.Drawing.Point(310, 410);
             this.cbDay.Name = "cbDay";
             this.cbDay.Size = new System.Drawing.Size(63, 30);
             this.cbDay.TabIndex = 84;
@@ -132,7 +132,7 @@
             "October",
             "November",
             "December"});
-            this.cbMonth.Location = new System.Drawing.Point(99, 413);
+            this.cbMonth.Location = new System.Drawing.Point(99, 412);
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(205, 28);
             this.cbMonth.TabIndex = 83;
@@ -144,7 +144,7 @@
             // 
             this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbYear.ForeColor = System.Drawing.Color.Gray;
-            this.tbYear.Location = new System.Drawing.Point(28, 413);
+            this.tbYear.Location = new System.Drawing.Point(28, 412);
             this.tbYear.Multiline = true;
             this.tbYear.Name = "tbYear";
             this.tbYear.Size = new System.Drawing.Size(65, 30);
@@ -160,7 +160,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(23, 390);
+            this.label15.Location = new System.Drawing.Point(23, 389);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(103, 20);
             this.label15.TabIndex = 85;
@@ -186,7 +186,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(23, 446);
+            this.label1.Location = new System.Drawing.Point(23, 445);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 93;
@@ -196,7 +196,7 @@
             // 
             this.tbReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbReason.ForeColor = System.Drawing.Color.Gray;
-            this.tbReason.Location = new System.Drawing.Point(27, 469);
+            this.tbReason.Location = new System.Drawing.Point(27, 468);
             this.tbReason.Multiline = true;
             this.tbReason.Name = "tbReason";
             this.tbReason.Size = new System.Drawing.Size(347, 30);
@@ -209,7 +209,7 @@
             this.cbDa.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDa.ForeColor = System.Drawing.Color.Gray;
             this.cbDa.FormattingEnabled = true;
-            this.cbDa.Location = new System.Drawing.Point(310, 532);
+            this.cbDa.Location = new System.Drawing.Point(310, 531);
             this.cbDa.Name = "cbDa";
             this.cbDa.Size = new System.Drawing.Size(63, 30);
             this.cbDa.TabIndex = 98;
@@ -221,7 +221,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(24, 506);
+            this.label2.Location = new System.Drawing.Point(24, 505);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 20);
             this.label2.TabIndex = 96;
@@ -246,7 +246,7 @@
             "October",
             "November",
             "December"});
-            this.cbMo.Location = new System.Drawing.Point(99, 532);
+            this.cbMo.Location = new System.Drawing.Point(99, 531);
             this.cbMo.Name = "cbMo";
             this.cbMo.Size = new System.Drawing.Size(205, 28);
             this.cbMo.TabIndex = 95;
@@ -258,7 +258,7 @@
             // 
             this.tbYr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbYr.ForeColor = System.Drawing.Color.Gray;
-            this.tbYr.Location = new System.Drawing.Point(28, 531);
+            this.tbYr.Location = new System.Drawing.Point(28, 530);
             this.tbYr.Multiline = true;
             this.tbYr.Name = "tbYr";
             this.tbYr.Size = new System.Drawing.Size(65, 30);
@@ -274,7 +274,7 @@
             this.amtLabel.AutoSize = true;
             this.amtLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amtLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.amtLabel.Location = new System.Drawing.Point(24, 563);
+            this.amtLabel.Location = new System.Drawing.Point(24, 562);
             this.amtLabel.Name = "amtLabel";
             this.amtLabel.Size = new System.Drawing.Size(65, 20);
             this.amtLabel.TabIndex = 102;
@@ -283,7 +283,7 @@
             // amtIn
             // 
             this.amtIn.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amtIn.Location = new System.Drawing.Point(28, 586);
+            this.amtIn.Location = new System.Drawing.Point(28, 585);
             this.amtIn.Name = "amtIn";
             this.amtIn.Size = new System.Drawing.Size(150, 26);
             this.amtIn.TabIndex = 101;
