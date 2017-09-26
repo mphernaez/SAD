@@ -894,7 +894,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT dogID, color, gender, size, breed, otherDesc FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND dogprofile.status = 'unclaimed'", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, color, gender, size, otherDesc FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND dogprofile.status = 'unclaimed'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
@@ -910,7 +910,7 @@ namespace WindowsFormsApplication1
                 dgvArchive.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvArchive.Columns["breed"].HeaderText = "Breed";
                 dgvArchive.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvArchive.Columns["otherDesc"].HeaderText = "Other Description";
+                dgvArchive.Columns["otherDesc"].HeaderText = "Markings";
                 dgvArchive.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 comm = new MySqlCommand("SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS name FROM profile INNER JOIN employee ON employee.employeeID = profile.personID WHERE employee.status = 'Active'", conn);
@@ -974,7 +974,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, color, gender, size FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE dogprofile.status = 'unclaimed' AND date < DATE_ADD(NOW(), INTERVAL -3 DAY)", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, color, gender, size, otherDesc FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE dogprofile.status = 'unclaimed' AND date < DATE_ADD(NOW(), INTERVAL -3 DAY)", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
@@ -990,6 +990,8 @@ namespace WindowsFormsApplication1
                 dgvAdoption.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvAdoption.Columns["size"].HeaderText = "Size";
                 dgvAdoption.Columns["size"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAdoption.Columns["otherDesc"].HeaderText = "Markings";
+                dgvAdoption.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 conn.Close();
 

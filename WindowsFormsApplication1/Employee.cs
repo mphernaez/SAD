@@ -89,7 +89,7 @@ namespace WindowsFormsApplication1
             a.Visible = true;
             o.Visible = false;
             r.Visible = false;
-
+            panel2.Visible = false;
 
             refreshAttendance();
         }
@@ -432,7 +432,7 @@ namespace WindowsFormsApplication1
             a.Visible = false;
             o.Visible = true;
             r.Visible = false;
-
+            panel2.Visible = false;
         }
 
         public void addOperation(int teamIDs)
@@ -3109,6 +3109,11 @@ namespace WindowsFormsApplication1
             {
                 repActivity();
             }
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            tbPass.PasswordChar = '*';
         }
     }
 }
