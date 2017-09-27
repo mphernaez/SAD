@@ -1401,23 +1401,23 @@ namespace WindowsFormsApplication1
                 e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
                 e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
                 e.Graphics.DrawString("Operation Details", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(335, 150));
-                e.Graphics.DrawString("Location: BRGY. " + location, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(265, 190));
-                e.Graphics.DrawString("Sublocations: ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(265, 220));
-                int z = 245;
+                e.Graphics.DrawString("Location: BRGY. " + location, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 220));
+                e.Graphics.DrawString("Sublocations: ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 250));
+                int z = 285;
                 int v = 0;
                 while (v < sublocations.Length)
                 {
-                    e.Graphics.DrawString(sublocations[v], new System.Drawing.Font(f, 14, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(285, z));
+                    e.Graphics.DrawString(sublocations[v], new System.Drawing.Font(f, 14, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(115, z));
                     v++;
                     z = z + 25;
                 }
-                e.Graphics.DrawString("Date:  " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(50, 190));
-                e.Graphics.DrawString("Time:  " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(50, 220));
-                e.Graphics.DrawString("Employees Involved:  ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(540, 190));
-                int l = 220;
+                e.Graphics.DrawString("Date:  " + date, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 190));
+                e.Graphics.DrawString("Time:  " + time, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 190));
+                e.Graphics.DrawString("Employees Involved:  ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(450, 220));
+                int l = 255;
                 for (int i = 0; i < employees.Length; i++)
                 {
-                    e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 14, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(560, l));
+                    e.Graphics.DrawString(employees[i], new System.Drawing.Font(f, 14, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(465, l));
                     l = l + 25;
                 }
                 if (z >= l) x = z + 40;
