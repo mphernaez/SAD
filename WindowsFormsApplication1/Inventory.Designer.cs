@@ -319,10 +319,10 @@
             this.inv.Controls.Add(this.button5);
             this.inv.Controls.Add(this.button16);
             this.inv.Controls.Add(this.label12);
-            this.inv.Controls.Add(this.Sout);
-            this.inv.Controls.Add(this.panelReturn);
             this.inv.Controls.Add(this.dgvout);
             this.inv.Controls.Add(this.panelRequest);
+            this.inv.Controls.Add(this.Sout);
+            this.inv.Controls.Add(this.panelReturn);
             this.inv.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inv.Location = new System.Drawing.Point(24, 196);
             this.inv.Name = "inv";
@@ -496,9 +496,11 @@
             // 
             // empret
             // 
+            this.empret.DropDownHeight = 100;
             this.empret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.empret.ForeColor = System.Drawing.Color.Black;
             this.empret.FormattingEnabled = true;
+            this.empret.IntegralHeight = false;
             this.empret.Location = new System.Drawing.Point(45, 126);
             this.empret.Name = "empret";
             this.empret.Size = new System.Drawing.Size(235, 28);
@@ -520,9 +522,11 @@
             // 
             // prodret
             // 
+            this.prodret.DropDownHeight = 100;
             this.prodret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prodret.ForeColor = System.Drawing.Color.Black;
             this.prodret.FormattingEnabled = true;
+            this.prodret.IntegralHeight = false;
             this.prodret.Location = new System.Drawing.Point(45, 89);
             this.prodret.Name = "prodret";
             this.prodret.Size = new System.Drawing.Size(235, 28);
@@ -827,8 +831,10 @@
             // 
             // msBy
             // 
+            this.msBy.DropDownHeight = 100;
             this.msBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msBy.FormattingEnabled = true;
+            this.msBy.IntegralHeight = false;
             this.msBy.Items.AddRange(new object[] {
             "Sack",
             "Piece",
@@ -1192,9 +1198,11 @@
             // 
             // d2
             // 
+            this.d2.DropDownHeight = 100;
             this.d2.Enabled = false;
             this.d2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.d2.FormattingEnabled = true;
+            this.d2.IntegralHeight = false;
             this.d2.Location = new System.Drawing.Point(463, 23);
             this.d2.Name = "d2";
             this.d2.Size = new System.Drawing.Size(65, 28);
@@ -1204,9 +1212,11 @@
             // 
             // d1
             // 
+            this.d1.DropDownHeight = 100;
             this.d1.Enabled = false;
             this.d1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.d1.FormattingEnabled = true;
+            this.d1.IntegralHeight = false;
             this.d1.Location = new System.Drawing.Point(193, 24);
             this.d1.Name = "d1";
             this.d1.Size = new System.Drawing.Size(65, 28);
@@ -1239,8 +1249,10 @@
             // 
             // m2
             // 
+            this.m2.DropDownHeight = 100;
             this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m2.FormattingEnabled = true;
+            this.m2.IntegralHeight = false;
             this.m2.Items.AddRange(new object[] {
             "January",
             "February",
@@ -1264,8 +1276,10 @@
             // 
             // m1
             // 
+            this.m1.DropDownHeight = 100;
             this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m1.FormattingEnabled = true;
+            this.m1.IntegralHeight = false;
             this.m1.Items.AddRange(new object[] {
             "January",
             "February",
@@ -1322,9 +1336,11 @@
             // 
             // cbTransType
             // 
+            this.cbTransType.DropDownHeight = 100;
             this.cbTransType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTransType.ForeColor = System.Drawing.Color.Black;
             this.cbTransType.FormattingEnabled = true;
+            this.cbTransType.IntegralHeight = false;
             this.cbTransType.Items.AddRange(new object[] {
             "Stock In",
             "Stock Out",
@@ -1351,9 +1367,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.newitem);
             this.Controls.Add(this.panelTrans);
             this.Controls.Add(this.inv);
+            this.Controls.Add(this.newitem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(27, 84);
             this.MaximizeBox = false;

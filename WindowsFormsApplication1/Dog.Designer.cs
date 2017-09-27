@@ -520,9 +520,11 @@
             // 
             // subloc
             // 
+            this.subloc.DropDownHeight = 100;
             this.subloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subloc.ForeColor = System.Drawing.Color.Gray;
             this.subloc.FormattingEnabled = true;
+            this.subloc.IntegralHeight = false;
             this.subloc.Location = new System.Drawing.Point(31, 204);
             this.subloc.Name = "subloc";
             this.subloc.Size = new System.Drawing.Size(292, 28);
@@ -578,9 +580,11 @@
             // 
             // tbBreed
             // 
+            this.tbBreed.DropDownHeight = 100;
             this.tbBreed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBreed.ForeColor = System.Drawing.Color.Gray;
             this.tbBreed.FormattingEnabled = true;
+            this.tbBreed.IntegralHeight = false;
             this.tbBreed.Items.AddRange(new object[] {
             "Affenpinscher",
             "Akita",
@@ -696,9 +700,11 @@
             // 
             // cbGender
             // 
+            this.cbGender.DropDownHeight = 100;
             this.cbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbGender.ForeColor = System.Drawing.Color.Gray;
             this.cbGender.FormattingEnabled = true;
+            this.cbGender.IntegralHeight = false;
             this.cbGender.Items.AddRange(new object[] {
             "Male",
             "Female"});
@@ -712,9 +718,11 @@
             // 
             // cbSize
             // 
+            this.cbSize.DropDownHeight = 100;
             this.cbSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSize.ForeColor = System.Drawing.Color.Gray;
             this.cbSize.FormattingEnabled = true;
+            this.cbSize.IntegralHeight = false;
             this.cbSize.Items.AddRange(new object[] {
             "Extra Small (less than 1ft)",
             "Small (1ft)",
@@ -743,9 +751,11 @@
             // 
             // cbOperation
             // 
+            this.cbOperation.DropDownHeight = 100;
             this.cbOperation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOperation.ForeColor = System.Drawing.Color.Gray;
             this.cbOperation.FormattingEnabled = true;
+            this.cbOperation.IntegralHeight = false;
             this.cbOperation.Location = new System.Drawing.Point(65, 88);
             this.cbOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbOperation.Name = "cbOperation";
@@ -839,8 +849,10 @@
             // 
             // cbGenderSearch
             // 
+            this.cbGenderSearch.DropDownHeight = 100;
             this.cbGenderSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbGenderSearch.FormattingEnabled = true;
+            this.cbGenderSearch.IntegralHeight = false;
             this.cbGenderSearch.Items.AddRange(new object[] {
             "Male\t",
             "Female"});
@@ -1024,9 +1036,11 @@
             // 
             // d2
             // 
+            this.d2.DropDownHeight = 100;
             this.d2.Enabled = false;
             this.d2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.d2.FormattingEnabled = true;
+            this.d2.IntegralHeight = false;
             this.d2.Location = new System.Drawing.Point(503, 25);
             this.d2.Name = "d2";
             this.d2.Size = new System.Drawing.Size(65, 28);
@@ -1036,9 +1050,11 @@
             // 
             // d1
             // 
+            this.d1.DropDownHeight = 100;
             this.d1.Enabled = false;
             this.d1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.d1.FormattingEnabled = true;
+            this.d1.IntegralHeight = false;
             this.d1.Location = new System.Drawing.Point(233, 26);
             this.d1.Name = "d1";
             this.d1.Size = new System.Drawing.Size(65, 28);
@@ -1084,8 +1100,10 @@
             // 
             // m2
             // 
+            this.m2.DropDownHeight = 100;
             this.m2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m2.FormattingEnabled = true;
+            this.m2.IntegralHeight = false;
             this.m2.Items.AddRange(new object[] {
             "January",
             "February",
@@ -1109,8 +1127,10 @@
             // 
             // m1
             // 
+            this.m1.DropDownHeight = 100;
             this.m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m1.FormattingEnabled = true;
+            this.m1.IntegralHeight = false;
             this.m1.Items.AddRange(new object[] {
             "January",
             "February",
@@ -1134,8 +1154,10 @@
             // 
             // filt
             // 
+            this.filt.DropDownHeight = 100;
             this.filt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filt.FormattingEnabled = true;
+            this.filt.IntegralHeight = false;
             this.filt.Items.AddRange(new object[] {
             "Claimed",
             "Adopted",
@@ -1821,11 +1843,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.searchDog);
             this.Controls.Add(this.addDog);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.repclaimpan);
+            this.Controls.Add(this.searchDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";

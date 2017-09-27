@@ -294,6 +294,7 @@
             this.tbEndm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbEndm.ForeColor = System.Drawing.Color.Gray;
             this.tbEndm.Location = new System.Drawing.Point(412, 63);
+            this.tbEndm.MaxLength = 2;
             this.tbEndm.Name = "tbEndm";
             this.tbEndm.Size = new System.Drawing.Size(34, 26);
             this.tbEndm.TabIndex = 80;
@@ -306,6 +307,7 @@
             this.tbStartm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbStartm.ForeColor = System.Drawing.Color.Gray;
             this.tbStartm.Location = new System.Drawing.Point(412, 32);
+            this.tbStartm.MaxLength = 2;
             this.tbStartm.Name = "tbStartm";
             this.tbStartm.Size = new System.Drawing.Size(34, 26);
             this.tbStartm.TabIndex = 79;
@@ -318,6 +320,7 @@
             this.tbEndh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbEndh.ForeColor = System.Drawing.Color.Gray;
             this.tbEndh.Location = new System.Drawing.Point(362, 64);
+            this.tbEndh.MaxLength = 2;
             this.tbEndh.Name = "tbEndh";
             this.tbEndh.Size = new System.Drawing.Size(35, 26);
             this.tbEndh.TabIndex = 78;
@@ -330,6 +333,7 @@
             this.tbStarth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbStarth.ForeColor = System.Drawing.Color.Gray;
             this.tbStarth.Location = new System.Drawing.Point(362, 32);
+            this.tbStarth.MaxLength = 2;
             this.tbStarth.Name = "tbStarth";
             this.tbStarth.Size = new System.Drawing.Size(35, 26);
             this.tbStarth.TabIndex = 77;
@@ -697,7 +701,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            //this.Name = "opEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.opEdit_Load);
