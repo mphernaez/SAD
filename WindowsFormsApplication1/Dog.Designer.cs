@@ -210,7 +210,7 @@
             this.label31.BackColor = System.Drawing.Color.Transparent;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(883, 1);
+            this.label31.Location = new System.Drawing.Point(883, 3);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(66, 13);
             this.label31.TabIndex = 47;
@@ -222,7 +222,7 @@
             this.label30.BackColor = System.Drawing.Color.Transparent;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(813, 1);
+            this.label30.Location = new System.Drawing.Point(813, 3);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(63, 13);
             this.label30.TabIndex = 46;
@@ -234,7 +234,7 @@
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(751, 1);
+            this.label29.Location = new System.Drawing.Point(751, 3);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(40, 13);
             this.label29.TabIndex = 45;
@@ -246,7 +246,7 @@
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(679, 1);
+            this.label28.Location = new System.Drawing.Point(679, 3);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(37, 13);
             this.label28.TabIndex = 44;
@@ -258,7 +258,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(611, 1);
+            this.label10.Location = new System.Drawing.Point(611, 3);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 13);
             this.label10.TabIndex = 19;
@@ -321,7 +321,7 @@
             this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(889, 15);
+            this.button8.Location = new System.Drawing.Point(889, 16);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(55, 55);
             this.button8.TabIndex = 38;
@@ -350,7 +350,7 @@
             this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(817, 15);
+            this.button6.Location = new System.Drawing.Point(817, 16);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(55, 55);
             this.button6.TabIndex = 37;
@@ -368,7 +368,7 @@
             this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(743, 15);
+            this.button5.Location = new System.Drawing.Point(743, 16);
             this.button5.Name = "button5";
             this.button5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button5.Size = new System.Drawing.Size(55, 55);
@@ -387,7 +387,7 @@
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(671, 15);
+            this.button2.Location = new System.Drawing.Point(671, 16);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(55, 55);
             this.button2.TabIndex = 1;
@@ -404,7 +404,7 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(598, 15);
+            this.button1.Location = new System.Drawing.Point(598, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(55, 55);
             this.button1.TabIndex = 0;
