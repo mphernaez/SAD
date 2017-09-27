@@ -111,5 +111,15 @@ namespace WindowsFormsApplication1
         {
             e.Handled = true;
         }
+
+        private void Edit_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Edit_Leave(object sender, EventArgs e)
+        {
+            emp.refreshEdit();
+        }
     }
 }

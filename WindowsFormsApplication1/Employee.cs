@@ -484,41 +484,43 @@ namespace WindowsFormsApplication1
 
         public void refreshEdit()
         {
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, status, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' ORDER BY lastname", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
+            
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("SELECT personID, lastname, firstname, middlename, gender, birthdate, contactNumber, status, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE status = 'Active' ORDER BY lastname", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    
+                    dgvEdit.DataSource = dt;
 
-                dgvEdit.DataSource = dt;
-
-                dgvEdit.Columns["personID"].Visible = false;
-                dgvEdit.Columns["lastname"].HeaderText = "Lastname";
-                dgvEdit.Columns["firstname"].HeaderText = "Firstname";
-                dgvEdit.Columns["middlename"].HeaderText = "Middlename";
-                dgvEdit.Columns["gender"].HeaderText = "Gender";
-                dgvEdit.Columns["birthdate"].HeaderText = "Gender";
-                dgvEdit.Columns["contactNumber"].HeaderText = "Contact No.";
-                dgvEdit.Columns["position"].HeaderText = "Position";
-                dgvEdit.Columns["status"].HeaderText = "Status";
-                dgvEdit.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvEdit.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvEdit.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvEdit.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvEdit.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvEdit.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvEdit.Columns["birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvEdit.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
-            }
+                    dgvEdit.Columns["personID"].Visible = false;
+                    dgvEdit.Columns["lastname"].HeaderText = "Lastname";
+                    dgvEdit.Columns["firstname"].HeaderText = "Firstname";
+                    dgvEdit.Columns["middlename"].HeaderText = "Middlename";
+                    dgvEdit.Columns["gender"].HeaderText = "Gender";
+                    dgvEdit.Columns["birthdate"].HeaderText = "Birthdate";
+                    dgvEdit.Columns["contactNumber"].HeaderText = "Contact No.";
+                    dgvEdit.Columns["position"].HeaderText = "Position";
+                    dgvEdit.Columns["status"].HeaderText = "Status";
+                    dgvEdit.Columns["lastname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvEdit.Columns["firstname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvEdit.Columns["middlename"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvEdit.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvEdit.Columns["contactNumber"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvEdit.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvEdit.Columns["birthdate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvEdit.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
+            
 
         }
 
@@ -528,9 +530,7 @@ namespace WindowsFormsApplication1
 
             if (editemployeeID != 0)
             {
-                emp.ShowDialog();
-                emp.employeeID = this.editemployeeID;
-                emp.TopMost = true;
+                
                 try
                 {
                     conn.Open();
@@ -551,7 +551,6 @@ namespace WindowsFormsApplication1
 
                     emp.cbgender.Text = dt.Rows[0]["gender"].ToString();
                     emp.tbbday.Text = dt.Rows[0]["YEAR(birthdate)"].ToString() + "-" + dt.Rows[0]["MONTH(birthdate)"].ToString() + "-" + dt.Rows[0]["DAY(birthdate)"].ToString();
-
                     emp.cbposition.Text = dt.Rows[0]["position"].ToString();
                     emp.tblname.Text = dt.Rows[0]["lastname"].ToString();
                     emp.tbfname.Text = dt.Rows[0]["firstname"].ToString();
@@ -573,9 +572,11 @@ namespace WindowsFormsApplication1
                     {
                         emp.pnlAdminEdit.Visible = false;
                     }
-
+                    
                     conn.Close();
-
+                    emp.ShowDialog();
+                    emp.employeeID = this.editemployeeID;
+                    emp.TopMost = true;
                 }
                 catch (Exception ex)
                 {
@@ -1573,9 +1574,10 @@ namespace WindowsFormsApplication1
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
+                    raempID = 0;
                     string name = dt.Rows[0]["name"].ToString();
                     MessageBox.Show(name + " Successfully Activated!");
-
+                    
                     conn.Close();
                     refreshArchive();
                 }
@@ -1732,7 +1734,6 @@ namespace WindowsFormsApplication1
                     matact[i] = int.Parse(dta.Rows[i]["item"].ToString());
                     cbmatact.Items.Add(dta.Rows[i]["product"].ToString());
                 }
-                cbmatact.Items.Add("None");
                 conn.Close();
             }
             catch (Exception ex)

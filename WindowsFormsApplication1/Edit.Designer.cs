@@ -187,6 +187,8 @@
             this.Edit.Name = "Edit";
             this.Edit.Size = new System.Drawing.Size(715, 551);
             this.Edit.TabIndex = 51;
+            this.Edit.Paint += new System.Windows.Forms.PaintEventHandler(this.Edit_Paint);
+            this.Edit.Leave += new System.EventHandler(this.Edit_Leave);
             // 
             // pnlAdminEdit
             // 
