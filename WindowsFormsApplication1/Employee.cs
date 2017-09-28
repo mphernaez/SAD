@@ -387,7 +387,8 @@ namespace WindowsFormsApplication1
         private void button15_Click(object sender, EventArgs e)
         {
             tbOpYear.Text = DateTime.Now.ToString("yyyy");
-
+            button40.BackColor = Color.FromArgb(2, 170, 145);
+            pnlOpView.Visible = false;
             button15.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button31.BackColor = Color.FromArgb(2, 170, 145);
@@ -407,14 +408,15 @@ namespace WindowsFormsApplication1
 
         private void button21_Click(object sender, EventArgs e)
         {
-            tbviewyear.Text = DateTime.Now.ToString("yyyy");
-
+            
             button21.BackColor = Color.FromArgb(251, 162, 80);
             button15.BackColor = Color.FromArgb(2, 170, 145);
             button33.BackColor = Color.FromArgb(2, 170, 145);
             button31.BackColor = Color.FromArgb(2, 170, 145);
             button36.BackColor = Color.FromArgb(2, 170, 145);
             btnUpAct.BackColor = Color.FromArgb(2, 170, 145);
+            button40.BackColor = Color.FromArgb(2, 170, 145);
+            pnlOpView.Visible = false;
             pnlUpAct.Visible = false;
             Edit.Visible = false;
             newOperation.Visible = false;
@@ -873,7 +875,6 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                // GROUP_CONCAT(CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.')) AS team,
                 String daten = DateTime.Now.ToString("yyyy-MM-dd");
                 String timen = DateTime.Now.ToString("HH:mm");
                 MySqlCommand c = new MySqlCommand("SELECT DISTINCT operationID FROM dogoperation JOIN operationteam ON operationteam.teamID = dogoperation.teamID JOIN attendance ON attendance.employeeID = operationteam.employeeiD WHERE dogoperation.date = '"+daten+"' AND attendance.employeeID NOT IN (select employeeID from attendance where date = '"+daten+ "' AND type = 1) UNION SELECT DISTINCT operationID FROM dogoperation JOIN operationteam ON operationteam.teamID = dogoperation.teamID WHERE dogoperation.date = '"+daten+"' AND operationteam.employeeID NOT IN (select employeeID from attendance)", conn);
@@ -881,11 +882,11 @@ namespace WindowsFormsApplication1
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
 
-                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing' WHERE date = '" + daten + "' AND status != 'finished' AND status != 'OnGoing' AND (timeStart = '" + timen + "' OR timeStart < '" + timen + "')", conn);
+                    MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing' WHERE date = '" + daten + "' AND status != 'Finished' AND status != 'OnGoing' AND (timeStart = '" + timen + "' OR timeStart < '" + timen + "')", conn);
                     comm.ExecuteNonQuery();
-                    MySqlCommand com = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE date = '" + daten + "' AND status != 'finished' AND (timeEnd = '" + timen + "' OR timeEnd < '" + timen + "')", conn);
+                    MySqlCommand com = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE date = '" + daten + "' AND status != 'Finished' AND (timeEnd = '" + timen + "' OR timeEnd < '" + timen + "')", conn);
                     com.ExecuteNonQuery();
-                    MySqlCommand co = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE date < '" + daten + "' AND status != 'finished'", conn);
+                    MySqlCommand co = new MySqlCommand("UPDATE dogoperation SET status = 'Finished' WHERE date < '" + daten + "' AND status != 'Finished'", conn);
                     co.ExecuteNonQuery();
                 if (dt.Rows.Count != 0)
                 {
@@ -924,21 +925,9 @@ namespace WindowsFormsApplication1
             dgvOperationsView.Rows.Clear();
             try
             {
-
-
                 conn.Open();
                 
-                MySqlCommand comm;
-                if (date == null)
-                {
-                    comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY date, timeStart", conn);
-                }
-                else
-                {
-                    comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE date = '" + date + "' ORDER BY  date, timeStart", conn);
-                    date = null;
-                }
-
+                MySqlCommand comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.status <> 'Finished' ORDER BY date, timeStart", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1004,6 +993,76 @@ namespace WindowsFormsApplication1
             }
         }
 
+
+        private void refreshOperations()
+        {
+            dgvOpView.Rows.Clear();
+            try
+            {
+
+
+                conn.Open();
+
+                MySqlCommand comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY status DESC, date DESC, timeStart", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                
+                for (int x = 0; x < dt.Rows.Count; x++)
+                {
+                    int teamID = int.Parse(dt.Rows[x]["teamID"].ToString());
+                    int opID = int.Parse(dt.Rows[x]["operationID"].ToString());
+                    MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', Firstname) AS emp FROM operationteam INNER JOIN profile on profile.personID = operationteam.employeeID WHERE teamID = " + teamID.ToString(), conn);
+                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                    DataTable dta = new DataTable();
+                    adpt.Fill(dta);
+                    string team = "";
+                    for (int j = 0; j < dta.Rows.Count; j++)
+                    {
+                        string nl = Environment.NewLine;
+                        team = team + dta.Rows[j]["emp"].ToString() + nl;
+                    }
+                    string loc = dt.Rows[x]["description"].ToString();
+                    string date = dt.Rows[x]["date"].ToString();
+                    string start = dt.Rows[x]["timeStart"].ToString();
+                    string end = dt.Rows[x]["timeEnd"].ToString();
+                    string status = dt.Rows[x]["status"].ToString();
+                    dgvOpView.Rows.Add(teamID.ToString(), opID.ToString(), loc, date, start, end, team, status);
+                }
+
+                dgvOpView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgvOpView.Columns["tm"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dgvOpView.Columns["l"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOpView.Columns["od"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOpView.Columns["tss"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOpView.Columns["tee"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOpView.Columns["tm"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvOpView.Columns["s"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                dgvOpView.ClearSelection();
+                int i = 0;
+                while (i < dgvOpView.RowCount)
+                {
+
+                    if (dgvOpView.Rows[i].Cells["s"].Value.ToString() == "Pending")
+                    {
+                        dgvOpView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 235, 140);
+                    }
+                    else if (dgvOpView.Rows[i].Cells["s"].Value.ToString() == "OnGoing")
+                    {
+                        dgvOpView.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(146, 232, 191);
+                    }
+                    i++;
+                }
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
         private void label13_Click(object sender, EventArgs e)
         {
             viewAct view = new viewAct();
@@ -1273,10 +1332,7 @@ namespace WindowsFormsApplication1
 
         private void button7_Click_1(object sender, EventArgs e)
         {
-            int year = int.Parse(tbviewyear.Text);
-            int month = comboBox2.SelectedIndex + 1;
-            int day = int.Parse(textBox3.Text);
-            date = year + "-" + month + "-" + day;
+            
             refreshOperationsView();
         }
 
@@ -1671,6 +1727,8 @@ namespace WindowsFormsApplication1
 
         private void button31_Click(object sender, EventArgs e)
         {
+            button40.BackColor = Color.FromArgb(2, 170, 145);
+            pnlOpView.Visible = false;
             button31.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button15.BackColor = Color.FromArgb(2, 170, 145);
@@ -2195,7 +2253,7 @@ namespace WindowsFormsApplication1
 
         private void button33_Click(object sender, EventArgs e)
         {
-            tbedityear.Text = DateTime.Now.ToString("yyyy");
+            
             Edit.Visible = true;
             button33.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
@@ -2208,6 +2266,8 @@ namespace WindowsFormsApplication1
             pnlActivity.Visible = false;
             panelViewAct.Visible = false;
             Operations.Visible = false;
+            button40.BackColor = Color.FromArgb(2, 170, 145);
+            pnlOpView.Visible = false;
             refreshEditop();
         }
 
@@ -2376,6 +2436,8 @@ namespace WindowsFormsApplication1
 
         private void button36_Click(object sender, EventArgs e)
         {
+            button40.BackColor = Color.FromArgb(2, 170, 145);
+            pnlOpView.Visible = false;
             button36.BackColor = Color.FromArgb(251, 162, 80);
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button31.BackColor = Color.FromArgb(2, 170, 145);
@@ -2622,18 +2684,12 @@ namespace WindowsFormsApplication1
 
         private void textBox6_MouseClick(object sender, MouseEventArgs e)
         {
-            if (tbedityear.Text == "Year")
-            {
-                tbedityear.Text = "";
-            }
+            
         }
 
         private void textBox7_MouseClick(object sender, MouseEventArgs e)
         {
-            if(textBox7.Text == "Day")
-            {
-                textBox7.Text = "";
-            }
+            
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
@@ -2648,18 +2704,12 @@ namespace WindowsFormsApplication1
 
         private void textBox3_MouseClick(object sender, MouseEventArgs e)
         {
-            if(textBox3.Text == "Day")
-            {
-                textBox3.Text = "";
-            }
+            
         }
 
         private void textBox2_MouseClick(object sender, MouseEventArgs e)
         {
-           if(tbviewyear.Text == "Year")
-            {
-                tbviewyear.Text = "";
-            }
+           
         }
         int countt = 0;
         Boolean noheader3 = false;
@@ -3076,6 +3126,8 @@ namespace WindowsFormsApplication1
 
         private void button37_Click(object sender, EventArgs e)
         {
+            button40.BackColor = Color.FromArgb(2, 170, 145);
+            pnlOpView.Visible = false;
             button36.BackColor = Color.FromArgb(2, 170, 145);
             button21.BackColor = Color.FromArgb(2, 170, 145);
             button31.BackColor = Color.FromArgb(2, 170, 145);
@@ -3088,6 +3140,30 @@ namespace WindowsFormsApplication1
             pnlActivity.Visible = false;
             Edit.Visible = false;
             Operations.Visible = false;
+            button40.BackColor = Color.FromArgb(2, 170, 145);
+            pnlOpView.Visible = false;
+        }
+
+        private void button40_Click(object sender, EventArgs e)
+        {
+            button40.BackColor = Color.FromArgb(2, 170, 145);
+            pnlOpView.Visible = false;
+            button36.BackColor = Color.FromArgb(2, 170, 145);
+            button21.BackColor = Color.FromArgb(2, 170, 145);
+            button31.BackColor = Color.FromArgb(2, 170, 145);
+            button33.BackColor = Color.FromArgb(2, 170, 145);
+            button15.BackColor = Color.FromArgb(2, 170, 145);
+            btnUpAct.BackColor = Color.FromArgb(2, 170, 145);
+            button40.BackColor = Color.FromArgb(251, 162, 80);
+            pnlOpView.Visible = true;
+            pnlUpAct.Visible = false;
+            panelViewAct.Visible = false;
+            newOperation.Visible = false;
+            pnlActivity.Visible = false;
+            Edit.Visible = false;
+            Operations.Visible = false;
+            pnlOpView.Visible = true;
+            refreshOperations();
         }
     }
 }

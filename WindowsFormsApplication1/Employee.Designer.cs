@@ -126,10 +126,6 @@
             this.button26 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Operations = new System.Windows.Forms.Panel();
-            this.button27 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.tbviewyear = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.dgvOperationsView = new System.Windows.Forms.DataGridView();
             this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.operationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -139,7 +135,6 @@
             this.opEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opTeam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.newOperation = new System.Windows.Forms.Panel();
             this.pOperation = new System.Windows.Forms.Panel();
             this.tbOpDay = new System.Windows.Forms.ComboBox();
@@ -185,11 +180,6 @@
             this.button32 = new System.Windows.Forms.Button();
             this.cbact = new System.Windows.Forms.ComboBox();
             this.Edit = new System.Windows.Forms.Panel();
-            this.button34 = new System.Windows.Forms.Button();
-            this.button35 = new System.Windows.Forms.Button();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.tbedityear = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.editOperation = new System.Windows.Forms.DataGridView();
             this.eTeamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eOperationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -212,6 +202,17 @@
             this.button38 = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
             this.button40 = new System.Windows.Forms.Button();
+            this.pnlOpView = new System.Windows.Forms.Panel();
+            this.dgvOpView = new System.Windows.Forms.DataGridView();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.oID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.l = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.od = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tss = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.s = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attendance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceIn)).BeginInit();
@@ -257,6 +258,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAct)).BeginInit();
             this.pnlUpAct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUpAct)).BeginInit();
+            this.pnlOpView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOpView)).BeginInit();
             this.SuspendLayout();
             // 
             // attendance
@@ -1607,75 +1610,12 @@
             // Operations
             // 
             this.Operations.Controls.Add(this.label13);
-            this.Operations.Controls.Add(this.button27);
-            this.Operations.Controls.Add(this.button7);
-            this.Operations.Controls.Add(this.tbviewyear);
-            this.Operations.Controls.Add(this.textBox3);
             this.Operations.Controls.Add(this.dgvOperationsView);
-            this.Operations.Controls.Add(this.comboBox2);
             this.Operations.Location = new System.Drawing.Point(15, 114);
             this.Operations.Name = "Operations";
             this.Operations.Size = new System.Drawing.Size(982, 412);
             this.Operations.TabIndex = 41;
             this.Operations.Visible = false;
-            // 
-            // button27
-            // 
-            this.button27.BackColor = System.Drawing.Color.Transparent;
-            this.button27.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources._61444;
-            this.button27.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button27.FlatAppearance.BorderSize = 0;
-            this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button27.ForeColor = System.Drawing.Color.White;
-            this.button27.Location = new System.Drawing.Point(350, 21);
-            this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(29, 32);
-            this.button27.TabIndex = 76;
-            this.button27.UseVisualStyleBackColor = false;
-            this.button27.Click += new System.EventHandler(this.button27_Click);
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(245, 22);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(100, 32);
-            this.button7.TabIndex = 42;
-            this.button7.Text = "Search";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click_1);
-            // 
-            // tbviewyear
-            // 
-            this.tbviewyear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbviewyear.ForeColor = System.Drawing.Color.Gray;
-            this.tbviewyear.Location = new System.Drawing.Point(174, 26);
-            this.tbviewyear.MaxLength = 4;
-            this.tbviewyear.Name = "tbviewyear";
-            this.tbviewyear.Size = new System.Drawing.Size(65, 26);
-            this.tbviewyear.TabIndex = 74;
-            this.tbviewyear.Text = "Year";
-            this.tbviewyear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbviewyear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseClick);
-            this.tbviewyear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.Gray;
-            this.textBox3.Location = new System.Drawing.Point(116, 26);
-            this.textBox3.MaxLength = 2;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(52, 26);
-            this.textBox3.TabIndex = 73;
-            this.textBox3.Text = "Day";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox3_MouseClick);
-            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // dgvOperationsView
             // 
@@ -1695,12 +1635,12 @@
             this.opTeam,
             this.opStatus});
             this.dgvOperationsView.GridColor = System.Drawing.Color.Silver;
-            this.dgvOperationsView.Location = new System.Drawing.Point(19, 96);
+            this.dgvOperationsView.Location = new System.Drawing.Point(19, 49);
             this.dgvOperationsView.Name = "dgvOperationsView";
             this.dgvOperationsView.ReadOnly = true;
             this.dgvOperationsView.RowHeadersVisible = false;
             this.dgvOperationsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOperationsView.Size = new System.Drawing.Size(946, 290);
+            this.dgvOperationsView.Size = new System.Drawing.Size(946, 337);
             this.dgvOperationsView.TabIndex = 42;
             this.dgvOperationsView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOperationsView_CellDoubleClick);
             // 
@@ -1753,33 +1693,6 @@
             this.opStatus.HeaderText = "Status";
             this.opStatus.Name = "opStatus";
             this.opStatus.ReadOnly = true;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownHeight = 80;
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.ForeColor = System.Drawing.Color.Gray;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.IntegralHeight = false;
-            this.comboBox2.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.comboBox2.Location = new System.Drawing.Point(17, 25);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(93, 28);
-            this.comboBox2.TabIndex = 75;
-            this.comboBox2.Text = "Month";
-            this.comboBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox2_KeyPress_1);
             // 
             // newOperation
             // 
@@ -2428,12 +2341,13 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
+            this.DogCatchingOperation.Controls.Add(this.pnlOpView);
+            this.DogCatchingOperation.Controls.Add(this.Operations);
+            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.pnlUpAct);
             this.DogCatchingOperation.Controls.Add(this.panelViewAct);
             this.DogCatchingOperation.Controls.Add(this.pnlActivity);
             this.DogCatchingOperation.Controls.Add(this.Edit);
-            this.DogCatchingOperation.Controls.Add(this.Operations);
-            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -2559,101 +2473,13 @@
             // 
             // Edit
             // 
-            this.Edit.Controls.Add(this.button34);
-            this.Edit.Controls.Add(this.button35);
-            this.Edit.Controls.Add(this.comboBox5);
-            this.Edit.Controls.Add(this.tbedityear);
-            this.Edit.Controls.Add(this.textBox7);
+            this.Edit.Controls.Add(this.label20);
             this.Edit.Controls.Add(this.editOperation);
             this.Edit.Location = new System.Drawing.Point(16, 114);
             this.Edit.Name = "Edit";
             this.Edit.Size = new System.Drawing.Size(982, 412);
             this.Edit.TabIndex = 77;
             this.Edit.Visible = false;
-            // 
-            // button34
-            // 
-            this.button34.BackColor = System.Drawing.Color.Transparent;
-            this.button34.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources._61444;
-            this.button34.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button34.FlatAppearance.BorderSize = 0;
-            this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button34.ForeColor = System.Drawing.Color.White;
-            this.button34.Location = new System.Drawing.Point(350, 21);
-            this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(29, 32);
-            this.button34.TabIndex = 76;
-            this.button34.UseVisualStyleBackColor = false;
-            // 
-            // button35
-            // 
-            this.button35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(170)))), ((int)(((byte)(145)))));
-            this.button35.FlatAppearance.BorderSize = 0;
-            this.button35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button35.ForeColor = System.Drawing.Color.White;
-            this.button35.Location = new System.Drawing.Point(245, 22);
-            this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(100, 32);
-            this.button35.TabIndex = 42;
-            this.button35.Text = "Search";
-            this.button35.UseVisualStyleBackColor = false;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.DropDownHeight = 80;
-            this.comboBox5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox5.ForeColor = System.Drawing.Color.Gray;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.IntegralHeight = false;
-            this.comboBox5.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.comboBox5.Location = new System.Drawing.Point(17, 25);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(93, 28);
-            this.comboBox5.TabIndex = 75;
-            this.comboBox5.Text = "Month";
-            this.comboBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox5_KeyPress_1);
-            // 
-            // tbedityear
-            // 
-            this.tbedityear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbedityear.ForeColor = System.Drawing.Color.Gray;
-            this.tbedityear.Location = new System.Drawing.Point(174, 26);
-            this.tbedityear.MaxLength = 4;
-            this.tbedityear.Name = "tbedityear";
-            this.tbedityear.Size = new System.Drawing.Size(65, 26);
-            this.tbedityear.TabIndex = 74;
-            this.tbedityear.Text = "Year";
-            this.tbedityear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbedityear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox6_MouseClick);
-            this.tbedityear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
-            // 
-            // textBox7
-            // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.ForeColor = System.Drawing.Color.Gray;
-            this.textBox7.Location = new System.Drawing.Point(116, 26);
-            this.textBox7.MaxLength = 2;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(52, 26);
-            this.textBox7.TabIndex = 73;
-            this.textBox7.Text = "Day";
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox7_MouseClick);
-            this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
             // 
             // editOperation
             // 
@@ -2673,12 +2499,12 @@
             this.eTeamM,
             this.eStat});
             this.editOperation.GridColor = System.Drawing.Color.Silver;
-            this.editOperation.Location = new System.Drawing.Point(19, 60);
+            this.editOperation.Location = new System.Drawing.Point(19, 58);
             this.editOperation.Name = "editOperation";
             this.editOperation.ReadOnly = true;
             this.editOperation.RowHeadersVisible = false;
             this.editOperation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.editOperation.Size = new System.Drawing.Size(946, 326);
+            this.editOperation.Size = new System.Drawing.Size(946, 328);
             this.editOperation.TabIndex = 42;
             this.editOperation.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -2763,7 +2589,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label13.Location = new System.Drawing.Point(13, 69);
+            this.label13.Location = new System.Drawing.Point(14, 19);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(263, 24);
             this.label13.TabIndex = 89;
@@ -2886,6 +2712,111 @@
             this.button40.TabIndex = 89;
             this.button40.Text = "Operations";
             this.button40.UseVisualStyleBackColor = false;
+            this.button40.Click += new System.EventHandler(this.button40_Click);
+            // 
+            // pnlOpView
+            // 
+            this.pnlOpView.Controls.Add(this.dgvOpView);
+            this.pnlOpView.Location = new System.Drawing.Point(14, 116);
+            this.pnlOpView.Name = "pnlOpView";
+            this.pnlOpView.Size = new System.Drawing.Size(982, 412);
+            this.pnlOpView.TabIndex = 90;
+            this.pnlOpView.Visible = false;
+            // 
+            // dgvOpView
+            // 
+            this.dgvOpView.AllowUserToAddRows = false;
+            this.dgvOpView.AllowUserToResizeColumns = false;
+            this.dgvOpView.AllowUserToResizeRows = false;
+            this.dgvOpView.BackgroundColor = System.Drawing.Color.White;
+            this.dgvOpView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvOpView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOpView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tID,
+            this.oID,
+            this.l,
+            this.od,
+            this.tss,
+            this.tee,
+            this.tm,
+            this.s});
+            this.dgvOpView.GridColor = System.Drawing.Color.Silver;
+            this.dgvOpView.Location = new System.Drawing.Point(19, 36);
+            this.dgvOpView.Name = "dgvOpView";
+            this.dgvOpView.ReadOnly = true;
+            this.dgvOpView.RowHeadersVisible = false;
+            this.dgvOpView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOpView.Size = new System.Drawing.Size(946, 350);
+            this.dgvOpView.TabIndex = 42;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
+            this.label20.Location = new System.Drawing.Point(16, 27);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(173, 24);
+            this.label20.TabIndex = 91;
+            this.label20.Text = "Double Click to Edit";
+            // 
+            // tID
+            // 
+            this.tID.DataPropertyName = "tID";
+            this.tID.HeaderText = "teamID";
+            this.tID.Name = "tID";
+            this.tID.ReadOnly = true;
+            this.tID.Visible = false;
+            // 
+            // oID
+            // 
+            this.oID.DataPropertyName = "oID";
+            this.oID.HeaderText = "operationID";
+            this.oID.Name = "oID";
+            this.oID.ReadOnly = true;
+            this.oID.Visible = false;
+            // 
+            // l
+            // 
+            this.l.DataPropertyName = "l";
+            this.l.HeaderText = "Location";
+            this.l.Name = "l";
+            this.l.ReadOnly = true;
+            // 
+            // od
+            // 
+            this.od.DataPropertyName = "od";
+            this.od.HeaderText = "Operation Date";
+            this.od.Name = "od";
+            this.od.ReadOnly = true;
+            // 
+            // tss
+            // 
+            this.tss.DataPropertyName = "ts";
+            this.tss.HeaderText = "Time Start";
+            this.tss.Name = "tss";
+            this.tss.ReadOnly = true;
+            // 
+            // tee
+            // 
+            this.tee.DataPropertyName = "te";
+            this.tee.HeaderText = "Time End";
+            this.tee.Name = "tee";
+            this.tee.ReadOnly = true;
+            // 
+            // tm
+            // 
+            this.tm.DataPropertyName = "tm";
+            this.tm.HeaderText = "Team Members";
+            this.tm.Name = "tm";
+            this.tm.ReadOnly = true;
+            // 
+            // s
+            // 
+            this.s.DataPropertyName = "s";
+            this.s.HeaderText = "Status";
+            this.s.Name = "s";
+            this.s.ReadOnly = true;
             // 
             // Employee
             // 
@@ -2971,6 +2902,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAct)).EndInit();
             this.pnlUpAct.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUpAct)).EndInit();
+            this.pnlOpView.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOpView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3043,11 +2976,6 @@
         private System.Windows.Forms.Button button29;
         public System.Windows.Forms.DataGridView dgvReactivate;
         private System.Windows.Forms.Panel Operations;
-        private System.Windows.Forms.Button button27;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox tbviewyear;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.DataGridView dgvOperationsView;
         private System.Windows.Forms.DataGridViewTextBoxColumn teamID;
         private System.Windows.Forms.DataGridViewTextBoxColumn operationID;
@@ -3093,11 +3021,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ComboBox choice;
         private System.Windows.Forms.Panel Edit;
-        private System.Windows.Forms.Button button34;
-        private System.Windows.Forms.Button button35;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.TextBox tbedityear;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.DataGridView editOperation;
         private System.Windows.Forms.Button button33;
         private System.Windows.Forms.DataGridViewTextBoxColumn eTeamID;
@@ -3160,5 +3083,16 @@
         private System.Windows.Forms.Button button39;
         private System.Windows.Forms.Button button37;
         private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.Panel pnlOpView;
+        private System.Windows.Forms.DataGridView dgvOpView;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn oID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn l;
+        private System.Windows.Forms.DataGridViewTextBoxColumn od;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tss;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn s;
     }
 }
