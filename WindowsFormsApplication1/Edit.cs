@@ -121,5 +121,10 @@ namespace WindowsFormsApplication1
         {
             emp.refreshEdit();
         }
+
+        private void tbcontactNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !((Keys)e.KeyChar == Keys.Back);
+        }
     }
 }

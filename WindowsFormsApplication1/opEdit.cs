@@ -246,7 +246,7 @@ namespace WindowsFormsApplication1
                 }
                 if (DateTime.Now.ToString("yyy-MM-dd") == Convert.ToDateTime(ndate).ToString("yyy-MM-dd"))
                 {
-                    MySqlCommand com = new MySqlCommand("SELECT employeeID FROM attendance WHERE date = '"+ ndate + "' AND type = 1", conn);
+                    MySqlCommand com = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID JOIN attendance ON attendance.employeeID = personID WHERE (position = 'Catcher' OR position = 'Driver') AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + ndate + "')THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END ) AND attendance.date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 1  AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 0) UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN attendance ON attendance.employeeID = personID WHERE personID NOT IN(SELECT employeeID FROM operationteam) AND (position = 'Catcher' OR position = 'Driver') AND employee.status = 'Active' AND attendance.date = '" + ndate + "' AND type = 1 AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + ndate + "' AND type = 0)", conn);
                     MySqlDataAdapter adpp = new MySqlDataAdapter(com);
                     DataTable dtt = new DataTable();
                     adpp.Fill(dtt);
@@ -256,7 +256,7 @@ namespace WindowsFormsApplication1
 
                     for (int i = 0; i < dtt.Rows.Count; i++)
                     {
-                        nums.Add(int.Parse(dtt.Rows[i]["employeeID"].ToString()));
+                        nums.Add(int.Parse(dtt.Rows[i]["personID"].ToString()));
                     }
                     for (int i = 0; i < cTeam.Rows.Count; i++)
                     {
@@ -387,9 +387,8 @@ namespace WindowsFormsApplication1
 
         private void button19_Click(object sender, EventArgs e)
         {
-            cTeam.ClearSelection();
-            aEmp.ClearSelection();
-
+           
+            
             if (okae)
             {
                     this.cTeam.Rows.Add(ti2, n2, pos11);
@@ -401,6 +400,8 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please Select an Employee");
             }
+            cTeam.ClearSelection();
+            aEmp.ClearSelection();
 
         }
 
@@ -416,6 +417,7 @@ namespace WindowsFormsApplication1
                 ti2 = int.Parse(aEmp.Rows[e.RowIndex].Cells["pID1"].Value.ToString());
                 n2 = aEmp.Rows[e.RowIndex].Cells["Name1"].Value.ToString();
                 pos11 = aEmp.Rows[e.RowIndex].Cells["pos1"].Value.ToString();
+                MessageBox.Show(okae.ToString());
             }
         }
 

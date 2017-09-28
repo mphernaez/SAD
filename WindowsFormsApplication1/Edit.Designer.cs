@@ -119,10 +119,12 @@
             this.tbcontactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbcontactNumber.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.tbcontactNumber.Location = new System.Drawing.Point(61, 324);
+            this.tbcontactNumber.MaxLength = 11;
             this.tbcontactNumber.Name = "tbcontactNumber";
             this.tbcontactNumber.Size = new System.Drawing.Size(191, 26);
             this.tbcontactNumber.TabIndex = 47;
             this.tbcontactNumber.Text = "Contact Number";
+            this.tbcontactNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbcontactNumber_KeyPress);
             // 
             // button4
             // 

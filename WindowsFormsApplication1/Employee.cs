@@ -792,7 +792,7 @@ namespace WindowsFormsApplication1
                 else
                 {
                     
-                    comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID JOIN attendance ON attendance.employeeID = personID WHERE (position = 'Catcher' OR position = 'Driver') AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + d + "')THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END ) AND attendance.date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 1  AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 0) UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN attendance ON attendance.employeeID = personID WHERE personID NOT IN(SELECT employeeID FROM operationteam) AND (position = 'Catcher' OR position = 'Driver') AND employee.status = 'Active' AND attendance.date = '" + d + "' AND type = 0 AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + d + "' AND type = 0)", conn);
+                    comm = new MySqlCommand("SELECT DISTINCT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position from operationteam JOIN profile ON personID = operationteam.employeeID  JOIN employee ON employee.employeeID = personID JOIN attendance ON attendance.employeeID = personID WHERE (position = 'Catcher' OR position = 'Driver') AND employee.status = 'Active'  AND personID NOT IN (SELECT personID FROM profile  JOIN employee ON profile.personID = employee.employeeID JOIN operationteam ON employee.employeeID = operationteam.employeeID  JOIN dogoperation ON dogoperation.teamID = operationteam.teamID  WHERE CASE WHEN (date = '" + d + "')THEN (timeEnd > '" + ts + "' AND timestart < '" + te + "') OR (timeEnd >= '" + te + "' AND timestart <= '" + ts + "' )  END ) AND attendance.date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 1  AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND type = 0) UNION SELECT personID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position FROM profile JOIN employee ON profile.personID = employee.employeeID JOIN attendance ON attendance.employeeID = personID WHERE personID NOT IN(SELECT employeeID FROM operationteam) AND (position = 'Catcher' OR position = 'Driver') AND employee.status = 'Active' AND attendance.date = '" + d + "' AND type = 1 AND personID NOT IN (SELECT employeeID FROM attendance WHERE date = '" + d + "' AND type = 0)", conn);
                 }
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
@@ -872,7 +872,7 @@ namespace WindowsFormsApplication1
                 // GROUP_CONCAT(CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.')) AS team,
                 String daten = DateTime.Now.ToString("yyyy-MM-dd");
                 String timen = DateTime.Now.ToString("HH:mm");
-                MySqlCommand c = new MySqlCommand("SELECT DISTINCT operationID FROM dogoperation JOIN operationteam ON operationteam.teamID = dogoperation.teamID JOIN attendance ON attendance.employeeID = operationteam.employeeiD WHERE dogoperation.date = '"+daten+"' AND attendance.employeeID NOT IN (select employeeID from attendance where date = '"+daten+"' AND type != 0)", conn);
+                MySqlCommand c = new MySqlCommand("SELECT DISTINCT operationID FROM dogoperation JOIN operationteam ON operationteam.teamID = dogoperation.teamID JOIN attendance ON attendance.employeeID = operationteam.employeeiD WHERE dogoperation.date = '"+daten+"' AND attendance.employeeID NOT IN (select employeeID from attendance where date = '"+daten+ "' AND type = 1) UNION SELECT DISTINCT operationID FROM dogoperation JOIN operationteam ON operationteam.teamID = dogoperation.teamID WHERE dogoperation.date = '"+daten+"' AND operationteam.employeeID NOT IN (select employeeID from attendance)", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(c);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -893,7 +893,7 @@ namespace WindowsFormsApplication1
                     }
                     for (int i = 0; i < ids.Count; i++)
                     {
-                        MySqlCommand m = new MySqlCommand("UPDATE dogoperation SET status = 'Pending' WHERE date = '"+daten+"' AND operationID = " + ids[i], conn);
+                        MySqlCommand m = new MySqlCommand("UPDATE dogoperation SET status = 'Pending', timeStart = '24:00', timeEnd = '24:59' WHERE date = '"+daten+"' AND operationID = " + ids[i], conn);
                         m.ExecuteNonQuery();
                     }
                     for (int i = 0; i < dgvOperationsView.Rows.Count; i++)
@@ -1293,7 +1293,7 @@ namespace WindowsFormsApplication1
 
                     if (dgvOperationsView.Rows[e.RowIndex].Cells["opStatus"].Value.ToString() == "Pending")
                     {
-                        MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing', timeStart = '" + DateTime.Now.ToString("HH:mm") + "', timeEnd = '"+ DateTime.Now.AddHours(3).ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' WHERE operationID = " + operation, conn);
+                        MySqlCommand comm = new MySqlCommand("UPDATE dogoperation SET status = 'OnGoing', timeStart = '" + DateTime.Now.ToString("HH:mm") + "', timeEnd = '"+ DateTime.Now.AddHours(1).ToString("HH:mm") + "', date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' WHERE operationID = " + operation, conn);
 
                         comm.ExecuteNonQuery();
                     }
@@ -3115,6 +3115,11 @@ namespace WindowsFormsApplication1
         private void btnView_Click(object sender, EventArgs e)
         {
             tbPass.PasswordChar = '*';
+        }
+
+        private void cbMonth_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }
