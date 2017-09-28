@@ -39,10 +39,13 @@ namespace WindowsFormsApplication1
         int[] repop;
         string[] subloc;
         int[] countsub;
+        int upactID;
         public empty back { get; set; }
         public MySqlConnection conn = new MySqlConnection();
         public opEdit op { get; set; }
         EditEmp emp;
+        EditAct activity;
+        FinishAct finish;
         empty home;
         int actemployeeID = 0;
         int empactID = 0;
@@ -927,7 +930,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
                 
-                MySqlCommand comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.status <> 'Finished' ORDER BY date, timeStart", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.status != 'Finished' ORDER BY date, timeStart", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1770,7 +1773,8 @@ namespace WindowsFormsApplication1
                                                     + "FROM operationteam "
                                                     + "INNER JOIN dogoperation ON dogoperation.teamID = operationteam.teamID "
                                                     + "INNER JOIN employee ON operationteam.employeeID = employee.employeeID "
-                                                    + " WHERE dogoperation.status = 'OnGoing')", conn);
+                                                    + " WHERE dogoperation.status = 'OnGoing') "
+                                                    + "AND employee.employeeID NOT IN (SELECT employeeID FROM activity WHERE status = 'OnGoing')", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1883,7 +1887,7 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm;
                 if (cbFilt.Checked && cbEmpFilt.Text != "Employee")
                 {
-                    comm = new MySqlCommand("SELECT SUBSTRING(date,1, 11) AS Date, CONCAT(timeStart, ' - ', timeEnd) AS 'Time', type AS Type FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '"+datestart+ "' AND '" + dateend + "' AND employeeID = " + repEmpArr[cbEmpFilt.SelectedIndex] + " ORDER BY date, timeEnd, type", conn);
+                    comm = new MySqlCommand("SELECT SUBSTRING(date,1, 11) AS Date, CONCAT(timeStart, ' - ', timeEnd) AS 'Time', type AS Type FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '"+datestart+ "' AND '" + dateend + "' AND employeeID = " + repEmpArr[cbEmpFilt.SelectedIndex] + " AND activity.status = 'Finished' ORDER BY date, timeEnd, type", conn);
                     MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', middlename)  AS name, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE profile.personID = " + repEmpArr[cbEmpFilt.SelectedIndex], conn);
                     MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
                     DataTable dta = new DataTable();
@@ -1901,7 +1905,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    comm = new MySqlCommand("SELECT SUBSTRING(date, 1, 11) AS Date, type AS Type, CONCAT(timeStart, ' - ', timeEnd) AS 'Time', CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '. - ', position) AS 'Employee Name' FROM dogpound.activity INNER JOIN profile on personID = employeeID INNER JOIN employee ON employee.employeeID = profile.personID WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY date, timeEnd, lastname, firstname, type", conn);
+                    comm = new MySqlCommand("SELECT SUBSTRING(date, 1, 11) AS Date, type AS Type, CONCAT(timeStart, ' - ', timeEnd) AS 'Time', CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '. - ', position) AS 'Employee Name' FROM dogpound.activity INNER JOIN profile on personID = employeeID INNER JOIN employee ON employee.employeeID = profile.personID WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' AND activity.status = 'Finished' ORDER BY date, timeEnd, lastname, firstname, type", conn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                     dtact = new DataTable();
                     adp.Fill(dtact);
@@ -2369,7 +2373,9 @@ namespace WindowsFormsApplication1
                     MySqlCommand comm = new MySqlCommand("INSERT INTO activity(employeeID, type, date, timeStart, status) VALUES("+empactID+", '"+cbact.Text+"', '"+DateTime.Now.ToString("yyyy-MM-dd")+"', '"+DateTime.Now.ToString("HH:mm")+"', 'OnGoing')", conn);
                     comm.ExecuteNonQuery();
                     MessageBox.Show("Activity Now OnGoing");
+                    cbact.Text = "Activity";
                     conn.Close();
+                    refreshActivity();
                 }
                 catch (Exception ex)
                 {
@@ -2439,7 +2445,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(lastname, ', ',firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Name, CONCAT(items.productName, ' (', items.description, ')') AS Product, CONCAT(stocktransaction.quantity, ' (', items.measuredBy, ')') AS 'Used', activity.type AS Activity, activity.date AS Date, CONCAT(activity.timeStart, ' - ', activity.timeEnd) AS 'Time Ended' FROM profile INNER JOIN activity ON activity.employeeID = profile.personID INNER JOIN stocktransaction ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID GROUP BY activity.activityID ORDER BY activity.date, activity.timeStart", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(lastname, ', ',firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Name, CONCAT(items.productName, ' (', items.description, ')') AS Product, CONCAT(stocktransaction.quantity, ' (', items.measuredBy, ')') AS 'Used', activity.type AS Activity, activity.date AS Date, CONCAT(activity.timeStart, ' - ', activity.timeEnd) AS 'Time Ended' FROM profile INNER JOIN activity ON activity.employeeID = profile.personID INNER JOIN stocktransaction ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE activity.status = 'Finished' GROUP BY activity.activityID ORDER BY activity.date DESC, activity.timeStart", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -3126,6 +3132,40 @@ namespace WindowsFormsApplication1
             Operations.Visible = false;
             button40.BackColor = Color.FromArgb(2, 170, 145);
             pnlOpView.Visible = false;
+            refreshUpAct();
+        }
+
+        public void refreshUpAct()
+        {
+            try
+                {
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("SELECT activityID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Employee, position AS Position, "
+                                                        + "type AS Type, date AS Date, timeStart AS 'Time Started' "
+                                                        + "FROM activity "
+                                                        + "INNER JOIN employee ON employee.employeeID = activity.employeeID "
+                                                        + "INNER JOIN profile ON profile.personID = employee.employeeID "
+                                                        + "WHERE activity.status = 'OnGoing'", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+
+                    dgvUpAct.DataSource = dt;
+                    dgvUpAct.Columns["activityID"].Visible = false;
+                    dgvUpAct.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvUpAct.Columns["Position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvUpAct.Columns["Employee"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvUpAct.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvUpAct.Columns["Time Started"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show(ex.ToString());
+                }
+            
         }
 
         private void button40_Click(object sender, EventArgs e)
@@ -3148,6 +3188,65 @@ namespace WindowsFormsApplication1
             Operations.Visible = false;
             pnlOpView.Visible = true;
             refreshOperations();
+        }
+
+        private void dgvUpAct_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            upactID = int.Parse(dgvUpAct.Rows[e.RowIndex].Cells["activityID"].Value.ToString());
+        }
+
+        private void button39_Click(object sender, EventArgs e)
+        {
+            if (upactID != 0) {
+                activity = new EditAct();
+                activity.actID = this.upactID;
+                activity.emp = this;
+                activity.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please Select an Activity");
+            }
+        }
+
+        private void button38_Click(object sender, EventArgs e)
+        {
+            if (upactID != 0)
+            {
+                finish = new FinishAct();
+                finish.actID = this.upactID;
+                finish.emp = this;
+                finish.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please Select an Activity");
+            }
+        }
+
+        private void button37_Click_1(object sender, EventArgs e)
+        {
+            if (upactID != 0)
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("UPDATE activity SET status = 'Cancelled' WHERE activityID = " + upactID, conn);
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Activity Cancelled");
+                    conn.Close();
+                    refreshUpAct();
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Select an Activity");
+            }
         }
     }
 }

@@ -135,6 +135,18 @@
     <Compile Include="EditItem.Designer.cs">
       <DependentUpon>EditItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditAct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditAct.Designer.cs">
+      <DependentUpon>EditAct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinishAct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinishAct.Designer.cs">
+      <DependentUpon>FinishAct.cs</DependentUpon>
+    </Compile>
     <Compile Include="opEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +231,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EndorserOut.resx">
       <DependentUpon>EndorserOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAct.resx">
+      <DependentUpon>EditAct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinishAct.resx">
+      <DependentUpon>FinishAct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="opEdit.resx">
       <DependentUpon>opEdit.cs</DependentUpon>
