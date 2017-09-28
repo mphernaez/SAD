@@ -2439,7 +2439,7 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(lastname, ', ',firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Name, CONCAT(items.productName, ' (', items.description, ')') AS Product, CONCAT(stocktransaction.quantity, ' (', items.measuredBy, ')') AS 'Used', activity.type AS Activity, activity.date AS Date, activity.timeEnd AS 'Time Ended' FROM profile INNER JOIN activity ON activity.employeeID = profile.personID INNER JOIN stocktransaction ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID GROUP BY activity.activityID ORDER BY activity.timeEnd", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(lastname, ', ',firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Name, CONCAT(items.productName, ' (', items.description, ')') AS Product, CONCAT(stocktransaction.quantity, ' (', items.measuredBy, ')') AS 'Used', activity.type AS Activity, activity.date AS Date, CONCAT(activity.timeStart, ' - ', activity.timeEnd) AS 'Time Ended' FROM profile INNER JOIN activity ON activity.employeeID = profile.personID INNER JOIN stocktransaction ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID GROUP BY activity.activityID ORDER BY activity.date, activity.timeStart", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
