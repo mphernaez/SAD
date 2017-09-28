@@ -45,7 +45,7 @@ namespace WindowsFormsApplication1
         EditEmp emp;
         empty home;
         int actemployeeID = 0;
-
+        int empactID = 0;
         public Employee(empty parent)
         {
             InitializeComponent();
@@ -393,6 +393,8 @@ namespace WindowsFormsApplication1
             button31.BackColor = Color.FromArgb(2, 170, 145);
             button33.BackColor = Color.FromArgb(2, 170, 145);
             button36.BackColor = Color.FromArgb(2, 170, 145);
+            btnUpAct.BackColor = Color.FromArgb(2, 170, 145);
+            pnlUpAct.Visible = false;
             panelViewAct.Visible = false;
             Edit.Visible = false;
             newOperation.Visible = true;
@@ -412,6 +414,8 @@ namespace WindowsFormsApplication1
             button33.BackColor = Color.FromArgb(2, 170, 145);
             button31.BackColor = Color.FromArgb(2, 170, 145);
             button36.BackColor = Color.FromArgb(2, 170, 145);
+            btnUpAct.BackColor = Color.FromArgb(2, 170, 145);
+            pnlUpAct.Visible = false;
             Edit.Visible = false;
             newOperation.Visible = false;
             pnlActivity.Visible = false;
@@ -1672,6 +1676,8 @@ namespace WindowsFormsApplication1
             button15.BackColor = Color.FromArgb(2, 170, 145);
             button33.BackColor = Color.FromArgb(2, 170, 145);
             button36.BackColor = Color.FromArgb(2, 170, 145);
+            btnUpAct.BackColor = Color.FromArgb(2, 170, 145);
+            pnlUpAct.Visible = false;
             newOperation.Visible = false;
             pnlActivity.Visible = true;
             Edit.Visible = false;
@@ -1683,21 +1689,16 @@ namespace WindowsFormsApplication1
 
         private void refreshActivity()
         {
-            cbempact.Enabled = true;
-            cbmatact.Enabled = true;
+            
+           
             cbact.Enabled = true;
-            numact.Value = 0;
             cbact.Text = "Activity";
-            cbempact.Text = "To be done by";
-            cbmatact.Text = "Materials(If Applicable)";
-            measBy.Text = "";
-            cbempact.Items.Clear();
-            cbmatact.Items.Clear();
+            
             try
             {
                 conn.Open();
                 string date = DateTime.Now.ToString("yyyy-MM-dd");
-                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT employee.employeeID AS emp, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name "
+                MySqlCommand comm = new MySqlCommand("SELECT DISTINCT employee.employeeID AS emp, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS name, position "
                                                     +"FROM employee "
                                                     + "INNER JOIN profile ON profile.personID = employee.employeeID "
                                                     + "INNER JOIN attendance ON attendance.employeeID = employee.employeeID "
@@ -1716,24 +1717,17 @@ namespace WindowsFormsApplication1
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
 
-                empact = new int[dt.Rows.Count];
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    empact[i] = int.Parse(dt.Rows[i]["emp"].ToString());
-                    cbempact.Items.Add(dt.Rows[i]["name"].ToString());
-                }
+                dgvAct.DataSource = dt;
+
+                dgvAct.Columns["emp"].Visible = false;
+
+                dgvAct.Columns["name"].HeaderText = "Name";
+                dgvAct.Columns["position"].HeaderText = "Position";
+
+                dgvAct.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAct.Columns["position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 
-                MySqlCommand commm = new MySqlCommand("SELECT itemID AS item, CONCAT(productName, ' (', description, ')') as product FROM items", conn);
-                MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
-                DataTable dta = new DataTable();
-                adpt.Fill(dta);
-                
-                matact = new int[dta.Rows.Count];
-                for (int i = 0; i < dta.Rows.Count; i++)
-                {
-                    matact[i] = int.Parse(dta.Rows[i]["item"].ToString());
-                    cbmatact.Items.Add(dta.Rows[i]["product"].ToString());
-                }
+
                 conn.Close();
             }
             catch (Exception ex)
@@ -2208,7 +2202,8 @@ namespace WindowsFormsApplication1
             button31.BackColor = Color.FromArgb(2, 170, 145);
             button15.BackColor = Color.FromArgb(2, 170, 145);
             button36.BackColor = Color.FromArgb(2, 170, 145);
-
+            btnUpAct.BackColor = Color.FromArgb(2, 170, 145);
+            pnlUpAct.Visible = false;
             newOperation.Visible = false;
             pnlActivity.Visible = false;
             panelViewAct.Visible = false;
@@ -2314,23 +2309,8 @@ namespace WindowsFormsApplication1
 
         private void cbmatact_SelectedIndexChanged(object sender, EventArgs e)
         {
-            numact.Visible = true;
-            measBy.Visible = true;
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + matact[cbmatact.SelectedIndex],conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                measBy.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString() + ":";
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show(ex.ToString());
-            }
+            
+            
         }
 
         private void panelviewatt_Paint(object sender, PaintEventArgs e)
@@ -2340,54 +2320,14 @@ namespace WindowsFormsApplication1
 
         private void button32_Click_1(object sender, EventArgs e)
         {
-            if (cbact.Text!="Activity" && cbempact.Text!="To be done by")
-            {
-                string time = DateTime.Now.ToString("HH:mm");
-                string date = DateTime.Now.ToString("yyyy-MM-dd");
+            if (cbact.Text != "Activity" && empactID != 0) {
                 try
                 {
                     conn.Open();
-                    MySqlCommand comm;
-                    MySqlCommand commm;
-                    MySqlCommand commmm;
-                    
-                    if (cbmatact.Text != "Materials(If Applicable)")
-                    {
-                        if (checkavailability(int.Parse(numact.Value.ToString()), matact[cbmatact.SelectedIndex]) == true) {
-                            
-                            if (numact.Value != 0 && cbmatact.Text != "None")
-                            {
-                                comm = new MySqlCommand("INSERT INTO activity(timeEnd, employeeID, date, type) VALUES('" + time + "', " + empact[cbempact.SelectedIndex] + ", '" + date + "', '" + cbact.Text + "')", conn);
-                                comm.ExecuteNonQuery();
-                                commm = new MySqlCommand("UPDATE items SET quantity = quantity - " + numact.Value + " WHERE itemID = " + matact[cbmatact.SelectedIndex], conn);
-                                commm.ExecuteNonQuery();
-                                commmm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, type, employeeID, reason) VALUES(" + matact[cbmatact.SelectedIndex] + ", " + numact.Value + ", '" + date + "', 'Out', " + empact[cbempact.SelectedIndex] + ", 'Activity: " + cbact.Text + "')", conn);
-                                commmm.ExecuteNonQuery();
-                                MessageBox.Show("Activity Recorded!");
-                                conn.Close();
-                                refreshActivity();
-                            }
-                            else
-                            {
-                                conn.Close();
-                                MessageBox.Show("Quantity not valid");
-                            }
-                        }
-                        else
-                        {
-                            conn.Close();
-                            MessageBox.Show("Quantity not valid. Item is running out");
-                        }
-                    }
-                    else
-                    {
-                        comm = new MySqlCommand("INSERT INTO activity(timeEnd, employeeID, date, type) VALUES('" + time + "', " + empact[cbempact.SelectedIndex] + ", '" + date + "', '" + cbact.Text + "')", conn);
-                        comm.ExecuteNonQuery();
-                        MessageBox.Show("Activity Recorded!");
-                        conn.Close();
-                        refreshActivity();
-                    }
-                    
+                    MySqlCommand comm = new MySqlCommand("INSERT INTO activity(employeeID, type, date, timeStart, status) VALUES("+empactID+", '"+cbact.Text+"', '"+DateTime.Now.ToString("yyyy-MM-dd")+"', '"+DateTime.Now.ToString("HH:mm")+"', 'OnGoing')", conn);
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Activity Now OnGoing");
+                    conn.Close();
                 }
                 catch (Exception ex)
                 {
@@ -2395,10 +2335,15 @@ namespace WindowsFormsApplication1
                     MessageBox.Show(ex.ToString());
                 }
             }
-            else
+            else if (cbact.Text == "Activity")
             {
-                MessageBox.Show("Please enter required fields");
+                MessageBox.Show("Please Select An Activity");
             }
+            else if (empactID == 0)
+            {
+                MessageBox.Show("Please Select An Employee");
+            }
+            empactID = 0;
         }
 
         private Boolean checkavailability(int q, int id)
@@ -2436,6 +2381,8 @@ namespace WindowsFormsApplication1
             button31.BackColor = Color.FromArgb(2, 170, 145);
             button33.BackColor = Color.FromArgb(2, 170, 145);
             button15.BackColor = Color.FromArgb(2, 170, 145);
+            btnUpAct.BackColor = Color.FromArgb(2, 170, 145);
+            pnlUpAct.Visible = false;
             panelViewAct.Visible = true;
             newOperation.Visible = false;
             pnlActivity.Visible = false;
@@ -3120,6 +3067,27 @@ namespace WindowsFormsApplication1
         private void cbMonth_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void dgvAct_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            empactID = int.Parse(dgvAct.Rows[e.RowIndex].Cells["emp"].Value.ToString());
+        }
+
+        private void button37_Click(object sender, EventArgs e)
+        {
+            button36.BackColor = Color.FromArgb(2, 170, 145);
+            button21.BackColor = Color.FromArgb(2, 170, 145);
+            button31.BackColor = Color.FromArgb(2, 170, 145);
+            button33.BackColor = Color.FromArgb(2, 170, 145);
+            button15.BackColor = Color.FromArgb(2, 170, 145);
+            btnUpAct.BackColor = Color.FromArgb(251, 162, 80);
+            pnlUpAct.Visible = true;
+            panelViewAct.Visible = false;
+            newOperation.Visible = false;
+            pnlActivity.Visible = false;
+            Edit.Visible = false;
+            Operations.Visible = false;
         }
     }
 }
