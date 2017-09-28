@@ -1831,6 +1831,8 @@ namespace WindowsFormsApplication1
                 }
                 else if (choice.SelectedIndex == 2)
                 {
+                    cbFilt.Checked = false;
+                    cbEmpFilt.Items.Clear();
                     dgvOpSumm.Visible = true;
                     repEmp.Visible = false;
                     cbFilt.Visible = false;
