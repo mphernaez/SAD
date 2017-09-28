@@ -1209,16 +1209,15 @@ namespace WindowsFormsApplication1
                 time = dt.Rows[0]["Time"].ToString();
                 date = dt.Rows[0]["Date"].ToString();
 
-                comm = new MySqlCommand("SELECT DISTINCT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', lastname) AS Name FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON employee.employeeID = operationTeam.employeeID INNER JOIN dogoperation ON operationteam.teamID = dogoperation.teamID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                comm = new MySqlCommand("SELECT DISTINCT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', lastname) AS Name, position AS Position FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON employee.employeeID = operationTeam.employeeID INNER JOIN dogoperation ON operationteam.teamID = dogoperation.teamID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex] + " ORDER BY position DESC", conn);
                 adp = new MySqlDataAdapter(comm);
                 dt = new System.Data.DataTable();
                 adp.Fill(dt);
 
                 employees = new string[dt.Rows.Count];
-
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    employees[i] = dt.Rows[i]["Name"].ToString();
+                    employees[i] = dt.Rows[i]["Name"].ToString() + " - " + dt.Rows[i]["Position"].ToString();
                 }
 
                 comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, UPPER(size) AS Size, gender AS Gender, otherDesc AS Markings, sublocation AS 'Location' FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);

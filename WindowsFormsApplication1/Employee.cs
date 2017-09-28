@@ -1881,45 +1881,35 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm;
                 if (cbFilt.Checked && cbEmpFilt.Text != "Employee")
                 {
-                    comm = new MySqlCommand("SELECT SUBSTRING(date,1, 11) AS Date, timeEnd AS 'Time Recorded', type AS Type FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '"+datestart+ "' AND '" + dateend + "' AND employeeID = " + repEmpArr[cbEmpFilt.SelectedIndex] + " ORDER BY date, timeEnd, type", conn);
+                    comm = new MySqlCommand("SELECT SUBSTRING(date,1, 11) AS Date, CONCAT(timeStart, ' - ', timeEnd) AS 'Time', type AS Type FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '"+datestart+ "' AND '" + dateend + "' AND employeeID = " + repEmpArr[cbEmpFilt.SelectedIndex] + " ORDER BY date, timeEnd, type", conn);
                     MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ', ', firstname, ' ', middlename)  AS name, position FROM profile INNER JOIN employee ON profile.personID = employee.employeeID WHERE profile.personID = " + repEmpArr[cbEmpFilt.SelectedIndex], conn);
                     MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
                     DataTable dta = new DataTable();
                     adpt.Fill(dta);
                     employeefilteractivity = dta.Rows[0]["name"].ToString();
                     employeeposact = dta.Rows[0]["position"].ToString();
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    dtact = new DataTable();
+                    adp.Fill(dtact);
+
+                    repEmp.DataSource = dtact;
+                    repEmp.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
                 else
                 {
-                    comm = new MySqlCommand("SELECT SUBSTRING(date, 1, 11) AS Date, type AS Type, timeEnd AS 'Time Recorded', CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS 'Employee Name' FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY date, timeEnd, lastname, firstname, type", conn);
-                }
+                    comm = new MySqlCommand("SELECT SUBSTRING(date, 1, 11) AS Date, type AS Type, CONCAT(timeStart, ' - ', timeEnd) AS 'Time', CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '. - ', position) AS 'Employee Name' FROM dogpound.activity INNER JOIN profile on personID = employeeID INNER JOIN employee ON employee.employeeID = profile.personID WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY date, timeEnd, lastname, firstname, type", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    dtact = new DataTable();
+                    adp.Fill(dtact);
 
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                dtact = new DataTable();
-                adp.Fill(dtact);
-
-                MySqlCommand com = new MySqlCommand("SELECT DISTINCT SUBSTRING(date, 1, 11) AS date FROM activity INNER JOIN profile on personID = employeeID WHERE date BETWEEN '"+datestart+"' AND '"+dateend+"' ORDER BY date", conn);
-                MySqlDataAdapter adptt = new MySqlDataAdapter(com);
-                DataTable dtt = new DataTable();
-                adptt.Fill(dtt);
-                countdate = new int[dtt.Rows.Count];
-                actdates = new string[dtt.Rows.Count];
-                for (int i = 0; i < dtt.Rows.Count; i++)
-                {
-                    actdates[i] = dtt.Rows[i]["date"].ToString();
+                    repEmp.DataSource = dtact;
+                    repEmp.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Employee Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
-                
-                for (int i = 0; i < actdates.Length; i++)
-                {
-                    MySqlCommand commmm = new MySqlCommand("SELECT COUNT(*) as c FROM dogpound.activity INNER JOIN profile on personID = employeeID WHERE SUBSTRING(date, 1, 11) = '"+actdates[i]+"'", conn);
-                    MySqlDataAdapter adpttt = new MySqlDataAdapter(commmm);
-                    DataTable dttt = new DataTable();
-                    adpttt.Fill(dttt);
-                    countdate[i] = int.Parse(dttt.Rows[0]["c"].ToString());
-                    
-                }
-
-                repEmp.DataSource = dtact;
                 conn.Close();
 
             }
@@ -1956,41 +1946,31 @@ namespace WindowsFormsApplication1
                     adpt.Fill(dta);
                     employeefilterattendance = dta.Rows[0]["name"].ToString();
                     employeeposatt = dta.Rows[0]["position"].ToString();
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    dtatt = new DataTable();
+                    adp.Fill(dtatt);
+                    repEmp.DataSource = dtatt;
+                    repEmp.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
                 else
                 {
-                    comm = new MySqlCommand("SELECT SUBSTRING(date, 1, 11) AS Date, time AS Time, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS 'Employee Name', position AS Position, contactNumber AS ContactNumber, "
+                    comm = new MySqlCommand("SELECT SUBSTRING(date, 1, 11) AS Date, time AS Time, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1)) AS 'Employee Name', position AS Position, "
                                             + "CASE type WHEN 0 THEN 'Out' WHEN 1 THEN 'In' END AS Type "
                                             + "FROM attendance INNER JOIN profile on profile.personID = attendance.employeeID "
                                             + "INNER JOIN employee ON profile.personID = employee.employeeID "
                                             + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY date, lastname, firstname, type", conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    dtatt = new DataTable();
+                    adp.Fill(dtatt);
+                    repEmp.DataSource = dtatt;
+                    repEmp.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Time"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Employee Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    repEmp.Columns["Position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
-
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                dtatt = new DataTable();
-                adp.Fill(dtatt);
-
-                MySqlCommand commmm = new MySqlCommand("SELECT DISTINCT SUBSTRING(date, 1, 11) AS Date "
-                                            + "FROM attendance INNER JOIN profile on profile.personID = attendance.employeeID "
-                                            + "INNER JOIN employee ON profile.personID = employee.employeeID "
-                                            + "WHERE date BETWEEN '" + datestart + "' AND '" + dateend + "' ORDER BY date, 'Employee Name', type", conn);
-                MySqlDataAdapter adptt = new MySqlDataAdapter(commmm);
-                DataTable dtt = new DataTable();
-                adptt.Fill(dtt);
-                attdates = new string[dtt.Rows.Count];
-                countdates = new int[dtt.Rows.Count];
-                for (int i = 0; i < dtt.Rows.Count; i++)
-                {
-                    attdates[i] = dtt.Rows[i]["Date"].ToString();
-                    MySqlCommand com = new MySqlCommand("SELECT COUNT(*) AS c FROM attendance WHERE date = '"+attdates[i]+"'", conn);
-                    MySqlDataAdapter adpttt = new MySqlDataAdapter(com);
-                    DataTable dttt = new DataTable();
-                    adpttt.Fill(dttt);
-                    countdates[i] = int.Parse(dttt.Rows[0]["c"].ToString());
-                }
-
-               
-                repEmp.DataSource = dtatt;
                 
                 conn.Close();
             }
@@ -2728,9 +2708,9 @@ namespace WindowsFormsApplication1
             {
                 x = 40;
             }
-            if (cbFilt.Checked && employeefilterattendance!="")
+            if (cbFilt.Checked && employeefilterattendance!="Employee")
             {
-                e.Graphics.DrawString(employeefilterattendance + " - " + employeeposatt, new Font("Arial", 16, FontStyle.Bold), Brushes.Black, new Point(100, 220));
+                e.Graphics.DrawString(employeefilterattendance + " - " + employeeposatt, new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(100, 220));
                 x = 280;
                 int count = dtatt.Rows.Count;
                 for (int i = 0; i < dtatt.Rows.Count; i = i + 2)
@@ -2738,23 +2718,24 @@ namespace WindowsFormsApplication1
                     if (count % 2 == 1) {
                         if (count > 1) {
                             string date = dtatt.Rows[i]["Date"].ToString();
-                            e.Graphics.DrawString(date, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(100, x));
-                            e.Graphics.DrawString(dtatt.Rows[i + 0]["Type"].ToString() + ": " + dtatt.Rows[i + 0]["Time"].ToString() + "   " + dtatt.Rows[i + 1]["Type"].ToString() + ": " + dtatt.Rows[i + 1]["Time"].ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(250, x));
+                            e.Graphics.DrawString(date, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(200, x));
+                            e.Graphics.DrawString(dtatt.Rows[i + 0]["Type"].ToString() + ": " + dtatt.Rows[i + 0]["Time"].ToString() + "      " + dtatt.Rows[i + 1]["Type"].ToString() + ": " + dtatt.Rows[i + 1]["Time"].ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(370, x));
                             x = x + 30;
                             count = count - 2;
                         }
                         else if (count == 1)
                         {
                             string date = dtatt.Rows[i]["Date"].ToString();
-                            e.Graphics.DrawString(date, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(100, x));
-                            e.Graphics.DrawString(dtatt.Rows[i + 0]["Type"].ToString() + ": " + dtatt.Rows[i + 0]["Time"].ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(250, x));
+                            e.Graphics.DrawString(date, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(200, x));
+                            e.Graphics.DrawString(dtatt.Rows[i + 0]["Type"].ToString() + ": " + dtatt.Rows[i + 0]["Time"].ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(370, x));
+                            x = x + 30;
                         }
                     }
                     else
                     {
                         string date = dtatt.Rows[i]["Date"].ToString();
-                        e.Graphics.DrawString(date, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(100, x));
-                        e.Graphics.DrawString(dtatt.Rows[i + 0]["Type"].ToString() + ": " + dtatt.Rows[i + 0]["Time"].ToString() + "   " + dtatt.Rows[i + 1]["Type"].ToString() + ": " + dtatt.Rows[i + 1]["Time"].ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(250, x));
+                        e.Graphics.DrawString(date, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(200, x));
+                        e.Graphics.DrawString(dtatt.Rows[i + 0]["Type"].ToString() + ": " + dtatt.Rows[i + 0]["Time"].ToString() + "      " + dtatt.Rows[i + 1]["Type"].ToString() + ": " + dtatt.Rows[i + 1]["Time"].ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(370, x));
                         x = x + 30;
                     }
                     
@@ -2766,31 +2747,30 @@ namespace WindowsFormsApplication1
                     if (countt != 0 && dtatt.Rows.Count - countt != 0 && dtatt.Rows[countt]["Date"].ToString() != dtatt.Rows[countt-1]["Date"].ToString())
                     {
                         x = x + 40;
-                        e.Graphics.DrawString(dtatt.Rows[countt]["Date"].ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(100, x));
+                        e.Graphics.DrawString(dtatt.Rows[countt]["Date"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, x));
                         x = x + 35;
                     }
                     if (countt == 0)
                     {
                         x = x + 40;
-                        e.Graphics.DrawString(dtatt.Rows[countt]["Date"].ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(100, x));
+                        e.Graphics.DrawString(dtatt.Rows[countt]["Date"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, x));
                         x = x + 35;
                     }
                     string time = dtatt.Rows[countt]["Time"].ToString();
                     string emp = dtatt.Rows[countt]["Employee Name"].ToString();
                     string pos = dtatt.Rows[countt]["Position"].ToString();
-                    string contact = dtatt.Rows[countt]["ContactNumber"].ToString();
                     string type = dtatt.Rows[countt]["Type"].ToString();
                     if (countt > 0) {
                         if (emp != dtatt.Rows[countt - 1]["Employee Name"].ToString()) {
-                             e.Graphics.DrawString(emp + " - " + pos + "   ", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(120, x));
-                             e.Graphics.DrawString(type + ": " + time, new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, x));
+                             e.Graphics.DrawString(emp + " - " + pos + "   ", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(120, x));
+                             e.Graphics.DrawString(type + ": " + time, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(500, x));
                             countt++;
                             x = x + 15;
                             
                         }
                         else //Out
                         {
-                            e.Graphics.DrawString(type + ": " + time, new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(600, x-15));
+                            e.Graphics.DrawString(type + ": " + time, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(600, x-15));
                             countt++;
                             x = x + 15;
                             if (x >= 950)
@@ -2901,10 +2881,10 @@ namespace WindowsFormsApplication1
 
                 if (employeefilteractivity != "" && cbFilt.Checked)
                 {
-                    e.Graphics.DrawString(employeefilteractivity + " - " + employeeposact, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(100, 220));
-                    e.Graphics.DrawString("Date", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(120, 270));
-                    e.Graphics.DrawString("Time Recorded", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(320, 270));
-                    e.Graphics.DrawString("Activity", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(500, 270));
+                    e.Graphics.DrawString(employeefilteractivity + " - " + employeeposact, new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(100, 220));
+                    e.Graphics.DrawString("Date", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(150, 270));
+                    e.Graphics.DrawString("Time Recorded", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(290, 270));
+                    e.Graphics.DrawString("Activity", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(480, 270));
                     x = 310;
                 }
                 else
@@ -2916,9 +2896,9 @@ namespace WindowsFormsApplication1
             {
                 if (employeefilteractivity != "" && cbFilt.Checked)
                 {
-                    e.Graphics.DrawString("Date", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(100, 40));
-                    e.Graphics.DrawString("Time Recorded", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(300, 40));
-                    e.Graphics.DrawString("Activity", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(480, 40));
+                    e.Graphics.DrawString("Date", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(150, 40));
+                    e.Graphics.DrawString("Time Recorded", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(290, 40));
+                    e.Graphics.DrawString("Activity", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(480, 40));
                     x = 80;
                 }
                 else
@@ -2927,13 +2907,13 @@ namespace WindowsFormsApplication1
                 }
             }
 
-            if (employeefilteractivity != "" && cbFilt.Checked) //if filter by employee
+            if (employeefilteractivity != "Employee" && cbFilt.Checked) //if filter by employee
             {
                 while (act < dtact.Rows.Count)
                 {
-                    e.Graphics.DrawString(dtact.Rows[act]["Date"].ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(120, x));
-                    e.Graphics.DrawString(dtact.Rows[act]["Time Recorded"].ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(320, x));
-                    e.Graphics.DrawString(dtact.Rows[act]["Type"].ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, x));
+                    e.Graphics.DrawString(dtact.Rows[act]["Date"].ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(150, x));
+                    e.Graphics.DrawString(dtact.Rows[act]["Time"].ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(290, x));
+                    e.Graphics.DrawString(dtact.Rows[act]["Type"].ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(480, x));
 
                     if (x >= 1100)
                     {
@@ -2951,22 +2931,24 @@ namespace WindowsFormsApplication1
             }
             else //If no filter (date)
             {
-
+                
                 for (int j = 0; act < repEmp.Rows.Count; j++)
                 {
                     if (repEmp.Rows.Count - j != 0 && act != 0 && repEmp.Rows[act].Cells["Date"].Value.ToString() != repEmp.Rows[act - 1].Cells["Date"].Value.ToString())
                     {
                         x = x + 30;
-                        e.Graphics.DrawString(repEmp.Rows[act].Cells["Date"].Value.ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(120, x));
+                        e.Graphics.DrawString(repEmp.Rows[act].Cells["Date"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, x));
+                        x = x + 35;
                     }
                     if (act == 0)
                     {
                         x = x + 30;
-                        e.Graphics.DrawString(repEmp.Rows[act].Cells["Date"].Value.ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(120, x));
+                        e.Graphics.DrawString(repEmp.Rows[act].Cells["Date"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, x));
+                        x = x + 35;
                     }
-                    e.Graphics.DrawString(repEmp.Rows[act].Cells["Employee Name"].Value.ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(250, x));
-                    e.Graphics.DrawString(repEmp.Rows[act].Cells["Time Recorded"].Value.ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(450, x));
-                    e.Graphics.DrawString(repEmp.Rows[act].Cells["Type"].Value.ToString(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(520, x));
+                    e.Graphics.DrawString(repEmp.Rows[act].Cells["Employee Name"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(120, x));
+                    e.Graphics.DrawString(repEmp.Rows[act].Cells["Time"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(460, x));
+                    e.Graphics.DrawString(repEmp.Rows[act].Cells["Type"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(575, x));
                     if (x >= 1000)
                     {
                         e.HasMorePages = true;
