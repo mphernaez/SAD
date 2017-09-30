@@ -293,6 +293,7 @@ namespace WindowsFormsApplication1
         {
             button10.BackColor = Color.FromArgb(2, 170, 145);
             button3.BackColor = Color.FromArgb(251, 162, 80);
+            button6.BackColor = Color.FromArgb(2, 170, 145);
             lblIn.Visible = false;
             lblout.Visible = false;
             dgvAttendanceIn.Visible = true;
@@ -305,6 +306,7 @@ namespace WindowsFormsApplication1
         {
             button3.BackColor = Color.FromArgb(2, 170, 145);
             button10.BackColor = Color.FromArgb(251, 162, 80);
+            button6.BackColor = Color.FromArgb(2, 170, 145);
             lblIn.Visible = false;
             lblout.Visible = false;
             dgvAttendanceIn.Visible = false;
@@ -1372,8 +1374,6 @@ namespace WindowsFormsApplication1
 
         private void button18_Click_1(object sender, EventArgs e)
         {
-            home.Show();
-            this.Hide();
         }
 
         private void button7_Click_1(object sender, EventArgs e)
@@ -1433,11 +1433,19 @@ namespace WindowsFormsApplication1
                 string hss; string hee;
                 if (cbAMPMstart.SelectedIndex == 1)
                 {
-                    hs = hs + 12;
+                    if (hs == 12)
+                        hs = 0;
+                    else
+                        hs = hs + 12;
                 }
                 if (cbAMPMend.SelectedIndex == 1)
                 {
+                    if(he == 12)
+                    {
+                        he = 0;
+                    } else
                     he = he + 12;
+                    
                 }
                 if (hs < 10)
                 {
@@ -2118,6 +2126,9 @@ namespace WindowsFormsApplication1
             lblIn.Visible = true;
             lblout.Visible = true;
             print();
+            button6.BackColor = Color.FromArgb(251, 162, 80);
+            button3.BackColor = Color.FromArgb(2, 170, 145);
+            button10.BackColor = Color.FromArgb(2, 170, 145);
 
             panelAtt.Visible = true;
             refreshAttView();

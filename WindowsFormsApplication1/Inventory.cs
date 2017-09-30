@@ -71,12 +71,9 @@ namespace WindowsFormsApplication1
         {
             //this.Top = 112; //262
             refreshSI();
-            refreshSO();
-            dgvo.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
             dgvin.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
             dgvEdit.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
             dgvEdit.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
-            dgvo.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
             dgvin.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
             dgvTrans.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
             dgvTrans.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
@@ -116,7 +113,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-
+        /*
         public void refreshSO()
         {
             try
@@ -150,6 +147,7 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
         }
+        */
         private void button3_Click(object sender, EventArgs e)
         {
             pictureBox1.Visible = false;
@@ -167,8 +165,6 @@ namespace WindowsFormsApplication1
             panelRequest.Visible = false;
             panelReturn.Visible = false;
             dgvout.Visible = true;
-            Sout.Visible = false;
-            button5.BackColor = Color.FromArgb(2, 170, 145);
             button16.BackColor = Color.FromArgb(251, 162, 80);
             button15.BackColor = Color.FromArgb(2, 170, 145);
             button19.BackColor = Color.FromArgb(2, 170, 145);
@@ -180,12 +176,9 @@ namespace WindowsFormsApplication1
             panelRequest.Visible = false;
             panelReturn.Visible = false;
             dgvout.Visible = false;
-            Sout.Visible = true;
             button16.BackColor = Color.FromArgb(2, 170, 145);
-            button5.BackColor = Color.FromArgb(251, 162, 80);
             button15.BackColor = Color.FromArgb(2, 170, 145);
             button19.BackColor = Color.FromArgb(2, 170, 145);
-            refreshSO();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -208,7 +201,6 @@ namespace WindowsFormsApplication1
                 }
                 conn.Close();
                 refreshSI();
-                refreshSO();
 
             }
             catch (Exception ex)
@@ -240,10 +232,7 @@ namespace WindowsFormsApplication1
 
         private void dgvo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
-            {
-                itemID = int.Parse(dgvo.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
-            }
+            
         }
 
         private void OK1_Click(object sender, EventArgs e)
@@ -348,8 +337,6 @@ namespace WindowsFormsApplication1
 
         private void button10_Click(object sender, EventArgs e)
         {
-            home.Show();
-            this.Hide();
         }
 
         bool hasExp = true;
@@ -540,12 +527,10 @@ namespace WindowsFormsApplication1
             panelRequest.Visible = false;
             panelReturn.Visible = true;
             dgvout.Visible = false;
-            Sout.Visible = false;
             prodret.Items.Clear();
             empret.Items.Clear();
             button15.BackColor = Color.FromArgb(251, 162, 80);
             button16.BackColor = Color.FromArgb(2, 170, 145);
-            button5.BackColor = Color.FromArgb(2, 170, 145);
             button19.BackColor = Color.FromArgb(2, 170, 145);
             reasonret.Text = "Reason";
             try
@@ -796,13 +781,10 @@ namespace WindowsFormsApplication1
             panelRequest.Visible = true;
             panelReturn.Visible = false;
             dgvout.Visible = false;
-            Sout.Visible = false;
-            button5.BackColor = Color.FromArgb(2, 170, 145);
             button16.BackColor = Color.FromArgb(2, 170, 145);
             button15.BackColor = Color.FromArgb(2, 170, 145);
             button19.BackColor = Color.FromArgb(251, 162, 80);
             button9.BackColor = Color.FromArgb(2, 170, 145);
-            btn.BackColor = Color.FromArgb(251, 162, 80);
             refreshRequest();
         }
         DataTable dtReq;

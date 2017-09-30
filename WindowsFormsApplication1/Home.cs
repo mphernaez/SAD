@@ -340,6 +340,11 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void pictureBox3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseLocation = new Point(-e.X, -e.Y);
