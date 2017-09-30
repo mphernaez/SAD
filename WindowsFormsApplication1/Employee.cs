@@ -425,6 +425,9 @@ namespace WindowsFormsApplication1
             newOperation.Visible = false;
             pnlActivity.Visible = false;
             Operations.Visible = true;
+            searchst.Text = "Status";
+            statc = false;
+            
             panelViewAct.Visible = false;
 
             refreshOperationsView();
@@ -929,8 +932,27 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                
-                MySqlCommand comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.status != 'Finished' ORDER BY date, timeStart", conn);
+
+                MySqlCommand comm;
+                if (statc == true)
+                {
+                    if (searchst.SelectedIndex == 0)
+                    {
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status = 'Pending' ORDER BY status DESC, date DESC, timeStart", conn);
+                    }
+                    else if (searchst.SelectedIndex == 1)
+                    {
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status = 'OnGoing' ORDER BY status DESC, date DESC, timeStart", conn);
+                    }
+                    else
+                    {
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status != 'Finished' ORDER BY status DESC, date DESC, timeStart", conn);
+                    }
+                }
+                else
+                {
+                    comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status != 'Finished' ORDER BY status DESC, date DESC, timeStart", conn);
+                }
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1005,9 +1027,30 @@ namespace WindowsFormsApplication1
 
 
                 conn.Open();
-
-                MySqlCommand comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY status DESC, date DESC, timeStart", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                MySqlCommand comm;
+                if (statc == true)
+                {
+                    if (statchoose.SelectedIndex == 0)
+                    {
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status = 'Pending' ORDER BY status DESC, date DESC, timeStart", conn);
+                    }
+                    else if (statchoose.SelectedIndex == 1)
+                    {
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status = 'OnGoing' ORDER BY status DESC, date DESC, timeStart", conn);
+                    } else if(statchoose.SelectedIndex == 2)
+                    {
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status = 'Finished' ORDER BY status DESC, date DESC, timeStart", conn);
+                    }
+                    else
+                    {
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY status DESC, date DESC, timeStart", conn);
+                    }
+                }
+                else
+                {
+                    comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY status DESC, date DESC, timeStart", conn);
+                }
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 
@@ -3185,8 +3228,10 @@ namespace WindowsFormsApplication1
             newOperation.Visible = false;
             pnlActivity.Visible = false;
             Edit.Visible = false;
+            statchoose.Text = "Status";
             Operations.Visible = false;
             pnlOpView.Visible = true;
+            statc = false;
             refreshOperations();
         }
 
@@ -3247,6 +3292,29 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Please Select an Activity");
             }
+        }
+        bool statc = false;
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            statc = true;
+            refreshOperations();
+        }
+
+        private void statchoose_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            statc = true;
+            refreshOperationsView();
+        }
+
+        private void searchst_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }
