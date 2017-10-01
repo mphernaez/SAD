@@ -568,9 +568,9 @@ namespace WindowsFormsApplication1
         {
             string f = "Arial";
             int fsize = 14;
-            e.Graphics.DrawString("Republic of the Philippines", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(300, 50));
-            e.Graphics.DrawString("City of Davao", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(350, 70));
-            e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(355, 70));
+            e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(235, 100));
             e.Graphics.DrawString("MONTHLY CONSOLIDATED ACCOMPLISHMENT REPORT", new System.Drawing.Font(f, 18, FontStyle.Bold), Brushes.Black, new System.Drawing.Point(65, 130));
             e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 170));
 
@@ -1118,9 +1118,9 @@ namespace WindowsFormsApplication1
             //claim
             if (noheader1 == false)
             {
-                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
-                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(355, 70));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(235, 100));
                 e.Graphics.DrawString("CLAIMED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
                 e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
                 e.Graphics.DrawString("Claimer", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
@@ -1268,9 +1268,9 @@ namespace WindowsFormsApplication1
         {
             int ad, dog;
             if (noheader2 == false) {
-                e.Graphics.DrawString("Republic of the Philippines", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
-                e.Graphics.DrawString("City of Davao", new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(355, 70));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(235, 100));
                 e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
                 e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
                 e.Graphics.DrawString("Adoptor", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
@@ -1338,9 +1338,9 @@ namespace WindowsFormsApplication1
         {
             int dog, op;
             if (noheader3 == false) {
-                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
-                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(355, 70));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(235, 100));
                 e.Graphics.DrawString("EUTHANIZED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(190, 130));
                 e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(150, 170));
                 dog = 200; op = 200;
@@ -1394,9 +1394,9 @@ namespace WindowsFormsApplication1
             string f = "Arial";
             int x;
             if (noheader4 == false) {
-                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
-                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(355, 70));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(235, 100));
                 e.Graphics.DrawString("Operation Details", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(335, 150));
                 e.Graphics.DrawString("Location: BRGY. " + location, new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 220));
                 e.Graphics.DrawString("Sublocations: ", new System.Drawing.Font(f, 16, FontStyle.Regular), Brushes.Black, new System.Drawing.Point(100, 250));

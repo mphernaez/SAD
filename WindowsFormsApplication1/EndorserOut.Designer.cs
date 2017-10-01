@@ -63,9 +63,9 @@
             this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label15.Location = new System.Drawing.Point(21, 455);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 20);
+            this.label15.Size = new System.Drawing.Size(133, 20);
             this.label15.TabIndex = 91;
-            this.label15.Text = "Reason";
+            this.label15.Text = "Remarks/Reason";
             // 
             // tbReason
             // 

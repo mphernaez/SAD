@@ -35,6 +35,7 @@
             this.lblMesBy = new System.Windows.Forms.Label();
             this.num = new System.Windows.Forms.NumericUpDown();
             this.button38 = new System.Windows.Forms.Button();
+            this.lblQuan = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +54,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
             this.label1.Name = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // cbItems
             // 
@@ -84,12 +86,20 @@
             this.button38.UseVisualStyleBackColor = false;
             this.button38.Click += new System.EventHandler(this.button38_Click);
             // 
+            // lblQuan
+            // 
+            resources.ApplyResources(this.lblQuan, "lblQuan");
+            this.lblQuan.BackColor = System.Drawing.Color.Transparent;
+            this.lblQuan.ForeColor = System.Drawing.Color.Black;
+            this.lblQuan.Name = "lblQuan";
+            // 
             // FinishAct
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
             this.ControlBox = false;
+            this.Controls.Add(this.lblQuan);
             this.Controls.Add(this.button38);
             this.Controls.Add(this.num);
             this.Controls.Add(this.lblMesBy);
@@ -113,5 +123,6 @@
         private System.Windows.Forms.NumericUpDown num;
         private System.Windows.Forms.Button button38;
         private System.Windows.Forms.ComboBox cbItems;
+        private System.Windows.Forms.Label lblQuan;
     }
 }

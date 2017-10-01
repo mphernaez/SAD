@@ -1734,6 +1734,7 @@
             this.newOperation.Size = new System.Drawing.Size(982, 412);
             this.newOperation.TabIndex = 33;
             this.newOperation.Visible = false;
+            this.newOperation.Paint += new System.Windows.Forms.PaintEventHandler(this.newOperation_Paint);
             // 
             // pOperation
             // 
@@ -2871,10 +2872,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
+            this.Controls.Add(this.attendance);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;

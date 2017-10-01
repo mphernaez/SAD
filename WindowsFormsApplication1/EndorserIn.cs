@@ -31,6 +31,7 @@ namespace WindowsFormsApplication1
             tbYear.Text = DateTime.Now.ToString("yyyy");
             tbYr.Text = DateTime.Now.ToString("yyyy");
             cbMonth.SelectedIndex = int.Parse(DateTime.Now.ToString("MM")) - 1;
+            responsiveDel(int.Parse(tbYear.Text));
             cbDay.SelectedIndex = int.Parse(DateTime.Now.ToString("dd")) - 1;
             refreshEnd();
             dgvEnd.ClearSelection();

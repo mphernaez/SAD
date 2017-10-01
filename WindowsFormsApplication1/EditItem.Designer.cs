@@ -43,10 +43,9 @@
             // tbdesc
             // 
             this.tbdesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbdesc.Location = new System.Drawing.Point(41, 164);
-            this.tbdesc.Multiline = true;
+            this.tbdesc.Location = new System.Drawing.Point(54, 122);
             this.tbdesc.Name = "tbdesc";
-            this.tbdesc.Size = new System.Drawing.Size(377, 66);
+            this.tbdesc.Size = new System.Drawing.Size(292, 26);
             this.tbdesc.TabIndex = 45;
             this.tbdesc.Text = "Product Type";
             // 
@@ -60,7 +59,7 @@
             "Piece",
             "Dozen",
             "Bottle"});
-            this.msBy.Location = new System.Drawing.Point(41, 296);
+            this.msBy.Location = new System.Drawing.Point(53, 218);
             this.msBy.Name = "msBy";
             this.msBy.Size = new System.Drawing.Size(121, 28);
             this.msBy.TabIndex = 49;
@@ -70,18 +69,18 @@
             // tbname
             // 
             this.tbname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbname.Location = new System.Drawing.Point(41, 132);
+            this.tbname.Location = new System.Drawing.Point(54, 90);
             this.tbname.Name = "tbname";
-            this.tbname.Size = new System.Drawing.Size(230, 26);
+            this.tbname.Size = new System.Drawing.Size(292, 26);
             this.tbname.TabIndex = 44;
-            this.tbname.Text = "Product Name";
+            this.tbname.Text = "Product Name (Brand)";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(41, 233);
+            this.label3.Location = new System.Drawing.Point(50, 155);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 20);
             this.label3.TabIndex = 48;
@@ -95,7 +94,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(136, 359);
+            this.button4.Location = new System.Drawing.Point(126, 255);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(168, 42);
             this.button4.TabIndex = 46;
@@ -106,7 +105,7 @@
             // nudmin
             // 
             this.nudmin.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudmin.Location = new System.Drawing.Point(41, 256);
+            this.nudmin.Location = new System.Drawing.Point(53, 178);
             this.nudmin.Name = "nudmin";
             this.nudmin.Size = new System.Drawing.Size(150, 26);
             this.nudmin.TabIndex = 47;
@@ -116,7 +115,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label2.Location = new System.Drawing.Point(158, 63);
+            this.label2.Location = new System.Drawing.Point(152, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 31);
             this.label2.TabIndex = 50;
@@ -126,7 +125,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.cancel_music;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(426, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(378, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 23);
             this.pictureBox1.TabIndex = 109;
@@ -138,7 +137,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(462, 530);
+            this.ClientSize = new System.Drawing.Size(417, 326);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbdesc);

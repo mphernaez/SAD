@@ -18,6 +18,8 @@ namespace WindowsFormsApplication1
         public MySqlConnection conn = new MySqlConnection();
         public int adminID;
         public int itemID = 0;
+
+        DataTable dtReq;
         DataTable dtclaim;
         EndorserIn end { get; set; }
         public empty back { get; set; }
@@ -249,16 +251,16 @@ namespace WindowsFormsApplication1
 
                     if (int.Parse(dtt.Rows[0]["COUNT(*)"].ToString()) >= 1)
                     {
-                        end.id = itemID;
-                        end.rq = dtt.Rows[0]["requestID"].ToString();
                         MySqlCommand comm = new MySqlCommand("SELECT measuredBy FROM items WHERE itemID = " + itemID.ToString(), conn);
                         MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                         DataTable dt = new DataTable();
                         adp.Fill(dt);
                         end.amtLabel.Text = "Amount by " + dt.Rows[0]["measuredBy"].ToString();
                         conn.Close();
+                        
+                        end.rq = dtt.Rows[0]["requestID"].ToString();
+                        end.id = itemID;
                         end.ShowDialog();
-
                     }
                     else
                     {
@@ -268,8 +270,9 @@ namespace WindowsFormsApplication1
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
                     conn.Close();
+                    MessageBox.Show(ex.ToString());
+                    
                 }
             }
             else
@@ -280,17 +283,7 @@ namespace WindowsFormsApplication1
 
         private void dgvin_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
-            {
-                if (e.RowIndex < 0)
-                {
-
-                }
-                else
-                {
-                    itemID = int.Parse(dgvin.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
-                }
-            }
+            itemID = int.Parse(dgvin.Rows[e.RowIndex].Cells["itemID"].Value.ToString());
 
         }
         private void checkMin(int id, int min, int quan, string prod)
@@ -501,6 +494,9 @@ namespace WindowsFormsApplication1
                     conn.Open();
                     MySqlCommand comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, employeeID, quantity, date, type, reason) VALUES(" + retprod[prodret.SelectedIndex] + ", " + retemp[empret.SelectedIndex] + ", " + quanret.Value + ", '" + date + "', 'Return', '" + reasonret.Text + "')", conn);
                     comm.ExecuteNonQuery();
+
+                    dgvReturns.Rows.Add(retprod[prodret.SelectedIndex], prodret.Text, quanret.Value, reasonret.Text);
+
                     conn.Close();
                 }
                 catch (Exception ex)
@@ -508,10 +504,8 @@ namespace WindowsFormsApplication1
                     conn.Close();
                     MessageBox.Show(ex.ToString());
                 }
-                prodret.Items.Clear();
-                empret.Items.Clear();
+                empret.Enabled = false;
                 prodret.Text = "Product Name";
-                empret.Text = "Endorser";
                 quanret.Value = 0;
                 reasonret.Text = "Reason";
             }
@@ -524,6 +518,7 @@ namespace WindowsFormsApplication1
 
         private void button15_Click(object sender, EventArgs e)
         {
+            dgvReturns.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             panelRequest.Visible = false;
             panelReturn.Visible = true;
             dgvout.Visible = false;
@@ -547,7 +542,7 @@ namespace WindowsFormsApplication1
                     prodret.Items.Add(dt.Rows[i]["product"].ToString());
                 }
 
-                MySqlCommand commm = new MySqlCommand("SELECT employeeID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS employee FROM employee INNER JOIN profile ON profile.personID = employee.employeeID", conn);
+                MySqlCommand commm = new MySqlCommand("SELECT employeeID, CONCAT(lastname, ', ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' - ', position) AS employee FROM employee INNER JOIN profile ON profile.personID = employee.employeeID", conn);
                 MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
                 System.Data.DataTable dta = new System.Data.DataTable();
                 adpt.Fill(dta);
@@ -681,9 +676,9 @@ namespace WindowsFormsApplication1
         {
             
             if (noheader1 == false) {
-                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
-                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-                e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(355, 70));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(235, 100));
            }
             else
             {
@@ -693,7 +688,7 @@ namespace WindowsFormsApplication1
             if (cbTransType.Text == "Stock In")
             {
                 if (noheader1 == false) {
-                    e.Graphics.DrawString("Stock-In REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(250, 130));
+                    e.Graphics.DrawString("Stock-In REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(290, 130));
                     x = 220;
                 }
                 while (si < dtTrans.Rows.Count)
@@ -728,7 +723,7 @@ namespace WindowsFormsApplication1
                 if (noheader1 == false)
                 {
 
-                    e.Graphics.DrawString("Stock-Out REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(250, 130));
+                    e.Graphics.DrawString("Stock-Out REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(290, 130));
                     x = 220;
                 }
                 while (si < dtOut.Rows.Count)
@@ -787,7 +782,6 @@ namespace WindowsFormsApplication1
             button9.BackColor = Color.FromArgb(2, 170, 145);
             refreshRequest();
         }
-        DataTable dtReq;
         private void refreshRequest()
         {
             try
@@ -814,6 +808,16 @@ namespace WindowsFormsApplication1
                 dgvPendReq.Columns["Current Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvPendReq.Columns["Request Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
+                MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' - ', position) AS name FROM profile INNER JOIN employee On employee.employeeID = profile.personID", conn);
+                MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                DataTable dtReqs = new DataTable();
+                adpt.Fill(dtReqs);
+
+                for (int i = 0; i < dtReqs.Rows.Count; i++)
+                {
+                    cbEmpReq.Items.Add(dtReqs.Rows[i]["name"].ToString());
+                }
+
                 conn.Close();
             }
             catch (Exception ex)
@@ -825,7 +829,7 @@ namespace WindowsFormsApplication1
 
         private void button18_Click_1(object sender, EventArgs e)
         {
-            if (dtReq.Rows.Count != 0) {
+            if (dtReq.Rows.Count != 0 && cbEmpReq.Text != "Endorser") {
                 string date = DateTime.Now.ToString("yyyy-MM-dd");
                 try
                 {
@@ -845,10 +849,21 @@ namespace WindowsFormsApplication1
                     conn.Close();
                     MessageBox.Show(ex.ToString());
                 }
+                refreshRequest();
+                cbEmpReq.Items.Clear();
+                cbEmpReq.Text = "Endorser";
+                printDocument4.DefaultPageSettings.Landscape = false;
+                PrintPreviewDialog dlg = new PrintPreviewDialog();
+                dlg.Document = printDocument4;
+                ((Form)dlg).WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog();
             }
-            refreshRequest();
+            else
+            {
+                MessageBox.Show("Please enter an endorser", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             
-         }
+        }
         private void y1_TextChanged(object sender, EventArgs e)
         {
             if (y1.Text.Length == 4)
@@ -999,6 +1014,76 @@ namespace WindowsFormsApplication1
             btn.BackColor = Color.FromArgb(251, 162, 80);
             panelReq.Visible = true;
             panelPending.Visible = false;
+            refreshRequest();
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            printDocument2.DefaultPageSettings.Landscape = false;
+            PrintPreviewDialog dlg = new PrintPreviewDialog();
+            dlg.Document = printDocument2;
+            ((Form)dlg).WindowState = FormWindowState.Maximized;
+            dlg.ShowDialog();
+        }
+
+        private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(355, 70));
+            e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(235, 100));
+
+            e.Graphics.DrawString("TO: The City Veterinarian's Office", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(50, 150));
+            e.Graphics.DrawString("ITEM RETURN", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 180));
+            e.Graphics.DrawString("Date: " + DateTime.Now.ToString("yyyy-MM-dd"), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(50, 205));
+
+            e.Graphics.DrawString("Product Name", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(50, 240));
+            e.Graphics.DrawString("Reason", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(400, 240));
+            e.Graphics.DrawString("Quantity", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(650, 240));
+            int xy = 270;
+            for (int i = 0; i < dgvReturns.Rows.Count; i++)
+            {
+                e.Graphics.DrawString(dgvReturns.Rows[i].Cells["name"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, xy));
+                e.Graphics.DrawString(dgvReturns.Rows[i].Cells["reason"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, xy));
+                int quantity = int.Parse(dgvReturns.Rows[i].Cells["quantity"].Value.ToString());
+                e.Graphics.DrawString(quantity.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(650, xy));
+                xy = xy + 25;
+            }
+            xy = xy + 50;
+            e.Graphics.DrawString("___________________________", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, xy));
+            xy = xy + 30;
+            e.Graphics.DrawString(empret.Text, new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, xy));
+        }
+
+        private void printDocument3_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            
+        }
+
+        private void printDocument4_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 50));
+            e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(355, 70));
+            e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(235, 100));
+
+            e.Graphics.DrawString("TO: The City Veterinarian's Office", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(50, 150));
+            e.Graphics.DrawString("ITEM REQUEST(Out of Stock)", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 180));
+            e.Graphics.DrawString("Date: " + DateTime.Now.ToString("yyyy-MM-dd"), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(50, 205));
+
+            e.Graphics.DrawString("Product Name", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(50, 240));
+            e.Graphics.DrawString("Product Description", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(370, 240));
+            e.Graphics.DrawString("Current Quantity", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(630, 240));
+            int xy = 270;
+            for (int x = 0; x < dtReq.Rows.Count; x++)
+            {
+                e.Graphics.DrawString(dtReq.Rows[x]["Product Name"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, 240));
+                e.Graphics.DrawString(dtReq.Rows[x]["Product Description"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(370, 240));
+                e.Graphics.DrawString("Current Quantity", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(630, 240));
+                xy = xy + 25;
+            }
+            xy = xy + 50;
+            e.Graphics.DrawString("__________________________", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, xy));
+            xy = xy + 30;
+            e.Graphics.DrawString(cbEmpReq.Text, new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, xy));
         }
     }
 }

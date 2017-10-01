@@ -142,7 +142,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -172,22 +172,22 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="cbItems.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="cbItems.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 79</value>
+    <value>101, 77</value>
   </data>
   <data name="cbItems.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 28</value>
+    <value>201, 28</value>
   </data>
   <data name="cbItems.TabIndex" type="System.Int32, mscorlib">
     <value>112</value>
   </data>
   <data name="cbItems.Text" xml:space="preserve">
-    <value>Item Used</value>
+    <value>Item Consumed</value>
   </data>
   <data name="&gt;&gt;cbItems.Name" xml:space="preserve">
     <value>cbItems</value>
@@ -199,7 +199,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbItems.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="lblMesBy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -211,7 +211,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblMesBy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 119</value>
+    <value>116, 160</value>
   </data>
   <data name="lblMesBy.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 20</value>
@@ -229,13 +229,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblMesBy.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="num.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="num.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 148</value>
+    <value>143, 183</value>
   </data>
   <data name="num.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 26</value>
@@ -253,7 +253,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;num.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="button38.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -265,7 +265,7 @@
     <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
   <data name="button38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 205</value>
+    <value>149, 231</value>
   </data>
   <data name="button38.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 38</value>
@@ -286,6 +286,36 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button38.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblQuan.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblQuan.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="lblQuan.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblQuan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 122</value>
+  </data>
+  <data name="lblQuan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="lblQuan.TabIndex" type="System.Int32, mscorlib">
+    <value>116</value>
+  </data>
+  <data name="&gt;&gt;lblQuan.Name" xml:space="preserve">
+    <value>lblQuan</value>
+  </data>
+  <data name="&gt;&gt;lblQuan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblQuan.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblQuan.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -295,7 +325,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>404, 267</value>
+    <value>404, 288</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

@@ -136,15 +136,19 @@ namespace WindowsFormsApplication1
             refreshStatus();
             editOperation.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
             dgvOperationsView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
-            dgvViewAct.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvViewAct.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10);
             dgvViewAct.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
-            dgvAttendanceIn.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvAct.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10);
+            dgvAct.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvUpAct.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10);
+            dgvUpAct.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
+            dgvAttendanceIn.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10);
             dgvAttendanceIn.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
-            dgvAttendanceOut.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvAttendanceOut.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10);
             dgvAttendanceOut.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
-            dgvReactivate.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvReactivate.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10);
             dgvReactivate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
-            dgvEdit.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            dgvEdit.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10);
             dgvEdit.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
             dgvOpSumm.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
             repEmp.DefaultCellStyle.SelectionBackColor = Color.FromArgb(110, 159, 173);
@@ -2499,7 +2503,19 @@ namespace WindowsFormsApplication1
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(lastname, ', ',firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Name, CONCAT(items.productName, ' (', items.description, ')') AS Product, CONCAT(stocktransaction.quantity, ' (', items.measuredBy, ')') AS 'Used', activity.type AS Activity, activity.date AS Date, CONCAT(activity.timeStart, ' - ', activity.timeEnd) AS 'Time Ended' FROM profile INNER JOIN activity ON activity.employeeID = profile.personID INNER JOIN stocktransaction ON stocktransaction.employeeID = profile.personID INNER JOIN items ON stocktransaction.stockID = items.itemID WHERE activity.status = 'Finished' GROUP BY activity.activityID ORDER BY activity.date DESC, activity.timeStart", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT CONCAT(lastname, ', ',firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Name, "
+                                                    +"CONCAT(items.productName, ' (', items.description, ')') AS Product, "
+                                                    + "CONCAT(stocktransaction.quantity, ' (', items.measuredBy, ')') AS 'Used', "
+                                                    + "activity.type AS Activity, activity.date AS Date, "
+                                                    + "CONCAT(activity.timeStart, ' - ', activity.timeEnd) AS 'Time Ended', "
+                                                    + "status AS Status "
+                                                    + "FROM profile "
+                                                    + "INNER JOIN activity ON activity.employeeID = profile.personID "
+                                                    + "INNER JOIN stocktransaction ON stocktransaction.date = activity.date "
+                                                    + "INNER JOIN items ON stocktransaction.stockID = items.itemID "
+                                                    + "WHERE activity.status = 'Finished' OR activity.status = 'Cancelled' "
+                                                    + "GROUP BY activity.activityID "
+                                                    + "ORDER BY activity.date DESC, activity.timeStart, activity.timeEnd", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -2507,10 +2523,8 @@ namespace WindowsFormsApplication1
                 dgvViewAct.DataSource = dt;
                 dgvViewAct.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewAct.Columns["Product"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvViewAct.Columns["Used"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvViewAct.Columns["Activity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvViewAct.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvViewAct.Columns["Time Ended"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                
                 conn.Close();
             }
             catch (Exception ex)
@@ -2645,9 +2659,9 @@ namespace WindowsFormsApplication1
             int x;
             if (noheader == false) {
                 it = 0;
-                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(280, 50));
-                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(335, 70));
-                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(355, 70));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(235, 100));
                 e.Graphics.DrawString("OPERATIONS REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(270, 130));
                 e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(120, 170));
                 x = 240;
@@ -2759,9 +2773,9 @@ namespace WindowsFormsApplication1
         {
             int x;
             if (noheader3 == false) {
-                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(310, 50));
-                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(365, 70));
-                e.Graphics.DrawString("OFFICE OF THE CITY VETERINARIAN", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(150, 100));
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(355, 70));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(235, 100));
                 e.Graphics.DrawString("ATTENDANCE REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 130));
                 e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
                 x = 240;
@@ -2935,9 +2949,9 @@ namespace WindowsFormsApplication1
             {
                 act = 0;
                 f = 0;
-                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(280, 50));
-                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(335, 70));
-                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(230, 100));
+                e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 50));
+                e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(355, 70));
+                e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(235, 100));
                 e.Graphics.DrawString("ACTIVITIES REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(270, 130));
                 e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(120, 170));
 
@@ -3206,11 +3220,8 @@ namespace WindowsFormsApplication1
 
                     dgvUpAct.DataSource = dt;
                     dgvUpAct.Columns["activityID"].Visible = false;
-                    dgvUpAct.Columns["Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dgvUpAct.Columns["Position"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvUpAct.Columns["Employee"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvUpAct.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dgvUpAct.Columns["Time Started"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                     conn.Close();
                 }
@@ -3326,6 +3337,11 @@ namespace WindowsFormsApplication1
         private void searchst_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void newOperation_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

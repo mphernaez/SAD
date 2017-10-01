@@ -27,6 +27,8 @@ namespace WindowsFormsApplication1
         private void EditItem_Load(object sender, EventArgs e)
         {
             getStuff();
+
+            if (id > 6) tbdesc.Enabled = false; 
         }
 
         private void getStuff()
@@ -49,7 +51,6 @@ namespace WindowsFormsApplication1
                 msBy.SelectedIndex = msBy.Items.IndexOf(dt.Rows[0]["measuredBy"].ToString());
 
 
-
                 conn.Close();
 
 
@@ -63,26 +64,25 @@ namespace WindowsFormsApplication1
 
         private void updateItem()
         {
-            try
+            if (tbname.Text != "Product Name (Brand)" && tbdesc.Text != "Product Type" && nudmin.Value > 0 && msBy.Text != "Measured By")
             {
-
-                conn.Open();
-
-
-                MySqlCommand comm = new MySqlCommand("UPDATE items SET productName = '" + tbname.Text + "', description = '" + tbdesc.Text + "', minQuantity = " + nudmin.Value + ", measuredBy = '"+msBy.Text+"' WHERE itemID = " + id, conn);
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Item Updated");
-
-
-
-                conn.Close();
-
-
+                try
+                {
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("UPDATE items SET productName = '" + tbname.Text + "', description = '" + tbdesc.Text + "', minQuantity = " + nudmin.Value + ", measuredBy = '" + msBy.Text + "' WHERE itemID = " + id, conn);
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Item Updated");
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    conn.Close();
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
-                conn.Close();
+                MessageBox.Show("Please enter required fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void pictureBox1_Click(object sender, EventArgs e)
