@@ -126,6 +126,7 @@
             this.button26 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Operations = new System.Windows.Forms.Panel();
+            this.searchst = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dgvOperationsView = new System.Windows.Forms.DataGridView();
             this.teamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -201,6 +202,7 @@
             this.eTeamM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlOpView = new System.Windows.Forms.Panel();
+            this.statchoose = new System.Windows.Forms.ComboBox();
             this.dgvOpView = new System.Windows.Forms.DataGridView();
             this.tID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.oID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -937,7 +939,7 @@
             this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Location = new System.Drawing.Point(817, 20);
+            this.button14.Location = new System.Drawing.Point(817, 15);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(55, 55);
             this.button14.TabIndex = 40;
@@ -954,7 +956,7 @@
             this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(889, 20);
+            this.button8.Location = new System.Drawing.Point(889, 15);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(55, 52);
             this.button8.TabIndex = 38;
@@ -972,7 +974,7 @@
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(743, 20);
+            this.button2.Location = new System.Drawing.Point(743, 15);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(55, 55);
             this.button2.TabIndex = 1;
@@ -989,7 +991,7 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(671, 20);
+            this.button1.Location = new System.Drawing.Point(671, 15);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(55, 55);
             this.button1.TabIndex = 0;
@@ -1003,7 +1005,7 @@
             this.label31.BackColor = System.Drawing.Color.Transparent;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(885, 7);
+            this.label31.Location = new System.Drawing.Point(885, 2);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(66, 13);
             this.label31.TabIndex = 56;
@@ -1015,7 +1017,7 @@
             this.label30.BackColor = System.Drawing.Color.Transparent;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(818, 8);
+            this.label30.Location = new System.Drawing.Point(818, 3);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(52, 13);
             this.label30.TabIndex = 55;
@@ -1027,7 +1029,7 @@
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(734, 7);
+            this.label29.Location = new System.Drawing.Point(734, 2);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(72, 13);
             this.label29.TabIndex = 54;
@@ -1039,7 +1041,7 @@
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(668, 7);
+            this.label28.Location = new System.Drawing.Point(668, 2);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(57, 13);
             this.label28.TabIndex = 53;
@@ -1609,20 +1611,38 @@
             // 
             // Operations
             // 
+            this.Operations.Controls.Add(this.searchst);
             this.Operations.Controls.Add(this.label13);
             this.Operations.Controls.Add(this.dgvOperationsView);
-            this.Operations.Location = new System.Drawing.Point(15, 114);
+            this.Operations.Location = new System.Drawing.Point(15, 115);
             this.Operations.Name = "Operations";
             this.Operations.Size = new System.Drawing.Size(982, 412);
             this.Operations.TabIndex = 41;
             this.Operations.Visible = false;
+            // 
+            // searchst
+            // 
+            this.searchst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchst.ForeColor = System.Drawing.Color.Black;
+            this.searchst.FormattingEnabled = true;
+            this.searchst.Items.AddRange(new object[] {
+            "Pending",
+            "OnGoing",
+            "All"});
+            this.searchst.Location = new System.Drawing.Point(734, 14);
+            this.searchst.Name = "searchst";
+            this.searchst.Size = new System.Drawing.Size(231, 28);
+            this.searchst.TabIndex = 90;
+            this.searchst.Text = "Status";
+            this.searchst.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
+            this.searchst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchst_KeyPress);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label13.Location = new System.Drawing.Point(14, 19);
+            this.label13.Location = new System.Drawing.Point(22, 23);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(263, 24);
             this.label13.TabIndex = 89;
@@ -2305,7 +2325,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label4.Location = new System.Drawing.Point(290, 20);
+            this.label4.Location = new System.Drawing.Point(10, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(432, 39);
             this.label4.TabIndex = 0;
@@ -2352,13 +2372,13 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
+            this.DogCatchingOperation.Controls.Add(this.Operations);
+            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.pnlUpAct);
             this.DogCatchingOperation.Controls.Add(this.panelViewAct);
             this.DogCatchingOperation.Controls.Add(this.pnlActivity);
             this.DogCatchingOperation.Controls.Add(this.Edit);
             this.DogCatchingOperation.Controls.Add(this.pnlOpView);
-            this.DogCatchingOperation.Controls.Add(this.Operations);
-            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -2635,7 +2655,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(96)))), ((int)(((byte)(128)))));
-            this.label20.Location = new System.Drawing.Point(16, 27);
+            this.label20.Location = new System.Drawing.Point(22, 23);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(173, 24);
             this.label20.TabIndex = 91;
@@ -2659,7 +2679,7 @@
             this.eTeamM,
             this.eStat});
             this.editOperation.GridColor = System.Drawing.Color.Silver;
-            this.editOperation.Location = new System.Drawing.Point(19, 58);
+            this.editOperation.Location = new System.Drawing.Point(19, 49);
             this.editOperation.Name = "editOperation";
             this.editOperation.ReadOnly = true;
             this.editOperation.RowHeadersVisible = false;
@@ -2719,12 +2739,31 @@
             // 
             // pnlOpView
             // 
+            this.pnlOpView.Controls.Add(this.statchoose);
             this.pnlOpView.Controls.Add(this.dgvOpView);
-            this.pnlOpView.Location = new System.Drawing.Point(14, 116);
+            this.pnlOpView.Location = new System.Drawing.Point(15, 116);
             this.pnlOpView.Name = "pnlOpView";
             this.pnlOpView.Size = new System.Drawing.Size(982, 412);
             this.pnlOpView.TabIndex = 90;
             this.pnlOpView.Visible = false;
+            // 
+            // statchoose
+            // 
+            this.statchoose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statchoose.ForeColor = System.Drawing.Color.Black;
+            this.statchoose.FormattingEnabled = true;
+            this.statchoose.Items.AddRange(new object[] {
+            "Pending",
+            "OnGoing",
+            "Finished",
+            "All"});
+            this.statchoose.Location = new System.Drawing.Point(734, 14);
+            this.statchoose.Name = "statchoose";
+            this.statchoose.Size = new System.Drawing.Size(231, 28);
+            this.statchoose.TabIndex = 83;
+            this.statchoose.Text = "Status";
+            this.statchoose.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.statchoose.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.statchoose_KeyPress);
             // 
             // dgvOpView
             // 
@@ -2744,12 +2783,12 @@
             this.tm,
             this.s});
             this.dgvOpView.GridColor = System.Drawing.Color.Silver;
-            this.dgvOpView.Location = new System.Drawing.Point(19, 36);
+            this.dgvOpView.Location = new System.Drawing.Point(19, 49);
             this.dgvOpView.Name = "dgvOpView";
             this.dgvOpView.ReadOnly = true;
             this.dgvOpView.RowHeadersVisible = false;
             this.dgvOpView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOpView.Size = new System.Drawing.Size(946, 350);
+            this.dgvOpView.Size = new System.Drawing.Size(946, 335);
             this.dgvOpView.TabIndex = 42;
             // 
             // tID
@@ -2832,10 +2871,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
+            this.Controls.Add(this.addEmployee);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
@@ -3098,5 +3137,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tee;
         private System.Windows.Forms.DataGridViewTextBoxColumn tm;
         private System.Windows.Forms.DataGridViewTextBoxColumn s;
+        private System.Windows.Forms.ComboBox statchoose;
+        private System.Windows.Forms.ComboBox searchst;
     }
 }

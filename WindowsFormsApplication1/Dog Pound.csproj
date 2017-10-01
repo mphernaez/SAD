@@ -467,6 +467,8 @@
     <None Include="Resources\exitt.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\dp.png" />
+    <None Include="Resources\dp1.png" />
     <Content Include="Resources\header.png" />
     <None Include="Resources\transaction.png" />
     <None Include="Resources\history.png" />

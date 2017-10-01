@@ -47,7 +47,7 @@ namespace WindowsFormsApplication1
                             com.ExecuteNonQuery();
                             MessageBox.Show("Item Updated");
                             this.Hide();
-                            inv.refreshSO();
+                            inv.refreshSI();
                             
                             tbReason.Text = "";
                             amtOut.Value = 0;
