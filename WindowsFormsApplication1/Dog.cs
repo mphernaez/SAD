@@ -520,17 +520,19 @@ namespace WindowsFormsApplication1
 
         private void tbBreedSearch_TextChanged(object sender, EventArgs e)
         {
-            refreshSearch();  
+            refreshSearch();
+            if(cbGenderSearch.Text != "Gender") refreshSearchWithGender();
         }
 
         private void tbColorSearch_TextChanged(object sender, EventArgs e)
         {
             refreshSearch();
+            if (cbGenderSearch.Text != "Gender") refreshSearchWithGender();
         }
 
         private void cbGenderSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
-            refreshSearch();
+            refreshSearchWithGender();
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -967,6 +969,42 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void refreshSearchWithGender()
+        {
+            char gender;
+            if (cbGenderSearch.SelectedIndex == 0) gender = 'M';
+            else gender = 'F';
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT dogID, gender, breed, color, UCASE(size), otherDesc FROM (dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID) INNER JOIN location ON location.locationID = dogoperation.locationID WHERE breed LIKE '" + tbBreedSearch.Text + "%' AND color LIKE '" + tbColorSearch.Text + "%' AND dogprofile.status = 'unclaimed' AND gender = '"+gender+"' AND dogID NOT IN (SELECT dogID FROM dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND dogprofile.status = 'unclaimed')", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                adp.Fill(dt);
+
+                dgvProfiles.DataSource = dt;
+
+                dgvProfiles.Columns["dogID"].Visible = false;
+                dgvProfiles.Columns["breed"].HeaderText = "Breed";
+                dgvProfiles.Columns["color"].HeaderText = "Color";
+                dgvProfiles.Columns["gender"].HeaderText = "Gender";
+                dgvProfiles.Columns["otherDesc"].HeaderText = "Markings";
+                dgvProfiles.Columns["UCASE(size)"].HeaderText = "Size";
+                dgvProfiles.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvProfiles.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvProfiles.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvProfiles.Columns["UCASE(size)"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvProfiles.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvProfiles.ClearSelection();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+            }
+        }
+
         public void refreshAdoption()
         {
             try
@@ -1175,6 +1213,8 @@ namespace WindowsFormsApplication1
                 claim1++;
                 if (ad > 1000 || dog > 1000)
                 {
+                    ad = ad + 10; dog = dog + 10;
+                    e.Graphics.DrawString("______________________________________________________________________________________________________", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(0, ad));
                     e.HasMorePages = true;
                     noheader1 = true;
                     return;
@@ -1326,6 +1366,8 @@ namespace WindowsFormsApplication1
                 adopt1++;
                 if (ad > 1000 || dog > 1000)
                 {
+                    ad = ad + 10; dog = dog + 10;
+                    e.Graphics.DrawString("______________________________________________________________________________________________________", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(0, ad));
                     e.HasMorePages = true;
                     noheader2 = true;
                     return;
@@ -1357,8 +1399,9 @@ namespace WindowsFormsApplication1
             
             for (int i = 0; i < dteut.Rows.Count && euth1 < dteut.Rows.Count; i++)
             {
-                dog = op + 40; op = op + 40;
-                
+                dog = op + 30; op = op + 30;
+                e.Graphics.DrawString("______________________________________________________________________________________________________", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(0, dog));
+                dog = dog + 30; op = op + 30;
                 e.Graphics.DrawString("Breed: " + dteut.Rows[euth1]["Breed"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, dog));
                 dog = dog + 20;
                 e.Graphics.DrawString("Gender: " + dteut.Rows[euth1]["Gender"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, dog));
@@ -1369,20 +1412,22 @@ namespace WindowsFormsApplication1
                 dog = dog + 20;
                 e.Graphics.DrawString("Markings: " + dteut.Rows[euth1]["Markings"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(100, dog));
                 dog = dog + 20;
-                e.Graphics.DrawString("Location: " + dteut.Rows[euth1]["Location"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, op));
+                e.Graphics.DrawString("Location: " + dteut.Rows[euth1]["Location"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(420, op));
                 op = op + 20;
-                e.Graphics.DrawString("Date Caught: " + dteut.Rows[euth1]["Date Caught"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, op));
+                e.Graphics.DrawString("Date Caught: " + dteut.Rows[euth1]["Date Caught"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(420, op));
                 op = op + 20;
-                e.Graphics.DrawString("Time Caught: " + dteut.Rows[euth1]["Time Caught"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, op));
+                e.Graphics.DrawString("Time Caught: " + dteut.Rows[euth1]["Time Caught"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(420, op));
                 op = op + 20;
-                e.Graphics.DrawString("Euthanized By: " + dteut.Rows[euth1]["Employee"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, op));
+                e.Graphics.DrawString("Euthanized By: " + dteut.Rows[euth1]["Employee"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(420, op));
                 op = op + 20;
-                e.Graphics.DrawString("Date Euthanized: " + dteut.Rows[euth1]["Date Euthanized"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, op));
+                e.Graphics.DrawString("Date Euthanized: " + dteut.Rows[euth1]["Date Euthanized"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(420, op));
                 euth1++;
                 if (op > 1000 || dog > 1000)
                 {
+                    dog = dog + 10; op = op + 10;
+                    e.Graphics.DrawString("______________________________________________________________________________________________________", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(0, dog));
                     e.HasMorePages = true;
-                    noheader3 = false;
+                    noheader3 = true;
                     return;
                 }
                 else

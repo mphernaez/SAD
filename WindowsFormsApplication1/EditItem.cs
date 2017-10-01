@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
         {
             getStuff();
 
-            if (id > 6) tbdesc.Enabled = false; 
+            if (id < 7) tbdesc.Enabled = false; 
         }
 
         private void getStuff()

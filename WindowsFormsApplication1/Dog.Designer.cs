@@ -856,9 +856,9 @@
             this.cbGenderSearch.Items.AddRange(new object[] {
             "Male\t",
             "Female"});
-            this.cbGenderSearch.Location = new System.Drawing.Point(475, 80);
+            this.cbGenderSearch.Location = new System.Drawing.Point(593, 79);
             this.cbGenderSearch.Name = "cbGenderSearch";
-            this.cbGenderSearch.Size = new System.Drawing.Size(89, 30);
+            this.cbGenderSearch.Size = new System.Drawing.Size(118, 30);
             this.cbGenderSearch.TabIndex = 3;
             this.cbGenderSearch.SelectedIndexChanged += new System.EventHandler(this.cbGenderSearch_SelectedIndexChanged);
             this.cbGenderSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGenderSearch_KeyPress);
@@ -867,7 +867,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(421, 94);
+            this.label6.Location = new System.Drawing.Point(539, 93);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 16);
             this.label6.TabIndex = 36;
@@ -878,7 +878,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(258, 94);
+            this.label5.Location = new System.Drawing.Point(312, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 16);
             this.label5.TabIndex = 30;
@@ -896,10 +896,11 @@
             // 
             // tbColorSearch
             // 
-            this.tbColorSearch.Font = new System.Drawing.Font("Trebuchet MS", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbColorSearch.Location = new System.Drawing.Point(298, 82);
+            this.tbColorSearch.AcceptsReturn = true;
+            this.tbColorSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbColorSearch.Location = new System.Drawing.Point(352, 82);
             this.tbColorSearch.Name = "tbColorSearch";
-            this.tbColorSearch.Size = new System.Drawing.Size(112, 28);
+            this.tbColorSearch.Size = new System.Drawing.Size(181, 26);
             this.tbColorSearch.TabIndex = 2;
             this.tbColorSearch.TextChanged += new System.EventHandler(this.tbColorSearch_TextChanged);
             this.tbColorSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbColorSearch_KeyPress);
@@ -926,7 +927,7 @@
             this.tbBreedSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBreedSearch.Location = new System.Drawing.Point(114, 83);
             this.tbBreedSearch.Name = "tbBreedSearch";
-            this.tbBreedSearch.Size = new System.Drawing.Size(135, 26);
+            this.tbBreedSearch.Size = new System.Drawing.Size(186, 26);
             this.tbBreedSearch.TabIndex = 1;
             this.tbBreedSearch.TextChanged += new System.EventHandler(this.tbBreedSearch_TextChanged);
             this.tbBreedSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBreedSearch_KeyPress);
@@ -1843,11 +1844,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.searchDog);
+            this.Controls.Add(this.addDog);
             this.Controls.Add(this.euthanizeDog);
             this.Controls.Add(this.adoptDog);
             this.Controls.Add(this.repclaimpan);
-            this.Controls.Add(this.searchDog);
-            this.Controls.Add(this.addDog);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dog";
