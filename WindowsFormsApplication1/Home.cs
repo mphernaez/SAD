@@ -345,6 +345,11 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseLocation = new Point(-e.X, -e.Y);

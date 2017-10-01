@@ -693,6 +693,9 @@ namespace WindowsFormsApplication1
                 }
                 while (si < dtTrans.Rows.Count)
                 {
+                    x = x + 10;
+                    e.Graphics.DrawString("______________________________________________________________________________________________________", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(0, x));
+                    x = x + 30;
                     e.Graphics.DrawString("Product: " + dtTrans.Rows[si]["Product"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
                     e.Graphics.DrawString("Endorsed By: " + dtTrans.Rows[si]["Endorsed By"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(405, x));
                     x = x + 25;
@@ -703,7 +706,6 @@ namespace WindowsFormsApplication1
 
                     e.Graphics.DrawString("Date: " + dtTrans.Rows[si]["Date"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
                     e.Graphics.DrawString("Product Expiration: " + dtTrans.Rows[si]["Product Expiration"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(405, x));
-                    x = x + 50;
                     si++;
 
                     if (x>1000)
@@ -728,6 +730,9 @@ namespace WindowsFormsApplication1
                 }
                 while (si < dtOut.Rows.Count)
                 {
+                    x = x + 10;
+                    e.Graphics.DrawString("______________________________________________________________________________________________________" , new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(0, x));
+                    x = x + 30;
                     e.Graphics.DrawString("Product: " + dtOut.Rows[si]["Product"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
                     e.Graphics.DrawString("Deducted By: " + dtOut.Rows[si]["Deducted By"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(405, x));
                     x = x + 25;
@@ -737,7 +742,7 @@ namespace WindowsFormsApplication1
                     x = x + 25;
 
                     e.Graphics.DrawString("Date: " + dtOut.Rows[si]["Date"], new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, x));
-                    x = x + 50;
+                    
                     si++;
 
                     if (x > 1000)
@@ -849,14 +854,15 @@ namespace WindowsFormsApplication1
                     conn.Close();
                     MessageBox.Show(ex.ToString());
                 }
-                refreshRequest();
-                cbEmpReq.Items.Clear();
-                cbEmpReq.Text = "Endorser";
+                
                 printDocument4.DefaultPageSettings.Landscape = false;
                 PrintPreviewDialog dlg = new PrintPreviewDialog();
                 dlg.Document = printDocument4;
                 ((Form)dlg).WindowState = FormWindowState.Maximized;
                 dlg.ShowDialog();
+                refreshRequest();
+                cbEmpReq.Items.Clear();
+                cbEmpReq.Text = "Endorser";
             }
             else
             {
@@ -1051,7 +1057,7 @@ namespace WindowsFormsApplication1
             xy = xy + 50;
             e.Graphics.DrawString("___________________________", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, xy));
             xy = xy + 30;
-            e.Graphics.DrawString(empret.Text, new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, xy));
+            e.Graphics.DrawString(empret.Text, new Font("Arial", 18, FontStyle.Regular), Brushes.Black, new Point(500, xy));
         }
 
         private void printDocument3_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -1071,19 +1077,19 @@ namespace WindowsFormsApplication1
 
             e.Graphics.DrawString("Product Name", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(50, 240));
             e.Graphics.DrawString("Product Description", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(370, 240));
-            e.Graphics.DrawString("Current Quantity", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(630, 240));
+            e.Graphics.DrawString("Current Quantity", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(625, 240));
             int xy = 270;
             for (int x = 0; x < dtReq.Rows.Count; x++)
             {
-                e.Graphics.DrawString(dtReq.Rows[x]["Product Name"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, 240));
-                e.Graphics.DrawString(dtReq.Rows[x]["Product Description"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(370, 240));
-                e.Graphics.DrawString("Current Quantity", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(630, 240));
+                e.Graphics.DrawString(dtReq.Rows[x]["Product Name"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(55, xy));
+                e.Graphics.DrawString(dtReq.Rows[x]["Product Description"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(375, xy));
+                e.Graphics.DrawString(dtReq.Rows[x]["Current Quantity"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(630, xy));
                 xy = xy + 25;
             }
             xy = xy + 50;
             e.Graphics.DrawString("__________________________", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, xy));
             xy = xy + 30;
-            e.Graphics.DrawString(cbEmpReq.Text, new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, xy));
+            e.Graphics.DrawString(cbEmpReq.Text, new Font("Arial", 18, FontStyle.Regular), Brushes.Black, new Point(500, xy));
         }
     }
 }

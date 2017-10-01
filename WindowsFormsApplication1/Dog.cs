@@ -1125,33 +1125,36 @@ namespace WindowsFormsApplication1
                 e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
                 e.Graphics.DrawString("Claimer", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
                 e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(360, 220));
-                ad = 220; dog = 220;
+                ad = 240; dog = 240;
             }
             else
             {
                 e.Graphics.DrawString("Claimer", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 40));
                 e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(375, 40));
-                ad = 40; dog = 40;
+                ad = 60; dog = 60;
             }
 
             for (int i = 0; i < dtclaim.Rows.Count && claim1 < dtclaim.Rows.Count; i++)
             {
+                
                 int len = dtclaim.Rows[claim1]["Address"].ToString().Length;
                 string address = dtclaim.Rows[claim1]["Address"].ToString();
-                ad = dog + 40; dog = dog + 40;
+                ad = dog + 10; dog = dog + 10;
+                e.Graphics.DrawString("______________________________________________________________________________________________________", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(0, ad));
+                ad = ad + 30; dog = dog + 30;
                 e.Graphics.DrawString(dtclaim.Rows[claim1]["Claimer"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
                 ad = ad + 20;
                 e.Graphics.DrawString("Contact Number: " + dtclaim.Rows[claim1]["Contact Number"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
                 ad = ad + 20;
                 e.Graphics.DrawString("Address: ", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
-                ad = ad + 20;
+                
                 int y = 0; //35
                 Boolean notdone = true;
                 while (notdone)
                 {
                     if (len < 1) notdone = false;
-                    else if (len < 25) e.Graphics.DrawString(address.Substring(y, len), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, ad));
-                    else e.Graphics.DrawString(address.Substring(y, 25) + '-', new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, ad));
+                    else if (len < 25) e.Graphics.DrawString(address.Substring(y, len), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(110, ad));
+                    else e.Graphics.DrawString(address.Substring(y, 25) + '-', new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(110, ad));
                     len = len - 25;
                     y = y + 25;
                     ad = ad + 20;
@@ -1168,7 +1171,7 @@ namespace WindowsFormsApplication1
                 dog = dog + 20;
                 e.Graphics.DrawString("Gender: " + dtclaim.Rows[claim1]["Gender"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(360, dog));
                 e.Graphics.DrawString("Markings: " + dtclaim.Rows[claim1]["Markings"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(535, dog));
-                dog = dog + 20;
+                
                 claim1++;
                 if (ad > 1000 || dog > 1000)
                 {
@@ -1271,36 +1274,38 @@ namespace WindowsFormsApplication1
                 e.Graphics.DrawString("Republic of the Philippines", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 50));
                 e.Graphics.DrawString("City of Davao", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(355, 70));
                 e.Graphics.DrawString("DAVAO CITY DOG POUND", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(235, 100));
-                e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, new Point(200, 130));
-                e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Times New Roman", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+                e.Graphics.DrawString("ADOPTED DOGS SUMMARY REPORT", new Font("Arial", 18, FontStyle.Bold), Brushes.Black, new Point(185, 130));
+                e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(160, 170));
                 e.Graphics.DrawString("Adoptor", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 220));
                 e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(360, 220));
-                ad = 220; dog = 220;
+                ad = 240; dog = 240;
             }
             else
             {
                 e.Graphics.DrawString("Adoptor", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(50, 40));
                 e.Graphics.DrawString("Dog", new Font("Arial", 16, FontStyle.Underline), Brushes.Black, new Point(375, 40));
-                ad = 40; dog = 40;
+                ad = 60; dog = 60;
             }
 
             for (int i = 0; i < dtadopt.Rows.Count && adopt1 < dtadopt.Rows.Count; i++)
             {
                 string address = dtadopt.Rows[adopt1]["Address"].ToString();
                 int len = address.Length;
-                ad = dog + 50; dog = dog + 50;
+                ad = dog + 10; dog = dog + 10;
+                e.Graphics.DrawString("______________________________________________________________________________________________________", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(0, ad));
+                ad = dog + 30; dog = dog + 30;
                 e.Graphics.DrawString(dtadopt.Rows[adopt1]["Adopter"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
                 ad = ad + 20;
                 e.Graphics.DrawString("Contact Number: "+dtadopt.Rows[adopt1]["Contact Number"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
                 ad = ad + 20;
                 e.Graphics.DrawString("Address: ", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(50, ad));
-                ad = ad + 20;
+                
                 int y = 0; //35
                 Boolean notdone = true;
                 while (notdone) {
                     if (len < 1) notdone = false;
-                    else if(len < 25) e.Graphics.DrawString(address.Substring(y, len), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, ad));
-                    else e.Graphics.DrawString(address.Substring(y, 25) + '-', new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, ad));
+                    else if(len < 25) e.Graphics.DrawString(address.Substring(y, len), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(110, ad));
+                    else e.Graphics.DrawString(address.Substring(y, 25) + '-', new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(110, ad));
                     len = len - 25;
                     y = y + 25;
                     ad = ad + 20;
@@ -1317,7 +1322,7 @@ namespace WindowsFormsApplication1
                 dog = dog + 20;
                 e.Graphics.DrawString("Gender: "+dtadopt.Rows[adopt1]["Gender"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(360, dog));
                 e.Graphics.DrawString("Markings: " + dtadopt.Rows[adopt1]["Markings"].ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(535, dog));
-                dog = dog + 10;
+                
                 adopt1++;
                 if (ad > 1000 || dog > 1000)
                 {

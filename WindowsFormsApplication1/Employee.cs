@@ -544,8 +544,6 @@ namespace WindowsFormsApplication1
 
         private void button13_Click(object sender, EventArgs e)
         {
-
-
             if (editemployeeID != 0)
             {
                 
@@ -576,6 +574,7 @@ namespace WindowsFormsApplication1
                     emp.tbcontactNumber.Text = dt.Rows[0]["contactNumber"].ToString();
                     emp.id = int.Parse(dt.Rows[0]["personID"].ToString());
                     emp.tbaddress.Text = dt.Rows[0]["address"].ToString();
+                    emp.pos = dt.Rows[0]["position"].ToString();
                     if (dt.Rows[0]["position"].ToString() == "Admin")
                     {
                         comm = new MySqlCommand("SELECT username, password FROM admin WHERE employeeID = " + editemployeeID, conn);
@@ -592,8 +591,8 @@ namespace WindowsFormsApplication1
                     }
                     
                     conn.Close();
-                    emp.ShowDialog();
                     emp.employeeID = this.editemployeeID;
+                    emp.ShowDialog();
                     emp.TopMost = true;
                 }
                 catch (Exception ex)

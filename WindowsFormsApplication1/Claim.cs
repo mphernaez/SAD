@@ -153,8 +153,8 @@ namespace WindowsFormsApplication1
                 dt = new DataTable();
                 adp.Fill(dt);
 
-                int datediff = 50 * int.Parse(dt.Rows[0]["datediff"].ToString());
-                int bayad = 250 + datediff;
+                datediff = 50 * int.Parse(dt.Rows[0]["datediff"].ToString());
+                bayad = 250 + datediff;
                 labelPayment.Text = bayad.ToString();
                 if (datediff / 50 == 1) lblRemarks.Text = "*250 + (50 x " + datediff.ToString() + " day impounded)";
                 else if (datediff / 50 > 1) lblRemarks.Text = "*P 250 + (P 50 x " + datediff / 50 + " days impounded)";

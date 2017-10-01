@@ -15,6 +15,8 @@ namespace WindowsFormsApplication1
     {
         public int id;
         public int employeeID;
+        public string pos;
+        Boolean change;
         public Employee emp { get; set; }
         public MySqlConnection conn = new MySqlConnection();
         Employee employ;
@@ -58,9 +60,14 @@ namespace WindowsFormsApplication1
                     comm = new MySqlCommand("UPDATE employee SET position = '" + position + "' WHERE employeeID = " + id, conn);
                     comm.ExecuteNonQuery();
                     
-                    if(cbposition.Text == "Admin")
+                    if(cbposition.Text == "Admin" && change == false)
                     {
                         comm = new MySqlCommand("UPDATE admin SET username = '" + tbUserEdit.Text + "', password = '" + tbPassEdit.Text + "' WHERE employeeID = " + employeeID, conn);
+                        comm.ExecuteNonQuery();
+                    }
+                    else if(cbposition.Text == "Admin" && change == true)
+                    {
+                        comm = new MySqlCommand("INSERT INTO admin(username, password, employeeID) VALUES('" + tbUserEdit.Text + "', '" + tbPassEdit.Text + "', " + employeeID + ")", conn);
                         comm.ExecuteNonQuery();
                     }
 
@@ -104,7 +111,9 @@ namespace WindowsFormsApplication1
         {
             if(cbposition.Text != "Admin") pnlAdminEdit.Visible = false;
             else pnlAdminEdit.Visible = true;
-            
+
+            if (pos != cbposition.Text) change = true;
+            else change = false;
         }
 
         private void cbgender_KeyPress(object sender, KeyPressEventArgs e)
