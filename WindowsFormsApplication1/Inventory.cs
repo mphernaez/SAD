@@ -689,7 +689,8 @@ namespace WindowsFormsApplication1
             {
                 if (noheader1 == false) {
                     e.Graphics.DrawString("Stock-In REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(290, 130));
-                    x = 180;
+                    e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+                    x = 200;
                 }
                 while (si < dtTrans.Rows.Count)
                 {
@@ -726,7 +727,8 @@ namespace WindowsFormsApplication1
                 {
 
                     e.Graphics.DrawString("Stock-Out REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(290, 130));
-                    x = 180;
+                    e.Graphics.DrawString("For the Month of  " + m1.Text + " " + d1.Text + ", " + y1.Text + " - " + m2.Text + " " + d2.Text + ", " + y2.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(130, 170));
+                    x = 200;
                 }
                 while (si < dtOut.Rows.Count)
                 {
