@@ -689,7 +689,7 @@ namespace WindowsFormsApplication1
             {
                 if (noheader1 == false) {
                     e.Graphics.DrawString("Stock-In REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(290, 130));
-                    x = 220;
+                    x = 180;
                 }
                 while (si < dtTrans.Rows.Count)
                 {
@@ -726,7 +726,7 @@ namespace WindowsFormsApplication1
                 {
 
                     e.Graphics.DrawString("Stock-Out REPORT", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(290, 130));
-                    x = 220;
+                    x = 180;
                 }
                 while (si < dtOut.Rows.Count)
                 {
