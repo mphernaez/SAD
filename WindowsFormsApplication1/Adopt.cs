@@ -112,11 +112,11 @@ namespace WindowsFormsApplication1
                         if (vaccine == 1)
                         {
                             
-                            MySqlCommand commm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Vaccine'", conn);
+                            MySqlCommand commm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Vaccine' OR description = 'Syringe'", conn);
                             MySqlDataAdapter adpp = new MySqlDataAdapter(commm);
                             DataTable dtt = new DataTable();
                             adpp.Fill(dtt);
-                            if (int.Parse(dtt.Rows[0]["quantity"].ToString()) > 0) {
+                            if (int.Parse(dtt.Rows[0]["quantity"].ToString()) > 0 && int.Parse(dtt.Rows[1]["quantity"].ToString()) > 0) {
                                 adopt();
                                 comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Vaccine'", conn);
                                 comm.ExecuteNonQuery();
@@ -149,7 +149,7 @@ namespace WindowsFormsApplication1
                             }
                             else
                             {
-                                MessageBox.Show("Vaccine Quantity is 0. Cannot Vaccinate Dog", "Running out of vaccine", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Running Out of Vaccine/Syringe. Cannot Vaccinate Dog", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else

@@ -1037,18 +1037,18 @@ namespace WindowsFormsApplication1
                 {
                     if (statchoose.SelectedIndex == 0)
                     {
-                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status = 'Pending' ORDER BY status DESC, date DESC, timeStart", conn);
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status = 'Pending' AND DATEDIFF(NOW(), SUBSTRING(date, 1, 11)) <= 60 ORDER BY status DESC, date DESC, timeStart", conn);
                     }
                     else if (statchoose.SelectedIndex == 1)
                     {
-                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status = 'OnGoing' ORDER BY status DESC, date DESC, timeStart", conn);
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status = 'OnGoing' AND DATEDIFF(NOW(), SUBSTRING(date, 1, 11)) <= 60 ORDER BY status DESC, date DESC, timeStart", conn);
                     } else if(statchoose.SelectedIndex == 2)
                     {
-                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status = 'Finished' ORDER BY status DESC, date DESC, timeStart", conn);
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE status = 'Finished' AND DATEDIFF(NOW(), SUBSTRING(date, 1, 11)) <= 60 ORDER BY status DESC, date DESC, timeStart", conn);
                     }
                     else
                     {
-                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID ORDER BY status DESC, date DESC, timeStart", conn);
+                        comm = new MySqlCommand("SELECT teamID, operationID, SUBSTRING(date, 1, 11) as date, timeStart, timeEnd, description, status FROM dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE DATEDIFF(NOW(), SUBSTRING(date, 1, 11)) <= 60 ORDER BY status DESC, date DESC, timeStart", conn);
                     }
                 }
                 else
@@ -2506,14 +2506,14 @@ namespace WindowsFormsApplication1
                 MySqlCommand comm = new MySqlCommand("SELECT CONCAT(lastname, ', ',firstname, ' ', SUBSTRING(middlename, 1, 1), '.') AS Name, "
                                                     +"CONCAT(items.productName, ' (', items.description, ')') AS Product, "
                                                     + "CONCAT(stocktransaction.quantity, ' (', items.measuredBy, ')') AS 'Used', "
-                                                    + "activity.type AS Activity, activity.date AS Date, "
+                                                    + "activity.type AS Activity, CONCAT(YEAR(activity.date), '-', MONTH(activity.date), '-', DAY(activity.date)) AS Date, "
                                                     + "CONCAT(activity.timeStart, ' - ', activity.timeEnd) AS 'Time Ended', "
                                                     + "status AS Status "
                                                     + "FROM profile "
                                                     + "INNER JOIN activity ON activity.employeeID = profile.personID "
                                                     + "INNER JOIN stocktransaction ON stocktransaction.date = activity.date "
                                                     + "INNER JOIN items ON stocktransaction.stockID = items.itemID "
-                                                    + "WHERE activity.status = 'Finished' OR activity.status = 'Cancelled' "
+                                                    + "WHERE activity.status = 'Finished' OR activity.status = 'Cancelled' AND DATEDIFF(NOW(), SUBSTRING(activity.date, 1, 11)) <= 60 "
                                                     + "GROUP BY activity.activityID "
                                                     + "ORDER BY activity.date DESC, activity.timeStart, activity.timeEnd", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);

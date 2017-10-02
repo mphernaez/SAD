@@ -336,41 +336,51 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-
-                    MySqlCommand comm = new MySqlCommand("UPDATE dogprofile SET dogprofile.status = 'euthanized' WHERE dogID = " + dogID, conn);
-                    comm.ExecuteNonQuery();
-
-
-                    comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Euthanasia Injection'", conn);
-                    comm.ExecuteNonQuery();
-                    comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Syringe'", conn);
-                    comm.ExecuteNonQuery();
-                    string date = DateTime.Now.ToString("yyyy-MM-dd");
-
-                    comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, type, employeeID) VALUES(2, 1, '" + date + "', 'Euthanasia', 'Out', " + empids[cbEmps.SelectedIndex] + ")", conn);
-                    comm.ExecuteNonQuery();
-
-                    comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, type, vaccine) VALUES("+ empids[cbEmps.SelectedIndex] + ", "+dogID+", '"+date+"', 0, 'euthanize', 1)", conn);
-                    comm.ExecuteNonQuery();
-
-                    comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('" + date + "', " + empids[cbEmps.SelectedIndex] + ", 'Euthanasia' )", conn);
-                    comm.ExecuteNonQuery();
-                    String messbox = "";
-                    string nl = Environment.NewLine;
-                    comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Euthanasia Injection'", conn);
-                    MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
+                    MySqlCommand commm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Euthanasia Injection' OR description = 'Syringe'", conn);
+                    MySqlDataAdapter adptt = new MySqlDataAdapter(commm);
                     DataTable dtt = new DataTable();
-                    adpt.Fill(dtt);
-                    comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Syringe'", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dttt = new DataTable();
-                    adp.Fill(dttt);
+                    adptt.Fill(dtt);
+                    if (int.Parse(dtt.Rows[0]["quantity"].ToString()) > 0 && int.Parse(dtt.Rows[0]["quantity"].ToString()) > 0) {
+                        MySqlCommand comm = new MySqlCommand("UPDATE dogprofile SET dogprofile.status = 'euthanized' WHERE dogID = " + dogID, conn);
+                        comm.ExecuteNonQuery();
 
-                    messbox = "Successfully Euthanized Dog. " + nl + "Injection for Euthanasia Quantity is now: " + dtt.Rows[0]["quantity"].ToString() + nl + "Syringe Quantity is now: " + dttt.Rows[0]["quantity"].ToString();
+                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Euthanasia Injection'", conn);
+                        comm.ExecuteNonQuery();
 
-                    MessageBox.Show(messbox);
-                    conn.Close();
-                    refreshArchive();
+                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Syringe'", conn);
+                        comm.ExecuteNonQuery();
+
+                        string date = DateTime.Now.ToString("yyyy-MM-dd");
+
+                        comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, type, employeeID) VALUES(2, 1, '" + date + "', 'Euthanasia', 'Out', " + empids[cbEmps.SelectedIndex] + ")", conn);
+                        comm.ExecuteNonQuery();
+
+                        comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, type, vaccine) VALUES(" + empids[cbEmps.SelectedIndex] + ", " + dogID + ", '" + date + "', 0, 'euthanize', 1)", conn);
+                        comm.ExecuteNonQuery();
+
+                        comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('" + date + "', " + empids[cbEmps.SelectedIndex] + ", 'Euthanasia' )", conn);
+                        comm.ExecuteNonQuery();
+                        String messbox = "";
+                        string nl = Environment.NewLine;
+                        comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Euthanasia Injection'", conn);
+                        MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
+                        DataTable dtttt = new DataTable();
+                        adpt.Fill(dtttt);
+                        comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Syringe'", conn);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                        DataTable dttt = new DataTable();
+                        adp.Fill(dttt);
+
+                        messbox = "Successfully Euthanized Dog. " + nl + "Injection for Euthanasia Quantity is now: " + dtttt.Rows[0]["quantity"].ToString() + nl + "Syringe Quantity is now: " + dttt.Rows[0]["quantity"].ToString();
+
+                        MessageBox.Show(messbox);
+                        conn.Close();
+                        refreshArchive();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Running Out of Euthanasia Injection/Syringe. Cannot Euthanize Dog", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -470,41 +480,50 @@ namespace WindowsFormsApplication1
                 try
                 {
                     conn.Open();
-
-                    MySqlCommand comm = new MySqlCommand("UPDATE dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID SET dogprofile.status = 'euthanized' WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND dogprofile.status = 'unclaimed'", conn);
-                    comm.ExecuteNonQuery();
-                    int num = dgvArchive.Rows.Count;
-                    for (int i = 0; i < num; i++)
-                    {
-                        int dogid = int.Parse(dgvArchive.Rows[i].Cells["dogID"].Value.ToString());
-                        comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, type, vaccine) VALUES(" + empids[cbEmps.SelectedIndex] + ", " + dogid + ", '" + DateTime.Now.ToString("yyyy-MM-dd") + "', 0, 'euthanize', 1)", conn);
-                        comm.ExecuteNonQuery();
-                    }
-                    comm = new MySqlCommand("UPDATE items SET quantity=quantity-" + num + " WHERE description = 'Euthanasia Injection'", conn);
-                    comm.ExecuteNonQuery();
-                    comm = new MySqlCommand("UPDATE items SET quantity=quantity-" + num + " WHERE description = 'Syringe'", conn);
-                    comm.ExecuteNonQuery();
-                    string date = DateTime.Now.ToString("yyyy-MM-dd");
-                    comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, type, employeeID) VALUES(2, " + num + ", '" + date + "', 'Euthanasia', 'Out', " + empids[cbEmps.SelectedIndex] + ")", conn);
-                    comm.ExecuteNonQuery();
-                    comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('" + date + "', " + empids[cbEmps.SelectedIndex] + ", 'Euthanasia' )", conn);
-                    comm.ExecuteNonQuery();
-                    String messbox = "";
-                    string nl = Environment.NewLine;
-                    comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Euthanasia Injection'", conn);
-                    MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
+                    MySqlCommand commm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Euthanasia Injection' OR description = 'Syringe'", conn);
+                    MySqlDataAdapter adptt = new MySqlDataAdapter(commm);
                     DataTable dtt = new DataTable();
-                    adpt.Fill(dtt);
-                    comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Syringe'", conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    DataTable dttt = new DataTable();
-                    adp.Fill(dttt);
+                    adptt.Fill(dtt);
+                    if (int.Parse(dtt.Rows[0]["quantity"].ToString()) > dgvArchive.Rows.Count && int.Parse(dtt.Rows[1]["quantity"].ToString()) > dgvArchive.Rows.Count) {
+                        MySqlCommand comm = new MySqlCommand("UPDATE dogprofile INNER JOIN dogoperation ON dogoperation.operationID = dogprofile.operationID SET dogprofile.status = 'euthanized' WHERE date <= DATE_ADD(NOW(), INTERVAL -3 DAY) AND dogprofile.status = 'unclaimed'", conn);
+                        comm.ExecuteNonQuery();
+                        int num = dgvArchive.Rows.Count;
+                        for (int i = 0; i < num; i++)
+                        {
+                            int dogid = int.Parse(dgvArchive.Rows[i].Cells["dogID"].Value.ToString());
+                            comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, type, vaccine) VALUES(" + empids[cbEmps.SelectedIndex] + ", " + dogid + ", '" + DateTime.Now.ToString("yyyy-MM-dd") + "', 0, 'euthanize', 1)", conn);
+                            comm.ExecuteNonQuery();
+                        }
+                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-" + num + " WHERE description = 'Euthanasia Injection'", conn);
+                        comm.ExecuteNonQuery();
+                        comm = new MySqlCommand("UPDATE items SET quantity=quantity-" + num + " WHERE description = 'Syringe'", conn);
+                        comm.ExecuteNonQuery();
+                        string date = DateTime.Now.ToString("yyyy-MM-dd");
+                        comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, type, employeeID) VALUES(2, " + num + ", '" + date + "', 'Euthanasia', 'Out', " + empids[cbEmps.SelectedIndex] + ")", conn);
+                        comm.ExecuteNonQuery();
+                        comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('" + date + "', " + empids[cbEmps.SelectedIndex] + ", 'Euthanasia' )", conn);
+                        comm.ExecuteNonQuery();
+                        String messbox = "";
+                        string nl = Environment.NewLine;
+                        comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Euthanasia Injection'", conn);
+                        MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
+                        DataTable dtttt = new DataTable();
+                        adpt.Fill(dtttt);
+                        comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Syringe'", conn);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                        DataTable dttt = new DataTable();
+                        adp.Fill(dttt);
 
-                    messbox = "Successfully Euthanized All. " + nl + "Injection for Euthanasia Quantity is now: " + dtt.Rows[0]["quantity"].ToString() + nl + "Syringe Quantity is now: "+dttt.Rows[0]["quantity"].ToString();
-                    
-                    MessageBox.Show(messbox);
-                    conn.Close();
-                    refreshArchive();
+                        messbox = "Successfully Euthanized All. " + nl + "Injection for Euthanasia Quantity is now: " + dtttt.Rows[0]["quantity"].ToString() + nl + "Syringe Quantity is now: " + dttt.Rows[0]["quantity"].ToString();
+
+                        MessageBox.Show(messbox);
+                        conn.Close();
+                        refreshArchive();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Running Out of Euthanasia Injection/Syringe. Cannot Euthanize Dog", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -861,7 +880,7 @@ namespace WindowsFormsApplication1
             {
                 conn.Open();
 
-                MySqlCommand comm = new MySqlCommand("SELECT operationID, CONCAT(timeStart, ' - ', timeEnd) AS time, MONTH(date) as month, YEAR(date) as year, DAY(date) as day, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID WHERE status = 'Finished' AND MONTH(date) = MONTH(NOW()) ORDER BY date ", conn);
+                MySqlCommand comm = new MySqlCommand("SELECT operationID, CONCAT(timeStart, ' - ', timeEnd) AS time, MONTH(date) as month, YEAR(date) as year, DAY(date) as day, description FROM dogoperation INNER JOIN location on dogoperation.locationID = location.locationID WHERE status = 'Finished' AND DATEDIFF(NOW(), SUBSTRING(date, 1, 11)) <= 60 ORDER BY date ", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 System.Data.DataTable dt = new System.Data.DataTable();
                 adp.Fill(dt);
