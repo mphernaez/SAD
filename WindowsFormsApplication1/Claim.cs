@@ -37,7 +37,7 @@ namespace WindowsFormsApplication1
         {
             if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text != "" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "" && cbMonth.Text != "" && tbDay.Text != "" && tbYear.Text != "Year")
             {
-                if (checkbox.Checked && cbVaccEmp.Text == "")
+                if (checkbox.Checked && cbVaccEmp.Text == "Employee")
                 {
                     MessageBox.Show("Please enter required fields");
                 }
@@ -78,7 +78,7 @@ namespace WindowsFormsApplication1
                                 MySqlDataAdapter adptt = new MySqlDataAdapter(comm);
                                 DataTable dtttt = new DataTable();
                                 adptt.Fill(dtttt);
-                                int quantity = int.Parse(dtt.Rows[0]["quantity"].ToString());
+                                int quantity = int.Parse(dtttt.Rows[0]["quantity"].ToString());
                                 messbox = "Successfully Claimed and Vaccinated!" + nl + "Vaccine Quantity is now: " + quantity.ToString();
                                 comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Syringe'", conn);
                                 MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
@@ -212,7 +212,7 @@ namespace WindowsFormsApplication1
 
             e.Graphics.DrawString("Davao City Dog Pound", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(25, 100));
             e.Graphics.DrawString("Claimer's Details", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(25, 140));
-            e.Graphics.DrawString("Claimer's Name: " + tbfname.Text + tblname.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 180));
+            e.Graphics.DrawString("Claimer's Name: " + tbfname.Text  + " " + tbmname.Text + " " + tblname.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 180));
             e.Graphics.DrawString("Contact Number: " + tbnumber.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 200));
             e.Graphics.DrawString("Birthdate: " + cbMonth.Text + " " + tbDay.Text + "," + tbYear.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 220));
             e.Graphics.DrawString("Address: " + tbadd.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 240));
@@ -342,6 +342,11 @@ namespace WindowsFormsApplication1
         private void tblname_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !((Keys)e.KeyChar == Keys.Space) && !((Keys)e.KeyChar == Keys.Back);
+        }
+
+        private void tbnumber_TextChanged(object sender, EventArgs e)
+        {
+            tbnumber.MaxLength = 11;
         }
 
         private void refreshEmps()

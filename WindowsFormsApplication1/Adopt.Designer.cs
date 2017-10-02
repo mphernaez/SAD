@@ -437,6 +437,7 @@
             this.tbnumber.Name = "tbnumber";
             this.tbnumber.Size = new System.Drawing.Size(158, 26);
             this.tbnumber.TabIndex = 25;
+            this.tbnumber.TextChanged += new System.EventHandler(this.tbnumber_TextChanged);
             this.tbnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbYear_KeyPress);
             // 
             // tbIDnum
@@ -558,6 +559,7 @@
             this.printPreviewDialogAdt.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogAdt.Icon")));
             this.printPreviewDialogAdt.Name = "printPreviewDialogAdt";
             this.printPreviewDialogAdt.Visible = false;
+            this.printPreviewDialogAdt.Load += new System.EventHandler(this.printPreviewDialogAdt_Load_1);
             // 
             // printDocumentAdt
             // 

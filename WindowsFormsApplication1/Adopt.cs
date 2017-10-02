@@ -79,89 +79,89 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
 
+            String fname = tbfname.Text;
+            String mname = tbmname.Text;
+            String lname = tblname.Text;
+            String add = tbadd.Text;
+            String idnum = tbIDnum.Text;
+            String idtype = tbIDtype.Text;
+            String num = tbnumber.Text;
+            String date = DateTime.Now.ToString("yyyy-MM-dd");
+            String month = (cbMonth.SelectedIndex + 1).ToString();
+            String day = tbDay.Text;
+            String year = tbDay.Text;
+            String bday = year + '-' + month + '-' + day;
             if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text != "" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "" && cbMonth.Text != "" && tbDay.Text != "" && tbYear.Text != "Year")
             {
-                if (cbVaccine.Checked && cbVaccEmp.Text == "")
+                if (cbVaccine.Checked && cbVaccEmp.Text == "Employee")
                 {
                     MessageBox.Show("Please enter required fields");
                 }
                 else
                 {
-                    String fname = tbfname.Text;
-                    String mname = tbmname.Text;
-                    String lname = tblname.Text;
-                    String add = tbadd.Text;
-                    String idnum = tbIDnum.Text;
-                    String idtype = tbIDtype.Text;
-                    String num = tbnumber.Text;
-                    String date = DateTime.Now.ToString("yyyy-MM-dd");
-                    String month = (cbMonth.SelectedIndex + 1).ToString();
-                    String day = tbDay.Text;
-                    String year = tbDay.Text;
-                    String bday = year + '-' + month + '-' + day;
                     int vaccine = 0;
                     if (cbVaccine.Checked)
                     {
                         vaccine = 1;
                     }
-
                     try
                     {
                         conn.Open();
-                        MySqlCommand comm = new MySqlCommand("INSERT INTO profile(firstname, middlename, lastname, contactNumber, address, birthdate) VALUES('" + fname + "', '" + mname + "','" + lname + "', '" + num + "', '" + add + "', '" + bday + "')", conn);
-                        comm.ExecuteNonQuery();
-
-                        comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);
-                        MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                        DataTable dt = new DataTable();
-                        adp.Fill(dt);
-
-                        int personID = int.Parse(dt.Rows[0]["MAX(personID)"].ToString());
-
-                        comm = new MySqlCommand("INSERT INTO client(personID, validIDType, validIDNumber) VALUES(" + personID + ", '" + idtype + "', '" + idnum + "')", conn);
-                        comm.ExecuteNonQuery();
-
-                        comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, vaccine, type) VALUES(" + personID + ", " + dogID + ", '" + date + "', " + "0" + ", " + vaccine + ", '" + "adopt" + "')", conn);
-                        comm.ExecuteNonQuery();
-
-                        comm = new MySqlCommand("UPDATE dogprofile SET status = 'adopted' WHERE dogID = " + dogID, conn);
-                        comm.ExecuteNonQuery();
-                        string messbox;
+                        MySqlCommand comm;
+                        string messbox = "";
                         if (vaccine == 1)
                         {
-                            comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Vaccine'", conn);
-                            comm.ExecuteNonQuery();
-                            comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Syringe'", conn);
-                            comm.ExecuteNonQuery();
-                            string datenow = DateTime.Now.ToString("yyyy-MM-dd");
-                            comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, employeeID, type) VALUES(1, 1, '" + datenow + "', 'Adopt', " + empids[cbVaccEmp.SelectedIndex] + ", 'Out')", conn);
-                            comm.ExecuteNonQuery();
-                            comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, employeeID, type) VALUES(5, 1, '" + datenow + "', 'Adopt', " + empids[cbVaccEmp.SelectedIndex] + ", 'Out')", conn);
-                            comm.ExecuteNonQuery();
-                            comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('" + date + "', " + empids[cbVaccEmp.SelectedIndex] + ", 'Vaccination')", conn);
-                            comm.ExecuteNonQuery();
-                            comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Vaccine'", conn);
-                            MySqlDataAdapter adpp = new MySqlDataAdapter(comm);
+                            
+                            MySqlCommand commm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Vaccine'", conn);
+                            MySqlDataAdapter adpp = new MySqlDataAdapter(commm);
                             DataTable dtt = new DataTable();
                             adpp.Fill(dtt);
-                            string nl = Environment.NewLine;
-                            int quantity = int.Parse(dtt.Rows[0]["quantity"].ToString());
-                            messbox = "Successfully Adopted and Vaccinated!" + nl + "Vaccine Quantity is now: " + quantity.ToString();
-                            comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Syringe'", conn);
-                            MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
-                            DataTable dttt = new DataTable();
-                            adpt.Fill(dttt);
-                            int quan = int.Parse(dttt.Rows[0]["quantity"].ToString());
-                            messbox = messbox + nl + "Syringe Quantity is now: " + quan.ToString();
+                            if (int.Parse(dtt.Rows[0]["quantity"].ToString()) > 0) {
+                                adopt();
+                                comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Vaccine'", conn);
+                                comm.ExecuteNonQuery();
+                                comm = new MySqlCommand("UPDATE items SET quantity=quantity-1 WHERE description = 'Syringe'", conn);
+                                comm.ExecuteNonQuery();
+                                string datenow = DateTime.Now.ToString("yyyy-MM-dd");
+                                comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, employeeID, type) VALUES(1, 1, '" + datenow + "', 'Adopt', " + empids[cbVaccEmp.SelectedIndex] + ", 'Out')", conn);
+                                comm.ExecuteNonQuery();
+                                comm = new MySqlCommand("INSERT INTO stocktransaction(stockID, quantity, date, reason, employeeID, type) VALUES(5, 1, '" + datenow + "', 'Adopt', " + empids[cbVaccEmp.SelectedIndex] + ", 'Out')", conn);
+                                comm.ExecuteNonQuery();
+                                comm = new MySqlCommand("INSERT INTO activity(date, employeeID, type) VALUES('" + date + "', " + empids[cbVaccEmp.SelectedIndex] + ", 'Vaccination')", conn);
+                                comm.ExecuteNonQuery();
+                                comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Vaccine'", conn);
+                                MySqlDataAdapter adppt = new MySqlDataAdapter(comm);
+                                DataTable dttt = new DataTable();
+                                adpp.Fill(dttt);
+                                string nl = Environment.NewLine;
+                                int quantity = int.Parse(dttt.Rows[0]["quantity"].ToString());
+                                messbox = "Successfully Adopted and Vaccinated!" + nl + "Vaccine Quantity is now: " + quantity.ToString();
+                                comm = new MySqlCommand("SELECT quantity FROM items WHERE description = 'Syringe'", conn);
+                                MySqlDataAdapter adpt = new MySqlDataAdapter(comm);
+                                DataTable dtttt = new DataTable();
+                                adpt.Fill(dtttt);
+                                int quan = int.Parse(dtttt.Rows[0]["quantity"].ToString());
+                                messbox = messbox + nl + "Syringe Quantity is now: " + quan.ToString();
+                                MessageBox.Show(messbox);
+                                preview();
+                                dog.Show();
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Vaccine Quantity is 0. Cannot Vaccinate Dog", "Running out of vaccine", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                         else
                         {
+                            adopt();
                             messbox = "Successfully Adopted!";
+                            MessageBox.Show(messbox);
+                            preview();
+                            dog.Show();
+                            this.Close();
                         }
-                        MessageBox.Show(messbox);
-                        preview();
-                        dog.Show();
-                        this.Close();
+                        
                         conn.Close();
                     }
                     catch (Exception ex)
@@ -177,6 +177,46 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void adopt()
+        {
+            String fname = tbfname.Text;
+            String mname = tbmname.Text;
+            String lname = tblname.Text;
+            String add = tbadd.Text;
+            String idnum = tbIDnum.Text;
+            String idtype = tbIDtype.Text;
+            String num = tbnumber.Text;
+            String date = DateTime.Now.ToString("yyyy-MM-dd");
+            String month = (cbMonth.SelectedIndex + 1).ToString();
+            String day = tbDay.Text;
+            String year = tbDay.Text;
+            String bday = year + '-' + month + '-' + day;
+            int vaccine = 0;
+            if (cbVaccine.Checked)
+            {
+                vaccine = 1;
+            }
+            MySqlCommand comm = new MySqlCommand("INSERT INTO profile(firstname, middlename, lastname, contactNumber, address, birthdate) VALUES('" + fname + "', '" + mname + "','" + lname + "', '" + num + "', '" + add + "', '" + bday + "')", conn);
+            comm.ExecuteNonQuery();
+
+            comm = new MySqlCommand("SELECT MAX(personID) FROM profile", conn);
+            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+
+            int personID = int.Parse(dt.Rows[0]["MAX(personID)"].ToString());
+
+            comm = new MySqlCommand("INSERT INTO client(personID, validIDType, validIDNumber) VALUES(" + personID + ", '" + idtype + "', '" + idnum + "')", conn);
+            comm.ExecuteNonQuery();
+
+            comm = new MySqlCommand("INSERT INTO dogtransaction(personID, dogID, date, payment, vaccine, type) VALUES(" + personID + ", " + dogID + ", '" + date + "', " + "0" + ", " + vaccine + ", '" + "adopt" + "')", conn);
+            comm.ExecuteNonQuery();
+
+            comm = new MySqlCommand("UPDATE dogprofile SET status = 'adopted' WHERE dogID = " + dogID, conn);
+            comm.ExecuteNonQuery();
+            string messbox;
+        }
+
         private void Adopt_FormClosing(object sender, FormClosingEventArgs e)
         {
             dog.refreshAdoption();
@@ -184,22 +224,22 @@ namespace WindowsFormsApplication1
         
         private void printDocumentAdt_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawString("Davao City Dog Pound", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(200, 100));
+            e.Graphics.DrawString("Davao City Dog Pound", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new Point(25, 100));
             e.Graphics.DrawString("Adopter's Details", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(25, 160));
-            e.Graphics.DrawString("Adopter's Name: " + tbfname.Text + tblname.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 180));
-            e.Graphics.DrawString("Contact Number: " + tbnumber.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 200));
-            e.Graphics.DrawString("Birthdate: " + cbMonth.Text + " " + tbDay.Text + "," + tbYear.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 220));
-            e.Graphics.DrawString("Address: " + tbadd.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 240));
-            e.Graphics.DrawString("Valid ID Type: " + tbIDtype.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 260));
-            e.Graphics.DrawString("Valid ID Number: " + tbIDnum.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 280));
+            e.Graphics.DrawString("Adopter's Name: " + tbfname.Text + " " + tbmname.Text + " " + tblname.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 190));
+            e.Graphics.DrawString("Contact Number: " + tbnumber.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 210));
+            e.Graphics.DrawString("Birthdate: " + cbMonth.Text + " " + tbDay.Text + "," + tbYear.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 230));
+            e.Graphics.DrawString("Address: " + tbadd.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 250));
+            e.Graphics.DrawString("Valid ID Type: " + tbIDtype.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 270));
+            e.Graphics.DrawString("Valid ID Number: " + tbIDnum.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 290));
 
             if (cbVaccine.Checked)
             {
-                e.Graphics.DrawString("**Availed Vaccine, Vaccinated by: " + cbVaccEmp.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 420));
+                e.Graphics.DrawString("**Availed Vaccine, Vaccinated by: " + cbVaccEmp.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 430));
             }
             else
             {
-                e.Graphics.DrawString("**No Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 420));
+                e.Graphics.DrawString("**No Vaccine", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 430));
             }
             // LINE SEPARATOR
             Pen black = new Pen(Color.Black, 3);
@@ -207,11 +247,11 @@ namespace WindowsFormsApplication1
             Point p2 = new Point(800, 340);
             e.Graphics.DrawLine(black, p1, p2);
             e.Graphics.DrawString("Dog Details ", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(400, 160));
-            e.Graphics.DrawString("Breed: " + breeds.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 180));
-            e.Graphics.DrawString("Color:" + color.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 200));
-            e.Graphics.DrawString("Size: " + size.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 220));
-            e.Graphics.DrawString("Gender: " + gender.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 240));
-            e.Graphics.DrawString("Location: " + location.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 260));
+            e.Graphics.DrawString("Breed: " + breeds.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 190));
+            e.Graphics.DrawString("Color:" + color.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 210));
+            e.Graphics.DrawString("Size: " + size.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 230));
+            e.Graphics.DrawString("Gender: " + gender.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 250));
+            e.Graphics.DrawString("Location: " + location.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(400, 270));
             e.Graphics.DrawString("Date and Time Caught: " + date.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(25, 380));
             e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 600));
         }
@@ -332,6 +372,16 @@ namespace WindowsFormsApplication1
         private void tblname_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !((Keys)e.KeyChar == Keys.Space) && !((Keys)e.KeyChar == Keys.Back);
+        }
+
+        private void printPreviewDialogAdt_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbnumber_TextChanged(object sender, EventArgs e)
+        {
+            tbnumber.MaxLength = 11;
         }
     }
 }

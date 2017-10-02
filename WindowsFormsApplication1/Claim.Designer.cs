@@ -195,6 +195,7 @@
             this.tbnumber.Name = "tbnumber";
             this.tbnumber.Size = new System.Drawing.Size(158, 26);
             this.tbnumber.TabIndex = 25;
+            this.tbnumber.TextChanged += new System.EventHandler(this.tbnumber_TextChanged);
             this.tbnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbnumber_KeyPress);
             // 
             // tbadd
