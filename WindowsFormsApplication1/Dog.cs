@@ -521,13 +521,13 @@ namespace WindowsFormsApplication1
         private void tbBreedSearch_TextChanged(object sender, EventArgs e)
         {
             refreshSearch();
-            if(cbGenderSearch.Text != "Gender") refreshSearchWithGender();
+            if(cbGenderSearch.Text != "") refreshSearchWithGender();
         }
 
         private void tbColorSearch_TextChanged(object sender, EventArgs e)
         {
             refreshSearch();
-            if (cbGenderSearch.Text != "Gender") refreshSearchWithGender();
+            if (cbGenderSearch.Text != "") refreshSearchWithGender();
         }
 
         private void cbGenderSearch_SelectedIndexChanged(object sender, EventArgs e)
