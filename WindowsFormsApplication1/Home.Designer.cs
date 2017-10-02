@@ -434,9 +434,9 @@
             // 
             this.pictureBox3.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.dp1;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(239, 218);
+            this.pictureBox3.Location = new System.Drawing.Point(298, 215);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(604, 471);
+            this.pictureBox3.Size = new System.Drawing.Size(490, 471);
             this.pictureBox3.TabIndex = 54;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click_1);

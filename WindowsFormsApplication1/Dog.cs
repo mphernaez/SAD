@@ -72,7 +72,7 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
 
-
+            cbOperation.Text = "Operation Date and Location";
             //panel2.Visible = false;
             addDog.Visible = true;
             searchDog.Visible = false;
@@ -1236,63 +1236,70 @@ namespace WindowsFormsApplication1
         {
             op1 = 0;
             noheader4 = false;
-            int operationID = opid[cbOperation.SelectedIndex];
+            int operationID = -1;
+            if (cbOperation.SelectedIndex >= 0)
+                 operationID = opid[cbOperation.SelectedIndex];
 
-            
-            try
+            if (operationID >= 0)
             {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT description AS Location, SUBSTRING(date, 1, 11) AS Date, CONCAT(timeStart, '-', timeEnd) AS Time FROM dogpound.dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                System.Data.DataTable dt = new System.Data.DataTable();
-                adp.Fill(dt);
-                location = dt.Rows[0]["Location"].ToString();
-                time = dt.Rows[0]["Time"].ToString();
-                date = dt.Rows[0]["Date"].ToString();
-
-                comm = new MySqlCommand("SELECT DISTINCT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', lastname) AS Name, position AS Position FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON employee.employeeID = operationTeam.employeeID INNER JOIN dogoperation ON operationteam.teamID = dogoperation.teamID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex] + " ORDER BY position DESC", conn);
-                adp = new MySqlDataAdapter(comm);
-                dt = new System.Data.DataTable();
-                adp.Fill(dt);
-
-                employees = new string[dt.Rows.Count];
-                for (int i = 0; i < dt.Rows.Count; i++)
+                try
                 {
-                    employees[i] = dt.Rows[i]["Name"].ToString() + " - " + dt.Rows[i]["Position"].ToString();
-                }
+                    conn.Open();
+                    MySqlCommand comm = new MySqlCommand("SELECT description AS Location, SUBSTRING(date, 1, 11) AS Date, CONCAT(timeStart, '-', timeEnd) AS Time FROM dogpound.dogoperation INNER JOIN location ON location.locationID = dogoperation.locationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    System.Data.DataTable dt = new System.Data.DataTable();
+                    adp.Fill(dt);
+                    location = dt.Rows[0]["Location"].ToString();
+                    time = dt.Rows[0]["Time"].ToString();
+                    date = dt.Rows[0]["Date"].ToString();
 
-                comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, UPPER(size) AS Size, gender AS Gender, otherDesc AS Markings, sublocation AS 'Location' FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
-                adp = new MySqlDataAdapter(comm);
-                dtoperation = new System.Data.DataTable();
-                adp.Fill(dtoperation);
-               
-                MySqlCommand commm = new MySqlCommand("SELECT DISTINCT sublocation "
-                                        + "FROM dogprofile "
-                                        + "INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID "
-                                        + "WHERE dogprofile.operationID = "+opid[cbOperation.SelectedIndex]+ " "
-                                        + "ORDER BY sublocation", conn);
-                MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
-                DataTable dtt = new System.Data.DataTable();
-                adpt.Fill(dtt);
-                sublocations = new string[dtt.Rows.Count];
-                for (int i = 0; i < dtt.Rows.Count; i++)
+                    comm = new MySqlCommand("SELECT DISTINCT CONCAT(firstname, ' ', SUBSTRING(middlename, 1, 1), '.', lastname) AS Name, position AS Position FROM employee INNER JOIN profile ON profile.personID = employee.employeeID INNER JOIN operationteam ON employee.employeeID = operationTeam.employeeID INNER JOIN dogoperation ON operationteam.teamID = dogoperation.teamID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex] + " ORDER BY position DESC", conn);
+                    adp = new MySqlDataAdapter(comm);
+                    dt = new System.Data.DataTable();
+                    adp.Fill(dt);
+
+                    employees = new string[dt.Rows.Count];
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        employees[i] = dt.Rows[i]["Name"].ToString() + " - " + dt.Rows[i]["Position"].ToString();
+                    }
+
+                    comm = new MySqlCommand("SELECT breed AS Breed, color AS Color, UPPER(size) AS Size, gender AS Gender, otherDesc AS Markings, sublocation AS 'Location' FROM dogprofile INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID WHERE dogoperation.operationID = " + opid[cbOperation.SelectedIndex], conn);
+                    adp = new MySqlDataAdapter(comm);
+                    dtoperation = new System.Data.DataTable();
+                    adp.Fill(dtoperation);
+
+                    MySqlCommand commm = new MySqlCommand("SELECT DISTINCT sublocation "
+                                            + "FROM dogprofile "
+                                            + "INNER JOIN dogoperation ON dogprofile.operationID = dogoperation.operationID "
+                                            + "WHERE dogprofile.operationID = " + opid[cbOperation.SelectedIndex] + " "
+                                            + "ORDER BY sublocation", conn);
+                    MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
+                    DataTable dtt = new System.Data.DataTable();
+                    adpt.Fill(dtt);
+                    sublocations = new string[dtt.Rows.Count];
+                    for (int i = 0; i < dtt.Rows.Count; i++)
+                    {
+                        sublocations[i] = dtt.Rows[i]["sublocation"].ToString();
+                    }
+
+                    conn.Close();
+
+                    printDocument5.DefaultPageSettings.Landscape = false;
+                    PrintPreviewDialog fin = new PrintPreviewDialog();
+                    fin.Document = printDocument5;
+                    ((Form)fin).WindowState = FormWindowState.Maximized;
+                    fin.ShowDialog();
+
+                }
+                catch (Exception ex)
                 {
-                    sublocations[i] = dtt.Rows[i]["sublocation"].ToString();
+                    conn.Close();
+                    MessageBox.Show(ex.ToString());
                 }
-
-                conn.Close();
-
-                printDocument5.DefaultPageSettings.Landscape = false;
-                PrintPreviewDialog fin = new PrintPreviewDialog();
-                fin.Document = printDocument5;
-                ((Form)fin).WindowState = FormWindowState.Maximized;
-                fin.ShowDialog();
-
-            }
-            catch (Exception ex)
+            } else
             {
-                conn.Close();
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Choose Operation");
             }
         }
 

@@ -888,7 +888,7 @@ namespace WindowsFormsApplication1
                 conn.Open();
                 String daten = DateTime.Now.ToString("yyyy-MM-dd");
                 String timen = DateTime.Now.ToString("HH:mm");
-                MySqlCommand c = new MySqlCommand("SELECT DISTINCT operationID FROM dogoperation JOIN operationteam ON operationteam.teamID = dogoperation.teamID JOIN attendance ON attendance.employeeID = operationteam.employeeiD WHERE dogoperation.date = '"+daten+"' AND attendance.employeeID NOT IN (select employeeID from attendance where date = '"+daten+ "' AND type = 1) OR attendance.employeeID IN (SELECT employeeID FROM activity WHERE date = '" + daten + "' AND status = 'OnGoing') UNION SELECT DISTINCT operationID FROM dogoperation JOIN operationteam ON operationteam.teamID = dogoperation.teamID WHERE dogoperation.date = '" + daten+ "' AND operationteam.employeeID NOT IN (select employeeID from attendance) OR operationteam.employeeID IN (SELECT employeeID FROM activity WHERE date = '" + daten + "' AND status = 'OnGoing')", conn);
+                MySqlCommand c = new MySqlCommand("SELECT DISTINCT operationID FROM dogoperation JOIN operationteam ON operationteam.teamID = dogoperation.teamID JOIN attendance ON attendance.employeeID = operationteam.employeeiD WHERE dogoperation.date = '"+daten+"' AND attendance.employeeID NOT IN (select employeeID from attendance where date = '"+daten+ "' AND type = 1) OR attendance.employeeID IN (SELECT employeeID FROM activity WHERE date = '" + daten + "' AND status = 'OnGoing') AND status != 'Finished' UNION SELECT DISTINCT operationID FROM dogoperation JOIN operationteam ON operationteam.teamID = dogoperation.teamID WHERE dogoperation.date = '" + daten+ "' AND operationteam.employeeID NOT IN (select employeeID from attendance) OR operationteam.employeeID IN (SELECT employeeID FROM activity WHERE date = '" + daten + "' AND status = 'OnGoing') AND status != 'Finished'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(c);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -1797,7 +1797,7 @@ namespace WindowsFormsApplication1
             pnlActivity.Visible = true;
             Edit.Visible = false;
             panelViewAct.Visible = false;
-            Operations.Visible = false;;
+            Operations.Visible = false;
             refreshActivity();
 
         }
@@ -1845,6 +1845,7 @@ namespace WindowsFormsApplication1
                 
 
                 conn.Close();
+                dgvAct.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -1868,7 +1869,7 @@ namespace WindowsFormsApplication1
         int[] repEmpArr;
         private void choice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (m2.Text != "Month" && m1.Text != "Month" && y1.Text != "Day" && y2.Text != "Day") {
+                if (m2.Text != "Month" && m1.Text != "Month" && y1.Text != "Day" && y2.Text != "Day") {
                 if (choice.SelectedIndex == 0)
                 {
                     dgvOpSumm.Visible = false;
@@ -3223,6 +3224,7 @@ namespace WindowsFormsApplication1
                     dgvUpAct.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                     conn.Close();
+                dgvUpAct.ClearSelection();
                 }
                 catch (Exception ex)
                 {
@@ -3341,6 +3343,16 @@ namespace WindowsFormsApplication1
         private void newOperation_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void choice_MouseClick(object sender, MouseEventArgs e)
+        {
+            noheader = false;
+            noheader2 = false;
+            noheader3 = false;
+            countt = 0; //Attendance
+            act = 0; //Activities
+            it = 0; //Operations
         }
     }
 }

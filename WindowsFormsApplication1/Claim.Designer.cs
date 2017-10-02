@@ -304,9 +304,11 @@
             // 
             // cbVaccEmp
             // 
+            this.cbVaccEmp.DropDownHeight = 100;
             this.cbVaccEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbVaccEmp.ForeColor = System.Drawing.Color.Black;
             this.cbVaccEmp.FormattingEnabled = true;
+            this.cbVaccEmp.IntegralHeight = false;
             this.cbVaccEmp.Location = new System.Drawing.Point(441, 173);
             this.cbVaccEmp.Name = "cbVaccEmp";
             this.cbVaccEmp.Size = new System.Drawing.Size(189, 28);
@@ -317,9 +319,11 @@
             // 
             // tbDay
             // 
+            this.tbDay.DropDownHeight = 100;
             this.tbDay.Enabled = false;
             this.tbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDay.FormattingEnabled = true;
+            this.tbDay.IntegralHeight = false;
             this.tbDay.Location = new System.Drawing.Point(244, 172);
             this.tbDay.Name = "tbDay";
             this.tbDay.Size = new System.Drawing.Size(51, 28);
@@ -352,10 +356,12 @@
             // 
             // cbMonth
             // 
+            this.cbMonth.DropDownHeight = 100;
             this.cbMonth.Enabled = false;
             this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMonth.ForeColor = System.Drawing.Color.Black;
             this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.IntegralHeight = false;
             this.cbMonth.Items.AddRange(new object[] {
             "January",
             "February",

@@ -118,8 +118,8 @@
             this.m2 = new System.Windows.Forms.ComboBox();
             this.m1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.dgvTrans = new System.Windows.Forms.DataGridView();
             this.cbTransType = new System.Windows.Forms.ComboBox();
+            this.dgvTrans = new System.Windows.Forms.DataGridView();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
@@ -398,8 +398,8 @@
             // 
             this.panelRequest.Controls.Add(this.btn1);
             this.panelRequest.Controls.Add(this.btn);
-            this.panelRequest.Controls.Add(this.panelReq);
             this.panelRequest.Controls.Add(this.panelPending);
+            this.panelRequest.Controls.Add(this.panelReq);
             this.panelRequest.Location = new System.Drawing.Point(10, 114);
             this.panelRequest.Name = "panelRequest";
             this.panelRequest.Size = new System.Drawing.Size(982, 412);
@@ -445,6 +445,7 @@
             this.panelReq.Name = "panelReq";
             this.panelReq.Size = new System.Drawing.Size(952, 339);
             this.panelReq.TabIndex = 59;
+            this.panelReq.Visible = false;
             // 
             // cbEmpReq
             // 
@@ -1339,24 +1340,6 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // dgvTrans
-            // 
-            this.dgvTrans.AllowUserToAddRows = false;
-            this.dgvTrans.AllowUserToDeleteRows = false;
-            this.dgvTrans.AllowUserToResizeColumns = false;
-            this.dgvTrans.AllowUserToResizeRows = false;
-            this.dgvTrans.BackgroundColor = System.Drawing.Color.White;
-            this.dgvTrans.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvTrans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTrans.GridColor = System.Drawing.Color.White;
-            this.dgvTrans.Location = new System.Drawing.Point(22, 102);
-            this.dgvTrans.Name = "dgvTrans";
-            this.dgvTrans.ReadOnly = true;
-            this.dgvTrans.RowHeadersVisible = false;
-            this.dgvTrans.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTrans.Size = new System.Drawing.Size(982, 386);
-            this.dgvTrans.TabIndex = 75;
-            // 
             // cbTransType
             // 
             this.cbTransType.DropDownHeight = 100;
@@ -1376,6 +1359,24 @@
             this.cbTransType.Text = "Transaction Type";
             this.cbTransType.SelectedIndexChanged += new System.EventHandler(this.cbTransType_SelectedIndexChanged);
             this.cbTransType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress);
+            // 
+            // dgvTrans
+            // 
+            this.dgvTrans.AllowUserToAddRows = false;
+            this.dgvTrans.AllowUserToDeleteRows = false;
+            this.dgvTrans.AllowUserToResizeColumns = false;
+            this.dgvTrans.AllowUserToResizeRows = false;
+            this.dgvTrans.BackgroundColor = System.Drawing.Color.White;
+            this.dgvTrans.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvTrans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTrans.GridColor = System.Drawing.Color.White;
+            this.dgvTrans.Location = new System.Drawing.Point(22, 102);
+            this.dgvTrans.Name = "dgvTrans";
+            this.dgvTrans.ReadOnly = true;
+            this.dgvTrans.RowHeadersVisible = false;
+            this.dgvTrans.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTrans.Size = new System.Drawing.Size(982, 386);
+            this.dgvTrans.TabIndex = 75;
             // 
             // printDocument1
             // 

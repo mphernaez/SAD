@@ -1284,6 +1284,7 @@
             this.choice.Text = "Type";
             this.choice.SelectedIndexChanged += new System.EventHandler(this.choice_SelectedIndexChanged);
             this.choice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m1_KeyPress_1);
+            this.choice.MouseClick += new System.Windows.Forms.MouseEventHandler(this.choice_MouseClick);
             // 
             // button28
             // 
@@ -2872,10 +2873,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
-            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;
