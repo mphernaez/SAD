@@ -50,6 +50,7 @@
             // 
             this.bgworkerEmployee.WorkerReportsProgress = true;
             this.bgworkerEmployee.WorkerSupportsCancellation = true;
+            this.bgworkerEmployee.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerEmployee_DoWork);
             // 
             // dgvViewAct
             // 

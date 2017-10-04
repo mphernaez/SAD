@@ -35,6 +35,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
             if (tbfname.Text != "" && tbmname.Text != "" && tblname.Text != "" && tbadd.Text != "" && tbIDnum.Text != "" && tbIDtype.Text != "" && cbMonth.Text != "" && tbDay.Text != "" && tbYear.Text != "Year")
             {
                 if (checkbox.Checked && cbVaccEmp.Text == "Employee")
