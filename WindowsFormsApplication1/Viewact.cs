@@ -62,5 +62,10 @@ namespace WindowsFormsApplication1
                 conn.Close();
             }
         }
+
+        private void bgworkerEmployee_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
     }
 }
