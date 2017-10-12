@@ -55,9 +55,6 @@
             this.cbDay = new System.Windows.Forms.ComboBox();
             this.tbYear = new System.Windows.Forms.TextBox();
             this.cbMonth = new System.Windows.Forms.ComboBox();
-            this.pnlAdmin = new System.Windows.Forms.Panel();
-            this.tbUser = new System.Windows.Forms.TextBox();
-            this.tbPass = new System.Windows.Forms.TextBox();
             this.button22 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.cbposition = new System.Windows.Forms.ComboBox();
@@ -225,7 +222,6 @@
             this.editPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEdit)).BeginInit();
             this.addPanel.SuspendLayout();
-            this.pnlAdmin.SuspendLayout();
             this.pnlArchive.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReactivate)).BeginInit();
             this.panel1.SuspendLayout();
@@ -458,9 +454,9 @@
             this.addEmployee.Controls.Add(this.button12);
             this.addEmployee.Controls.Add(this.button11);
             this.addEmployee.Controls.Add(this.label2);
-            this.addEmployee.Controls.Add(this.editPanel);
             this.addEmployee.Controls.Add(this.addPanel);
             this.addEmployee.Controls.Add(this.pnlArchive);
+            this.addEmployee.Controls.Add(this.editPanel);
             this.addEmployee.Location = new System.Drawing.Point(24, 196);
             this.addEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addEmployee.Name = "addEmployee";
@@ -609,7 +605,6 @@
             this.addPanel.Controls.Add(this.cbDay);
             this.addPanel.Controls.Add(this.tbYear);
             this.addPanel.Controls.Add(this.cbMonth);
-            this.addPanel.Controls.Add(this.pnlAdmin);
             this.addPanel.Controls.Add(this.button22);
             this.addPanel.Controls.Add(this.label8);
             this.addPanel.Controls.Add(this.cbposition);
@@ -684,40 +679,6 @@
             this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             this.cbMonth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMonth_KeyPress);
             // 
-            // pnlAdmin
-            // 
-            this.pnlAdmin.Controls.Add(this.tbUser);
-            this.pnlAdmin.Controls.Add(this.tbPass);
-            this.pnlAdmin.Location = new System.Drawing.Point(200, 217);
-            this.pnlAdmin.Name = "pnlAdmin";
-            this.pnlAdmin.Size = new System.Drawing.Size(360, 31);
-            this.pnlAdmin.TabIndex = 48;
-            this.pnlAdmin.Visible = false;
-            // 
-            // tbUser
-            // 
-            this.tbUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUser.ForeColor = System.Drawing.Color.Gray;
-            this.tbUser.Location = new System.Drawing.Point(2, 1);
-            this.tbUser.Multiline = true;
-            this.tbUser.Name = "tbUser";
-            this.tbUser.Size = new System.Drawing.Size(166, 29);
-            this.tbUser.TabIndex = 46;
-            this.tbUser.Text = "Username";
-            this.tbUser.Enter += new System.EventHandler(this.tbUser_Enter);
-            // 
-            // tbPass
-            // 
-            this.tbPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPass.ForeColor = System.Drawing.Color.Gray;
-            this.tbPass.Location = new System.Drawing.Point(174, 1);
-            this.tbPass.Multiline = true;
-            this.tbPass.Name = "tbPass";
-            this.tbPass.Size = new System.Drawing.Size(183, 29);
-            this.tbPass.TabIndex = 47;
-            this.tbPass.Text = "Password";
-            this.tbPass.Enter += new System.EventHandler(this.tbPass_Enter);
-            // 
             // button22
             // 
             this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(99)))), ((int)(((byte)(82)))));
@@ -752,7 +713,6 @@
             this.cbposition.FormattingEnabled = true;
             this.cbposition.IntegralHeight = false;
             this.cbposition.Items.AddRange(new object[] {
-            "Admin",
             "Driver",
             "Catcher"});
             this.cbposition.Location = new System.Drawing.Point(71, 217);
@@ -2897,8 +2857,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvEdit)).EndInit();
             this.addPanel.ResumeLayout(false);
             this.addPanel.PerformLayout();
-            this.pnlAdmin.ResumeLayout(false);
-            this.pnlAdmin.PerformLayout();
             this.pnlArchive.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReactivate)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -2991,9 +2949,6 @@
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.DataGridView repEmp;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel pnlAdmin;
-        private System.Windows.Forms.TextBox tbUser;
-        private System.Windows.Forms.TextBox tbPass;
         private System.Windows.Forms.Panel editPanel;
         private System.Windows.Forms.Button button13;
         public System.Windows.Forms.DataGridView dgvEdit;

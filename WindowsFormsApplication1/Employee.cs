@@ -631,11 +631,7 @@ namespace WindowsFormsApplication1
                 comm = new MySqlCommand("INSERT INTO employee(employeeID, position, status) VALUES('" + personID + "', '" + position + "', 'Active')", conn);
                 comm.ExecuteNonQuery();
 
-                if (cbposition.Text == "Admin") {
-                    comm = new MySqlCommand("INSERT INTO admin(username, password, employeeID) VALUES('" + tbUser.Text + "', '" + tbPass.Text + "', " + personID + ")", conn);
-                    comm.ExecuteNonQuery();
-                }
-
+               
                 MessageBox.Show("Profile Added Successfully");
                 rePopAddEmp();
 
@@ -655,11 +651,6 @@ namespace WindowsFormsApplication1
             if (tblname.Text != "Lastname" && tblname.Text != "" && tbmname.Text != "Middlename" && tbmname.Text != "" && tbfname.Text != "Firstname" && tbfname.Text != "" && tbaddress.Text != "Address" && tbaddress.Text != "" && cbgender.Text != "Gender" && tbcontactNumber.Text != "Contact Number" && tbcontactNumber.Text != "" && cbposition.Text != "Position" && cbDay.Text != "Day" && tbYear.Text != "Year" && cbMonth.Text != "Month")
             {
                 if (cbposition.Text != "Admin")
-                {
-                    if (checkIfEmployeeExists(lname, mname, fname) == false) addEmp();
-                    else MessageBox.Show("Error: Employee already exists");
-                }
-                else if (cbposition.Text == "Admin" && tbUser.Text != "Username" && tbPass.Text != "Password")
                 {
                     if (checkIfEmployeeExists(lname, mname, fname) == false) addEmp();
                     else MessageBox.Show("Error: Employee already exists");
@@ -775,8 +766,7 @@ namespace WindowsFormsApplication1
         private void cbposition_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbposition.Text != "Position") cbposition.ForeColor = Color.Black;
-            if (cbposition.Text == "Admin") pnlAdmin.Visible = true;
-            else pnlAdmin.Visible = false;
+           
 
         }
 
@@ -1153,12 +1143,12 @@ namespace WindowsFormsApplication1
 
         private void tbUser_Enter(object sender, EventArgs e)
         {
-            tbUser.Text = "";
+
         }
 
         private void tbPass_Enter(object sender, EventArgs e)
         {
-            tbPass.Text = "";
+            
         }
 
 
@@ -3155,7 +3145,7 @@ namespace WindowsFormsApplication1
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            tbPass.PasswordChar = '*';
+            
         }
 
         private void cbMonth_KeyPress(object sender, KeyPressEventArgs e)
