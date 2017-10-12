@@ -147,6 +147,12 @@
     <Compile Include="FinishAct.Designer.cs">
       <DependentUpon>FinishAct.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditDog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDog.Designer.cs">
+      <DependentUpon>EditDog.cs</DependentUpon>
+    </Compile>
     <Compile Include="opEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FinishAct.resx">
       <DependentUpon>FinishAct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDog.resx">
+      <DependentUpon>EditDog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="opEdit.resx">
       <DependentUpon>opEdit.cs</DependentUpon>

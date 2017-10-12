@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
     {
         //45   
         //55
-
+        EditDog editdogform;
         DataTable dtclaim;
         DataTable dtadopt;
         DataTable dteut;
@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
         Boolean btnhold = false;
         int i = -40;
         int[] opid; //id for every combobox item
-       
+        int editdog;
         public empty back { get; set; }
 
         public MySqlConnection conn;
@@ -86,6 +86,11 @@ namespace WindowsFormsApplication1
             repclaimpan.Visible = false;
             cbOperation.Items.Clear();
             addOperationsItems();
+            pnlAddDog.Visible = true;
+            pnlEditDog.Visible = false;
+            add.BackColor = Color.FromArgb(251, 162, 80);
+            edit.BackColor = Color.FromArgb(2, 170, 145);
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -1627,6 +1632,77 @@ namespace WindowsFormsApplication1
         {
             Viewdog v = new Viewdog();
             v.ShowDialog();
+        }
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            add.BackColor = Color.FromArgb(251, 162, 80);
+            edit.BackColor = Color.FromArgb(2, 170, 145);
+            pnlEditDog.Visible = false;
+            pnlAddDog.Visible = true;
+        }
+
+        private void edit_Click(object sender, EventArgs e)
+        {
+            edit.BackColor = Color.FromArgb(251, 162, 80);
+            add.BackColor = Color.FromArgb(2, 170, 145);
+            pnlAddDog.Visible = false;
+            pnlEditDog.Visible = true;
+            refreshEditDog();
+        }
+        public void refreshEditDog()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT dogID, breed, UCASE(size), gender, color, otherDesc, sublocation FROM dogprofile Where status = 'unclaimed' ", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                dgvEditDog.DataSource = dt;
+
+                dgvEditDog.Columns["dogID"].Visible = false;
+                dgvEditDog.Columns["breed"].HeaderText = "Breed";
+                dgvEditDog.Columns["color"].HeaderText = "Color";
+                dgvEditDog.Columns["gender"].HeaderText = "Gender";
+                dgvEditDog.Columns["otherDesc"].HeaderText = "Markings";
+                dgvEditDog.Columns["UCASE(size)"].HeaderText = "Size";
+                dgvEditDog.Columns["sublocation"].HeaderText = "Sublocation";
+                dgvEditDog.Columns["breed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEditDog.Columns["color"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEditDog.Columns["gender"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEditDog.Columns["UCASE(size)"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEditDog.Columns["otherDesc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEditDog.Columns["sublocation"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvEditDog.ClearSelection();
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void dgvEditDog_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            editdog = int.Parse(dgvEditDog.Rows[e.RowIndex].Cells["dogID"].Value.ToString());
+        }
+
+        private void button39_Click(object sender, EventArgs e)
+        {
+            if (editdog != 0)
+            {
+                editdogform = new EditDog(this);
+                editdogform.dogID = this.editdog;
+                editdogform.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a dog");
+            }
         }
 
         private void button17_Click(object sender, EventArgs e)

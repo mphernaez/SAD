@@ -575,20 +575,6 @@ namespace WindowsFormsApplication1
                     emp.id = int.Parse(dt.Rows[0]["personID"].ToString());
                     emp.tbaddress.Text = dt.Rows[0]["address"].ToString();
                     emp.pos = dt.Rows[0]["position"].ToString();
-                    if (dt.Rows[0]["position"].ToString() == "Admin")
-                    {
-                        comm = new MySqlCommand("SELECT username, password FROM admin WHERE employeeID = " + editemployeeID, conn);
-                        adp = new MySqlDataAdapter(comm);
-                        DataTable dta = new DataTable();
-                        adp.Fill(dta);
-
-                        emp.tbUserEdit.Text = dta.Rows[0]["username"].ToString();
-                        emp.tbPassEdit.Text = dta.Rows[0]["password"].ToString();
-                    }
-                    else
-                    {
-                        emp.pnlAdminEdit.Visible = false;
-                    }
                     
                     conn.Close();
                     emp.employeeID = this.editemployeeID;

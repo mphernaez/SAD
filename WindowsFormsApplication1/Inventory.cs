@@ -787,89 +787,12 @@ namespace WindowsFormsApplication1
             button15.BackColor = Color.FromArgb(2, 170, 145);
             button19.BackColor = Color.FromArgb(251, 162, 80);
             button9.BackColor = Color.FromArgb(2, 170, 145);
-            refreshRequest();
+            
         }
-        private void refreshRequest()
-        {
-            try
-            {
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand("SELECT itemID, productName AS 'Product Name', description AS 'Product Description', quantity AS 'Current Quantity' FROM items WHERE quantity < minQuantity AND itemID NOT IN(SELECT stockID FROM stockrequest WHERE delivered = 0)", conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                dtReq = new DataTable();
-                adp.Fill(dtReq);
-                dgvRequest.DataSource = dtReq;
-                dgvRequest.Columns["itemID"].Visible = false;
-                dgvRequest.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvRequest.Columns["Product Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvRequest.Columns["Current Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                comm = new MySqlCommand("SELECT productName AS 'Product Name', description AS 'Product Description', quantity AS 'Current Quantity', date AS 'Request Date' FROM items INNER JOIN stockrequest ON stockrequest.stockID = items.itemID WHERE quantity < minQuantity AND delivered = 0 ORDER BY date", conn);
-                adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-
-                dgvPendReq.DataSource = dt;
-                dgvPendReq.Columns["Product Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvPendReq.Columns["Product Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvPendReq.Columns["Current Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvPendReq.Columns["Request Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                MySqlCommand commm = new MySqlCommand("SELECT CONCAT(lastname, ' ', firstname, ' ', SUBSTRING(middlename, 1, 1), '.', ' - ', position) AS name FROM profile INNER JOIN employee On employee.employeeID = profile.personID", conn);
-                MySqlDataAdapter adpt = new MySqlDataAdapter(commm);
-                DataTable dtReqs = new DataTable();
-                adpt.Fill(dtReqs);
-
-                for (int i = 0; i < dtReqs.Rows.Count; i++)
-                {
-                    cbEmpReq.Items.Add(dtReqs.Rows[i]["name"].ToString());
-                }
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show(ex.ToString());
-            }
-        }
+        
 
         private void button18_Click_1(object sender, EventArgs e)
         {
-            if (dtReq.Rows.Count != 0 && cbEmpReq.Text != "Endorser") {
-                string date = DateTime.Now.ToString("yyyy-MM-dd");
-                try
-                {
-                    conn.Open();
-                    MySqlCommand comm;
-                    for (int i = 0; i < dtReq.Rows.Count; i++)
-                    {
-                        int item = int.Parse(dtReq.Rows[i]["itemID"].ToString());
-                        comm = new MySqlCommand("INSERT INTO stockrequest(date, stockID, delivered) VALUES('"+date+"', "+item+", 0)", conn);
-                        comm.ExecuteNonQuery();
-                    }
-                    
-                    conn.Close();
-                }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                    MessageBox.Show(ex.ToString());
-                }
-                
-                printDocument4.DefaultPageSettings.Landscape = false;
-                PrintPreviewDialog dlg = new PrintPreviewDialog();
-                dlg.Document = printDocument4;
-                ((Form)dlg).WindowState = FormWindowState.Maximized;
-                dlg.ShowDialog();
-                refreshRequest();
-                cbEmpReq.Items.Clear();
-                cbEmpReq.Text = "Endorser";
-            }
-            else
-            {
-                MessageBox.Show("Please enter an endorser", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             
         }
         private void y1_TextChanged(object sender, EventArgs e)
@@ -1010,19 +933,12 @@ namespace WindowsFormsApplication1
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            btn.BackColor = Color.FromArgb(2, 170, 145);
-            btn1.BackColor = Color.FromArgb(251, 162, 80);
-            panelPending.Visible = true;
-            panelReq.Visible = false;
+            
         }
 
         private void btn_Click(object sender, EventArgs e)
         {
-            btn1.BackColor = Color.FromArgb(2, 170, 145);
-            btn.BackColor = Color.FromArgb(251, 162, 80);
-            panelReq.Visible = true;
-            panelPending.Visible = false;
-            refreshRequest();
+            
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -1091,7 +1007,6 @@ namespace WindowsFormsApplication1
             xy = xy + 50;
             e.Graphics.DrawString("__________________________", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, new Point(500, xy));
             xy = xy + 30;
-            e.Graphics.DrawString(cbEmpReq.Text, new Font("Arial", 18, FontStyle.Regular), Brushes.Black, new Point(500, xy));
         }
     }
 }

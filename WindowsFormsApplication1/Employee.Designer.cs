@@ -2374,13 +2374,13 @@
             this.DogCatchingOperation.Controls.Add(this.button21);
             this.DogCatchingOperation.Controls.Add(this.button15);
             this.DogCatchingOperation.Controls.Add(this.label4);
-            this.DogCatchingOperation.Controls.Add(this.Operations);
-            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Controls.Add(this.pnlUpAct);
             this.DogCatchingOperation.Controls.Add(this.panelViewAct);
             this.DogCatchingOperation.Controls.Add(this.pnlActivity);
             this.DogCatchingOperation.Controls.Add(this.Edit);
             this.DogCatchingOperation.Controls.Add(this.pnlOpView);
+            this.DogCatchingOperation.Controls.Add(this.Operations);
+            this.DogCatchingOperation.Controls.Add(this.newOperation);
             this.DogCatchingOperation.Location = new System.Drawing.Point(24, 196);
             this.DogCatchingOperation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DogCatchingOperation.Name = "DogCatchingOperation";
@@ -2873,10 +2873,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.DogCatchingOperation);
             this.Controls.Add(this.addEmployee);
             this.Controls.Add(this.attendance);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.DogCatchingOperation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.ShowInTaskbar = false;

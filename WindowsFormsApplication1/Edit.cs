@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            
             string lname = tblname.Text;
             string mname = tbmname.Text;
             string fname = tbfname.Text;
@@ -60,19 +60,9 @@ namespace WindowsFormsApplication1
                     comm = new MySqlCommand("UPDATE employee SET position = '" + position + "' WHERE employeeID = " + id, conn);
                     comm.ExecuteNonQuery();
                     
-                    if(cbposition.Text == "Admin" && change == false)
-                    {
-                        comm = new MySqlCommand("UPDATE admin SET username = '" + tbUserEdit.Text + "', password = '" + tbPassEdit.Text + "' WHERE employeeID = " + employeeID, conn);
-                        comm.ExecuteNonQuery();
-                    }
-                    else if(cbposition.Text == "Admin" && change == true)
-                    {
-                        comm = new MySqlCommand("INSERT INTO admin(username, password, employeeID) VALUES('" + tbUserEdit.Text + "', '" + tbPassEdit.Text + "', " + employeeID + ")", conn);
-                        comm.ExecuteNonQuery();
-                    }
-
+                    
                     MessageBox.Show("Profile Edited Successfully");
-
+                    this.Dispose();
                     conn.Close();
                 }
                 catch (Exception ex)
@@ -96,10 +86,7 @@ namespace WindowsFormsApplication1
 
         private void EditEmp_Load(object sender, EventArgs e)
         {
-            if(cbposition.Text == "Admin")
-            {
-                pnlAdminEdit.Visible = true;
-            }
+            
         }
         
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -108,10 +95,7 @@ namespace WindowsFormsApplication1
         }
 
         private void cbposition_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(cbposition.Text != "Admin") pnlAdminEdit.Visible = false;
-            else pnlAdminEdit.Visible = true;
-
+        { 
             if (pos != cbposition.Text) change = true;
             else change = false;
         }
